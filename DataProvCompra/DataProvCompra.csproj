@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3FAE0CD-8BB4-49D5-A188-FC5E8B615F40}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataProvCompra</RootNamespace>
+    <AssemblyName>DataProvCompra</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Concepto.cs" />
+    <Compile Include="Data\Configuracion.cs" />
+    <Compile Include="Data\DataProv.cs" />
+    <Compile Include="Data\Deposito.cs" />
+    <Compile Include="Data\Documento.cs" />
+    <Compile Include="Data\Empresa.cs" />
+    <Compile Include="Data\Estado.cs" />
+    <Compile Include="Data\Grupo.cs" />
+    <Compile Include="Data\Permiso.cs" />
+    <Compile Include="Data\Producto.cs" />
+    <Compile Include="Data\Proveedor.cs" />
+    <Compile Include="Data\ReporteProv.cs" />
+    <Compile Include="Data\Reportes.cs" />
+    <Compile Include="Data\Sucursal.cs" />
+    <Compile Include="Data\Usuario.cs" />
+    <Compile Include="InfraEstructura\IConcepto.cs" />
+    <Compile Include="InfraEstructura\IConfiguracion.cs" />
+    <Compile Include="InfraEstructura\IData.cs" />
+    <Compile Include="InfraEstructura\IDeposito.cs" />
+    <Compile Include="InfraEstructura\IDocumento.cs" />
+    <Compile Include="InfraEstructura\IEmpresa.cs" />
+    <Compile Include="InfraEstructura\IEstado.cs" />
+    <Compile Include="InfraEstructura\IGrupo.cs" />
+    <Compile Include="InfraEstructura\IPermiso.cs" />
+    <Compile Include="InfraEstructura\IProducto.cs" />
+    <Compile Include="InfraEstructura\IProveedor.cs" />
+    <Compile Include="InfraEstructura\IReporteProv.cs" />
+    <Compile Include="InfraEstructura\IReportes.cs" />
+    <Compile Include="InfraEstructura\ISucursal.cs" />
+    <Compile Include="InfraEstructura\IUsuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DtoLibCompra\DtoLibCompra.csproj">
+      <Project>{d6b6b541-8b13-44bf-85af-1f38192d2535}</Project>
+      <Name>DtoLibCompra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoLib\DtoLib.csproj">
+      <Project>{adf1eed5-1230-4845-8c5b-f2e8dbf56150}</Project>
+      <Name>DtoLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OOB\OOB.csproj">
+      <Project>{7b9aba05-d038-4b4a-ad27-43ce4cf249cb}</Project>
+      <Name>OOB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceCompra\ServiceCompra.csproj">
+      <Project>{e982d1fe-c488-4f07-b03b-76f05efad8bf}</Project>
+      <Name>ServiceCompra</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

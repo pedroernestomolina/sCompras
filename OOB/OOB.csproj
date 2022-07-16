@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7B9ABA05-D038-4B4A-AD27-43CE4CF249CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OOB</RootNamespace>
+    <AssemblyName>OOB</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enumerados.cs" />
+    <Compile Include="LibCompra\Concepto\Ficha.cs" />
+    <Compile Include="LibCompra\Configuracion\Enumerados.cs" />
+    <Compile Include="LibCompra\Deposito\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Deposito\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\Documento\Agregar\NotaCredito\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Agregar\NotaCredito\FichaCxP.cs" />
+    <Compile Include="LibCompra\Documento\Agregar\NotaCredito\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Agregar\NotaCredito\FichaDocumento.cs" />
+    <Compile Include="LibCompra\Documento\Agregar\NotaCredito\FichaPrdDeposito.cs" />
+    <Compile Include="LibCompra\Documento\Agregar\NotaCredito\FichaPrdKardex.cs" />
+    <Compile Include="LibCompra\Documento\Anular\Factura\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Anular\FichaBase.cs" />
+    <Compile Include="LibCompra\Documento\Anular\NotaCredito\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaCxP.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaDocumento.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdCosto.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdCostoHistorico.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdDeposito.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdKardex.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdPrecio.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdPrecioHistorico.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdProveedor.cs" />
+    <Compile Include="LibCompra\Documento\Corrector\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Enumerados.cs" />
+    <Compile Include="LibCompra\Documento\GetData\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\GetData\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\ListaItemImportar\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\ListaRemision\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\ListaRemision\Filtro.cs" />
+    <Compile Include="LibCompra\Documento\Lista\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Abrir\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Abrir\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Agregar\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Filtro\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Lista\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Visualizar\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Visualizar\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Empresa\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Empresa\Fiscal\Ficha.cs" />
+    <Compile Include="LibCompra\Maestros\DenFiscal\Ficha.cs" />
+    <Compile Include="LibCompra\Maestros\Estado\Ficha.cs" />
+    <Compile Include="LibCompra\Maestros\Grupo\Agregar.cs" />
+    <Compile Include="LibCompra\Maestros\Grupo\Editar.cs" />
+    <Compile Include="LibCompra\Maestros\Grupo\Ficha.cs" />
+    <Compile Include="LibCompra\Permiso\Enumerados.cs" />
+    <Compile Include="LibCompra\Permiso\Ficha.cs" />
+    <Compile Include="LibCompra\Producto\CodRefProveedor\Filtro.cs" />
+    <Compile Include="LibCompra\Producto\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Producto\Enumerados.cs" />
+    <Compile Include="LibCompra\Producto\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\Producto\Utilidad\Ficha.cs" />
+    <Compile Include="LibCompra\Producto\VerificarDepositoAsignado\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\ActivarInactivar\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\Articulos\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\Articulos\Filtro.cs" />
+    <Compile Include="LibCompra\Proveedor\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\Data\Identificacion.cs" />
+    <Compile Include="LibCompra\Proveedor\Documentos\Enumerados.cs" />
+    <Compile Include="LibCompra\Proveedor\Documentos\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\Documentos\Filtro.cs" />
+    <Compile Include="LibCompra\Proveedor\Editar\Ficha.cs" />
+    <Compile Include="LibCompra\Proveedor\Enumerados.cs" />
+    <Compile Include="LibCompra\Proveedor\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\ReporteProv\Maestro\Ficha.cs" />
+    <Compile Include="LibCompra\ReporteProv\Maestro\Filtro.cs" />
+    <Compile Include="LibCompra\Reportes\CompraporDepartamento\Ficha.cs" />
+    <Compile Include="LibCompra\Reportes\CompraporDepartamento\Filtro.cs" />
+    <Compile Include="LibCompra\Reportes\CompraPorProductoDetalle\Ficha.cs" />
+    <Compile Include="LibCompra\Reportes\CompraPorProductoDetalle\Filtro.cs" />
+    <Compile Include="LibCompra\Reportes\CompraporProducto\Ficha.cs" />
+    <Compile Include="LibCompra\Reportes\CompraporProducto\Filtro.cs" />
+    <Compile Include="LibCompra\Reportes\Enumerados.cs" />
+    <Compile Include="LibCompra\Reportes\GeneralDocumentos\Ficha.cs" />
+    <Compile Include="LibCompra\Reportes\GeneralDocumentos\Filtro.cs" />
+    <Compile Include="LibCompra\Sucursal\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />
+    <Compile Include="LibCompra\Usuario\Buscar\Ficha.cs" />
+    <Compile Include="LibCompra\Usuario\Data\Ficha.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resultado.cs" />
+    <Compile Include="ResultadoAuto.cs" />
+    <Compile Include="ResultadoEntidad.cs" />
+    <Compile Include="ResultadoId.cs" />
+    <Compile Include="ResultadoLista.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
