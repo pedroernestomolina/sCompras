@@ -194,6 +194,14 @@ namespace ModCompra.Documento.Cargar.Controlador
             }
         }
 
+
+        public BindingSource GetOpcionBusquedaSource { get { return _gestion.GetOpcionBusquedaSource; } }
+        public string GetOpcionBusquedaId { get { return _gestion.GetOpcionBusquedaId; } }
+        public void setOpcBusqueda(string id)
+        {
+            _gestion.setOpcBusqueda(id);
+        }
+
     }
 
 }

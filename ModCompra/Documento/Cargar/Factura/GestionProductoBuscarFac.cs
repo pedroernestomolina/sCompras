@@ -63,6 +63,9 @@ namespace ModCompra.Documento.Cargar.Factura
                 case Controlador.GestionProductoBuscar.metodoBusqueda.Referencia:
                     filtros.MetodoBusqueda = OOB.LibCompra.Producto.Enumerados.EnumMetodoBusqueda.Referencia;
                     break;
+                case Controlador.GestionProductoBuscar.metodoBusqueda.CodBarra:
+                    filtros.MetodoBusqueda = OOB.LibCompra.Producto.Enumerados.EnumMetodoBusqueda.CodBarra;
+                    break;
             }
             if (filtros.IsActivarBusquedaOk())
                 RealizarBusqueda();

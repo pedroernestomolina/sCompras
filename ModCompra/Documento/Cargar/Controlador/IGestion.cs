@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ModCompra.Documento.Cargar.Controlador
@@ -44,6 +45,11 @@ namespace ModCompra.Documento.Cargar.Controlador
         void AdmDocumentos();
         void DejarPendiente();
         void AbrirPendiente();
+
+
+        BindingSource GetOpcionBusquedaSource { get; }
+        string GetOpcionBusquedaId { get; }
+        void setOpcBusqueda(string id);
 
     }
 

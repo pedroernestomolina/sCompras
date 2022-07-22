@@ -57,6 +57,7 @@ namespace ModCompra.Documento.Cargar.Factura
             gestionItem.ActualizarItemHnd +=gestionItem_ActualizarItemHnd;
             _gestionAdmDoc = new Administrador.Gestion();
             _gestionPend = new Pendiente.Gestion();
+            _gOpcBusqueda = new HlpGestion.HndCombo.Opcion();
         }
 
         private void gestionItem_ActualizarItemHnd(object sender, EventArgs e)
@@ -73,6 +74,7 @@ namespace ModCompra.Documento.Cargar.Factura
             _cntPend = 0;
             _dejarPendienteIsOk = false;
             SalidaOk = false;
+            _gOpcBusqueda.Inicializa();
         }
 
         public bool CargarData()
@@ -120,19 +122,33 @@ namespace ModCompra.Documento.Cargar.Factura
             }
             _cntPend = r05.Entidad;
 
+
+            var _lst = new List<HlpGestion.ficha>();
+            _lst.Add(new HlpGestion.ficha() { id = "01", codigo = "", desc = "Por Codigo" });
+            _lst.Add(new HlpGestion.ficha() { id = "02", codigo = "", desc = "Por Descripción" });
+            _lst.Add(new HlpGestion.ficha() { id = "03", codigo = "", desc = "Por Referencia" });
+            _lst.Add(new HlpGestion.ficha() { id = "04", codigo = "", desc = "Por Cod/Barra" });
+            _gOpcBusqueda.setData(_lst);
+            var _opcBusq = "";
+
             var mt = Controlador.GestionProductoBuscar.metodoBusqueda.SinDefinir;
             switch (r01.Entidad)
             {
                 case OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto.PorCodigo:
                     mt = Controlador.GestionProductoBuscar.metodoBusqueda.Codigo;
+                    _opcBusq = "01";
                     break;
                 case OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto.PorNombre:
                     mt= Controlador.GestionProductoBuscar.metodoBusqueda.Nombre;
+                    _opcBusq = "02";
                     break;
                 case OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto.Referencia:
                     mt= Controlador.GestionProductoBuscar.metodoBusqueda.Referencia;
+                    _opcBusq = "03";
                     break;
             }
+            _gOpcBusqueda.setFicha(_opcBusq);
+
             gestionPrdBuscar.setMetodoBusqueda(mt);
             tasasFiscal = r02.Entidad;
             conceptoCompra = r03.Entidad;
@@ -927,6 +943,30 @@ namespace ModCompra.Documento.Cargar.Factura
                         gestionItem.AgregarListaItem(doc.items, gestionDoc.IdProveedor, gestionDoc.FactorDivisa);
                     }
                 }
+            }
+        }
+
+
+        private HlpGestion.HndCombo.IOpcion _gOpcBusqueda;
+        public BindingSource GetOpcionBusquedaSource { get { return _gOpcBusqueda.Source; } }
+        public string GetOpcionBusquedaId { get { return _gOpcBusqueda.GetId; } }
+        public void setOpcBusqueda(string id)
+        {
+            _gOpcBusqueda.setFicha(id);
+            switch (id) 
+            {
+                case "01":
+                    gestionPrdBuscar.setMetodoBusqueda(Controlador.GestionProductoBuscar.metodoBusqueda.Codigo);
+                    break;
+                case "02":
+                    gestionPrdBuscar.setMetodoBusqueda(Controlador.GestionProductoBuscar.metodoBusqueda.Nombre);
+                    break;
+                case "03":
+                    gestionPrdBuscar.setMetodoBusqueda(Controlador.GestionProductoBuscar.metodoBusqueda.Referencia);
+                    break;
+                case "04":
+                    gestionPrdBuscar.setMetodoBusqueda(Controlador.GestionProductoBuscar.metodoBusqueda.CodBarra);
+                    break;
             }
         }
 

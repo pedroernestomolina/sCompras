@@ -47,6 +47,7 @@ namespace ModCompra.Documento.Cargar.NotaCredito
             gestionPrdBuscar = new GestionProductoBuscarNc();
             gestionTotalizar = new GestionTotalizarNc();
             gestionItem.ActualizarItemHnd += gestionItem_ActualizarItemHnd;
+            _gOpcBusqueda = new HlpGestion.HndCombo.Opcion();
         }
 
         private void gestionItem_ActualizarItemHnd(object sender, EventArgs e)
@@ -61,6 +62,7 @@ namespace ModCompra.Documento.Cargar.NotaCredito
         public void Inicializar()
         {
             SalidaOk = false;
+            _gOpcBusqueda.Inicializa();
         }
 
         public bool CargarData()
@@ -625,6 +627,15 @@ namespace ModCompra.Documento.Cargar.NotaCredito
 
         public void EditarDoc()
         {
+        }
+
+
+        private HlpGestion.HndCombo.IOpcion _gOpcBusqueda;
+        public BindingSource GetOpcionBusquedaSource { get { return _gOpcBusqueda.Source; } }
+        public string GetOpcionBusquedaId { get { return _gOpcBusqueda.GetId; } }
+        public void setOpcBusqueda(string id)
+        {
+            _gOpcBusqueda.setFicha(id);
         }
 
     }

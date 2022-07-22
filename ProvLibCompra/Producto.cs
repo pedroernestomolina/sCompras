@@ -89,6 +89,12 @@ namespace ProvLibCompra
                                 valor = cad + "%";
                             }
                         }
+                        if (filtro.MetodoBusqueda == DtoLibCompra.Producto.Enumerados.EnumMetodoBusqueda.CodBarra)
+                        {
+                            sql_2 += " join productos_alterno as alt on alt.auto_producto = p.auto and alt.codigo_alterno=@p ";
+                            valor = filtro.cadena;
+                        }
+
                         p1.ParameterName = "@p";
                         p1.Value = valor;
                     }

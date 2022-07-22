@@ -175,6 +175,10 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion.cs" />
+    <Compile Include="HlpGestion\ficha.cs" />
+    <Compile Include="HlpGestion\fichaSeleccion.cs" />
+    <Compile Include="HlpGestion\HndCombo\IOpcion.cs" />
+    <Compile Include="HlpGestion\HndCombo\Opcion.cs" />
     <Compile Include="Helpers\MetodosExtension.cs" />
     <Compile Include="Helpers\Msg.cs" />
     <Compile Include="Helpers\Utilitis.cs" />
@@ -492,6 +496,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CambiosVersion.txt" />
     <Content Include="conf.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

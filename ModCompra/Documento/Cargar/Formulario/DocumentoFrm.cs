@@ -23,6 +23,13 @@ namespace ModCompra.Documento.Cargar.Formulario
         {
             InitializeComponent();
             InicializarGrid();
+            InicializarCombos();
+        }
+
+        private void InicializarCombos()
+        {
+            CB_OPCION_BUSQUEDA.DisplayMember = "desc";
+            CB_OPCION_BUSQUEDA.ValueMember = "id";
         }
 
         private void InicializarGrid()
@@ -189,36 +196,41 @@ namespace ModCompra.Documento.Cargar.Formulario
             DGV.Columns.Add(c10);
         }
 
+        private bool _modoInicializar;
         private void DocumentoFrm_Load(object sender, EventArgs e)
         {
+            _modoInicializar = true;
             Inicializar_1();
+            CB_OPCION_BUSQUEDA.DataSource = _controlador.GetOpcionBusquedaSource;
+            CB_OPCION_BUSQUEDA.SelectedValue = _controlador.GetOpcionBusquedaId;
             DGV.Columns[0].Frozen = true;
             DGV.Columns[1].Frozen = true;
             DGV.Columns[2].Frozen = true;
             DGV.Columns[3].Visible = _controlador.VisualizarColDevolucion;
             DGV.DataSource = _controlador.ItemSource;
             BT_PENDIENTE_DEJAR.Text = "Pendiente " + _controlador.CntPend;
+            _modoInicializar = false;
         }
 
         private void Inicializar_1()
         {
             PANEL_DOCUMENTO.BackColor = _controlador.ColorFondoDocumento;
             L_TITULO_DOCUMENTO.Text = _controlador.TituloDocumento;
-            switch (_controlador.MetodoBusquedaProducto) 
-            {
-                case Controlador.GestionProductoBuscar.metodoBusqueda.Codigo:
-                    RB_BUSCAR_POR_CODIGO.Checked = true;
-                    ActivarBusquedaProductoPorCodigo();
-                    break;
-                case Controlador.GestionProductoBuscar.metodoBusqueda.Nombre:
-                    RB_BUSCAR_POR_NOMBRE.Checked = true;
-                    ActivarBusquedaProductoPorNombre();
-                    break;
-                case Controlador.GestionProductoBuscar.metodoBusqueda.Referencia:
-                    RB_BUSCAR_POR_REFERENCIA.Checked = true;
-                    ActivarBusquedaProductoPorReferencia();
-                    break;
-            }
+            //switch (_controlador.MetodoBusquedaProducto) 
+            //{
+            //    case Controlador.GestionProductoBuscar.metodoBusqueda.Codigo:
+            //        RB_BUSCAR_POR_CODIGO.Checked = true;
+            //        ActivarBusquedaProductoPorCodigo();
+            //        break;
+            //    case Controlador.GestionProductoBuscar.metodoBusqueda.Nombre:
+            //        RB_BUSCAR_POR_NOMBRE.Checked = true;
+            //        ActivarBusquedaProductoPorNombre();
+            //        break;
+            //    case Controlador.GestionProductoBuscar.metodoBusqueda.Referencia:
+            //        RB_BUSCAR_POR_REFERENCIA.Checked = true;
+            //        ActivarBusquedaProductoPorReferencia();
+            //        break;
+            //}
             ActualizarDatosDocumento();
             ActualizarDatosTotales();
             ActualizarDatosItem();
@@ -324,7 +336,6 @@ namespace ModCompra.Documento.Cargar.Formulario
         {
             BuscarProducto();
         }
-
         private void BuscarProducto()
         {
             _controlador.BuscarProducto();
@@ -334,7 +345,7 @@ namespace ModCompra.Documento.Cargar.Formulario
 
         private void IniciarBusqueda()
         {
-            TB_CADENA_BUSQ.Text = "";
+            //TB_CADENA_BUSQ.Text = "";
             TB_CADENA_BUSQ.Focus();
         }
 
@@ -496,6 +507,28 @@ namespace ModCompra.Documento.Cargar.Formulario
                     IniciarBusqueda();
                 }
             }
+        }
+
+        private void CB_OPCION_BUSQUEDA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+                return;
+
+            _controlador.setOpcBusqueda("");
+            if (CB_OPCION_BUSQUEDA.SelectedIndex != -1) 
+            {
+                _controlador.setOpcBusqueda(CB_OPCION_BUSQUEDA.SelectedValue.ToString());
+            }
+        }
+
+        private void BT_LIMPIAR_BUSQ_Click(object sender, EventArgs e)
+        {
+            LimparBusq();
+        }
+        private void LimparBusq()
+        {
+            TB_CADENA_BUSQ.Text = "";
+            TB_CADENA_BUSQ.Focus();
         }
 
     }
