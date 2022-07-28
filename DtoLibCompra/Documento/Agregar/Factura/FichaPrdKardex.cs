@@ -35,6 +35,7 @@ namespace DtoLibCompra.Documento.Agregar.Factura
         public string codigoConcepto { get; set; }
         public string nombreConcepto { get; set; }
         public string nombrePrd { get; set; }
+        public decimal factorCambio { get; set; }
 
 
         public FichaPrdKardex()
@@ -63,6 +64,7 @@ namespace DtoLibCompra.Documento.Agregar.Factura
             codigoConcepto = "";
             nombreConcepto = "";
             nombrePrd = "";
+            factorCambio = 0m;
         }
 
     }

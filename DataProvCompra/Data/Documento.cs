@@ -12,7 +12,8 @@ namespace DataProvCompra.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoAuto Compra_DocumentoAgregarFactura(OOB.LibCompra.Documento.Cargar.Factura.Ficha docFac)
+        public OOB.ResultadoAuto
+            Compra_DocumentoAgregarFactura(OOB.LibCompra.Documento.Cargar.Factura.Ficha docFac)
         {
             var result = new OOB.ResultadoAuto();
 
@@ -216,6 +217,7 @@ namespace DataProvCompra.Data
                     siglasMovDoc = it.siglasMovDoc,
                     signoDocumento = it.signoDocumento,
                     nombrePrd = it.nombrePrd,
+                    factorCambio =it.factorCambio,
                 };
                 prdKardex.Add(nr);
             }
@@ -638,7 +640,8 @@ namespace DataProvCompra.Data
             return rt;
         }
 
-        public OOB.ResultadoAuto Compra_DocumentoAgregarNC(OOB.LibCompra.Documento.Agregar.NotaCredito.Ficha docNC)
+        public OOB.ResultadoAuto
+            Compra_DocumentoAgregarNC(OOB.LibCompra.Documento.Agregar.NotaCredito.Ficha docNC)
         {
             var result = new OOB.ResultadoAuto();
 
@@ -840,6 +843,7 @@ namespace DataProvCompra.Data
                     precioUnd = it.precioUnd,
                     siglasMovDoc = it.siglasMovDoc,
                     signoDocumento = it.signoDocumento,
+                    factorCambio=it.factorCambio,
                 };
                 prdKardex.Add(nr);
             }

@@ -14,7 +14,8 @@ namespace ProvLibCompra
     public partial class Provider: ILibCompras.IProvider
     {
 
-        public DtoLib.ResultadoAuto Compra_DocumentoAgregarFactura(DtoLibCompra.Documento.Agregar.Factura.Ficha docFac)
+        public DtoLib.ResultadoAuto 
+            Compra_DocumentoAgregarFactura(DtoLibCompra.Documento.Agregar.Factura.Ficha docFac)
         {
             var result = new DtoLib.ResultadoAuto();
 
@@ -213,18 +214,48 @@ namespace ProvLibCompra
                             cnn.SaveChanges();
                         }
 
-                        var sqlKardex = @"INSERT INTO productos_kardex (auto_producto,total,auto_deposito,auto_concepto,auto_documento,
-                            fecha,hora,documento,modulo,entidad,signo,cantidad,cantidad_bono,cantidad_und,costo_und,estatus_anulado,
-                            nota,precio_und,codigo,siglas,codigo_sucursal, cierre_ftp, codigo_deposito, nombre_deposito, 
-                            codigo_concepto, nombre_concepto) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, 
-                            {12}, {13}, {14}, {15},{16}, {17}, {18}, {19}, {20}, {21}, {22}, {23}, {24}, {25})";
+                        var sqlKardex = @"INSERT INTO productos_kardex (
+                                            auto_producto,
+                                            total,
+                                            auto_deposito,
+                                            auto_concepto,
+                                            auto_documento,
+                                            fecha,
+                                            hora,
+                                            documento,
+                                            modulo,
+                                            entidad,
+                                            signo,
+                                            cantidad,
+                                            cantidad_bono,
+                                            cantidad_und,
+                                            costo_und,  
+                                            estatus_anulado,
+                                            nota,
+                                            precio_und,
+                                            codigo,
+                                            siglas,
+                                            codigo_sucursal, 
+                                            cierre_ftp, 
+                                            codigo_deposito, 
+                                            nombre_deposito, 
+                                            codigo_concepto, 
+                                            nombre_concepto,
+                                            factor_cambio) 
+                                        VALUES (
+                                                {0}, {1}, {2}, {3}, {4}, 
+                                                {5}, {6}, {7}, {8}, {9}, 
+                                                {10}, {11}, {12}, {13}, {14}, 
+                                                {15}, {16}, {17}, {18}, {19}, 
+                                                {20}, {21}, {22}, {23}, {24},
+                                                {25}, {26})";
                         foreach (var it in docFac.prdKardex)
                         {
                             var vk = cnn.Database.ExecuteSqlCommand(sqlKardex, it.autoPrd, it.montoTotal, it.autoDeposito,
                                 it.autoConcepto, autoMovCompra, fechaSistema.Date, fechaSistema.ToShortTimeString(), it.documentoNro,
                                 it.modulo, it.entidad, it.signoDocumento, it.cantidadFac, it.cantidadBonoFac, it.cantidadUnd, it.costoUnd, it.esAnulado,
                                 it.nota, it.precioUnd, it.codigoMovDoc, it.siglasMovDoc, it.codigoSucursal, it.cierreFtp, it.codigoDeposito,
-                                it.nombreDeposito, it.codigoConcepto, it.nombreConcepto);
+                                it.nombreDeposito, it.codigoConcepto, it.nombreConcepto, it.factorCambio);
                             if (vk == 0)
                             {
                                 result.Mensaje = "PROBLEMA AL REGISTRAR MOVIMIENTO KARDEX [ " + Environment.NewLine + it.nombrePrd + " ]";
@@ -1008,18 +1039,48 @@ namespace ProvLibCompra
                             cnn.SaveChanges();
                         }
 
-                        var sqlKardex = @"INSERT INTO productos_kardex (auto_producto,total,auto_deposito,auto_concepto,auto_documento,
-                            fecha,hora,documento,modulo,entidad,signo,cantidad,cantidad_bono,cantidad_und,costo_und,estatus_anulado,
-                            nota,precio_und,codigo,siglas,codigo_sucursal, cierre_ftp, codigo_deposito, nombre_deposito, 
-                            codigo_concepto, nombre_concepto) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, 
-                            {12}, {13}, {14}, {15},{16}, {17}, {18}, {19}, {20}, {21}, {22}, {23}, {24}, {25})";
+                        var sqlKardex = @"INSERT INTO productos_kardex (
+                                            auto_producto,
+                                            total,
+                                            auto_deposito,
+                                            auto_concepto,
+                                            auto_documento,
+                                            fecha,
+                                            hora,
+                                            documento,
+                                            modulo,
+                                            entidad,
+                                            signo,
+                                            cantidad,
+                                            cantidad_bono,
+                                            cantidad_und,
+                                            costo_und,
+                                            estatus_anulado,
+                                            nota,
+                                            precio_und,
+                                            codigo,
+                                            siglas,
+                                            codigo_sucursal, 
+                                            cierre_ftp, 
+                                            codigo_deposito, 
+                                            nombre_deposito, 
+                                            codigo_concepto, 
+                                            nombre_concepto,
+                                            factor_cambio) 
+                                        VALUES (
+                                            {0}, {1}, {2}, {3}, {4}, 
+                                            {5}, {6}, {7}, {8}, {9}, 
+                                            {10}, {11}, {12}, {13}, {14},
+                                            {15}, {16}, {17}, {18}, {19},
+                                            {20}, {21}, {22}, {23}, {24},
+                                            {25}, {26})";
                         foreach (var it in docNC.prdKardex)
                         {
                             var vk = cnn.Database.ExecuteSqlCommand(sqlKardex, it.autoPrd, it.montoTotal, it.autoDeposito,
                                 it.autoConcepto, autoMovCompra, fechaSistema.Date, fechaSistema.ToShortTimeString(), it.documentoNro,
                                 it.modulo, it.entidad, it.signoDocumento, it.cantidadFac, it.cantidadBonoFac, it.cantidadUnd, it.costoUnd, it.esAnulado,
                                 it.nota, it.precioUnd, it.codigoMovDoc, it.siglasMovDoc, it.codigoSucursal, it.cierreFtp, it.codigoDeposito,
-                                it.nombreDeposito, it.codigoConcepto, it.nombreConcepto);
+                                it.nombreDeposito, it.codigoConcepto, it.nombreConcepto, it.factorCambio);
                             if (vk == 0)
                             {
                                 result.Mensaje = "PROBLEMA AL REGISTRAR MOVIMIENTO KARDEX [ " + Environment.NewLine + it.autoPrd + " ]";

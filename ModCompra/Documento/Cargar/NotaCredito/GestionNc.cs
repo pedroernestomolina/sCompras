@@ -525,6 +525,7 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                     precioUnd = 0.0m,
                     siglasMovDoc = "NCR",
                     signoDocumento = signoDoc,
+                    factorCambio = gestionDoc.FactorDivisa,
                 };
                 fichaPrdKardex.Add(prdKardex);
             }

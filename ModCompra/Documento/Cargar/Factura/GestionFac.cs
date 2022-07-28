@@ -607,6 +607,7 @@ namespace ModCompra.Documento.Cargar.Factura
                     siglasMovDoc = "FAC",
                     signoDocumento = 1,
                     nombrePrd = it.Producto.descripcion,
+                    factorCambio = gestionDoc.FactorDivisa,
                 };
                 fichaPrdKardex.Add(prdKardex);
                 var prdCosto = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdCosto()
