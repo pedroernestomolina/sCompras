@@ -15,6 +15,20 @@ namespace OOB.LibCompra.Documento.Cargar.Factura
         public string nota { get; set; }
         public string precioId { get; set; }
         public decimal precio { get; set; }
+        public string empaque { get; set; }
+        public int contenido { get; set; }
+        public  decimal tasaFactorCambio{ get; set; }
+
+
+        public FichaPrdPrecioHistorico()
+        {
+            autoPrd = "";
+            nota = "";
+            precioId = "";
+            precio = 0m;
+            contenido = 0;
+            tasaFactorCambio = 0m;
+        }
 
     }
 

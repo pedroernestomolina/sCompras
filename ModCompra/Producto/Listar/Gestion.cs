@@ -61,7 +61,7 @@ namespace ModCompra.Producto.Listar
         public void setLista(List<OOB.LibCompra.Producto.Data.Ficha> xlist)
         {
             this.list.Clear();
-            foreach (var rg in xlist.OrderBy(o=>o.descripcion).ToList())
+            foreach (var rg in xlist.Where(w=>w.estatus == OOB.LibCompra.Producto.Enumerados.EnumEstatus.Activo).OrderBy(o=>o.descripcion).ToList())
             {
                 list.Add(new data(rg));
             }

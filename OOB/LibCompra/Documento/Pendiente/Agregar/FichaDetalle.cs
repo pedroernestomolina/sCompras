@@ -53,7 +53,18 @@ namespace OOB.LibCompra.Documento.Pendiente.Agregar
             decimales = "";
             categoria = "";
             codRefProv = "";
+            //
+            precioFacturaDivisa = 0m;
+            prdCostoActualDivisa = 0m;
+            prdCostoActualLocal = 0m;
+            esAdmDivisa = false;
         }
+
+        //
+        public decimal precioFacturaDivisa { get; set; }
+        public decimal prdCostoActualLocal { get; set; }
+        public decimal prdCostoActualDivisa { get; set; }
+        public bool esAdmDivisa { get; set; }
 
     }
 

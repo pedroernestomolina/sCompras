@@ -9,26 +9,23 @@ using System.Windows.Forms;
 namespace ModCompra.Proveedor.Listar
 {
     
-    public class Gestion
+    public class Gestion: IListar
     {
 
-
-        private List<data> list;
-        private BindingSource bs;
+        private List<data> _lst;
+        private BindingSource _bs;
 
 
         public data ItemSeleccionado { get; set; }
         public event EventHandler ItemSeleccionadoOk;
-        public BindingSource Source { get { return bs; } }
-        public int TItems { get { return bs.Count; } }
 
 
         public Gestion()
         {
             ItemSeleccionado = null;
-            list = new List<data>();
-            bs = new BindingSource();
-            bs.DataSource = list;
+            _lst = new List<data>();
+            _bs = new BindingSource();
+            _bs.DataSource = _lst;
         }
 
 
@@ -60,17 +57,17 @@ namespace ModCompra.Proveedor.Listar
         
         public void setLista(List<OOB.LibCompra.Proveedor.Data.Ficha> xlist)
         {
-            this.list.Clear();
+            _lst.Clear();
             foreach (var rg in xlist) 
             {
-                list.Add(new data(rg));
+                _lst.Add(new data(rg));
             }
-            bs.CurrencyManager.Refresh();
+            _bs.CurrencyManager.Refresh();
         }
 
         public void SeleccionarItem()
         {
-            var it = (data)bs.Current;
+            var it = (data)_bs.Current;
             if (it != null)
             {
                 if (!it.IsActivo) 
@@ -78,7 +75,6 @@ namespace ModCompra.Proveedor.Listar
                     Helpers.Msg.Error("PROVEEDOR SELECCIONADO SE ENCUENTRA EN ESTADO INACTIVO");
                     return;
                 }
-
                 ItemSeleccionado = it;
                 if (ItemSeleccionadoOk != null)
                 {
@@ -101,7 +97,23 @@ namespace ModCompra.Proveedor.Listar
         public void Inicializa()
         {
             ItemSeleccionado = null;
-            list.Clear();
+            _lst.Clear();
+        }
+
+
+        public BindingSource GetSource { get { return _bs; } }
+        public int GetCntItem { get { return _bs.Count; } }
+        public data ItemActual { get { return (data)_bs.Current; } }
+
+
+        public void Cerrar()
+        {
+            CerrarFrm();
+        }
+
+        public void LimpiarSeleccion()
+        {
+            ItemSeleccionado = null;
         }
 
     }

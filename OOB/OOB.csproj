@@ -61,9 +61,10 @@
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdCostoHistorico.cs" />
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdDeposito.cs" />
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdKardex.cs" />
-    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdPrecio.cs" />
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdPrecioHistorico.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdPrecios.cs" />
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdProveedor.cs" />
+    <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrecio.cs" />
     <Compile Include="LibCompra\Documento\Corrector\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Enumerados.cs" />
     <Compile Include="LibCompra\Documento\GetData\Ficha.cs" />
@@ -92,8 +93,10 @@
     <Compile Include="LibCompra\Permiso\Ficha.cs" />
     <Compile Include="LibCompra\Producto\CodRefProveedor\Filtro.cs" />
     <Compile Include="LibCompra\Producto\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Producto\EmpaqueMedida\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Producto\Enumerados.cs" />
     <Compile Include="LibCompra\Producto\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\Producto\Precio\Capturar\Ficha.cs" />
     <Compile Include="LibCompra\Producto\Utilidad\Ficha.cs" />
     <Compile Include="LibCompra\Producto\VerificarDepositoAsignado\Ficha.cs" />
     <Compile Include="LibCompra\Proveedor\ActivarInactivar\Ficha.cs" />
@@ -110,6 +113,7 @@
     <Compile Include="LibCompra\Proveedor\Lista\Filtro.cs" />
     <Compile Include="LibCompra\ReporteProv\Maestro\Ficha.cs" />
     <Compile Include="LibCompra\ReporteProv\Maestro\Filtro.cs" />
+    <Compile Include="LibCompra\Reportes\BaseFiltro.cs" />
     <Compile Include="LibCompra\Reportes\CompraporDepartamento\Ficha.cs" />
     <Compile Include="LibCompra\Reportes\CompraporDepartamento\Filtro.cs" />
     <Compile Include="LibCompra\Reportes\CompraPorProductoDetalle\Ficha.cs" />

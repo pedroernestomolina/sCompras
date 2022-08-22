@@ -485,6 +485,7 @@ namespace ModCompra.Documento.Cargar.Formulario
                 ActualizarDatosDocumento();
                 ActualizarDatosTotales();
                 DGV.Refresh();
+                LimparBusq();
                 IniciarBusqueda();
             }
         }
@@ -493,7 +494,6 @@ namespace ModCompra.Documento.Cargar.Formulario
         {
             AbrirPendiente();
         }
-
         private void AbrirPendiente()
         {
             _controlador.AbrirPendiente();

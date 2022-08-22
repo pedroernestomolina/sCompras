@@ -143,9 +143,29 @@ namespace ModCompra.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_buscar_32 {
+            get {
+                object obj = ResourceManager.GetObject("bt_buscar_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_campana {
             get {
                 object obj = ResourceManager.GetObject("bt_campana", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_configuracion {
+            get {
+                object obj = ResourceManager.GetObject("bt_configuracion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -756,6 +776,16 @@ namespace ModCompra.Properties {
         internal static System.Drawing.Bitmap plataforma_efosearch {
             get {
                 object obj = ResourceManager.GetObject("plataforma_efosearch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap setup {
+            get {
+                object obj = ResourceManager.GetObject("setup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

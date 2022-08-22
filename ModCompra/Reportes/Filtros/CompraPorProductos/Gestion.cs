@@ -37,19 +37,28 @@ namespace ModCompra.Reportes.Filtros.CompraPorProductos
         public void Generar()
         {
             var xfiltro = "";
-            if (filtrarPor.hasta < filtrarPor.desde)
-            {
-                Helpers.Msg.Error("Fechas Incorrectas, Verifique Por Favor");
-                return;
-            }
-
             var filtro = new OOB.LibCompra.Reportes.CompraporProducto.Filtro()
             {
-                desde = filtrarPor.desde,
-                hasta = filtrarPor.hasta,
+                desde = filtrarPor.GetDesde,
+                hasta = filtrarPor.GetHasta,
             };
-            xfiltro += "Desde: " + filtrarPor.desde.ToShortDateString() + ", Hasta: " + filtrarPor.hasta.ToShortDateString();
-
+            xfiltro += "Desde: " + filtrarPor.GetDesde.ToShortDateString() + ", Hasta: " + filtrarPor.GetHasta.ToShortDateString();
+            if (filtrarPor.GetSucursalId != "")
+            {
+                var rt1 = Sistema.MyData.Sucursal_GetFicha(filtrarPor.GetSucursalId);
+                if (rt1.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(rt1.Mensaje);
+                    return;
+                }
+                filtro.codSucursal = rt1.Entidad.codigo;
+                xfiltro += ", Cod/Suc: " + rt1.Entidad.nombre + "(" + rt1.Entidad.codigo + ")";
+            }
+            if (filtrarPor.GetProveedorId != "")
+            {
+                filtro.autoProveedor = filtrarPor.GetProveedorId;
+                xfiltro += ", Proveedor: " + filtrarPor.GetProveedorDesc;
+            }
             var xr1 = Sistema.MyData.Reportes_CompraPorProducto (filtro);
             if (xr1.Result == OOB.Enumerados.EnumResult.isError)
             {

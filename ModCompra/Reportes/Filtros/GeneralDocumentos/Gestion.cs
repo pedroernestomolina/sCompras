@@ -37,26 +37,32 @@ namespace ModCompra.Reportes.Filtros.GeneralDocumentos
         public void Generar()
         {
             var xfiltro = "";
-            if (filtrarPor.hasta < filtrarPor.desde) 
-            {
-                Helpers.Msg.Error("Fechas Incorrectas, Verifique Por Favor");
-                return;
-            }
             var filtro = new OOB.LibCompra.Reportes.GeneralDocumentos.Filtro()
             {
-                desde = filtrarPor.desde,
-                hasta = filtrarPor.hasta,
+                desde = filtrarPor.GetDesde,
+                hasta = filtrarPor.GetHasta,
             };
-            xfiltro += "Desde: " + filtrarPor.desde.ToShortDateString() + ", Hasta: " + filtrarPor.hasta.ToShortDateString();
-            if (filtrarPor.sucursal != null)
+            xfiltro += "Desde: " + filtrarPor.GetDesde.ToShortDateString() + ", Hasta: " + filtrarPor.GetHasta.ToShortDateString();
+            if (filtrarPor.GetSucursalId != "")
             {
-                filtro.codSucursal = filtrarPor.sucursal.codigo;
-                xfiltro += ", Cod/Suc: " + filtrarPor.sucursal.codigo;
+                var rt1 = Sistema.MyData.Sucursal_GetFicha(filtrarPor.GetSucursalId);
+                if (rt1.Result == OOB.Enumerados.EnumResult.isError) 
+                {
+                    Helpers.Msg.Error(rt1.Mensaje);
+                    return;
+                }
+                filtro.codSucursal = rt1.Entidad.codigo;
+                xfiltro += ", Cod/Suc: " + rt1.Entidad.nombre + "(" + rt1.Entidad.codigo + ")";
             }
-            if (filtrarPor.estatus != null)
+            if (filtrarPor.GetProveedorId  != "")
             {
-                filtro.estatus = OOB.LibCompra.Reportes.Enumerados.EnumEstatus.Activo; 
-                if (filtrarPor.estatus.Id=="02")
+                filtro.autoProveedor = filtrarPor.GetProveedorId;
+                xfiltro += ", Proveedor: " + filtrarPor.GetProveedorDesc;
+            }
+            if (filtrarPor.GetEstatusId != "")
+            {
+                filtro.estatus = OOB.LibCompra.Reportes.Enumerados.EnumEstatus.Activo;
+                if (filtrarPor.GetEstatusId == "02")
                     filtro.estatus = OOB.LibCompra.Reportes.Enumerados.EnumEstatus.Anulado;
                 xfiltro += ", Estatus: " + filtro.estatus.ToString();
             }

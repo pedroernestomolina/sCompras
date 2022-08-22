@@ -11,35 +11,12 @@ namespace ModCompra.Reportes.Filtros.CompraDepartamentos
     public class Filtros : IFiltros
     {
 
-        public bool ActivarProveedor
-        {
-            get { return false; }
-        }
-
-        public bool ActivarSucursal
-        {
-            get { return false; }
-        }
-
-        public bool ActivarDesde
-        {
-            get { return true; }
-        }
-
-        public bool ActivarHasta
-        {
-            get { return true; }
-        }
-
-        public bool ActivarEstatus
-        {
-            get { return false; }
-        }
-
-        public bool ActivarMesAnoRelacion
-        {
-            get { return false; }
-        }
+        public bool ActivarProveedor { get { return true; } }
+        public bool ActivarSucursal { get { return true; } }
+        public bool ActivarDesde { get { return true; } }
+        public bool ActivarHasta { get { return true; } }
+        public bool ActivarEstatus { get { return false; } }
+        public bool ActivarMesAnoRelacion { get { return false; } }
 
     }
 

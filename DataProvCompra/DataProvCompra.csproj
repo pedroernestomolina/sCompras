@@ -47,6 +47,7 @@
     <Compile Include="Data\Empresa.cs" />
     <Compile Include="Data\Estado.cs" />
     <Compile Include="Data\Grupo.cs" />
+    <Compile Include="Data\Helpers.cs" />
     <Compile Include="Data\Permiso.cs" />
     <Compile Include="Data\Producto.cs" />
     <Compile Include="Data\Proveedor.cs" />

@@ -51,6 +51,7 @@ namespace OOB.LibCompra.Documento.Cargar.Factura
         public DateTime fechaLote { get; set; }
         public string cierreFtp { get; set; }
         public int signo { get; set; }
+        public string estatusHabilitarCambioPrecioVenta { get; set; }
 
     }
 

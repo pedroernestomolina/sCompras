@@ -85,6 +85,13 @@ namespace ModCompra.Documento.Cargar.Factura
             gestionLista.Inicia();
         }
 
+
+        //
+        public void setFiltroDeposito(string id)
+        {
+            filtros.autoDeposito = id;
+        }
+
     }
 
 }

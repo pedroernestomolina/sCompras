@@ -37,9 +37,19 @@ namespace ModCompra.Helpers
             MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        public static void OK(string msg)
+        public static void OK(string msg="!! Muy Bien... Proceso Realizado Con Exito !!")
         {
             MessageBox.Show(msg, "*** OK ***", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static bool Abandonar(string msg = "Abandonar Ficha Sin Procesar Cambios ?")
+        {
+            return (MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes);
+        }
+
+        public static bool Procesar(string msg = "Procesar / Guardar Cambios ?")
+        {
+            return (MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes);
         }
 
     }

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModCompra.Documento.Cargar.Factura
 {
-    
+
     public class GestionAgregarItem
     {
 
@@ -16,6 +16,7 @@ namespace ModCompra.Documento.Cargar.Factura
         private dataItem item;
         private string autoPrd;
         private string autoProveedor;
+        private Producto.Precio.Actualizar.IEditar _gPrecioVentaEditar;
 
 
         public string Producto { get { return item.ProductoDetalle; } }
@@ -40,7 +41,7 @@ namespace ModCompra.Documento.Cargar.Factura
         public decimal Dscto_3 { get { return item.dsct_3_p; } set { item.dsct_3_p = value; item.CalculaDscto(); } }
         public decimal Dscto_1_Monto { get { return item.dsct_1_m; } }
         public decimal Dscto_2_Monto { get { return item.dsct_2_m; } }
-        public decimal Dscto_3_Monto { get { return item.dsct_3_m; } } 
+        public decimal Dscto_3_Monto { get { return item.dsct_3_m; } }
 
 
         public decimal CostoMonedaUnd { get { return item.costoMonedaUnd; } }
@@ -50,11 +51,12 @@ namespace ModCompra.Documento.Cargar.Factura
         public bool SalidaOk { get; set; }
         public bool RegistroOk { get; set; }
         public dataItem Item { get { return item; } }
-        
+
 
         public GestionAgregarItem()
         {
             NuevoItem();
+            _gPrecioVentaEditar = new ModCompra.Producto.Precio.Actualizar.Editar();
         }
 
 
@@ -96,8 +98,6 @@ namespace ModCompra.Documento.Cargar.Factura
                 Helpers.Msg.Error(r01.Mensaje);
                 return false;
             }
-            item.setProducto(r01.Entidad);
-
             var filtro = new OOB.LibCompra.Producto.CodRefProveedor.Filtro() { autoPrd = this.autoPrd, autoPrv = this.autoProveedor };
             var r02 = Sistema.MyData.Producto_GetCodigoRefProveedor(filtro);
             if (r02.Result == OOB.Enumerados.EnumResult.isError)
@@ -105,13 +105,21 @@ namespace ModCompra.Documento.Cargar.Factura
                 Helpers.Msg.Error(r02.Mensaje);
                 return false;
             }
+            var r03 = Sistema.MyData.Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra();
+            if (r03.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r03.Mensaje);
+                return false;
+            }
+            item.setProducto(r01.Entidad);
             item.CodRefPrv = r02.Entidad;
             item.CodRefPrvActual = r02.Entidad;
+            _actualizarPrecioIsActivo = r03.Entidad;
 
             return rt;
         }
 
-        private  void ActualizarCosto()
+        private void ActualizarCosto()
         {
             item.ActualizarCosto();
         }
@@ -125,11 +133,43 @@ namespace ModCompra.Documento.Cargar.Factura
         {
             RegistroOk = false;
             SalidaOk = false;
-            if (MontoImporte > 0) 
+            if (MontoImporte > 0)
             {
                 var ms = MessageBox.Show("Insertar Registro ?", "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (ms == DialogResult.Yes) 
+                if (ms == DialogResult.Yes)
                 {
+                    if (_actualizarPrecioIsActivo)
+                    {
+                        var r01 = Sistema.MyData.Permiso_RegistrarFactura_CambiarPrecioVenta(Sistema.UsuarioP.autoGru);
+                        if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                        {
+                            Helpers.Msg.Error(r01.Mensaje);
+                            return;
+                        }
+                        if (Seguridad.Gestion.SolicitarClave(r01.Entidad))
+                        {
+                            var _fichaPrd = new ModCompra.Producto.Precio.Actualizar.dataPrdEditar()
+                            {
+                                AdmDivisa = item.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
+                                AutoPrd = item.Producto.auto,
+                                CodigoPrd = item.Producto.codigo,
+                                ContEmpCompra = item.Producto.contenidoCompra,
+                                CostoMonedaDivisa = item.CostoDivisaFinal,
+                                CostoMonedaLocal = item.CostoFinal,
+                                DescripcionPrd = item.Producto.descripcion,
+                                EmpCompraDescripcion = item.Producto.empaqueCompra,
+                                TasaIva = item.Producto.tasaIva,
+                            };
+                            _gPrecioVentaEditar.Inicializa();
+                            _gPrecioVentaEditar.setPrdEditar(_fichaPrd);
+                            _gPrecioVentaEditar.Inicia();
+                            if (_gPrecioVentaEditar.IsEditarPrecioIsOk)
+                            {
+                                item.setActualizarPrecio(true);
+                                item.setDataPrecios(_gPrecioVentaEditar.DataPrecios);
+                            }
+                        }
+                    }
                     RegistroOk = true;
                     SalidaOk = true;
                 }
@@ -158,6 +198,15 @@ namespace ModCompra.Documento.Cargar.Factura
         {
             SalidaOk = false;
             RegistroOk = false;
+            _actualizarPrecioIsActivo = false;
+
+            var r01 = Sistema.MyData.Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra();
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            _actualizarPrecioIsActivo = r01.Entidad;
 
             item = new dataItem(it);
             var frm = new Formulario.ItemFrm();
@@ -169,11 +218,19 @@ namespace ModCompra.Documento.Cargar.Factura
         public decimal VerificarCantidad(decimal cnt)
         {
             var rt = cnt;
-            if (item.Producto.decimales == "0") 
+            if (item.Producto.decimales == "0")
             {
                 return (int)cnt;
             }
             return rt;
+        }
+
+
+        private bool _actualizarPrecioIsActivo;
+        public bool GetActualizarPrecioVenta { get { return _actualizarPrecioIsActivo; } }
+        public void setActualizarPrecioVenta()
+        {
+            _actualizarPrecioIsActivo = !_actualizarPrecioIsActivo;
         }
 
     }

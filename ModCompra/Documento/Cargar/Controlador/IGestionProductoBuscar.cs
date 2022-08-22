@@ -19,6 +19,7 @@ namespace ModCompra.Documento.Cargar.Controlador
 
         void setMetodoBusqueda(GestionProductoBuscar.metodoBusqueda metodo);
         void BuscarProducto();
+        void setFiltroDeposito(string id);
 
     }
 

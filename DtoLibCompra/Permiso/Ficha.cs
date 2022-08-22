@@ -10,9 +10,11 @@ namespace DtoLibCompra.Permiso
     
     public class Ficha
     {
-        
-        private string estatus {get;set;}
-        private string seguridad {get;set;}
+
+        public string estatus { get; set; }
+        public string seguridad { get; set; }
+        public bool permisoHabilitado { get { return estatus.Trim().ToUpper() == "1"; } }
+        public bool requiereClave { get { return seguridad.Trim().ToUpper() != "NINGUNA"; } }
 
 
         public bool IsHabilitado 

@@ -173,6 +173,7 @@ namespace DataProvCompra.Data
                     valorPorcDescto2 = it.valorPorcDescto2,
                     valorPorcDescto3 = it.valorPorcDescto3,
                     valorTasaIva = it.valorTasaIva,
+                    estatusHabilitarCambioPrecioVenta = it.estatusHabilitarCambioPrecioVenta,
                 };
                 detalles.Add(nr);
             }
@@ -262,31 +263,221 @@ namespace DataProvCompra.Data
                 };
                 prdProveedor.Add(nr);
             }
-            var prdPrecio = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecio>();
-            foreach (var it in docFac.prdPrecios)
+
+            var preciosMod = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecios>();
+            foreach (var it in docFac.prdPreciosMod)
             {
-                var nr = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecio()
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p1_1 = null;
+                if (it.precio1_Emp1 !=null)
+                {
+                    p1_1 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio1_Emp1.autoEmp,
+                        contenido = it.precio1_Emp1.contenido,
+                        precioFullDivisa = it.precio1_Emp1.precioFullDivisa,
+                        precioNeto = it.precio1_Emp1.precioNeto,
+                        utilidad = it.precio1_Emp1.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p1_2 = null;
+                if (it.precio1_Emp2 != null)
+                {
+                    p1_2 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio1_Emp2.autoEmp,
+                        contenido = it.precio1_Emp2.contenido,
+                        precioFullDivisa = it.precio1_Emp2.precioFullDivisa,
+                        precioNeto = it.precio1_Emp2.precioNeto,
+                        utilidad = it.precio1_Emp2.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p1_3 = null;
+                if (it.precio1_Emp3 != null)
+                {
+                    p1_3 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio1_Emp3.autoEmp,
+                        contenido = it.precio1_Emp3.contenido,
+                        precioFullDivisa = it.precio1_Emp3.precioFullDivisa,
+                        precioNeto = it.precio1_Emp3.precioNeto,
+                        utilidad = it.precio1_Emp3.utilidad,
+                    };
+                };
+                //
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p2_1 = null;
+                if (it.precio2_Emp1 != null)
+                {
+                    p2_1 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio2_Emp1.autoEmp,
+                        contenido = it.precio2_Emp1.contenido,
+                        precioFullDivisa = it.precio2_Emp1.precioFullDivisa,
+                        precioNeto = it.precio2_Emp1.precioNeto,
+                        utilidad = it.precio2_Emp1.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p2_2 = null;
+                if (it.precio2_Emp2 != null)
+                {
+                    p2_2 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio2_Emp2.autoEmp,
+                        contenido = it.precio2_Emp2.contenido,
+                        precioFullDivisa = it.precio2_Emp2.precioFullDivisa,
+                        precioNeto = it.precio2_Emp2.precioNeto,
+                        utilidad = it.precio2_Emp2.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p2_3 = null;
+                if (it.precio2_Emp3 != null)
+                {
+                    p2_3 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio2_Emp3.autoEmp,
+                        contenido = it.precio2_Emp3.contenido,
+                        precioFullDivisa = it.precio2_Emp3.precioFullDivisa,
+                        precioNeto = it.precio2_Emp3.precioNeto,
+                        utilidad = it.precio2_Emp3.utilidad,
+                    };
+                };
+                //
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p3_1 = null;
+                if (it.precio3_Emp1 != null)
+                {
+                    p3_1 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio3_Emp1.autoEmp,
+                        contenido = it.precio3_Emp1.contenido,
+                        precioFullDivisa = it.precio3_Emp1.precioFullDivisa,
+                        precioNeto = it.precio3_Emp1.precioNeto,
+                        utilidad = it.precio3_Emp1.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p3_2 = null;
+                if (it.precio3_Emp2 != null)
+                {
+                    p3_2 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio3_Emp2.autoEmp,
+                        contenido = it.precio3_Emp2.contenido,
+                        precioFullDivisa = it.precio3_Emp2.precioFullDivisa,
+                        precioNeto = it.precio3_Emp2.precioNeto,
+                        utilidad = it.precio3_Emp2.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p3_3 = null;
+                if (it.precio3_Emp3 != null)
+                {
+                    p3_3 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio3_Emp3.autoEmp,
+                        contenido = it.precio3_Emp3.contenido,
+                        precioFullDivisa = it.precio3_Emp3.precioFullDivisa,
+                        precioNeto = it.precio3_Emp3.precioNeto,
+                        utilidad = it.precio3_Emp3.utilidad,
+                    };
+                };
+                //
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p4_1 = null;
+                if (it.precio4_Emp1 != null)
+                {
+                    p4_1 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio4_Emp1.autoEmp,
+                        contenido = it.precio4_Emp1.contenido,
+                        precioFullDivisa = it.precio4_Emp1.precioFullDivisa,
+                        precioNeto = it.precio4_Emp1.precioNeto,
+                        utilidad = it.precio4_Emp1.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p4_2 = null;
+                if (it.precio4_Emp2 != null)
+                {
+                    p4_2 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio4_Emp2.autoEmp,
+                        contenido = it.precio4_Emp2.contenido,
+                        precioFullDivisa = it.precio4_Emp2.precioFullDivisa,
+                        precioNeto = it.precio4_Emp2.precioNeto,
+                        utilidad = it.precio4_Emp2.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p4_3 = null;
+                if (it.precio4_Emp3 != null)
+                {
+                    p4_3 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio4_Emp3.autoEmp,
+                        contenido = it.precio4_Emp3.contenido,
+                        precioFullDivisa = it.precio4_Emp3.precioFullDivisa,
+                        precioNeto = it.precio4_Emp3.precioNeto,
+                        utilidad = it.precio4_Emp3.utilidad,
+                    };
+                };
+                //
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p5_1 = null;
+                if (it.precio5_Emp1 != null)
+                {
+                    p5_1 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio5_Emp1.autoEmp,
+                        contenido = it.precio5_Emp1.contenido,
+                        precioFullDivisa = it.precio5_Emp1.precioFullDivisa,
+                        precioNeto = it.precio5_Emp1.precioNeto,
+                        utilidad = it.precio5_Emp1.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p5_2 = null;
+                if (it.precio5_Emp2 != null)
+                {
+                    p5_2 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio5_Emp2.autoEmp,
+                        contenido = it.precio5_Emp2.contenido,
+                        precioFullDivisa = it.precio5_Emp2.precioFullDivisa,
+                        precioNeto = it.precio5_Emp2.precioNeto,
+                        utilidad = it.precio5_Emp2.utilidad,
+                    };
+                };
+                DtoLibCompra.Documento.Agregar.Factura.FichaPrecio p5_3 = null;
+                if (it.precio5_Emp3 != null)
+                {
+                    p5_3 = new DtoLibCompra.Documento.Agregar.Factura.FichaPrecio
+                    {
+                        autoEmp = it.precio5_Emp3.autoEmp,
+                        contenido = it.precio5_Emp3.contenido,
+                        precioFullDivisa = it.precio5_Emp3.precioFullDivisa,
+                        precioNeto = it.precio5_Emp3.precioNeto,
+                        utilidad = it.precio5_Emp3.utilidad,
+                    };
+                };
+
+                var pm = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecios()
                 {
                     autoPrd = it.autoPrd,
-                    pDivisaFull_1 = it.pDivisaFull_1,
-                    pDivisaFull_2 = it.pDivisaFull_2,
-                    pDivisaFull_3 = it.pDivisaFull_3,
-                    pDivisaFull_4 = it.pDivisaFull_4,
-                    pDivisaFull_5 = it.pDivisaFull_5,
-                    precioNeto_1 = it.precioNeto_1,
-                    precioNeto_2 = it.precioNeto_2,
-                    precioNeto_3 = it.precioNeto_3,
-                    precioNeto_4 = it.precioNeto_4,
-                    precioNeto_5 = it.precioNeto_5,
+                    precio1_Emp1 = p1_1,
+                    precio1_Emp2 = p1_2,
+                    precio1_Emp3 = p1_3,
                     //
-                    pDivisaFull_May_1 = it.pDivisaFull_may_1,
-                    pDivisaFull_May_2 = it.pDivisaFull_may_2,
-                    precioNeto_May_1 = it.precioNeto_may_1,
-                    precioNeto_May_2 = it.precioNeto_may_2,
+                    precio2_Emp1 = p2_1,
+                    precio2_Emp2 = p2_2,
+                    precio2_Emp3 = p2_3,
+                    //
+                    precio3_Emp1 = p3_1,
+                    precio3_Emp2 = p3_2,
+                    precio3_Emp3 = p3_3,
+                    //
+                    precio4_Emp1 = p4_1,
+                    precio4_Emp2 = p4_2,
+                    precio4_Emp3 = p4_3,
+                    //
+                    precio5_Emp1 = p5_1,
+                    precio5_Emp2 = p5_2,
+                    precio5_Emp3 = p5_3,
                 };
-                prdPrecio.Add(nr);
+                preciosMod.Add(pm);
             }
-            var prdPrecioHistorico = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecioHistorico>();
+            var historicoPrecios = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecioHistorico>();
             foreach (var it in docFac.prdPreciosHistorico)
             {
                 var nr = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdPrecioHistorico()
@@ -295,8 +486,11 @@ namespace DataProvCompra.Data
                     nota = it.nota,
                     precio = it.precio,
                     precioId = it.precioId,
+                    contenido = it.contenido,
+                    empaque = it.empaque,
+                    tasaFactorCambio=it.tasaFactorCambio,
                 };
-                prdPrecioHistorico.Add(nr);
+                historicoPrecios.Add(nr);
             }
 
             fichaDTO.documento = documento;
@@ -307,8 +501,8 @@ namespace DataProvCompra.Data
             fichaDTO.prdCosto = prdCosto;
             fichaDTO.prdCostosHistorico = prdCostoHistorico;
             fichaDTO.prdProveedor = prdProveedor;
-            fichaDTO.prdPrecios = prdPrecio;
-            fichaDTO.prdPreciosHistorico = prdPrecioHistorico;
+            fichaDTO.prdPreciosMod = preciosMod;
+            fichaDTO.prdPreciosHistorico = historicoPrecios;
 
             var r01 = MyData.Compra_DocumentoAgregarFactura(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -321,8 +515,8 @@ namespace DataProvCompra.Data
 
             return result;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Documento.Visualizar.Ficha> Compra_DocumentoVisualizar(string auto)
+        public OOB.ResultadoEntidad<OOB.LibCompra.Documento.Visualizar.Ficha> 
+            Compra_DocumentoVisualizar(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Documento.Visualizar.Ficha>();
 
@@ -411,8 +605,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Documento.Lista.Ficha> Compra_DocumentoGetLista(OOB.LibCompra.Documento.Lista.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Documento.Lista.Ficha>
+            Compra_DocumentoGetLista(OOB.LibCompra.Documento.Lista.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Documento.Lista.Ficha>();
 
@@ -467,8 +661,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.Resultado Compra_DocumentoAnularFactura(OOB.LibCompra.Documento.Anular.Factura.Ficha ficha)
+        public OOB.Resultado 
+            Compra_DocumentoAnularFactura(OOB.LibCompra.Documento.Anular.Factura.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -496,8 +690,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Documento.ListaRemision.Ficha> Compra_DocumentoGetListaRemision(OOB.LibCompra.Documento.ListaRemision.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Documento.ListaRemision.Ficha>
+            Compra_DocumentoGetListaRemision(OOB.LibCompra.Documento.ListaRemision.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Documento.ListaRemision.Ficha>();
 
@@ -539,8 +733,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Documento.GetData.Ficha> Compra_DocumentoGetFicha(string auto)
+        public OOB.ResultadoEntidad<OOB.LibCompra.Documento.GetData.Ficha>
+            Compra_DocumentoGetFicha(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Documento.GetData.Ficha>();
 
@@ -639,7 +833,6 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
         public OOB.ResultadoAuto
             Compra_DocumentoAgregarNC(OOB.LibCompra.Documento.Agregar.NotaCredito.Ficha docNC)
         {
@@ -865,8 +1058,8 @@ namespace DataProvCompra.Data
 
             return result;
         }
-
-        public OOB.Resultado Compra_DocumentoAnularNotaCredito(OOB.LibCompra.Documento.Anular.NotaCredito.Ficha ficha)
+        public OOB.Resultado 
+            Compra_DocumentoAnularNotaCredito(OOB.LibCompra.Documento.Anular.NotaCredito.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -894,8 +1087,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.Resultado Compra_DocumentoCorrector(OOB.LibCompra.Documento.Corrector.Ficha ficha)
+        public OOB.Resultado 
+            Compra_DocumentoCorrector(OOB.LibCompra.Documento.Corrector.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -921,8 +1114,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Documento.ListaItemImportar.Ficha> Compra_Documento_ItemImportar_GetLista(string autoDoc)
+        public OOB.ResultadoLista<OOB.LibCompra.Documento.ListaItemImportar.Ficha> 
+            Compra_Documento_ItemImportar_GetLista(string autoDoc)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Documento.ListaItemImportar.Ficha>();
 
@@ -972,7 +1165,8 @@ namespace DataProvCompra.Data
             return rt;
         }
 
-        public OOB.Resultado Compra_Documento_Pendiente_Agregar(OOB.LibCompra.Documento.Pendiente.Agregar.Ficha ficha)
+        public OOB.Resultado 
+            Compra_Documento_Pendiente_Agregar(OOB.LibCompra.Documento.Pendiente.Agregar.Ficha ficha)
         {
             var result = new OOB.Resultado();
 
@@ -1022,6 +1216,11 @@ namespace DataProvCompra.Data
                         prdNombre = s.prdNombre,
                         precioFactura = s.precioFactura,
                         tasaIva = s.tasaIva,
+                        //
+                        prdEstatusDivisa = s.esAdmDivisa ? "1" : "0",
+                        prdCostoActualLocal = s.prdCostoActualLocal,
+                        prdCostoActualDivisa = s.prdCostoActualDivisa,
+                        precioFacturaDivisa = s.precioFacturaDivisa,
                     };
                     return rg;
                 }).ToList(),
@@ -1036,8 +1235,8 @@ namespace DataProvCompra.Data
 
             return result;
         }
-
-        public OOB.ResultadoEntidad<int> Compra_Documento_Pendiente_Cnt(OOB.LibCompra.Documento.Pendiente.Filtro.Ficha filtro)
+        public OOB.ResultadoEntidad<int> 
+            Compra_Documento_Pendiente_Cnt(OOB.LibCompra.Documento.Pendiente.Filtro.Ficha filtro)
         {
             var result = new OOB.ResultadoEntidad<int>();
 
@@ -1057,8 +1256,8 @@ namespace DataProvCompra.Data
 
             return result;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Documento.Pendiente.Lista.Ficha> Compra_Documento_Pendiente_GetLista(OOB.LibCompra.Documento.Pendiente.Filtro.Ficha filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Documento.Pendiente.Lista.Ficha> 
+            Compra_Documento_Pendiente_GetLista(OOB.LibCompra.Documento.Pendiente.Filtro.Ficha filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Documento.Pendiente.Lista.Ficha>();
 
@@ -1104,8 +1303,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.Resultado Compra_Documento_Pendiente_Eliminar(int idDoc)
+        public OOB.Resultado 
+            Compra_Documento_Pendiente_Eliminar(int idDoc)
         {
             var rt = new OOB.Resultado();
 
@@ -1119,8 +1318,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Documento.Pendiente.Abrir.Ficha> Compra_Documento_Pendiente_Abrir_GetById(int idDoc)
+        public OOB.ResultadoEntidad<OOB.LibCompra.Documento.Pendiente.Abrir.Ficha> 
+            Compra_Documento_Pendiente_Abrir_GetById(int idDoc)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Documento.Pendiente.Abrir.Ficha>();
 
@@ -1178,6 +1377,11 @@ namespace DataProvCompra.Data
                             prdNombre = s.prdNombre,
                             precioFactura = s.precioFactura,
                             tasaIva = s.tasaIva,
+                            //
+                            esAdmDivisa = s.prdEstatusDivisa == "1",
+                            prdCostoActualDivisa = s.prdCostoActualDivisa,
+                            prdCostoActualLocal = s.prdCostoActualLocal,
+                            precioFacturaDivisa = s.precioFacturaDivisa,
                         };
                         return rg;
                     }).ToList();

@@ -1,6 +1,7 @@
 ﻿using LibEntityCompra;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,11 @@ using System.Transactions;
 
 namespace ProvLibCompra
 {
-    
-    public partial class Provider: ILibCompras.IProvider
+
+    public partial class Provider : ILibCompras.IProvider
     {
 
-        public DtoLib.ResultadoAuto 
+        public DtoLib.ResultadoAuto
             Compra_DocumentoAgregarFactura(DtoLibCompra.Documento.Agregar.Factura.Ficha docFac)
         {
             var result = new DtoLib.ResultadoAuto();
@@ -43,7 +44,7 @@ namespace ProvLibCompra
                         var autoMovCxP = aMovCxP.ToString().Trim().PadLeft(10, '0');
                         var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
 
-                        var doc=docFac.documento;
+                        var doc = docFac.documento;
                         var entMovCompra = new compras()
                         {
                             auto = autoMovCompra,
@@ -134,8 +135,8 @@ namespace ProvLibCompra
                         };
                         cnn.compras.Add(entMovCompra);
                         cnn.SaveChanges();
-                        
-                        var doc2=docFac.cxp;
+
+                        var doc2 = docFac.cxp;
                         var entMovCxP = new cxp()
                         {
                             auto = autoMovCxP,
@@ -148,28 +149,28 @@ namespace ProvLibCompra
                             acumulado = doc2.acumulado,
                             auto_proveedor = doc2.autoProveedor,
                             proveedor = doc2.nombreRazonSocialProveedor,
-                            ci_rif= doc2.ciRifProveedor,
-                            codigo_proveedor=doc2.codigoProveedor,
-                            estatus_cancelado=doc2.esCancelado,
-                            resta=doc2.resta,
-                            estatus_anulado=doc2.esAnulado,
-                            auto_documento=autoMovCompra,
-                            numero=doc2.numero,
-                            auto_agencia=doc2.autoAgencia,
-                            agencia=doc2.nombreAgencia,
-                            signo=doc2.signoDocumento,
-                            dias=doc2.diasCredito,
-                            auto_asiento=autoMovAsiento,
-                            anexo=doc2.Anexo,
-                            estatus_cierre_contable=doc2.estatusCierreContable,
-                            importeDivisa=doc2.importeDivisa,
+                            ci_rif = doc2.ciRifProveedor,
+                            codigo_proveedor = doc2.codigoProveedor,
+                            estatus_cancelado = doc2.esCancelado,
+                            resta = doc2.resta,
+                            estatus_anulado = doc2.esAnulado,
+                            auto_documento = autoMovCompra,
+                            numero = doc2.numero,
+                            auto_agencia = doc2.autoAgencia,
+                            agencia = doc2.nombreAgencia,
+                            signo = doc2.signoDocumento,
+                            dias = doc2.diasCredito,
+                            auto_asiento = autoMovAsiento,
+                            anexo = doc2.Anexo,
+                            estatus_cierre_contable = doc2.estatusCierreContable,
+                            importeDivisa = doc2.importeDivisa,
                         };
                         cnn.cxp.Add(entMovCxP);
                         cnn.SaveChanges();
 
 
                         var entProveedor = cnn.proveedores.Find(docFac.documento.autoProveedor);
-                        if (entProveedor == null) 
+                        if (entProveedor == null)
                         {
                             result.Mensaje = "[ ID ] PROVEEDOR NO ENCONTRADO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -180,31 +181,76 @@ namespace ProvLibCompra
                         cnn.SaveChanges();
 
 
-                        var sqlDetalle = "INSERT INTO compras_detalle (" +
-                            "auto_documento, auto_producto, codigo, nombre, auto_departamento, auto_grupo, auto_subgrupo, " +
-                            "auto_deposito, cantidad, empaque, descuento1p, descuento2p, descuento3p, descuento1, descuento2, " +
-                            "descuento3, total_neto, tasa, impuesto, total, auto, estatus_anulado, fecha, tipo, deposito, " +
-                            "signo, auto_proveedor, decimales, contenido_empaque, cantidad_und, costo_und, codigo_deposito, " +
-                            "detalle, auto_tasa, categoria, costo_promedio_und, costo_compra, codigo_proveedor, cantidad_bono, " +
-                            "costo_bruto, estatus_unidad, fecha_lote, cierre_ftp) " +
-                            "VALUES ( {0}, {1}, {2}, {3}, {4}, {5}, {6}, " +
-                            "{7}, {8}, {9}, {10}, {11}, {12}, {13}, {14}, " +
-                            "{15}, {16}, {17}, {18}, {19}, {20}, {21}, {22}, {23}, {24}, " +
-                            "{25}, {26}, {27}, {28}, {29}, {30}, {31}, " +
-                            "{32}, {33}, {34}, {35}, {36}, {37}, {38}, " +
-                            "{39}, {40}, {41}, {42})";
-                        var _auto=0;
-                        foreach (var it in docFac.detalles) 
+                        var sqlDetalle = @"INSERT INTO compras_detalle (
+                                            auto_documento, 
+                                            auto_producto, 
+                                            codigo, 
+                                            nombre, 
+                                            auto_departamento, 
+                                            auto_grupo, 
+                                            auto_subgrupo, 
+                                            auto_deposito, 
+                                            cantidad, 
+                                            empaque, 
+                                            descuento1p, 
+                                            descuento2p, 
+                                            descuento3p, 
+                                            descuento1, 
+                                            descuento2,
+                                            descuento3,
+                                            total_neto, 
+                                            tasa, 
+                                            impuesto, 
+                                            total, 
+                                            auto, 
+                                            estatus_anulado, 
+                                            fecha, 
+                                            tipo, 
+                                            deposito, 
+                                            signo, 
+                                            auto_proveedor, 
+                                            decimales, 
+                                            contenido_empaque, 
+                                            cantidad_und, 
+                                            costo_und, 
+                                            codigo_deposito, 
+                                            detalle, 
+                                            auto_tasa, 
+                                            categoria, 
+                                            costo_promedio_und, 
+                                            costo_compra, 
+                                            codigo_proveedor, 
+                                            cantidad_bono, 
+                                            costo_bruto, 
+                                            estatus_unidad, 
+                                            fecha_lote, 
+                                            cierre_ftp, 
+                                            estatus_cambio_precio_venta) 
+                                        VALUES (
+                                            {0}, {1}, {2}, {3}, {4}, 
+                                            {5}, {6}, {7}, {8}, {9}, 
+                                            {10}, {11}, {12}, {13}, {14}, 
+                                            {15}, {16}, {17}, {18}, {19}, 
+                                            {20}, {21}, {22}, {23}, {24}, 
+                                            {25}, {26}, {27}, {28}, {29}, 
+                                            {30}, {31}, {32}, {33}, {34}, 
+                                            {35}, {36}, {37}, {38}, {39}, 
+                                            {40}, {41}, {42}, {43})";
+                        var _auto = 0;
+                        foreach (var it in docFac.detalles)
                         {
-                            _auto+=1;
+                            _auto += 1;
                             var xauto = _auto.ToString().Trim().PadLeft(10, '0');
-
-                            var vdet = cnn.Database.ExecuteSqlCommand(sqlDetalle,autoMovCompra, it.autoProducto, it.codigoProducto, it.nombreProducto,it.autoDepartamento,it.autoGrupo, it.autoSubGrupo,
-                                it.autoDeposito, it.cantidadFac, it.empaquePrd, it.valorPorcDescto1, it.valorPorcDescto2, it.valorPorcDescto3, it.montoDescto1, it.montoDescto2,
-                                it.montoDescto3, it.totalNeto, it.valorTasaIva, it.montoImpuesto, it.montoTotal, xauto, it.esAnulado, fechaSistema.Date, it.tipoDocumento, it.depositoNombre,
-                                it.signo, it.autoProveedor, it.decimalesPrd, it.contenidoEmpaque, it.cantidadUnd, it.costoUnd, it.depositoCodigo,
-                                it.detalle, it.autoTasaIva, it.categoriaPrd, it.costoPromedioUnd, it.costoCompra, it.codigoProveedor, it.cantidadBonoFac,
-                                it.costoBruto, it.estatusUnidad, it.fechaLote, it.cierreFtp);
+                            var vdet = cnn.Database.ExecuteSqlCommand(sqlDetalle,
+                                autoMovCompra, it.autoProducto, it.codigoProducto, it.nombreProducto, it.autoDepartamento,
+                                it.autoGrupo, it.autoSubGrupo, it.autoDeposito, it.cantidadFac, it.empaquePrd,
+                                it.valorPorcDescto1, it.valorPorcDescto2, it.valorPorcDescto3, it.montoDescto1, it.montoDescto2,
+                                it.montoDescto3, it.totalNeto, it.valorTasaIva, it.montoImpuesto, it.montoTotal,
+                                xauto, it.esAnulado, fechaSistema.Date, it.tipoDocumento, it.depositoNombre,
+                                it.signo, it.autoProveedor, it.decimalesPrd, it.contenidoEmpaque, it.cantidadUnd,
+                                it.costoUnd, it.depositoCodigo, it.detalle, it.autoTasaIva, it.categoriaPrd,
+                                it.costoPromedioUnd, it.costoCompra, it.codigoProveedor, it.cantidadBonoFac, it.costoBruto,
+                                it.estatusUnidad, it.fechaLote, it.cierreFtp, it.estatusHabilitarCambioPrecioVenta);
                             if (vdet == 0)
                             {
                                 result.Mensaje = "PROBLEMA AL REGISTRAR ITEM DETALLE [ " + Environment.NewLine + it.nombreProducto + " ]";
@@ -271,24 +317,24 @@ namespace ProvLibCompra
                             if (entPrd == null)
                             {
                                 result.Mensaje = "PRODUCTO NO ENCONTRADO" + Environment.NewLine + it.nombrePrd;
-                                result.Result= DtoLib.Enumerados.EnumResult.isError;
-                                return result;;
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result; ;
                             }
 
                             var cPromedio = 0.0m;
                             var cActual = 0.0m;
-                            var cCompra= 0.0m;
-                            var ex=0.0m;
+                            var cCompra = 0.0m;
+                            var ex = 0.0m;
                             var exLista = cnn.productos_deposito.Where(w => w.auto_producto == it.autoPrd).ToList();
-                            if (exLista.Count>0)
-                                ex=exLista.Sum(s => s.fisica);
+                            if (exLista.Count > 0)
+                                ex = exLista.Sum(s => s.fisica);
                             if ((ex + it.cntUnd) != 0)
                             {
                                 cActual = entPrd.costo_promedio_und * ex;
                                 cCompra = it.costoUnd * it.cntUnd;
-                                cPromedio = (cActual + cCompra) / (ex+ it.cntUnd);
+                                cPromedio = (cActual + cCompra) / (ex + it.cntUnd);
                             }
-                            else 
+                            else
                             {
                                 cActual = 0.0m;
                                 cCompra = it.costoUnd * it.cntUnd;
@@ -299,7 +345,7 @@ namespace ProvLibCompra
                             entPrd.costo_und = it.costoUnd;
                             entPrd.costo_proveedor = it.costo;
                             entPrd.costo_proveedor_und = it.costoUnd;
-                            entPrd.costo_promedio = cPromedio*it.contenido;
+                            entPrd.costo_promedio = cPromedio * it.contenido;
                             entPrd.costo_promedio_und = cPromedio;
                             entPrd.divisa = it.costoDivisa;
                             entPrd.fecha_movimiento = fechaSistema.Date;
@@ -314,14 +360,14 @@ namespace ProvLibCompra
                             {
                                 auto_producto = it.autoPrd,
                                 costo = it.costo,
-                                costo_divisa = it.costoDivisa ,
+                                costo_divisa = it.costoDivisa,
                                 divisa = it.tasaDivisa,
-                                documento = it.documento ,
+                                documento = it.documento,
                                 estacion = docFac.documento.estacionEquipo,
                                 fecha = fechaSistema.Date,
                                 hora = fechaSistema.ToShortTimeString(),
-                                nota = it.nota ,
-                                serie = it.serie ,
+                                nota = it.nota,
+                                serie = it.serie,
                                 usuario = docFac.documento.usuarioNombre,
                             };
                             cnn.productos_costos.Add(entHist);
@@ -331,7 +377,7 @@ namespace ProvLibCompra
                         foreach (var it in docFac.prdDeposito)
                         {
                             var entPrdDeposito = cnn.productos_deposito.FirstOrDefault(f => f.auto_deposito == it.autoDep && f.auto_producto == it.autoPrd);
-                            if (entPrdDeposito == null) 
+                            if (entPrdDeposito == null)
                             {
                                 result.Mensaje = "PRODUCTO - DEPOSITO NO ENCONTRADO" + Environment.NewLine + it.nombrePrd;
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -358,45 +404,335 @@ namespace ProvLibCompra
                             cnn.SaveChanges();
                         }
 
-                        foreach (var it in docFac.prdPrecios)
+                        var xt1 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var xt2 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var xt3 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var xt4 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var xt5 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var xt6 = new MySql.Data.MySqlClient.MySqlParameter();
+                        foreach (var it in docFac.prdPreciosMod)
                         {
-                            var entPrd = cnn.productos.Find(it.autoPrd);
-                            if (entPrd == null) 
+                            if (it.precio1_Emp1 != null)
                             {
-                                result.Mensaje = "[ ID ] PRODUCTO NO ENCONTRADO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result; ;
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio1_Emp1.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio1_Emp1.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio1_Emp1.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio1_Emp1.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio1_Emp1.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos set 
+                                                auto_precio_1=@autoPrecio,
+                                                contenido_1=@contenido,
+                                                precio_1=@precio,
+                                                utilidad_1=@utilidad,
+                                                pdf_1=@precioFullDivisa
+                                            where auto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
                             }
-
-                            var entPrdExt = cnn.productos_ext.Find(it.autoPrd);
-                            if (entPrdExt == null)
+                            if (it.precio1_Emp2 != null)
                             {
-                                result.Mensaje = "[ ID ] PRODUCTO EXT NO ENCONTRADO";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result; ;
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio1_Emp2.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio1_Emp2.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio1_Emp2.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio1_Emp2.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio1_Emp2.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_may_1=@autoPrecio,
+                                                contenido_may_1=@contenido,
+                                                precio_may_1=@precio,
+                                                utilidad_may_1=@utilidad,
+                                                pdmf_1=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
                             }
-
-                            entPrd.pdf_1 = it.pDivisaFull_1;
-                            entPrd.pdf_2 = it.pDivisaFull_2;
-                            entPrd.pdf_3 = it.pDivisaFull_3;
-                            entPrd.pdf_4 = it.pDivisaFull_4;
-                            entPrd.pdf_pto = it.pDivisaFull_5;
-                            entPrd.precio_1 = it.precioNeto_1;
-                            entPrd.precio_2 = it.precioNeto_2;
-                            entPrd.precio_3 = it.precioNeto_3;
-                            entPrd.precio_4 = it.precioNeto_4;
-                            entPrd.precio_pto = it.precioNeto_5;
-                            cnn.SaveChanges();
-
+                            if (it.precio1_Emp3 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio1_Emp3.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio1_Emp3.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio1_Emp3.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio1_Emp3.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio1_Emp3.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_dsp_1=@autoPrecio,
+                                                cont_dsp_1=@contenido,
+                                                precio_dsp_1=@precio,
+                                                utilidad_dsp_1=@utilidad,
+                                                pdivisafull_dsp_1=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
                             //
-
-                            entPrdExt.pdmf_1  = it.pDivisaFull_May_1;
-                            entPrdExt.pdmf_2= it.pDivisaFull_May_2;
-                            entPrdExt.precio_may_1 = it.precioNeto_May_1;
-                            entPrdExt.precio_may_2= it.precioNeto_May_2;
-                            cnn.SaveChanges();
+                            if (it.precio2_Emp1 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio2_Emp1.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio2_Emp1.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio2_Emp1.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio2_Emp1.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio2_Emp1.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos set 
+                                                auto_precio_2=@autoPrecio,
+                                                contenido_2=@contenido,
+                                                precio_2=@precio,
+                                                utilidad_2=@utilidad,
+                                                pdf_2=@precioFullDivisa
+                                            where auto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            if (it.precio2_Emp2 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio2_Emp2.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio2_Emp2.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio2_Emp2.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio2_Emp2.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio2_Emp2.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_may_2=@autoPrecio,
+                                                contenido_may_2=@contenido,
+                                                precio_may_2=@precio,
+                                                utilidad_may_2=@utilidad,
+                                                pdmf_2=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            if (it.precio2_Emp3 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio2_Emp3.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio2_Emp3.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio2_Emp3.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio2_Emp3.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio2_Emp3.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_dsp_2=@autoPrecio,
+                                                cont_dsp_2=@contenido,
+                                                precio_dsp_2=@precio,
+                                                utilidad_dsp_2=@utilidad,
+                                                pdivisafull_dsp_2=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            //
+                            if (it.precio3_Emp1 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio3_Emp1.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio3_Emp1.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio3_Emp1.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio3_Emp1.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio3_Emp1.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos set 
+                                                auto_precio_3=@autoPrecio,
+                                                contenido_3=@contenido,
+                                                precio_3=@precio,
+                                                utilidad_3=@utilidad,
+                                                pdf_3=@precioFullDivisa
+                                            where auto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            if (it.precio3_Emp2 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio3_Emp2.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio3_Emp2.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio3_Emp2.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio3_Emp2.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio3_Emp2.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_may_3=@autoPrecio,
+                                                contenido_may_3=@contenido,
+                                                precio_may_3=@precio,
+                                                utilidad_may_3=@utilidad,
+                                                pdmf_3=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            if (it.precio3_Emp3 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio3_Emp3.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio3_Emp3.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio3_Emp3.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio3_Emp3.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio3_Emp3.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_dsp_3=@autoPrecio,
+                                                cont_dsp_3=@contenido,
+                                                precio_dsp_3=@precio,
+                                                utilidad_dsp_3=@utilidad,
+                                                pdivisafull_dsp_3=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            //
+                            if (it.precio4_Emp1 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio4_Emp1.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio4_Emp1.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio4_Emp1.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio4_Emp1.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio4_Emp1.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos set 
+                                                auto_precio_4=@autoPrecio,
+                                                contenido_4=@contenido,
+                                                precio_4=@precio,
+                                                utilidad_4=@utilidad,
+                                                pdf_4=@precioFullDivisa
+                                            where auto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            if (it.precio4_Emp2 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio4_Emp2.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio4_Emp2.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio4_Emp2.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio4_Emp2.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio4_Emp2.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_may_4=@autoPrecio,
+                                                cont_may_4=@contenido,
+                                                precio_may_4=@precio,
+                                                utilidad_may_4=@utilidad,
+                                                pdmf_4=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            if (it.precio4_Emp3 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio4_Emp3.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio4_Emp3.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio4_Emp3.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio4_Emp3.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio4_Emp3.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos_ext set 
+                                                auto_precio_dsp_4=@autoPrecio,
+                                                cont_dsp_4=@contenido,
+                                                precio_dsp_4=@precio,
+                                                utilidad_dsp_4=@utilidad,
+                                                pdivisafull_dsp_4=@precioFullDivisa
+                                            where auto_producto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
+                            //
+                            if (it.precio5_Emp1 != null)
+                            {
+                                xt1.ParameterName = "@autoPrecio";
+                                xt1.Value = it.precio5_Emp1.autoEmp;
+                                xt2.ParameterName = "@contenido";
+                                xt2.Value = it.precio5_Emp1.contenido;
+                                xt3.ParameterName = "@precio";
+                                xt3.Value = it.precio5_Emp1.precioNeto;
+                                xt4.ParameterName = "@utilidad";
+                                xt4.Value = it.precio5_Emp1.utilidad;
+                                xt5.ParameterName = "@precioFullDivisa";
+                                xt5.Value = it.precio5_Emp1.precioFullDivisa;
+                                xt6.ParameterName = "@autoPrd";
+                                xt6.Value = it.autoPrd;
+                                var xsql = @"update productos set 
+                                                auto_precio_pto=@autoPrecio,
+                                                contenido_pto=@contenido,
+                                                precio_pto=@precio,
+                                                utilidad_pto=@utilidad,
+                                                pdf_pto=@precioFullDivisa
+                                            where auto=@autoPrd";
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                cnn.SaveChanges();
+                            }
                         }
-
+                        var pt1 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var pt2 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var pt3 = new MySql.Data.MySqlClient.MySqlParameter();
+                        var pt4 = new MySql.Data.MySqlClient.MySqlParameter();
                         foreach (var it in docFac.prdPreciosHistorico)
                         {
                             var entHist = new productos_precios()
@@ -412,6 +748,29 @@ namespace ProvLibCompra
                             };
                             cnn.productos_precios.Add(entHist);
                             cnn.SaveChanges();
+
+                            pt1.ParameterName = "@pt1";
+                            pt1.Value=entHist.id;
+                            pt2.ParameterName = "@pt2";
+                            pt2.Value=it.empaque;
+                            pt3.ParameterName = "@pt3";
+                            pt3.Value=it.contenido;
+                            pt4.ParameterName = "@pt4";
+                            pt4.Value = it.tasaFactorCambio;
+                            var xsql = @"INSERT INTO productos_precios_ext (
+                                            id, 
+                                            id_producto_precio, 
+                                            empaque, 
+                                            contenido, 
+                                            factor_cambio) 
+                                        VALUES 
+                                            (NULL, 
+                                            @pt1,
+                                            @pt2,
+                                            @pt3,
+                                            @pt4)";
+                            var xres = cnn.Database.ExecuteSqlCommand(xsql, pt1, pt2, pt3, pt4);
+                            cnn.SaveChanges();
                         }
 
                         ts.Commit();
@@ -419,43 +778,14 @@ namespace ProvLibCompra
                     }
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var msg = "";
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        msg += ve.ErrorMessage;
-                    }
-                }
-                result.Mensaje = msg;
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
-                var dbUpdateEx = ex as System.Data.Entity.Infrastructure.DbUpdateException;
-                var sqlEx = dbUpdateEx.InnerException;
-                if (sqlEx != null)
-                {
-                    var exx = (MySql.Data.MySqlClient.MySqlException)sqlEx.InnerException;
-                    if (exx != null)
-                    {
-                        if (exx.Number == 1452)
-                        {
-                            result.Mensaje = "PROBLEMA DE CLAVE FORANEA" + Environment.NewLine + exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                        else
-                        {
-                            result.Mensaje = exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                    }
-                }
-                result.Mensaje = ex.Message;
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -466,8 +796,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Visualizar.Ficha> Compra_DocumentoVisualizar(string auto)
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Visualizar.Ficha>
+            Compra_DocumentoVisualizar(string auto)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Visualizar.Ficha>();
 
@@ -494,12 +824,12 @@ namespace ProvLibCompra
                         documentoNombre = ent.documento_nombre,
                         documentoNro = ent.documento,
                         documentoSerie = ent.serie,
-                        documentoTipo= ent.tipo,
+                        documentoTipo = ent.tipo,
                         equipoEstacion = ent.estacion,
                         factorCambio = ent.factor_cambio,
                         fechaEmision = ent.fecha,
                         fechaRegistro = ent.fecha_registro,
-                        horaRegistro=ent.hora,
+                        horaRegistro = ent.hora,
                         fechaVencimiento = ent.fecha_vencimiento,
                         mesRelacion = ent.mes_relacion,
                         montoBase = ent.@base,
@@ -530,7 +860,7 @@ namespace ProvLibCompra
                         montoIva1 = ent.impuesto1,
                         montoIva2 = ent.impuesto2,
                         montoIva3 = ent.impuesto3,
-                        aplica=ent.aplica,
+                        aplica = ent.aplica,
                     };
                     var lista = det.Select(s =>
                     {
@@ -568,8 +898,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoLista<DtoLibCompra.Documento.Lista.Resumen> Compra_DocumentoGetLista(DtoLibCompra.Documento.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibCompra.Documento.Lista.Resumen>
+            Compra_DocumentoGetLista(DtoLibCompra.Documento.Lista.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibCompra.Documento.Lista.Resumen>();
 
@@ -600,18 +930,18 @@ namespace ProvLibCompra
                     p2.Value = filtro.Hasta;
                     sql_3 += " and fecha<=@fHasta ";
 
-                    if (filtro.CodigoSuc != "") 
+                    if (filtro.CodigoSuc != "")
                     {
                         p3.ParameterName = "@suc";
                         p3.Value = filtro.CodigoSuc;
                         sql_3 += " and codigo_sucursal=@suc";
                     }
-                    if (filtro.TipoDocumento!= DtoLibCompra.Enumerados.enumTipoDocumento.SinDefinir)
+                    if (filtro.TipoDocumento != DtoLibCompra.Enumerados.enumTipoDocumento.SinDefinir)
                     {
                         var xtipo = "";
-                        switch (filtro.TipoDocumento) 
+                        switch (filtro.TipoDocumento)
                         {
-                            case  DtoLibCompra.Enumerados.enumTipoDocumento.Factura:
+                            case DtoLibCompra.Enumerados.enumTipoDocumento.Factura:
                                 xtipo = "01";
                                 break;
                             case DtoLibCompra.Enumerados.enumTipoDocumento.NotaDebito:
@@ -651,8 +981,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.Resultado Compra_DocumentoAnularFactura(DtoLibCompra.Documento.Anular.Factura.Ficha ficha)
+        public DtoLib.Resultado
+            Compra_DocumentoAnularFactura(DtoLibCompra.Documento.Anular.Factura.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -685,8 +1015,8 @@ namespace ProvLibCompra
                             return result;
                         }
 
-                        var entCompra= cnn.compras.Find(ficha.autoDocumento);
-                        if (entCompra== null)
+                        var entCompra = cnn.compras.Find(ficha.autoDocumento);
+                        if (entCompra == null)
                         {
                             result.Mensaje = "DOCUMENTO NO ENCONTRADO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -709,7 +1039,7 @@ namespace ProvLibCompra
                         var pA = new MySql.Data.MySqlClient.MySqlParameter("@pa", ficha.codigoDocumento);
                         sql = "update productos_kardex set estatus_anulado='1' where auto_documento=@p1 and modulo='Compras' and codigo=@pA";
                         p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", ficha.autoDocumento);
-                        vk = cnn.Database.ExecuteSqlCommand(sql, p1,pA);
+                        vk = cnn.Database.ExecuteSqlCommand(sql, p1, pA);
                         if (vk == 0)
                         {
                             result.Mensaje = "PROBLEMA AL ACTUALIZAR MOVIMIENTOS KARDEX";
@@ -718,7 +1048,7 @@ namespace ProvLibCompra
                         }
                         cnn.SaveChanges();
 
-                        var entCxP= cnn.cxp.Find(entCompra.auto_cxp);
+                        var entCxP = cnn.cxp.Find(entCompra.auto_cxp);
                         if (entCxP == null)
                         {
                             result.Mensaje = "DOCUMENTO POR PAGAR NO ENCONTRADO";
@@ -728,7 +1058,7 @@ namespace ProvLibCompra
                         entCxP.estatus_anulado = "1";
                         cnn.SaveChanges();
 
-                        var entKardex = cnn.productos_kardex.Where(w => w.auto_documento == ficha.autoDocumento && w.modulo == "Compras" && w.codigo==ficha.codigoDocumento).ToList();
+                        var entKardex = cnn.productos_kardex.Where(w => w.auto_documento == ficha.autoDocumento && w.modulo == "Compras" && w.codigo == ficha.codigoDocumento).ToList();
                         foreach (var rg in entKardex)
                         {
                             var autoDeposito = rg.auto_deposito;
@@ -756,7 +1086,7 @@ namespace ProvLibCompra
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
-                        entProveedor.saldo -= entCompra.total ;
+                        entProveedor.saldo -= entCompra.total;
                         cnn.SaveChanges();
 
                         ts.Complete();
@@ -798,8 +1128,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaRemision.Ficha> Compra_DocumentoGetListaRemision(DtoLibCompra.Documento.ListaRemision.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaRemision.Ficha>
+            Compra_DocumentoGetListaRemision(DtoLibCompra.Documento.ListaRemision.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaRemision.Ficha>();
 
@@ -812,7 +1142,7 @@ namespace ProvLibCompra
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
 
-                    var sql_1="SELECT auto, fecha as fechaEmision, documento as docNro, control, total, "+
+                    var sql_1 = "SELECT auto, fecha as fechaEmision, documento as docNro, control, total, " +
                         "documento_nombre as docNombre, tipo as docTipo, monto_divisa as montoDivisa ";
 
                     var sql_2 = "FROM compras ";
@@ -839,8 +1169,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoAuto Compra_DocumentoAgregarNotaCredito(DtoLibCompra.Documento.Agregar.NotaCredito.Ficha docNC)
+        public DtoLib.ResultadoAuto
+            Compra_DocumentoAgregarNotaCredito(DtoLibCompra.Documento.Agregar.NotaCredito.Ficha docNC)
         {
             var result = new DtoLib.ResultadoAuto();
 
@@ -1000,7 +1330,7 @@ namespace ProvLibCompra
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
                             return result;
                         }
-                        entProveedor.saldo += (docNC.documento.montoTotal*docNC.documento.signoDocumento);
+                        entProveedor.saldo += (docNC.documento.montoTotal * docNC.documento.signoDocumento);
                         entProveedor.fecha_ult_compra = docNC.documento.fechaDocumento;
                         cnn.SaveChanges();
 
@@ -1148,8 +1478,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.Resultado Compra_DocumentoAnular_Verificar(string autoDoc)
+        public DtoLib.Resultado
+            Compra_DocumentoAnular_Verificar(string autoDoc)
         {
             var rt = new DtoLib.Resultado();
 
@@ -1159,7 +1489,7 @@ namespace ProvLibCompra
                 {
                     var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
 
-                    var entCompra= cnn.compras.Find(autoDoc);
+                    var entCompra = cnn.compras.Find(autoDoc);
                     if (entCompra == null)
                     {
                         rt.Mensaje = "[ ID ] DOCUMENTO NO ENCONTRADO";
@@ -1180,8 +1510,8 @@ namespace ProvLibCompra
                     }
                     if (entCompra.tipo == "01")
                     {
-                        var xref= cnn.compras.FirstOrDefault(f=>f.auto_remision ==autoDoc && f.estatus_anulado=="0");
-                        if (xref != null) 
+                        var xref = cnn.compras.FirstOrDefault(f => f.auto_remision == autoDoc && f.estatus_anulado == "0");
+                        if (xref != null)
                         {
                             rt.Mensaje = "DOCUMENTO A ANULAR TIENE DOCUMENTOS RELACIONADOS";
                             rt.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -1194,8 +1524,8 @@ namespace ProvLibCompra
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;
                         return rt;
                     }
-                    var entCxP= cnn.cxp.Find(entCompra.auto_cxp);
-                    if (entCxP.acumulado>0)
+                    var entCxP = cnn.cxp.Find(entCompra.auto_cxp);
+                    if (entCxP.acumulado > 0)
                     {
                         rt.Mensaje = "HAY ABONOS REGISTRADO ( CUENTA POR PAGAR ) AL DOCUMENTO A ANULAR";
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -1211,8 +1541,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Cargar.Ficha> Compra_DocumentoGetFicha(string autoDoc)
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Cargar.Ficha>
+            Compra_DocumentoGetFicha(string autoDoc)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Cargar.Ficha>();
 
@@ -1323,8 +1653,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.Resultado Compra_DocumentoAnularNotaCredito(DtoLibCompra.Documento.Anular.NotaCredito.Ficha ficha)
+        public DtoLib.Resultado
+            Compra_DocumentoAnularNotaCredito(DtoLibCompra.Documento.Anular.NotaCredito.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -1470,8 +1800,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.Resultado Compra_DocumentoAgregar_Verificar(string documentoNro, string controlNro, string autoPrv)
+        public DtoLib.Resultado
+            Compra_DocumentoAgregar_Verificar(string documentoNro, string controlNro, string autoPrv)
         {
             var rt = new DtoLib.Resultado();
 
@@ -1479,7 +1809,7 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    var entCompra = cnn.compras.FirstOrDefault(f=>f.documento==documentoNro && f.control==controlNro && f.auto_proveedor==autoPrv && f.estatus_anulado=="0");
+                    var entCompra = cnn.compras.FirstOrDefault(f => f.documento == documentoNro && f.control == controlNro && f.auto_proveedor == autoPrv && f.estatus_anulado == "0");
                     if (entCompra != null)
                     {
                         rt.Mensaje = "DOCUMENTO PARA ESTE PROVEEDOR CON EL NUMERO DE CONTROL Y DOCUMENTO YA ESTA REGISTRADO";
@@ -1496,8 +1826,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.Resultado Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac)
+        public DtoLib.Resultado
+            Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac)
         {
             var result = new DtoLib.Resultado();
 
@@ -1563,8 +1893,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.Resultado Compra_DocumentoCorrector_Verificar(string documentoNro, string controlNro, string autoPrv, string autoDoc)
+        public DtoLib.Resultado
+            Compra_DocumentoCorrector_Verificar(string documentoNro, string controlNro, string autoPrv, string autoDoc)
         {
             var rt = new DtoLib.Resultado();
 
@@ -1572,11 +1902,11 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    var entCompra = cnn.compras.FirstOrDefault(f => f.documento == documentoNro && 
-                        f.control == controlNro && 
-                        f.auto_proveedor == autoPrv && 
-                        f.estatus_anulado == "0" && 
-                        f.auto!=autoDoc);
+                    var entCompra = cnn.compras.FirstOrDefault(f => f.documento == documentoNro &&
+                        f.control == controlNro &&
+                        f.auto_proveedor == autoPrv &&
+                        f.estatus_anulado == "0" &&
+                        f.auto != autoDoc);
                     if (entCompra != null)
                     {
                         rt.Mensaje = "NUMERO DE CONTROL Y DOCUMENTO YA ESTA REGISTRADO PARA ESTE PROVEEDOR";
@@ -1593,10 +1923,10 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaItemImportar.Ficha> Compra_Documento_ItemImportar_GetLista(string autoDoc)
+        public DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaItemImportar.Ficha>
+            Compra_Documento_ItemImportar_GetLista(string autoDoc)
         {
-            var rt= new DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaItemImportar.Ficha>();
+            var rt = new DtoLib.ResultadoLista<DtoLibCompra.Documento.ListaItemImportar.Ficha>();
 
             try
             {
@@ -1614,7 +1944,7 @@ namespace ProvLibCompra
 
                     var sql_3 = "where auto_documento = @autoDoc ";
 
-                    var p1= new MySql.Data.MySqlClient.MySqlParameter();
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     p1.ParameterName = "@autoDoc";
                     p1.Value = autoDoc;
 
@@ -1628,11 +1958,12 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            
+
             return rt;
         }
 
-        public DtoLib.Resultado Compra_Documento_Pendiente_Agregar(DtoLibCompra.Documento.Pendiente.Agregar.Ficha ficha)
+        public DtoLib.Resultado
+            Compra_Documento_Pendiente_Agregar(DtoLibCompra.Documento.Pendiente.Agregar.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
 
@@ -1643,8 +1974,8 @@ namespace ProvLibCompra
                     using (var ts = cnn.Database.BeginTransaction())
                     {
                         var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
-                        var xfecha= fechaSistema.Date;
-                        var xhora=fechaSistema.ToShortTimeString();
+                        var xfecha = fechaSistema.Date;
+                        var xhora = fechaSistema.ToShortTimeString();
                         var entCompraPend = new compras_pend
                         {
                             auto_usuario = ficha.usuarioId,
@@ -1698,6 +2029,11 @@ namespace ProvLibCompra
                                 subg_auto = it.prdAutoSubGrupo,
                                 tasa_auto = it.prdAutoTasaIva,
                                 tasa_iva = it.tasaIva,
+                                //
+                                costoActual_local = it.prdCostoActualLocal,
+                                costoActual_divisa = it.prdCostoActualDivisa,
+                                admDivisa = it.prdEstatusDivisa,
+                                precio_fact_divisa = it.precioFacturaDivisa,
                             };
                             cnn.compras_pend_detalle.Add(entCompraPendDet);
                             cnn.SaveChanges();
@@ -1706,43 +2042,14 @@ namespace ProvLibCompra
                     }
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var msg = "";
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        msg += ve.ErrorMessage;
-                    }
-                }
-                result.Mensaje = msg;
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
-                var dbUpdateEx = ex as System.Data.Entity.Infrastructure.DbUpdateException;
-                var sqlEx = dbUpdateEx.InnerException;
-                if (sqlEx != null)
-                {
-                    var exx = (MySql.Data.MySqlClient.MySqlException)sqlEx.InnerException;
-                    if (exx != null)
-                    {
-                        if (exx.Number == 1452)
-                        {
-                            result.Mensaje = "PROBLEMA DE CLAVE FORANEA" + Environment.NewLine + exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                        else
-                        {
-                            result.Mensaje = exx.Message;
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
-                        }
-                    }
-                }
-                result.Mensaje = ex.Message;
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -1753,8 +2060,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<int> Compra_Documento_Pendiente_Cnt(DtoLibCompra.Documento.Pendiente.Filtro.Ficha filtro)
+        public DtoLib.ResultadoEntidad<int>
+            Compra_Documento_Pendiente_Cnt(DtoLibCompra.Documento.Pendiente.Filtro.Ficha filtro)
         {
             var result = new DtoLib.ResultadoEntidad<int>();
 
@@ -1770,12 +2077,12 @@ namespace ProvLibCompra
                     var sql_3 = "where (auto_usuario=@idUsuario and documento_tipo=@docTipo) ";
 
                     p1.ParameterName = "@idUsuario";
-                    p1.Value = filtro.idUsuario ;
+                    p1.Value = filtro.idUsuario;
                     p2.ParameterName = "@docTipo";
                     p2.Value = filtro.docTipo;
                     var sql = sql_1 + sql_2 + sql_3;
-                    var cnt = cnn.Database.SqlQuery<int> (sql, p1, p2).FirstOrDefault();
-                    result.Entidad  = cnt;
+                    var cnt = cnn.Database.SqlQuery<int>(sql, p1, p2).FirstOrDefault();
+                    result.Entidad = cnt;
                 }
             }
             catch (Exception e)
@@ -1786,8 +2093,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoLista<DtoLibCompra.Documento.Pendiente.Lista.Ficha> Compra_Documento_Pendiente_GetLista(DtoLibCompra.Documento.Pendiente.Filtro.Ficha filtro)
+        public DtoLib.ResultadoLista<DtoLibCompra.Documento.Pendiente.Lista.Ficha>
+            Compra_Documento_Pendiente_GetLista(DtoLibCompra.Documento.Pendiente.Filtro.Ficha filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibCompra.Documento.Pendiente.Lista.Ficha>();
 
@@ -1805,20 +2112,20 @@ namespace ProvLibCompra
                                 documento_numero as docNumero, documento_control as docControl, documento_items as docItemsNro ";
                     var sql_2 = "FROM compras_pend ";
                     var sql_3 = "where 1=1 ";
-                    if (filtro.idUsuario != "") 
+                    if (filtro.idUsuario != "")
                     {
                         sql_3 += "and auto_usuario=@idUsuario ";
                         p1.ParameterName = "@idUsuario";
-                        p1.Value = filtro.idUsuario ;
+                        p1.Value = filtro.idUsuario;
                     }
-                    if (filtro.docTipo  != "")
+                    if (filtro.docTipo != "")
                     {
                         sql_3 += "and documento_tipo=@docTipo ";
                         p2.ParameterName = "@docTipo";
                         p2.Value = filtro.docTipo;
                     }
                     var sql = sql_1 + sql_2 + sql_3;
-                    var lst = cnn.Database.SqlQuery<DtoLibCompra.Documento.Pendiente.Lista .Ficha>(sql, p1,p2,p3).ToList();
+                    var lst = cnn.Database.SqlQuery<DtoLibCompra.Documento.Pendiente.Lista.Ficha>(sql, p1, p2, p3).ToList();
                     rt.Lista = lst;
                 }
             }
@@ -1830,8 +2137,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.Resultado Compra_Documento_Pendiente_Eliminar(int idPend)
+        public DtoLib.Resultado
+            Compra_Documento_Pendiente_Eliminar(int idPend)
         {
             var rt = new DtoLib.Resultado();
 
@@ -1848,8 +2155,8 @@ namespace ProvLibCompra
                         var sql = @"delete 
                                     from compras_pend_detalle 
                                     where idPend=@id";
-                        var cnt= cnn.Database.ExecuteSqlCommand(sql, p1);
-                        if (cnt == 0) 
+                        var cnt = cnn.Database.ExecuteSqlCommand(sql, p1);
+                        if (cnt == 0)
                         {
                             rt.Mensaje = "ITEMS NO ENCONTRADOS ";
                             rt.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -1871,24 +2178,14 @@ namespace ProvLibCompra
                     }
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var msg = "";
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        msg += ve.ErrorMessage;
-                    }
-                }
-                rt .Mensaje = msg;
+                rt.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            catch (DbUpdateException ex)
             {
-                var dbUpdateEx = ex as System.Data.Entity.Infrastructure.DbUpdateException;
-                var sqlEx = dbUpdateEx.InnerException;
-                rt.Mensaje = ex.Message;
+                rt.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -1899,8 +2196,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Pendiente.Abrir.Ficha> Compra_Documento_Pendiente_Abrir(int idPend)
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Pendiente.Abrir.Ficha>
+            Compra_Documento_Pendiente_Abrir(int idPend)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Pendiente.Abrir.Ficha>();
 
@@ -1957,10 +2254,15 @@ namespace ProvLibCompra
                             prdNombre = s.prd_nombre,
                             precioFactura = s.precio_fact,
                             tasaIva = s.tasa_iva,
+                            //
+                            prdCostoActualDivisa = s.costoActual_divisa,
+                            prdCostoActualLocal = s.costoActual_local,
+                            prdEstatusDivisa = s.admDivisa,
+                            precioFacturaDivisa = s.precio_fact_divisa,
                         };
                         return dt;
                     }).ToList();
-                    doc.items  = lista;
+                    doc.items = lista;
 
                     result.Entidad = doc;
                 }

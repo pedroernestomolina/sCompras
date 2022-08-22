@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 namespace DtoLibCompra.Reportes.CompraPorProductoDetalle
 {
     
-    public class Filtro
+    public class Filtro: BaseFiltro
     {
-
-        public DateTime desde { get; set; }
-        public DateTime hasta { get; set; }
 
 
         public Filtro()
         {
+            autoProveedor = "";
+            codSucursal = "";
             desde = DateTime.Now.Date;
             hasta = DateTime.Now.Date;
         }

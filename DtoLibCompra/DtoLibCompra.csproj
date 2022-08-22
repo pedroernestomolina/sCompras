@@ -55,7 +55,9 @@
     <Compile Include="Documento\Agregar\Factura\FichaPrdKardex.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaPrdPrecio.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaPrdPrecioHistorico.cs" />
+    <Compile Include="Documento\Agregar\Factura\FichaPrdPrecios.cs" />
     <Compile Include="Documento\Agregar\Factura\FichaPrdProveedor.cs" />
+    <Compile Include="Documento\Agregar\Factura\FichaPrecio.cs" />
     <Compile Include="Documento\Agregar\NotaCredito\Ficha.cs" />
     <Compile Include="Documento\Agregar\NotaCredito\FichaCxP.cs" />
     <Compile Include="Documento\Agregar\NotaCredito\FichaDetalle.cs" />
@@ -105,9 +107,11 @@
     <Compile Include="Permiso\Ficha.cs" />
     <Compile Include="Producto\CodigoRefProveedor\Filtro.cs" />
     <Compile Include="Producto\Data\Ficha.cs" />
+    <Compile Include="Producto\EmpaqueMedida\Lista\Ficha.cs" />
     <Compile Include="Producto\Enumerados.cs" />
     <Compile Include="Producto\Lista\Filtro.cs" />
     <Compile Include="Producto\Lista\Resumen.cs" />
+    <Compile Include="Producto\Precio\Capturar\Ficha.cs" />
     <Compile Include="Producto\Utilidad\Ficha.cs" />
     <Compile Include="Producto\VerificarDepositoAsignado\Ficha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +129,7 @@
     <Compile Include="Proveedor\Enumerados.cs" />
     <Compile Include="Proveedor\Lista\Filtro.cs" />
     <Compile Include="Proveedor\Lista\Resumen.cs" />
+    <Compile Include="Reportes\BaseFiltro.cs" />
     <Compile Include="Reportes\CompraDocumento\Ficha.cs" />
     <Compile Include="Reportes\CompraDocumento\Filtro.cs" />
     <Compile Include="Reportes\CompraPorDepartamento\Ficha.cs" />

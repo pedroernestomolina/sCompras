@@ -13,7 +13,8 @@ namespace DataProvCompra.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProveedor> Configuracion_PreferenciaBusquedaProveedor()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProveedor> 
+            Configuracion_PreferenciaBusquedaProveedor()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProveedor>();
 
@@ -30,8 +31,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<decimal> Configuracion_TasaCambioActual()
+        public OOB.ResultadoEntidad<decimal> 
+            Configuracion_TasaCambioActual()
         {
             var rt = new OOB.ResultadoEntidad<decimal>();
 
@@ -56,8 +57,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto> Configuracion_PreferenciaBusquedaProducto()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto> 
+            Configuracion_PreferenciaBusquedaProducto()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto>();
 
@@ -74,8 +75,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> Configuracion_MetodoCalculoUtilidad()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> 
+            Configuracion_MetodoCalculoUtilidad()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad>();
 
@@ -92,8 +93,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> Configuracion_ForzarRedondeoPrecioVenta()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> 
+            Configuracion_ForzarRedondeoPrecioVenta()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta>();
 
@@ -110,8 +111,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio> Configuracion_PreferenciaRegistroPrecio()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio> 
+            Configuracion_PreferenciaRegistroPrecio()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio>();
 
@@ -125,6 +126,39 @@ namespace DataProvCompra.Data
 
             var s = r01.Entidad;
             rt.Entidad = (OOB.LibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio)s;
+
+            return rt;
+        }
+
+        public OOB.ResultadoEntidad<bool> 
+            Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra()
+        {
+            var rt = new OOB.ResultadoEntidad<bool>();
+
+            var r01 = MyData.Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            rt.Entidad = r01.Entidad.Trim().ToUpper()=="SI";
+
+            return rt;
+        }
+        public OOB.Resultado 
+            Configuracion_SetPermitirCambiarPrecioAlRegistrarDocCompra(bool cnf)
+        {
+            var rt = new OOB.Resultado();
+
+            var dto = cnf ? "Si" : "No";
+            var r01 = MyData.Configuracion_SetPermitirCambiarPrecioAlRegistrarDocCompra(dto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
 
             return rt;
         }

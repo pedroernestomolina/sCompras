@@ -35,6 +35,10 @@ namespace LibEntityCompra
         public string prd_decimales { get; set; }
         public decimal tasa_iva { get; set; }
         public string codrefprv_fact { get; set; }
+        public decimal precio_fact_divisa { get; set; }
+        public decimal costoActual_local { get; set; }
+        public decimal costoActual_divisa { get; set; }
+        public string admDivisa { get; set; }
     
         public virtual compras_pend compras_pend { get; set; }
     }

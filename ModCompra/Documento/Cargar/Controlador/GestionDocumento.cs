@@ -119,6 +119,11 @@ namespace ModCompra.Documento.Cargar.Controlador
 
         public void IniciaEditar()
         {
+            if (frm == null)
+            {
+                frm = new Formulario.DatosDocumentoFrm();
+                frm.setControlador(this);
+            }
             frm.ShowDialog();
         }
 

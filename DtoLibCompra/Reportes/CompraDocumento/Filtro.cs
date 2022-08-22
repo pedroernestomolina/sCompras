@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 namespace DtoLibCompra.Reportes.CompraDocumento
 {
     
-    public class Filtro
+    public class Filtro: BaseFiltro
     {
 
-        public string codSucursal { get; set; }
         public Enumerados.EnumEstatus estatus { get; set; }
-        public DateTime desde { get; set; }
-        public DateTime hasta { get; set; }
 
 
         public Filtro()
         {
+            autoProveedor = "";
             codSucursal = "";
             estatus = Enumerados.EnumEstatus.SinDefinir;
             desde = DateTime.Now.Date;

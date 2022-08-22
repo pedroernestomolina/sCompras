@@ -1,6 +1,7 @@
 ﻿using LibEntityCompra;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,8 @@ namespace ProvLibCompra
     public partial class Provider: ILibCompras.IProvider
     {
 
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProveedor> Configuracion_PreferenciaBusquedaProveedor()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProveedor> 
+            Configuracion_PreferenciaBusquedaProveedor()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProveedor>();
 
@@ -54,8 +56,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<string> Configuracion_TasaCambioActual()
+        public DtoLib.ResultadoEntidad<string> 
+            Configuracion_TasaCambioActual()
         {
             var result = new DtoLib.ResultadoEntidad<string>();
 
@@ -91,8 +93,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto> Configuracion_PreferenciaBusquedaProducto()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto> 
+            Configuracion_PreferenciaBusquedaProducto()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaBusquedaProducto>();
 
@@ -133,8 +135,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> Configuracion_MetodoCalculoUtilidad()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad>
+            Configuracion_MetodoCalculoUtilidad()
         {
             var result = new DtoLib.ResultadoEntidad< DtoLibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad>();
 
@@ -172,8 +174,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> Configuracion_ForzarRedondeoPrecioVenta()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> 
+            Configuracion_ForzarRedondeoPrecioVenta()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta>();
 
@@ -214,8 +216,8 @@ namespace ProvLibCompra
 
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio> Configuracion_PreferenciaRegistroPrecio()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio> 
+            Configuracion_PreferenciaRegistroPrecio()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio>();
 
@@ -244,6 +246,78 @@ namespace ProvLibCompra
 
                     result.Entidad = modo;
                 }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return result;
+        }
+
+
+        public DtoLib.ResultadoEntidad<string> 
+            Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra()
+        {
+            var result = new DtoLib.ResultadoEntidad<string>();
+
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var ent = cnn.sistema_configuracion.FirstOrDefault(f => f.codigo == "GLOBAL57");
+                    if (ent == null)
+                    {
+                        result.Mensaje = "[ ID ] CONFIGURACION NO ENCONTRADO";
+                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                        return result;
+                    }
+                    result.Entidad = ent.usuario.Trim().ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return result;
+        }
+        public DtoLib.Resultado 
+            Configuracion_SetPermitirCambiarPrecioAlRegistrarDocCompra(string cnf)
+        {
+            var result = new DtoLib.Resultado();
+
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@p1", cnf);
+                        var sql = @"update sistema_configuracion set usuario=@p1 
+                                    where codigo='GLOBAL57'";
+                        var i = cnn.Database.ExecuteSqlCommand(sql, p1);
+                        if (i == 0)
+                        {
+                            result.Mensaje = "[ GLOBAL 56 ] NO ENCONTRADO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
             {

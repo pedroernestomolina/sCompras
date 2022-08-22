@@ -30,6 +30,11 @@ namespace DtoLibCompra.Documento.Pendiente.Agregar
         public string decimales { get; set; }
         public string categoria { get; set; }
         public string codRefProv { get; set; }
+        //
+        public decimal precioFacturaDivisa { get; set; }
+        public decimal prdCostoActualLocal { get; set; }
+        public decimal prdCostoActualDivisa { get; set; }
+        public string prdEstatusDivisa { get; set; }
 
 
         public FichaDetalle() 
@@ -53,6 +58,11 @@ namespace DtoLibCompra.Documento.Pendiente.Agregar
             decimales = "";
             categoria = "";
             codRefProv = "";
+            //
+            precioFacturaDivisa = 0m;
+            prdCostoActualDivisa = 0m;
+            prdCostoActualLocal = 0m;
+            prdEstatusDivisa = "";
         }
 
     }

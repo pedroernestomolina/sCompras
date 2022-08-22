@@ -13,7 +13,7 @@ namespace ProvLibCompra
     public partial class Provider: ILibCompras.IProvider
     {
 
-        static EntityConnectionStringBuilder _cnCompra;
+        public static EntityConnectionStringBuilder _cnCompra;
         private string _Instancia;
         private string _BaseDatos;
         private string _Usuario;

@@ -82,6 +82,11 @@ namespace ModCompra.Documento.Cargar.NotaCredito
             gestionLista.Inicia();
         }
 
+
+        public void setFiltroDeposito(string id)
+        {
+        }
+
     }
 
 }

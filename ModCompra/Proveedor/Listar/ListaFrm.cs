@@ -16,7 +16,7 @@ namespace ModCompra.Proveedor.Listar
     {
 
 
-        Gestion _controlador;
+        IListar _controlador;
 
     
         public ListaFrm()
@@ -61,15 +61,15 @@ namespace ModCompra.Proveedor.Listar
             DGV.Columns.Add(c2);
         }
         
-        public void setControlador(Gestion ctr)
+        public void setControlador(IListar ctr)
         {
             _controlador = ctr;
         }
 
         private void ListaFrm_Load(object sender, EventArgs e)
         {
-            DGV.DataSource = _controlador.Source;
-            L_ITEMS.Text = _controlador.TItems.ToString("n0");
+            DGV.DataSource = _controlador.GetSource;
+            L_ITEMS.Text = _controlador.GetCntItem.ToString("n0");
         }
 
         private void DGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

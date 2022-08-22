@@ -212,8 +212,8 @@ namespace ModCompra.Administrador.Documentos
         {
             var filtro = new OOB.LibCompra.Proveedor.Lista.Filtro()
             {
-                MetodoBusqueda =  OOB.LibCompra.Proveedor.Enumerados.EnumMetodoBusqueda.Nombre ,
-                cadena = _cadenaBusProv ,
+                MetodoBusqueda = OOB.LibCompra.Proveedor.Enumerados.EnumMetodoBusqueda.Nombre,
+                cadena = _cadenaBusProv,
             };
             var r01 = Sistema.MyData.Proveedor_GetLista(filtro);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)

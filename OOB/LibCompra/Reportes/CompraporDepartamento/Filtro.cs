@@ -8,19 +8,17 @@ using System.Threading.Tasks;
 namespace OOB.LibCompra.Reportes.CompraporDepartamento
 {
     
-    public class Filtro
+    public class Filtro: BaseFiltro
     {
-
-        public DateTime desde { get; set; }
-        public DateTime hasta { get; set; }
-
 
         public Filtro()
         {
             desde = DateTime.Now.Date;
             hasta = DateTime.Now.Date;
+            codSucursal = "";
+            autoProveedor = "";
         }
-
+        
     }
 
 }

@@ -288,6 +288,7 @@ namespace ModCompra.Documento.Cargar.Factura
         {
             if (bs.Current != null)
             {
+                // 
                 var it = (dataItem) bs.Current;
                 gestionAgregarItem.Editar(it);
                 if (gestionAgregarItem.RegistroOk)

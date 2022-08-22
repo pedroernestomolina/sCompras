@@ -11,11 +11,20 @@ namespace ServiceCompra.Interfaces
     public interface IProducto
     {
 
-        DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen> Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro);
-        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Data.Ficha> Producto_GetFicha(string autoPrd);
-        DtoLib.ResultadoEntidad<string> Producto_GetCodigoRefProveedor(DtoLibCompra.Producto.CodigoRefProveedor.Filtro filtro);
-        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Utilidad.Ficha> Producto_GetUtilidadPrecio(string auto);
-        DtoLib.Resultado Producto_VerificaDepositoAsignado(DtoLibCompra.Producto.VerificarDepositoAsignado.Ficha ficha);
+        DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen>
+            Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro);
+        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Data.Ficha> 
+            Producto_GetFicha(string autoPrd);
+        DtoLib.ResultadoEntidad<string> 
+            Producto_GetCodigoRefProveedor(DtoLibCompra.Producto.CodigoRefProveedor.Filtro filtro);
+        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Utilidad.Ficha> 
+            Producto_GetUtilidadPrecio(string auto);
+        DtoLib.Resultado 
+            Producto_VerificaDepositoAsignado(DtoLibCompra.Producto.VerificarDepositoAsignado.Ficha ficha);
+        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Precio.Capturar.Ficha>
+            Producto_Precio_GetCapturar_ById(string idPrd);
+        DtoLib.ResultadoLista<DtoLibCompra.Producto.EmpaqueMedida.Lista.Ficha>
+            Producto_EmpaqueMedida_GetLista();
 
     }
 

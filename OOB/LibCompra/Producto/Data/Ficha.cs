@@ -168,6 +168,9 @@ namespace OOB.LibCompra.Producto.Data
             empaqueCompra = it.empaqueCompra;
             decimales = it.decimales;
             categoria = it.categoria;
+            costo = it.prdCostoActualLocal;
+            costoDivisa = it.prdCostoActualDivisa;
+            AdmPorDivisa = it.esAdmDivisa ? Enumerados.EnumAdministradorPorDivisa.Si : Enumerados.EnumAdministradorPorDivisa.No;
         }
 
     }

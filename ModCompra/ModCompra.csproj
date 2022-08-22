@@ -87,6 +87,14 @@
       <DependentUpon>AnularFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Anular\Gestion.cs" />
+    <Compile Include="Configuracion\Modulo\CnfModuloFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracion\Modulo\CnfModuloFrm.designer.cs">
+      <DependentUpon>CnfModuloFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracion\Modulo\Conf.cs" />
+    <Compile Include="Configuracion\Modulo\IConf.cs" />
     <Compile Include="Corrector\Documento\CorrectorFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +175,8 @@
     </Compile>
     <Compile Include="Filtros\data.cs" />
     <Compile Include="Filtros\Gestion.cs" />
+    <Compile Include="Filtros\Proveedor\Filtro.cs" />
+    <Compile Include="Filtros\Proveedor\IFiltro.cs" />
     <Compile Include="Filtros\tipoDoc.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -183,6 +193,9 @@
     <Compile Include="Helpers\Msg.cs" />
     <Compile Include="Helpers\Utilitis.cs" />
     <Compile Include="Helpers\VisualizarDocumento.cs" />
+    <Compile Include="HlpGestion\IAbandonar.cs" />
+    <Compile Include="HlpGestion\IGestion.cs" />
+    <Compile Include="HlpGestion\IProcesar.cs" />
     <Compile Include="Identificacion\Gestion.cs" />
     <Compile Include="Identificacion\IdentificacionFrm.cs">
       <SubType>Form</SubType>
@@ -216,6 +229,20 @@
     </Compile>
     <Compile Include="Producto\Listar\ListaFrm.Designer.cs">
       <DependentUpon>ListaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Precio\Actualizar\data.cs" />
+    <Compile Include="Producto\Precio\Actualizar\dataGuardar.cs" />
+    <Compile Include="Producto\Precio\Actualizar\dataPrdEditar.cs" />
+    <Compile Include="Producto\Precio\Actualizar\dataPrecio.cs" />
+    <Compile Include="Producto\Precio\Actualizar\dataPrecioGuardar.cs" />
+    <Compile Include="Producto\Precio\Actualizar\dataProducto.cs" />
+    <Compile Include="Producto\Precio\Actualizar\Editar.cs" />
+    <Compile Include="Producto\Precio\Actualizar\IEditar.cs" />
+    <Compile Include="Producto\Precio\Actualizar\PrecioEditarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Precio\Actualizar\PrecioEditarFrm.designer.cs">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -275,6 +302,7 @@
     <Compile Include="Proveedor\Estatus\Gestion.cs" />
     <Compile Include="Proveedor\Listar\data.cs" />
     <Compile Include="Proveedor\Listar\Gestion.cs" />
+    <Compile Include="Proveedor\Listar\IListar.cs" />
     <Compile Include="Proveedor\Listar\ListaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +363,8 @@
     <Compile Include="Reportes\Filtros\GeneralDocumentos\Filtros.cs" />
     <Compile Include="Reportes\Filtros\GeneralDocumentos\Gestion.cs" />
     <Compile Include="Reportes\Filtros\Gestion.cs" />
+    <Compile Include="Reportes\Filtros\HlpFiltrar.cs" />
+    <Compile Include="Reportes\Filtros\IFiltrar.cs" />
     <Compile Include="Reportes\Filtros\IFiltros.cs" />
     <Compile Include="Reportes\Filtros\IReporte.cs" />
     <Compile Include="Reportes\ReporteFrm.cs">
@@ -357,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Anular\AnularFrm.resx">
       <DependentUpon>AnularFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuracion\Modulo\CnfModuloFrm.resx">
+      <DependentUpon>CnfModuloFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Corrector\Documento\CorrectorFrm.resx">
       <DependentUpon>CorrectorFrm.cs</DependentUpon>
@@ -396,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Listar\ListaFrm.resx">
       <DependentUpon>ListaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Precio\Actualizar\PrecioEditarFrm.resx">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -508,7 +544,9 @@
     <Content Include="Imagenes\bt_asignar.png" />
     <Content Include="Imagenes\bt_borrar.png" />
     <Content Include="Imagenes\bt_buscar.png" />
+    <Content Include="Imagenes\bt_buscar_32.png" />
     <Content Include="Imagenes\bt_campana.png" />
+    <Content Include="Imagenes\bt_configuracion.png" />
     <Content Include="Imagenes\bt_consulta.png" />
     <Content Include="Imagenes\bt_costo.png" />
     <Content Include="Imagenes\bt_documento.png" />
@@ -571,6 +609,7 @@
     <Content Include="Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Imagenes\mobile.ico" />
     <Content Include="Imagenes\plataforma-efosearch.jpg" />
+    <Content Include="Imagenes\setup.png" />
     <Content Include="Imagenes\sinImagen.png" />
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
@@ -583,7 +622,9 @@
     <Content Include="Resources\bt_asignar.png" />
     <Content Include="Resources\bt_borrar.png" />
     <Content Include="Resources\bt_buscar.png" />
+    <None Include="Resources\bt_buscar_32.png" />
     <Content Include="Resources\bt_campana.png" />
+    <None Include="Resources\bt_configuracion.png" />
     <Content Include="Resources\bt_consulta.png" />
     <Content Include="Resources\bt_costo.png" />
     <Content Include="Resources\bt_documento.png" />
@@ -645,6 +686,7 @@
     <Content Include="Resources\Machine-learning-1024x682.jpg" />
     <Content Include="Resources\mobile.ico" />
     <Content Include="Resources\plataforma-efosearch.jpg" />
+    <None Include="Resources\setup.png" />
     <Content Include="Resources\sinImagen.png" />
     <Content Include="Resources\TOOLS.ico" />
     <Content Include="Resources\transferencia.png" />
@@ -664,6 +706,7 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

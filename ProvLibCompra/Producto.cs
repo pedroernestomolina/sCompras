@@ -12,7 +12,8 @@ namespace ProvLibCompra
     public partial class Provider: ILibCompras.IProvider
     {
 
-        public DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen> Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen> 
+            Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen>();
 
@@ -40,6 +41,7 @@ namespace ProvLibCompra
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p6 = new MySql.Data.MySqlClient.MySqlParameter();
 
                     var valor = "";
                     if (filtro.cadena != "")
@@ -98,6 +100,12 @@ namespace ProvLibCompra
                         p1.ParameterName = "@p";
                         p1.Value = valor;
                     }
+                    if (filtro.autoDeposito != "")
+                    {
+                        sql_2 += " join productos_deposito as pDeposito on pDeposito.auto_producto = p.auto and pDeposito.auto_deposito= @autoDeposito ";
+                        p6.ParameterName = "@autoDeposito";
+                        p6.Value = filtro.autoDeposito;
+                    }
                     if (filtro.autoDepartamento != "")
                     {
                         sql_3 += " and p.auto_departamento=@autoDepartamento ";
@@ -124,7 +132,7 @@ namespace ProvLibCompra
                         p2.Value = filtro.autoProveedor;
                     }
                     var sql = sql_1 + sql_2 + sql_3;
-                    var list= cnn.Database.SqlQuery<DtoLibCompra.Producto.Lista.Resumen>(sql, p1, p2, p3, p4, p5).ToList();
+                    var list = cnn.Database.SqlQuery<DtoLibCompra.Producto.Lista.Resumen>(sql, p1, p2, p3, p4, p5, p6).ToList();
                     rt.Lista = list;
                 }
             }
@@ -136,8 +144,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Data.Ficha> Producto_GetFicha(string autoPrd)
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Data.Ficha> 
+            Producto_GetFicha(string autoPrd)
         {
             var rt = new DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Data.Ficha>();
 
@@ -220,8 +228,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.ResultadoEntidad<string> Producto_GetCodigoRefProveedor(DtoLibCompra.Producto.CodigoRefProveedor.Filtro filtro)
+        public DtoLib.ResultadoEntidad<string> 
+            Producto_GetCodigoRefProveedor(DtoLibCompra.Producto.CodigoRefProveedor.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoEntidad<string>();
 
@@ -246,8 +254,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Utilidad.Ficha> Producto_GetUtilidadPrecio(string auto)
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Utilidad.Ficha> 
+            Producto_GetUtilidadPrecio(string auto)
         {
             var rt = new DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Utilidad.Ficha>();
 
@@ -310,8 +318,8 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-        public DtoLib.Resultado Producto_VerificaDepositoAsignado(DtoLibCompra.Producto.VerificarDepositoAsignado.Ficha ficha)
+        public DtoLib.Resultado 
+            Producto_VerificaDepositoAsignado(DtoLibCompra.Producto.VerificarDepositoAsignado.Ficha ficha)
         {
             var rt = new DtoLib.Resultado();
 
@@ -326,6 +334,132 @@ namespace ProvLibCompra
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;
                         return rt;
                     }
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Precio.Capturar.Ficha> 
+            Producto_Precio_GetCapturar_ById(string idPrd)
+        {
+            var rt = new DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Precio.Capturar.Ficha>();
+
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql_1 = @"SELECT 
+                                    p.auto_precio_1 as idEmp1_1, 
+                                    p.auto_precio_2 as idEmp1_2, 
+                                    p.auto_precio_3 as idEmp1_3,  
+                                    p.auto_precio_4 as idEmp1_4, 
+                                    p.auto_precio_pto as idEmp1_5,
+                                    p.contenido_1 as contEmp1_1, 
+                                    p.contenido_2 as contEmp1_2, 
+                                    p.contenido_3 as contEmp1_3, 
+                                    p.contenido_4 as contEmp1_4,  
+                                    p.contenido_pto as contEmp1_5,  
+                                    p.utilidad_1 as utEmp1_1,
+                                    p.utilidad_2 as utEmp1_2,
+                                    p.utilidad_3 as utEmp1_3,
+                                    p.utilidad_4 as utEmp1_4,
+                                    p.utilidad_pto as utEmp1_5,
+                                    p.precio_1 as pnEmp1_1,
+                                    p.precio_2 as pnEmp1_2,
+                                    p.precio_3 as pnEmp1_3,
+                                    p.precio_4 as pnEmp1_4,
+                                    p.precio_pto as pnEmp1_5,
+                                    p.pdf_1 as pfdEmp1_1,
+                                    p.pdf_2 as pfdEmp1_2,
+                                    p.pdf_3 as pfdEmp1_3,
+                                    p.pdf_4 as pfdEmp1_4,
+                                    p.pdf_pto as pfdEmp1_5,
+
+                                    pExt.auto_precio_may_1 as idEmp2_1, 
+                                    pExt.auto_precio_may_2 as idEmp2_2, 
+                                    pExt.auto_precio_may_3 as idEmp2_3, 
+                                    pExt.auto_precio_may_4 as idEmp2_4, 
+                                    pExt.contenido_may_1 as contEmp2_1, 
+                                    pExt.contenido_may_2 as contEmp2_2, 
+                                    pExt.contenido_may_3 as contEmp2_3, 
+                                    pExt.cont_may_4 as contEmp2_4, 
+                                    pExt.utilidad_may_1 as utEmp2_1,
+                                    pExt.utilidad_may_2 as utEmp2_2,
+                                    pExt.utilidad_may_3 as utEmp2_3,
+                                    pExt.utilidad_may_4 as utEmp2_4,
+                                    pExt.precio_may_1 as pnEmp2_1,
+                                    pExt.precio_may_2 as pnEmp2_2,
+                                    pExt.precio_may_3 as pnEmp2_3,
+                                    pExt.precio_may_4 as pnEmp2_4,
+                                    pExt.pdmf_1 as pfdEmp2_1,
+                                    pExt.pdmf_2 as pfdEmp2_2,
+                                    pExt.pdmf_3 as pfdEmp2_3,
+                                    pExt.pdmf_4 as pfdEmp2_4,
+        
+                                    pExt.auto_precio_dsp_1 as idEmp3_1, 
+                                    pExt.auto_precio_dsp_2 as idEmp3_2, 
+                                    pExt.auto_precio_dsp_3 as idEmp3_3, 
+                                    pExt.auto_precio_dsp_4 as idEmp3_4, 
+                                    pExt.cont_dsp_1 as contEmp3_1, 
+                                    pExt.cont_dsp_2 as contEmp3_2, 
+                                    pExt.cont_dsp_3 as contEmp3_3, 
+                                    pExt.cont_dsp_4 as contEmp3_4, 
+                                    pExt.utilidad_dsp_1 as utEmp3_1,
+                                    pExt.utilidad_dsp_2 as utEmp3_2,
+                                    pExt.utilidad_dsp_3 as utEmp3_3,
+                                    pExt.utilidad_dsp_4 as utEmp3_4,
+                                    pExt.precio_dsp_1 as pnEmp3_1,
+                                    pExt.precio_dsp_2 as pnEmp3_2,
+                                    pExt.precio_dsp_3 as pnEmp3_3,
+                                    pExt.precio_dsp_4 as pnEmp3_4,
+                                    pExt.pdivisafull_dsp_1 as pfdEmp3_1,
+                                    pExt.pdivisafull_dsp_2 as pfdEmp3_2,
+                                    pExt.pdivisafull_dsp_3 as pfdEmp3_3,
+                                    pExt.pdivisafull_dsp_4 as pfdEmp3_4
+
+                                    FROM productos as p
+                                    join productos_ext as pExt on pExt.auto_producto=p.auto
+                                    where p.auto=@id";
+                    var sql = sql_1;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@id", idPrd);
+                    var _ent = cnn.Database.SqlQuery<DtoLibCompra.Producto.Precio.Capturar.Ficha>(sql, p1).FirstOrDefault();
+                    if (_ent == null) 
+                    {
+                        rt.Mensaje = "PRODUCTO [ ID ] NO ENCONTRADO";
+                        rt.Result = DtoLib.Enumerados.EnumResult.isError;
+                        return rt;
+                    }
+                    rt.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
+        public DtoLib.ResultadoLista<DtoLibCompra.Producto.EmpaqueMedida.Lista.Ficha> 
+            Producto_EmpaqueMedida_GetLista()
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibCompra.Producto.EmpaqueMedida.Lista.Ficha>();
+
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql_1 = @"select 
+                                        auto, nombre  
+                                    from productos_medida 
+                                    where 1=1";
+                    var lst = cnn.Database.SqlQuery<DtoLibCompra.Producto.EmpaqueMedida.Lista.Ficha>(sql_1).ToList();
+                    rt.Lista = lst;
                 }
             }
             catch (Exception e)

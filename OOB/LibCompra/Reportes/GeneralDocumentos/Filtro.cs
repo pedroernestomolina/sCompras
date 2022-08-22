@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 namespace OOB.LibCompra.Reportes.GeneralDocumentos
 {
     
-    public class Filtro
+    public class Filtro: BaseFiltro
     {
 
-        public string codSucursal { get; set; }
         public Enumerados.EnumEstatus estatus { get; set; }
-        public DateTime desde { get; set; }
-        public DateTime hasta { get; set; }
 
 
         public Filtro()
         {
             codSucursal = "";
+            autoProveedor = "";
             estatus = Enumerados.EnumEstatus.SinDefinir;
             desde = DateTime.Now.Date;
             hasta = DateTime.Now.Date;

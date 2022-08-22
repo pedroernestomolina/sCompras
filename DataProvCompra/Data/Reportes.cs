@@ -12,7 +12,8 @@ namespace DataProvCompra.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibCompra.Reportes.GeneralDocumentos.Ficha> Reportes_ComprasDocumento(OOB.LibCompra.Reportes.GeneralDocumentos.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Reportes.GeneralDocumentos.Ficha> 
+            Reportes_ComprasDocumento(OOB.LibCompra.Reportes.GeneralDocumentos.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Reportes.GeneralDocumentos.Ficha>();
 
@@ -21,6 +22,7 @@ namespace DataProvCompra.Data
                 desde = filtro.desde,
                 hasta = filtro.hasta,
                 codSucursal = filtro.codSucursal,
+                autoProveedor=filtro.autoProveedor,
                 estatus = (DtoLibCompra.Reportes.Enumerados.EnumEstatus)filtro.estatus,
             };
             var r01 = MyData.Reportes_ComprasDocumento (filtroDto);
@@ -64,8 +66,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraporDepartamento.Ficha> Reportes_ComprasPorDepartamento(OOB.LibCompra.Reportes.CompraporDepartamento.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraporDepartamento.Ficha> 
+            Reportes_ComprasPorDepartamento(OOB.LibCompra.Reportes.CompraporDepartamento.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraporDepartamento.Ficha>();
 
@@ -73,6 +75,8 @@ namespace DataProvCompra.Data
             {
                 desde = filtro.desde,
                 hasta = filtro.hasta,
+                codSucursal = filtro.codSucursal,
+                autoProveedor=filtro.autoProveedor,
             };
             var r01 = MyData.Reportes_ComprasPorDepartamento (filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -107,8 +111,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraporProducto.Ficha> Reportes_CompraPorProducto(OOB.LibCompra.Reportes.CompraporProducto.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraporProducto.Ficha> 
+            Reportes_CompraPorProducto(OOB.LibCompra.Reportes.CompraporProducto.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraporProducto.Ficha>();
 
@@ -116,6 +120,8 @@ namespace DataProvCompra.Data
             {
                 desde = filtro.desde,
                 hasta = filtro.hasta,
+                codSucursal = filtro.codSucursal,
+                autoProveedor = filtro.autoProveedor,
             };
             var r01 = MyData.Reportes_CompraPorProducto(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -152,8 +158,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraPorProductoDetalle.Ficha> Reportes_CompraPorProductoDetalle(OOB.LibCompra.Reportes.CompraPorProductoDetalle.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraPorProductoDetalle.Ficha> 
+            Reportes_CompraPorProductoDetalle(OOB.LibCompra.Reportes.CompraPorProductoDetalle.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraPorProductoDetalle.Ficha>();
 
@@ -161,6 +167,8 @@ namespace DataProvCompra.Data
             {
                 desde = filtro.desde,
                 hasta = filtro.hasta,
+                codSucursal = filtro.codSucursal,
+                autoProveedor = filtro.autoProveedor,
             };
             var r01 = MyData.Reportes_CompraPorProductoDetalle (filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

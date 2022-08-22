@@ -68,7 +68,6 @@ namespace ModCompra
         {
             RegistrarFacturaCompra();
         }
-
         private void RegistrarFacturaCompra()
         {
             _controlador.RegistrarFacturaCompra();
@@ -78,7 +77,6 @@ namespace ModCompra
         {
             this.Visible = false;
         }
-
         public void setVisibilidadOn()
         {
             this.Visible = true;
@@ -88,7 +86,6 @@ namespace ModCompra
         {
             AdministradorDoc();
         }
-
         private void AdministradorDoc()
         {
             _controlador.AdministradorDoc();
@@ -98,47 +95,47 @@ namespace ModCompra
         {
             ReporteGeneralDocumentos();
         }
-
         private void ReporteGeneralDocumentos()
         {
             _controlador.ReporteGeneralDocumentos();
         }
-
         private void MENU_REPORTES_COMPRAS_DEPARTAMENTOS_Click(object sender, EventArgs e)
         {
             ReporteComprasDepartamentos();
         }
-
         private void ReporteComprasDepartamentos()
         {
             _controlador.ReporteComprasDepartamentos();
         }
-
         private void MENU_REPORTES_COMPRAS_POR_PRODUCTO_Click(object sender, EventArgs e)
         {
             ReporteComprasPorProducto();
         }
-
         private void ReporteComprasPorProducto()
         {
             _controlador.ReporteComprasPorProducto();
         }
-
         private void MENU_REPORTES_COMPRAS_POR_PRODUCTO_DETALLE_Click(object sender, EventArgs e)
         {
             ReporteComprasDetalleProducto();
         }
-
         private void ReporteComprasDetalleProducto()
         {
             _controlador.ReporteComprasDetalleProducto();
+        }
+        private void MENU_REPORTES_COMPRAS_CON_CAMBIOS_PRECIO_Click(object sender, EventArgs e)
+        {
+            ReporteComprasConCambiosPrecio();
+        }
+        private void ReporteComprasConCambiosPrecio()
+        {
+            _controlador.ReporteComprasConCambiosPrecio();
         }
 
         private void MENU_DOCUMENTOS_REGISTRAR_NC_COMPRA_Click(object sender, EventArgs e)
         {
             RegistrarNcCompra();
         }
-
         private void RegistrarNcCompra()
         {
             _controlador.RegistrarNcCompra();
@@ -148,7 +145,6 @@ namespace ModCompra
         {
             MaestrosGrupos();
         }
-
         private void MaestrosGrupos()
         {
             _controlador.MaestrosGrupos();
@@ -158,7 +154,6 @@ namespace ModCompra
         {
             MaestroProveedor();
         }
-
         private void MaestroProveedor()
         {
             _controlador.MaestroProveedor();
@@ -168,10 +163,18 @@ namespace ModCompra
         {
             ReporteMaestroProveedores();
         }
-
         private void ReporteMaestroProveedores()
         {
             _controlador.ReporteMaestroProveedor();
+        }
+
+        private void TSM_CONFIGURACION_SISTEMA_Click(object sender, EventArgs e)
+        {
+            ConfiguracionSistema();
+        }
+        private void ConfiguracionSistema()
+        {
+            _controlador.ConfiguracionSistema();
         }
 
     }

@@ -344,7 +344,7 @@ namespace ModCompra.Documento.Cargar
             this.CodRefPrv = it.codRefProv;
             this.cantidad = it.cntFactura;
             this.costoMoneda = it.precioFactura;
-            this.costoDivisa = it.precioFactura / factorDivisa;
+            this.costoDivisa = it.precioFacturaDivisa;
             this.dsct_1_p = it.dscto1p;
             this.dsct_2_p = it.dscto2p;
             this.dsct_3_p = it.dscto3p;
@@ -649,6 +649,20 @@ namespace ModCompra.Documento.Cargar
             _dscto_final = (total * _porct_dscto_final / 100);
             _cargo_final = (total - _dscto_final) * (_porct_cargo_final / 100);
             _total_final = (total - _dscto_final + _cargo_final);
+        }
+
+
+        private bool _actualizarPrecio;
+        private ModCompra.Producto.Precio.Actualizar.dataGuardar _dataPrecios;
+        public bool GetActualizarPrecio { get { return _actualizarPrecio; } }
+        public ModCompra.Producto.Precio.Actualizar.dataGuardar GetDataPrecios { get { return _dataPrecios; } }
+        public void setActualizarPrecio(bool p)
+        {
+            _actualizarPrecio = p;
+        }
+        public void setDataPrecios(ModCompra.Producto.Precio.Actualizar.dataGuardar dataGuardar)
+        {
+            _dataPrecios = dataGuardar;
         }
 
     }

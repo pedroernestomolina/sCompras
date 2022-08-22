@@ -59,11 +59,13 @@ namespace ModCompra.Documento.Cargar.Formulario
 
             TB_COD_REF_PRV.Text = _controlador.CodigoRefProveedor;
             TB_CNT.Text = _controlador.Cantidad.ToString();
-            TB_COSTO_MONEDA.Text = _controlador.CostoMoneda.ToString();
-            TB_COSTO_DIVISA3.Text = _controlador.CostoDivisa.ToString();
+            TB_COSTO_MONEDA.Text = Math.Round(_controlador.CostoMoneda, 2, MidpointRounding.AwayFromZero).ToString();
+            TB_COSTO_DIVISA3.Text = Math.Round(_controlador.CostoDivisa, 2, MidpointRounding.AwayFromZero).ToString();
             TB_DSCTO_1.Text = _controlador.Dscto_1.ToString();
             TB_DSCTO_2.Text = _controlador.Dscto_2.ToString();
             TB_DSCTO_3.Text = _controlador.Dscto_3.ToString();
+
+            CHB_ACTUALIZAR_PRECIO_VENTA.Checked = _controlador.GetActualizarPrecioVenta;
 
             ActualizarImporte();
         }
@@ -148,7 +150,6 @@ namespace ModCompra.Documento.Cargar.Formulario
         {
             Aceptar();
         }
-
         private void Aceptar()
         {
             _controlador.Aceptar();
