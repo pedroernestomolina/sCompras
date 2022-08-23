@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibCompra.Reportes.GeneralDocumentos
+namespace DtoLibCompra.Reportes.CompraConCambioPrecios
 {
     
     public class Ficha
     {
 
+        public string estatusAnulado { get; set; }
         public DateTime fecha { get; set; }
         public string documento { get; set; }
         public string control { get; set; }
@@ -24,13 +25,11 @@ namespace OOB.LibCompra.Reportes.GeneralDocumentos
         public decimal factorDoc { get; set; }
         public int signoDoc { get; set; }
         public string nombreDoc { get; set; }
-        public decimal montoDscto { get; set; }
-        public decimal montoCargo { get; set; }
-        public bool EsAnulado { get; set; }
 
 
         public Ficha()
         {
+            estatusAnulado = "";
             fecha = DateTime.Now.Date;
             documento = "";
             control = "";
@@ -44,9 +43,6 @@ namespace OOB.LibCompra.Reportes.GeneralDocumentos
             factorDoc = 0m;
             signoDoc = 0;
             nombreDoc = "";
-            EsAnulado = false;
-            montoCargo = 0m;
-            montoDscto = 0m;
         }
 
     }

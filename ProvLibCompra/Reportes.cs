@@ -26,22 +26,21 @@ namespace ProvLibCompra
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
 
-                    var sql_1 = "SELECT " +
-                        "p.auto_departamento as autoDepartamento,  " +
-                        "sum(cd.cantidad_und*cd.costo_und) as total, " +
-                        "sum((cd.cantidad_und*cd.costo_und)/c.factor_cambio) as totalDivisa, " +
-                        "c.signo as signoDoc, " +
-                        "c.tipo as tipoDoc, " +
-                        "ed.nombre as nombreDepartamento, " +
-                        "c.documento_nombre as nombreDoc, " +
-                        "c.serie as serieDoc ";
-                    var sql_2 = "FROM compras_detalle as cd " +
-                        "join compras as c on cd.auto_documento=c.auto " +
-                        "join productos as p on cd.auto_producto=p.auto " +
-                        "join empresa_departamentos as ed on ed.auto=p.auto_departamento ";
-                    var sql_3 = "where c.estatus_anulado='0' ";
-                    var sql_4 = "group by ed.nombre, ed.auto, c.tipo, c.signo, c.documento_nombre, c.serie ";
-
+                    var sql_1 = @"SELECT 
+                                    p.auto_departamento as autoDepartamento,  
+                                    sum(cd.cantidad_und*cd.costo_und) as total, 
+                                    sum((cd.cantidad_und*cd.costo_und)/c.factor_cambio) as totalDivisa, 
+                                    c.signo as signoDoc, 
+                                    c.tipo as tipoDoc, 
+                                    ed.nombre as nombreDepartamento, 
+                                    c.documento_nombre as nombreDoc, 
+                                    c.serie as serieDoc ";
+                    var sql_2 = @" FROM compras_detalle as cd 
+                                    join compras as c on cd.auto_documento=c.auto 
+                                    join productos as p on cd.auto_producto=p.auto 
+                                    join empresa_departamentos as ed on ed.auto=p.auto_departamento ";
+                    var sql_3 = " where c.estatus_anulado='0' ";
+                    var sql_4 = " group by ed.nombre, ed.auto, c.tipo, c.signo, c.documento_nombre, c.serie ";
                     sql_3 += " and c.fecha>=@desde ";
                     p1.ParameterName = "@desde";
                     p1.Value = filtro.desde;
@@ -88,22 +87,22 @@ namespace ProvLibCompra
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p5 = new MySql.Data.MySqlClient.MySqlParameter();
 
-                    var sql_1 = "SELECT " +
-                        "fecha, " +
-                        "documento, control, " +
-                        "serie as serieDoc, " +
-                        "estatus_anulado as estatusAnulado, " +
-                        "razon_social as provNombre, " +
-                        "ci_rif as provCiRif, " +
-                        "total, " +
-                        "tipo as tipoDoc, " +
-                        "monto_divisa as totalDivisa, " +
-                        "renglones, " +
-                        "factor_cambio as factorDoc, " +
-                        "signo as signoDoc, " +
-                        "documento_nombre as nombreDoc, " +
-                        "(descuento1+descuento2) as montoDscto, " +
-                        "cargos as montoCargo ";
+                    var sql_1 = @"SELECT 
+                                    fecha, 
+                                    documento, control, 
+                                    serie as serieDoc, 
+                                    estatus_anulado as estatusAnulado, 
+                                    razon_social as provNombre, 
+                                    ci_rif as provCiRif, 
+                                    total, 
+                                    tipo as tipoDoc, 
+                                    monto_divisa as totalDivisa, 
+                                    renglones, 
+                                    factor_cambio as factorDoc, 
+                                    signo as signoDoc, 
+                                    documento_nombre as nombreDoc, 
+                                    (descuento1+descuento2) as montoDscto, 
+                                    cargos as montoCargo ";
                     var sql_2 = "FROM compras as c ";
                     var sql_3 = "where 1=1 ";
                     var sql_4 = "";
@@ -161,22 +160,22 @@ namespace ProvLibCompra
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
 
-                    var sql_1 = "SELECT " +
-                       "auto_producto as autoPrd, " +
-                       "codigo as codigoPrd, " +
-                       "nombre as nombrePrd, " +
-                       "cantidad_und as cantUnd, " +
-                       "costo_und as costoUnd, " +
-                       "c.signo as signoDoc, " +
-                       "c.documento, " +
-                       "c.fecha, " +
-                       "c.tipo as tipoDoc, " +
-                       "c.serie as serieDoc, " +
-                       "c.documento_nombre as nombreDoc, " +
-                       "c.factor_cambio as factor ";
-                    var sql_2 = "FROM compras_detalle as cd " +
-                        "join compras as c on c.auto=cd.auto_documento ";
-                    var sql_3 = "where 1=1 and c.estatus_anulado='0' ";
+                    var sql_1 = @"SELECT 
+                                   auto_producto as autoPrd, 
+                                   codigo as codigoPrd, 
+                                   nombre as nombrePrd, 
+                                   cantidad_und as cantUnd, 
+                                   costo_und as costoUnd, 
+                                   c.signo as signoDoc, 
+                                   c.documento, 
+                                   c.fecha, 
+                                   c.tipo as tipoDoc, 
+                                   c.serie as serieDoc, 
+                                   c.documento_nombre as nombreDoc, 
+                                   c.factor_cambio as factor ";
+                    var sql_2 = @" FROM compras_detalle as cd 
+                                    join compras as c on c.auto=cd.auto_documento ";
+                    var sql_3 = " where 1=1 and c.estatus_anulado='0' ";
                     var sql_4 = "";
                     sql_3 += " and c.fecha>=@desde ";
                     p1.ParameterName = "@desde";
@@ -222,22 +221,22 @@ namespace ProvLibCompra
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
-                    var sql_1 = "SELECT " +
-                        "p.auto as autoPrd, " +
-                        "p.codigo as codigoPrd, " +
-                        "p.nombre as nombrePrd, " +
-                        "sum(cd.cantidad_und) as cantUnd, " +
-                        "sum(cd.cantidad_und*cd.costo_und) as total, " +
-                        "sum((cd.cantidad_und*cd.costo_und)/c.factor_cambio) as totalDivisa, " +
-                        "c.signo as signoDoc, " +
-                        "c.tipo as tipoDoc, " +
-                        "c.serie as serieDoc, " +
-                        "c.documento_nombre as nombreDoc ";
-                    var sql_2 = "FROM compras_detalle as cd " +
-                        "join compras as c on c.auto=cd.auto_documento " +
-                        "join productos as p on p.auto=cd.auto_producto ";
-                    var sql_3 = "where 1=1 and c.estatus_anulado='0' ";
-                    var sql_4 = "group by p.auto, p.codigo, p.nombre, c.signo, c.tipo, c.serie, c.documento_nombre ";
+                    var sql_1 = @"SELECT 
+                                    p.auto as autoPrd, 
+                                    p.codigo as codigoPrd, 
+                                    p.nombre as nombrePrd, 
+                                    sum(cd.cantidad_und) as cantUnd, 
+                                    sum(cd.cantidad_und*cd.costo_und) as total, 
+                                    sum((cd.cantidad_und*cd.costo_und)/c.factor_cambio) as totalDivisa, 
+                                    c.signo as signoDoc, 
+                                    c.tipo as tipoDoc, 
+                                    c.serie as serieDoc, 
+                                    c.documento_nombre as nombreDoc ";
+                    var sql_2 = @" FROM compras_detalle as cd 
+                                    join compras as c on c.auto=cd.auto_documento 
+                                    join productos as p on p.auto=cd.auto_producto ";
+                    var sql_3 = " where 1=1 and c.estatus_anulado='0' ";
+                    var sql_4 = " group by p.auto, p.codigo, p.nombre, c.signo, c.tipo, c.serie, c.documento_nombre ";
                     sql_3 += " and c.fecha>=@desde ";
                     p1.ParameterName = "@desde";
                     p1.Value = filtro.desde;
@@ -258,6 +257,70 @@ namespace ProvLibCompra
                     }
                     var sql = sql_1 + sql_2 + sql_3 + sql_4;
                     var lst = cnn.Database.SqlQuery<DtoLibCompra.Reportes.CompraPorProducto.Ficha>(sql, p1, p2, p3, p4).ToList();
+                    rt.Lista = lst;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
+        public DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraConCambioPrecios.Ficha> 
+            Reportes_CompraConCambioPrecios(DtoLibCompra.Reportes.CompraConCambioPrecios.Filtro filtro)
+        {
+            var rt = new DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraConCambioPrecios.Ficha>();
+
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+
+                    var sql_1 = @"SELECT 
+                                    c.fecha, 
+                                    c.documento, control, 
+                                    c.serie as serieDoc, 
+                                    c.estatus_anulado as estatusAnulado, 
+                                    c.razon_social as provNombre, 
+                                    c.ci_rif as provCiRif, 
+                                    c.total, 
+                                    c.tipo as tipoDoc, 
+                                    c.monto_divisa as totalDivisa, 
+                                    c.renglones, 
+                                    c.factor_cambio as factorDoc, 
+                                    c.signo as signoDoc, 
+                                    c.documento_nombre as nombreDoc ";
+                    var sql_2 = @" FROM compras as c 
+                                    join compras_detalle as cd on cd.auto_documento=c.auto ";
+                    var sql_3 = " where 1=1 and cd.estatus_cambio_precio_venta='1' ";
+                    var sql_4 = "";
+                    sql_3 += " and c.fecha>=@desde ";
+                    p1.ParameterName = "@desde";
+                    p1.Value = filtro.desde;
+                    sql_3 += " and c.fecha<=@hasta ";
+                    p2.ParameterName = "@hasta";
+                    p2.Value = filtro.hasta;
+                    if (filtro.codSucursal != "")
+                    {
+                        sql_3 += " and c.codigo_sucursal=@suc ";
+                        p3.ParameterName = "@suc";
+                        p3.Value = filtro.codSucursal;
+                    }
+                    if (filtro.autoProveedor != "")
+                    {
+                        sql_3 += " and c.auto_Proveedor=@autoProveedor ";
+                        p5.ParameterName = "@autoProveedor";
+                        p5.Value = filtro.autoProveedor;
+                    }
+                    var sql = sql_1 + sql_2 + sql_3 + sql_4;
+                    var lst = cnn.Database.SqlQuery<DtoLibCompra.Reportes.CompraConCambioPrecios.Ficha>(sql, p1, p2, p3, p4, p5).ToList();
                     rt.Lista = lst;
                 }
             }

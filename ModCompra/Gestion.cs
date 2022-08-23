@@ -168,12 +168,16 @@ namespace ModCompra
         {
             if (PermisoReporte())
             {
-                _gestionRep.setGestion(new Reportes.Filtros.CompraDetalleProducto.Gestion());
-                _gestionRep.Inicia();
+                GenerarReporte(new Reportes.Filtros.CompraConCambioPrecios.Gestion());
             }
         }
 
 
+        private void GenerarReporte(Reportes.Filtros.IReporte rep)
+        {
+            _gestionRep.setGestion(rep);
+            _gestionRep.Inicia();
+        }
         private bool PermisoReporte()
         {
             return SolicitarPermiso(Sistema.MyData.Permiso_Reportes, Sistema.UsuarioP.autoGru);

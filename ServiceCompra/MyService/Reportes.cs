@@ -32,6 +32,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Reportes_CompraPorProducto(filtro);
         }
+        public DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraConCambioPrecios.Ficha> 
+            Reportes_CompraConCambioPrecios(DtoLibCompra.Reportes.CompraConCambioPrecios.Filtro filtro)
+        {
+            return ServiceProv.Reportes_CompraConCambioPrecios(filtro);
+        }
 
     }
 

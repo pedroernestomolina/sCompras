@@ -209,6 +209,56 @@ namespace DataProvCompra.Data
 
             return rt;
         }
+        public OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraConCambioPrecios.Ficha> 
+            Reportes_CompraConCambioPrecios(OOB.LibCompra.Reportes.CompraConCambioPrecios.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraConCambioPrecios.Ficha>();
+
+            var filtroDto = new DtoLibCompra.Reportes.CompraConCambioPrecios.Filtro()
+            {
+                desde = filtro.desde,
+                hasta = filtro.hasta,
+                codSucursal = filtro.codSucursal,
+                autoProveedor = filtro.autoProveedor,
+            };
+            var r01 = MyData.Reportes_CompraConCambioPrecios(filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var list = new List<OOB.LibCompra.Reportes.CompraConCambioPrecios.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        return new OOB.LibCompra.Reportes.CompraConCambioPrecios.Ficha()
+                        {
+                            documento = s.documento,
+                            control = s.control,
+                            EsAnulado = s.estatusAnulado.Trim().ToUpper() == "1",
+                            factorDoc = s.factorDoc,
+                            fecha = s.fecha,
+                            nombreDoc = s.nombreDoc,
+                            provCiRif = s.provCiRif,
+                            provNombre = s.provNombre,
+                            renglones = s.renglones,
+                            serieDoc = s.serieDoc,
+                            signoDoc = s.signoDoc,
+                            tipoDoc = s.tipoDoc,
+                            total = s.total,
+                            totalDivisa = s.totalDivisa,
+                        };
+                    }).ToList();
+                }
+            }
+            rt.Lista = list;
+
+            return rt;
+        }
 
     }
 

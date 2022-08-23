@@ -167,10 +167,6 @@ namespace ModCompra.Administrador.Documentos
             }
         }
 
-        public void Imprimir()
-        {
-        }
-
         public void setLista(List<OOB.LibCompra.Documento.Lista.Ficha> list)
         {
             bl.Clear();
@@ -207,6 +203,9 @@ namespace ModCompra.Administrador.Documentos
             bl.Clear();
             bs.CurrencyManager.Refresh();
         }
+
+        public int GetCntItems { get { return bs.Count; } }
+        public List<data> GetItems { get { return bl.ToList(); } }
 
     }
 

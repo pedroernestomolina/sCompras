@@ -20,6 +20,7 @@ namespace ModCompra.Administrador.Documentos
         private Anular.Gestion _gestionAnular;
         private Filtros.Gestion _gestionFiltros;
         private Proveedor.Listar.Gestion _gestionListaPrv;
+        private Reportes.AdministradorCompra.IRepAdmDoc _gRepAdmDoc;
 
 
         public enumerados.EnumTipoAdministrador TipoAdministrador { get { return enumerados.EnumTipoAdministrador.AdmDocumentos; } }
@@ -45,6 +46,7 @@ namespace ModCompra.Administrador.Documentos
             _gestionListaDetalle.setGestionAnular(_gestionAnular);
             _gestionListaPrv = new Proveedor.Listar.Gestion();
             _gestionListaPrv.ItemSeleccionadoOk += _gestionListaPrv_ItemSeleccionadoOk;
+            _gRepAdmDoc = new Reportes.AdministradorCompra.RepAdmDoc();
         }
 
         private void _gestionListaPrv_ItemSeleccionadoOk(object sender, EventArgs e)
@@ -138,11 +140,6 @@ namespace ModCompra.Administrador.Documentos
         public void VisualizarDocumento()
         {
             _gestionListaDetalle.VisualizarDocumento();
-        }
-
-        public void Imprimir()
-        {
-            _gestionListaDetalle.Imprimir();
         }
 
         public void setFechaDesde(DateTime fecha)
@@ -253,12 +250,56 @@ namespace ModCompra.Administrador.Documentos
             _gestionListaDetalle.Inicializa();
             _gestionListaPrv.Inicializa();
             _gestionFiltros.InicializarFiltros();
-
         }
 
         public void setActivarSeleccionItem(bool p)
         {
             _seleccionItemIsActivo = p;
+        }
+
+
+        public int GetCntItems { get { return _gestionListaDetalle.GetCntItems; } }
+        public List<Documentos.data> GetItems { get { return _gestionListaDetalle.GetItems; } }
+        public void Imprimir()
+        {
+            if (GetCntItems > 0){
+                ImprimirLista(GenerarDataImprimirLista());
+            }
+            else {
+                Helpers.Msg.Alerta("No Hay Items Que Mostrar");
+            }
+        }
+        private void ImprimirLista(List<Reportes.AdministradorCompra.data> lst)
+        {
+            _gRepAdmDoc.setData(lst);
+            _gRepAdmDoc.Generar();
+        }
+        private List<Reportes.AdministradorCompra.data> GenerarDataImprimirLista()
+        {
+            var lst= new List<Reportes.AdministradorCompra.data>();
+            lst = GetItems.Select(s =>
+            {
+                var nr = new Reportes.AdministradorCompra.data()
+                {
+                    Aplica = s.Aplica,
+                    CodigoDoc = s.CodigoDoc,
+                    FechaReg = s.FechaReg,
+                    FechaEmision = s.Fecha,
+                    Importe = s.Importe,
+                    ImporteDivisa = s.ImporteDivisa,
+                    IsAnulado = s.IsAnulado,
+                    NombreDoc = s.NombreDoc,
+                    NumControl = s.Control,
+                    NumDocumento = s.Documento,
+                    ProvCiRif = s.ProvCiRif,
+                    ProvNombre = s.ProvNombre,
+                    SignoDesc = s.Signo,
+                    Situacion = s.Situacion,
+                    Sucursal = s.Sucursal,
+                };
+                return nr;
+            }).ToList();
+            return lst;
         }
 
     }

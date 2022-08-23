@@ -351,7 +351,6 @@ namespace ModCompra.Administrador
         {
             Imprimir();
         }
-
         private void Imprimir()
         {
             _controlador.Imprimir();

@@ -19,6 +19,8 @@ namespace DataProvCompra.InfraEstructura
             Reportes_CompraPorProducto(OOB.LibCompra.Reportes.CompraporProducto.Filtro filtro);
         OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraPorProductoDetalle.Ficha> 
             Reportes_CompraPorProductoDetalle(OOB.LibCompra.Reportes.CompraPorProductoDetalle.Filtro filtro);
+        OOB.ResultadoLista<OOB.LibCompra.Reportes.CompraConCambioPrecios.Ficha> 
+            Reportes_CompraConCambioPrecios(OOB.LibCompra.Reportes.CompraConCambioPrecios.Filtro filtro);
 
     }
 

@@ -336,6 +336,9 @@
     <Compile Include="ReporteProveedor\IGestion.cs" />
     <Compile Include="ReporteProveedor\Modo\Maestro\Filtro.cs" />
     <Compile Include="ReporteProveedor\Modo\Maestro\Gestion.cs" />
+    <Compile Include="Reportes\AdministradorCompra\data.cs" />
+    <Compile Include="Reportes\AdministradorCompra\RepAdmDoc.cs" />
+    <Compile Include="Reportes\AdministradorCompra\IRepAdmDoc.cs" />
     <Compile Include="Reportes\Documento\Gestion.cs" />
     <Compile Include="Reportes\DS.cs">
       <DependentUpon>DS.xsd</DependentUpon>
@@ -346,6 +349,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\Filtros\CompraConCambioPrecios\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\CompraConCambioPrecios\Gestion.cs" />
     <Compile Include="Reportes\Filtros\CompraDepartamentos\Filtros.cs" />
     <Compile Include="Reportes\Filtros\CompraDepartamentos\Gestion.cs" />
     <Compile Include="Reportes\Filtros\CompraDetalleProducto\Filtros.cs" />
@@ -367,6 +372,7 @@
     <Compile Include="Reportes\Filtros\IFiltrar.cs" />
     <Compile Include="Reportes\Filtros\IFiltros.cs" />
     <Compile Include="Reportes\Filtros\IReporte.cs" />
+    <Compile Include="Reportes\IReporte.cs" />
     <Compile Include="Reportes\ReporteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,7 +477,13 @@
     <EmbeddedResource Include="ReporteProveedor\Maestro.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\AdministradorCompra\Listado.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Documento.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Filtros\CompraConCambioPrecios.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\CompraDepartamento.rdlc">

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibCompra.Reportes.GeneralDocumentos
+namespace OOB.LibCompra.Reportes.CompraConCambioPrecios
 {
     
     public class Ficha
@@ -24,8 +24,6 @@ namespace OOB.LibCompra.Reportes.GeneralDocumentos
         public decimal factorDoc { get; set; }
         public int signoDoc { get; set; }
         public string nombreDoc { get; set; }
-        public decimal montoDscto { get; set; }
-        public decimal montoCargo { get; set; }
         public bool EsAnulado { get; set; }
 
 
@@ -45,8 +43,6 @@ namespace OOB.LibCompra.Reportes.GeneralDocumentos
             signoDoc = 0;
             nombreDoc = "";
             EsAnulado = false;
-            montoCargo = 0m;
-            montoDscto = 0m;
         }
 
     }

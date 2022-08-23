@@ -138,6 +138,8 @@
     <Compile Include="Reportes\CompraPorProductoDetalle\Filtro.cs" />
     <Compile Include="Reportes\CompraPorProducto\Ficha.cs" />
     <Compile Include="Reportes\CompraPorProducto\Filtro.cs" />
+    <Compile Include="Reportes\CompraConCambioPrecios\Ficha.cs" />
+    <Compile Include="Reportes\CompraConCambioPrecios\Filtro.cs" />
     <Compile Include="Reportes\Enumerados.cs" />
     <Compile Include="Reportes\Proveedor\Maestro\Ficha.cs" />
     <Compile Include="Reportes\Proveedor\Maestro\Filtro.cs" />

@@ -114,6 +114,8 @@
     <Compile Include="LibCompra\ReporteProv\Maestro\Ficha.cs" />
     <Compile Include="LibCompra\ReporteProv\Maestro\Filtro.cs" />
     <Compile Include="LibCompra\Reportes\BaseFiltro.cs" />
+    <Compile Include="LibCompra\Reportes\CompraConCambioPrecios\Ficha.cs" />
+    <Compile Include="LibCompra\Reportes\CompraConCambioPrecios\Filtro.cs" />
     <Compile Include="LibCompra\Reportes\CompraporDepartamento\Ficha.cs" />
     <Compile Include="LibCompra\Reportes\CompraporDepartamento\Filtro.cs" />
     <Compile Include="LibCompra\Reportes\CompraPorProductoDetalle\Ficha.cs" />

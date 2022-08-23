@@ -19,6 +19,8 @@ namespace ServiceCompra.Interfaces
             Reportes_CompraPorProductoDetalle(DtoLibCompra.Reportes.CompraPorProductoDetalle.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraPorProducto.Ficha> 
             Reportes_CompraPorProducto(DtoLibCompra.Reportes.CompraPorProducto.Filtro filtro);
+        DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraConCambioPrecios.Ficha>
+            Reportes_CompraConCambioPrecios(DtoLibCompra.Reportes.CompraConCambioPrecios.Filtro filtro);
 
     }
 

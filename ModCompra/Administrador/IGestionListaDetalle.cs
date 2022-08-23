@@ -14,16 +14,17 @@ namespace ModCompra.Administrador
 
         BindingSource ItemsSource { get; }
         string ItemsEncontrados { get; }
+        int GetCntItems { get; }
+        Documentos.data ItemActual { get; }
+        List<Documentos.data> GetItems { get; }
 
 
         void AnularItem();
         void LimpiarData();
         void setGestionAnular(Anular.Gestion _gestionAnular);
         void VisualizarDocumento();
-        void Imprimir();
         void setLista(List<OOB.LibCompra.Documento.Lista.Ficha> list);
         void CorrectorDocumento();
-        Documentos.data ItemActual { get; }
         void Inicializa();
 
     }
