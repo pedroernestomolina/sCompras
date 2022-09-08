@@ -683,6 +683,7 @@
             // TB_CONT_EMP_TIPO_1
             // 
             this.TB_CONT_EMP_TIPO_1.BackColor = System.Drawing.Color.Yellow;
+            this.TB_CONT_EMP_TIPO_1.Enabled = false;
             this.TB_CONT_EMP_TIPO_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_EMP_TIPO_1.Location = new System.Drawing.Point(774, 2);
             this.TB_CONT_EMP_TIPO_1.MaxLength = 5;
@@ -697,6 +698,7 @@
             // CB_EMP_TIPO_1
             // 
             this.CB_EMP_TIPO_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_TIPO_1.Enabled = false;
             this.CB_EMP_TIPO_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_TIPO_1.FormattingEnabled = true;
             this.CB_EMP_TIPO_1.Location = new System.Drawing.Point(616, 3);
@@ -938,6 +940,7 @@
             // 
             this.TB_CONT_3.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_3.Enabled = false;
             this.TB_CONT_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_3.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_3.MaxLength = 5;
@@ -1069,6 +1072,7 @@
             // 
             this.TB_CONT_2.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_2.Enabled = false;
             this.TB_CONT_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_2.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_2.MaxLength = 5;
@@ -1095,6 +1099,7 @@
             // 
             this.CB_EMP_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_2.Enabled = false;
             this.CB_EMP_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_2.FormattingEnabled = true;
             this.CB_EMP_2.Location = new System.Drawing.Point(2, 2);
@@ -1222,6 +1227,7 @@
             // 
             this.TB_CONT_1.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_1.Enabled = false;
             this.TB_CONT_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_1.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_1.MaxLength = 5;
@@ -1248,6 +1254,7 @@
             // 
             this.CB_EMP_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_1.Enabled = false;
             this.CB_EMP_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_1.FormattingEnabled = true;
             this.CB_EMP_1.Location = new System.Drawing.Point(2, 2);
@@ -1410,6 +1417,7 @@
             // 
             this.CB_EMP_3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_3.Enabled = false;
             this.CB_EMP_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_3.FormattingEnabled = true;
             this.CB_EMP_3.Location = new System.Drawing.Point(2, 2);
@@ -1561,6 +1569,7 @@
             // 
             this.CB_EMP_4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_4.Enabled = false;
             this.CB_EMP_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_4.FormattingEnabled = true;
             this.CB_EMP_4.Location = new System.Drawing.Point(2, 2);
@@ -1584,6 +1593,7 @@
             // 
             this.TB_CONT_4.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_4.Enabled = false;
             this.TB_CONT_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_4.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_4.MaxLength = 5;
@@ -1736,6 +1746,7 @@
             // 
             this.CB_EMP_5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_5.Enabled = false;
             this.CB_EMP_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_5.FormattingEnabled = true;
             this.CB_EMP_5.Location = new System.Drawing.Point(2, 2);
@@ -1759,6 +1770,7 @@
             // 
             this.TB_CONT_5.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_5.Enabled = false;
             this.TB_CONT_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_5.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_5.MaxLength = 5;
@@ -1990,7 +2002,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.5514F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.59533F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.75875F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 186F));
             this.tableLayoutPanel4.Controls.Add(this.panel63, 5, 1);
             this.tableLayoutPanel4.Controls.Add(this.panel62, 4, 1);
             this.tableLayoutPanel4.Controls.Add(this.panel61, 3, 1);
@@ -2018,11 +2030,11 @@
             // 
             this.panel63.Controls.Add(this.L_FECHA_ULT_ACT);
             this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel63.Location = new System.Drawing.Point(374, 41);
+            this.panel63.Location = new System.Drawing.Point(369, 41);
             this.panel63.Margin = new System.Windows.Forms.Padding(1);
             this.panel63.Name = "panel63";
             this.panel63.Padding = new System.Windows.Forms.Padding(2);
-            this.panel63.Size = new System.Drawing.Size(68, 34);
+            this.panel63.Size = new System.Drawing.Size(67, 34);
             this.panel63.TabIndex = 12;
             // 
             // L_FECHA_ULT_ACT
@@ -2031,7 +2043,7 @@
             this.L_FECHA_ULT_ACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_FECHA_ULT_ACT.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA_ULT_ACT.Name = "L_FECHA_ULT_ACT";
-            this.L_FECHA_ULT_ACT.Size = new System.Drawing.Size(64, 30);
+            this.L_FECHA_ULT_ACT.Size = new System.Drawing.Size(63, 30);
             this.L_FECHA_ULT_ACT.TabIndex = 1;
             this.L_FECHA_ULT_ACT.Text = "99/99/9999";
             this.L_FECHA_ULT_ACT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2040,11 +2052,11 @@
             // 
             this.panel62.Controls.Add(this.L_COSTO_UNIDAD);
             this.panel62.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel62.Location = new System.Drawing.Point(278, 41);
+            this.panel62.Location = new System.Drawing.Point(274, 41);
             this.panel62.Margin = new System.Windows.Forms.Padding(1);
             this.panel62.Name = "panel62";
             this.panel62.Padding = new System.Windows.Forms.Padding(2);
-            this.panel62.Size = new System.Drawing.Size(94, 34);
+            this.panel62.Size = new System.Drawing.Size(93, 34);
             this.panel62.TabIndex = 11;
             // 
             // L_COSTO_UNIDAD
@@ -2053,7 +2065,7 @@
             this.L_COSTO_UNIDAD.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_COSTO_UNIDAD.Location = new System.Drawing.Point(2, 2);
             this.L_COSTO_UNIDAD.Name = "L_COSTO_UNIDAD";
-            this.L_COSTO_UNIDAD.Size = new System.Drawing.Size(90, 30);
+            this.L_COSTO_UNIDAD.Size = new System.Drawing.Size(89, 30);
             this.L_COSTO_UNIDAD.TabIndex = 0;
             this.L_COSTO_UNIDAD.Text = "99,999,999,999.99";
             this.L_COSTO_UNIDAD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2062,11 +2074,11 @@
             // 
             this.panel61.Controls.Add(this.L_TASA_IVA);
             this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel61.Location = new System.Drawing.Point(218, 41);
+            this.panel61.Location = new System.Drawing.Point(215, 41);
             this.panel61.Margin = new System.Windows.Forms.Padding(1);
             this.panel61.Name = "panel61";
             this.panel61.Padding = new System.Windows.Forms.Padding(2);
-            this.panel61.Size = new System.Drawing.Size(58, 34);
+            this.panel61.Size = new System.Drawing.Size(57, 34);
             this.panel61.TabIndex = 10;
             // 
             // L_TASA_IVA
@@ -2075,7 +2087,7 @@
             this.L_TASA_IVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_TASA_IVA.Location = new System.Drawing.Point(2, 2);
             this.L_TASA_IVA.Name = "L_TASA_IVA";
-            this.L_TASA_IVA.Size = new System.Drawing.Size(54, 30);
+            this.L_TASA_IVA.Size = new System.Drawing.Size(53, 30);
             this.L_TASA_IVA.TabIndex = 1;
             this.L_TASA_IVA.Text = "EXENTO";
             this.L_TASA_IVA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2084,11 +2096,11 @@
             // 
             this.panel60.Controls.Add(this.L_ADM_DIVISA);
             this.panel60.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel60.Location = new System.Drawing.Point(174, 41);
+            this.panel60.Location = new System.Drawing.Point(172, 41);
             this.panel60.Margin = new System.Windows.Forms.Padding(1);
             this.panel60.Name = "panel60";
             this.panel60.Padding = new System.Windows.Forms.Padding(2);
-            this.panel60.Size = new System.Drawing.Size(42, 34);
+            this.panel60.Size = new System.Drawing.Size(41, 34);
             this.panel60.TabIndex = 9;
             // 
             // L_ADM_DIVISA
@@ -2097,7 +2109,7 @@
             this.L_ADM_DIVISA.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_ADM_DIVISA.Location = new System.Drawing.Point(2, 2);
             this.L_ADM_DIVISA.Name = "L_ADM_DIVISA";
-            this.L_ADM_DIVISA.Size = new System.Drawing.Size(38, 30);
+            this.L_ADM_DIVISA.Size = new System.Drawing.Size(37, 30);
             this.L_ADM_DIVISA.TabIndex = 2;
             this.L_ADM_DIVISA.Text = "SI";
             this.L_ADM_DIVISA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2106,11 +2118,11 @@
             // 
             this.panel59.Controls.Add(this.L_TASA_CAMBIO);
             this.panel59.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel59.Location = new System.Drawing.Point(88, 41);
+            this.panel59.Location = new System.Drawing.Point(87, 41);
             this.panel59.Margin = new System.Windows.Forms.Padding(1);
             this.panel59.Name = "panel59";
             this.panel59.Padding = new System.Windows.Forms.Padding(2);
-            this.panel59.Size = new System.Drawing.Size(84, 34);
+            this.panel59.Size = new System.Drawing.Size(83, 34);
             this.panel59.TabIndex = 8;
             // 
             // L_TASA_CAMBIO
@@ -2119,7 +2131,7 @@
             this.L_TASA_CAMBIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_TASA_CAMBIO.Location = new System.Drawing.Point(2, 2);
             this.L_TASA_CAMBIO.Name = "L_TASA_CAMBIO";
-            this.L_TASA_CAMBIO.Size = new System.Drawing.Size(80, 30);
+            this.L_TASA_CAMBIO.Size = new System.Drawing.Size(79, 30);
             this.L_TASA_CAMBIO.TabIndex = 1;
             this.L_TASA_CAMBIO.Text = "999,999,999.99";
             this.L_TASA_CAMBIO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2132,7 +2144,7 @@
             this.panel58.Margin = new System.Windows.Forms.Padding(1);
             this.panel58.Name = "panel58";
             this.panel58.Padding = new System.Windows.Forms.Padding(2);
-            this.panel58.Size = new System.Drawing.Size(85, 34);
+            this.panel58.Size = new System.Drawing.Size(84, 34);
             this.panel58.TabIndex = 7;
             // 
             // L_METODO_CALCULO_UT
@@ -2141,7 +2153,7 @@
             this.L_METODO_CALCULO_UT.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_METODO_CALCULO_UT.Location = new System.Drawing.Point(2, 2);
             this.L_METODO_CALCULO_UT.Name = "L_METODO_CALCULO_UT";
-            this.L_METODO_CALCULO_UT.Size = new System.Drawing.Size(81, 30);
+            this.L_METODO_CALCULO_UT.Size = new System.Drawing.Size(80, 30);
             this.L_METODO_CALCULO_UT.TabIndex = 3;
             this.L_METODO_CALCULO_UT.Text = "FINANCIERO";
             this.L_METODO_CALCULO_UT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2150,12 +2162,12 @@
             // 
             this.panel57.Controls.Add(this.BT_MODO_PRECIO);
             this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel57.Location = new System.Drawing.Point(444, 1);
+            this.panel57.Location = new System.Drawing.Point(438, 1);
             this.panel57.Margin = new System.Windows.Forms.Padding(1);
             this.panel57.Name = "panel57";
             this.panel57.Padding = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.SetRowSpan(this.panel57, 2);
-            this.panel57.Size = new System.Drawing.Size(181, 74);
+            this.panel57.Size = new System.Drawing.Size(187, 74);
             this.panel57.TabIndex = 6;
             // 
             // BT_MODO_PRECIO
@@ -2166,7 +2178,7 @@
             this.BT_MODO_PRECIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_MODO_PRECIO.Location = new System.Drawing.Point(2, 2);
             this.BT_MODO_PRECIO.Name = "BT_MODO_PRECIO";
-            this.BT_MODO_PRECIO.Size = new System.Drawing.Size(177, 70);
+            this.BT_MODO_PRECIO.Size = new System.Drawing.Size(183, 70);
             this.BT_MODO_PRECIO.TabIndex = 1;
             this.BT_MODO_PRECIO.UseVisualStyleBackColor = true;
             this.BT_MODO_PRECIO.Click += new System.EventHandler(this.BT_MODO_PRECIO_Click);
@@ -2175,11 +2187,11 @@
             // 
             this.panel56.Controls.Add(this.label14);
             this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel56.Location = new System.Drawing.Point(374, 1);
+            this.panel56.Location = new System.Drawing.Point(369, 1);
             this.panel56.Margin = new System.Windows.Forms.Padding(1);
             this.panel56.Name = "panel56";
             this.panel56.Padding = new System.Windows.Forms.Padding(2);
-            this.panel56.Size = new System.Drawing.Size(68, 38);
+            this.panel56.Size = new System.Drawing.Size(67, 38);
             this.panel56.TabIndex = 5;
             // 
             // label14
@@ -2187,7 +2199,7 @@
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Location = new System.Drawing.Point(2, 2);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(64, 34);
+            this.label14.Size = new System.Drawing.Size(63, 34);
             this.label14.TabIndex = 5;
             this.label14.Text = "F/Ultima\r\nAct/Costo";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2196,11 +2208,11 @@
             // 
             this.panel55.Controls.Add(this.label13);
             this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel55.Location = new System.Drawing.Point(278, 1);
+            this.panel55.Location = new System.Drawing.Point(274, 1);
             this.panel55.Margin = new System.Windows.Forms.Padding(1);
             this.panel55.Name = "panel55";
             this.panel55.Padding = new System.Windows.Forms.Padding(2);
-            this.panel55.Size = new System.Drawing.Size(94, 38);
+            this.panel55.Size = new System.Drawing.Size(93, 38);
             this.panel55.TabIndex = 4;
             // 
             // label13
@@ -2208,7 +2220,7 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Location = new System.Drawing.Point(2, 2);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 34);
+            this.label13.Size = new System.Drawing.Size(89, 34);
             this.label13.TabIndex = 4;
             this.label13.Text = "Costo\r\nUndidad";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2217,11 +2229,11 @@
             // 
             this.panel54.Controls.Add(this.label12);
             this.panel54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel54.Location = new System.Drawing.Point(218, 1);
+            this.panel54.Location = new System.Drawing.Point(215, 1);
             this.panel54.Margin = new System.Windows.Forms.Padding(1);
             this.panel54.Name = "panel54";
             this.panel54.Padding = new System.Windows.Forms.Padding(2);
-            this.panel54.Size = new System.Drawing.Size(58, 38);
+            this.panel54.Size = new System.Drawing.Size(57, 38);
             this.panel54.TabIndex = 3;
             // 
             // label12
@@ -2229,7 +2241,7 @@
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Location = new System.Drawing.Point(2, 2);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 34);
+            this.label12.Size = new System.Drawing.Size(53, 34);
             this.label12.TabIndex = 3;
             this.label12.Text = "Tasa \r\nIva";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2238,11 +2250,11 @@
             // 
             this.panel52.Controls.Add(this.label10);
             this.panel52.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel52.Location = new System.Drawing.Point(88, 1);
+            this.panel52.Location = new System.Drawing.Point(87, 1);
             this.panel52.Margin = new System.Windows.Forms.Padding(1);
             this.panel52.Name = "panel52";
             this.panel52.Padding = new System.Windows.Forms.Padding(2);
-            this.panel52.Size = new System.Drawing.Size(84, 38);
+            this.panel52.Size = new System.Drawing.Size(83, 38);
             this.panel52.TabIndex = 1;
             // 
             // label10
@@ -2250,7 +2262,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(2, 2);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 34);
+            this.label10.Size = new System.Drawing.Size(79, 34);
             this.label10.TabIndex = 1;
             this.label10.Text = "Tasa\r\nCambio";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2263,7 +2275,7 @@
             this.panel51.Margin = new System.Windows.Forms.Padding(1);
             this.panel51.Name = "panel51";
             this.panel51.Padding = new System.Windows.Forms.Padding(2);
-            this.panel51.Size = new System.Drawing.Size(85, 38);
+            this.panel51.Size = new System.Drawing.Size(84, 38);
             this.panel51.TabIndex = 0;
             // 
             // label9
@@ -2271,7 +2283,7 @@
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Location = new System.Drawing.Point(2, 2);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 34);
+            this.label9.Size = new System.Drawing.Size(80, 34);
             this.label9.TabIndex = 0;
             this.label9.Text = "Utilidad \r\nModo";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2280,11 +2292,11 @@
             // 
             this.panel53.Controls.Add(this.label11);
             this.panel53.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel53.Location = new System.Drawing.Point(174, 1);
+            this.panel53.Location = new System.Drawing.Point(172, 1);
             this.panel53.Margin = new System.Windows.Forms.Padding(1);
             this.panel53.Name = "panel53";
             this.panel53.Padding = new System.Windows.Forms.Padding(2);
-            this.panel53.Size = new System.Drawing.Size(42, 38);
+            this.panel53.Size = new System.Drawing.Size(41, 38);
             this.panel53.TabIndex = 2;
             // 
             // label11
@@ -2292,7 +2304,7 @@
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Location = new System.Drawing.Point(2, 2);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 34);
+            this.label11.Size = new System.Drawing.Size(37, 34);
             this.label11.TabIndex = 2;
             this.label11.Text = "Adm \r\nDivisa";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2342,6 +2354,7 @@
             // TB_CONT_EMP_TIPO_2
             // 
             this.TB_CONT_EMP_TIPO_2.BackColor = System.Drawing.Color.Yellow;
+            this.TB_CONT_EMP_TIPO_2.Enabled = false;
             this.TB_CONT_EMP_TIPO_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_EMP_TIPO_2.Location = new System.Drawing.Point(774, 3);
             this.TB_CONT_EMP_TIPO_2.MaxLength = 5;
@@ -2356,6 +2369,7 @@
             // CB_EMP_TIPO_2
             // 
             this.CB_EMP_TIPO_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_TIPO_2.Enabled = false;
             this.CB_EMP_TIPO_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_TIPO_2.FormattingEnabled = true;
             this.CB_EMP_TIPO_2.Location = new System.Drawing.Point(616, 2);
@@ -2589,6 +2603,7 @@
             // 
             this.TB_CONT_M3.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_M3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_M3.Enabled = false;
             this.TB_CONT_M3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_M3.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_M3.MaxLength = 5;
@@ -2720,6 +2735,7 @@
             // 
             this.TB_CONT_M2.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_M2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_M2.Enabled = false;
             this.TB_CONT_M2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_M2.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_M2.MaxLength = 5;
@@ -2746,6 +2762,7 @@
             // 
             this.CB_EMP_M2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_M2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_M2.Enabled = false;
             this.CB_EMP_M2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_M2.FormattingEnabled = true;
             this.CB_EMP_M2.Location = new System.Drawing.Point(2, 2);
@@ -2874,6 +2891,7 @@
             // 
             this.TB_CONT_M1.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_M1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_M1.Enabled = false;
             this.TB_CONT_M1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_M1.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_M1.MaxLength = 5;
@@ -2900,6 +2918,7 @@
             // 
             this.CB_EMP_M1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_M1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_M1.Enabled = false;
             this.CB_EMP_M1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_M1.FormattingEnabled = true;
             this.CB_EMP_M1.Location = new System.Drawing.Point(2, 2);
@@ -3062,6 +3081,7 @@
             // 
             this.CB_EMP_M3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_M3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_M3.Enabled = false;
             this.CB_EMP_M3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_M3.FormattingEnabled = true;
             this.CB_EMP_M3.Location = new System.Drawing.Point(2, 2);
@@ -3213,6 +3233,7 @@
             // 
             this.CB_EMP_M4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_M4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_M4.Enabled = false;
             this.CB_EMP_M4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_M4.FormattingEnabled = true;
             this.CB_EMP_M4.Location = new System.Drawing.Point(2, 2);
@@ -3236,6 +3257,7 @@
             // 
             this.TB_CONT_M4.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_M4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_M4.Enabled = false;
             this.TB_CONT_M4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_M4.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_M4.MaxLength = 5;
@@ -3395,6 +3417,7 @@
             // TB_CONT_EMP_TIPO_3
             // 
             this.TB_CONT_EMP_TIPO_3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_CONT_EMP_TIPO_3.Enabled = false;
             this.TB_CONT_EMP_TIPO_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_EMP_TIPO_3.Location = new System.Drawing.Point(774, 3);
             this.TB_CONT_EMP_TIPO_3.MaxLength = 5;
@@ -3409,6 +3432,7 @@
             // CB_EMP_TIPO_3
             // 
             this.CB_EMP_TIPO_3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_TIPO_3.Enabled = false;
             this.CB_EMP_TIPO_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_TIPO_3.FormattingEnabled = true;
             this.CB_EMP_TIPO_3.Location = new System.Drawing.Point(616, 3);
@@ -3642,6 +3666,7 @@
             // 
             this.TB_CONT_D3.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_D3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_D3.Enabled = false;
             this.TB_CONT_D3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_D3.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_D3.MaxLength = 5;
@@ -3773,6 +3798,7 @@
             // 
             this.TB_CONT_D2.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_D2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_D2.Enabled = false;
             this.TB_CONT_D2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_D2.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_D2.MaxLength = 5;
@@ -3799,6 +3825,7 @@
             // 
             this.CB_EMP_D2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_D2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_D2.Enabled = false;
             this.CB_EMP_D2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_D2.FormattingEnabled = true;
             this.CB_EMP_D2.Location = new System.Drawing.Point(2, 2);
@@ -3928,6 +3955,7 @@
             // 
             this.TB_CONT_D1.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_D1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_D1.Enabled = false;
             this.TB_CONT_D1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_D1.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_D1.MaxLength = 5;
@@ -3954,6 +3982,7 @@
             // 
             this.CB_EMP_D1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_D1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_D1.Enabled = false;
             this.CB_EMP_D1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_D1.FormattingEnabled = true;
             this.CB_EMP_D1.Location = new System.Drawing.Point(2, 2);
@@ -4116,6 +4145,7 @@
             // 
             this.CB_EMP_D3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_D3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_D3.Enabled = false;
             this.CB_EMP_D3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_D3.FormattingEnabled = true;
             this.CB_EMP_D3.Location = new System.Drawing.Point(2, 2);
@@ -4268,6 +4298,7 @@
             // 
             this.CB_EMP_D4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CB_EMP_D4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_D4.Enabled = false;
             this.CB_EMP_D4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB_EMP_D4.FormattingEnabled = true;
             this.CB_EMP_D4.Location = new System.Drawing.Point(2, 2);
@@ -4292,6 +4323,7 @@
             // 
             this.TB_CONT_D4.BackColor = System.Drawing.Color.Yellow;
             this.TB_CONT_D4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONT_D4.Enabled = false;
             this.TB_CONT_D4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_CONT_D4.Location = new System.Drawing.Point(2, 2);
             this.TB_CONT_D4.MaxLength = 5;

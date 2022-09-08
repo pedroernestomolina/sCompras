@@ -257,6 +257,11 @@ namespace ModCompra.Producto.Precio.Actualizar
         void Procesar();
         dataGuardar DataPrecios { get; }
 
+
+        string GetEmpTipo_1_ID { get; }
+        string GetEmpTipo_2_ID { get; }
+        string GetEmpTipo_3_ID { get; }
+
     }
 
 }

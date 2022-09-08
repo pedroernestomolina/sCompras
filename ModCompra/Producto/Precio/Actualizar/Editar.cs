@@ -329,9 +329,17 @@ namespace ModCompra.Producto.Precio.Actualizar
             _gEmpD3.setData(lst);
             _gEmpD4.setData(lst);
             //
+
             _gEmpTipo_1.setData(lst);
+            _gEmpTipo_1.setFicha(prd.idEmp1_1);
+            _contEmpTipo_1 = prd.contEmp1_1;
             _gEmpTipo_2.setData(lst);
+            _gEmpTipo_2.setFicha(prd.idEmp2_1);
+            _contEmpTipo_2 = prd.contEmp2_1;
             _gEmpTipo_3.setData(lst);
+            _gEmpTipo_3.setFicha(prd.idEmp3_1);
+            _contEmpTipo_3 = prd.contEmp3_1;
+
             //
             _precio1.setContenido(prd.contEmp1_1);
             _precio1.setUtilidadActual(prd.utEmp1_1);
@@ -1473,6 +1481,11 @@ namespace ModCompra.Producto.Precio.Actualizar
             _costoMonedaLocalPrd= fichaPrd.CostoMonedaLocal;
             _costoMonedaDivisaPrd = fichaPrd.CostoMonedaDivisa;
         }
+
+
+        public string GetEmpTipo_1_ID { get { return _gEmpTipo_1.GetId; } }
+        public string GetEmpTipo_2_ID { get { return _gEmpTipo_2.GetId; } }
+        public string GetEmpTipo_3_ID { get { return _gEmpTipo_3.GetId; } }
 
     }
 

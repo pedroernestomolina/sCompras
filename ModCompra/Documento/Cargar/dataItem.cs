@@ -403,8 +403,8 @@ namespace ModCompra.Documento.Cargar
             itemDocumento = null;
             cantDev = 0.0m;
             cantidad = 0.0m;
-            costoMoneda = 0.0m;
-            costoDivisa = 0.0m;
+            costoMoneda = this.producto.costo;
+            costoDivisa = this.producto.costoDivisa;
             dsct_1_p = 0.0m;
             dsct_2_p = 0.0m;
             dsct_3_p = 0.0m;

@@ -106,13 +106,13 @@ namespace ModCompra.Producto.Precio.Actualizar
 
             //
             CB_EMP_TIPO_1.DataSource = _controlador.GetEmpTipo_1_Source;
-            CB_EMP_TIPO_1.SelectedIndex = -1;
+            CB_EMP_TIPO_1.SelectedValue = _controlador.GetEmpTipo_1_ID;
             TB_CONT_EMP_TIPO_1.Text = _controlador.GetContEmpTipo_1.ToString();
             CB_EMP_TIPO_2.DataSource = _controlador.GetEmpTipo_2_Source;
-            CB_EMP_TIPO_2.SelectedIndex = -1;
+            CB_EMP_TIPO_2.SelectedValue = _controlador.GetEmpTipo_2_ID;
             TB_CONT_EMP_TIPO_2.Text = _controlador.GetContEmpTipo_2.ToString();
             CB_EMP_TIPO_3.DataSource = _controlador.GetEmpTipo_3_Source;
-            CB_EMP_TIPO_3.SelectedIndex = -1;
+            CB_EMP_TIPO_3.SelectedValue = _controlador.GetEmpTipo_3_ID;
             TB_CONT_EMP_TIPO_3.Text = _controlador.GetContEmpTipo_3.ToString();
             //
 
@@ -228,13 +228,6 @@ namespace ModCompra.Producto.Precio.Actualizar
             TB_PF_D4.Text = _controlador.GetPFD4.ToString("n2").Replace(".", "");
             L_UT_ACTUAL_D4.Text = _controlador.GetUtActualD4.ToString("n2").Replace(".", "");
 
-
-            TB_CONT_1.Enabled = true;
-            TB_CONT_2.Enabled = true;
-            TB_CONT_3.Enabled = true;
-            TB_CONT_4.Enabled = true;
-            TB_CONT_5.Enabled = true;
-
             TB_UT_1.Enabled = false;
             TB_UT_2.Enabled = false;
             TB_UT_3.Enabled = false;
@@ -257,12 +250,6 @@ namespace ModCompra.Producto.Precio.Actualizar
             TB_PF_3.Enabled = false;
             TB_PF_4.Enabled = false;
             TB_PF_5.Enabled = false;
-
-            CB_EMP_1.Enabled = true;
-            CB_EMP_2.Enabled = true;
-            CB_EMP_3.Enabled = true;
-            CB_EMP_4.Enabled = true;
-            CB_EMP_5.Enabled = true;
 
             //
             TB_UT_M1.Enabled = false;
@@ -1584,8 +1571,7 @@ namespace ModCompra.Producto.Precio.Actualizar
 
         private void CB_EMP_TIPO_1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             if (CB_EMP_TIPO_1.SelectedIndex != -1)
             {
                 var idx=CB_EMP_TIPO_1.SelectedIndex;
@@ -1598,17 +1584,13 @@ namespace ModCompra.Producto.Precio.Actualizar
         }
         private void TB_CONT_EMP_TIPO_1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             var cont = int.Parse(TB_CONT_EMP_TIPO_1.Text);
             _controlador.setContEmp_1(cont);
             _controlador.setContEmp_2(cont);
             _controlador.setContEmp_3(cont);
             _controlador.setContEmp_4(cont);
             _controlador.setContEmp_5(cont);
-
 
             _modoInicializar = true;
             TB_CONT_1.Text = _controlador.GetCont1.ToString();
@@ -1640,8 +1622,7 @@ namespace ModCompra.Producto.Precio.Actualizar
 
         private void CB_EMP_TIPO_2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             if (CB_EMP_TIPO_2.SelectedIndex != -1)
             {
                 var idx = CB_EMP_TIPO_2.SelectedIndex;
@@ -1653,16 +1634,12 @@ namespace ModCompra.Producto.Precio.Actualizar
         }
         private void TB_CONT_EMP_TIPO_2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             var cont = int.Parse(TB_CONT_EMP_TIPO_2.Text);
             _controlador.setContEmp_M1(cont);
             _controlador.setContEmp_M2(cont);
             _controlador.setContEmp_M3(cont);
             _controlador.setContEmp_M4(cont);
-
 
             _modoInicializar = true;
             TB_CONT_M1.Text = _controlador.GetContM1.ToString();
@@ -1689,8 +1666,7 @@ namespace ModCompra.Producto.Precio.Actualizar
 
         private void CB_EMP_TIPO_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             if (CB_EMP_TIPO_3.SelectedIndex != -1)
             {
                 var idx = CB_EMP_TIPO_3.SelectedIndex;
@@ -1702,16 +1678,12 @@ namespace ModCompra.Producto.Precio.Actualizar
         }
         private void TB_CONT_EMP_TIPO_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             var cont = int.Parse(TB_CONT_EMP_TIPO_3.Text);
             _controlador.setContEmp_D1(cont);
             _controlador.setContEmp_D2(cont);
             _controlador.setContEmp_D3(cont);
             _controlador.setContEmp_D4(cont);
-
 
             _modoInicializar = true;
             TB_CONT_D1.Text = _controlador.GetContD1.ToString();
