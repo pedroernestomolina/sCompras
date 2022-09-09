@@ -61,8 +61,9 @@ namespace ModCompra
             if (SolicitarPermiso(Sistema.MyData.Permiso_Registrar_Factura, Sistema.UsuarioP.autoGru))
             {
                 frm.setVisibilidadOff();
+                var gestionFac = new Documento.Cargar.Factura.GestionFac();
                 var gestionEntrada = new Documento.Cargar.Controlador.Gestion();
-                gestionEntrada.setGestion(new Documento.Cargar.Factura.GestionFac());
+                gestionEntrada.setGestion(gestionFac);
                 gestionEntrada.Inicia();
                 frm.setVisibilidadOn();
             }

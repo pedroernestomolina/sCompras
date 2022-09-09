@@ -16,6 +16,7 @@ namespace ModCompra
         [STAThread]
         static void Main()
         {
+            Sistema.CnfGenerarDoc = new Documento.CnfGenerarDocumento();
             var r01 = Helpers.Utilitis.CargarXml();
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
             {

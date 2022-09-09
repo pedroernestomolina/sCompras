@@ -750,11 +750,11 @@ namespace ProvLibCompra
                             cnn.SaveChanges();
 
                             pt1.ParameterName = "@pt1";
-                            pt1.Value=entHist.id;
+                            pt1.Value = entHist.id;
                             pt2.ParameterName = "@pt2";
-                            pt2.Value=it.empaque;
+                            pt2.Value = it.empaque;
                             pt3.ParameterName = "@pt3";
-                            pt3.Value=it.contenido;
+                            pt3.Value = it.contenido;
                             pt4.ParameterName = "@pt4";
                             pt4.Value = it.tasaFactorCambio;
                             var xsql = @"INSERT INTO productos_precios_ext (
@@ -2074,12 +2074,19 @@ namespace ProvLibCompra
 
                     var sql_1 = "SELECT count(*) as cnt ";
                     var sql_2 = "FROM compras_pend ";
-                    var sql_3 = "where (auto_usuario=@idUsuario and documento_tipo=@docTipo) ";
-
-                    p1.ParameterName = "@idUsuario";
-                    p1.Value = filtro.idUsuario;
-                    p2.ParameterName = "@docTipo";
-                    p2.Value = filtro.docTipo;
+                    var sql_3 = "where 1=1 ";
+                    if (filtro.idUsuario != "")
+                    {
+                        p1.ParameterName = "@idUsuario";
+                        p1.Value = filtro.idUsuario;
+                        sql_3 += " and auto_usuario=@idUsuario ";
+                    }
+                    if (filtro.docTipo != "")
+                    {
+                        p2.ParameterName = "@docTipo";
+                        p2.Value = filtro.docTipo;
+                        sql_3 += " and documento_tipo=@docTipo ";
+                    }
                     var sql = sql_1 + sql_2 + sql_3;
                     var cnt = cnn.Database.SqlQuery<int>(sql, p1, p2).FirstOrDefault();
                     result.Entidad = cnt;

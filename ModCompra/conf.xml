@@ -5,4 +5,9 @@
     <Catalogo>pita</Catalogo>
     <Usuario></Usuario>
   </Servidor>
+  <Documentos>
+    <Generar_Documento>
+      <Habilitar_Abrir_Documentos_Otros_Usuarios>Si</Habilitar_Abrir_Documentos_Otros_Usuarios>
+    </Generar_Documento>      
+  </Documentos>
 </Configuracion>

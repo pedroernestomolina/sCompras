@@ -47,8 +47,27 @@ namespace ModCompra.Helpers
                                         }
                                     }
                                 }
+
+                                if (nv.LocalName.ToUpper().Trim() == "DOCUMENTOS")
+                                {
+                                    foreach (XmlNode cn in nv.ChildNodes)
+                                    {
+                                        if (cn.LocalName.ToUpper().Trim() == "GENERAR_DOCUMENTO")
+                                        {
+                                            foreach (XmlNode sv in cn.ChildNodes)
+                                            {
+                                                if (sv.LocalName.Trim().ToUpper() == "HABILITAR_ABRIR_DOCUMENTOS_OTROS_USUARIOS")
+                                                {
+                                                    Sistema.CnfGenerarDoc.HabilitarAbrirDocumentosOtrosUsuario = sv.InnerText.Trim().ToUpper() == "SI";
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
                             }
                         }
+                        
                     }
                 }
             }

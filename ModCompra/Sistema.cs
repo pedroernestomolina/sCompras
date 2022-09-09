@@ -18,6 +18,7 @@ namespace ModCompra
         static public string _BaseDatos { get; set; }
         static public string _Usuario { get; set; }
         static public string EquipoEstacion { get; set; }
+        static public Documento.CnfGenerarDocumento CnfGenerarDoc;
 
     }
 

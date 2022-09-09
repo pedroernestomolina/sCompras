@@ -112,7 +112,7 @@ namespace ModCompra.Documento.Cargar.Factura
             var filtro = new OOB.LibCompra.Documento.Pendiente.Filtro.Ficha()
             {
                 docTipo = "01",
-                idUsuario = Sistema.UsuarioP.autoUsu,
+                idUsuario = Sistema.CnfGenerarDoc.HabilitarAbrirDocumentosOtrosUsuario ? "" : Sistema.UsuarioP.autoUsu,
             };
             var r05 = Sistema.MyData.Compra_Documento_Pendiente_Cnt(filtro);
             if (r05.Result == OOB.Enumerados.EnumResult.isError)
@@ -1144,7 +1144,7 @@ namespace ModCompra.Documento.Cargar.Factura
             var filtro = new OOB.LibCompra.Documento.Pendiente.Filtro.Ficha()
             {
                 docTipo = "01",
-                idUsuario = Sistema.UsuarioP.autoUsu,
+                idUsuario = Sistema.CnfGenerarDoc.HabilitarAbrirDocumentosOtrosUsuario ? "" : Sistema.UsuarioP.autoUsu,
             };
             var r01 = Sistema.MyData.Compra_Documento_Pendiente_GetLista(filtro);
             if (r01.Result ==  OOB.Enumerados.EnumResult.isError )

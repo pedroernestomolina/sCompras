@@ -165,6 +165,7 @@
     <Compile Include="Documento\Cargar\NotaCredito\Remision\RemisionFrm.Designer.cs">
       <DependentUpon>RemisionFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Documento\GenerarDocumentoCnf.cs" />
     <Compile Include="Documento\Pendiente\data.cs" />
     <Compile Include="Documento\Pendiente\Gestion.cs" />
     <Compile Include="Documento\Pendiente\ListaFrm.cs">
