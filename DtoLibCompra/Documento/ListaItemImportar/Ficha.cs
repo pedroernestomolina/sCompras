@@ -30,6 +30,11 @@ namespace DtoLibCompra.Documento.ListaItemImportar
         public string decimales { get; set; }
         public string categoria { get; set; }
         public string codRefProv { get; set; }
+        //
+        public string autoEmpCompPreDeterminado { get; set; }
+        public int contEmpCompPreDeterminado { get; set; }
+        public string autoEmpInv { get; set; }
+        public int contEmpInv { get; set; }
 
 
         public Ficha() 
@@ -53,6 +58,11 @@ namespace DtoLibCompra.Documento.ListaItemImportar
             decimales = "";
             categoria = "";
             codRefProv = "";
+            //
+            autoEmpCompPreDeterminado = "";
+            contEmpCompPreDeterminado = 0;
+            autoEmpInv = "";
+            contEmpInv = 0;
         }
 
     }

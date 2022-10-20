@@ -51,7 +51,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.L_EMPQ_PRD = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -65,37 +64,31 @@
             this.panel15 = new System.Windows.Forms.Panel();
             this.L_CANTIDAD_UND = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.TB_CNT = new LibControles.NumeroDecimal();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.L_COSTO_MONEDA_UND = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.TB_COSTO_MONEDA = new LibControles.NumeroDecimal();
             this.panel18 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.L_COSTO_DIVISA_UND = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.TB_COSTO_DIVISA3 = new LibControles.NumeroDecimal();
             this.panel20 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.L_DSCTO_1 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.TB_DSCTO_1 = new LibControles.NumeroDecimal();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.L_DSCTO_2 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.TB_DSCTO_2 = new LibControles.NumeroDecimal();
             this.panel24 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.panel25 = new System.Windows.Forms.Panel();
             this.L_DSCTO_3 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.TB_DSCTO_3 = new LibControles.NumeroDecimal();
             this.panel26 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.panel27 = new System.Windows.Forms.Panel();
@@ -126,6 +119,13 @@
             this.panel39 = new System.Windows.Forms.Panel();
             this.L_COSTO_ACT = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.TB_CNT = new LibControles.NumeroDecimal();
+            this.TB_COSTO_MONEDA = new LibControles.NumeroDecimal();
+            this.TB_COSTO_DIVISA3 = new LibControles.NumeroDecimal();
+            this.TB_DSCTO_1 = new LibControles.NumeroDecimal();
+            this.TB_DSCTO_2 = new LibControles.NumeroDecimal();
+            this.TB_DSCTO_3 = new LibControles.NumeroDecimal();
+            this.CB_EMP_COMPRA = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -431,7 +431,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.08403F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.91597F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.Controls.Add(this.panel8, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel9, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel10, 1, 2);
@@ -502,25 +502,14 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.L_EMPQ_PRD);
+            this.panel9.Controls.Add(this.CB_EMP_COMPRA);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(209, 63);
             this.panel9.Margin = new System.Windows.Forms.Padding(1);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(2);
-            this.panel9.Size = new System.Drawing.Size(347, 26);
+            this.panel9.Size = new System.Drawing.Size(345, 26);
             this.panel9.TabIndex = 1;
-            // 
-            // L_EMPQ_PRD
-            // 
-            this.L_EMPQ_PRD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_EMPQ_PRD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_EMPQ_PRD.Location = new System.Drawing.Point(2, 2);
-            this.L_EMPQ_PRD.Name = "L_EMPQ_PRD";
-            this.L_EMPQ_PRD.Size = new System.Drawing.Size(343, 22);
-            this.L_EMPQ_PRD.TabIndex = 1;
-            this.L_EMPQ_PRD.Text = "Bulto";
-            this.L_EMPQ_PRD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel10
             // 
@@ -552,7 +541,7 @@
             this.panel11.Margin = new System.Windows.Forms.Padding(1);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(2);
-            this.panel11.Size = new System.Drawing.Size(347, 26);
+            this.panel11.Size = new System.Drawing.Size(345, 26);
             this.panel11.TabIndex = 3;
             // 
             // L_CONT_EMPQ
@@ -596,7 +585,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(347, 26);
+            this.panel13.Size = new System.Drawing.Size(345, 26);
             this.panel13.TabIndex = 0;
             // 
             // TB_COD_REF_PRV
@@ -607,7 +596,7 @@
             this.TB_COD_REF_PRV.Location = new System.Drawing.Point(2, 2);
             this.TB_COD_REF_PRV.MaxLength = 15;
             this.TB_COD_REF_PRV.Name = "TB_COD_REF_PRV";
-            this.TB_COD_REF_PRV.Size = new System.Drawing.Size(343, 22);
+            this.TB_COD_REF_PRV.Size = new System.Drawing.Size(341, 22);
             this.TB_COD_REF_PRV.TabIndex = 0;
             this.TB_COD_REF_PRV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
             this.TB_COD_REF_PRV.Leave += new System.EventHandler(this.TB_COD_REF_PRV_Leave);
@@ -644,7 +633,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(347, 26);
+            this.panel15.Size = new System.Drawing.Size(345, 26);
             this.panel15.TabIndex = 1;
             // 
             // L_CANTIDAD_UND
@@ -668,21 +657,6 @@
             this.label16.TabIndex = 4;
             this.label16.Text = "Cantidad x Und:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_CNT
-            // 
-            this.TB_CNT.BackColor = System.Drawing.Color.Yellow;
-            this.TB_CNT.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_CNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_CNT.Location = new System.Drawing.Point(2, 2);
-            this.TB_CNT.MaxLength = 12;
-            this.TB_CNT.Name = "TB_CNT";
-            this.TB_CNT.Size = new System.Drawing.Size(103, 22);
-            this.TB_CNT.TabIndex = 0;
-            this.TB_CNT.Text = "0";
-            this.TB_CNT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_CNT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_CNT.Leave += new System.EventHandler(this.TB_CNT_Leave);
             // 
             // panel16
             // 
@@ -716,7 +690,7 @@
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Padding = new System.Windows.Forms.Padding(2);
-            this.panel17.Size = new System.Drawing.Size(347, 26);
+            this.panel17.Size = new System.Drawing.Size(345, 26);
             this.panel17.TabIndex = 2;
             // 
             // L_COSTO_MONEDA_UND
@@ -740,21 +714,6 @@
             this.label20.TabIndex = 5;
             this.label20.Text = "Costo x Und:";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_COSTO_MONEDA
-            // 
-            this.TB_COSTO_MONEDA.BackColor = System.Drawing.Color.Yellow;
-            this.TB_COSTO_MONEDA.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_COSTO_MONEDA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_COSTO_MONEDA.Location = new System.Drawing.Point(2, 2);
-            this.TB_COSTO_MONEDA.MaxLength = 14;
-            this.TB_COSTO_MONEDA.Name = "TB_COSTO_MONEDA";
-            this.TB_COSTO_MONEDA.Size = new System.Drawing.Size(103, 22);
-            this.TB_COSTO_MONEDA.TabIndex = 1;
-            this.TB_COSTO_MONEDA.Text = "0";
-            this.TB_COSTO_MONEDA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_COSTO_MONEDA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_COSTO_MONEDA.Leave += new System.EventHandler(this.TB_COSTO_MONEDA_Leave);
             // 
             // panel18
             // 
@@ -788,7 +747,7 @@
             this.panel19.Margin = new System.Windows.Forms.Padding(1);
             this.panel19.Name = "panel19";
             this.panel19.Padding = new System.Windows.Forms.Padding(2);
-            this.panel19.Size = new System.Drawing.Size(347, 26);
+            this.panel19.Size = new System.Drawing.Size(345, 26);
             this.panel19.TabIndex = 3;
             // 
             // L_COSTO_DIVISA_UND
@@ -812,21 +771,6 @@
             this.label22.TabIndex = 5;
             this.label22.Text = "Costo x Und:";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_COSTO_DIVISA3
-            // 
-            this.TB_COSTO_DIVISA3.BackColor = System.Drawing.Color.Yellow;
-            this.TB_COSTO_DIVISA3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_COSTO_DIVISA3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_COSTO_DIVISA3.Location = new System.Drawing.Point(2, 2);
-            this.TB_COSTO_DIVISA3.MaxLength = 14;
-            this.TB_COSTO_DIVISA3.Name = "TB_COSTO_DIVISA3";
-            this.TB_COSTO_DIVISA3.Size = new System.Drawing.Size(103, 22);
-            this.TB_COSTO_DIVISA3.TabIndex = 1;
-            this.TB_COSTO_DIVISA3.Text = "0";
-            this.TB_COSTO_DIVISA3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_COSTO_DIVISA3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_COSTO_DIVISA3.Leave += new System.EventHandler(this.TB_COSTO_DIVISA3_Leave);
             // 
             // panel20
             // 
@@ -860,7 +804,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(347, 26);
+            this.panel21.Size = new System.Drawing.Size(345, 26);
             this.panel21.TabIndex = 4;
             // 
             // L_DSCTO_1
@@ -884,21 +828,6 @@
             this.label19.TabIndex = 6;
             this.label19.Text = "Dscto:";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_DSCTO_1
-            // 
-            this.TB_DSCTO_1.BackColor = System.Drawing.Color.Yellow;
-            this.TB_DSCTO_1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_DSCTO_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_DSCTO_1.Location = new System.Drawing.Point(2, 2);
-            this.TB_DSCTO_1.MaxLength = 6;
-            this.TB_DSCTO_1.Name = "TB_DSCTO_1";
-            this.TB_DSCTO_1.Size = new System.Drawing.Size(69, 22);
-            this.TB_DSCTO_1.TabIndex = 2;
-            this.TB_DSCTO_1.Text = "0";
-            this.TB_DSCTO_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_DSCTO_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_DSCTO_1.Leave += new System.EventHandler(this.TB_DSCTO_1_Leave);
             // 
             // panel22
             // 
@@ -932,7 +861,7 @@
             this.panel23.Margin = new System.Windows.Forms.Padding(1);
             this.panel23.Name = "panel23";
             this.panel23.Padding = new System.Windows.Forms.Padding(2);
-            this.panel23.Size = new System.Drawing.Size(347, 26);
+            this.panel23.Size = new System.Drawing.Size(345, 26);
             this.panel23.TabIndex = 5;
             // 
             // L_DSCTO_2
@@ -956,21 +885,6 @@
             this.label23.TabIndex = 7;
             this.label23.Text = "Dscto:";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_DSCTO_2
-            // 
-            this.TB_DSCTO_2.BackColor = System.Drawing.Color.Yellow;
-            this.TB_DSCTO_2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_DSCTO_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_DSCTO_2.Location = new System.Drawing.Point(2, 2);
-            this.TB_DSCTO_2.MaxLength = 6;
-            this.TB_DSCTO_2.Name = "TB_DSCTO_2";
-            this.TB_DSCTO_2.Size = new System.Drawing.Size(69, 22);
-            this.TB_DSCTO_2.TabIndex = 3;
-            this.TB_DSCTO_2.Text = "0";
-            this.TB_DSCTO_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_DSCTO_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_DSCTO_2.Leave += new System.EventHandler(this.TB_DSCTO_2_Leave);
             // 
             // panel24
             // 
@@ -1004,7 +918,7 @@
             this.panel25.Margin = new System.Windows.Forms.Padding(1);
             this.panel25.Name = "panel25";
             this.panel25.Padding = new System.Windows.Forms.Padding(2);
-            this.panel25.Size = new System.Drawing.Size(347, 26);
+            this.panel25.Size = new System.Drawing.Size(345, 26);
             this.panel25.TabIndex = 6;
             // 
             // L_DSCTO_3
@@ -1028,21 +942,6 @@
             this.label24.TabIndex = 7;
             this.label24.Text = "Dscto:";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_DSCTO_3
-            // 
-            this.TB_DSCTO_3.BackColor = System.Drawing.Color.Yellow;
-            this.TB_DSCTO_3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_DSCTO_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_DSCTO_3.Location = new System.Drawing.Point(2, 2);
-            this.TB_DSCTO_3.MaxLength = 6;
-            this.TB_DSCTO_3.Name = "TB_DSCTO_3";
-            this.TB_DSCTO_3.Size = new System.Drawing.Size(69, 22);
-            this.TB_DSCTO_3.TabIndex = 4;
-            this.TB_DSCTO_3.Text = "0";
-            this.TB_DSCTO_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_DSCTO_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_DSCTO_3.Leave += new System.EventHandler(this.TB_DSCTO_3_Leave);
             // 
             // panel26
             // 
@@ -1074,7 +973,7 @@
             this.panel27.Margin = new System.Windows.Forms.Padding(1);
             this.panel27.Name = "panel27";
             this.panel27.Padding = new System.Windows.Forms.Padding(2);
-            this.panel27.Size = new System.Drawing.Size(347, 26);
+            this.panel27.Size = new System.Drawing.Size(345, 26);
             this.panel27.TabIndex = 19;
             // 
             // L_IMPORTE
@@ -1118,7 +1017,7 @@
             this.panel29.Margin = new System.Windows.Forms.Padding(1);
             this.panel29.Name = "panel29";
             this.panel29.Padding = new System.Windows.Forms.Padding(2);
-            this.panel29.Size = new System.Drawing.Size(347, 26);
+            this.panel29.Size = new System.Drawing.Size(345, 26);
             this.panel29.TabIndex = 21;
             // 
             // L_IMPUESTO
@@ -1162,7 +1061,7 @@
             this.panel38.Margin = new System.Windows.Forms.Padding(1);
             this.panel38.Name = "panel38";
             this.panel38.Padding = new System.Windows.Forms.Padding(2);
-            this.panel38.Size = new System.Drawing.Size(347, 22);
+            this.panel38.Size = new System.Drawing.Size(345, 22);
             this.panel38.TabIndex = 24;
             // 
             // L_TOTAL
@@ -1392,6 +1291,108 @@
             this.label3.Text = "Costo BsS";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // TB_CNT
+            // 
+            this.TB_CNT.BackColor = System.Drawing.Color.Yellow;
+            this.TB_CNT.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_CNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_CNT.Location = new System.Drawing.Point(2, 2);
+            this.TB_CNT.MaxLength = 12;
+            this.TB_CNT.Name = "TB_CNT";
+            this.TB_CNT.Size = new System.Drawing.Size(103, 22);
+            this.TB_CNT.TabIndex = 0;
+            this.TB_CNT.Text = "0";
+            this.TB_CNT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_CNT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_CNT.Leave += new System.EventHandler(this.TB_CNT_Leave);
+            // 
+            // TB_COSTO_MONEDA
+            // 
+            this.TB_COSTO_MONEDA.BackColor = System.Drawing.Color.Yellow;
+            this.TB_COSTO_MONEDA.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_COSTO_MONEDA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_COSTO_MONEDA.Location = new System.Drawing.Point(2, 2);
+            this.TB_COSTO_MONEDA.MaxLength = 14;
+            this.TB_COSTO_MONEDA.Name = "TB_COSTO_MONEDA";
+            this.TB_COSTO_MONEDA.Size = new System.Drawing.Size(103, 22);
+            this.TB_COSTO_MONEDA.TabIndex = 1;
+            this.TB_COSTO_MONEDA.Text = "0";
+            this.TB_COSTO_MONEDA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_COSTO_MONEDA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_COSTO_MONEDA.Leave += new System.EventHandler(this.TB_COSTO_MONEDA_Leave);
+            // 
+            // TB_COSTO_DIVISA3
+            // 
+            this.TB_COSTO_DIVISA3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_COSTO_DIVISA3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_COSTO_DIVISA3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_COSTO_DIVISA3.Location = new System.Drawing.Point(2, 2);
+            this.TB_COSTO_DIVISA3.MaxLength = 14;
+            this.TB_COSTO_DIVISA3.Name = "TB_COSTO_DIVISA3";
+            this.TB_COSTO_DIVISA3.Size = new System.Drawing.Size(103, 22);
+            this.TB_COSTO_DIVISA3.TabIndex = 1;
+            this.TB_COSTO_DIVISA3.Text = "0";
+            this.TB_COSTO_DIVISA3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_COSTO_DIVISA3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_COSTO_DIVISA3.Leave += new System.EventHandler(this.TB_COSTO_DIVISA3_Leave);
+            // 
+            // TB_DSCTO_1
+            // 
+            this.TB_DSCTO_1.BackColor = System.Drawing.Color.Yellow;
+            this.TB_DSCTO_1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_DSCTO_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_DSCTO_1.Location = new System.Drawing.Point(2, 2);
+            this.TB_DSCTO_1.MaxLength = 6;
+            this.TB_DSCTO_1.Name = "TB_DSCTO_1";
+            this.TB_DSCTO_1.Size = new System.Drawing.Size(69, 22);
+            this.TB_DSCTO_1.TabIndex = 2;
+            this.TB_DSCTO_1.Text = "0";
+            this.TB_DSCTO_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_DSCTO_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_DSCTO_1.Leave += new System.EventHandler(this.TB_DSCTO_1_Leave);
+            // 
+            // TB_DSCTO_2
+            // 
+            this.TB_DSCTO_2.BackColor = System.Drawing.Color.Yellow;
+            this.TB_DSCTO_2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_DSCTO_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_DSCTO_2.Location = new System.Drawing.Point(2, 2);
+            this.TB_DSCTO_2.MaxLength = 6;
+            this.TB_DSCTO_2.Name = "TB_DSCTO_2";
+            this.TB_DSCTO_2.Size = new System.Drawing.Size(69, 22);
+            this.TB_DSCTO_2.TabIndex = 3;
+            this.TB_DSCTO_2.Text = "0";
+            this.TB_DSCTO_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_DSCTO_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_DSCTO_2.Leave += new System.EventHandler(this.TB_DSCTO_2_Leave);
+            // 
+            // TB_DSCTO_3
+            // 
+            this.TB_DSCTO_3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_DSCTO_3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_DSCTO_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_DSCTO_3.Location = new System.Drawing.Point(2, 2);
+            this.TB_DSCTO_3.MaxLength = 6;
+            this.TB_DSCTO_3.Name = "TB_DSCTO_3";
+            this.TB_DSCTO_3.Size = new System.Drawing.Size(69, 22);
+            this.TB_DSCTO_3.TabIndex = 4;
+            this.TB_DSCTO_3.Text = "0";
+            this.TB_DSCTO_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_DSCTO_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_DSCTO_3.Leave += new System.EventHandler(this.TB_DSCTO_3_Leave);
+            // 
+            // CB_EMP_COMPRA
+            // 
+            this.CB_EMP_COMPRA.Dock = System.Windows.Forms.DockStyle.Left;
+            this.CB_EMP_COMPRA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_EMP_COMPRA.FormattingEnabled = true;
+            this.CB_EMP_COMPRA.Location = new System.Drawing.Point(2, 2);
+            this.CB_EMP_COMPRA.Margin = new System.Windows.Forms.Padding(1);
+            this.CB_EMP_COMPRA.Name = "CB_EMP_COMPRA";
+            this.CB_EMP_COMPRA.Size = new System.Drawing.Size(220, 21);
+            this.CB_EMP_COMPRA.TabIndex = 0;
+            this.CB_EMP_COMPRA.SelectedIndexChanged += new System.EventHandler(this.CB_EMP_COMPRA_SelectedIndexChanged);
+            // 
             // ItemFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1490,7 +1491,6 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label L_EMPQ_PRD;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label L_CONT_EMPQ;
         private System.Windows.Forms.Label label6;
@@ -1565,5 +1565,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel41;
         private System.Windows.Forms.CheckBox CHB_ACTUALIZAR_PRECIO_VENTA;
+        private System.Windows.Forms.ComboBox CB_EMP_COMPRA;
     }
 }

@@ -30,6 +30,12 @@ namespace OOB.LibCompra.Documento.ListaItemImportar
         public string decimales { get; set; }
         public string categoria { get; set; }
         public string codRefProv { get; set; }
+        //
+        public string autoEmpCompPreDeterminado { get; set; }
+        public int contEmpCompPreDeterminado { get; set; }
+        public string autoEmpInv { get; set; }
+        public int contEmpInv { get; set; }
+        public bool isEmpPorUnidad { get { return estatusUnidad.Trim().ToUpper() == "1"; } }
 
 
         public Ficha()
@@ -53,6 +59,11 @@ namespace OOB.LibCompra.Documento.ListaItemImportar
             decimales = "";
             categoria = "";
             codRefProv = "";
+            //
+            autoEmpCompPreDeterminado = "";
+            contEmpCompPreDeterminado = 0;
+            autoEmpInv = "";
+            contEmpInv = 0;
         }
 
     }

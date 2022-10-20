@@ -48,6 +48,12 @@ namespace ServiceCompra.MyService
             return ServiceProv.Producto_EmpaqueMedida_GetLista();
         }
 
+        //
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha> 
+            Producto_EmpaquesCompra_GetFicha(string idPrd)
+        {
+            return ServiceProv.Producto_EmpaquesCompra_GetFicha(idPrd);
+        }
     }
 
 }

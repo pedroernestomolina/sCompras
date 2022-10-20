@@ -223,34 +223,40 @@ namespace DataProvCompra.Data
                 prdKardex.Add(nr);
             }
             var prdCosto = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdCosto>();
-            foreach (var it in docFac.prdCosto) 
+            if (docFac.prdCosto != null)
             {
-                var nr = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdCosto()
+                foreach (var it in docFac.prdCosto)
                 {
-                    autoPrd = it.autoPrd,
-                    cntUnd = it.cntUnd,
-                    contenido = it.contenido,
-                    costo = it.costo,
-                    costoDivisa = it.costoDivisa,
-                    costoUnd = it.costoUnd,
-                    nombrePrd = it.nombrePrd,
-                };
-                prdCosto.Add(nr);
+                    var nr = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdCosto()
+                    {
+                        autoPrd = it.autoPrd,
+                        cntUnd = it.cntUnd,
+                        contenido = it.contenido,
+                        costo = it.costo,
+                        costoDivisa = it.costoDivisa,
+                        costoUnd = it.costoUnd,
+                        nombrePrd = it.nombrePrd,
+                    };
+                    prdCosto.Add(nr);
+                }
             }
             var prdCostoHistorico = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdCostoHistorico>();
-            foreach (var it in docFac.prdCostosHistorico)
+            if (docFac.prdCostosHistorico != null)
             {
-                var nr = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdCostoHistorico()
+                foreach (var it in docFac.prdCostosHistorico)
                 {
-                    autoPrd = it.autoPrd,
-                    costo = it.costo,
-                    costoDivisa = it.costoDivisa,
-                    documento = xdoc.documentoNro,
-                    nota = "",
-                    serie = "FAC",
-                    tasaDivisa = xdoc.factorCambio,
-                };
-                prdCostoHistorico.Add(nr);
+                    var nr = new DtoLibCompra.Documento.Agregar.Factura.FichaPrdCostoHistorico()
+                    {
+                        autoPrd = it.autoPrd,
+                        costo = it.costo,
+                        costoDivisa = it.costoDivisa,
+                        documento = xdoc.documentoNro,
+                        nota = "",
+                        serie = "FAC",
+                        tasaDivisa = xdoc.factorCambio,
+                    };
+                    prdCostoHistorico.Add(nr);
+                }
             }
             var prdProveedor = new List<DtoLibCompra.Documento.Agregar.Factura.FichaPrdProveedor>();
             foreach (var it in docFac.prdProveedor)
@@ -1155,6 +1161,10 @@ namespace DataProvCompra.Data
                             prdNombre = s.prdNombre,
                             precioFactura = s.precioFactura,
                             tasaIva = s.tasaIva,
+                            autoEmpCompPreDeterminado = s.autoEmpCompPreDeterminado,
+                            contEmpCompPreDeterminado = s.contEmpCompPreDeterminado,
+                            autoEmpInv = s.autoEmpInv,
+                            contEmpInv = s.contEmpInv,
                         };
                         return nr;
                     }).ToList();
@@ -1221,6 +1231,11 @@ namespace DataProvCompra.Data
                         prdCostoActualLocal = s.prdCostoActualLocal,
                         prdCostoActualDivisa = s.prdCostoActualDivisa,
                         precioFacturaDivisa = s.precioFacturaDivisa,
+                        //
+                        autoEmpaque = s.autoEmpaque,
+                        decimalEmpaque = s.decimalEmpaque,
+                        estatusEmpCompraPredeterminado = s.estatusEmpCompraPredeterminado,
+                        idEmpSeleccionado = s.idEmpSeleccionado,
                     };
                     return rg;
                 }).ToList(),
@@ -1382,6 +1397,11 @@ namespace DataProvCompra.Data
                             prdCostoActualDivisa = s.prdCostoActualDivisa,
                             prdCostoActualLocal = s.prdCostoActualLocal,
                             precioFacturaDivisa = s.precioFacturaDivisa,
+                            //
+                            autoEmpaque = s.autoEmpaque,
+                            decimalEmpaque = s.decimalEmpaque,
+                            estatusEmpCompraPredeterminado = s.estatusEmpCompraPredeterminado,
+                            idEmpaqueSeleccionado = s.idEmpaqueSeleccionado,
                         };
                         return rg;
                     }).ToList();

@@ -58,6 +58,11 @@ namespace OOB.LibCompra.Documento.Pendiente.Agregar
             prdCostoActualDivisa = 0m;
             prdCostoActualLocal = 0m;
             esAdmDivisa = false;
+            //
+            autoEmpaque = "";
+            decimalEmpaque = "";
+            estatusEmpCompraPredeterminado = "";
+            idEmpSeleccionado = "";
         }
 
         //
@@ -65,6 +70,11 @@ namespace OOB.LibCompra.Documento.Pendiente.Agregar
         public decimal prdCostoActualLocal { get; set; }
         public decimal prdCostoActualDivisa { get; set; }
         public bool esAdmDivisa { get; set; }
+        //
+        public string autoEmpaque { get; set; }
+        public string decimalEmpaque { get; set; }
+        public string estatusEmpCompraPredeterminado { get; set; }
+        public string idEmpSeleccionado { get; set; }
 
     }
 

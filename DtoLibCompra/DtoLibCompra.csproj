@@ -107,6 +107,7 @@
     <Compile Include="Permiso\Ficha.cs" />
     <Compile Include="Producto\CodigoRefProveedor\Filtro.cs" />
     <Compile Include="Producto\Data\Ficha.cs" />
+    <Compile Include="Producto\EmpaqueCompra\Ficha.cs" />
     <Compile Include="Producto\EmpaqueMedida\Lista\Ficha.cs" />
     <Compile Include="Producto\Enumerados.cs" />
     <Compile Include="Producto\Lista\Filtro.cs" />

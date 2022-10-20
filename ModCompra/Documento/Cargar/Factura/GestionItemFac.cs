@@ -342,10 +342,63 @@ namespace ModCompra.Documento.Cargar.Factura
 
         public void AgregarListaItem(List<OOB.LibCompra.Documento.ListaItemImportar.Ficha> list, string idPrv, decimal factorDivisa)
         {
+
             foreach (var it in list)
             {
-                var item = new dataItem(it, factorDivisa);
-                InsertarItem(item);
+                try
+                {
+                    var idEmpaqueSeleccionado = "1";
+                    var isEmpPredeterminado = true;
+                    var autoEmpaque = "";
+                    if (it.isEmpPorUnidad)
+                    {
+                        autoEmpaque = "";
+                        idEmpaqueSeleccionado = "3";
+                        isEmpPredeterminado = false;
+                    }
+                    else
+                    {
+                        if (it.contEmpCompPreDeterminado == it.contenidoEmp)
+                        {
+                            autoEmpaque = it.autoEmpCompPreDeterminado;
+                            idEmpaqueSeleccionado = "1";
+                            isEmpPredeterminado = true;
+                        }
+                        else
+                        {
+                            if (it.contEmpInv == it.contenidoEmp)
+                            {
+                                autoEmpaque = it.autoEmpInv;
+                                idEmpaqueSeleccionado = "2";
+                                isEmpPredeterminado = false;
+                            }
+                            else
+                            {
+                                var st = it.prdNombre + Environment.NewLine + "EMPAQUE/CONTENIDO PRODUCTO NO ENCONTRADO";
+                                st += Environment.NewLine + "PRODUCTO NO SERA CARGADO A LA LISTA";
+                                throw new Exception(st);
+                            }
+                        }
+                    }
+
+                    var fic = new OOB.LibCompra.Producto.EmpaqueCompra.Ficha()
+                    {
+                        autoEmp = autoEmpaque,
+                        contEmp = it.contenidoEmp,
+                        decimalesEmp = it.decimales,
+                        nombreEmp = it.empaqueCompra,
+                        isEmpPredeterminado = isEmpPredeterminado,
+                    };
+                    var emp = new dataEmpCompra(fic, idEmpaqueSeleccionado);
+
+                    var item = new dataItem(it, factorDivisa);
+                    item.setEmpCompra(emp);
+                    InsertarItem(item);
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Alerta(e.Message);
+                }
             }
         }
 
@@ -353,7 +406,18 @@ namespace ModCompra.Documento.Cargar.Factura
         {
             foreach (var it in list)
             {
+                var fic = new OOB.LibCompra.Producto.EmpaqueCompra.Ficha()
+                {
+                    autoEmp = it.autoEmpaque,
+                    contEmp = it.contenidoEmp,
+                    decimalesEmp = it.decimalEmpaque,
+                    nombreEmp = it.empaqueCompra,
+                    isEmpPredeterminado = it.isEmpCompraPredeterminado,
+                };
+                var emp = new dataEmpCompra(fic,it.idEmpaqueSeleccionado);
+
                 var item = new dataItem(it, factorDivisa);
+                item.setEmpCompra(emp);
                 InsertarItem(item);
             }
         }

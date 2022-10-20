@@ -22,6 +22,13 @@ namespace ModCompra.Documento.Cargar.Formulario
         public ItemFrm()
         {
             InitializeComponent();
+            InicializaCB();
+        }
+
+        private void InicializaCB()
+        {
+            CB_EMP_COMPRA.DisplayMember = "desc";
+            CB_EMP_COMPRA.ValueMember = "id";
         }
 
         public void setControlador(Factura.GestionAgregarItem ctr)
@@ -34,12 +41,17 @@ namespace ModCompra.Documento.Cargar.Formulario
         }
 
 
+        private bool _modoInicializar;
         private void ItemFrm_Load(object sender, EventArgs e)
         {
+            _modoInicializar = true;
+            CB_EMP_COMPRA.DataSource = _controlador.GetEmpCompra_Source;
+            CB_EMP_COMPRA.SelectedValue = _controlador.GetEmpaqueCompra_ID;
+
             L_PRODUCTO.Text = _controlador.Producto;
             L_TASA_IVA_PRD.Text = _controlador.ProductoTasaIvaDesc;
             L_ADM_DIVISA.Text = _controlador.ProductoAdmDivisaDesc;
-            L_EMPQ_PRD.Text = _controlador.ProductoEmpaqueDesc;
+            //L_EMPQ_PRD.Text = _controlador.ProductoEmpaqueDesc;
             L_CONT_EMPQ.Text = _controlador.ProductoContEmpaqueDesc;
             L_COSTO_ACT.Text = _controlador.ProductoCosto.ToString("n2");
             L_COSTO_ACT_DIVISA.Text = _controlador.ProductoCostoDivisa.ToString("n2");
@@ -68,6 +80,7 @@ namespace ModCompra.Documento.Cargar.Formulario
             CHB_ACTUALIZAR_PRECIO_VENTA.Checked = _controlador.GetActualizarPrecioVenta;
 
             ActualizarImporte();
+            _modoInicializar = false;
         }
 
         private void Ctr_KeyDown(object sender, KeyEventArgs e)
@@ -167,6 +180,19 @@ namespace ModCompra.Documento.Cargar.Formulario
         private void TB_COD_REF_PRV_Leave(object sender, EventArgs e)
         {
             _controlador.CodigoRefProveedor = TB_COD_REF_PRV.Text;
+        }
+
+
+        private void CB_EMP_COMPRA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.setEmpCompra("");
+            if (CB_EMP_COMPRA.SelectedIndex != -1)
+            {
+                _controlador.setEmpCompra(CB_EMP_COMPRA.SelectedValue.ToString());
+            }
+            L_CONT_EMPQ.Text = _controlador.ProductoContEmpaqueDesc;
+            ActualizarImporte();
         }
 
     }

@@ -57,6 +57,12 @@ namespace LibEntityCompra
         public decimal utilidad_dsp_4 { get; set; }
         public decimal precio_dsp_4 { get; set; }
         public decimal pdivisafull_dsp_4 { get; set; }
+        public string auto_emp_venta_tipo_1 { get; set; }
+        public string auto_emp_venta_tipo_2 { get; set; }
+        public string auto_emp_venta_tipo_3 { get; set; }
+        public int cont_emp_venta_tipo_1 { get; set; }
+        public int cont_emp_venta_tipo_2 { get; set; }
+        public int cont_emp_venta_tipo_3 { get; set; }
     
         public virtual productos productos { get; set; }
         public virtual productos_medida productos_medida { get; set; }

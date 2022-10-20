@@ -57,6 +57,7 @@ namespace LibEntityCompra
         public string estatus_unidad { get; set; }
         public System.DateTime fecha_lote { get; set; }
         public string cierre_ftp { get; set; }
+        public string estatus_cambio_precio_venta { get; set; }
     
         public virtual compras compras { get; set; }
         public virtual empresa_depositos empresa_depositos { get; set; }

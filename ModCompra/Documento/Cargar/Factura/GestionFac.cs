@@ -252,12 +252,21 @@ namespace ModCompra.Documento.Cargar.Factura
             }
             if (r00.Entidad)
             {
-                var _it = ((List<dataItem>)gestionItem.Lista).FirstOrDefault(s=> !s.GetActualizarPrecio);
-                if (_it!=null)
+                var _lst = ((List<dataItem>)gestionItem.Lista).Where(w => !w.GetActualizarPrecio).ToList();
+                foreach (var it in _lst)
                 {
-                    Helpers.Msg.Error(" [ " +_it.Producto.descripcion + " ], PRECIO DE VENTA NO ASIGNADO");
-                    return;
+                    if (it.IsEmpCompraPredeterminado)
+                    {
+                        Helpers.Msg.Error(" [ " + it.Producto.descripcion + " ], PRECIO DE VENTA NO ASIGNADO");
+                        return;
+                    }
                 }
+                //var _it = ((List<dataItem>)gestionItem.Lista).FirstOrDefault(s=> !s.GetActualizarPrecio);
+                //if (_it!=null)
+                //{
+                //    Helpers.Msg.Error(" [ " +_it.Producto.descripcion + " ], PRECIO DE VENTA NO ASIGNADO");
+                //    return;
+                //}
             }
 
             var r01 = Sistema.MyData.Permiso_RegistrarFactura_ProcesarDocumento(Sistema.UsuarioP.autoGru);
@@ -278,7 +287,7 @@ namespace ModCompra.Documento.Cargar.Factura
 
             var preciosMod =new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecios>();
             var historicoPrecio = new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico>();
-            foreach (dataItem it in ((List<dataItem>)gestionItem.Lista).Where(w=>w.GetActualizarPrecio).ToList())
+            foreach (dataItem it in ((List<dataItem>)gestionItem.Lista).Where(w=>w.GetActualizarPrecio && w.IsEmpCompraPredeterminado).ToList())
             {
                 OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_1 = null;
                 if (it.GetDataPrecios.precio_1_Emp_1.pNeto>0)
@@ -801,16 +810,16 @@ namespace ModCompra.Documento.Cargar.Factura
                     cierreFtp = "",
                     codigoProducto = it.Producto.codigo,
                     codigoProveedor = it.CodRefPrv,
-                    contenidoEmpaque = it.Producto.contenidoCompra,
+                    contenidoEmpaque = it.ContenidoEmpSeleccionado, //it.Producto.contenidoCompra,
                     costoBruto = it.costoMoneda,
                     costoCompra = it.CostoFinal,
                     costoPromedioUnd = 0.0m,
                     costoUnd = it.CostoFinal_Und,
-                    decimalesPrd = it.Producto.decimales,
+                    decimalesPrd = it.DecimalesEmpSeleccionado, //it.Producto.decimales,
                     depositoCodigo = gestionDoc.Deposito.codigo,
                     depositoNombre = gestionDoc.Deposito.nombre,
                     detalle = "",
-                    empaquePrd = it.ProductoEmpaqueDesc,
+                    empaquePrd = it.DescripcionEmpSeleccionado, //it.ProductoEmpaqueDesc,
                     esAnulado = "0",
                     estatusUnidad = "0",
                     fechaLote = new DateTime(200, 01, 01).Date,
@@ -877,7 +886,10 @@ namespace ModCompra.Documento.Cargar.Factura
                     costoUnd = it.CostoFinal_Und,
                     nombrePrd = it.Producto.descripcion,
                 };
-                fichaPrdCosto.Add(prdCosto);
+                if (it.IsEmpCompraPredeterminado)
+                {
+                    fichaPrdCosto.Add(prdCosto);
+                }
                 var prdCostoHistorico = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdCostoHistorico()
                 {
                     autoPrd = it.Producto.auto,
@@ -888,7 +900,10 @@ namespace ModCompra.Documento.Cargar.Factura
                     serie = "FAC",
                     tasaDivisa = gestionDoc.FactorDivisa,
                 };
-                fichaPrdCostoHistorico.Add(prdCostoHistorico);
+                if (it.IsEmpCompraPredeterminado)
+                {
+                    fichaPrdCostoHistorico.Add(prdCostoHistorico);
+                }
                 if (it.CodRefPrvActual=="")
                 {
                     if (it.CodRefPrv != "") 
@@ -1094,12 +1109,13 @@ namespace ModCompra.Documento.Cargar.Factura
                     categoria = it.Producto.categoria,
                     cntFactura = it.cantidad,
                     codRefProv = it.CodRefPrv,
-                    contenidoEmp = it.Producto.contenidoCompra,
-                    decimales = it.Producto.decimales,
+                    //contenidoEmp = it.Producto.contenidoCompra,
+                    contenidoEmp = it.ContenidoEmpSeleccionado,
+                    decimales = it.DecimalesEmpSeleccionado,
                     dscto1p = it.dsct_1_p,
                     dscto2p = it.dsct_2_p,
                     dscto3p = it.dsct_3_p,
-                    empaqueCompra = it.ProductoEmpaqueDesc,
+                    empaqueCompra = it.DescripcionEmpSeleccionado,
                     prdAuto = it.Producto.auto,
                     prdAutoDepartamento = it.Producto.autoDepartamento,
                     prdAutoGrupo = it.Producto.autoGrupo,
@@ -1110,10 +1126,15 @@ namespace ModCompra.Documento.Cargar.Factura
                     precioFactura = it.costoMoneda,
                     tasaIva = it.Producto.tasaIva,
                     //
-                    precioFacturaDivisa= it.costoDivisa,
-                    prdCostoActualLocal= it.Producto.costo,
+                    precioFacturaDivisa = it.costoDivisa,
+                    prdCostoActualLocal = it.Producto.costo,
                     prdCostoActualDivisa = it.Producto.costoDivisa,
-                    esAdmDivisa= it.Producto.AdmPorDivisa== OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
+                    esAdmDivisa = it.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
+                    //
+                    autoEmpaque = it.AutoEmpSeleccionado,
+                    decimalEmpaque = it.DecimalesEmpSeleccionado,
+                    estatusEmpCompraPredeterminado = it.IsEmpCompraPredeterminado ? "1" : "0",
+                    idEmpSeleccionado = it.IdEmpaqueCompra,
                 };
                 items.Add(item);
             }

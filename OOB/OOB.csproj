@@ -93,6 +93,7 @@
     <Compile Include="LibCompra\Permiso\Ficha.cs" />
     <Compile Include="LibCompra\Producto\CodRefProveedor\Filtro.cs" />
     <Compile Include="LibCompra\Producto\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Producto\EmpaqueCompra\Ficha.cs" />
     <Compile Include="LibCompra\Producto\EmpaqueMedida\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Producto\Enumerados.cs" />
     <Compile Include="LibCompra\Producto\Lista\Filtro.cs" />

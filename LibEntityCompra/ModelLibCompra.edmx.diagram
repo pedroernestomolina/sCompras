@@ -74,7 +74,7 @@
         <AssociationConnector Association="compraModel.productos_ext_ibfk_9" />
         <AssociationConnector Association="compraModel.compras_detalle_ibfk_4" />
         <AssociationConnector Association="compraModel.compras_detalle_ibfk_7" />
-        <EntityTypeShape EntityType="compraModel.compras_pend_detalle" Width="1.5" PointX="20.625" PointY="1" />
+        <EntityTypeShape EntityType="compraModel.compras_pend_detalle" Width="1.5" PointX="20.625" PointY="11.625" />
         <AssociationConnector Association="compraModel.compras_pend_detalle_ibfk_1" />
       </Diagram>
     </edmx:Diagrams>

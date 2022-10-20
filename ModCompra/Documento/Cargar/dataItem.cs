@@ -26,7 +26,7 @@ namespace ModCompra.Documento.Cargar
         public string descripcionPrd { get { return producto.descripcion; } }
         public string cnt { get { return cantidad.ToString("n"+producto.decimales); } }
         public string cntDev { get { return cantDev.ToString("n" + producto.decimales); } }
-        public string empaqueCont { get { return producto.empaqueCompra.Trim() + "/ " + producto.contenidoCompra.ToString("n0").Trim(); } }
+        public string empaqueCont { get { return _descEmp.Trim() + "/ " + _contEmp.ToString("n0").Trim(); } }
         public string costoCompra { get { return costoMoneda.ToString("n2"); } }
         public string costoDivisaCompra { get { return costoDivisa.ToString("n2"); } }
         public string tasaIvaPrd { get { return producto.tasaIva.ToString("n2").Trim()+"%"; } }
@@ -57,7 +57,7 @@ namespace ModCompra.Documento.Cargar
                 //    rt = (int) cantidad* Producto.contenidoCompra;
 
                 //rt = (int)cantidad * Producto.contenidoCompra;
-                rt = cantidad * Producto.contenidoCompra;
+                rt = cantidad * _contEmp;
                 if (producto.decimales == "0")
                 { 
                     rt=(int)rt;
@@ -71,7 +71,7 @@ namespace ModCompra.Documento.Cargar
             get
             {
                 var rt = 0m;
-                rt = cantDev * Producto.contenidoCompra;
+                rt = cantDev * _contEmp;
                 if (producto.decimales == "0")
                 {
                     rt = (int)rt;
@@ -85,7 +85,10 @@ namespace ModCompra.Documento.Cargar
             get 
             {
                 var rt = 0.0m;
-                rt = costoMoneda / Producto.contenidoCompra;
+                if (_contEmp > 0)
+                {
+                    rt = costoMoneda / _contEmp;
+                }
                 return rt;
             } 
         }
@@ -95,7 +98,10 @@ namespace ModCompra.Documento.Cargar
             get
             {
                 var rt = 0.0m;
-                rt = costoMoneda_2 / Producto.contenidoCompra;
+                if (_contEmp > 0)
+                {
+                    rt = costoMoneda_2 / _contEmp;
+                }
                 return rt;
             }
         }
@@ -105,7 +111,10 @@ namespace ModCompra.Documento.Cargar
             get 
             {
                 var rt = 0.0m;
-                rt = costoDivisa / Producto.contenidoCompra;
+                if (_contEmp > 0)
+                {
+                    rt = costoDivisa / _contEmp;
+                }
                 return rt;
             } 
         }
@@ -225,7 +234,7 @@ namespace ModCompra.Documento.Cargar
                 var rt = "";
                 if (Producto != null)
                 {
-                    rt = Producto.empaqueCompra;
+                    rt = _descEmp;
                 }
                 return rt;
             } 
@@ -238,7 +247,7 @@ namespace ModCompra.Documento.Cargar
                 var rt = "";
                 if (Producto != null)
                 {
-                    rt = Producto.contenidoCompra.ToString("n0");
+                    rt = _contEmp.ToString("n0");
                 }
                 return rt;
             }
@@ -280,6 +289,11 @@ namespace ModCompra.Documento.Cargar
         {
             factorDivisa = 0.0m;
             producto = null;
+            //
+            _contEmp = 0;
+            _descEmp = "";
+            _isEmpCompraPredeterminado = false;
+            _idEmpCompra = "";
         }
 
         public dataItem(dataItem it)
@@ -603,7 +617,10 @@ namespace ModCompra.Documento.Cargar
             get
             {
                 var rt = 0.0m;
-                rt = CostoFinal / Producto.contenidoCompra; 
+                if (_contEmp > 0)
+                {
+                    rt = CostoFinal / _contEmp;
+                }
                 return rt;
             }
         }
@@ -623,7 +640,10 @@ namespace ModCompra.Documento.Cargar
             get
             {
                 var rt = 0.0m;
-                rt = CostoDivisaFinal / Producto.contenidoCompra;
+                if (_contEmp > 0) 
+                {
+                    rt = CostoDivisaFinal / _contEmp;
+                }
                 return rt;
             }
         }
@@ -663,6 +683,30 @@ namespace ModCompra.Documento.Cargar
         public void setDataPrecios(ModCompra.Producto.Precio.Actualizar.dataGuardar dataGuardar)
         {
             _dataPrecios = dataGuardar;
+        }
+
+
+        //
+        private string _autoEmp;
+        private int _contEmp;
+        private string _descEmp;
+        private string _decEmp;
+        private bool _isEmpCompraPredeterminado;
+        private string _idEmpCompra;
+        public bool IsEmpCompraPredeterminado { get { return _isEmpCompraPredeterminado; } }
+        public string IdEmpaqueCompra { get { return _idEmpCompra; } }
+        public int ContenidoEmpSeleccionado { get { return _contEmp; } }
+        public string DescripcionEmpSeleccionado { get { return _descEmp; } }
+        public string DecimalesEmpSeleccionado { get { return _decEmp; } }
+        public string AutoEmpSeleccionado { get { return _autoEmp; } }
+        public void setEmpCompra(Factura.dataEmpCompra it)
+        {
+            _idEmpCompra = it.id;
+            _autoEmp = it.EmpCompra.autoEmp;
+            _contEmp = it.EmpCompra.contEmp;
+            _descEmp = it.EmpCompra.nombreEmp;
+            _decEmp = it.EmpCompra.decimalesEmp;
+            _isEmpCompraPredeterminado = it.EmpCompra.isEmpPredeterminado;
         }
 
     }

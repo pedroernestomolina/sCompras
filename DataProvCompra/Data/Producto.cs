@@ -336,6 +336,48 @@ namespace DataProvCompra.Data
             return rt;
         }
 
+        //
+        public OOB.ResultadoLista<OOB.LibCompra.Producto.EmpaqueCompra.Ficha> 
+            Producto_EmpaqueCompra_GetLista(string idPrd)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibCompra.Producto.EmpaqueCompra.Ficha>();
+
+            var r01 = MyData.Producto_EmpaquesCompra_GetFicha(idPrd);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s= r01.Entidad;
+            var lst = new List<OOB.LibCompra.Producto.EmpaqueCompra.Ficha>();
+            lst.Add(new OOB.LibCompra.Producto.EmpaqueCompra.Ficha()
+            {
+                autoEmp = s.autoEmpCompra,
+                contEmp = s.contEmpCompra,
+                decimalesEmp = s.decEmpCompra,
+                nombreEmp = s.descEmpCompra,
+                isEmpPredeterminado = true,
+            });
+            lst.Add(new OOB.LibCompra.Producto.EmpaqueCompra.Ficha()
+            {
+                autoEmp = s.autoEmpInv,
+                contEmp = s.contEmpInv,
+                decimalesEmp = s.decEmpInv,
+                nombreEmp = s.descEmpInv,
+                isEmpPredeterminado = false,
+            });
+            lst.Add(new OOB.LibCompra.Producto.EmpaqueCompra.Ficha()
+            {
+                autoEmp = "",
+                contEmp = 1,
+                decimalesEmp = "0",
+                nombreEmp = "UNIDAD",
+                isEmpPredeterminado = false,
+            });
+            rt.Lista = lst;
+
+            return rt;
+        }
+
     }
 
 }

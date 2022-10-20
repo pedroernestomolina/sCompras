@@ -1932,15 +1932,34 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    var sql_1 = @"SELECT auto_producto as prdAuto, codigo as prdCodigo, nombre as prdNombre, 
-                                auto_departamento as prdAutoDepartamento, auto_grupo as prdAutoGrupo, 
-                                auto_subgrupo as prdAutoSubGrupo, cantidad as cntFactura, empaque as empaqueCompra, 
-                                descuento1p as dscto1p, descuento2p as dscto2p, descuento3p as dscto3p, 
-                                tasa as tasaIva, estatus_unidad as estatusUnidad,  costo_compra as precioFactura,
-                                decimales, contenido_empaque as contenidoEmp, auto_tasa as prdAutoTasaIva, categoria,
-                                codigo_proveedor as codRefProv ";
+                    var sql_1 = @"SELECT
+                                    compraDet.auto_producto as prdAuto, 
+                                    compraDet.codigo as prdCodigo, 
+                                    compraDet.nombre as prdNombre, 
+                                    compraDet.auto_departamento as prdAutoDepartamento, 
+                                    compraDet.auto_grupo as prdAutoGrupo, 
+                                    compraDet.auto_subgrupo as prdAutoSubGrupo, 
+                                    compraDet.cantidad as cntFactura, 
+                                    compraDet.empaque as empaqueCompra, 
+                                    compraDet.descuento1p as dscto1p, 
+                                    compraDet.descuento2p as dscto2p, 
+                                    compraDet.descuento3p as dscto3p, 
+                                    compraDet.tasa as tasaIva, 
+                                    compraDet.estatus_unidad as estatusUnidad,  
+                                    compraDet.costo_compra as precioFactura,
+                                    compraDet.decimales, 
+                                    compraDet.contenido_empaque as contenidoEmp, 
+                                    compraDet.auto_tasa as prdAutoTasaIva, 
+                                    compraDet.categoria,
+                                    compraDet.codigo_proveedor as codRefProv,
+                                    prd.auto_empaque_compra as autoEmpCompPreDeterminado, 
+                                    prd.contenido_compras as contEmpCompPreDeterminado, 
+                                    prdExt.auto_emp_inv_1 as autoEmpInv, 
+                                    prdExt.cont_emp_inv_1 as contEmpInv ";
 
-                    var sql_2 = "FROM compras_detalle ";
+                    var sql_2 = @" FROM compras_detalle as compraDet 
+                                    join productos as prd on compraDet.auto_producto=prd.auto
+                                    join productos_ext as prdExt on prdExt.auto_producto=prd.auto ";
 
                     var sql_3 = "where auto_documento = @autoDoc ";
 
@@ -2034,6 +2053,11 @@ namespace ProvLibCompra
                                 costoActual_divisa = it.prdCostoActualDivisa,
                                 admDivisa = it.prdEstatusDivisa,
                                 precio_fact_divisa = it.precioFacturaDivisa,
+                                //
+                                empaque_auto = it.autoEmpaque,
+                                empaque_decimales = it.decimalEmpaque,
+                                empaque_predeterminado_compra = it.estatusEmpCompraPredeterminado,
+                                empaque_seleccionado_id = it.idEmpSeleccionado,
                             };
                             cnn.compras_pend_detalle.Add(entCompraPendDet);
                             cnn.SaveChanges();
@@ -2266,6 +2290,11 @@ namespace ProvLibCompra
                             prdCostoActualLocal = s.costoActual_local,
                             prdEstatusDivisa = s.admDivisa,
                             precioFacturaDivisa = s.precio_fact_divisa,
+                            //
+                            autoEmpaque = s.empaque_auto,
+                            decimalEmpaque = s.empaque_decimales,
+                            estatusEmpCompraPredeterminado = s.empaque_predeterminado_compra,
+                            idEmpaqueSeleccionado = s.empaque_seleccionado_id,
                         };
                         return dt;
                     }).ToList();

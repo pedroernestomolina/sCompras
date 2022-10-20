@@ -17,6 +17,9 @@ namespace ModCompra.Documento.Cargar.Factura
         private string autoPrd;
         private string autoProveedor;
         private Producto.Precio.Actualizar.IEditar _gPrecioVentaEditar;
+        //
+        private BindingSource _bsEmpCompra;
+        private List<dataEmpCompra> _lstEmpCompra;
 
 
         public string Producto { get { return item.ProductoDetalle; } }
@@ -57,6 +60,9 @@ namespace ModCompra.Documento.Cargar.Factura
         {
             NuevoItem();
             _gPrecioVentaEditar = new ModCompra.Producto.Precio.Actualizar.Editar();
+            _lstEmpCompra = new List<dataEmpCompra>();
+            _bsEmpCompra = new BindingSource();
+            _bsEmpCompra.DataSource = _lstEmpCompra;
         }
 
 
@@ -90,33 +96,61 @@ namespace ModCompra.Documento.Cargar.Factura
 
         private bool CargarData()
         {
-            var rt = true;
+            try
+            {
+                var r01 = Sistema.MyData.Producto_GetFicha(autoPrd);
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+                var filtro = new OOB.LibCompra.Producto.CodRefProveedor.Filtro() { autoPrd = this.autoPrd, autoPrv = this.autoProveedor };
+                var r02 = Sistema.MyData.Producto_GetCodigoRefProveedor(filtro);
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r02.Mensaje);
+                    return false;
+                }
+                var r03 = Sistema.MyData.Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra();
+                if (r03.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r03.Mensaje);
+                    return false;
+                }
+                var _id = 0;
+                _lstEmpCompra.Clear();
+                var r04 = Sistema.MyData.Producto_EmpaqueCompra_GetLista(autoPrd);
+                foreach (var r in r04.Lista) 
+                {
+                    _id++;
+                    var rg = new dataEmpCompra(r, _id.ToString());
+                    _lstEmpCompra.Add(rg);
+                }
+                _bsEmpCompra.DataSource = _lstEmpCompra;
+                _bsEmpCompra.CurrencyManager.Refresh();
 
-            var r01 = Sistema.MyData.Producto_GetFicha(autoPrd);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            var filtro = new OOB.LibCompra.Producto.CodRefProveedor.Filtro() { autoPrd = this.autoPrd, autoPrv = this.autoProveedor };
-            var r02 = Sistema.MyData.Producto_GetCodigoRefProveedor(filtro);
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var r03 = Sistema.MyData.Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra();
-            if (r03.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r03.Mensaje);
-                return false;
-            }
-            item.setProducto(r01.Entidad);
-            item.CodRefPrv = r02.Entidad;
-            item.CodRefPrvActual = r02.Entidad;
-            _actualizarPrecioIsActivo = r03.Entidad;
+                item.setProducto(r01.Entidad);
+                item.CodRefPrv = r02.Entidad;
+                item.CodRefPrvActual = r02.Entidad;
+                //
 
-            return rt;
+                if (_lstEmpCompra != null)
+                {
+                    if (_lstEmpCompra.Count > 0)
+                    {
+                        var empCompraPreDeterminado = _lstEmpCompra.First();
+                        item.setEmpCompra(empCompraPreDeterminado);
+                    }
+                }
+
+                _actualizarPrecioIsActivo = r03.Entidad;
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
         }
 
         private void ActualizarCosto()
@@ -133,6 +167,12 @@ namespace ModCompra.Documento.Cargar.Factura
         {
             RegistroOk = false;
             SalidaOk = false;
+
+            if (item.IdEmpaqueCompra == "") 
+            {
+                Helpers.Msg.Alerta("DEBES INDICAR EL EMPAQUE DE COMPRA");
+                return;
+            }
             if (MontoImporte > 0)
             {
                 var ms = MessageBox.Show("Insertar Registro ?", "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -148,25 +188,28 @@ namespace ModCompra.Documento.Cargar.Factura
                         }
                         if (Seguridad.Gestion.SolicitarClave(r01.Entidad))
                         {
-                            var _fichaPrd = new ModCompra.Producto.Precio.Actualizar.dataPrdEditar()
+                            if (item.IsEmpCompraPredeterminado)
                             {
-                                AdmDivisa = item.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
-                                AutoPrd = item.Producto.auto,
-                                CodigoPrd = item.Producto.codigo,
-                                ContEmpCompra = item.Producto.contenidoCompra,
-                                CostoMonedaDivisa = item.CostoDivisaFinal,
-                                CostoMonedaLocal = item.CostoFinal,
-                                DescripcionPrd = item.Producto.descripcion,
-                                EmpCompraDescripcion = item.Producto.empaqueCompra,
-                                TasaIva = item.Producto.tasaIva,
-                            };
-                            _gPrecioVentaEditar.Inicializa();
-                            _gPrecioVentaEditar.setPrdEditar(_fichaPrd);
-                            _gPrecioVentaEditar.Inicia();
-                            if (_gPrecioVentaEditar.IsEditarPrecioIsOk)
-                            {
-                                item.setActualizarPrecio(true);
-                                item.setDataPrecios(_gPrecioVentaEditar.DataPrecios);
+                                var _fichaPrd = new ModCompra.Producto.Precio.Actualizar.dataPrdEditar()
+                                {
+                                    AdmDivisa = item.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
+                                    AutoPrd = item.Producto.auto,
+                                    CodigoPrd = item.Producto.codigo,
+                                    ContEmpCompra = item.Producto.contenidoCompra,
+                                    CostoMonedaDivisa = item.CostoDivisaFinal,
+                                    CostoMonedaLocal = item.CostoFinal,
+                                    DescripcionPrd = item.Producto.descripcion,
+                                    EmpCompraDescripcion = item.Producto.empaqueCompra,
+                                    TasaIva = item.Producto.tasaIva,
+                                };
+                                _gPrecioVentaEditar.Inicializa();
+                                _gPrecioVentaEditar.setPrdEditar(_fichaPrd);
+                                _gPrecioVentaEditar.Inicia();
+                                if (_gPrecioVentaEditar.IsEditarPrecioIsOk)
+                                {
+                                    item.setActualizarPrecio(true);
+                                    item.setDataPrecios(_gPrecioVentaEditar.DataPrecios);
+                                }
                             }
                         }
                     }
@@ -200,6 +243,9 @@ namespace ModCompra.Documento.Cargar.Factura
             RegistroOk = false;
             _actualizarPrecioIsActivo = false;
 
+            //
+            setAutoPrd(it.Producto.auto);
+
             var r01 = Sistema.MyData.Configuracion_GetPermitirCambiarPrecioAlRegistrarDocCompra();
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
@@ -208,7 +254,22 @@ namespace ModCompra.Documento.Cargar.Factura
             }
             _actualizarPrecioIsActivo = r01.Entidad;
 
+
+            var _id = 0;
+            _lstEmpCompra.Clear();
+            var r02 = Sistema.MyData.Producto_EmpaqueCompra_GetLista(autoPrd);
+            foreach (var r in r02.Lista)
+            {
+                _id++;
+                var rg = new dataEmpCompra(r, _id.ToString());
+                _lstEmpCompra.Add(rg);
+            }
+            _bsEmpCompra.DataSource = _lstEmpCompra;
+            _bsEmpCompra.CurrencyManager.Refresh();
+
+
             item = new dataItem(it);
+            setEmpCompra(it.IdEmpaqueCompra);
             var frm = new Formulario.ItemFrm();
             frm.setControlador(this);
             frm.ShowDialog();
@@ -231,6 +292,19 @@ namespace ModCompra.Documento.Cargar.Factura
         public void setActualizarPrecioVenta()
         {
             _actualizarPrecioIsActivo = !_actualizarPrecioIsActivo;
+        }
+
+
+        //
+        public BindingSource GetEmpCompra_Source { get { return _bsEmpCompra; } }
+        public string GetEmpaqueCompra_ID { get { return item.IdEmpaqueCompra; } }
+        public void setEmpCompra(string id)
+        {
+            var it = _lstEmpCompra.FirstOrDefault(f => f.id == id);
+            if (it!=null)
+            {
+                item.setEmpCompra(it);
+            }
         }
 
     }

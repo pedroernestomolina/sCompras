@@ -26,6 +26,10 @@ namespace DataProvCompra.InfraEstructura
         OOB.ResultadoEntidad<OOB.LibCompra.Producto.Precio.Capturar.Ficha>
             Producto_Precio_GetCapturar_ById(string idPrd);
 
+        //
+        OOB.ResultadoLista<OOB.LibCompra.Producto.EmpaqueCompra.Ficha>
+            Producto_EmpaqueCompra_GetLista(string idPrd);
+
     }
 
 }

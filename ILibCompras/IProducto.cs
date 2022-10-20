@@ -26,7 +26,9 @@ namespace ILibCompras
         DtoLib.ResultadoLista<DtoLibCompra.Producto.EmpaqueMedida.Lista.Ficha>
             Producto_EmpaqueMedida_GetLista();
 
-
+        //
+        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha>
+            Producto_EmpaquesCompra_GetFicha(string idPrd);
     }
 
 }

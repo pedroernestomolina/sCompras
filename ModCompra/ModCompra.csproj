@@ -115,6 +115,7 @@
     <Compile Include="Documento\Cargar\Controlador\IGestionTotalizar.cs" />
     <Compile Include="Documento\Cargar\dataDocumento.cs" />
     <Compile Include="Documento\Cargar\dataItem.cs" />
+    <Compile Include="Documento\Cargar\Factura\dataEmpCompra.cs" />
     <Compile Include="Documento\Cargar\Factura\GestionAgregarItem.cs" />
     <Compile Include="Documento\Cargar\Factura\GestionDocumentoFac.cs" />
     <Compile Include="Documento\Cargar\Factura\GestionFac.cs" />

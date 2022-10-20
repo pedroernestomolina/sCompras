@@ -142,6 +142,7 @@ warning 6002: The table/view 'pita.compras_detalle' does not have a primary key 
             <PropertyRef Name="estatus_unidad" />
             <PropertyRef Name="fecha_lote" />
             <PropertyRef Name="cierre_ftp" />
+            <PropertyRef Name="estatus_cambio_precio_venta" />
           </Key>
           <Property Name="auto_documento" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="auto_producto" Type="varchar" MaxLength="10" Nullable="false" />
@@ -186,6 +187,7 @@ warning 6002: The table/view 'pita.compras_detalle' does not have a primary key 
           <Property Name="estatus_unidad" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="fecha_lote" Type="date" Nullable="false" />
           <Property Name="cierre_ftp" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="estatus_cambio_precio_venta" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="compras_pend">
           <Key>
@@ -245,6 +247,10 @@ warning 6002: The table/view 'pita.compras_detalle' does not have a primary key 
           <Property Name="costoActual_local" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="costoActual_divisa" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="admDivisa" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="empaque_auto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="empaque_decimales" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="empaque_predeterminado_compra" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="empaque_seleccionado_id" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="cxp">
           <Key>
@@ -541,6 +547,12 @@ warning 6002: The table/view 'pita.compras_detalle' does not have a primary key 
           <Property Name="utilidad_dsp_4" Type="decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="precio_dsp_4" Type="decimal" Precision="16" Scale="2" Nullable="false" />
           <Property Name="pdivisafull_dsp_4" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="auto_emp_venta_tipo_1" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="auto_emp_venta_tipo_2" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="auto_emp_venta_tipo_3" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cont_emp_venta_tipo_1" Type="int" Nullable="false" />
+          <Property Name="cont_emp_venta_tipo_2" Type="int" Nullable="false" />
+          <Property Name="cont_emp_venta_tipo_3" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="productos_grupo">
           <Key>
@@ -1343,7 +1355,8 @@ warning 6002: The table/view 'pita.proveedores_agencias' does not have a primary
 `compras_detalle`.`costo_bruto`, 
 `compras_detalle`.`estatus_unidad`, 
 `compras_detalle`.`fecha_lote`, 
-`compras_detalle`.`cierre_ftp`
+`compras_detalle`.`cierre_ftp`, 
+`compras_detalle`.`estatus_cambio_precio_venta`
 FROM `compras_detalle` AS `compras_detalle`</DefiningQuery>
           </EntitySet>
           <EntitySet Name="productos_kardex" EntityType="Self.productos_kardex" store:Type="Tables" store:Schema="pita">
@@ -2574,6 +2587,12 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <NavigationProperty Name="productos_medida6" Relationship="compraModel.productos_ext_ibfk_7" FromRole="productos_ext" ToRole="productos_medida" />
           <NavigationProperty Name="productos_medida7" Relationship="compraModel.productos_ext_ibfk_8" FromRole="productos_ext" ToRole="productos_medida" />
           <NavigationProperty Name="productos_medida8" Relationship="compraModel.productos_ext_ibfk_9" FromRole="productos_ext" ToRole="productos_medida" />
+          <Property Name="auto_emp_venta_tipo_1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="auto_emp_venta_tipo_2" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="auto_emp_venta_tipo_3" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cont_emp_venta_tipo_1" Type="Int32" Nullable="false" />
+          <Property Name="cont_emp_venta_tipo_2" Type="Int32" Nullable="false" />
+          <Property Name="cont_emp_venta_tipo_3" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="productos_precios">
           <Key>
@@ -2652,6 +2671,7 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
             <PropertyRef Name="estatus_unidad" />
             <PropertyRef Name="fecha_lote" />
             <PropertyRef Name="cierre_ftp" />
+            <PropertyRef Name="estatus_cambio_precio_venta" />
           </Key>
           <Property Name="auto_documento" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="auto_producto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -2702,6 +2722,7 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <NavigationProperty Name="productos" Relationship="compraModel.compras_detalle_ibfk_2" FromRole="compras_detalle" ToRole="productos" />
           <NavigationProperty Name="productos_grupo" Relationship="compraModel.compras_detalle_ibfk_4" FromRole="compras_detalle" ToRole="productos_grupo" />
           <NavigationProperty Name="proveedores" Relationship="compraModel.compras_detalle_ibfk_7" FromRole="compras_detalle" ToRole="proveedores" />
+          <Property Name="estatus_cambio_precio_venta" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="productos_kardex">
           <Key>
@@ -3097,6 +3118,10 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <Property Name="costoActual_local" Type="Decimal" Nullable="false" />
           <Property Name="costoActual_divisa" Type="Decimal" Nullable="false" />
           <Property Name="admDivisa" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="empaque_auto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="empaque_decimales" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="empaque_predeterminado_compra" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="empaque_seleccionado_id" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="compras_pend" Relationship="compraModel.compras_pend_detalle_ibfk_1" FromRole="compras_pend_detalle" ToRole="compras_pend" />
         </EntityType>
         <Association Name="compras_pend_detalle_ibfk_1">
@@ -3617,6 +3642,12 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <EntitySetMapping Name="productos_ext">
             <EntityTypeMapping TypeName="compraModel.productos_ext">
               <MappingFragment StoreEntitySet="productos_ext">
+                <ScalarProperty Name="cont_emp_venta_tipo_3" ColumnName="cont_emp_venta_tipo_3" />
+                <ScalarProperty Name="cont_emp_venta_tipo_2" ColumnName="cont_emp_venta_tipo_2" />
+                <ScalarProperty Name="cont_emp_venta_tipo_1" ColumnName="cont_emp_venta_tipo_1" />
+                <ScalarProperty Name="auto_emp_venta_tipo_3" ColumnName="auto_emp_venta_tipo_3" />
+                <ScalarProperty Name="auto_emp_venta_tipo_2" ColumnName="auto_emp_venta_tipo_2" />
+                <ScalarProperty Name="auto_emp_venta_tipo_1" ColumnName="auto_emp_venta_tipo_1" />
                 <ScalarProperty Name="pdivisafull_dsp_4" ColumnName="pdivisafull_dsp_4" />
                 <ScalarProperty Name="precio_dsp_4" ColumnName="precio_dsp_4" />
                 <ScalarProperty Name="utilidad_dsp_4" ColumnName="utilidad_dsp_4" />
@@ -3698,6 +3729,7 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <EntitySetMapping Name="compras_detalle">
             <EntityTypeMapping TypeName="compraModel.compras_detalle">
               <MappingFragment StoreEntitySet="compras_detalle">
+                <ScalarProperty Name="estatus_cambio_precio_venta" ColumnName="estatus_cambio_precio_venta" />
                 <ScalarProperty Name="cierre_ftp" ColumnName="cierre_ftp" />
                 <ScalarProperty Name="fecha_lote" ColumnName="fecha_lote" />
                 <ScalarProperty Name="estatus_unidad" ColumnName="estatus_unidad" />
@@ -3780,6 +3812,10 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <EntitySetMapping Name="compras_pend_detalle">
             <EntityTypeMapping TypeName="compraModel.compras_pend_detalle">
               <MappingFragment StoreEntitySet="compras_pend_detalle">
+                <ScalarProperty Name="empaque_seleccionado_id" ColumnName="empaque_seleccionado_id" />
+                <ScalarProperty Name="empaque_predeterminado_compra" ColumnName="empaque_predeterminado_compra" />
+                <ScalarProperty Name="empaque_decimales" ColumnName="empaque_decimales" />
+                <ScalarProperty Name="empaque_auto" ColumnName="empaque_auto" />
                 <ScalarProperty Name="admDivisa" ColumnName="admDivisa" />
                 <ScalarProperty Name="costoActual_divisa" ColumnName="costoActual_divisa" />
                 <ScalarProperty Name="costoActual_local" ColumnName="costoActual_local" />

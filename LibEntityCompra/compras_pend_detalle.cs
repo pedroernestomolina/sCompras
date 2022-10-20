@@ -39,6 +39,10 @@ namespace LibEntityCompra
         public decimal costoActual_local { get; set; }
         public decimal costoActual_divisa { get; set; }
         public string admDivisa { get; set; }
+        public string empaque_auto { get; set; }
+        public string empaque_decimales { get; set; }
+        public string empaque_predeterminado_compra { get; set; }
+        public string empaque_seleccionado_id { get; set; }
     
         public virtual compras_pend compras_pend { get; set; }
     }

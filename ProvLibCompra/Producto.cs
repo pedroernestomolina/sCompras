@@ -471,6 +471,47 @@ namespace ProvLibCompra
             return rt;
         }
 
+
+        //
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha> 
+            Producto_EmpaquesCompra_GetFicha(string idPrd)
+        {
+            var rt = new DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha>();
+
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql_1 = @"SELECT 
+                                    p.nombre as descPrd, p.auto as autoPrd,
+                                    auto_empaque_compra as autoEmpCompra, contenido_compras as contEmpCompra, 
+                                    pMed_1.nombre as descEmpCompra, pMed_1.decimales as decEmpCompra,
+                                    pExt.auto_emp_inv_1 as autoEmpInv, pExt.cont_emp_inv_1 as contEmpInv, 
+                                    pMed_2.nombre as descEmpInv, pMed_2.decimales as decEmpInv
+                                from productos as p
+                                join productos_medida as pMed_1 on pMed_1.auto=auto_empaque_compra
+                                join productos_ext as pExt on pExt.auto_producto=p.auto
+                                join productos_medida as pMed_2 on pMed_2.auto=pExt.auto_emp_inv_1
+                                where p.auto=@autoPrd";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoPrd", idPrd);
+                    var ent = cnn.Database.SqlQuery<DtoLibCompra.Producto.EmpaqueCompra.Ficha>(sql_1, p1).FirstOrDefault();
+                    if (ent == null) 
+                    {
+                        rt.Mensaje = "[ ID ] PRODUCTO NO ENCONTRADO";
+                        rt.Result = DtoLib.Enumerados.EnumResult.isError;
+                        return rt;
+                    }
+                    rt.Entidad = ent;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+
+            return rt;
+        }
     }
 
 }

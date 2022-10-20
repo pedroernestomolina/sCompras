@@ -11,8 +11,8 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
-            ILibCompras.IProvider _test = new ProvLibCompra.Provider("localhost","pita");
-            //var r01 = _test.Producto_Precio_GetCapturar_ById("0000000432");
+            //ILibCompras.IProvider _test = new ProvLibCompra.Provider("localhost","pita");
+            //var r01 = _test.Producto_EmpaquesCompra_GetFicha ("0000001060");
         }
     }
 }

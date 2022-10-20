@@ -58,6 +58,11 @@ namespace OOB.LibCompra.Documento.Pendiente.Abrir
             prdCostoActualDivisa = 0m;
             prdCostoActualLocal = 0m;
             esAdmDivisa = false;
+            //
+            autoEmpaque = "";
+            decimalEmpaque = "";
+            estatusEmpCompraPredeterminado = "";
+            idEmpaqueSeleccionado = "";
         }
 
         //
@@ -65,6 +70,12 @@ namespace OOB.LibCompra.Documento.Pendiente.Abrir
         public decimal prdCostoActualLocal { get; set; }
         public decimal prdCostoActualDivisa { get; set; }
         public bool esAdmDivisa { get; set; }
+        //
+        public string autoEmpaque { get; set; }
+        public string decimalEmpaque { get; set; }
+        public string estatusEmpCompraPredeterminado { get; set; }
+        public string idEmpaqueSeleccionado { get; set; }
+        public bool isEmpCompraPredeterminado { get { return estatusEmpCompraPredeterminado.Trim().ToUpper() == "1"; } }
 
     }
 

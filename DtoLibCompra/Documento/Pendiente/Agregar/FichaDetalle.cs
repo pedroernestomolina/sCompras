@@ -35,6 +35,11 @@ namespace DtoLibCompra.Documento.Pendiente.Agregar
         public decimal prdCostoActualLocal { get; set; }
         public decimal prdCostoActualDivisa { get; set; }
         public string prdEstatusDivisa { get; set; }
+        //
+        public string autoEmpaque  { get; set; }
+        public string decimalEmpaque  { get; set; }
+        public string estatusEmpCompraPredeterminado { get; set; }
+        public string idEmpSeleccionado { get; set; }
 
 
         public FichaDetalle() 
@@ -63,6 +68,11 @@ namespace DtoLibCompra.Documento.Pendiente.Agregar
             prdCostoActualDivisa = 0m;
             prdCostoActualLocal = 0m;
             prdEstatusDivisa = "";
+            //
+            autoEmpaque = "";
+            decimalEmpaque = "";
+            estatusEmpCompraPredeterminado = "";
+            idEmpSeleccionado = "";
         }
 
     }
