@@ -21,6 +21,7 @@ namespace ModCompra.Administrador.Documentos
         private Filtros.Gestion _gestionFiltros;
         private Proveedor.Listar.Gestion _gestionListaPrv;
         private Reportes.AdministradorCompra.IRepAdmDoc _gRepAdmDoc;
+        private src.Auditoria.Visualizar.IVisualiza _gVisAuditoria;
 
 
         public enumerados.EnumTipoAdministrador TipoAdministrador { get { return enumerados.EnumTipoAdministrador.AdmDocumentos; } }
@@ -47,6 +48,7 @@ namespace ModCompra.Administrador.Documentos
             _gestionListaPrv = new Proveedor.Listar.Gestion();
             _gestionListaPrv.ItemSeleccionadoOk += _gestionListaPrv_ItemSeleccionadoOk;
             _gRepAdmDoc = new Reportes.AdministradorCompra.RepAdmDoc();
+            _gVisAuditoria = new src.Auditoria.Visualizar.ImpVisualiza();
         }
 
         private void _gestionListaPrv_ItemSeleccionadoOk(object sender, EventArgs e)
@@ -301,6 +303,25 @@ namespace ModCompra.Administrador.Documentos
             }).ToList();
             return lst;
         }
+
+
+        //
+        public data ItemActual { get { return _gestionListaDetalle.ItemActual; } }
+
+
+        public void VisualizarAnulacion()
+        {
+            if (ItemActual != null)
+            {
+                if (ItemActual.IsAnulado) 
+                {
+                    _gVisAuditoria.Inicializa();
+                    _gVisAuditoria.setFicha(ItemActual.AutoDoc, ItemActual.Ficha.codigoTipo, ItemActual.NombreDoc);
+                    _gVisAuditoria.Inicia();
+                }
+            }
+        }
+
 
     }
 

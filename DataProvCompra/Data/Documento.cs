@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoAuto
             Compra_DocumentoAgregarFactura(OOB.LibCompra.Documento.Cargar.Factura.Ficha docFac)
         {
@@ -582,6 +580,7 @@ namespace DataProvCompra.Data
                 montoIva3=s.montoIva3,
                 horaRegistro=s.horaRegistro,
                 aplica=s.aplica,
+                isAnulado= s.EstatusDoc.Trim().ToUpper() =="1",
             };
             var det = s.detalles.Select(ss =>
             {
@@ -658,6 +657,7 @@ namespace DataProvCompra.Data
                             Signo = s.signo,
                             ControlNro= s.control,
                             Aplica=s.aplica,
+                            nomSucursal=s.nomSucursal,
                         };
                         return nr;
                     }).ToList();
@@ -1412,7 +1412,5 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
     }
-
 }

@@ -298,6 +298,8 @@ namespace ModCompra.Documento.Cargar
 
         public dataItem(dataItem it)
         {
+            _contEmp = 0;
+            _descEmp = "";
             this._modoNCActivo = it._modoNCActivo;
             this.factorDivisa = it.factorDivisa;
             this.producto = it.producto;
@@ -308,6 +310,11 @@ namespace ModCompra.Documento.Cargar
             this.dsct_1_p = it.dsct_1_p;
             this.dsct_2_p = it.dsct_2_p;
             this.dsct_3_p = it.dsct_3_p;
+
+            _contEmp = it.ContenidoEmpSeleccionado;
+            _descEmp = it.DescripcionEmpSeleccionado;
+            _decEmp = it.DecimalesEmpSeleccionado;
+
             ActualizarCosto();
             ActualizarCostoDivisa();
             CalculaDscto();
@@ -315,6 +322,8 @@ namespace ModCompra.Documento.Cargar
 
         public dataItem(OOB.LibCompra.Documento.GetData.FichaDetalle it, decimal factorCambio)
         {
+            _contEmp = 0;
+            _descEmp = "";
             this._modoNCActivo = true;
             this.itemDocumento = it;
             this.factorDivisa = factorCambio;
@@ -328,6 +337,10 @@ namespace ModCompra.Documento.Cargar
             this.dsct_3_p = it.dscto3p;
             this.cantDev = 0;
 
+            _contEmp = it.contenido;
+            _descEmp = it.empaqueCompra;
+            _decEmp = it.decimales;
+
             ActualizarCosto();
             ActualizarCostoDivisa();
             CalculaDscto();
@@ -335,6 +348,8 @@ namespace ModCompra.Documento.Cargar
 
         public dataItem(OOB.LibCompra.Documento.ListaItemImportar.Ficha it, decimal factorDivisa)
         {
+            _contEmp = 0;
+            _descEmp = "";
             this._modoNCActivo = false;
             this.factorDivisa = factorDivisa;
             this.producto = new OOB.LibCompra.Producto.Data.Ficha(it);
@@ -352,6 +367,8 @@ namespace ModCompra.Documento.Cargar
 
         public dataItem(OOB.LibCompra.Documento.Pendiente.Abrir.FichaDetalle it, decimal factorDivisa)
         {
+            _contEmp = 0;
+            _descEmp = "";
             this._modoNCActivo = false;
             this.factorDivisa = factorDivisa;
             this.producto = new OOB.LibCompra.Producto.Data.Ficha(it);

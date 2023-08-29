@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.L_HERRAMIENTA = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -54,10 +56,9 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.L_HERRAMIENTA = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -75,7 +76,6 @@
             this.panel11.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -108,6 +108,30 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(332, 41);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel13
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel13, 2);
+            this.panel13.Controls.Add(this.L_HERRAMIENTA);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(1, 1);
+            this.panel13.Margin = new System.Windows.Forms.Padding(1);
+            this.panel13.Name = "panel13";
+            this.panel13.Padding = new System.Windows.Forms.Padding(2);
+            this.panel13.Size = new System.Drawing.Size(218, 39);
+            this.panel13.TabIndex = 2;
+            // 
+            // L_HERRAMIENTA
+            // 
+            this.L_HERRAMIENTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_HERRAMIENTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_HERRAMIENTA.ForeColor = System.Drawing.Color.Orange;
+            this.L_HERRAMIENTA.Location = new System.Drawing.Point(2, 2);
+            this.L_HERRAMIENTA.Name = "L_HERRAMIENTA";
+            this.L_HERRAMIENTA.Size = new System.Drawing.Size(214, 35);
+            this.L_HERRAMIENTA.TabIndex = 4;
+            this.L_HERRAMIENTA.Text = "Tool Compras";
+            this.L_HERRAMIENTA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -417,30 +441,6 @@
             this.BT_ACEPTAR.UseVisualStyleBackColor = true;
             this.BT_ACEPTAR.Click += new System.EventHandler(this.BT_ACEPTAR_Click);
             // 
-            // panel13
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel13, 2);
-            this.panel13.Controls.Add(this.L_HERRAMIENTA);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(1, 1);
-            this.panel13.Margin = new System.Windows.Forms.Padding(1);
-            this.panel13.Name = "panel13";
-            this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(218, 39);
-            this.panel13.TabIndex = 2;
-            // 
-            // L_HERRAMIENTA
-            // 
-            this.L_HERRAMIENTA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_HERRAMIENTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_HERRAMIENTA.ForeColor = System.Drawing.Color.Orange;
-            this.L_HERRAMIENTA.Location = new System.Drawing.Point(2, 2);
-            this.L_HERRAMIENTA.Name = "L_HERRAMIENTA";
-            this.L_HERRAMIENTA.Size = new System.Drawing.Size(214, 35);
-            this.L_HERRAMIENTA.TabIndex = 4;
-            this.L_HERRAMIENTA.Text = "Tool Compras";
-            this.L_HERRAMIENTA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // IdentificacionFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,6 +459,7 @@
             this.Load += new System.EventHandler(this.IdentificacionFrm_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -478,7 +479,6 @@
             this.panel11.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -22,7 +22,7 @@ namespace ModCompra.Administrador.Documentos
         public string Documento { get { return rg.documentoNro; } }
         public string Control { get { return rg.ControlNro; } }
         public DateTime FechaReg { get { return rg.fechaRegistro; } }
-        public string Sucursal { get { return rg.codigoSuc; } }
+        public string Sucursal { get { return rg.codigoSuc+"/"+rg.nomSucursal; } }
         public string ProvNombre { get { return rg.provNombre; } }
         public string ProvCiRif { get { return rg.provCiRif; } }
         public decimal Importe { get { return rg.monto; } }

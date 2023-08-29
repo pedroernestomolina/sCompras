@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerados.cs" />
+    <Compile Include="LibCompra\Auditoria\Entidad\Busqueda.cs" />
+    <Compile Include="LibCompra\Auditoria\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Concepto\Ficha.cs" />
     <Compile Include="LibCompra\Configuracion\Enumerados.cs" />
     <Compile Include="LibCompra\Deposito\Data\Ficha.cs" />
@@ -126,7 +128,15 @@
     <Compile Include="LibCompra\Reportes\Enumerados.cs" />
     <Compile Include="LibCompra\Reportes\GeneralDocumentos\Ficha.cs" />
     <Compile Include="LibCompra\Reportes\GeneralDocumentos\Filtro.cs" />
+    <Compile Include="LibCompra\SistemaDocumento\Entidad\Busqueda.cs" />
+    <Compile Include="LibCompra\SistemaDocumento\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Sucursal\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\CxP.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Documento.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Proveedor.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Resultado.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Concepto\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Buscar\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Data\Ficha.cs" />

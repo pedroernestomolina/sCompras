@@ -28,6 +28,7 @@ namespace OOB.LibCompra.Documento.Lista
         public int Signo { get; set; }
         public string ControlNro { get; set; }
         public string Aplica { get; set; }
+        public string nomSucursal { get; set; }
 
     }
 

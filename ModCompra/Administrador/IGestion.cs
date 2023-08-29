@@ -31,6 +31,7 @@ namespace ModCompra.Administrador
         void LimpiarFiltros();
         void LimpiarData();
         void VisualizarDocumento();
+        void VisualizarAnulacion();
         void Imprimir();
         void Limpiar();
         bool CargarData();

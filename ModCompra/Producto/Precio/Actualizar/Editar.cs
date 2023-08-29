@@ -1003,84 +1003,96 @@ namespace ModCompra.Producto.Precio.Actualizar
                                         _precio1.Utilidad,
                                         Math.Round(_precio1.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precio1.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmp1.Item.desc);
+                                        _gEmp1.Item.desc, 
+                                        _precio1.isActualizado);
             _dataG.precio_1_Emp_2.setData(_gEmpM1.GetId,
                                         _precioM1.Contenido,
                                         _precioM1.Utilidad,
                                         Math.Round(_precioM1.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioM1.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpM1.Item.desc);
+                                        _gEmpM1.Item.desc,
+                                        _precioM1.isActualizado);
             _dataG.precio_1_Emp_3.setData(_gEmpD1.GetId,
                                         _precioD1.Contenido,
                                         _precioD1.Utilidad,
                                         Math.Round(_precioD1.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioD1.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpD1.Item.desc);
+                                        _gEmpD1.Item.desc, 
+                                        _precioD1.isActualizado);
             //
             _dataG.precio_2_Emp_1.setData(_gEmp2.GetId,
                                         _precio2.Contenido,
                                         _precio2.Utilidad,
                                         Math.Round(_precio2.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precio2.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmp2.Item.desc);
+                                        _gEmp2.Item.desc,
+                                        _precio2.isActualizado);
             _dataG.precio_2_Emp_2.setData(_gEmpM2.GetId,
                                         _precioM2.Contenido,
                                         _precioM2.Utilidad,
                                         Math.Round(_precioM2.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioM2.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpM2.Item.desc);
+                                        _gEmpM2.Item.desc, 
+                                        _precioM2.isActualizado);
             _dataG.precio_2_Emp_3.setData(_gEmpD2.GetId,
                                         _precioD2.Contenido,
                                         _precioD2.Utilidad,
                                         Math.Round(_precioD2.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioD2.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpD2.Item.desc);
+                                        _gEmpD2.Item.desc,
+                                        _precioD2.isActualizado);
             //
             _dataG.precio_3_Emp_1.setData(_gEmp3.GetId,
                                         _precio3.Contenido,
                                         _precio3.Utilidad,
                                         Math.Round(_precio3.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precio3.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmp3.Item.desc);
+                                        _gEmp3.Item.desc,
+                                        _precio3.isActualizado);
             _dataG.precio_3_Emp_2.setData(_gEmpM3.GetId,
                                         _precioM3.Contenido,
                                         _precioM3.Utilidad,
                                         Math.Round(_precioM3.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioM3.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpM3.Item.desc);
+                                        _gEmpM3.Item.desc,
+                                        _precioM3.isActualizado);
             _dataG.precio_3_Emp_3.setData(_gEmpD3.GetId,
                                         _precioD3.Contenido,
                                         _precioD3.Utilidad,
                                         Math.Round(_precioD3.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioD3.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpD3.Item.desc);
+                                        _gEmpD3.Item.desc,
+                                        _precioD3.isActualizado);
             //
             _dataG.precio_4_Emp_1.setData(_gEmp4.GetId,
                                         _precio4.Contenido,
                                         _precio4.Utilidad,
                                         Math.Round(_precio4.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precio4.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmp4.Item.desc);
+                                        _gEmp4.Item.desc,
+                                        _precio4.isActualizado);
             _dataG.precio_4_Emp_2.setData(_gEmpM4.GetId,
                                         _precioM4.Contenido,
                                         _precioM4.Utilidad,
                                         Math.Round(_precioM4.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioM4.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpM4.Item.desc);
+                                        _gEmpM4.Item.desc,
+                                        _precioM4.isActualizado);
             _dataG.precio_4_Emp_3.setData(_gEmpD4.GetId,
                                         _precioD4.Contenido,
                                         _precioD4.Utilidad,
                                         Math.Round(_precioD4.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precioD4.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmpD4.Item.desc);
+                                        _gEmpD4.Item.desc,
+                                        _precioD4.isActualizado);
             //
             _dataG.precio_5_Emp_1.setData(_gEmp5.GetId,
                                         _precio5.Contenido,
                                         _precio5.Utilidad,
                                         Math.Round(_precio5.Neto_MonedaLocal, 2, MidpointRounding.AwayFromZero),
                                         Math.Round(_precio5.Full_Divisa, 2, MidpointRounding.AwayFromZero),
-                                        _gEmp5.Item.desc);
-
+                                        _gEmp5.Item.desc,
+                                        _precio5.isActualizado);
             _isProcesarIsOk = true;
         }
 

@@ -27,6 +27,9 @@ namespace DtoLibCompra.Documento.Lista
         private string estatusAnulado { get; set; }
         public int signo { get; set; }
         public string aplica { get; set; }
+        public string nomSucursal { get; set; }
+
+
         public bool esAnulado
         {
             get

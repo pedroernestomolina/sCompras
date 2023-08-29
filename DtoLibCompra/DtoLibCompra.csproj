@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditoria\Entidad\Busqueda.cs" />
+    <Compile Include="Auditoria\Entidad\Ficha.cs" />
     <Compile Include="BaseFiltro.cs" />
     <Compile Include="Concepto\Ficha.cs" />
     <Compile Include="Configuracion\Enumerados.cs" />
@@ -144,6 +146,8 @@
     <Compile Include="Reportes\Enumerados.cs" />
     <Compile Include="Reportes\Proveedor\Maestro\Ficha.cs" />
     <Compile Include="Reportes\Proveedor\Maestro\Filtro.cs" />
+    <Compile Include="SistemaDocumento\Entidad\Busqueda.cs" />
+    <Compile Include="SistemaDocumento\Entidad\Ficha.cs" />
     <Compile Include="Sucursal\Data\Ficha.cs" />
     <Compile Include="Sucursal\Lista\Resumen.cs" />
     <Compile Include="Usuario\ActualizarSesion\Ficha.cs" />

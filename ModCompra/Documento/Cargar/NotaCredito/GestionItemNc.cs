@@ -339,6 +339,7 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                 var dt = new dataItem(it, factorCambio);
                 InsertarItem(dt);
             }
+            //bs.CurrencyManager.Refresh();
         }
 
         public void AgregarListaItem(List<OOB.LibCompra.Documento.ListaItemImportar.Ficha> list, string idPrv, decimal factorDivisa)

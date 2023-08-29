@@ -1136,6 +1136,18 @@ namespace ModCompra.Documento.Cargar.Factura
                     estatusEmpCompraPredeterminado = it.IsEmpCompraPredeterminado ? "1" : "0",
                     idEmpSeleccionado = it.IdEmpaqueCompra,
                 };
+
+
+                //
+                if (it.GetActualizarPrecio && it.IsEmpCompraPredeterminado)
+                {
+                    if (it.GetDataPrecios.precio_1_Emp_1.isActualizado)
+                    { 
+                    }
+                }
+                //
+
+
                 items.Add(item);
             }
             ficha.items = items;

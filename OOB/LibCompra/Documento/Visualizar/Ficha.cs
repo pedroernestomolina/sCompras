@@ -74,6 +74,8 @@ namespace OOB.LibCompra.Documento.Visualizar
                 return rt;
             } 
         }
+
+        public bool isAnulado { get; set; }
     }
 
 }

@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace ProvLibCompra
 {
-    
     public partial class Provider: ILibCompras.IProvider
     {
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Empresa.Data.Ficha> Empresa_Datos()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Empresa.Data.Ficha>
+            Empresa_Datos()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Empresa.Data.Ficha>();
-
             try
             {
                 using (var ctx = new compraEntities(_cnCompra.ConnectionString))
@@ -29,6 +27,9 @@ namespace ProvLibCompra
                         result.Mensaje = "REGISTRO ENTIDAD [ EMPRESA ] NO DEFINIDO";
                         return result;
                     }
+                    sql = @"select logo from empresa_extra";
+                    var _logo = ctx.Database.SqlQuery<byte[]>(sql).FirstOrDefault();
+                    ent.logo = _logo;
                     result.Entidad = ent;
                 }
             }
@@ -37,11 +38,10 @@ namespace ProvLibCompra
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Empresa.Fiscal.Ficha> Empresa_GetTasas()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Empresa.Fiscal.Ficha> 
+            Empresa_GetTasas()
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Empresa.Fiscal.Ficha>();
 
@@ -76,7 +76,5 @@ namespace ProvLibCompra
 
             return result;
         }
-
     }
-
 }

@@ -56,6 +56,7 @@ namespace DtoLibCompra.Documento.Visualizar
         public int renglones { get; set; }
         public int signo { get; set; }
         public string aplica { get; set; }
+        public string EstatusDoc { get; set; }
         public List<FichaDetalle> detalles { get; set; }
 
     }

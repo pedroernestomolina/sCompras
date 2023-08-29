@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModCompra
 {
-    
     public class Sistema
     {
-
+        static public Fabrica.IFabrica Fabrica;
         static public DataProvCompra.InfraEstructura.IData MyData;
         static public OOB.LibCompra.Usuario.Data.Ficha UsuarioP;
         static public OOB.LibCompra.Empresa.Data.Ficha Negocio;
@@ -19,7 +18,5 @@ namespace ModCompra
         static public string _Usuario { get; set; }
         static public string EquipoEstacion { get; set; }
         static public Documento.CnfGenerarDocumento CnfGenerarDoc;
-
     }
-
 }

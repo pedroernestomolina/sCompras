@@ -6,16 +6,15 @@ using System.Windows.Forms;
 
 namespace ModCompra
 {
-
     static class Program
     {
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            Sistema.Fabrica = new Fabrica.Transporte.Imp();
             Sistema.CnfGenerarDoc = new Documento.CnfGenerarDocumento();
             var r01 = Helpers.Utilitis.CargarXml();
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
@@ -31,36 +30,19 @@ namespace ModCompra
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-                var r02 = Sistema.MyData.Empresa_Datos();
-                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                var _loginId= new Identificacion.Gestion();
+                _loginId.Inicia();
+                if (_loginId.IsUsuarioOk)
                 {
-                    Helpers.Msg.Error(r02.Mensaje);
-                    Application.Exit();
+                    var _gestionCompra = new Gestion();
+                    _gestionCompra.Inicia();
                 }
-                else
-                {
-                    Sistema.Negocio = r02.Entidad;
-                    Sistema.EquipoEstacion = Environment.MachineName;
-
-                    var _gestionId = new Identificacion.Gestion();
-                    _gestionId.Inicia();
-                    if (_gestionId.IsUsuarioOk)
-                    {
-                        var _gestionCompra = new Gestion();
-                        _gestionCompra.Inicia();
-                    }
-                }
-                //Application.EnableVisualStyles();
-                //Application.SetCompatibleTextRenderingDefault(false);
-                //Application.Run(new Form1());
             }
             else
             {
                 Helpers.Msg.Error(r01.Mensaje);
-                Application.Exit();
             }
+            Application.Exit();
         }
-
     }
-
 }

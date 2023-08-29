@@ -25,6 +25,7 @@ namespace ModCompra.Producto.Precio.Actualizar
         private enumMetCalUtilidad _metodoCalculoUtilidad;
         private decimal _pn;
         private decimal _pf;
+        private bool _estatusActualizado;
 
 
         public int Contenido { get { return _contenido; } }
@@ -49,6 +50,7 @@ namespace ModCompra.Producto.Precio.Actualizar
             _metodoCalculoUtilidad = enumMetCalUtilidad.SinDefinir;
             _pn = 0m;
             _pf = 0m;
+            _estatusActualizado = false;
         }
 
         public void Inicializa()
@@ -64,6 +66,7 @@ namespace ModCompra.Producto.Precio.Actualizar
             _metodoCalculoUtilidad = enumMetCalUtilidad.SinDefinir;
             _pn = 0m;
             _pf = 0m;
+            _estatusActualizado = false;
         }
 
 
@@ -133,6 +136,7 @@ namespace ModCompra.Producto.Precio.Actualizar
                     _pf = calculaFull(_pn);
                 }
             }
+            _estatusActualizado = true;
         }
         public void setNeto(decimal monto)
         {
@@ -170,6 +174,7 @@ namespace ModCompra.Producto.Precio.Actualizar
                     _utilidadNueva = c;
                 }
             }
+            _estatusActualizado = true;
         }
         public void setFull(decimal monto)
         {
@@ -204,6 +209,7 @@ namespace ModCompra.Producto.Precio.Actualizar
                     _utilidadNueva = c;
                 }
             }
+            _estatusActualizado = true;
         }
 
 
@@ -264,6 +270,9 @@ namespace ModCompra.Producto.Precio.Actualizar
             }
             return rt;
         }
+
+
+        public bool isActualizado { get { return _estatusActualizado; } }
 
     }
 

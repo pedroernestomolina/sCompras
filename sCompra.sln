@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModCompra", "ModCompra\ModC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{021E0991-4F64-4EF8-8C89-9B155EADF92D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DtoLibTransporte", "DtoLibTransporte\DtoLibTransporte.csproj", "{6A034034-7C42-432C-86B7-3C2468B9E31F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{021E0991-4F64-4EF8-8C89-9B155EADF92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{021E0991-4F64-4EF8-8C89-9B155EADF92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{021E0991-4F64-4EF8-8C89-9B155EADF92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A034034-7C42-432C-86B7-3C2468B9E31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A034034-7C42-432C-86B7-3C2468B9E31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A034034-7C42-432C-86B7-3C2468B9E31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A034034-7C42-432C-86B7-3C2468B9E31F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,5 +112,6 @@ Global
 		{B9E37DE8-1814-45AE-BF33-6A6DB53976CF} = {591FD8E6-EF06-4F92-BE04-011FA75BC9A3}
 		{E982D1FE-C488-4F07-B03B-76F05EFAD8BF} = {8EBF51B3-D38A-444B-AFED-0F1400F2A103}
 		{021E0991-4F64-4EF8-8C89-9B155EADF92D} = {CD4F6C43-2815-4D0B-8BD3-6903BDB991EF}
+		{6A034034-7C42-432C-86B7-3C2468B9E31F} = {CA5A56DC-0395-4BA8-AB97-CD452D68C829}
 	EndGlobalSection
 EndGlobal

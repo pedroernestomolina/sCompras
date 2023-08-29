@@ -43,6 +43,9 @@
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LibUtilitis">
+      <HintPath>..\..\..\LibUtilitis\LibUtilitis\bin\Debug\LibUtilitis.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.8.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -175,6 +178,9 @@
     <Compile Include="Documento\Pendiente\ListaFrm.Designer.cs">
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fabrica\IFabrica.cs" />
+    <Compile Include="Fabrica\Pita\Imp.cs" />
+    <Compile Include="Fabrica\Transporte\Imp.cs" />
     <Compile Include="Filtros\data.cs" />
     <Compile Include="Filtros\Gestion.cs" />
     <Compile Include="Filtros\Proveedor\Filtro.cs" />
@@ -232,7 +238,6 @@
     <Compile Include="Producto\Listar\ListaFrm.Designer.cs">
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\Actualizar\data.cs" />
     <Compile Include="Producto\Precio\Actualizar\dataGuardar.cs" />
     <Compile Include="Producto\Precio\Actualizar\dataPrdEditar.cs" />
     <Compile Include="Producto\Precio\Actualizar\dataPrecio.cs" />
@@ -390,6 +395,53 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataConcepto.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataCondicionPagoDoc.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\data.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataSucursal.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataTipoDocumento.cs" />
+    <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
+    <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\ICompraGasto.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\Imp.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\Idata.cs" />
+    <Compile Include="Utils\Buscar\Proveedor\Handler\ImpLista.cs" />
+    <Compile Include="Utils\Buscar\Proveedor\Vistas\ILista.cs" />
+    <Compile Include="Utils\Buscar\Proveedor\Vistas\IProveedor.cs" />
+    <Compile Include="srcTransporte\PantallaInicio\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\PantallaInicio\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Auditoria\Visualizar\ImpVisualiza.cs" />
+    <Compile Include="src\Auditoria\Visualizar\IVisualiza.cs" />
+    <Compile Include="src\Auditoria\Visualizar\VisualizarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Auditoria\Visualizar\VisualizarFrm.designer.cs">
+      <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\PantallaInicio\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\PantallaInicio\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Buscar\ICtrl.cs" />
+    <Compile Include="Utils\Buscar\ICtrlLista.cs" />
+    <Compile Include="Utils\Buscar\Proveedor\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Buscar\Proveedor\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Administrador\AdministradorFrm.resx">
       <DependentUpon>AdministradorFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,6 +561,21 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CompraGasto\Vistas\Generar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Auditoria\Visualizar\VisualizarFrm.resx">
+      <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\PantallaInicio\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Buscar\Proveedor\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -556,6 +623,7 @@
     <Content Include="Imagenes\aydai-logistica.jpg" />
     <Content Include="Imagenes\bt_alerta.png" />
     <Content Include="Imagenes\bt_asignar.png" />
+    <Content Include="Imagenes\bt_auditoria.png" />
     <Content Include="Imagenes\bt_borrar.png" />
     <Content Include="Imagenes\bt_buscar.png" />
     <Content Include="Imagenes\bt_buscar_32.png" />
@@ -634,6 +702,7 @@
     <Content Include="Resources\aydai-logistica.jpg" />
     <Content Include="Resources\bt_alerta.png" />
     <Content Include="Resources\bt_asignar.png" />
+    <None Include="Resources\bt_auditoria.png" />
     <Content Include="Resources\bt_borrar.png" />
     <Content Include="Resources\bt_buscar.png" />
     <None Include="Resources\bt_buscar_32.png" />

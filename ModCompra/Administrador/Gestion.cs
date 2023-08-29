@@ -78,6 +78,10 @@ namespace ModCompra.Administrador
         {
             _miGestion.VisualizarDocumento();
         }
+        public void VisualizarAnulacion()
+        {
+            _miGestion.VisualizarAnulacion();
+        }
 
         public void setSucursal(string autoId)
         {
@@ -125,6 +129,7 @@ namespace ModCompra.Administrador
             if (_miGestion.ItemSeleccionadoIsOk)
                 CerrarFrm();
         }
+
 
         private void CerrarFrm()
         {

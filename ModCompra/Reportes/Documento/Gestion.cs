@@ -60,6 +60,7 @@ namespace ModCompra.Reportes.Documento
             rt["factorCambio"] = ficha.factorCambio;
             rt["notas"] = ficha.notas;
             rt["aplica"] = ficha.aplica;
+            rt["isAnulado"] = !ficha.isAnulado;
             ds.Tables["DocEncabezado"].Rows.Add(rt);
 
             foreach (var it in ficha.detalles.ToList())

@@ -17,6 +17,7 @@ namespace ModCompra.Producto.Precio.Actualizar
         public decimal utilidad { get; set; }
         public decimal pNeto { get; set; }
         public decimal pFull { get; set; }
+        public bool isActualizado { get; set; }
 
 
         public dataPrecioGuardar()
@@ -27,10 +28,11 @@ namespace ModCompra.Producto.Precio.Actualizar
             utilidad = 0m;
             pNeto = 0m;
             pFull = 0m;
+            isActualizado = false;
         }
 
 
-        public void setData(string idEpaque , int cont, decimal ut, decimal neto, decimal full, string empaque)
+        public void setData(string idEpaque , int cont, decimal ut, decimal neto, decimal full, string empaque, bool estatusActualizado)
         {
             autoEmpaque = idEpaque;
             contEmpaque = cont;
@@ -38,6 +40,7 @@ namespace ModCompra.Producto.Precio.Actualizar
             utilidad = ut;
             pNeto = neto;
             pFull = full;
+            isActualizado = estatusActualizado;
         }
 
     }

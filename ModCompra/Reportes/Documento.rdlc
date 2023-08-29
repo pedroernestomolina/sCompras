@@ -797,13 +797,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.98958in</Height>
+    <Height>0.875in</Height>
     <Style />
   </Body>
   <Width>8.08185in</Width>
   <Page>
     <PageHeader>
-      <Height>5.17411cm</Height>
+      <Height>5.99433cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -822,7 +822,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>provNombre</rd:DefaultName>
-          <Top>3.12745cm</Top>
+          <Top>4.07995cm</Top>
           <Left>0.46426cm</Left>
           <Height>0.6cm</Height>
           <Width>9.57667cm</Width>
@@ -851,7 +851,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>provCiRif</rd:DefaultName>
-          <Top>2.42162cm</Top>
+          <Top>3.37412cm</Top>
           <Left>0.46426cm</Left>
           <Height>0.6cm</Height>
           <Width>3.77cm</Width>
@@ -883,7 +883,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox14</rd:DefaultName>
-          <Top>1.75106cm</Top>
+          <Top>2.70356cm</Top>
           <Left>0.46426cm</Left>
           <Height>0.6cm</Height>
           <Width>3.77cm</Width>
@@ -913,7 +913,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>provDireccion</rd:DefaultName>
-          <Top>3.76273cm</Top>
+          <Top>4.71523cm</Top>
           <Left>0.46426cm</Left>
           <Height>1.04979cm</Height>
           <Width>9.57667cm</Width>
@@ -929,7 +929,7 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>4.98891cm</Top>
+          <Top>5.94141cm</Top>
           <Left>0.39371cm</Left>
           <Height>0cm</Height>
           <Width>19.93604cm</Width>
@@ -1123,7 +1123,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>2.13029cm</Top>
+          <Top>3.08279cm</Top>
           <Left>15.05634cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
@@ -1158,7 +1158,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>2.13029cm</Top>
+          <Top>3.08279cm</Top>
           <Left>17.73273cm</Left>
           <Height>0.6cm</Height>
           <Width>2.46472cm</Width>
@@ -1194,7 +1194,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>documento</rd:DefaultName>
-          <Top>2.76557cm</Top>
+          <Top>3.71807cm</Top>
           <Left>10.77042cm</Left>
           <Height>0.6cm</Height>
           <Width>4.07425cm</Width>
@@ -1228,7 +1228,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>control</rd:DefaultName>
-          <Top>2.76557cm</Top>
+          <Top>3.71807cm</Top>
           <Left>15.02106cm</Left>
           <Height>0.6cm</Height>
           <Width>2.53528cm</Width>
@@ -1263,7 +1263,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>fechaEmision</rd:DefaultName>
-          <Top>2.76557cm</Top>
+          <Top>3.71807cm</Top>
           <Left>17.73273cm</Left>
           <Height>0.6cm</Height>
           <Width>2.46472cm</Width>
@@ -1298,7 +1298,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox27</rd:DefaultName>
-          <Top>3.54196cm</Top>
+          <Top>4.49446cm</Top>
           <Left>10.77042cm</Left>
           <Height>0.56472cm</Height>
           <Width>2.36771cm</Width>
@@ -1333,7 +1333,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox29</rd:DefaultName>
-          <Top>3.54196cm</Top>
+          <Top>4.49446cm</Top>
           <Left>15.70898cm</Left>
           <Height>0.6cm</Height>
           <Width>2.29715cm</Width>
@@ -1368,7 +1368,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox30</rd:DefaultName>
-          <Top>3.54196cm</Top>
+          <Top>4.49446cm</Top>
           <Left>18.07669cm</Left>
           <Height>0.6cm</Height>
           <Width>2.12076cm</Width>
@@ -1402,7 +1402,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>mesAnoRelacion</rd:DefaultName>
-          <Top>4.14196cm</Top>
+          <Top>5.09446cm</Top>
           <Left>10.77042cm</Left>
           <Height>0.6441cm</Height>
           <Width>2.36771cm</Width>
@@ -1437,7 +1437,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ordenCompra</rd:DefaultName>
-          <Top>4.18606cm</Top>
+          <Top>5.13856cm</Top>
           <Left>15.70898cm</Left>
           <Height>0.6cm</Height>
           <Width>2.29715cm</Width>
@@ -1473,7 +1473,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>fechaVencimiento</rd:DefaultName>
-          <Top>4.18606cm</Top>
+          <Top>5.13856cm</Top>
           <Left>18.07669cm</Left>
           <Height>0.6cm</Height>
           <Width>2.12076cm</Width>
@@ -1508,7 +1508,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>DOCUMENTO</rd:DefaultName>
-          <Top>2.13029cm</Top>
+          <Top>3.08279cm</Top>
           <Left>10.77042cm</Left>
           <Height>0.6cm</Height>
           <Width>4.07425cm</Width>
@@ -1545,7 +1545,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox27</rd:DefaultName>
-          <Top>3.54196cm</Top>
+          <Top>4.49446cm</Top>
           <Left>13.24397cm</Left>
           <Height>0.56472cm</Height>
           <Width>2.39445cm</Width>
@@ -1579,7 +1579,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>aplica</rd:DefaultName>
-          <Top>4.14196cm</Top>
+          <Top>5.09446cm</Top>
           <Left>13.24397cm</Left>
           <Height>0.6441cm</Height>
           <Width>2.39445cm</Width>
@@ -1588,6 +1588,46 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>ANULADO</Value>
+                  <Style>
+                    <FontSize>20pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>2.10976cm</Top>
+          <Left>10.77042cm</Left>
+          <Height>0.8672cm</Height>
+          <Width>9.42703cm</Width>
+          <ZIndex>24</ZIndex>
+          <Visibility>
+            <Hidden>=First(Fields!isAnulado.Value, "DocEncabezado")</Hidden>
+          </Visibility>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BackgroundColor>Silver</BackgroundColor>
             <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -2933,10 +2973,14 @@
           <DataField>aplica</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="isAnulado">
+          <DataField>isAnulado</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS</rd:DataSetName>
-        <rd:SchemaPath>D:\Proyectos FoxSystem\CompraVentaFront\ModCompra\Reportes\DS.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\vFox\Compras\sCompra\ModCompra\Reportes\DS.xsd</rd:SchemaPath>
         <rd:TableName>DocEncabezado</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Auditoria.cs" />
     <Compile Include="Data\Concepto.cs" />
     <Compile Include="Data\Configuracion.cs" />
     <Compile Include="Data\DataProv.cs" />
@@ -53,8 +54,11 @@
     <Compile Include="Data\Proveedor.cs" />
     <Compile Include="Data\ReporteProv.cs" />
     <Compile Include="Data\Reportes.cs" />
+    <Compile Include="Data\SistemaDocumento.cs" />
     <Compile Include="Data\Sucursal.cs" />
+    <Compile Include="Data\TransporteDocumento.cs" />
     <Compile Include="Data\Usuario.cs" />
+    <Compile Include="InfraEstructura\IAuditoria.cs" />
     <Compile Include="InfraEstructura\IConcepto.cs" />
     <Compile Include="InfraEstructura\IConfiguracion.cs" />
     <Compile Include="InfraEstructura\IData.cs" />
@@ -68,14 +72,20 @@
     <Compile Include="InfraEstructura\IProveedor.cs" />
     <Compile Include="InfraEstructura\IReporteProv.cs" />
     <Compile Include="InfraEstructura\IReportes.cs" />
+    <Compile Include="InfraEstructura\ISistemaDocumento.cs" />
     <Compile Include="InfraEstructura\ISucursal.cs" />
     <Compile Include="InfraEstructura\IUsuario.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DtoLibCompra\DtoLibCompra.csproj">
       <Project>{d6b6b541-8b13-44bf-85af-1f38192d2535}</Project>
       <Name>DtoLibCompra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoLibTransporte\DtoLibTransporte.csproj">
+      <Project>{6a034034-7c42-432c-86b7-3c2468b9e31f}</Project>
+      <Name>DtoLibTransporte</Name>
     </ProjectReference>
     <ProjectReference Include="..\DtoLib\DtoLib.csproj">
       <Project>{adf1eed5-1230-4845-8c5b-f2e8dbf56150}</Project>
@@ -90,6 +100,7 @@
       <Name>ServiceCompra</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

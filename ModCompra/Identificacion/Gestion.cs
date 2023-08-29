@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModCompra.Identificacion
 {
-    
     public class Gestion
     {
-
         public string CodigoUsuario { get; set; }
         public string ClaveUsuario { get; set; }
         public bool IsUsuarioOk { get; set; }
@@ -74,7 +72,5 @@ namespace ModCompra.Identificacion
 
             return rt;
         }
-
     }
-
 }

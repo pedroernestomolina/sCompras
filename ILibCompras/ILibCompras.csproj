@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAuditoria.cs" />
     <Compile Include="IConcepto.cs" />
     <Compile Include="IConfiguracion.cs" />
     <Compile Include="IDeposito.cs" />
@@ -52,14 +53,20 @@
     <Compile Include="IProvider.cs" />
     <Compile Include="IReporteProv.cs" />
     <Compile Include="IReportes.cs" />
+    <Compile Include="ISistemaDocumento.cs" />
     <Compile Include="ISucursal.cs" />
     <Compile Include="IUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transporte\ITranspDocumento.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DtoLibCompra\DtoLibCompra.csproj">
       <Project>{d6b6b541-8b13-44bf-85af-1f38192d2535}</Project>
       <Name>DtoLibCompra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DtoLibTransporte\DtoLibTransporte.csproj">
+      <Project>{6a034034-7c42-432c-86b7-3c2468b9e31f}</Project>
+      <Name>DtoLibTransporte</Name>
     </ProjectReference>
     <ProjectReference Include="..\DtoLib\DtoLib.csproj">
       <Project>{adf1eed5-1230-4845-8c5b-f2e8dbf56150}</Project>

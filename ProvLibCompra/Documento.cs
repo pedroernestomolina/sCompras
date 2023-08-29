@@ -861,6 +861,7 @@ namespace ProvLibCompra
                         montoIva2 = ent.impuesto2,
                         montoIva3 = ent.impuesto3,
                         aplica = ent.aplica,
+                        EstatusDoc= ent.estatus_anulado,
                     };
                     var lista = det.Select(s =>
                     {
@@ -913,15 +914,27 @@ namespace ProvLibCompra
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p5 = new MySql.Data.MySqlClient.MySqlParameter();
 
-                    var sql_1 = "SELECT " +
-                        "auto, fecha as fechaEmision, tipo, documento, signo, control, " +
-                        "documento_nombre as tipoDocNombre, fecha_registro as fechaRegistro, " +
-                        "codigo_sucursal as codigoSuc, razon_social as provNombre, ci_rif as provCiRif, " +
-                        "total as monto, situacion, monto_Divisa as montoDivisa, estatus_anulado as estatusAnulado, aplica ";
-
-                    var sql_2 = " FROM compras ";
-
-                    var sql_3 = " where 1=1 ";
+                    var sql_1 = @"SELECT 
+                                    c.auto, 
+                                    c.fecha as fechaEmision, 
+                                    c.tipo, 
+                                    c.documento, 
+                                    c.signo, 
+                                    c.control, 
+                                    c.documento_nombre as tipoDocNombre, 
+                                    c.fecha_registro as fechaRegistro, 
+                                    c.codigo_sucursal as codigoSuc, 
+                                    c.razon_social as provNombre, 
+                                    c.ci_rif as provCiRif, 
+                                    c.total as monto, 
+                                    c.situacion, 
+                                    c.monto_Divisa as montoDivisa, 
+                                    c.estatus_anulado as estatusAnulado, 
+                                    c.aplica,
+                                    empSuc.nombre as nomSucursal ";
+                    var sql_2 = @" FROM compras as c 
+                                        join empresa_sucursal as empSuc on empSuc.codigo=c.codigo_sucursal ";
+                    var sql_3 = @" where 1=1 ";
 
                     p1.ParameterName = "@fDesde";
                     p1.Value = filtro.Desde;
@@ -929,7 +942,6 @@ namespace ProvLibCompra
                     p2.ParameterName = "@fHasta";
                     p2.Value = filtro.Hasta;
                     sql_3 += " and fecha<=@fHasta ";
-
                     if (filtro.CodigoSuc != "")
                     {
                         p3.ParameterName = "@suc";

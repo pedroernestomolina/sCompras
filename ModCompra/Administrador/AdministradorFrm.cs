@@ -103,8 +103,8 @@ namespace ModCompra.Administrador
             c4.Visible = true;
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
-            c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            c4.Width = 60;
+            c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            c4.Width = 180;
 
             var c5 = new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "ProvNombre";
@@ -244,7 +244,6 @@ namespace ModCompra.Administrador
         {
             Buscar();
         }
-
         private void Buscar()
         {
             _controlador.Buscar();
@@ -406,11 +405,20 @@ namespace ModCompra.Administrador
                 SeleccionarItem();
             }
         }
-
         private void SeleccionarItem()
         {
             _controlador.SeleccionarItem();
         }
+
+        private void BT_VISUALIZAR_ANU_Click(object sender, EventArgs e)
+        {
+            VisualizarAnulacion();
+        }
+        private void VisualizarAnulacion()
+        {
+            _controlador.VisualizarAnulacion();
+        }
+    
 
     }
 

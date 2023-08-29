@@ -8,20 +8,17 @@ using System.Threading.Tasks;
 
 namespace ServiceCompra.MyService
 {
-    
     public partial class Service: IService
     {
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Concepto.Ficha> Concepto_PorMovCompra()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Concepto.Ficha> 
+            Concepto_PorMovCompra()
         {
             return ServiceProv.Concepto_GetFicha("0000000002");
         }
-
-        public DtoLib.ResultadoEntidad<DtoLibCompra.Concepto.Ficha> Concepto_PorMovDevCompra()
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Concepto.Ficha> 
+            Concepto_PorMovDevCompra()
         {
             return ServiceProv.Concepto_GetFicha("0000000004");
         }
-
     }
-
 }

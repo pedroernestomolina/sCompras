@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +10,8 @@ using System.Windows.Forms;
 
 namespace ModCompra
 {
-    
     public class Gestion
     {
-
-
         private Administrador.Gestion _gestionAdmDoc ;
         private Reportes.Filtros.Gestion _gestionRep;
         private Maestros.Gestion _gestionMaestro;
@@ -21,6 +20,7 @@ namespace ModCompra
         private Configuracion.Modulo.IConf _gCnfSistema;
 
 
+        public System.Drawing.Image EmpresaLogo { get { return logo(); } }
         public string Version { get { return "Ver. " + Application.ProductVersion; } }
         public string Host { get { return Sistema._Instancia + "/" + Sistema._BaseDatos; } }
         public string Usuario
@@ -45,27 +45,24 @@ namespace ModCompra
         }
 
 
-        Form1 frm;
         public void Inicia()
         {
-            if (frm == null)
+            if (cargarData())
             {
-                frm = new Form1();
-                frm.setControlador(this);
+                Sistema.Fabrica.Iniciar_FrmPrincipal(this);
             }
-            frm.ShowDialog();
         }
 
         public void RegistrarFacturaCompra()
         {
             if (SolicitarPermiso(Sistema.MyData.Permiso_Registrar_Factura, Sistema.UsuarioP.autoGru))
             {
-                frm.setVisibilidadOff();
+                //frm.setVisibilidadOff();
                 var gestionFac = new Documento.Cargar.Factura.GestionFac();
                 var gestionEntrada = new Documento.Cargar.Controlador.Gestion();
                 gestionEntrada.setGestion(gestionFac);
                 gestionEntrada.Inicia();
-                frm.setVisibilidadOn();
+                //frm.setVisibilidadOn();
             }
         }
 
@@ -84,11 +81,11 @@ namespace ModCompra
         {
             if (SolicitarPermiso(Sistema.MyData.Permiso_Registrar_Nc, Sistema.UsuarioP.autoGru)) 
             {
-                frm.setVisibilidadOff();
+                //frm.setVisibilidadOff();
                 var gestionEntrada = new Documento.Cargar.Controlador.Gestion();
                 gestionEntrada.setGestion(new Documento.Cargar.NotaCredito.GestionNc());
                 gestionEntrada.Inicia();
-                frm.setVisibilidadOn();
+                //frm.setVisibilidadOn();
             }
         }
 
@@ -193,7 +190,50 @@ namespace ModCompra
             }
             return Seguridad.Gestion.SolicitarClave(rt1.Entidad);
         }
+        private System.Drawing.Image logo()
+        {
+            if (Sistema.Negocio.logo.Length > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(Sistema.Negocio.logo))
+                {
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+            }
+            return null;
+        }
 
+
+        private bool cargarData()
+        {
+            try
+            {
+                Sistema.EquipoEstacion = Environment.MachineName;
+                var r01 = Sistema.MyData.Empresa_Datos();
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                Sistema.Negocio = r01.Entidad;
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
+        }
+
+
+        ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
+        public void RegistrarCompraGasto()
+        {
+            if (_compraGasto == null) 
+            {
+                _compraGasto = new ModCompra.srcTransporte.CompraGasto.Handlres.Generar.Imp();
+            }
+            _compraGasto.Inicializa();
+            _compraGasto.Inicia();
+        }
     }
-
 }

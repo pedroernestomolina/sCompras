@@ -12,7 +12,8 @@ namespace DataProvCompra.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoEntidad<OOB.LibCompra.Concepto.Ficha> Concepto_PorMovCompra()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Concepto.Ficha>
+            Concepto_PorMovCompra()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Concepto.Ficha>();
 
@@ -35,8 +36,8 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Concepto.Ficha> Concepto_PorMovDevCompra()
+        public OOB.ResultadoEntidad<OOB.LibCompra.Concepto.Ficha> 
+            Concepto_PorMovDevCompra()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Concepto.Ficha>();
 
