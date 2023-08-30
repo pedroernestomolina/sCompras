@@ -20,6 +20,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         string Get_TipoDocumento_ID { get; }
         string Get_CondicionPago_ID { get; }
         //
+        object Get_Sucursal_Ficha{ get; }
+        object Get_Concepto_Ficha { get; }
         BindingSource Get_Sucursal_Source { get; }
         BindingSource Get_Concepto_Source { get; }
         string Get_Sucursal_ID { get; }
@@ -32,6 +34,9 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         bool AplicaActivo { get; }
         string Get_Aplica_NumeroDoc { get; }
         DateTime Get_Aplica_FechaDoc { get; }
+        BindingSource Get_AplicaTipoDocumento_Source { get; }
+        string Get_AplicaTipoDocumento_ID { get; }
+        void SetAplicaTipoDocumentoById(string id);
 
 
         void Inicializa();
@@ -51,11 +56,28 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         void SucursalCargarData(List<OOB.LibCompra.Sucursal.Data.Ficha> lst);
         void ConceptoCargarData(List<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha> lst);
         //
+        void AplicaTipoDocumentoCargarData(IEnumerable<LibUtilitis.Opcion.IData> _lst);
         void SetAplicaNumeroDoc(string numero);
         void SetAplicaFechaDoc(DateTime fecha);
         //
         bool Get_FechaEmisionDocIsOk { get; }
         bool Get_FechaAplicaDocIsOk { get; }
         void FechaServidorCargar(DateTime fecha);
+        //
+        void SetFactorCambio(decimal factor);
+        decimal Get_FactorCambio { get;  }
+        IdataFiscal Tasa1 { get; }
+        IdataFiscal Tasa2 { get; }
+        IdataFiscal Tasa3 { get; }
+        IdataFiscal TasaEx { get; }
+        decimal Get_SubtotalBase { get; }
+        decimal Get_SubtotalImp { get;  }
+        decimal Get_Monto { get;  }
+        decimal Get_MontoMonAct { get; }
+        decimal Get_MontoMonDivisa { get; }
+        decimal Get_MontoIGTF { get; }
+        void SetMontoIGTF(decimal monto);
+        //
+        bool Verificar();
     }
 }

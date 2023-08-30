@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoEntidad<OOB.LibCompra.SistemaDocumento.Entidad.Ficha> 
             SistemaDocumento_Get(OOB.LibCompra.SistemaDocumento.Entidad.Busqueda ficha)
         {
@@ -38,7 +36,5 @@ namespace DataProvCompra.Data
             };
             return rt;
         }
-
     }
-
 }

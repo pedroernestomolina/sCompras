@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
     public partial class Frm : Form
     {
         private ICompraGasto _controlador;
+        private CultureInfo _cult;
 
 
         public Frm()
         {
             InitializeComponent();
             InicializaCB();
+            _cult = CultureInfo.CurrentCulture;
         }
         private void InicializaCB()
         {
@@ -31,6 +34,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             CB_CONCEPTO.ValueMember = "id";
             CB_SUCURSAL.DisplayMember = "desc";
             CB_SUCURSAL.ValueMember = "id";
+            CB_APLICA_TIPO_DOC.DisplayMember = "desc";
+            CB_APLICA_TIPO_DOC.ValueMember = "id";
         }
         public void setControlador(ICompraGasto ctr)
         {
@@ -62,13 +67,41 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             L_PROVEEDOR.Text = _controlador.data.Proveedor.Get_Inf;
             TB_PROVEEDOR.Text = _controlador.data.Proveedor.Get_Buscar;
             //
+            CB_APLICA_TIPO_DOC.DataSource = _controlador.data.Get_AplicaTipoDocumento_Source;
+            CB_APLICA_TIPO_DOC.SelectedValue = _controlador.data.Get_AplicaTipoDocumento_ID;
             CB_APLICA_TIPO_DOC.Enabled = _controlador.data.AplicaActivo;
             TB_APLICA_NUMERO_DOC.Enabled = _controlador.data.AplicaActivo;
             DTP_APLICA_FECHA_DOC.Enabled = _controlador.data.AplicaActivo;
             TB_APLICA_NUMERO_DOC.Text = _controlador.data.Get_Aplica_NumeroDoc;
             DTP_APLICA_FECHA_DOC.Value = _controlador.data.Get_Aplica_FechaDoc;
             //
+            TB_FACTOR_CAMBIO.Text = _controlador.data.Get_FactorCambio.ToString("n2", _cult);
+            TB_TASA_EX_BASE.Text = _controlador.data.TasaEx.Get_Base.ToString("n2", _cult);
+            L_TASA1.Text = _controlador.data.Tasa1.Get_Tasa.ToString("n2", _cult);
+            TB_TASA1_BASE.Text = _controlador.data.Tasa1.Get_Base.ToString("n2", _cult);
+            TB_TASA1_IMP.Text = _controlador.data.Tasa1.Get_Imp.ToString("n2", _cult);
+            L_TASA2.Text = _controlador.data.Tasa2.Get_Tasa.ToString("n2", _cult);
+            TB_TASA2_BASE.Text = _controlador.data.Tasa2.Get_Base.ToString("n2", _cult);
+            TB_TASA2_IMP.Text = _controlador.data.Tasa2.Get_Imp.ToString("n2", _cult);
+            L_TASA3.Text = _controlador.data.Tasa3.Get_Tasa.ToString("n2", _cult);
+            TB_TASA3_BASE.Text = _controlador.data.Tasa3.Get_Base.ToString("n2", _cult);
+            TB_TASA3_IMP.Text = _controlador.data.Tasa3.Get_Imp.ToString("n2", _cult);
+            L_SUBT_BASE.Text = _controlador.data.Get_SubtotalBase.ToString("n2", _cult);
+            L_SUBT_IMP.Text = _controlador.data.Get_SubtotalImp.ToString("n2", _cult);
+            L_MONTO.Text = _controlador.data.Get_Monto.ToString("n2", _cult);
+            L_MONTO_MON_ACT.Text = _controlador.data.Get_MontoMonAct.ToString("n2", _cult);
+            L_MONTO_MON_DIVISA.Text = _controlador.data.Get_MontoMonDivisa.ToString("n2", _cult);
+            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
+            //
             _modoInicializa = false;
+        }
+        private void Frm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOK || _controlador.ProcesarIsOK) 
+            {
+                e.Cancel = false;
+            }
         }
         private void CTRL_KEYDOWN(object sender, KeyEventArgs e)
         {
@@ -110,6 +143,10 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             _controlador.data.SetFechaEmisionDoc(DTP_FECHA_EMISION_DOC.Value);
             ActualizarFechaVencimiento();
+        }
+        private void DTP_FECHA_EMISION_DOC_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.data.Get_FechaEmisionDocIsOk;
         }
         private void TB_DIAS_CREDITO_Leave(object sender, EventArgs e)
         {
@@ -158,6 +195,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         }
 
 
+        private void CB_APLICA_TIPO_DOC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializa) return;
+            _controlador.data.SetAplicaTipoDocumentoById("");
+            if (CB_APLICA_TIPO_DOC.SelectedIndex != -1)
+            {
+                _controlador.data.SetAplicaTipoDocumentoById(CB_APLICA_TIPO_DOC.SelectedValue.ToString());
+            }
+        }
         private void TB_APLICA_NUMERO_DOC_Leave(object sender, EventArgs e)
         {
             _controlador.data.SetAplicaNumeroDoc(TB_APLICA_NUMERO_DOC.Text.Trim());
@@ -166,8 +212,91 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             _controlador.data.SetAplicaFechaDoc(DTP_APLICA_FECHA_DOC.Value);
         }
+        private void DTP_APLICA_FECHA_DOC_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.data.Get_FechaAplicaDocIsOk;
+        }
+        
+
+        private void TB_FACTOR_CAMBIO_Leave(object sender, EventArgs e)
+        {
+            var _factor = decimal.Parse(TB_FACTOR_CAMBIO.Text);
+            _controlador.data.SetFactorCambio(_factor);
+            TB_FACTOR_CAMBIO.Text = _controlador.data.Get_FactorCambio.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_TASA_EX_BASE_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_TASA_EX_BASE.Text);
+            _controlador.data.TasaEx.SetBase(_monto);
+            TB_TASA_EX_BASE.Text = _controlador.data.TasaEx.Get_Base.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_TASA1_BASE_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_TASA1_BASE.Text);
+            _controlador.data.Tasa1.SetBase(_monto);
+            TB_TASA1_BASE.Text = _controlador.data.Tasa1.Get_Base.ToString("n2", _cult);
+            TB_TASA1_IMP.Text = _controlador.data.Tasa1.Get_Imp.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_TASA2_BASE_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_TASA2_BASE.Text);
+            _controlador.data.Tasa2.SetBase(_monto);
+            TB_TASA2_BASE.Text = _controlador.data.Tasa2.Get_Base.ToString("n2", _cult);
+            TB_TASA2_IMP.Text = _controlador.data.Tasa2.Get_Imp.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_TASA3_BASE_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_TASA3_BASE.Text);
+            _controlador.data.Tasa3.SetBase(_monto);
+            TB_TASA3_BASE.Text = _controlador.data.Tasa3.Get_Base.ToString("n2", _cult);
+            TB_TASA3_IMP.Text = _controlador.data.Tasa3.Get_Imp.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_IGTF_MONTO_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_IGTF_MONTO.Text);
+            _controlador.data.SetMontoIGTF(_monto);
+            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
+            ActualizaTotal();
+        }
 
 
+        private void BT_ACEPTAR_Click(object sender, EventArgs e)
+        {
+            ProcesarFicha();
+        }
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
+        }
+
+
+        private void ProcesarFicha()
+        {
+            _controlador.Procesar();
+            if (_controlador.ProcesarIsOK)
+            {
+                salir();
+            }
+        }
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOK) 
+            {
+                salir();
+            }
+        }
+        private void salir()
+        {
+            this.Close();
+        }
+
+        
         private void ActualizAplica()
         {
             CB_APLICA_TIPO_DOC.Enabled = _controlador.data.AplicaActivo;
@@ -185,15 +314,14 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             L_FECHA_VENCIMIENTO_DOC.Text = _controlador.data.Get_FechaVenceDoc.ToShortDateString();
         }
-
-
-        private void DTP_FECHA_EMISION_DOC_Validating(object sender, CancelEventArgs e)
+        private void ActualizaTotal()
         {
-            e.Cancel = _controlador.data.Get_FechaEmisionDocIsOk;
-        }
-        private void DTP_APLICA_FECHA_DOC_Validating(object sender, CancelEventArgs e)
-        {
-            e.Cancel = _controlador.data.Get_FechaAplicaDocIsOk;
+            L_SUBT_BASE.Text = _controlador.data.Get_SubtotalBase.ToString("n2", _cult);
+            L_SUBT_IMP.Text = _controlador.data.Get_SubtotalImp.ToString("n2", _cult);
+            L_MONTO.Text = _controlador.data.Get_Monto.ToString("n2", _cult);
+            L_MONTO_MON_ACT.Text = _controlador.data.Get_MontoMonAct.ToString("n2", _cult);
+            L_MONTO_MON_DIVISA.Text = _controlador.data.Get_MontoMonDivisa.ToString("n2", _cult);
+            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
         }
     }
 }

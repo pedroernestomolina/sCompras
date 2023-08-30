@@ -160,13 +160,13 @@ namespace ProvLibCompra
                                 @control, 
                                 @fecha_registro, 
                                 @orden_compra, 
-                                @dias,   
-                                @descuento1, 
-                                @descuento2, 
-                                @cargos, 
-                                @descuento1p, 
-                                @descuento2p, 
-                                @cargosp, 
+                                @dias, 
+                                0,
+                                0,
+                                0,  
+                                0,
+                                0,
+                                0,
                                 @columna, 
                                 @estatus_anulado, 
                                 @aplica, 
@@ -181,11 +181,11 @@ namespace ProvLibCompra
                                 @hora, 
                                 @monto_divisa, 
                                 @estacion, 
-                                @renglones, 
+                                0, 
                                 @saldo_pendiente, 
                                 @ano_relacion, 
                                 @comprobante_retencion_islr, 
-                                @dias_validez,
+                                0,
                                 @auto_usuario, 
                                 @situacion, 
                                 @signo, 
@@ -201,12 +201,12 @@ namespace ProvLibCompra
                                 @tipo_proveedor, 
                                 @planilla, 
                                 @expediente, 
-                                @anticipo_iva, 
-                                @terceros_iva, 
+                                0, 
+                                0, 
                                 @neto, 
-                                @costo, 
-                                @utilidad, 
-                                @utilidadp, 
+                                0, 
+                                0, 
+                                0, 
                                 @documento_tipo, 
                                 @denominacion_fiscal, 
                                 @auto_concepto, 
@@ -255,12 +255,12 @@ namespace ProvLibCompra
                         var p30= new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro",fechaSistema.Date);
                         var p31= new MySql.Data.MySqlClient.MySqlParameter("@orden_compra","");
                         var p32= new MySql.Data.MySqlClient.MySqlParameter("@dias",doc.diasCreditoDoc);
-                        var p33= new MySql.Data.MySqlClient.MySqlParameter("@descuento1",0m);
-                        var p34= new MySql.Data.MySqlClient.MySqlParameter("@descuento2",0m);
-                        var p35= new MySql.Data.MySqlClient.MySqlParameter("@cargos",0m);
-                        var p36= new MySql.Data.MySqlClient.MySqlParameter("@descuento1p",0m);
-                        var p37= new MySql.Data.MySqlClient.MySqlParameter("@descuento2p",0m);
-                        var p38= new MySql.Data.MySqlClient.MySqlParameter("@cargosp",0m);
+                        //var p33= new MySql.Data.MySqlClient.MySqlParameter("@descuento1",0m);
+                        //var p34= new MySql.Data.MySqlClient.MySqlParameter("@descuento2",0m);
+                        //var p35= new MySql.Data.MySqlClient.MySqlParameter("@cargos",0m);
+                        //var p36= new MySql.Data.MySqlClient.MySqlParameter("@descuento1p",0m);
+                        //var p37= new MySql.Data.MySqlClient.MySqlParameter("@descuento2p",0m);
+                        //var p38= new MySql.Data.MySqlClient.MySqlParameter("@cargosp",0m);
                         var p39= new MySql.Data.MySqlClient.MySqlParameter("@columna","");
                         //
                         var p40= new MySql.Data.MySqlClient.MySqlParameter("@estatus_anulado","0");
@@ -277,11 +277,11 @@ namespace ProvLibCompra
                         var p50= new MySql.Data.MySqlClient.MySqlParameter("@hora",fechaSistema.ToShortTimeString());
                         var p51= new MySql.Data.MySqlClient.MySqlParameter("@monto_divisa",doc.montoDivisa);
                         var p52= new MySql.Data.MySqlClient.MySqlParameter("@estacion",doc.estacionEquipo);
-                        var p53= new MySql.Data.MySqlClient.MySqlParameter("@renglones",0);
+                        //var p53= new MySql.Data.MySqlClient.MySqlParameter("@renglones",0);
                         var p54= new MySql.Data.MySqlClient.MySqlParameter("@saldo_pendiente",doc.saldoPendiente);
                         var p55= new MySql.Data.MySqlClient.MySqlParameter("@ano_relacion",anoRelacion);
                         var p56= new MySql.Data.MySqlClient.MySqlParameter("@comprobante_retencion_islr",doc.comprobanteRetencionISLR);
-                        var p57= new MySql.Data.MySqlClient.MySqlParameter("@dias_validez",0);
+                        //var p57= new MySql.Data.MySqlClient.MySqlParameter("@dias_validez",0);
                         var p58= new MySql.Data.MySqlClient.MySqlParameter("@auto_usuario",doc.autoUsuario);
                         var p59= new MySql.Data.MySqlClient.MySqlParameter("@situacion","Procesado");
                         //
@@ -299,12 +299,12 @@ namespace ProvLibCompra
                         var p70= new MySql.Data.MySqlClient.MySqlParameter("@tipo_proveedor","");
                         var p71= new MySql.Data.MySqlClient.MySqlParameter("@planilla","");
                         var p72= new MySql.Data.MySqlClient.MySqlParameter("@expediente","");
-                        var p73= new MySql.Data.MySqlClient.MySqlParameter("@anticipo_iva",0m);
-                        var p74= new MySql.Data.MySqlClient.MySqlParameter("@terceros_iva",0m);
+                        //var p73= new MySql.Data.MySqlClient.MySqlParameter("@anticipo_iva",0m);
+                        //var p74= new MySql.Data.MySqlClient.MySqlParameter("@terceros_iva",0m);
                         var p75= new MySql.Data.MySqlClient.MySqlParameter("@neto",doc.montoNeto);
-                        var p76= new MySql.Data.MySqlClient.MySqlParameter("@costo",0m);
-                        var p77= new MySql.Data.MySqlClient.MySqlParameter("@utilidad",0m);
-                        var p78= new MySql.Data.MySqlClient.MySqlParameter("@utilidadp",0m);
+                        //var p76= new MySql.Data.MySqlClient.MySqlParameter("@costo",0m);
+                        //var p77= new MySql.Data.MySqlClient.MySqlParameter("@utilidad",0m);
+                        //var p78= new MySql.Data.MySqlClient.MySqlParameter("@utilidadp",0m);
                         var p79= new MySql.Data.MySqlClient.MySqlParameter("@documento_tipo",doc.moduloDoc);
                         //
                         var p80= new MySql.Data.MySqlClient.MySqlParameter("@denominacion_fiscal","");
@@ -321,12 +321,12 @@ namespace ProvLibCompra
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
                             p10, p11, p12, p13, p14, p15, p16, p17, p18, p19,
                             p20, p21, p22, p23, p24, p25, p26, p27, p28, p29,
-                            p30, p31, p32, p33, p34, p35, p36, p37, p38, p39,
+                            p30, p31, p32, p39,
                             p40, p41, p42, p43, p44, p45, p46, p47, p48, p49,
-                            p50, p51, p52, p53, p54, p55, p56, p57, p58, p59,
+                            p50, p51, p52, p54, p55, p56, p58, p59,
                             p60, p61, p62, p63, p64, p65, p66, p67, p68, p69,
-                            p70, p71, p72, p73, p74, p75, p76, p77, p78, p79,
-                            p80, p81, p82, p83, p84, p85);
+                            p70, p71, p72, p75, p79,
+                            p80, p81, p82, p83, p84, p85, p86, p87, p88);
                         if (r2==0)
                         {
                             result.Mensaje = "ERROR AL INSERTAR DOCUMENTO";
@@ -338,11 +338,11 @@ namespace ProvLibCompra
                         p01= new MySql.Data.MySqlClient.MySqlParameter("@autoProv",ficha.proveedor.autoProv);
                         p02= new MySql.Data.MySqlClient.MySqlParameter("@montoDebito",ficha.proveedor.montoDebito);
                         p03= new MySql.Data.MySqlClient.MySqlParameter("@fechaEmision", ficha.proveedor.fechaEmiDoc);
-                        sql = @"update proveedor set
+                        sql = @"update proveedores set
                                     debitos=debitos+@montoDebito,
                                     fecha_ult_compra=@fechaEmision
                                 where auto=@autoProv";
-                        var r3 = cnn.Database.ExecuteSqlCommand(sql);
+                        var r3 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03);
                         if (r3==0)
                         {
                             result.Mensaje = "ERROR AL ACTUALIZAR DATA PROVEEDOR";
@@ -414,11 +414,11 @@ namespace ProvLibCompra
                         //
                         var cxp = ficha.cxp;
                         p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto",autoEntCxP);
-                        p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha",cxp.fechaEmision );
-                        p02 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento",cxp.tipoDocumento);
+                        p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", cxp.fechaEmision);
+                        p02 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento",cxp.siglasTipoDocumento);
                         p03 = new MySql.Data.MySqlClient.MySqlParameter("@documento", cxp.documentoNro);
                         p04 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_vencimiento", cxp.fechaVencimiento);
-                        p05 = new MySql.Data.MySqlClient.MySqlParameter("@nota", cxp.nota);
+                        p05 = new MySql.Data.MySqlClient.MySqlParameter("@nota", "");
                         p06 = new MySql.Data.MySqlClient.MySqlParameter("@importe",cxp.importe);
                         p07 = new MySql.Data.MySqlClient.MySqlParameter("@acumulado",cxp.acumulado );
                         p08 = new MySql.Data.MySqlClient.MySqlParameter("@auto_proveedor",cxp.autoProveedor);
@@ -431,9 +431,9 @@ namespace ProvLibCompra
                         p14 = new MySql.Data.MySqlClient.MySqlParameter("@estatus_anulado","0");
                         p15 = new MySql.Data.MySqlClient.MySqlParameter("@auto_documento",autoEntCompra);
                         p16 = new MySql.Data.MySqlClient.MySqlParameter("@numero","");
-                        p17 = new MySql.Data.MySqlClient.MySqlParameter("@auto_agencia","0000000001");
+                        p17 = new MySql.Data.MySqlClient.MySqlParameter("@auto_agencia","");
                         p18 = new MySql.Data.MySqlClient.MySqlParameter("@agencia","");
-                        p19 = new MySql.Data.MySqlClient.MySqlParameter("@signo",cxp.signoDocumento);
+                        p19 = new MySql.Data.MySqlClient.MySqlParameter("@signo",cxp.signoTipoDocumento);
                         //
                         p20 = new MySql.Data.MySqlClient.MySqlParameter("@dias",cxp.diasCredito);
                         p21 = new MySql.Data.MySqlClient.MySqlParameter("@auto_asiento","");
@@ -448,7 +448,7 @@ namespace ProvLibCompra
                         var r4 = cnn.Database.ExecuteSqlCommand(sql, 
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
                             p10, p11, p12, p13, p14, p15, p16, p17, p18, p19,
-                            p20, p21, p22, p23, p24, p25, p26, p27, p28, p28);
+                            p20, p21, p22, p23, p24, p25, p26, p27, p28);
                         if (r4==0)
                         {
                             result.Mensaje = "ERROR AL INSERTAR CXP";

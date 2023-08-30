@@ -144,7 +144,7 @@
             this.panel59 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.panel60 = new System.Windows.Forms.Panel();
-            this.numeroDecimal1 = new LibControles.NumeroDecimal();
+            this.TB_FACTOR_CAMBIO = new LibControles.NumeroDecimal();
             this.panel61 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
             this.panel62 = new System.Windows.Forms.Panel();
@@ -154,50 +154,48 @@
             this.panel64 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.panel65 = new System.Windows.Forms.Panel();
-            this.numeroDecimal2 = new LibControles.NumeroDecimal();
+            this.TB_TASA_EX_BASE = new LibControles.NumeroDecimal();
             this.panel66 = new System.Windows.Forms.Panel();
             this.panel73 = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
+            this.L_TASA1 = new System.Windows.Forms.Label();
             this.panel67 = new System.Windows.Forms.Panel();
-            this.numeroDecimal3 = new LibControles.NumeroDecimal();
+            this.TB_TASA1_BASE = new LibControles.NumeroDecimal();
             this.panel68 = new System.Windows.Forms.Panel();
-            this.numeroDecimal4 = new LibControles.NumeroDecimal();
+            this.TB_TASA1_IMP = new LibControles.NumeroDecimal();
             this.panel69 = new System.Windows.Forms.Panel();
-            this.numeroDecimal5 = new LibControles.NumeroDecimal();
+            this.TB_TASA2_BASE = new LibControles.NumeroDecimal();
             this.panel70 = new System.Windows.Forms.Panel();
-            this.numeroDecimal6 = new LibControles.NumeroDecimal();
+            this.TB_TASA2_IMP = new LibControles.NumeroDecimal();
             this.panel71 = new System.Windows.Forms.Panel();
-            this.numeroDecimal7 = new LibControles.NumeroDecimal();
+            this.TB_TASA3_BASE = new LibControles.NumeroDecimal();
             this.panel72 = new System.Windows.Forms.Panel();
-            this.numeroDecimal8 = new LibControles.NumeroDecimal();
+            this.TB_TASA3_IMP = new LibControles.NumeroDecimal();
             this.panel74 = new System.Windows.Forms.Panel();
-            this.label25 = new System.Windows.Forms.Label();
+            this.L_TASA2 = new System.Windows.Forms.Label();
             this.panel75 = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
+            this.L_TASA3 = new System.Windows.Forms.Label();
             this.panel76 = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.panel77 = new System.Windows.Forms.Panel();
-            this.label28 = new System.Windows.Forms.Label();
+            this.L_SUBT_BASE = new System.Windows.Forms.Label();
             this.panel78 = new System.Windows.Forms.Panel();
-            this.label29 = new System.Windows.Forms.Label();
+            this.L_SUBT_IMP = new System.Windows.Forms.Label();
             this.panel79 = new System.Windows.Forms.Panel();
             this.label30 = new System.Windows.Forms.Label();
             this.panel80 = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
+            this.L_MONTO = new System.Windows.Forms.Label();
             this.panel81 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
-            this.panel82 = new System.Windows.Forms.Panel();
-            this.numeroDecimal9 = new LibControles.NumeroDecimal();
             this.panel83 = new System.Windows.Forms.Panel();
-            this.numeroDecimal10 = new LibControles.NumeroDecimal();
+            this.TB_IGTF_MONTO = new LibControles.NumeroDecimal();
             this.panel84 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
             this.panel85 = new System.Windows.Forms.Panel();
-            this.label34 = new System.Windows.Forms.Label();
+            this.L_MONTO_MON_ACT = new System.Windows.Forms.Label();
             this.panel86 = new System.Windows.Forms.Panel();
             this.label35 = new System.Windows.Forms.Label();
             this.panel87 = new System.Windows.Forms.Panel();
-            this.label36 = new System.Windows.Forms.Label();
+            this.L_MONTO_MON_DIVISA = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -308,7 +306,6 @@
             this.panel79.SuspendLayout();
             this.panel80.SuspendLayout();
             this.panel81.SuspendLayout();
-            this.panel82.SuspendLayout();
             this.panel83.SuspendLayout();
             this.panel84.SuspendLayout();
             this.panel85.SuspendLayout();
@@ -1435,6 +1432,7 @@
             this.CB_APLICA_TIPO_DOC.Name = "CB_APLICA_TIPO_DOC";
             this.CB_APLICA_TIPO_DOC.Size = new System.Drawing.Size(198, 24);
             this.CB_APLICA_TIPO_DOC.TabIndex = 0;
+            this.CB_APLICA_TIPO_DOC.SelectedIndexChanged += new System.EventHandler(this.CB_APLICA_TIPO_DOC_SelectedIndexChanged);
             // 
             // panel41
             // 
@@ -1736,7 +1734,6 @@
             this.tableLayoutPanel20.Controls.Add(this.panel79, 0, 7);
             this.tableLayoutPanel20.Controls.Add(this.panel80, 2, 7);
             this.tableLayoutPanel20.Controls.Add(this.panel81, 0, 8);
-            this.tableLayoutPanel20.Controls.Add(this.panel82, 1, 8);
             this.tableLayoutPanel20.Controls.Add(this.panel83, 2, 8);
             this.tableLayoutPanel20.Controls.Add(this.panel84, 0, 9);
             this.tableLayoutPanel20.Controls.Add(this.panel85, 2, 9);
@@ -1785,7 +1782,7 @@
             // 
             // panel60
             // 
-            this.panel60.Controls.Add(this.numeroDecimal1);
+            this.panel60.Controls.Add(this.TB_FACTOR_CAMBIO);
             this.panel60.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel60.Location = new System.Drawing.Point(123, 5);
             this.panel60.Margin = new System.Windows.Forms.Padding(0);
@@ -1794,17 +1791,19 @@
             this.panel60.Size = new System.Drawing.Size(123, 29);
             this.panel60.TabIndex = 1;
             // 
-            // numeroDecimal1
+            // TB_FACTOR_CAMBIO
             // 
-            this.numeroDecimal1.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal1.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal1.Name = "numeroDecimal1";
-            this.numeroDecimal1.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal1.TabIndex = 0;
-            this.numeroDecimal1.Text = "0";
-            this.numeroDecimal1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_FACTOR_CAMBIO.BackColor = System.Drawing.Color.Yellow;
+            this.TB_FACTOR_CAMBIO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_FACTOR_CAMBIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_FACTOR_CAMBIO.Location = new System.Drawing.Point(2, 2);
+            this.TB_FACTOR_CAMBIO.Name = "TB_FACTOR_CAMBIO";
+            this.TB_FACTOR_CAMBIO.Size = new System.Drawing.Size(119, 22);
+            this.TB_FACTOR_CAMBIO.TabIndex = 0;
+            this.TB_FACTOR_CAMBIO.Text = "0";
+            this.TB_FACTOR_CAMBIO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_FACTOR_CAMBIO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_FACTOR_CAMBIO.Leave += new System.EventHandler(this.TB_FACTOR_CAMBIO_Leave);
             // 
             // panel61
             // 
@@ -1900,7 +1899,7 @@
             // 
             // panel65
             // 
-            this.panel65.Controls.Add(this.numeroDecimal2);
+            this.panel65.Controls.Add(this.TB_TASA_EX_BASE);
             this.panel65.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel65.Location = new System.Drawing.Point(0, 63);
             this.panel65.Margin = new System.Windows.Forms.Padding(0);
@@ -1909,17 +1908,19 @@
             this.panel65.Size = new System.Drawing.Size(123, 29);
             this.panel65.TabIndex = 6;
             // 
-            // numeroDecimal2
+            // TB_TASA_EX_BASE
             // 
-            this.numeroDecimal2.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal2.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal2.Name = "numeroDecimal2";
-            this.numeroDecimal2.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal2.TabIndex = 1;
-            this.numeroDecimal2.Text = "0";
-            this.numeroDecimal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA_EX_BASE.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA_EX_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA_EX_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA_EX_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA_EX_BASE.Name = "TB_TASA_EX_BASE";
+            this.TB_TASA_EX_BASE.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA_EX_BASE.TabIndex = 1;
+            this.TB_TASA_EX_BASE.Text = "0";
+            this.TB_TASA_EX_BASE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA_EX_BASE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_TASA_EX_BASE.Leave += new System.EventHandler(this.TB_TASA_EX_BASE_Leave);
             // 
             // panel66
             // 
@@ -1934,7 +1935,7 @@
             // 
             // panel73
             // 
-            this.panel73.Controls.Add(this.label24);
+            this.panel73.Controls.Add(this.L_TASA1);
             this.panel73.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel73.Location = new System.Drawing.Point(2, 2);
             this.panel73.Margin = new System.Windows.Forms.Padding(0);
@@ -1943,20 +1944,20 @@
             this.panel73.Size = new System.Drawing.Size(119, 25);
             this.panel73.TabIndex = 0;
             // 
-            // label24
+            // L_TASA1
             // 
-            this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(2, 2);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(115, 21);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "16%";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_TASA1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_TASA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TASA1.Location = new System.Drawing.Point(2, 2);
+            this.L_TASA1.Name = "L_TASA1";
+            this.L_TASA1.Size = new System.Drawing.Size(115, 21);
+            this.L_TASA1.TabIndex = 0;
+            this.L_TASA1.Text = "16%";
+            this.L_TASA1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel67
             // 
-            this.panel67.Controls.Add(this.numeroDecimal3);
+            this.panel67.Controls.Add(this.TB_TASA1_BASE);
             this.panel67.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel67.Location = new System.Drawing.Point(246, 63);
             this.panel67.Margin = new System.Windows.Forms.Padding(0);
@@ -1965,21 +1966,23 @@
             this.panel67.Size = new System.Drawing.Size(123, 29);
             this.panel67.TabIndex = 8;
             // 
-            // numeroDecimal3
+            // TB_TASA1_BASE
             // 
-            this.numeroDecimal3.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal3.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal3.Name = "numeroDecimal3";
-            this.numeroDecimal3.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal3.TabIndex = 1;
-            this.numeroDecimal3.Text = "0";
-            this.numeroDecimal3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA1_BASE.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA1_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA1_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA1_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA1_BASE.Name = "TB_TASA1_BASE";
+            this.TB_TASA1_BASE.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA1_BASE.TabIndex = 1;
+            this.TB_TASA1_BASE.Text = "0";
+            this.TB_TASA1_BASE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA1_BASE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_TASA1_BASE.Leave += new System.EventHandler(this.TB_TASA1_BASE_Leave);
             // 
             // panel68
             // 
-            this.panel68.Controls.Add(this.numeroDecimal4);
+            this.panel68.Controls.Add(this.TB_TASA1_IMP);
             this.panel68.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel68.Location = new System.Drawing.Point(369, 63);
             this.panel68.Margin = new System.Windows.Forms.Padding(0);
@@ -1988,21 +1991,23 @@
             this.panel68.Size = new System.Drawing.Size(123, 29);
             this.panel68.TabIndex = 9;
             // 
-            // numeroDecimal4
+            // TB_TASA1_IMP
             // 
-            this.numeroDecimal4.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal4.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal4.Name = "numeroDecimal4";
-            this.numeroDecimal4.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal4.TabIndex = 1;
-            this.numeroDecimal4.Text = "0";
-            this.numeroDecimal4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA1_IMP.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA1_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA1_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA1_IMP.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA1_IMP.Name = "TB_TASA1_IMP";
+            this.TB_TASA1_IMP.ReadOnly = true;
+            this.TB_TASA1_IMP.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA1_IMP.TabIndex = 1;
+            this.TB_TASA1_IMP.Text = "0";
+            this.TB_TASA1_IMP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA1_IMP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel69
             // 
-            this.panel69.Controls.Add(this.numeroDecimal5);
+            this.panel69.Controls.Add(this.TB_TASA2_BASE);
             this.panel69.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel69.Location = new System.Drawing.Point(246, 92);
             this.panel69.Margin = new System.Windows.Forms.Padding(0);
@@ -2011,21 +2016,23 @@
             this.panel69.Size = new System.Drawing.Size(123, 29);
             this.panel69.TabIndex = 10;
             // 
-            // numeroDecimal5
+            // TB_TASA2_BASE
             // 
-            this.numeroDecimal5.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal5.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal5.Name = "numeroDecimal5";
-            this.numeroDecimal5.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal5.TabIndex = 2;
-            this.numeroDecimal5.Text = "0";
-            this.numeroDecimal5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA2_BASE.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA2_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA2_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA2_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA2_BASE.Name = "TB_TASA2_BASE";
+            this.TB_TASA2_BASE.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA2_BASE.TabIndex = 2;
+            this.TB_TASA2_BASE.Text = "0";
+            this.TB_TASA2_BASE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA2_BASE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_TASA2_BASE.Leave += new System.EventHandler(this.TB_TASA2_BASE_Leave);
             // 
             // panel70
             // 
-            this.panel70.Controls.Add(this.numeroDecimal6);
+            this.panel70.Controls.Add(this.TB_TASA2_IMP);
             this.panel70.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel70.Location = new System.Drawing.Point(369, 92);
             this.panel70.Margin = new System.Windows.Forms.Padding(0);
@@ -2034,21 +2041,23 @@
             this.panel70.Size = new System.Drawing.Size(123, 29);
             this.panel70.TabIndex = 11;
             // 
-            // numeroDecimal6
+            // TB_TASA2_IMP
             // 
-            this.numeroDecimal6.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal6.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal6.Name = "numeroDecimal6";
-            this.numeroDecimal6.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal6.TabIndex = 2;
-            this.numeroDecimal6.Text = "0";
-            this.numeroDecimal6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA2_IMP.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA2_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA2_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA2_IMP.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA2_IMP.Name = "TB_TASA2_IMP";
+            this.TB_TASA2_IMP.ReadOnly = true;
+            this.TB_TASA2_IMP.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA2_IMP.TabIndex = 2;
+            this.TB_TASA2_IMP.Text = "0";
+            this.TB_TASA2_IMP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA2_IMP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel71
             // 
-            this.panel71.Controls.Add(this.numeroDecimal7);
+            this.panel71.Controls.Add(this.TB_TASA3_BASE);
             this.panel71.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel71.Location = new System.Drawing.Point(246, 121);
             this.panel71.Margin = new System.Windows.Forms.Padding(0);
@@ -2057,21 +2066,23 @@
             this.panel71.Size = new System.Drawing.Size(123, 29);
             this.panel71.TabIndex = 12;
             // 
-            // numeroDecimal7
+            // TB_TASA3_BASE
             // 
-            this.numeroDecimal7.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal7.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal7.Name = "numeroDecimal7";
-            this.numeroDecimal7.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal7.TabIndex = 3;
-            this.numeroDecimal7.Text = "0";
-            this.numeroDecimal7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA3_BASE.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA3_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA3_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA3_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA3_BASE.Name = "TB_TASA3_BASE";
+            this.TB_TASA3_BASE.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA3_BASE.TabIndex = 3;
+            this.TB_TASA3_BASE.Text = "0";
+            this.TB_TASA3_BASE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA3_BASE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_TASA3_BASE.Leave += new System.EventHandler(this.TB_TASA3_BASE_Leave);
             // 
             // panel72
             // 
-            this.panel72.Controls.Add(this.numeroDecimal8);
+            this.panel72.Controls.Add(this.TB_TASA3_IMP);
             this.panel72.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel72.Location = new System.Drawing.Point(369, 121);
             this.panel72.Margin = new System.Windows.Forms.Padding(0);
@@ -2080,21 +2091,23 @@
             this.panel72.Size = new System.Drawing.Size(123, 29);
             this.panel72.TabIndex = 13;
             // 
-            // numeroDecimal8
+            // TB_TASA3_IMP
             // 
-            this.numeroDecimal8.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal8.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal8.Name = "numeroDecimal8";
-            this.numeroDecimal8.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal8.TabIndex = 3;
-            this.numeroDecimal8.Text = "0";
-            this.numeroDecimal8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA3_IMP.BackColor = System.Drawing.Color.Yellow;
+            this.TB_TASA3_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_TASA3_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_TASA3_IMP.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA3_IMP.Name = "TB_TASA3_IMP";
+            this.TB_TASA3_IMP.ReadOnly = true;
+            this.TB_TASA3_IMP.Size = new System.Drawing.Size(119, 22);
+            this.TB_TASA3_IMP.TabIndex = 3;
+            this.TB_TASA3_IMP.Text = "0";
+            this.TB_TASA3_IMP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_TASA3_IMP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel74
             // 
-            this.panel74.Controls.Add(this.label25);
+            this.panel74.Controls.Add(this.L_TASA2);
             this.panel74.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel74.Location = new System.Drawing.Point(123, 92);
             this.panel74.Margin = new System.Windows.Forms.Padding(0);
@@ -2103,20 +2116,20 @@
             this.panel74.Size = new System.Drawing.Size(123, 29);
             this.panel74.TabIndex = 14;
             // 
-            // label25
+            // L_TASA2
             // 
-            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(2, 2);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(119, 25);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "8%";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_TASA2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_TASA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TASA2.Location = new System.Drawing.Point(2, 2);
+            this.L_TASA2.Name = "L_TASA2";
+            this.L_TASA2.Size = new System.Drawing.Size(119, 25);
+            this.L_TASA2.TabIndex = 1;
+            this.L_TASA2.Text = "8%";
+            this.L_TASA2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel75
             // 
-            this.panel75.Controls.Add(this.label26);
+            this.panel75.Controls.Add(this.L_TASA3);
             this.panel75.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel75.Location = new System.Drawing.Point(123, 121);
             this.panel75.Margin = new System.Windows.Forms.Padding(0);
@@ -2125,16 +2138,16 @@
             this.panel75.Size = new System.Drawing.Size(123, 29);
             this.panel75.TabIndex = 15;
             // 
-            // label26
+            // L_TASA3
             // 
-            this.label26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(2, 2);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(119, 25);
-            this.label26.TabIndex = 1;
-            this.label26.Text = "31%";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_TASA3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_TASA3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TASA3.Location = new System.Drawing.Point(2, 2);
+            this.L_TASA3.Name = "L_TASA3";
+            this.L_TASA3.Size = new System.Drawing.Size(119, 25);
+            this.L_TASA3.TabIndex = 1;
+            this.L_TASA3.Text = "31%";
+            this.L_TASA3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel76
             // 
@@ -2160,7 +2173,7 @@
             // 
             // panel77
             // 
-            this.panel77.Controls.Add(this.label28);
+            this.panel77.Controls.Add(this.L_SUBT_BASE);
             this.panel77.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel77.Location = new System.Drawing.Point(246, 150);
             this.panel77.Margin = new System.Windows.Forms.Padding(0);
@@ -2169,20 +2182,20 @@
             this.panel77.Size = new System.Drawing.Size(123, 29);
             this.panel77.TabIndex = 18;
             // 
-            // label28
+            // L_SUBT_BASE
             // 
-            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(2, 2);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(119, 25);
-            this.label28.TabIndex = 1;
-            this.label28.Text = "16%";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_SUBT_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_SUBT_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_SUBT_BASE.Location = new System.Drawing.Point(2, 2);
+            this.L_SUBT_BASE.Name = "L_SUBT_BASE";
+            this.L_SUBT_BASE.Size = new System.Drawing.Size(119, 25);
+            this.L_SUBT_BASE.TabIndex = 1;
+            this.L_SUBT_BASE.Text = "16%";
+            this.L_SUBT_BASE.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel78
             // 
-            this.panel78.Controls.Add(this.label29);
+            this.panel78.Controls.Add(this.L_SUBT_IMP);
             this.panel78.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel78.Location = new System.Drawing.Point(369, 150);
             this.panel78.Margin = new System.Windows.Forms.Padding(0);
@@ -2191,16 +2204,16 @@
             this.panel78.Size = new System.Drawing.Size(123, 29);
             this.panel78.TabIndex = 19;
             // 
-            // label29
+            // L_SUBT_IMP
             // 
-            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(2, 2);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(119, 25);
-            this.label29.TabIndex = 1;
-            this.label29.Text = "16%";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_SUBT_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_SUBT_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_SUBT_IMP.Location = new System.Drawing.Point(2, 2);
+            this.L_SUBT_IMP.Name = "L_SUBT_IMP";
+            this.L_SUBT_IMP.Size = new System.Drawing.Size(119, 25);
+            this.L_SUBT_IMP.TabIndex = 1;
+            this.L_SUBT_IMP.Text = "16%";
+            this.L_SUBT_IMP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel79
             // 
@@ -2228,7 +2241,7 @@
             // panel80
             // 
             this.tableLayoutPanel20.SetColumnSpan(this.panel80, 2);
-            this.panel80.Controls.Add(this.label31);
+            this.panel80.Controls.Add(this.L_MONTO);
             this.panel80.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel80.Location = new System.Drawing.Point(246, 179);
             this.panel80.Margin = new System.Windows.Forms.Padding(0);
@@ -2237,25 +2250,27 @@
             this.panel80.Size = new System.Drawing.Size(246, 29);
             this.panel80.TabIndex = 21;
             // 
-            // label31
+            // L_MONTO
             // 
-            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(2, 2);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(242, 25);
-            this.label31.TabIndex = 2;
-            this.label31.Text = "16%";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_MONTO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_MONTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_MONTO.Location = new System.Drawing.Point(2, 2);
+            this.L_MONTO.Name = "L_MONTO";
+            this.L_MONTO.Size = new System.Drawing.Size(242, 25);
+            this.L_MONTO.TabIndex = 2;
+            this.L_MONTO.Text = "16%";
+            this.L_MONTO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel81
             // 
+            this.tableLayoutPanel20.SetColumnSpan(this.panel81, 2);
             this.panel81.Controls.Add(this.label32);
+            this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel81.Location = new System.Drawing.Point(0, 208);
             this.panel81.Margin = new System.Windows.Forms.Padding(0);
             this.panel81.Name = "panel81";
             this.panel81.Padding = new System.Windows.Forms.Padding(2);
-            this.panel81.Size = new System.Drawing.Size(123, 29);
+            this.panel81.Size = new System.Drawing.Size(246, 29);
             this.panel81.TabIndex = 22;
             // 
             // label32
@@ -2264,36 +2279,14 @@
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(2, 2);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(119, 25);
-            this.label32.TabIndex = 2;
-            this.label32.Text = "I.G.T.F. (%):";
+            this.label32.Size = new System.Drawing.Size(242, 25);
+            this.label32.TabIndex = 3;
+            this.label32.Text = "I.G.T.F. :";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panel82
-            // 
-            this.panel82.Controls.Add(this.numeroDecimal9);
-            this.panel82.Location = new System.Drawing.Point(123, 208);
-            this.panel82.Margin = new System.Windows.Forms.Padding(0);
-            this.panel82.Name = "panel82";
-            this.panel82.Padding = new System.Windows.Forms.Padding(2);
-            this.panel82.Size = new System.Drawing.Size(123, 29);
-            this.panel82.TabIndex = 23;
-            // 
-            // numeroDecimal9
-            // 
-            this.numeroDecimal9.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal9.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal9.Name = "numeroDecimal9";
-            this.numeroDecimal9.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal9.TabIndex = 4;
-            this.numeroDecimal9.Text = "0";
-            this.numeroDecimal9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // panel83
             // 
-            this.panel83.Controls.Add(this.numeroDecimal10);
+            this.panel83.Controls.Add(this.TB_IGTF_MONTO);
             this.panel83.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel83.Location = new System.Drawing.Point(246, 208);
             this.panel83.Margin = new System.Windows.Forms.Padding(0);
@@ -2302,17 +2295,19 @@
             this.panel83.Size = new System.Drawing.Size(123, 29);
             this.panel83.TabIndex = 24;
             // 
-            // numeroDecimal10
+            // TB_IGTF_MONTO
             // 
-            this.numeroDecimal10.BackColor = System.Drawing.Color.Yellow;
-            this.numeroDecimal10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numeroDecimal10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroDecimal10.Location = new System.Drawing.Point(2, 2);
-            this.numeroDecimal10.Name = "numeroDecimal10";
-            this.numeroDecimal10.Size = new System.Drawing.Size(119, 22);
-            this.numeroDecimal10.TabIndex = 5;
-            this.numeroDecimal10.Text = "0";
-            this.numeroDecimal10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_IGTF_MONTO.BackColor = System.Drawing.Color.Yellow;
+            this.TB_IGTF_MONTO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_IGTF_MONTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_IGTF_MONTO.Location = new System.Drawing.Point(2, 2);
+            this.TB_IGTF_MONTO.Name = "TB_IGTF_MONTO";
+            this.TB_IGTF_MONTO.Size = new System.Drawing.Size(119, 22);
+            this.TB_IGTF_MONTO.TabIndex = 5;
+            this.TB_IGTF_MONTO.Text = "0";
+            this.TB_IGTF_MONTO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_IGTF_MONTO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_IGTF_MONTO.Leave += new System.EventHandler(this.TB_IGTF_MONTO_Leave);
             // 
             // panel84
             // 
@@ -2334,13 +2329,13 @@
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(242, 25);
             this.label33.TabIndex = 3;
-            this.label33.Text = "Total Documento (Bs):";
+            this.label33.Text = "Total (Bs):";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel85
             // 
             this.tableLayoutPanel20.SetColumnSpan(this.panel85, 2);
-            this.panel85.Controls.Add(this.label34);
+            this.panel85.Controls.Add(this.L_MONTO_MON_ACT);
             this.panel85.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel85.Location = new System.Drawing.Point(246, 237);
             this.panel85.Margin = new System.Windows.Forms.Padding(0);
@@ -2349,16 +2344,16 @@
             this.panel85.Size = new System.Drawing.Size(246, 29);
             this.panel85.TabIndex = 26;
             // 
-            // label34
+            // L_MONTO_MON_ACT
             // 
-            this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(2, 2);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(242, 25);
-            this.label34.TabIndex = 3;
-            this.label34.Text = "16%";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_MONTO_MON_ACT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_MONTO_MON_ACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_MONTO_MON_ACT.Location = new System.Drawing.Point(2, 2);
+            this.L_MONTO_MON_ACT.Name = "L_MONTO_MON_ACT";
+            this.L_MONTO_MON_ACT.Size = new System.Drawing.Size(242, 25);
+            this.L_MONTO_MON_ACT.TabIndex = 3;
+            this.L_MONTO_MON_ACT.Text = "16%";
+            this.L_MONTO_MON_ACT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel86
             // 
@@ -2380,13 +2375,13 @@
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(242, 25);
             this.label35.TabIndex = 4;
-            this.label35.Text = "Total Documento ($):";
+            this.label35.Text = "Total ($):";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel87
             // 
             this.tableLayoutPanel20.SetColumnSpan(this.panel87, 2);
-            this.panel87.Controls.Add(this.label36);
+            this.panel87.Controls.Add(this.L_MONTO_MON_DIVISA);
             this.panel87.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel87.Location = new System.Drawing.Point(246, 266);
             this.panel87.Margin = new System.Windows.Forms.Padding(0);
@@ -2395,16 +2390,16 @@
             this.panel87.Size = new System.Drawing.Size(246, 29);
             this.panel87.TabIndex = 28;
             // 
-            // label36
+            // L_MONTO_MON_DIVISA
             // 
-            this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(2, 2);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(242, 25);
-            this.label36.TabIndex = 4;
-            this.label36.Text = "16%";
-            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_MONTO_MON_DIVISA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_MONTO_MON_DIVISA.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_MONTO_MON_DIVISA.Location = new System.Drawing.Point(2, 2);
+            this.L_MONTO_MON_DIVISA.Name = "L_MONTO_MON_DIVISA";
+            this.L_MONTO_MON_DIVISA.Size = new System.Drawing.Size(242, 25);
+            this.L_MONTO_MON_DIVISA.TabIndex = 4;
+            this.L_MONTO_MON_DIVISA.Text = "16%";
+            this.L_MONTO_MON_DIVISA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tabPage3
             // 
@@ -2477,6 +2472,7 @@
             this.BT_ACEPTAR.Text = "Aceptar";
             this.BT_ACEPTAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_ACEPTAR.UseVisualStyleBackColor = true;
+            this.BT_ACEPTAR.Click += new System.EventHandler(this.BT_ACEPTAR_Click);
             // 
             // panel7
             // 
@@ -2502,16 +2498,20 @@
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_SALIR.UseVisualStyleBackColor = true;
+            this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
             // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BT_SALIR;
             this.ClientSize = new System.Drawing.Size(664, 711);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_FormClosing);
             this.Load += new System.EventHandler(this.Frm_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -2630,8 +2630,6 @@
             this.panel79.ResumeLayout(false);
             this.panel80.ResumeLayout(false);
             this.panel81.ResumeLayout(false);
-            this.panel82.ResumeLayout(false);
-            this.panel82.PerformLayout();
             this.panel83.ResumeLayout(false);
             this.panel83.PerformLayout();
             this.panel84.ResumeLayout(false);
@@ -2784,47 +2782,45 @@
         private System.Windows.Forms.Panel panel66;
         private System.Windows.Forms.Panel panel67;
         private System.Windows.Forms.Panel panel68;
-        private LibControles.NumeroDecimal numeroDecimal1;
-        private LibControles.NumeroDecimal numeroDecimal2;
-        private LibControles.NumeroDecimal numeroDecimal3;
-        private LibControles.NumeroDecimal numeroDecimal4;
+        private LibControles.NumeroDecimal TB_FACTOR_CAMBIO;
+        private LibControles.NumeroDecimal TB_TASA_EX_BASE;
+        private LibControles.NumeroDecimal TB_TASA1_BASE;
+        private LibControles.NumeroDecimal TB_TASA1_IMP;
         private System.Windows.Forms.Panel panel73;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label L_TASA1;
         private System.Windows.Forms.Panel panel69;
-        private LibControles.NumeroDecimal numeroDecimal5;
+        private LibControles.NumeroDecimal TB_TASA2_BASE;
         private System.Windows.Forms.Panel panel70;
-        private LibControles.NumeroDecimal numeroDecimal6;
+        private LibControles.NumeroDecimal TB_TASA2_IMP;
         private System.Windows.Forms.Panel panel71;
-        private LibControles.NumeroDecimal numeroDecimal7;
+        private LibControles.NumeroDecimal TB_TASA3_BASE;
         private System.Windows.Forms.Panel panel72;
-        private LibControles.NumeroDecimal numeroDecimal8;
+        private LibControles.NumeroDecimal TB_TASA3_IMP;
         private System.Windows.Forms.Panel panel74;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label L_TASA2;
         private System.Windows.Forms.Panel panel75;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label L_TASA3;
         private System.Windows.Forms.Panel panel76;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Panel panel77;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label L_SUBT_BASE;
         private System.Windows.Forms.Panel panel78;
-        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label L_SUBT_IMP;
         private System.Windows.Forms.Panel panel79;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel panel80;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Panel panel81;
-        private System.Windows.Forms.Panel panel82;
-        private System.Windows.Forms.Label label32;
-        private LibControles.NumeroDecimal numeroDecimal9;
+        private System.Windows.Forms.Label L_MONTO;
         private System.Windows.Forms.Panel panel83;
-        private LibControles.NumeroDecimal numeroDecimal10;
+        private LibControles.NumeroDecimal TB_IGTF_MONTO;
         private System.Windows.Forms.Panel panel84;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Panel panel85;
-        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label L_MONTO_MON_ACT;
         private System.Windows.Forms.Panel panel86;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Panel panel87;
-        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label L_MONTO_MON_DIVISA;
+        private System.Windows.Forms.Panel panel81;
+        private System.Windows.Forms.Label label32;
     }
 }

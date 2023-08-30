@@ -24,10 +24,21 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         //
         private Utils.Buscar.Proveedor.Vistas.IProveedor _proveedor;
         //
+        private LibUtilitis.CtrlCB.ICtrl _aplicaTipoDoc;
         private DateTime _aplicaFechaDoc;
         private string _aplicaNumeroDoc;
         //
         private DateTime _fechaServidor;
+        //
+        private decimal _factorCambio;
+        private Vistas.Generar.IdataFiscal _tasa1;
+        private Vistas.Generar.IdataFiscal _tasa2;
+        private Vistas.Generar.IdataFiscal _tasa3;
+        private Vistas.Generar.IdataFiscal _tasaEx;
+        private decimal _monto;
+        private decimal _montoMonAct;
+        private decimal _montoMonDivisa;
+        private decimal _montoIGTF;
 
 
         public string Get_NumeroDoc { get { return _numeroDoc; } }
@@ -52,6 +63,29 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public bool AplicaActivo { get { return verificaTipoDoc(); } }
         public string Get_Aplica_NumeroDoc { get { return _aplicaNumeroDoc; } }
         public DateTime Get_Aplica_FechaDoc { get { return _aplicaFechaDoc; } }
+        //
+        public decimal Get_FactorCambio { get { return _factorCambio; } }
+        public Vistas.Generar.IdataFiscal Tasa1 { get { return _tasa1; } }
+        public Vistas.Generar.IdataFiscal Tasa2 { get { return _tasa2; } }
+        public Vistas.Generar.IdataFiscal Tasa3 { get { return _tasa3; } }
+        public Vistas.Generar.IdataFiscal TasaEx { get { return _tasaEx; } }
+        public decimal Get_SubtotalBase { get { return _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base; } }
+        public decimal Get_SubtotalImp { get { return _tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp; } }
+        public decimal Get_Monto 
+        { 
+            get 
+            {
+                _monto=(_tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base) +
+                        (_tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp) +
+                        _tasaEx.Get_Base;
+                _montoMonAct = _monto+_montoIGTF;
+                _montoMonDivisa = _montoMonAct / _factorCambio;
+                return _monto;
+            }
+        }
+        public decimal Get_MontoMonAct { get { return _montoMonAct; } }
+        public decimal Get_MontoMonDivisa { get { return _montoMonDivisa; } }
+        public decimal Get_MontoIGTF { get { return _montoIGTF; } }
 
 
         public data()
@@ -70,8 +104,19 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             //
             _proveedor = new Utils.Buscar.Proveedor.Handler.Imp();
             //
+            _aplicaTipoDoc = new LibUtilitis.CtrlCB.ImpCB();
             _aplicaFechaDoc = DateTime.Now.Date;
             _aplicaNumeroDoc = "";
+            //
+            _monto = 0m;
+            _montoMonAct = 0m;
+            _montoMonDivisa = 0m;
+            _factorCambio = 0m;
+            _montoIGTF = 0m;
+            _tasa1 = new dataFiscal();
+            _tasa2 = new dataFiscal();
+            _tasa3 = new dataFiscal();
+            _tasaEx = new dataFiscal();
         }
         public void Inicializa()
         {
@@ -89,8 +134,18 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             //
             _proveedor.Inicializa();
             //
+            _aplicaTipoDoc.Inicializa();
             _aplicaFechaDoc = DateTime.Now.Date;
             _aplicaNumeroDoc = "";
+            //
+            _monto = 0m;
+            _montoMonAct = 0m;
+            _montoMonDivisa = 0m;
+            _montoIGTF = 0m;
+            _tasa1.Inicializa();
+            _tasa2.Inicializa();
+            _tasa3.Inicializa();
+            _tasaEx.Inicializa();
         }
 
 
@@ -186,6 +241,16 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         }
 
 
+        public BindingSource Get_AplicaTipoDocumento_Source { get { return _aplicaTipoDoc.GetSource; } }
+        public string Get_AplicaTipoDocumento_ID { get { return _aplicaTipoDoc.GetId; } }
+        public void AplicaTipoDocumentoCargarData(IEnumerable<LibUtilitis.Opcion.IData> lst)
+        {
+            _aplicaTipoDoc.CargarData(lst);
+        }
+        public void SetAplicaTipoDocumentoById(string id)
+        {
+            _aplicaTipoDoc.setFichaById(id);
+        }
         public void SetAplicaNumeroDoc(string numero)
         {
             _aplicaNumeroDoc = numero;
@@ -208,5 +273,99 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         {
             _fechaServidor = fecha;
         }
+
+
+        public void SetFactorCambio(decimal factor)
+        {
+            _factorCambio = factor;
+        }
+        public void SetMontoIGTF(decimal monto)
+        {
+            _montoIGTF = monto;
+        }
+
+
+        public bool Verificar()
+        {
+            var rt = true;
+            if (_tipoDoc.GetItem == null) 
+            {
+                Helpers.Msg.Alerta("TIPO DOCUMENTO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (Get_NumeroDoc.Trim() == "") 
+            {
+                Helpers.Msg.Alerta("NUMERO DE DOCUMENTO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (Get_NumeroControlDoc.Trim() == "")
+            {
+                Helpers.Msg.Alerta("NUMERO DE CONTROL DEL DOCUMENTO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (!Get_FechaEmisionDocIsValida)
+            {
+                Helpers.Msg.Alerta("FECHA DE EMISION DEL DOCUMENTO INCORRECTA");
+                return false;
+            }
+            if (_condicionPagoDoc.GetItem == null)
+            {
+                Helpers.Msg.Alerta("CONDICION DE PAGO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (AplicaActivo)
+            {
+                if (_aplicaTipoDoc.GetItem == null)
+                {
+                    Helpers.Msg.Alerta("TIPO DOCUMENTO APLICA NO PUEDE ESTAR VACIO");
+                    return false;
+                }
+                if (_tipoDoc.GetId == _aplicaTipoDoc.GetId)
+                {
+                    Helpers.Msg.Alerta("TIPO DOCUMENTO APLICA INCORRECTO");
+                    return false;
+                }
+                if (_aplicaNumeroDoc.Trim() == "")
+                {
+                    Helpers.Msg.Alerta("NUMERO DOCUMENTO QUE APLICA NO PUEDE ESTAR VACIO");
+                    return false;
+                }
+                if (_aplicaFechaDoc > _fechaEmisionDoc)
+                {
+                    Helpers.Msg.Alerta("FECHA DOCUMENTO APLICA INCORRECTO");
+                    return false;
+                }
+            }
+            if (_proveedor.Get_Ficha == null)
+            {
+                Helpers.Msg.Alerta("PROVEEDOR NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_sucursal.GetItem == null)
+            {
+                Helpers.Msg.Alerta("SUCURSAL NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_concepto.GetItem == null)
+            {
+                Helpers.Msg.Alerta("CONCEPTO DOCUMENTO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_notas.Trim()== "")
+            {
+                Helpers.Msg.Alerta("NOTAS DEL DOCUMENTO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_montoMonAct  == 0m)
+            {
+                Helpers.Msg.Alerta("MONTO DEL DOCUMENTO INCORRECTO");
+                return false;
+            }
+            return rt;
+        }
+        public bool Get_FechaEmisionDocIsValida { get { return _fechaEmisionDoc <= _fechaServidor; } }
+        //
+        public object Get_Sucursal_Ficha { get { return _sucursal.GetItem; } }
+        public object Get_Concepto_Ficha { get { return _concepto.GetItem; } }
     }
 }

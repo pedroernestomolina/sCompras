@@ -17,6 +17,7 @@ namespace ModCompra.Utils.Buscar.Proveedor.Handler
         public ICtrlLista Lista { get { return _lista; } }
         public string Get_Inf { get { return inf(); } }
         public string Get_Buscar { get { return _buscar; } }
+        public object Get_Ficha { get { return _proveedor; } }
 
 
         public Imp()

@@ -46,12 +46,22 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public bool AbandonarIsOK { get { return _abandonarIsOK; } }
         public void AbandonarFicha()
         {
+            _abandonarIsOK = Helpers.Msg.Abandonar();
         }
 
         private bool _procesarIsOK;
         public bool ProcesarIsOK { get { return _procesarIsOK; } }
         public void Procesar()
         {
+            _procesarIsOK = false;
+            if (_data.Verificar()) 
+            {
+                var rp = Helpers.Msg.Procesar();
+                if (rp) 
+                {
+                    GuardarDoc();
+                }
+            }
         }
 
 
@@ -69,8 +79,14 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 IEnumerable<LibUtilitis.Opcion.IData> _lCondPagoDoc;
                 var _lstCondPago = new List<dataCondicionPagoDoc>();
                 _lstCondPago.Add(new dataCondicionPagoDoc() { id = "01", codigo = "", desc = "CONTADO" });
-                _lstCondPago.Add(new dataCondicionPagoDoc() { id = "01", codigo = "", desc = "CREDITO" });
+                _lstCondPago.Add(new dataCondicionPagoDoc() { id = "02", codigo = "", desc = "CREDITO" });
                 _lCondPagoDoc = _lstCondPago;
+
+                IEnumerable<LibUtilitis.Opcion.IData> _lAplicaTipoDoc;
+                var _lstAplicaTipoDoc = new List<dataTipoDocumento>();
+                _lstAplicaTipoDoc.Add(new dataTipoDocumento() { id = "01", codigo = "", desc = "FACTURA" });
+                _lstAplicaTipoDoc.Add(new dataTipoDocumento() { id = "02", codigo = "", desc = "NOTA DEBITO" });
+                _lAplicaTipoDoc = _lstAplicaTipoDoc;
 
                 //
                 var r01 = Sistema.MyData.Sucursal_GetLista();
@@ -84,19 +100,160 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 { 
                     throw new Exception(r03.Mensaje);
                 }
+                var r04 = Sistema.MyData.Configuracion_TasaCambioActual();
+                if (r04.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r04.Mensaje);
+                }
+                var r05 = Sistema.MyData.Empresa_GetTasas();
+                if (r05.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r05.Mensaje);
+                }
                 //
-
                 _data.TipoDocumentoCargarData(_lTipoDoc);
+                _data.AplicaTipoDocumentoCargarData(_lAplicaTipoDoc);
                 _data.CondicionPagoDocCargarData(_lCondPagoDoc);
                 _data.SucursalCargarData(r01.Lista);
                 _data.ConceptoCargarData(r02.Lista);
                 _data.FechaServidorCargar(r03.Entidad);
+                _data.SetFactorCambio(r04.Entidad);
+                _data.Tasa1.SetTasa(r05.Entidad.Tasa1);
+                _data.Tasa2.SetTasa(r05.Entidad.Tasa2);
+                _data.Tasa3.SetTasa(r05.Entidad.Tasa3);
+                _data.TasaEx.SetTasa(0m);
                 return true;
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
+            }
+        }
+        private void GuardarDoc()
+        {
+            try
+            {
+                var _prv = (Utils.Buscar.Proveedor.Handler.data) _data.Proveedor.Get_Ficha;
+                var _fichaSistDoc = new OOB.LibCompra.SistemaDocumento.Entidad.Busqueda()
+                {
+                    codigoDoc = _data.Get_TipoDocumento_ID,
+                    TipoDoc = "COMPRAS",
+                };
+                var _sistDoc = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
+                var _montoBase= _data.Tasa1.Get_Base+_data.Tasa2.Get_Base+_data.Tasa3.Get_Base;
+                var _montoNeto= _montoBase+_data.TasaEx.Get_Base;
+                var _montoImpuesto=_data.Tasa1.Get_Imp+_data.Tasa2.Get_Imp+_data.Tasa3.Get_Imp;
+                var _subTotal= _montoNeto+_montoImpuesto;
+                var _sucursal = (dataSucursal)_data.Get_Sucursal_Ficha;
+                var _concepto= (dataConcepto)_data.Get_Concepto_Ficha;
+                var _aplicaTipoDoc ="";
+                var _aplicaNumeroDoc = "";
+                var _aplicaFechaDoc = new DateTime(2000,01,01);
+                var _fechaRetencion = new DateTime(2000,01,01);
+                if (_data.AplicaActivo) 
+                {
+                    _aplicaTipoDoc = _data.Get_AplicaTipoDocumento_ID;
+                    _aplicaFechaDoc = _data.Get_Aplica_FechaDoc;
+                    _aplicaNumeroDoc = _data.Get_Aplica_NumeroDoc;
+                }
+                //
+                var ficha = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Ficha();
+                ficha.documento = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Documento()
+                {
+                    aplicaCodTipoDoc = _aplicaTipoDoc,
+                    aplicaFechaDoc = _aplicaFechaDoc,
+                    aplicaNumeroDoc = _aplicaNumeroDoc,
+                    autoProv = _prv.Ficha.autoId,
+                    autoSucursal = _sucursal.ficha.auto,
+                    autoUsuario = Sistema.UsuarioP.autoUsu,
+                    ciRifProv = _prv.Ficha.ciRif,
+                    codicionPagoDoc = _data.Get_CondicionPago_ID == "01" ? "CONTADO" : "CREDITO",
+                    codigoComprasConcepto = _concepto.ficha.codigo,
+                    codigoProv = _prv.Ficha.codigo,
+                    codigoSucursal = _sucursal.ficha.codigo,
+                    codigoUsuario = Sistema.UsuarioP.codigoUsu,
+                    codTipoDoc = _sistDoc.Entidad.codigo,
+                    comprobanteRetencionISLR = "",
+                    comprobanteRetencionNro = "",
+                    descComprasConcepto = _concepto.ficha.descripcion,
+                    descSucursal = _sucursal.ficha.nombre,
+                    diasCreditoDoc = _data.Get_DiasCreditoDoc,
+                    dirFiscalProv = _prv.Ficha.direccionFiscal,
+                    estacionEquipo = Sistema.EquipoEstacion,
+                    estatusFiscal = _data.Get_IncluirLibroCompras ? "1" : "0",
+                    factorCambio = _data.Get_FactorCambio,
+                    fechaEmisDoc = _data.Get_FechaEmisionDoc,
+                    fechaRetencion = _fechaRetencion,
+                    fechaVencDoc = _data.Get_FechaVenceDoc,
+                    idComprasConcepto = _concepto.ficha.id,
+                    moduloDoc = _sistDoc.Entidad.tipo,
+                    montoBase = _montoBase,
+                    montoBase1 = _data.Tasa1.Get_Base,
+                    montoBase2 = _data.Tasa2.Get_Base,
+                    montoBase3 = _data.Tasa3.Get_Base,
+                    montoDivisa = _data.Get_MontoMonDivisa,
+                    montoExento = _data.TasaEx.Get_Base,
+                    montoImpuesto = _montoImpuesto,
+                    montoImpuesto1 = _data.Tasa1.Get_Imp,
+                    montoImpuesto2 = _data.Tasa2.Get_Imp,
+                    montoImpuesto3 = _data.Tasa3.Get_Imp,
+                    montoNeto = _montoNeto,
+                    montoRetencionISLR = 0m,
+                    montoRetencionIva = 0m,
+                    montoTotal = _data.Get_MontoMonAct,
+                    nombreDoc = _sistDoc.Entidad.nombre,
+                    nombreProv = _prv.Ficha.nombreRazonSocial,
+                    nombreUsuario = Sistema.UsuarioP.nombreUsu,
+                    notasDoc = _data.Get_Notas,
+                    numeroControlDoc = _data.Get_NumeroControlDoc,
+                    numeroDoc = _data.Get_NumeroDoc,
+                    saldoPendiente = _data.Get_MontoMonAct,
+                    siglasDoc = _sistDoc.Entidad.siglas,
+                    signoDoc = _sistDoc.Entidad.signo,
+                    subTotal = _subTotal,
+                    subTotalImpuesto = _montoImpuesto,
+                    subTotalNeto = _montoNeto,
+                    tasaIva1 = _data.Tasa1.Get_Tasa,
+                    tasaIva2 = _data.Tasa2.Get_Tasa,
+                    tasaIva3 = _data.Tasa3.Get_Tasa,
+                    tasaRetencionISLR = 0m,
+                    tasaRetencionIva = 0m,
+                    telefonoProv = _prv.Ficha.identidad.telefono,
+                };
+                ficha.cxp = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
+                {
+                    acumulado = 0m,
+                    acumuladoDivisa = 0m,
+                    autoProveedor = _prv.Ficha.autoId,
+                    ciRifProveedor = _prv.Ficha.ciRif,
+                    codigoProveedor = _prv.Ficha.codigo,
+                    diasCredito = _data.Get_DiasCreditoDoc,
+                    documentoNro = _data.Get_NumeroDoc,
+                    fechaEmision = _data.Get_FechaEmisionDoc,
+                    fechaVencimiento = _data.Get_FechaVenceDoc,
+                    importe = _data.Get_MontoMonAct,
+                    importeDivisa = _data.Get_MontoMonDivisa,
+                    nombreRazonSocialProveedor = _prv.Ficha.nombreRazonSocial,
+                    resta = _data.Get_MontoMonAct,
+                    restaDivisa = _data.Get_MontoMonDivisa,
+                    siglasTipoDocumento = _sistDoc.Entidad.siglas,
+                    signoTipoDocumento = _sistDoc.Entidad.signo,
+                    tasaDivisa = _data.Get_FactorCambio,
+                };
+                ficha.proveedor = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Proveedor()
+                {
+                    autoProv = _prv.Ficha.autoId,
+                    fechaEmiDoc = _data.Get_FechaEmisionDoc,
+                    montoDebito = _data.Get_MontoMonDivisa,
+                };
+                var r01 = Sistema.MyData.Transporte_Documento_Agregar_CompraGrasto(ficha);
+                _procesarIsOK = true;
+                Helpers.Msg.AgregarOk();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
             }
         }
     }

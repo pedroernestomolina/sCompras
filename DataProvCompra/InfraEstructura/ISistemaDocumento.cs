@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.InfraEstructura
 {
-    
     public interface ISistemaDocumento
     {
-
         OOB.ResultadoEntidad<OOB.LibCompra.SistemaDocumento.Entidad.Ficha>
             SistemaDocumento_Get(OOB.LibCompra.SistemaDocumento.Entidad.Busqueda ficha);
-
     }
-
 }

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.SistemaDocumento.Entidad
 {
-
     public class Ficha
     {
         public string autoId { get; set; }
@@ -16,8 +15,6 @@ namespace DtoLibCompra.SistemaDocumento.Entidad
         public string nombre { get; set; }
         public int signo { get; set; }
         public string siglas { get; set; }
-
-
         public Ficha()
         {
             autoId = "";
@@ -28,5 +25,4 @@ namespace DtoLibCompra.SistemaDocumento.Entidad
             signo = 1;
         }
     }
-
 }

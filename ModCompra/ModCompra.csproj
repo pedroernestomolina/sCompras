@@ -398,8 +398,10 @@
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataConcepto.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataCondicionPagoDoc.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\data.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataFiscal.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataSucursal.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataTipoDocumento.cs" />
+    <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\IdataFiscal.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
     <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\ICompraGasto.cs" />

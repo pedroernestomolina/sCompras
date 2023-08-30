@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProvLibCompra
 {
-    
     public partial class Provider: ILibCompras.IProvider
     {
-
         public DtoLib.ResultadoEntidad<DtoLibCompra.SistemaDocumento.Entidad.Ficha> 
             SistemaDocumento_Get(DtoLibCompra.SistemaDocumento.Entidad.Busqueda ficha)
         {
@@ -48,7 +46,5 @@ namespace ProvLibCompra
             }
             return result;
         }
-
     }
-
 }

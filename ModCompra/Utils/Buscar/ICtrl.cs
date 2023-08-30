@@ -12,6 +12,7 @@ namespace ModCompra.Utils.Buscar
         string Get_Inf { get; }
         string Get_Buscar { get; }
         ICtrlLista Lista { get; }
+        object Get_Ficha { get; }
 
         void Inicializa();
         void SetBuscar(string desc);
