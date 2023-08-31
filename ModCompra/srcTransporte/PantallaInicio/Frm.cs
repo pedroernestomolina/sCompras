@@ -186,5 +186,14 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.RegistrarCompraGasto();
         }
+
+        private void MENU_MAESTRO_CONCEPTOS_Click(object sender, EventArgs e)
+        {
+            MaestroConceptos();
+        }
+        private void MaestroConceptos()
+        {
+            _controlador.MaestroConceptos();
+        }
     }
 }

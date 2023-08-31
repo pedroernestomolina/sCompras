@@ -235,5 +235,8 @@ namespace ModCompra
             _compraGasto.Inicializa();
             _compraGasto.Inicia();
         }
+        public void MaestroConceptos()
+        {
+        }
     }
 }

@@ -93,6 +93,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             L_MONTO_MON_DIVISA.Text = _controlador.data.Get_MontoMonDivisa.ToString("n2", _cult);
             TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
             //
+            L_BASE_RET_IVA.Text = _controlador.data.Get_SubtotalImp.ToString("n2", _cult);
+            L_BASE_RET_ISLR.Text = _controlador.data.Get_SubtotalNeto.ToString("n2", _cult);
+            TB_RET_IVA_PORC.Text = _controlador.data.Get_TasaRetIva.ToString("n2", _cult);
+            L_MONTO_RET_IVA.Text = _controlador.data.Get_MontoRetIva.ToString("n2", _cult);
+            TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString("n2", _cult);
+            TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
+            //
             _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -190,8 +197,9 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         }
         private void BT_PROVEEDOR_BUSCAR_Click(object sender, EventArgs e)
         {
-            _controlador.data.Proveedor.Buscar();
+            _controlador.data.BuscarProveedor();
             ActualizarProveedor();
+            ActualizaTotal();
         }
 
 
@@ -225,10 +233,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             TB_FACTOR_CAMBIO.Text = _controlador.data.Get_FactorCambio.ToString("n2", _cult);
             ActualizaTotal();
         }
+        private void TB_FACTOR_CAMBIO_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.data.Get_FactorCambio<=0m;
+        }
         private void TB_TASA_EX_BASE_Leave(object sender, EventArgs e)
         {
             var _monto = decimal.Parse(TB_TASA_EX_BASE.Text);
             _controlador.data.TasaEx.SetBase(_monto);
+            _controlador.data.ActualizarRetencion_Iva_ISLR();
             TB_TASA_EX_BASE.Text = _controlador.data.TasaEx.Get_Base.ToString("n2", _cult);
             ActualizaTotal();
         }
@@ -236,6 +249,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             var _monto = decimal.Parse(TB_TASA1_BASE.Text);
             _controlador.data.Tasa1.SetBase(_monto);
+            _controlador.data.ActualizarRetencion_Iva_ISLR();
             TB_TASA1_BASE.Text = _controlador.data.Tasa1.Get_Base.ToString("n2", _cult);
             TB_TASA1_IMP.Text = _controlador.data.Tasa1.Get_Imp.ToString("n2", _cult);
             ActualizaTotal();
@@ -244,6 +258,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             var _monto = decimal.Parse(TB_TASA2_BASE.Text);
             _controlador.data.Tasa2.SetBase(_monto);
+            _controlador.data.ActualizarRetencion_Iva_ISLR();
             TB_TASA2_BASE.Text = _controlador.data.Tasa2.Get_Base.ToString("n2", _cult);
             TB_TASA2_IMP.Text = _controlador.data.Tasa2.Get_Imp.ToString("n2", _cult);
             ActualizaTotal();
@@ -252,6 +267,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             var _monto = decimal.Parse(TB_TASA3_BASE.Text);
             _controlador.data.Tasa3.SetBase(_monto);
+            _controlador.data.ActualizarRetencion_Iva_ISLR();
             TB_TASA3_BASE.Text = _controlador.data.Tasa3.Get_Base.ToString("n2", _cult);
             TB_TASA3_IMP.Text = _controlador.data.Tasa3.Get_Imp.ToString("n2", _cult);
             ActualizaTotal();
@@ -261,6 +277,37 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             var _monto = decimal.Parse(TB_IGTF_MONTO.Text);
             _controlador.data.SetMontoIGTF(_monto);
             TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+
+
+        private void TB_RET_IVA_PORC_Leave(object sender, EventArgs e)
+        {
+            var _tasa= decimal.Parse(TB_RET_IVA_PORC.Text);
+            _controlador.data.SetTasaRetIva(_tasa);
+            TB_RET_IVA_PORC.Text = _controlador.data.Get_TasaRetIva.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_RET_IVA_PORC_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.data.Get_TasaRetIva > 100;
+        }
+        private void TB_RET_ISLR_PORC_Leave(object sender, EventArgs e)
+        {
+            var _tasa = decimal.Parse(TB_RET_ISLR_PORC.Text);
+            _controlador.data.SetTasaRetISLR(_tasa);
+            TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString("n2", _cult);
+            ActualizaTotal();
+        }
+        private void TB_RET_ISLR_PORC_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.data.Get_TasaRetISLR > 100;
+        }
+        private void TB_RET_ISLR_MONTO_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_RET_ISLR_MONTO.Text);
+            _controlador.data.SetMontoRetISLR(_monto);
+            TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
             ActualizaTotal();
         }
 
@@ -322,6 +369,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             L_MONTO_MON_ACT.Text = _controlador.data.Get_MontoMonAct.ToString("n2", _cult);
             L_MONTO_MON_DIVISA.Text = _controlador.data.Get_MontoMonDivisa.ToString("n2", _cult);
             TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
+            //
+            L_BASE_RET_IVA.Text = _controlador.data.Get_SubtotalImp.ToString("n2", _cult);
+            L_BASE_RET_ISLR.Text = _controlador.data.Get_SubtotalNeto.ToString("n2", _cult);
+            TB_RET_IVA_PORC.Text = _controlador.data.Get_TasaRetIva.ToString("n2", _cult);
+            L_MONTO_RET_IVA.Text = _controlador.data.Get_MontoRetIva.ToString("n2", _cult);
+            TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString("n2", _cult);
+            TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
         }
     }
 }

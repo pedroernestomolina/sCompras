@@ -39,6 +39,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         private decimal _montoMonAct;
         private decimal _montoMonDivisa;
         private decimal _montoIGTF;
+        //
+        private decimal _tasaRetIva;
+        private decimal _montoRetIva;
+        private decimal _tasaRetISLR;
+        private decimal _montoRetISLR;
 
 
         public string Get_NumeroDoc { get { return _numeroDoc; } }
@@ -69,6 +74,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public Vistas.Generar.IdataFiscal Tasa2 { get { return _tasa2; } }
         public Vistas.Generar.IdataFiscal Tasa3 { get { return _tasa3; } }
         public Vistas.Generar.IdataFiscal TasaEx { get { return _tasaEx; } }
+        public decimal Get_SubtotalNeto { get { return _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base + _tasaEx.Get_Base; } }
         public decimal Get_SubtotalBase { get { return _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base; } }
         public decimal Get_SubtotalImp { get { return _tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp; } }
         public decimal Get_Monto 
@@ -79,13 +85,22 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         (_tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp) +
                         _tasaEx.Get_Base;
                 _montoMonAct = _monto+_montoIGTF;
-                _montoMonDivisa = _montoMonAct / _factorCambio;
+                _montoMonDivisa = 0m;
+                if (_factorCambio > 0m)
+                {
+                    _montoMonDivisa = _montoMonAct / _factorCambio;
+                }
                 return _monto;
             }
         }
         public decimal Get_MontoMonAct { get { return _montoMonAct; } }
         public decimal Get_MontoMonDivisa { get { return _montoMonDivisa; } }
         public decimal Get_MontoIGTF { get { return _montoIGTF; } }
+        //
+        public decimal Get_TasaRetIva { get { return _tasaRetIva; } }
+        public decimal Get_MontoRetIva { get { return _montoRetIva; } }
+        public decimal Get_TasaRetISLR { get { return _tasaRetISLR; } }
+        public decimal Get_MontoRetISLR { get { return _montoRetISLR; } }
 
 
         public data()
@@ -117,6 +132,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _tasa2 = new dataFiscal();
             _tasa3 = new dataFiscal();
             _tasaEx = new dataFiscal();
+            //
+            _tasaRetIva = 0m;
+            _montoRetIva = 0m;
+            _tasaRetISLR = 0m;
+            _montoRetISLR = 0m;
         }
         public void Inicializa()
         {
@@ -146,6 +166,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _tasa2.Inicializa();
             _tasa3.Inicializa();
             _tasaEx.Inicializa();
+            //
+            _tasaRetIva = 0m;
+            _montoRetIva = 0m;
+            _tasaRetISLR = 0m;
+            _montoRetISLR = 0m;
         }
 
 
@@ -283,6 +308,16 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         {
             _montoIGTF = monto;
         }
+        public void SetTasaRetIva(decimal tasa)
+        {
+            _tasaRetIva = tasa;
+            ActualizarRetencion_Iva_ISLR();
+        }
+        public void SetTasaRetISLR(decimal tasa)
+        {
+            _tasaRetISLR= tasa;
+            ActualizarRetencion_Iva_ISLR();
+        }
 
 
         public bool Verificar()
@@ -367,5 +402,27 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         //
         public object Get_Sucursal_Ficha { get { return _sucursal.GetItem; } }
         public object Get_Concepto_Ficha { get { return _concepto.GetItem; } }
+
+
+        public void BuscarProveedor()
+        {
+            _proveedor.Buscar();
+            if (_proveedor.ProveedorIsOk)
+            {
+                var _prv= (Utils.Buscar.Proveedor.Handler.data)_proveedor.Get_Ficha;
+                SetTasaRetIva(_prv.Ficha.identidad.retIva);
+            }
+        }
+        public void SetMontoRetISLR(decimal monto)
+        {
+            _montoRetISLR = monto;
+        }
+        public void ActualizarRetencion_Iva_ISLR()
+        {
+            var _montoBase = _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base;
+            var _montoImp= _tasa1.Get_Imp + _tasa2.Get_Imp+ _tasa3.Get_Imp;
+            _montoRetIva = (_montoImp) * _tasaRetIva / 100;
+            _montoRetISLR = (_montoBase + _tasaEx.Get_Base) * _tasaRetISLR / 100;
+        }
     }
 }

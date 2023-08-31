@@ -9,5 +9,6 @@ namespace ModCompra.Utils.Buscar.Proveedor.Vistas
 {
     public interface IProveedor: Utils.Buscar.ICtrl
     {
+        bool ProveedorIsOk { get; }
     }
 }

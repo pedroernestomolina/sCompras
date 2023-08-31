@@ -71,6 +71,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         IdataFiscal Tasa3 { get; }
         IdataFiscal TasaEx { get; }
         decimal Get_SubtotalBase { get; }
+        decimal Get_SubtotalNeto { get; }
         decimal Get_SubtotalImp { get;  }
         decimal Get_Monto { get;  }
         decimal Get_MontoMonAct { get; }
@@ -79,5 +80,16 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         void SetMontoIGTF(decimal monto);
         //
         bool Verificar();
+        //
+        void BuscarProveedor();
+        //
+        decimal Get_TasaRetIva { get; }
+        decimal Get_MontoRetIva { get; }
+        void SetTasaRetIva(decimal tasa);
+        decimal Get_TasaRetISLR { get; }
+        decimal Get_MontoRetISLR { get; }
+        void SetTasaRetISLR(decimal tasa);
+        void SetMontoRetISLR(decimal monto);
+        void ActualizarRetencion_Iva_ISLR();
     }
 }

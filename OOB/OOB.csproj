@@ -135,6 +135,7 @@
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Documento.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Proveedor.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Recibo.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Resultado.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Concepto\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />

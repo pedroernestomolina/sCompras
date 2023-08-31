@@ -79,5 +79,7 @@ namespace OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto
         public string codigoComprasConcepto { get; set; }
         //
         public decimal saldoPendiente { get; set; }
+        //
+        public decimal igtfMonto { get; set; }
     }
 }
