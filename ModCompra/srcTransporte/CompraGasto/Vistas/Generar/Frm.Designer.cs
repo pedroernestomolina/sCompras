@@ -46,6 +46,10 @@
             this.panel51 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
             this.panel52 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel105 = new System.Windows.Forms.Panel();
+            this.TB_CONCEPTO = new System.Windows.Forms.TextBox();
+            this.panel107 = new System.Windows.Forms.Panel();
             this.CB_CONCEPTO = new System.Windows.Forms.ComboBox();
             this.panel50 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -227,6 +231,12 @@
             this.L_BASE_RET_IVA = new System.Windows.Forms.Label();
             this.panel96 = new System.Windows.Forms.Panel();
             this.L_BASE_RET_ISLR = new System.Windows.Forms.Label();
+            this.panel99 = new System.Windows.Forms.Panel();
+            this.panel101 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.panel103 = new System.Windows.Forms.Panel();
+            this.TB_SUSTRAENDO_ISLR = new LibControles.NumeroDecimal();
+            this.panel104 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -249,6 +259,9 @@
             this.panel51.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
             this.panel52.SuspendLayout();
+            this.tableLayoutPanel24.SuspendLayout();
+            this.panel105.SuspendLayout();
+            this.panel107.SuspendLayout();
             this.panel50.SuspendLayout();
             this.panel48.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
@@ -361,6 +374,8 @@
             this.panel92.SuspendLayout();
             this.panel93.SuspendLayout();
             this.panel96.SuspendLayout();
+            this.panel101.SuspendLayout();
+            this.panel103.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -617,7 +632,7 @@
             // 
             // panel52
             // 
-            this.panel52.Controls.Add(this.CB_CONCEPTO);
+            this.panel52.Controls.Add(this.tableLayoutPanel24);
             this.panel52.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel52.Location = new System.Drawing.Point(0, -2);
             this.panel52.Margin = new System.Windows.Forms.Padding(0);
@@ -625,6 +640,56 @@
             this.panel52.Padding = new System.Windows.Forms.Padding(2);
             this.panel52.Size = new System.Drawing.Size(447, 30);
             this.panel52.TabIndex = 0;
+            // 
+            // tableLayoutPanel24
+            // 
+            this.tableLayoutPanel24.ColumnCount = 2;
+            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel24.Controls.Add(this.panel105, 0, 0);
+            this.tableLayoutPanel24.Controls.Add(this.panel107, 1, 0);
+            this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel24.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel24.Name = "tableLayoutPanel24";
+            this.tableLayoutPanel24.RowCount = 1;
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel24.Size = new System.Drawing.Size(443, 26);
+            this.tableLayoutPanel24.TabIndex = 1;
+            // 
+            // panel105
+            // 
+            this.panel105.Controls.Add(this.TB_CONCEPTO);
+            this.panel105.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel105.Location = new System.Drawing.Point(0, 0);
+            this.panel105.Margin = new System.Windows.Forms.Padding(0);
+            this.panel105.Name = "panel105";
+            this.panel105.Padding = new System.Windows.Forms.Padding(2);
+            this.panel105.Size = new System.Drawing.Size(132, 26);
+            this.panel105.TabIndex = 0;
+            // 
+            // TB_CONCEPTO
+            // 
+            this.TB_CONCEPTO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.TB_CONCEPTO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONCEPTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_CONCEPTO.Location = new System.Drawing.Point(2, 2);
+            this.TB_CONCEPTO.MaxLength = 20;
+            this.TB_CONCEPTO.Name = "TB_CONCEPTO";
+            this.TB_CONCEPTO.Size = new System.Drawing.Size(128, 24);
+            this.TB_CONCEPTO.TabIndex = 3;
+            this.TB_CONCEPTO.TextChanged += new System.EventHandler(this.TB_CONCEPTO_TextChanged);
+            // 
+            // panel107
+            // 
+            this.panel107.Controls.Add(this.CB_CONCEPTO);
+            this.panel107.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel107.Location = new System.Drawing.Point(132, 0);
+            this.panel107.Margin = new System.Windows.Forms.Padding(0);
+            this.panel107.Name = "panel107";
+            this.panel107.Padding = new System.Windows.Forms.Padding(2);
+            this.panel107.Size = new System.Drawing.Size(311, 26);
+            this.panel107.TabIndex = 1;
             // 
             // CB_CONCEPTO
             // 
@@ -634,10 +699,9 @@
             this.CB_CONCEPTO.FormattingEnabled = true;
             this.CB_CONCEPTO.Location = new System.Drawing.Point(2, 2);
             this.CB_CONCEPTO.Name = "CB_CONCEPTO";
-            this.CB_CONCEPTO.Size = new System.Drawing.Size(443, 24);
-            this.CB_CONCEPTO.TabIndex = 0;
+            this.CB_CONCEPTO.Size = new System.Drawing.Size(307, 24);
+            this.CB_CONCEPTO.TabIndex = 1;
             this.CB_CONCEPTO.SelectedIndexChanged += new System.EventHandler(this.CB_CONCEPTO_SelectedIndexChanged);
-            this.CB_CONCEPTO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel50
             // 
@@ -2566,6 +2630,10 @@
             this.tableLayoutPanel23.Controls.Add(this.panel92, 2, 2);
             this.tableLayoutPanel23.Controls.Add(this.panel93, 2, 3);
             this.tableLayoutPanel23.Controls.Add(this.panel96, 2, 4);
+            this.tableLayoutPanel23.Controls.Add(this.panel99, 2, 5);
+            this.tableLayoutPanel23.Controls.Add(this.panel101, 3, 5);
+            this.tableLayoutPanel23.Controls.Add(this.panel103, 4, 5);
+            this.tableLayoutPanel23.Controls.Add(this.panel104, 1, 5);
             this.tableLayoutPanel23.Location = new System.Drawing.Point(63, 11);
             this.tableLayoutPanel23.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
@@ -2839,6 +2907,74 @@
             this.L_BASE_RET_ISLR.Text = "ISLR";
             this.L_BASE_RET_ISLR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // panel99
+            // 
+            this.panel99.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel99.Location = new System.Drawing.Point(101, 105);
+            this.panel99.Margin = new System.Windows.Forms.Padding(0);
+            this.panel99.Name = "panel99";
+            this.panel99.Padding = new System.Windows.Forms.Padding(2);
+            this.panel99.Size = new System.Drawing.Size(100, 25);
+            this.panel99.TabIndex = 15;
+            // 
+            // panel101
+            // 
+            this.panel101.Controls.Add(this.label28);
+            this.panel101.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel101.Location = new System.Drawing.Point(201, 105);
+            this.panel101.Margin = new System.Windows.Forms.Padding(0);
+            this.panel101.Name = "panel101";
+            this.panel101.Padding = new System.Windows.Forms.Padding(2);
+            this.panel101.Size = new System.Drawing.Size(123, 25);
+            this.panel101.TabIndex = 16;
+            // 
+            // label28
+            // 
+            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(2, 2);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(119, 21);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Sustraendo:";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel103
+            // 
+            this.panel103.Controls.Add(this.TB_SUSTRAENDO_ISLR);
+            this.panel103.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel103.Location = new System.Drawing.Point(324, 105);
+            this.panel103.Margin = new System.Windows.Forms.Padding(0);
+            this.panel103.Name = "panel103";
+            this.panel103.Padding = new System.Windows.Forms.Padding(2);
+            this.panel103.Size = new System.Drawing.Size(146, 25);
+            this.panel103.TabIndex = 17;
+            // 
+            // TB_SUSTRAENDO_ISLR
+            // 
+            this.TB_SUSTRAENDO_ISLR.BackColor = System.Drawing.Color.Yellow;
+            this.TB_SUSTRAENDO_ISLR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_SUSTRAENDO_ISLR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_SUSTRAENDO_ISLR.Location = new System.Drawing.Point(2, 2);
+            this.TB_SUSTRAENDO_ISLR.MaxLength = 12;
+            this.TB_SUSTRAENDO_ISLR.Name = "TB_SUSTRAENDO_ISLR";
+            this.TB_SUSTRAENDO_ISLR.Size = new System.Drawing.Size(142, 22);
+            this.TB_SUSTRAENDO_ISLR.TabIndex = 0;
+            this.TB_SUSTRAENDO_ISLR.Text = "0";
+            this.TB_SUSTRAENDO_ISLR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_SUSTRAENDO_ISLR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_SUSTRAENDO_ISLR.Leave += new System.EventHandler(this.TB_SUSTRAENDO_ISLR_Leave);
+            // 
+            // panel104
+            // 
+            this.panel104.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel104.Location = new System.Drawing.Point(21, 105);
+            this.panel104.Margin = new System.Windows.Forms.Padding(0);
+            this.panel104.Name = "panel104";
+            this.panel104.Padding = new System.Windows.Forms.Padding(2);
+            this.panel104.Size = new System.Drawing.Size(80, 25);
+            this.panel104.TabIndex = 18;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -2960,6 +3096,10 @@
             this.panel51.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.panel52.ResumeLayout(false);
+            this.tableLayoutPanel24.ResumeLayout(false);
+            this.panel105.ResumeLayout(false);
+            this.panel105.PerformLayout();
+            this.panel107.ResumeLayout(false);
             this.panel50.ResumeLayout(false);
             this.panel48.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
@@ -3090,6 +3230,9 @@
             this.panel92.ResumeLayout(false);
             this.panel93.ResumeLayout(false);
             this.panel96.ResumeLayout(false);
+            this.panel101.ResumeLayout(false);
+            this.panel103.ResumeLayout(false);
+            this.panel103.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -3202,7 +3345,6 @@
         private System.Windows.Forms.Panel panel51;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
         private System.Windows.Forms.Panel panel52;
-        private System.Windows.Forms.ComboBox CB_CONCEPTO;
         private System.Windows.Forms.Panel panel50;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel53;
@@ -3306,5 +3448,16 @@
         private System.Windows.Forms.Label L_BASE_RET_IVA;
         private System.Windows.Forms.Label L_BASE_RET_ISLR;
         private System.Windows.Forms.Label L_MONTO_RET_IVA;
+        private System.Windows.Forms.Panel panel99;
+        private System.Windows.Forms.Panel panel101;
+        private System.Windows.Forms.Panel panel103;
+        private System.Windows.Forms.Panel panel104;
+        private System.Windows.Forms.Label label28;
+        private LibControles.NumeroDecimal TB_SUSTRAENDO_ISLR;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
+        private System.Windows.Forms.Panel panel105;
+        private System.Windows.Forms.TextBox TB_CONCEPTO;
+        private System.Windows.Forms.Panel panel107;
+        private System.Windows.Forms.ComboBox CB_CONCEPTO;
     }
 }

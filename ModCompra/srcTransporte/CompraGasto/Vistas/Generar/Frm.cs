@@ -99,6 +99,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             L_MONTO_RET_IVA.Text = _controlador.data.Get_MontoRetIva.ToString("n2", _cult);
             TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString("n2", _cult);
             TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
+            TB_SUSTRAENDO_ISLR.Text = _controlador.data.Get_SustraendoISLR.ToString("n2", _cult);
             //
             _modoInicializa = false;
         }
@@ -310,7 +311,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
             ActualizaTotal();
         }
-
+        private void TB_SUSTRAENDO_ISLR_Leave(object sender, EventArgs e)
+        {
+            var _monto = decimal.Parse(TB_SUSTRAENDO_ISLR.Text);
+            _controlador.data.SetMontoSustraendoISLR(_monto);
+            TB_SUSTRAENDO_ISLR.Text = _controlador.data.Get_SustraendoISLR.ToString("n2", _cult);
+            ActualizaTotal();
+        }
 
         private void BT_ACEPTAR_Click(object sender, EventArgs e)
         {
@@ -376,6 +383,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             L_MONTO_RET_IVA.Text = _controlador.data.Get_MontoRetIva.ToString("n2", _cult);
             TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString("n2", _cult);
             TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
+            TB_SUSTRAENDO_ISLR.Text = _controlador.data.Get_SustraendoISLR.ToString("n2", _cult);
+        }
+
+        private void TB_CONCEPTO_TextChanged(object sender, EventArgs e)
+        {
+            _controlador.data.FiltrarConcepto(TB_CONCEPTO.Text);
+            CB_CONCEPTO.Refresh();
         }
     }
 }

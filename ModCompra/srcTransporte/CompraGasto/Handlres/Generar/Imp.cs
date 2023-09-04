@@ -220,7 +220,9 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     montoImpuesto2 = _data.Tasa2.Get_Imp,
                     montoImpuesto3 = _data.Tasa3.Get_Imp,
                     montoNeto = _montoNeto,
-                    montoRetencionISLR = _data.Get_MontoRetISLR,
+                    sustraendoRetISLR = _data.Get_SustraendoISLR,
+                    montoRetISLR = _data.Get_MontoRetISLR,
+                    totalRetISLR = (_data.Get_SustraendoISLR + _data.Get_MontoRetISLR),
                     montoRetencionIva = _data.Get_MontoRetIva,
                     montoTotal = _data.Get_MontoMonAct,
                     nombreDoc = _sistDoc.Entidad.nombre,
@@ -242,6 +244,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     tasaRetencionIva = _data.Get_TasaRetIva,
                     telefonoProv = _prv.Ficha.identidad.telefono,
                     igtfMonto = _data.Get_MontoIGTF,
+                    tipoDocumentoCompra = OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO,
                 };
                 ficha.cxp = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
                 {
@@ -305,6 +308,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         tasaCambio = _data.Get_FactorCambio,
                         usuarioAuto = Sistema.UsuarioP.autoUsu,
                         usuarioNombre = Sistema.UsuarioP.nombreUsu,
+                        docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
+                        {
+                            importe = _data.Get_MontoRetIva,
+                            numDocumentoAfecta = _data.Get_NumeroDoc,
+                            siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
+                            tipoOperacionRealizar = "Abono",
+                        }
                     };
                 }
                 if (_data.Get_MontoRetISLR > 0m)
@@ -348,6 +358,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         tasaCambio = _data.Get_FactorCambio,
                         usuarioAuto = Sistema.UsuarioP.autoUsu,
                         usuarioNombre = Sistema.UsuarioP.nombreUsu,
+                        docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
+                        {
+                            importe = _data.Get_MontoRetISLR,
+                            numDocumentoAfecta = _data.Get_NumeroDoc,
+                            siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
+                            tipoOperacionRealizar = "Abono",
+                        }
                     };
                 }
                 ficha.proveedor = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Proveedor()

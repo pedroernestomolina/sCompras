@@ -58,7 +58,9 @@ namespace DtoLibTransporte.Documento.Agregar.CompraGasto
         public decimal tasaRetencionIva { get; set; }
         public decimal tasaRetencionISLR { get; set; }
         public decimal montoRetencionIva { get; set; }
-        public decimal montoRetencionISLR { get; set; }
+        public decimal sustraendoRetISLR { get; set; }
+        public decimal montoRetISLR { get; set; }
+        public decimal totalRetISLR { get; set; }
         //
         public string aplicaNumeroDoc { get; set; }
         public DateTime aplicaFechaDoc{ get; set; }
@@ -81,5 +83,6 @@ namespace DtoLibTransporte.Documento.Agregar.CompraGasto
         public decimal saldoPendiente { get; set; }
         //
         public decimal igtfMonto { get; set; }
+        public enumerados.tipoDocumentoCompra tipoDocumentoCompra { get; set; }
     }
 }

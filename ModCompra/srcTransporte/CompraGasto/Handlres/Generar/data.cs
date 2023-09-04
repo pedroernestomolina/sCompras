@@ -44,6 +44,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         private decimal _montoRetIva;
         private decimal _tasaRetISLR;
         private decimal _montoRetISLR;
+        private decimal _montoSustraendoISLR;
 
 
         public string Get_NumeroDoc { get { return _numeroDoc; } }
@@ -101,6 +102,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public decimal Get_MontoRetIva { get { return _montoRetIva; } }
         public decimal Get_TasaRetISLR { get { return _tasaRetISLR; } }
         public decimal Get_MontoRetISLR { get { return _montoRetISLR; } }
+        public decimal Get_SustraendoISLR { get { return _montoSustraendoISLR; } }
 
 
         public data()
@@ -137,6 +139,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _montoRetIva = 0m;
             _tasaRetISLR = 0m;
             _montoRetISLR = 0m;
+            _montoSustraendoISLR = 0m;
         }
         public void Inicializa()
         {
@@ -171,6 +174,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _montoRetIva = 0m;
             _tasaRetISLR = 0m;
             _montoRetISLR = 0m;
+            _montoSustraendoISLR = 0m;
         }
 
 
@@ -239,10 +243,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _lst = lSuc;
             _sucursal.CargarData(_lst);
         }
+        private List<dataConcepto> lConcepto;
         public void ConceptoCargarData(List<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha> lst)
         {
+            if (lConcepto == null) 
+            {
+                lConcepto = new List<dataConcepto>();
+            }
+            lConcepto.Clear();
             IEnumerable<LibUtilitis.Opcion.IData> _lst;
-            var lConcepto= new List<dataConcepto>();
             foreach (var rg in lst)
             {
                 lConcepto.Add(new dataConcepto() { codigo = rg.codigo, desc = rg.descripcion, id = rg.id.ToString(), ficha = rg });
@@ -417,12 +426,22 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         {
             _montoRetISLR = monto;
         }
+        public void SetMontoSustraendoISLR(decimal monto)
+        {
+            _montoSustraendoISLR = monto;
+        }
         public void ActualizarRetencion_Iva_ISLR()
         {
             var _montoBase = _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base;
             var _montoImp= _tasa1.Get_Imp + _tasa2.Get_Imp+ _tasa3.Get_Imp;
             _montoRetIva = (_montoImp) * _tasaRetIva / 100;
             _montoRetISLR = (_montoBase + _tasaEx.Get_Base) * _tasaRetISLR / 100;
+        }
+        //
+        public void FiltrarConcepto(string desc)
+        {
+            var _lst = lConcepto.Where(w=>w.desc.Trim().ToUpper().Contains(desc.Trim().ToUpper())).ToList();
+            _concepto.CargarData(_lst);
         }
     }
 }

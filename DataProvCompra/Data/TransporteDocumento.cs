@@ -71,13 +71,16 @@ namespace DataProvCompra.Data
                 montoImpuesto2 = doc.montoImpuesto2,
                 montoImpuesto3 = doc.montoImpuesto3,
                 montoNeto = doc.montoNeto,
-                montoRetencionISLR = doc.montoRetencionISLR,
+                montoRetISLR= doc.montoRetISLR,
+                sustraendoRetISLR=doc.sustraendoRetISLR,
+                totalRetISLR= doc.totalRetISLR,
                 montoRetencionIva = doc.montoRetencionIva,
                 montoTotal = doc.montoTotal,
                 subTotal = doc.subTotal,
                 subTotalImpuesto = doc.subTotalImpuesto,
                 subTotalNeto = doc.subTotalNeto,
                 igtfMonto = doc.igtfMonto,
+                tipoDocumentoCompra = (DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra) doc.tipoDocumentoCompra,
             };
             var prv = ficha.proveedor;
             var proveedor = new DtoLibTransporte.Documento.Agregar.CompraGasto.Proveedor()
@@ -180,6 +183,13 @@ namespace DataProvCompra.Data
                     tasaCambio = rcIva.tasaCambio,
                     usuarioAuto = rcIva.usuarioAuto,
                     usuarioNombre = rcIva.usuarioNombre,
+                    docRecibo = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
+                    {
+                        importe = rcIva.docRecibo.importe,
+                        numDocumentoAfecta = rcIva.docRecibo.numDocumentoAfecta,
+                        siglasDocumentoAfecta = rcIva.docRecibo.siglasDocumentoAfecta,
+                        tipoOperacionRealizar = rcIva.docRecibo.tipoOperacionRealizar,
+                    }
                 };
                 fichaDTO.recRetIva = recIva;
             }
@@ -203,6 +213,13 @@ namespace DataProvCompra.Data
                     tasaCambio = rcIslr.tasaCambio,
                     usuarioAuto = rcIslr.usuarioAuto,
                     usuarioNombre = rcIslr.usuarioNombre,
+                    docRecibo = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
+                    {
+                        importe = rcIslr.docRecibo.importe,
+                        numDocumentoAfecta = rcIslr.docRecibo.numDocumentoAfecta,
+                        siglasDocumentoAfecta = rcIslr.docRecibo.siglasDocumentoAfecta,
+                        tipoOperacionRealizar = rcIslr.docRecibo.tipoOperacionRealizar,
+                    }
                 };
                 fichaDTO.recRetIslr = recIslr;
             }

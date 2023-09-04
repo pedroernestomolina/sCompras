@@ -39,12 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documento\Agregar\CompraGasto\DocumentoRecibo.cs" />
+    <Compile Include="Documento\Agregar\CompraGasto\enumerados.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\Ficha.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\CxP.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\Documento.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\Proveedor.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\Recibo.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\Resultado.cs" />
+    <Compile Include="Documento\Concepto\Agregar\Ficha.cs" />
+    <Compile Include="Documento\Concepto\baseFicha.cs" />
+    <Compile Include="Documento\Concepto\Editar\Ficha.cs" />
     <Compile Include="Documento\Concepto\Entidad\Ficha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

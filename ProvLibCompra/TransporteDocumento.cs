@@ -37,6 +37,16 @@ namespace ProvLibCompra
                         var aMovCxP = cnn.Database.SqlQuery<int>("select a_cxp from sistema_contadores").FirstOrDefault();
                         var autoEntCompra = aMovCompra.ToString().Trim().PadLeft(10, '0');
                         var autoEntCxP = aMovCxP.ToString().Trim().PadLeft(10, '0');
+                        var _tipoDocumentoCompra = "";
+                        switch (ficha.documento.tipoDocumentoCompra)
+                        { 
+                            case  DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.MERCANCIA:
+                                _tipoDocumentoCompra = "1";
+                                break;
+                            case DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO:
+                                _tipoDocumentoCompra = "2";
+                                break;
+                        }
                         sql = @"INSERT INTO compras (
                                 auto, 
                                 documento, 
@@ -129,7 +139,10 @@ namespace ProvLibCompra
                                 codigo_compras_concepto,
                                 auto_sucursal,
                                 desc_sucursal,
-                                igtf_monto
+                                igtf_monto,
+                                tipo_documento_compra,
+                                sustraendo_ret_islr,
+                                monto_ret_islr
                             ) VALUES (
                                 @auto, 
                                 @documento, 
@@ -222,7 +235,10 @@ namespace ProvLibCompra
                                 @codigo_compras_concepto,
                                 @auto_sucursal,
                                 @desc_sucursal,
-                                @igtf_monto
+                                @igtf_monto,
+                                @tipo_documento_compra,
+                                @sustraendo_ret_islr,
+                                @monto_ret_islr
                             )";
                         var doc= ficha.documento;
                         var p00= new MySql.Data.MySqlClient.MySqlParameter("@auto",autoEntCompra);
@@ -252,7 +268,7 @@ namespace ProvLibCompra
                         var p22= new MySql.Data.MySqlClient.MySqlParameter("@tasa_retencion_iva",doc.tasaRetencionIva);
                         var p23= new MySql.Data.MySqlClient.MySqlParameter("@tasa_retencion_islr",doc.tasaRetencionISLR);
                         var p24= new MySql.Data.MySqlClient.MySqlParameter("@retencion_iva",doc.montoRetencionIva);
-                        var p25= new MySql.Data.MySqlClient.MySqlParameter("@retencion_islr",doc.montoRetencionISLR);
+                        var p25= new MySql.Data.MySqlClient.MySqlParameter("@retencion_islr",doc.totalRetISLR);
                         var p26= new MySql.Data.MySqlClient.MySqlParameter("@auto_proveedor",doc.autoProv);
                         var p27= new MySql.Data.MySqlClient.MySqlParameter("@codigo_proveedor",doc.codigoProv);
                         var p28= new MySql.Data.MySqlClient.MySqlParameter("@mes_relacion", mesRelacion);
@@ -326,6 +342,9 @@ namespace ProvLibCompra
                         //
                         var p90= new MySql.Data.MySqlClient.MySqlParameter("@desc_sucursal", doc.descSucursal);
                         var p91 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto", doc.igtfMonto);
+                        var p92 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento_compra", _tipoDocumentoCompra);
+                        var p93 = new MySql.Data.MySqlClient.MySqlParameter("@sustraendo_ret_islr", doc.sustraendoRetISLR);
+                        var p94 = new MySql.Data.MySqlClient.MySqlParameter("@monto_ret_islr", doc.montoRetISLR);
                         //
                         var r2 = cnn.Database.ExecuteSqlCommand(sql,
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
@@ -337,7 +356,7 @@ namespace ProvLibCompra
                             p60, p61, p62, p63, p64, p65, p66, p67, p68, p69,
                             p70, p71, p72, p75, p79,
                             p80, p81, p82, p83, p84, p85, p86, p87, p88, p89,
-                            p90, p91);
+                            p90, p91, p92, p93, p94);
                         if (r2==0)
                         {
                             result.Mensaje = "ERROR AL INSERTAR DOCUMENTO";
@@ -468,6 +487,9 @@ namespace ProvLibCompra
                         }
                         cnn.SaveChanges();
 
+                        var _autoPagoByRetIva="";
+                        var _autoReciboByRetIva="";
+                        var _numeroReciboByRetIva="";
                         //
                         if (ficha.retIva != null) 
                         {
@@ -475,6 +497,7 @@ namespace ProvLibCompra
                             var _xr1 = cnn.Database.ExecuteSqlCommand(_xsql);
                             var aRetIva = cnn.Database.SqlQuery<int>("select a_cxp from sistema_contadores").FirstOrDefault();
                             var autoRetIva = aRetIva .ToString().Trim().PadLeft(10, '0');
+                            _autoPagoByRetIva=autoRetIva;
                             //
                             var rIva= ficha.retIva;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoRetIva);
@@ -522,12 +545,16 @@ namespace ProvLibCompra
                             cnn.SaveChanges();
                         }
                         //
+                        var _autoPagoByRetISLR = "";
+                        var _autoReciboByRetISLR = "";
+                        var _numeroReciboByRetISLR = "";
                         if (ficha.retISLR!= null)
                         {
                             var _xsql = "update sistema_contadores set a_cxp=a_cxp+1";
                             var _xr1 = cnn.Database.ExecuteSqlCommand(_xsql);
                             var aRetIslr = cnn.Database.SqlQuery<int>("select a_cxp from sistema_contadores").FirstOrDefault();
                             var autoRetIslr = aRetIslr.ToString().Trim().PadLeft(10, '0');
+                            _autoPagoByRetISLR = autoRetIslr;
                             //
                             var rIslr = ficha.retISLR;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoRetIslr);
@@ -630,6 +657,8 @@ namespace ProvLibCompra
                             var autoRecIva = aRecIva.ToString().Trim().PadLeft(10, '0');
                             //
                             var rcIva = ficha.recRetIva;
+                            _autoReciboByRetIva = autoRecIva;
+                            _numeroReciboByRetIva= rcIva.documento;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoRecIva);
                             p01 = new MySql.Data.MySqlClient.MySqlParameter("@documento", rcIva.documento);
                             p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
@@ -654,7 +683,7 @@ namespace ProvLibCompra
                                 p10, p11, p12, p13, p14, p15, p16, p17);
                             if (r7 == 0)
                             {
-                                result.Mensaje = "ERROR AL INSERTAR DOCUMENTO RECIBO POR RETENCION IVA";
+                                result.Mensaje = "ERROR AL INSERTAR DOCUMENTO [ RECIBO POR RETENCION IVA ]";
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
                                 return result;
                             }
@@ -669,6 +698,8 @@ namespace ProvLibCompra
                             var autoRecIslr = aRecIslr.ToString().Trim().PadLeft(10, '0');
                             //
                             var rcIslr = ficha.recRetIslr;
+                            _autoReciboByRetISLR = autoRecIslr;
+                            _numeroReciboByRetISLR = rcIslr.documento;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoRecIslr);
                             p01 = new MySql.Data.MySqlClient.MySqlParameter("@documento", rcIslr.documento);
                             p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
@@ -693,7 +724,80 @@ namespace ProvLibCompra
                                 p10, p11, p12, p13, p14, p15, p16, p17);
                             if (r8 == 0)
                             {
-                                result.Mensaje = "ERROR AL INSERTAR DOCUMENTO RECIBO POR RETENCION ISLR";
+                                result.Mensaje = "ERROR AL INSERTAR DOCUMENTO [ RECIBO POR RETENCION ISLR ]";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                        }
+                        //
+                        sql=@"INSERT INTO cxp_documentos (
+                                id, 
+                                fecha, 
+                                tipo_documento, 
+                                documento, 
+                                importe, 
+                                operacion, 
+                                auto_cxp, 
+                                auto_cxp_pago, 
+                                auto_cxp_recibo, 
+                                numero_recibo
+                                ) 
+                            VALUES (
+                                @id, 
+                                @fecha, 
+                                @tipo_documento, 
+                                @documento, 
+                                @importe, 
+                                @operacion, 
+                                @auto_cxp, 
+                                @auto_cxp_pago, 
+                                @auto_cxp_recibo, 
+                                @numero_recibo
+                                )";
+                        if (ficha.recRetIva != null && ficha.recRetIva.docRecibo!=null)
+                        {
+                            var _id=1;
+                            var _docRecRetIva= ficha.recRetIva.docRecibo;
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@id", _id);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento", _docRecRetIva.siglasDocumentoAfecta);
+                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@documento", _docRecRetIva.numDocumentoAfecta);
+                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@importe", _docRecRetIva.importe);
+                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@operacion", _docRecRetIva.tipoOperacionRealizar);
+                            p06 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp", autoEntCxP);
+                            p07 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp_pago", _autoPagoByRetIva);
+                            p08 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp_recibo", _autoReciboByRetIva);
+                            p09 = new MySql.Data.MySqlClient.MySqlParameter("@numero_recibo", _numeroReciboByRetIva);
+                            var r9 = cnn.Database.ExecuteSqlCommand(sql,
+                                p00, p01, p02, p03, p04, p05, p06, p07, p08, p09);
+                            if (r9 == 0)
+                            {
+                                result.Mensaje = "ERROR AL INSERTAR DOCUMENTO [ RECIBO DOCUMENTO POR RETENCION IVA ]";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                        }
+                        if (ficha.recRetIslr !=null && ficha.recRetIslr.docRecibo != null)
+                        {
+                            var _id = 1;
+                            var _docRecRetISRL = ficha.recRetIslr.docRecibo;
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@id", _id);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento", _docRecRetISRL.siglasDocumentoAfecta);
+                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@documento", _docRecRetISRL.numDocumentoAfecta);
+                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@importe", _docRecRetISRL.importe);
+                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@operacion", _docRecRetISRL.tipoOperacionRealizar);
+                            p06 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp", autoEntCxP);
+                            p07 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp_pago", _autoPagoByRetISLR);
+                            p08 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp_recibo", _autoReciboByRetISLR);
+                            p09 = new MySql.Data.MySqlClient.MySqlParameter("@numero_recibo", _numeroReciboByRetISLR);
+                            var r9 = cnn.Database.ExecuteSqlCommand(sql,
+                                p00, p01, p02, p03, p04, p05, p06, p07, p08, p09);
+                            if (r9 == 0)
+                            {
+                                result.Mensaje = "ERROR AL INSERTAR DOCUMENTO [ RECIBO DOCUMENTO POR RETENCION ISLR ]";
                                 result.Result = DtoLib.Enumerados.EnumResult.isError;
                                 return result;
                             }
@@ -705,6 +809,99 @@ namespace ProvLibCompra
                              autoDocCompra= autoEntCompra,
                              autoDocCxp=autoEntCxP,
                         };
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado 
+            Transporte_Documento_Agregar_CompraGrasto_Verificar(DtoLibTransporte.Documento.Agregar.CompraGasto.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    if (ficha.documento == null) 
+                    {
+                        throw new Exception("DATOS DEL DOCUMENTO NO PUEDE ESTAR VACIO");
+                    }
+                    if (ficha.cxp == null)
+                    {
+                        throw new Exception("DATOS DEL DOCUMENTO [ CXP ] NO PUEDE ESTAR VACIO");
+                    }
+                    if (ficha.proveedor == null)
+                    {
+                        throw new Exception("DATOS DEL DOCUMENTO [ PROVEEDOR ] NO PUEDE ESTAR VACIO");
+                    }
+
+                    if (ficha.retIva == null)
+                    {
+                        if (ficha.recRetIva != null)
+                        {
+                            throw new Exception("DATOS DEL DOCUMENTO [ RETENCION IVA ] NO PUEDE ESTAR VACIO, SI HAY UN RECIBO");
+                        }
+                    }
+                    if (ficha.retIva != null)
+                    {
+                        if (ficha.recRetIva == null) 
+                        {
+                            throw new Exception("DATOS DEL DOCUMENTO [ RECIBO POR RETENCION IVA ] NO PUEDE ESTAR VACIO");
+                        }
+                        if (ficha.recRetIva.docRecibo == null)
+                        {
+                            throw new Exception("DATOS DEL DOCUMENTO [ DOCUMENTO POR RECIBO RETENCION IVA ] NO PUEDE ESTAR VACIO");
+                        }
+                    }
+
+                    if (ficha.retISLR == null)
+                    { 
+                        if (ficha.recRetIslr != null)
+                        {
+                            throw new Exception("DATOS DEL DOCUMENTO [ RETENCION ISLR ] NO PUEDE ESTAR VACIO, SI HAY UN RECIBO");
+                        }
+                    }
+                    if (ficha.retISLR != null)
+                    {
+                        if (ficha.recRetIslr == null)
+                        {
+                            throw new Exception("DATOS DEL DOCUMENTO [ RECIBO POR RETENCION ISLR ] NO PUEDE ESTAR VACIO");
+                        }
+                        if (ficha.recRetIslr.docRecibo == null)
+                        {
+                            throw new Exception("DATOS DEL DOCUMENTO [ DOCUMENTO POR RECIBO RETENCION ISLR ] NO PUEDE ESTAR VACIO");
+                        }
+                    }
+                    var sql = @"select count(*) as cnt from compras 
+                                where documento=@documento and 
+                                    auto_proveedor=@autoPrv and 
+                                    tipo=@tipoDoc and
+                                    estatus_anulado='0'";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@documento", ficha.documento.numeroDoc);
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter("@autoPrv", ficha.documento.autoProv);
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", ficha.documento.codTipoDoc);
+                    var r1 = cnn.Database.SqlQuery<int?>(sql, p1, p2, p3).FirstOrDefault();
+                    if (r1.HasValue) 
+                    {
+                        if (r1.Value >= 1)
+                        {
+                            throw new Exception("DOCUMENTO YA FUE REGISTRADO");
+                        }
                     }
                 }
             }
@@ -746,6 +943,108 @@ namespace ProvLibCompra
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Documento.Concepto.Entidad.Ficha>(_sql).ToList();
                     result.Lista = _lst;
                 }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.ResultadoId 
+            Transporte_Documento_Concepto_Agregar(DtoLibTransporte.Documento.Concepto.Agregar.Ficha ficha)
+        {
+            var result = new DtoLib.ResultadoId();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var sql = @"INSERT INTO compras_concepto (
+                                id, 
+                                codigo, 
+                                descripcion
+                            ) VALUES (
+                                NULL,
+                                @codigo, 
+                                @descripcion 
+                            )";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.codigo);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@descripcion", ficha.descripcion);
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql,p00, p01);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "ERROR AL INSERTAR CONCEPTO POR COMPRA";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        sql = "SELECT LAST_INSERT_ID()";
+                        var idEnt = cnn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                        result.Id = 1;
+                        //
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado 
+            Transporte_Documento_Concepto_Editar(DtoLibTransporte.Documento.Concepto.Editar.Ficha ficha)
+        {
+            var result = new DtoLib.ResultadoId();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var sql = @"update compras_concepto set 
+                                        codigo=@codigo, 
+                                        descripcion=@descripcion
+                                    where id=@idConcepto";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@idConcepto", ficha.id);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.codigo);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@descripcion", ficha.descripcion);
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "ERROR AL ACTUALIZAR CONCEPTO POR COMPRA";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
             {

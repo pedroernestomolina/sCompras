@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibCompra.Transporte.Documento.Concepto.Entidad
+namespace DtoLibTransporte.Documento.Concepto.Agregar
 {
     public class Ficha: baseFicha
     {
-        public int id { get; set; }
     }
 }

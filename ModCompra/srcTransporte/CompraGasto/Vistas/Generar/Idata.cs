@@ -88,8 +88,12 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         void SetTasaRetIva(decimal tasa);
         decimal Get_TasaRetISLR { get; }
         decimal Get_MontoRetISLR { get; }
+        decimal Get_SustraendoISLR { get; }
         void SetTasaRetISLR(decimal tasa);
         void SetMontoRetISLR(decimal monto);
+        void SetMontoSustraendoISLR(decimal monto);
         void ActualizarRetencion_Iva_ISLR();
+        //
+        void FiltrarConcepto(string desc);
     }
 }

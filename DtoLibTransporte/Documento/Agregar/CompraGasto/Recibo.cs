@@ -24,5 +24,6 @@ namespace DtoLibTransporte.Documento.Agregar.CompraGasto
         public decimal importeDivisa { get; set; }
         public decimal montoRecibidoDivisa { get; set; }
         public decimal tasaCambio { get; set; }
+        public DocumentoRecibo docRecibo { get; set; }
     }
 }

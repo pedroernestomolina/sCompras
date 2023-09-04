@@ -15,5 +15,9 @@ namespace ServiceCompra.Interfaces.Transporte
 
         DtoLib.ResultadoLista<DtoLibTransporte.Documento.Concepto.Entidad.Ficha>
             Transporte_Documento_Concepto_GetLista();
+        DtoLib.ResultadoId
+            Transporte_Documento_Concepto_Agregar(DtoLibTransporte.Documento.Concepto.Agregar.Ficha ficha);
+        DtoLib.Resultado
+            Transporte_Documento_Concepto_Editar(DtoLibTransporte.Documento.Concepto.Editar.Ficha ficha);
     }
 }

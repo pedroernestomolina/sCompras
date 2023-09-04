@@ -133,10 +133,15 @@
     <Compile Include="LibCompra\Sucursal\Data\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\CxP.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Documento.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\DocumentoRecibo.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Proveedor.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Recibo.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Resultado.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Concepto\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Concepto\baseFicha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Concepto\Editar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Concepto\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Buscar\Ficha.cs" />
