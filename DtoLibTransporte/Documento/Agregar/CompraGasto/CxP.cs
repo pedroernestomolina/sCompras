@@ -27,5 +27,6 @@ namespace DtoLibTransporte.Documento.Agregar.CompraGasto
         public decimal restaDivisa { get; set; }
         public decimal tasaDivisa { get; set; }
         public string notas { get; set; }
+        public string autoSistemaDoc { get; set; }
     }
 }

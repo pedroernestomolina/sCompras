@@ -396,6 +396,23 @@
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataSucursal.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataTipoDocumento.cs" />
     <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\IdataFiscal.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Handlers\Editar\Imp.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Vistas\IAgregar.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Handlers\Agregar\Imp.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Handlers\data.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Handlers\impBase.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Vistas\IAgregarEditar.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Vistas\Idata.cs" />
+    <Compile Include="srcTransporte\Concepto\AgregarEditar\Vistas\IEditar.cs" />
+    <Compile Include="srcTransporte\Concepto\Maestro\data.cs" />
+    <Compile Include="srcTransporte\Concepto\Maestro\Imp.cs" />
+    <Compile Include="srcTransporte\Concepto\Maestro\ImpLista.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
     <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\ICompraGasto.cs" />
@@ -438,6 +455,15 @@
     <Compile Include="Utils\Buscar\Proveedor\Vistas\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Maestro\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Maestro\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Maestro\Idata.cs" />
+    <Compile Include="Utils\Maestro\ILista.cs" />
+    <Compile Include="Utils\Maestro\IMaestro.cs" />
     <EmbeddedResource Include="Administrador\AdministradorFrm.resx">
       <DependentUpon>AdministradorFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -557,6 +583,9 @@
     <EmbeddedResource Include="srcTransporte\CompraGasto\Vistas\Generar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Concepto\AgregarEditar\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -567,6 +596,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Buscar\Proveedor\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Maestro\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

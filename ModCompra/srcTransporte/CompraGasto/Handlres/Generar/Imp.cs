@@ -141,12 +141,21 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     TipoDoc = "COMPRAS",
                 };
                 var _sistDoc = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
+                //
+                _fichaSistDoc = new OOB.LibCompra.SistemaDocumento.Entidad.Busqueda()
+                {
+                    codigoDoc = "02",
+                    TipoDoc = "CXP",
+                };
+                var _sistDocCxp = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
+                //
                 _fichaSistDoc = new OOB.LibCompra.SistemaDocumento.Entidad.Busqueda()
                 {
                     codigoDoc = "07",
                     TipoDoc = "COMPRAS",
                 };
                 var _sistDocRetIva = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
+                //
                 _fichaSistDoc = new OOB.LibCompra.SistemaDocumento.Entidad.Busqueda()
                 {
                     codigoDoc = "08",
@@ -245,6 +254,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     telefonoProv = _prv.Ficha.identidad.telefono,
                     igtfMonto = _data.Get_MontoIGTF,
                     tipoDocumentoCompra = OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO,
+                    autoSistemaDocumento= _sistDoc.Entidad.autoId,
                 };
                 ficha.cxp = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
                 {
@@ -262,10 +272,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     nombreRazonSocialProveedor = _prv.Ficha.nombreRazonSocial,
                     resta = _resta,
                     restaDivisa = _restaDiv,
-                    siglasTipoDocumento = _sistDoc.Entidad.siglas,
-                    signoTipoDocumento = _sistDoc.Entidad.signo,
+                    siglasTipoDocumento = _sistDocCxp.Entidad.siglas,
+                    signoTipoDocumento = _sistDocCxp.Entidad.signo,
                     tasaDivisa = _data.Get_FactorCambio,
                     notas ="",
+                    autoSistemaDoc = _sistDocCxp.Entidad.autoId
                 };
                 if (_data.Get_MontoRetIva > 0m)
                 {
@@ -290,6 +301,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         signoTipoDocumento = _sistDocRetIva.Entidad.signo*(-1),
                         tasaDivisa = _data.Get_FactorCambio,
                         notas = "RETENCION IVA "+_data.Get_TasaRetIva.ToString("n2")+"%, DOC: "+_data.Get_NumeroDoc,
+                        autoSistemaDoc = _sistDocRetIva.Entidad.autoId,
                     };
                     ficha.recIva = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
                     {
@@ -308,6 +320,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         tasaCambio = _data.Get_FactorCambio,
                         usuarioAuto = Sistema.UsuarioP.autoUsu,
                         usuarioNombre = Sistema.UsuarioP.nombreUsu,
+                        autoSistemaDoc = _sistDocRetIva.Entidad.autoId,
                         docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
                         {
                             importe = _data.Get_MontoRetIva,
@@ -340,6 +353,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         signoTipoDocumento = _sistDocRetIslr.Entidad.signo * (-1),
                         tasaDivisa = _data.Get_FactorCambio,
                         notas = "RETENCION ISLR " + _data.Get_TasaRetISLR.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
+                        autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
                     };
                     ficha.recISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
                     {
@@ -358,6 +372,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         tasaCambio = _data.Get_FactorCambio,
                         usuarioAuto = Sistema.UsuarioP.autoUsu,
                         usuarioNombre = Sistema.UsuarioP.nombreUsu,
+                        autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
                         docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
                         {
                             importe = _data.Get_MontoRetISLR,

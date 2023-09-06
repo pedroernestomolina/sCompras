@@ -10,7 +10,8 @@ namespace ILibCompras
     public interface IProvider: IDeposito, ISucursal, IProveedor, IProducto, IUsuario, IEmpresa, 
         IPermiso, IConfiguracion, IDocumento, IConcepto, IReportes, IGrupo, IEstado, IReporteProv, 
         IAuditoria, ISistemaDocumento, 
-        Transporte.ITranspDocumento
+        Transporte.ITranspDocumento,
+        Transporte.ITranspConcepto
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
     }

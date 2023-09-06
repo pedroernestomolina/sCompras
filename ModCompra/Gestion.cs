@@ -235,8 +235,16 @@ namespace ModCompra
             _compraGasto.Inicializa();
             _compraGasto.Inicia();
         }
+
+        Utils.Maestro.IMaestro _concepto;
         public void MaestroConceptos()
         {
+            if (_concepto == null)
+            {
+                _concepto = new ModCompra.srcTransporte.Concepto.Maestro.Imp();
+            }
+            _concepto.Inicializa();
+            _concepto.Inicia();
         }
     }
 }

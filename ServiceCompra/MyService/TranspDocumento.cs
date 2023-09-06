@@ -24,6 +24,26 @@ namespace ServiceCompra.MyService
             return ServiceProv.Transporte_Documento_Agregar_CompraGrasto(ficha);
         }
 
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.Ficha> 
+            Transporte_Documento_Anular_CompraGrasto_GetData(string autoDoc)
+        {
+            return ServiceProv.Transporte_Documento_Anular_CompraGrasto_GetData(autoDoc);
+        }
+        public DtoLib.Resultado 
+            Transporte_Documento_Anular_CompraGrasto(DtoLibTransporte.Documento.Anular.CompraGasto.Anular.Ficha ficha)
+        {
+            var r01 = ServiceProv.Transporte_Documento_Anular_CompraGrasto_Verificar(ficha.autoDocCompra, ficha.autoDocCxP);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError) 
+            {
+                var rt = new DtoLib.Resultado()
+                {
+                     Mensaje=r01.Mensaje,
+                      Result= DtoLib.Enumerados.EnumResult.isError,
+                };
+                return rt;
+            }
+            return ServiceProv.Transporte_Documento_Anular_CompraGrasto(ficha);
+        }
 
         public DtoLib.ResultadoLista<DtoLibTransporte.Documento.Concepto.Entidad.Ficha> 
             Transporte_Documento_Concepto_GetLista()
@@ -39,6 +59,17 @@ namespace ServiceCompra.MyService
             Transporte_Documento_Concepto_Editar(DtoLibTransporte.Documento.Concepto.Editar.Ficha ficha)
         {
             return ServiceProv.Transporte_Documento_Concepto_Editar(ficha);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Concepto.Entidad.Ficha> 
+            Transporte_Documento_Concepto_GetById(int id)
+        {
+            return ServiceProv.Transporte_Documento_Concepto_GetById(id);
+        }
+
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Entidad.Ficha> 
+            Transporte_Documento_Entidad_CompraGrasto_GetById(string autoDoc)
+        {
+            return ServiceProv.Transporte_Documento_Entidad_CompraGrasto_GetById(autoDoc);
         }
     }
 }

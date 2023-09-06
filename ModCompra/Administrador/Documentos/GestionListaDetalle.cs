@@ -83,6 +83,9 @@ namespace ModCompra.Administrador.Documentos
                                     case OOB.LibCompra.Documento.Enumerados.enumTipoDocumento.Factura:
                                         AnularFactura();
                                         break;
+                                    case OOB.LibCompra.Documento.Enumerados.enumTipoDocumento.NotaDebito:
+                                        AnularNotaDebito();
+                                        break;
                                     case OOB.LibCompra.Documento.Enumerados.enumTipoDocumento.NotaCredito:
                                         AnularNotaCredito();
                                         break;
@@ -98,18 +101,49 @@ namespace ModCompra.Administrador.Documentos
 
         private void AnularNotaCredito()
         {
-            var ficha = new OOB.LibCompra.Documento.Anular.NotaCredito.Ficha()
+            var r01 = Sistema.Fabrica.AnularDocCompra_NotaCredito(Item.AutoDoc, _anular.Motivo);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
-                autoDocumento = Item.AutoDoc,
-                codigoDocumento = Item.Ficha.codigoTipo,
-                autoSistemaDocumento = "0000000019",
-                autoUsuario = Sistema.UsuarioP.autoUsu,
-                codigoUsuario = Sistema.UsuarioP.codigoUsu,
-                estacion = Environment.MachineName,
-                motivo = _anular.Motivo,
-                nombreUsuario = Sistema.UsuarioP.nombreUsu,
-            };
-            var r01 = Sistema.MyData.Compra_DocumentoAnularNotaCredito(ficha);
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            //var ficha = new OOB.LibCompra.Documento.Anular.NotaCredito.Ficha()
+            //{
+            //    autoDocumento = Item.AutoDoc,
+            //    codigoDocumento = Item.Ficha.codigoTipo,
+            //    autoSistemaDocumento = "0000000019",
+            //    autoUsuario = Sistema.UsuarioP.autoUsu,
+            //    codigoUsuario = Sistema.UsuarioP.codigoUsu,
+            //    estacion = Environment.MachineName,
+            //    motivo = _anular.Motivo,
+            //    nombreUsuario = Sistema.UsuarioP.nombreUsu,
+            //};
+            //var r01 = Sistema.MyData.Compra_DocumentoAnularNotaCredito(ficha);
+            //if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            //{
+            //    Helpers.Msg.Error(r01.Mensaje);
+            //    return;
+            //}
+            Item.Ficha.esAnulado = true;
+            bs.CurrencyManager.Refresh();
+            Helpers.Msg.EliminarOk();
+        }
+
+        private void AnularFactura()
+        {
+            var r01 = Sistema.Fabrica.AnularDocCompra_Factura(Item.AutoDoc, _anular.Motivo);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            Item.Ficha.esAnulado = true;
+            bs.CurrencyManager.Refresh();
+            Helpers.Msg.EliminarOk();
+        }
+        private void AnularNotaDebito()
+        {
+            var r01 = Sistema.Fabrica.AnularDocCompra_NotaDebito(Item.AutoDoc, _anular.Motivo);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
@@ -120,29 +154,6 @@ namespace ModCompra.Administrador.Documentos
             Helpers.Msg.EliminarOk();
         }
 
-        private void AnularFactura()
-        {
-            var ficha = new OOB.LibCompra.Documento.Anular.Factura.Ficha()
-            {
-                autoDocumento = Item.AutoDoc ,
-                codigoDocumento= Item.Ficha.codigoTipo, 
-                autoSistemaDocumento = "0000000019",
-                autoUsuario = Sistema.UsuarioP.autoUsu,
-                codigoUsuario = Sistema.UsuarioP.codigoUsu,
-                estacion = Environment.MachineName,
-                motivo = _anular.Motivo,
-                nombreUsuario = Sistema.UsuarioP.nombreUsu,
-            };
-            var r01 = Sistema.MyData.Compra_DocumentoAnularFactura(ficha);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
-            }
-            Item.Ficha.esAnulado = true;
-            bs.CurrencyManager.Refresh();
-            Helpers.Msg.EliminarOk();
-        }
 
 
         public void setGestionAnular(Anular.Gestion _gestionAnular)

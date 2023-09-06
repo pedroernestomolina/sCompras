@@ -14,12 +14,14 @@ namespace ILibCompras.Transporte
         DtoLib.Resultado 
             Transporte_Documento_Agregar_CompraGrasto_Verificar(DtoLibTransporte.Documento.Agregar.CompraGasto.Ficha ficha);
 
+        DtoLib.Resultado 
+            Transporte_Documento_Anular_CompraGrasto_Verificar(string autoDoc, string autoDocCxp);
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.Ficha>
+            Transporte_Documento_Anular_CompraGrasto_GetData(string autoDoc);
+        DtoLib.Resultado 
+            Transporte_Documento_Anular_CompraGrasto(DtoLibTransporte.Documento.Anular.CompraGasto.Anular.Ficha ficha);
 
-        DtoLib.ResultadoLista<DtoLibTransporte.Documento.Concepto.Entidad.Ficha>
-            Transporte_Documento_Concepto_GetLista();
-        DtoLib.ResultadoId
-            Transporte_Documento_Concepto_Agregar(DtoLibTransporte.Documento.Concepto.Agregar.Ficha ficha);
-        DtoLib.Resultado
-            Transporte_Documento_Concepto_Editar(DtoLibTransporte.Documento.Concepto.Editar.Ficha ficha);
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Entidad.Ficha> 
+            Transporte_Documento_Entidad_CompraGrasto_GetById(string autoDoc);
     }
 }
