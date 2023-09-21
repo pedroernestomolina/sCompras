@@ -11,7 +11,12 @@ namespace ILibCompras
         IPermiso, IConfiguracion, IDocumento, IConcepto, IReportes, IGrupo, IEstado, IReporteProv, 
         IAuditoria, ISistemaDocumento, 
         Transporte.ITranspDocumento,
-        Transporte.ITranspConcepto
+        Transporte.ITranspConcepto,
+        Transporte.ITranspAliado,
+        Transporte.ITranspAliadoAnticipo,
+        Transporte.ITranspCaja,
+        Transporte.ITranspAliadoPagServ,
+        Transporte.ITranspReportes
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
     }

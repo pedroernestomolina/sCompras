@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-    public partial class DataProv: IData
+    public partial class DataProv : IData
     {
-        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Resultado> 
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Resultado>
             Transporte_Documento_Agregar_CompraGrasto(OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Ficha ficha)
         {
             var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Resultado>();
-            var fichaDTO = new  DtoLibTransporte.Documento.Agregar.CompraGasto.Ficha();
-            var doc=ficha.documento;
+            var fichaDTO = new DtoLibTransporte.Documento.Agregar.CompraGasto.Ficha();
+            var doc = ficha.documento;
             var documento = new DtoLibTransporte.Documento.Agregar.CompraGasto.Documento()
             {
                 aplicaCodTipoDoc = doc.aplicaCodTipoDoc,
@@ -71,17 +71,17 @@ namespace DataProvCompra.Data
                 montoImpuesto2 = doc.montoImpuesto2,
                 montoImpuesto3 = doc.montoImpuesto3,
                 montoNeto = doc.montoNeto,
-                montoRetISLR= doc.montoRetISLR,
-                sustraendoRetISLR=doc.sustraendoRetISLR,
-                totalRetISLR= doc.totalRetISLR,
+                montoRetISLR = doc.montoRetISLR,
+                sustraendoRetISLR = doc.sustraendoRetISLR,
+                totalRetISLR = doc.totalRetISLR,
                 montoRetencionIva = doc.montoRetencionIva,
                 montoTotal = doc.montoTotal,
                 subTotal = doc.subTotal,
                 subTotalImpuesto = doc.subTotalImpuesto,
                 subTotalNeto = doc.subTotalNeto,
                 igtfMonto = doc.igtfMonto,
-                tipoDocumentoCompra = (DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra) doc.tipoDocumentoCompra,
-                autoSistemaDocumento=doc.autoSistemaDocumento,
+                tipoDocumentoCompra = (DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra)doc.tipoDocumentoCompra,
+                autoSistemaDocumento = doc.autoSistemaDocumento,
             };
             var prv = ficha.proveedor;
             var proveedor = new DtoLibTransporte.Documento.Agregar.CompraGasto.Proveedor()
@@ -113,125 +113,235 @@ namespace DataProvCompra.Data
                 notas = cxp.notas,
                 autoSistemaDoc = cxp.autoSistemaDoc,
             };
-            if (ficha.retIva != null) 
+            documento.docRet = new List<DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencion>();
+            if (ficha.retIva != null)
             {
-                var rIva= ficha.retIva;
-                var retIva = new DtoLibTransporte.Documento.Agregar.CompraGasto.CxP()
+                var retDetalle = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencionDet()
                 {
-                    acumulado = rIva.acumulado,
-                    autoProveedor = rIva.autoProveedor,
-                    ciRifProveedor = rIva.ciRifProveedor,
-                    codigoProveedor = rIva.codigoProveedor,
-                    diasCredito = rIva.diasCredito,
-                    documentoNro = rIva.documentoNro,
-                    fechaVencimiento = rIva.fechaVencimiento,
-                    importe = rIva.importe,
-                    importeDivisa = rIva.importeDivisa,
-                    nombreRazonSocialProveedor = rIva.nombreRazonSocialProveedor,
-                    resta = rIva.resta,
-                    siglasTipoDocumento = rIva.siglasTipoDocumento,
-                    signoTipoDocumento = rIva.signoTipoDocumento,
-                    acumuladoDivisa = rIva.acumuladoDivisa,
-                    fechaEmision = rIva.fechaEmision,
-                    restaDivisa = rIva.restaDivisa,
-                    tasaDivisa = rIva.tasaDivisa,
-                    notas = rIva.notas,
-                    autoSistemaDoc = rIva.autoSistemaDoc,
+                    base1 = ficha.documento.montoBase1,
+                    base2 = ficha.documento.montoBase2,
+                    base3 = ficha.documento.montoBase3,
+                    ciRifDocRefRet = ficha.documento.ciRifProv,
+                    fechaDocRefRet = ficha.documento.fechaEmisDoc,
+                    impuesto1 = ficha.documento.montoImpuesto1,
+                    impuesto2 = ficha.documento.montoImpuesto2,
+                    impuesto3 = ficha.documento.montoImpuesto3,
+                    montoBase = ficha.documento.montoBase,
+                    montoExento = ficha.documento.montoExento,
+                    montoImpuesto = ficha.documento.montoImpuesto,
+                    montoRetencion = ficha.documento.montoRetencionIva,
+                    montoTotal = (ficha.documento.montoTotal - ficha.documento.igtfMonto),
+                    numAplicaDocRefRet = ficha.documento.aplicaNumeroDoc,
+                    numControlDocRefRet = ficha.documento.numeroControlDoc,
+                    numDocRefRet = ficha.documento.numeroDoc,
+                    retIva1 = ficha.documento.montoImpuesto1 * ficha.documento.tasaRetencionIva / 100,
+                    retIva2 = ficha.documento.montoImpuesto2 * ficha.documento.tasaRetencionIva / 100,
+                    retIva3 = ficha.documento.montoImpuesto3 * ficha.documento.tasaRetencionIva / 100,
+                    sistAutoDocRet = ficha.documento.autoSistemaDocumento,
+                    sistSignoDocRet = ficha.documento.signoDoc,
+                    sistTipoDocRefRet = ficha.documento.codTipoDoc,
+                    sistTipoDocRet = ficha.retIva.tipoSistemaDoc,
+                    sustraendoRetencion = 0m,
+                    tasa1 = ficha.documento.tasaIva1,
+                    tasa2 = ficha.documento.tasaIva2,
+                    tasa3 = ficha.documento.tasaIva3,
+                    tasaRetencion = ficha.documento.tasaRetencionIva,
+                    totalRetencion = ficha.documento.montoRetencionIva,
                 };
-                fichaDTO.retIva = retIva;
+                var docRetIva = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencion()
+                {
+                    MontoBase1 = ficha.documento.montoBase1,
+                    MontoBase2 = ficha.documento.montoBase2,
+                    MontoBase3 = ficha.documento.montoBase3,
+                    MontoExento = ficha.documento.montoExento,
+                    MontoImpuesto1 = ficha.documento.montoImpuesto1,
+                    MontoImpuesto2 = ficha.documento.montoImpuesto2,
+                    MontoImpuesto3 = ficha.documento.montoImpuesto3,
+                    MontoRetencion = ficha.documento.montoRetencionIva,
+                    MontoTotal = (ficha.documento.montoTotal - ficha.documento.igtfMonto),
+                    PrvAuto = ficha.documento.autoProv,
+                    PrvCiRif = ficha.documento.ciRifProv,
+                    PrvCodigo = ficha.documento.codigoProv,
+                    PrvDirFiscal = ficha.documento.dirFiscalProv,
+                    PrvNombre = ficha.documento.nombreProv,
+                    SistDocAuto = ficha.retIva.autoSistemaDoc,
+                    SistDocCodigo = ficha.retIva.tipoSistemaDoc,
+                    SistDocNombre = ficha.retIva.nombreSistemaDoc,
+                    TasaRetencion = ficha.documento.tasaRetencionIva,
+                    EsIva = true,
+                    retMonto = 0m,
+                    retSustraendo = 0M,
+                    docRetDetalle = new List<DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencionDet>(),
+                    cxpRetencion = new DtoLibTransporte.Documento.Agregar.CompraGasto.CxP()
+                    {
+                        acumulado = ficha.retIva.acumulado,
+                        autoProveedor = ficha.retIva.autoProveedor,
+                        ciRifProveedor = ficha.retIva.ciRifProveedor,
+                        codigoProveedor = ficha.retIva.codigoProveedor,
+                        diasCredito = ficha.retIva.diasCredito,
+                        documentoNro = ficha.retIva.documentoNro,
+                        fechaVencimiento = ficha.retIva.fechaVencimiento,
+                        importe = ficha.retIva.importe,
+                        importeDivisa = ficha.retIva.importeDivisa,
+                        nombreRazonSocialProveedor = ficha.retIva.nombreRazonSocialProveedor,
+                        resta = ficha.retIva.resta,
+                        siglasTipoDocumento = ficha.retIva.siglasTipoDocumento,
+                        signoTipoDocumento = ficha.retIva.signoTipoDocumento,
+                        acumuladoDivisa = ficha.retIva.acumuladoDivisa,
+                        fechaEmision = ficha.retIva.fechaEmision,
+                        restaDivisa = ficha.retIva.restaDivisa,
+                        tasaDivisa = ficha.retIva.tasaDivisa,
+                        notas = ficha.retIva.notas,
+                        autoSistemaDoc = ficha.retIva.autoSistemaDoc,
+                    },
+                    cxpReciboRetencion = new DtoLibTransporte.Documento.Agregar.CompraGasto.Recibo()
+                    {
+                        documento = ficha.recIva.documento,
+                        importe = ficha.recIva.importe,
+                        importeDivisa = ficha.recIva.importeDivisa,
+                        montoRecibido = ficha.recIva.montoRecibido,
+                        montoRecibidoDivisa = ficha.recIva.montoRecibidoDivisa,
+                        nota = ficha.recIva.nota,
+                        prvAuto = ficha.recIva.prvAuto,
+                        prvCiRif = ficha.recIva.prvCiRif,
+                        prvCodigo = ficha.recIva.prvCodigo,
+                        prvDirFiscal = ficha.recIva.prvDirFiscal,
+                        prvNombre = ficha.recIva.prvNombre,
+                        prvTlf = ficha.recIva.prvTlf,
+                        tasaCambio = ficha.recIva.tasaCambio,
+                        usuarioAuto = ficha.recIva.usuarioAuto,
+                        usuarioNombre = ficha.recIva.usuarioNombre,
+                        autoSistemaDoc = ficha.recIva.autoSistemaDoc,
+                        docRecibo = new List<DtoLibTransporte.Documento.Agregar.CompraGasto.ReciboDoc>(),
+                    },
+                };
+                docRetIva.docRetDetalle.Add(retDetalle);
+                docRetIva.cxpReciboRetencion.docRecibo.
+                    Add(new DtoLibTransporte.Documento.Agregar.CompraGasto.ReciboDoc()
+                    {
+                        importe = ficha.recIva.docRecibo.importe,
+                        numDocumentoAfecta = ficha.recIva.docRecibo.numDocumentoAfecta,
+                        siglasDocumentoAfecta = ficha.recIva.docRecibo.siglasDocumentoAfecta,
+                        tipoOperacionRealizar = ficha.recIva.docRecibo.tipoOperacionRealizar,
+                    });
+                documento.docRet.Add(docRetIva);
             }
             if (ficha.retISLR != null)
             {
-                var rIslr= ficha.retISLR;
-                var retISLR = new DtoLibTransporte.Documento.Agregar.CompraGasto.CxP()
+                var retDetalle = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencionDet()
                 {
-                    acumulado = rIslr.acumulado,
-                    autoProveedor = rIslr.autoProveedor,
-                    ciRifProveedor = rIslr.ciRifProveedor,
-                    codigoProveedor = rIslr.codigoProveedor,
-                    diasCredito = rIslr.diasCredito,
-                    documentoNro = rIslr.documentoNro,
-                    fechaVencimiento = rIslr.fechaVencimiento,
-                    importe = rIslr.importe,
-                    importeDivisa = rIslr.importeDivisa,
-                    nombreRazonSocialProveedor = rIslr.nombreRazonSocialProveedor,
-                    resta = rIslr.resta,
-                    siglasTipoDocumento = rIslr.siglasTipoDocumento,
-                    signoTipoDocumento = rIslr.signoTipoDocumento,
-                    acumuladoDivisa = rIslr.acumuladoDivisa,
-                    fechaEmision = rIslr.fechaEmision,
-                    restaDivisa = rIslr.restaDivisa,
-                    tasaDivisa = rIslr.tasaDivisa,
-                    notas = rIslr.notas,
-                    autoSistemaDoc = rIslr.autoSistemaDoc,
+                    base1 = ficha.documento.montoBase1,
+                    base2 = ficha.documento.montoBase2,
+                    base3 = ficha.documento.montoBase3,
+                    ciRifDocRefRet = ficha.documento.ciRifProv,
+                    fechaDocRefRet = ficha.documento.fechaEmisDoc,
+                    impuesto1 = ficha.documento.montoImpuesto1,
+                    impuesto2 = ficha.documento.montoImpuesto2,
+                    impuesto3 = ficha.documento.montoImpuesto3,
+                    montoBase = ficha.documento.montoBase,
+                    montoExento = ficha.documento.montoExento,
+                    montoImpuesto = ficha.documento.montoImpuesto,
+                    montoRetencion = ficha.documento.montoRetISLR,
+                    montoTotal = (ficha.documento.montoTotal-ficha.documento.igtfMonto),
+                    numAplicaDocRefRet = ficha.documento.aplicaNumeroDoc,
+                    numControlDocRefRet = ficha.documento.numeroControlDoc,
+                    numDocRefRet = ficha.documento.numeroDoc,
+                    retIva1 = 0m,
+                    retIva2 = 0m,
+                    retIva3 = 0m,
+                    sistAutoDocRet = ficha.documento.autoSistemaDocumento,
+                    sistSignoDocRet = ficha.documento.signoDoc,
+                    sistTipoDocRefRet = ficha.documento.codTipoDoc,
+                    sistTipoDocRet = ficha.retISLR.tipoSistemaDoc,
+                    sustraendoRetencion = ficha.documento.sustraendoRetISLR,
+                    tasa1 = ficha.documento.tasaIva1,
+                    tasa2 = ficha.documento.tasaIva2,
+                    tasa3 = ficha.documento.tasaIva3,
+                    tasaRetencion = ficha.documento.tasaRetencionISLR,
+                    totalRetencion = ficha.documento.totalRetISLR,
                 };
-                fichaDTO.retISLR = retISLR;
-            }
-            if (ficha.recIva != null)
-            {
-                var rcIva = ficha.recIva;
-                var recIva = new DtoLibTransporte.Documento.Agregar.CompraGasto.Recibo()
+                var docRetIslr = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencion()
                 {
-                    documento = rcIva.documento,
-                    importe = rcIva.importe,
-                    importeDivisa = rcIva.importeDivisa,
-                    montoRecibido = rcIva.montoRecibido,
-                    montoRecibidoDivisa = rcIva.montoRecibidoDivisa,
-                    nota = rcIva.nota,
-                    prvAuto = rcIva.prvAuto,
-                    prvCiRif = rcIva.prvCiRif,
-                    prvCodigo = rcIva.prvCodigo,
-                    prvDirFiscal = rcIva.prvDirFiscal,
-                    prvNombre = rcIva.prvNombre,
-                    prvTlf = rcIva.prvTlf,
-                    tasaCambio = rcIva.tasaCambio,
-                    usuarioAuto = rcIva.usuarioAuto,
-                    usuarioNombre = rcIva.usuarioNombre,
-                    autoSistemaDoc = rcIva.autoSistemaDoc,
-                    docRecibo = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
+                    MontoBase1 = ficha.documento.montoBase1,
+                    MontoBase2 = ficha.documento.montoBase2,
+                    MontoBase3 = ficha.documento.montoBase3,
+                    MontoExento = ficha.documento.montoExento,
+                    MontoImpuesto1 = ficha.documento.montoImpuesto1,
+                    MontoImpuesto2 = ficha.documento.montoImpuesto2,
+                    MontoImpuesto3 = ficha.documento.montoImpuesto3,
+                    MontoRetencion = ficha.documento.totalRetISLR,
+                    MontoTotal = (ficha.documento.montoTotal - ficha.documento.igtfMonto),
+                    PrvAuto = ficha.documento.autoProv,
+                    PrvCiRif = ficha.documento.ciRifProv,
+                    PrvCodigo = ficha.documento.codigoProv,
+                    PrvDirFiscal = ficha.documento.dirFiscalProv,
+                    PrvNombre = ficha.documento.nombreProv,
+                    SistDocAuto = ficha.retISLR.autoSistemaDoc,
+                    SistDocCodigo = ficha.retISLR.tipoSistemaDoc,
+                    SistDocNombre = ficha.retISLR.nombreSistemaDoc,
+                    TasaRetencion = ficha.documento.tasaRetencionISLR,
+                    EsIva = false,
+                    retMonto = ficha.documento.montoRetISLR,
+                    retSustraendo = ficha.documento.sustraendoRetISLR,
+                    docRetDetalle = new List<DtoLibTransporte.Documento.Agregar.CompraGasto.DocRetencionDet>(),
+                    cxpRetencion = new DtoLibTransporte.Documento.Agregar.CompraGasto.CxP()
                     {
-                        importe = rcIva.docRecibo.importe,
-                        numDocumentoAfecta = rcIva.docRecibo.numDocumentoAfecta,
-                        siglasDocumentoAfecta = rcIva.docRecibo.siglasDocumentoAfecta,
-                        tipoOperacionRealizar = rcIva.docRecibo.tipoOperacionRealizar,
-                    }
-                };
-                fichaDTO.recRetIva = recIva;
-            }
-            if (ficha.recISLR != null)
-            {
-                var rcIslr = ficha.recISLR;
-                var recIslr = new DtoLibTransporte.Documento.Agregar.CompraGasto.Recibo()
-                {
-                    documento = rcIslr.documento,
-                    importe = rcIslr.importe,
-                    importeDivisa = rcIslr.importeDivisa,
-                    montoRecibido = rcIslr.montoRecibido,
-                    montoRecibidoDivisa = rcIslr.montoRecibidoDivisa,
-                    nota = rcIslr.nota,
-                    prvAuto = rcIslr.prvAuto,
-                    prvCiRif = rcIslr.prvCiRif,
-                    prvCodigo = rcIslr.prvCodigo,
-                    prvDirFiscal = rcIslr.prvDirFiscal,
-                    prvNombre = rcIslr.prvNombre,
-                    prvTlf = rcIslr.prvTlf,
-                    tasaCambio = rcIslr.tasaCambio,
-                    usuarioAuto = rcIslr.usuarioAuto,
-                    usuarioNombre = rcIslr.usuarioNombre,
-                    autoSistemaDoc = rcIslr.autoSistemaDoc,
-                    docRecibo = new DtoLibTransporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
+                        acumulado = ficha.retISLR.acumulado,
+                        autoProveedor = ficha.retISLR.autoProveedor,
+                        ciRifProveedor = ficha.retISLR.ciRifProveedor,
+                        codigoProveedor = ficha.retISLR.codigoProveedor,
+                        diasCredito = ficha.retISLR.diasCredito,
+                        documentoNro = ficha.retISLR.documentoNro,
+                        fechaVencimiento = ficha.retISLR.fechaVencimiento,
+                        importe = ficha.retISLR.importe,
+                        importeDivisa = ficha.retISLR.importeDivisa,
+                        nombreRazonSocialProveedor = ficha.retISLR.nombreRazonSocialProveedor,
+                        resta = ficha.retISLR.resta,
+                        siglasTipoDocumento = ficha.retISLR.siglasTipoDocumento,
+                        signoTipoDocumento = ficha.retISLR.signoTipoDocumento,
+                        acumuladoDivisa = ficha.retISLR.acumuladoDivisa,
+                        fechaEmision = ficha.retISLR.fechaEmision,
+                        restaDivisa = ficha.retISLR.restaDivisa,
+                        tasaDivisa = ficha.retISLR.tasaDivisa,
+                        notas = ficha.retISLR.notas,
+                        autoSistemaDoc = ficha.retISLR.autoSistemaDoc,
+                    },
+                    cxpReciboRetencion = new DtoLibTransporte.Documento.Agregar.CompraGasto.Recibo()
                     {
-                        importe = rcIslr.docRecibo.importe,
-                        numDocumentoAfecta = rcIslr.docRecibo.numDocumentoAfecta,
-                        siglasDocumentoAfecta = rcIslr.docRecibo.siglasDocumentoAfecta,
-                        tipoOperacionRealizar = rcIslr.docRecibo.tipoOperacionRealizar,
-                    }
+                        documento = ficha.recISLR.documento,
+                        importe = ficha.recISLR.importe,
+                        importeDivisa = ficha.recISLR.importeDivisa,
+                        montoRecibido = ficha.recISLR.montoRecibido,
+                        montoRecibidoDivisa = ficha.recISLR.montoRecibidoDivisa,
+                        nota = ficha.recISLR.nota,
+                        prvAuto = ficha.recISLR.prvAuto,
+                        prvCiRif = ficha.recISLR.prvCiRif,
+                        prvCodigo = ficha.recISLR.prvCodigo,
+                        prvDirFiscal = ficha.recISLR.prvDirFiscal,
+                        prvNombre = ficha.recISLR.prvNombre,
+                        prvTlf = ficha.recISLR.prvTlf,
+                        tasaCambio = ficha.recISLR.tasaCambio,
+                        usuarioAuto = ficha.recISLR.usuarioAuto,
+                        usuarioNombre = ficha.recISLR.usuarioNombre,
+                        autoSistemaDoc = ficha.recISLR.autoSistemaDoc,
+                        docRecibo = new List<DtoLibTransporte.Documento.Agregar.CompraGasto.ReciboDoc>(),
+                    },
                 };
-                fichaDTO.recRetIslr = recIslr;
+                docRetIslr.docRetDetalle.Add(retDetalle);
+                docRetIslr.cxpReciboRetencion.docRecibo.
+                    Add(new DtoLibTransporte.Documento.Agregar.CompraGasto.ReciboDoc()
+                    {
+                        importe = ficha.recISLR.docRecibo.importe,
+                        numDocumentoAfecta = ficha.recISLR.docRecibo.numDocumentoAfecta,
+                        siglasDocumentoAfecta = ficha.recISLR.docRecibo.siglasDocumentoAfecta,
+                        tipoOperacionRealizar = ficha.recISLR.docRecibo.tipoOperacionRealizar,
+                    });
+                documento.docRet.Add(docRetIslr);
             }
+            documento.cxp = docCxp;
+            documento.proveedor = proveedor;
             fichaDTO.documento = documento;
-            fichaDTO.cxp = docCxp;
-            fichaDTO.proveedor= proveedor;
+
             var r01 = MyData.Transporte_Documento_Agregar_CompraGrasto(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -244,20 +354,20 @@ namespace DataProvCompra.Data
             };
             return result;
         }
-        
-        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha> 
+
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha>
             Transporte_Documento_Concepto_GetLista()
         {
-            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha> ();
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha>();
             var r01 = MyData.Transporte_Documento_Concepto_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
             var lst = new List<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha>();
-            if (r01.Lista != null) 
+            if (r01.Lista != null)
             {
-                if (r01.Lista.Count > 0) 
+                if (r01.Lista.Count > 0)
                 {
                     lst = r01.Lista.Select(s =>
                     {
@@ -274,7 +384,7 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
-        public OOB.ResultadoId 
+        public OOB.ResultadoId
             Transporte_Documento_Concepto_Agregar(OOB.LibCompra.Transporte.Documento.Concepto.Agregar.Ficha ficha)
         {
             var result = new OOB.ResultadoId();
@@ -291,7 +401,7 @@ namespace DataProvCompra.Data
             result.Id = r01.Id;
             return result;
         }
-        public OOB.Resultado 
+        public OOB.Resultado
             Transporte_Documento_Concepto_Editar(OOB.LibCompra.Transporte.Documento.Concepto.Editar.Ficha ficha)
         {
             var result = new OOB.Resultado();
@@ -308,7 +418,7 @@ namespace DataProvCompra.Data
             }
             return result;
         }
-        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha> 
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha>
             Transporte_Documento_Concepto_GetById(int id)
         {
             var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha>();
@@ -328,7 +438,7 @@ namespace DataProvCompra.Data
         }
 
 
-        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.GetData.Ficha> 
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.GetData.Ficha>
             Transporte_Documento_Anular_CompraGrasto_GetData(string autoDoc)
         {
             var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.GetData.Ficha>();
@@ -365,7 +475,7 @@ namespace DataProvCompra.Data
             };
             return result;
         }
-        public OOB.Resultado 
+        public OOB.Resultado
             Transporte_Documento_Anular_CompraGrasto(OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular.Ficha ficha)
         {
             var result = new OOB.Resultado();
@@ -373,7 +483,7 @@ namespace DataProvCompra.Data
             {
                 autoDocCompra = ficha.autoDocCompra,
                 autoDocCxP = ficha.autoDocCxP,
-                auditoria =  ficha.auditoria.Select(s=>
+                auditoria = ficha.auditoria.Select(s =>
                 {
                     var nr = new DtoLibTransporte.Documento.Anular.CompraGasto.Anular.Auditoria()
                     {
@@ -412,7 +522,7 @@ namespace DataProvCompra.Data
         }
 
 
-        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Entidad.Ficha> 
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Entidad.Ficha>
             Transporte_Documento_Entidad_CompraGrasto_GetById(string autoDoc)
         {
             var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Entidad.Ficha>();
@@ -421,7 +531,7 @@ namespace DataProvCompra.Data
             {
                 throw new Exception(r01.Mensaje);
             }
-            var s= r01.Entidad.documento;
+            var s = r01.Entidad.documento;
             result.Entidad = new OOB.LibCompra.Transporte.Documento.Entidad.Ficha()
             {
                 documento = new OOB.LibCompra.Transporte.Documento.Entidad.Documento()

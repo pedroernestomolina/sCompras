@@ -55,8 +55,13 @@
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\ISistemaDocumento.cs" />
     <Compile Include="Interfaces\ISucursal.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspAliado.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspAliadoAnticipo.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspAliadoPagServ.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspCaja.cs" />
     <Compile Include="Interfaces\Transporte\ITranspDocumento.cs" />
     <Compile Include="Interfaces\IUsuario.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspReportes.cs" />
     <Compile Include="MyService\Auditoria.cs" />
     <Compile Include="MyService\Concepto.cs" />
     <Compile Include="MyService\Configuracion.cs" />
@@ -73,7 +78,12 @@
     <Compile Include="MyService\Service.cs" />
     <Compile Include="MyService\SistemaDocumento.cs" />
     <Compile Include="MyService\Sucursal.cs" />
+    <Compile Include="MyService\TranspAliado.cs" />
+    <Compile Include="MyService\TranspAliadoAnticipo.cs" />
+    <Compile Include="MyService\TranspAliadoPagServ.cs" />
+    <Compile Include="MyService\TranspCaja.cs" />
     <Compile Include="MyService\TranspDocumento.cs" />
+    <Compile Include="MyService\TranspReportes.cs" />
     <Compile Include="MyService\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

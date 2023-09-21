@@ -25,6 +25,8 @@ namespace OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto
         public decimal montoRecibidoDivisa { get; set; }
         public decimal tasaCambio { get; set; }
         public string autoSistemaDoc { get; set; }
+        public string nombreSistemaDoc { get; set; }
+        public string tipoSistemaDoc { get; set; }
         public DocumentoRecibo docRecibo { get; set; }
     }
 }

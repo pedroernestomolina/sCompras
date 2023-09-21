@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
 {
-    public class data: Vistas.Generar.Idata
+    public class data : Vistas.Generar.Idata
     {
         private string _numeroDoc;
         private string _numeroControlDoc;
@@ -78,14 +78,14 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public decimal Get_SubtotalNeto { get { return _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base + _tasaEx.Get_Base; } }
         public decimal Get_SubtotalBase { get { return _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base; } }
         public decimal Get_SubtotalImp { get { return _tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp; } }
-        public decimal Get_Monto 
-        { 
-            get 
+        public decimal Get_Monto
+        {
+            get
             {
-                _monto=(_tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base) +
+                _monto = (_tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base) +
                         (_tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp) +
                         _tasaEx.Get_Base;
-                _montoMonAct = _monto+_montoIGTF;
+                _montoMonAct = _monto + _montoIGTF;
                 _montoMonDivisa = 0m;
                 if (_factorCambio > 0m)
                 {
@@ -178,7 +178,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         }
 
 
-        public void SetTipoDocumentoById(string id)        
+        public void SetTipoDocumentoById(string id)
         {
             _tipoDoc.setFichaById(id);
             if (id == "01") //FACTURA
@@ -187,7 +187,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 _aplicaNumeroDoc = "";
             }
         }
-        public void SetCondicionPagoById(string id)       
+        public void SetCondicionPagoById(string id)
         {
             _condicionPagoDoc.setFichaById(id);
         }
@@ -236,7 +236,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         {
             IEnumerable<LibUtilitis.Opcion.IData> _lst;
             var lSuc = new List<dataSucursal>();
-            foreach(var rg in lst)
+            foreach (var rg in lst)
             {
                 lSuc.Add(new dataSucursal() { codigo = rg.codigo, desc = rg.nombre, id = rg.auto, ficha = rg });
             }
@@ -246,7 +246,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         private List<dataConcepto> lConcepto;
         public void ConceptoCargarData(List<OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha> lst)
         {
-            if (lConcepto == null) 
+            if (lConcepto == null)
             {
                 lConcepto = new List<dataConcepto>();
             }
@@ -264,11 +264,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         private bool verificaTipoDoc()
         {
             var rt = false;
-            if (_tipoDoc != null) 
+            if (_tipoDoc != null)
             {
-                if (_tipoDoc.GetItem != null && _tipoDoc.GetId!="01") 
+                if (_tipoDoc.GetItem != null && _tipoDoc.GetId != "01")
                 {
-                    rt=true;
+                    rt = true;
                 }
             }
             return rt;
@@ -324,7 +324,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         }
         public void SetTasaRetISLR(decimal tasa)
         {
-            _tasaRetISLR= tasa;
+            _tasaRetISLR = tasa;
             ActualizarRetencion_Iva_ISLR();
         }
 
@@ -332,12 +332,12 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public bool Verificar()
         {
             var rt = true;
-            if (_tipoDoc.GetItem == null) 
+            if (_tipoDoc.GetItem == null)
             {
                 Helpers.Msg.Alerta("TIPO DOCUMENTO NO PUEDE ESTAR VACIO");
                 return false;
             }
-            if (Get_NumeroDoc.Trim() == "") 
+            if (Get_NumeroDoc.Trim() == "")
             {
                 Helpers.Msg.Alerta("NUMERO DE DOCUMENTO NO PUEDE ESTAR VACIO");
                 return false;
@@ -395,12 +395,12 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 Helpers.Msg.Alerta("CONCEPTO DOCUMENTO NO PUEDE ESTAR VACIO");
                 return false;
             }
-            if (_notas.Trim()== "")
+            if (_notas.Trim() == "")
             {
                 Helpers.Msg.Alerta("NOTAS DEL DOCUMENTO NO PUEDE ESTAR VACIO");
                 return false;
             }
-            if (_montoMonAct  == 0m)
+            if (_montoMonAct == 0m)
             {
                 Helpers.Msg.Alerta("MONTO DEL DOCUMENTO INCORRECTO");
                 return false;
@@ -418,8 +418,20 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _proveedor.Buscar();
             if (_proveedor.ProveedorIsOk)
             {
-                var _prv= (Utils.Buscar.Proveedor.Handler.data)_proveedor.Get_Ficha;
-                SetTasaRetIva(_prv.Ficha.identidad.retIva);
+                var _prv = (Utils.Buscar.Proveedor.Handler.data)_proveedor.Get_Ficha;
+                try
+                {
+                    var r01 = Sistema.MyData.Proveedor_GetFicha(_prv.id);
+                    if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+                    {
+                        throw new Exception(r01.Mensaje);
+                    }
+                    SetTasaRetIva(r01.Entidad.identidad.retIva);
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
             }
         }
         public void SetMontoRetISLR(decimal monto)
@@ -433,15 +445,21 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public void ActualizarRetencion_Iva_ISLR()
         {
             var _montoBase = _tasa1.Get_Base + _tasa2.Get_Base + _tasa3.Get_Base;
-            var _montoImp= _tasa1.Get_Imp + _tasa2.Get_Imp+ _tasa3.Get_Imp;
+            var _montoImp = _tasa1.Get_Imp + _tasa2.Get_Imp + _tasa3.Get_Imp;
             _montoRetIva = (_montoImp) * _tasaRetIva / 100;
             _montoRetISLR = (_montoBase + _tasaEx.Get_Base) * _tasaRetISLR / 100;
         }
         //
         public void FiltrarConcepto(string desc)
         {
-            var _lst = lConcepto.Where(w=>w.desc.Trim().ToUpper().Contains(desc.Trim().ToUpper())).ToList();
+            var _lst = lConcepto.Where(w => w.desc.Trim().ToUpper().Contains(desc.Trim().ToUpper())).ToList();
             _concepto.CargarData(_lst);
+            var _id = "";
+            if (_lst.Count > 0)
+            {
+                _id = _lst.First().id;
+            }
+            _concepto.setFichaById(_id);
         }
     }
 }

@@ -57,8 +57,13 @@
     <Compile Include="ISucursal.cs" />
     <Compile Include="IUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transporte\ITranspAliado.cs" />
+    <Compile Include="Transporte\ITranspAliadoAnticipo.cs" />
+    <Compile Include="Transporte\ITranspAliadoPagServ.cs" />
+    <Compile Include="Transporte\ITranspCaja.cs" />
     <Compile Include="Transporte\ITranspConcepto.cs" />
     <Compile Include="Transporte\ITranspDocumento.cs" />
+    <Compile Include="Transporte\ITranspReportes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DtoLibCompra\DtoLibCompra.csproj">

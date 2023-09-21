@@ -85,5 +85,9 @@ namespace DtoLibTransporte.Documento.Agregar.CompraGasto
         public decimal igtfMonto { get; set; }
         public enumerados.tipoDocumentoCompra tipoDocumentoCompra { get; set; }
         public string autoSistemaDocumento  { get; set; }
+        //
+        public CxP cxp { get; set; }
+        public Proveedor proveedor { get; set; }
+        public List<DocRetencion> docRet { get; set; }
     }
 }

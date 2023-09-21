@@ -75,10 +75,15 @@
     <Compile Include="ReportesProv.cs" />
     <Compile Include="SistemaDocumento.cs" />
     <Compile Include="Sucursal.cs" />
+    <Compile Include="TranspAliadoAnticipo.cs" />
+    <Compile Include="TranspAliadoPagServ.cs" />
+    <Compile Include="TranspCaja.cs" />
+    <Compile Include="TransporteAliado.cs" />
     <Compile Include="TransporteConcepto.cs" />
     <Compile Include="TransporteDocumentoAgregar.cs" />
     <Compile Include="TransporteDocumentoAnular.cs" />
     <Compile Include="TransporteDocumento.cs" />
+    <Compile Include="TranspReportes.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -298,10 +298,12 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         resta = 0m,
                         restaDivisa = 0m,
                         siglasTipoDocumento = _sistDocRetIva.Entidad.siglas,
-                        signoTipoDocumento = _sistDocRetIva.Entidad.signo*(-1),
+                        signoTipoDocumento = _sistDocRetIva.Entidad.signo * (-1),
                         tasaDivisa = _data.Get_FactorCambio,
-                        notas = "RETENCION IVA "+_data.Get_TasaRetIva.ToString("n2")+"%, DOC: "+_data.Get_NumeroDoc,
+                        notas = "RETENCION IVA " + _data.Get_TasaRetIva.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
                         autoSistemaDoc = _sistDocRetIva.Entidad.autoId,
+                        nombreSistemaDoc = _sistDocRetIva.Entidad.nombre,
+                        tipoSistemaDoc = _sistDocRetIva.Entidad.codigo,
                     };
                     ficha.recIva = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
                     {
@@ -332,7 +334,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 }
                 if (_data.Get_MontoRetISLR > 0m)
                 {
-                    var _montoRetISLRDivisa = _data.Get_MontoRetISLR / _data.Get_FactorCambio;
+                    var _montoRetISLRDivisa = (_data.Get_MontoRetISLR+ _data.Get_SustraendoISLR) / _data.Get_FactorCambio;
                     ficha.retISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
                     {
                         acumulado = 0m,
@@ -344,7 +346,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         documentoNro = _data.Get_NumeroDoc,
                         fechaEmision = _data.Get_FechaEmisionDoc,
                         fechaVencimiento = _data.Get_FechaVenceDoc,
-                        importe = _data.Get_MontoRetISLR,
+                        importe = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
                         importeDivisa = _montoRetISLRDivisa,
                         nombreRazonSocialProveedor = _prv.Ficha.nombreRazonSocial,
                         resta = 0m,
@@ -354,13 +356,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         tasaDivisa = _data.Get_FactorCambio,
                         notas = "RETENCION ISLR " + _data.Get_TasaRetISLR.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
                         autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
+                        nombreSistemaDoc = _sistDocRetIslr.Entidad.nombre,
+                        tipoSistemaDoc = _sistDocRetIslr.Entidad.codigo,
                     };
                     ficha.recISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
                     {
                         documento = _sistDocRetIslr.Entidad.siglas,
-                        importe = _data.Get_MontoRetISLR,
+                        importe = (_data.Get_MontoRetISLR+ _data.Get_SustraendoISLR),
                         importeDivisa = _montoRetISLRDivisa,
-                        montoRecibido = _data.Get_MontoRetISLR,
+                        montoRecibido = (_data.Get_MontoRetISLR+ _data.Get_SustraendoISLR),
                         montoRecibidoDivisa = _montoRetISLRDivisa,
                         nota = "RETENCION ISLR " + _data.Get_TasaRetISLR.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
                         prvAuto = _prv.Ficha.autoId,
@@ -375,7 +379,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                         autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
                         docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
                         {
-                            importe = _data.Get_MontoRetISLR,
+                            importe = (_data.Get_MontoRetISLR+ _data.Get_SustraendoISLR),
                             numDocumentoAfecta = _data.Get_NumeroDoc,
                             siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
                             tipoOperacionRealizar = "Abono",

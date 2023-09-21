@@ -169,6 +169,10 @@ namespace ModCompra.Proveedor.AgregarEditar
         {
             _controlador.setTasaRetIva(decimal.Parse(TB_RET_IVA.Text));
         }
+        private void TB_RET_IVA_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.GetTasaRetIva > 100;
+        }
 
         private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
@@ -199,7 +203,5 @@ namespace ModCompra.Proveedor.AgregarEditar
         {
             this.Close();
         }
-
     }
-
 }

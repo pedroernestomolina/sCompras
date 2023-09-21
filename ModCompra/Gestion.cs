@@ -225,6 +225,7 @@ namespace ModCompra
         }
 
 
+        // TRANSPORTE
         ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
         public void RegistrarCompraGasto()
         {
@@ -245,6 +246,58 @@ namespace ModCompra
             }
             _concepto.Inicializa();
             _concepto.Inicia();
+        }
+
+        srcTransporte.CtaPagar.ToolsAliados.Vistas.IAliados _toolAliados;
+        public void ToolAliados()
+        {
+            if (_toolAliados== null)
+            {
+                _toolAliados= new srcTransporte.CtaPagar.ToolsAliados.Handlers.Imp();
+            }
+            _toolAliados.Inicializa();
+            _toolAliados.Inicia();
+        }
+
+
+        //REPORTES
+        public void ReporteGeneralDocTransp()
+        {
+            srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
+            //
+            srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaGeneralDoc.Imp();
+            _rep.setFiltros(_data);
+            _rep.Generar();
+        }
+        public void ReportesRetIva()
+        {
+            srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
+            _data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Iva);
+            //
+            srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.iva();
+            _rep.setFiltros(_data);
+            _rep.Generar();
+        }
+        public void ReportesRetIslr()
+        {
+            srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
+            _data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Islr);
+            //
+            srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.islr();
+            _rep.setFiltros(_data);
+            _rep.Generar();
+        }
+        public void PlanillaRetIva()
+        {
+            srcTransporte.Reportes.Documentos.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
+            _rep.setIdDoc("0000000038");
+            _rep.Generar();
+        }
+        public void PlanillaRetIslr()
+        {
+            srcTransporte.Reportes.Documentos.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
+            _rep.setIdDoc("0000000038");
+            _rep.Generar();
         }
     }
 }

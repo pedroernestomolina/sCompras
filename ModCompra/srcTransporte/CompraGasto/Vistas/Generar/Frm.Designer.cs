@@ -2029,6 +2029,7 @@
             this.TB_TASA_EX_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA_EX_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA_EX_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA_EX_BASE.MaxLength = 12;
             this.TB_TASA_EX_BASE.Name = "TB_TASA_EX_BASE";
             this.TB_TASA_EX_BASE.Size = new System.Drawing.Size(119, 22);
             this.TB_TASA_EX_BASE.TabIndex = 1;
@@ -2087,6 +2088,7 @@
             this.TB_TASA1_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA1_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA1_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA1_BASE.MaxLength = 12;
             this.TB_TASA1_BASE.Name = "TB_TASA1_BASE";
             this.TB_TASA1_BASE.Size = new System.Drawing.Size(119, 22);
             this.TB_TASA1_BASE.TabIndex = 1;
@@ -2112,6 +2114,7 @@
             this.TB_TASA1_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA1_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA1_IMP.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA1_IMP.MaxLength = 12;
             this.TB_TASA1_IMP.Name = "TB_TASA1_IMP";
             this.TB_TASA1_IMP.ReadOnly = true;
             this.TB_TASA1_IMP.Size = new System.Drawing.Size(119, 22);
@@ -2137,6 +2140,7 @@
             this.TB_TASA2_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA2_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA2_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA2_BASE.MaxLength = 12;
             this.TB_TASA2_BASE.Name = "TB_TASA2_BASE";
             this.TB_TASA2_BASE.Size = new System.Drawing.Size(119, 22);
             this.TB_TASA2_BASE.TabIndex = 2;
@@ -2162,6 +2166,7 @@
             this.TB_TASA2_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA2_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA2_IMP.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA2_IMP.MaxLength = 12;
             this.TB_TASA2_IMP.Name = "TB_TASA2_IMP";
             this.TB_TASA2_IMP.ReadOnly = true;
             this.TB_TASA2_IMP.Size = new System.Drawing.Size(119, 22);
@@ -2187,6 +2192,7 @@
             this.TB_TASA3_BASE.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA3_BASE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA3_BASE.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA3_BASE.MaxLength = 12;
             this.TB_TASA3_BASE.Name = "TB_TASA3_BASE";
             this.TB_TASA3_BASE.Size = new System.Drawing.Size(119, 22);
             this.TB_TASA3_BASE.TabIndex = 3;
@@ -2212,6 +2218,7 @@
             this.TB_TASA3_IMP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_TASA3_IMP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_TASA3_IMP.Location = new System.Drawing.Point(2, 2);
+            this.TB_TASA3_IMP.MaxLength = 12;
             this.TB_TASA3_IMP.Name = "TB_TASA3_IMP";
             this.TB_TASA3_IMP.ReadOnly = true;
             this.TB_TASA3_IMP.Size = new System.Drawing.Size(119, 22);
@@ -2416,6 +2423,7 @@
             this.TB_IGTF_MONTO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_IGTF_MONTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_IGTF_MONTO.Location = new System.Drawing.Point(2, 2);
+            this.TB_IGTF_MONTO.MaxLength = 12;
             this.TB_IGTF_MONTO.Name = "TB_IGTF_MONTO";
             this.TB_IGTF_MONTO.Size = new System.Drawing.Size(119, 22);
             this.TB_IGTF_MONTO.TabIndex = 5;

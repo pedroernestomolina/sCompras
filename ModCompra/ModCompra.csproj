@@ -413,6 +413,64 @@
     <Compile Include="srcTransporte\Concepto\Maestro\data.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\caja.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\data.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\dataCaja.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\IAnticipo.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\Icaja.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\Idata.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\IdataCaja.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\data.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\dataAliado.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\dataCtasPend.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\Imp.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\dataServ.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\hndEnt.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\hndGestPag.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\hndServ.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\Imp.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\IdataServ.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\IEnt.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\IGestPag.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\IServ.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\IPagServ.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IAliados.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Idata.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataAliado.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataCtasPend.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\enumerados.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\Filtros\Handlers\data.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\Filtros\Vistas\Idata.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\Idata.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\IRep.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\IRepFiltro.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\IRepPlanilla.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\ListaGeneralDoc\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\baseImp.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\islr.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetISLR\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetIva\Imp.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
     <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\ICompraGasto.cs" />
@@ -455,6 +513,14 @@
     <Compile Include="Utils\Buscar\Proveedor\Vistas\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
+    <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Componente\Monto\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Componente\Monto\Vistas\IMonto.cs" />
     <Compile Include="Utils\Maestro\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -464,6 +530,9 @@
     <Compile Include="Utils\Maestro\Idata.cs" />
     <Compile Include="Utils\Maestro\ILista.cs" />
     <Compile Include="Utils\Maestro\IMaestro.cs" />
+    <Compile Include="Utils\Tools\IdataTools.cs" />
+    <Compile Include="Utils\Tools\IdataCtasPendientes.cs" />
+    <Compile Include="Utils\Tools\ITools.cs" />
     <EmbeddedResource Include="Administrador\AdministradorFrm.resx">
       <DependentUpon>AdministradorFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -586,6 +655,15 @@
     <EmbeddedResource Include="srcTransporte\Concepto\AgregarEditar\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -596,6 +674,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Buscar\Proveedor\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Componente\Monto\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Maestro\Frm.resx">
@@ -814,7 +895,10 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="srcTransporte\Reportes\Documentos\CompraGasto\" />
+    <Folder Include="srcTransporte\Reportes\Documentos\LibroCompras\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

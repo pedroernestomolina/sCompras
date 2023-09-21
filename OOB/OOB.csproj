@@ -131,6 +131,15 @@
     <Compile Include="LibCompra\SistemaDocumento\Entidad\Busqueda.cs" />
     <Compile Include="LibCompra\SistemaDocumento\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Sucursal\Data\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\AliadoAbonar.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\AliadoCaja.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\CajaMovimiento.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\Movimiento.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Entidad\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\PagoServ\ServPrestado\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\Pendiente\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Caja\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\CxP.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Documento.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\DocumentoRecibo.cs" />
@@ -153,6 +162,15 @@
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Documento.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Item.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\baseFiltro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\baseFicha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\Islr\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\Retencion\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\Retencion\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\enumerados.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\Iva\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Buscar\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Data\Ficha.cs" />
@@ -162,6 +180,10 @@
     <Compile Include="ResultadoEntidad.cs" />
     <Compile Include="ResultadoId.cs" />
     <Compile Include="ResultadoLista.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LibCompra\Transporte\Caja\Crud\" />
+    <Folder Include="LibCompra\Transporte\Caja\Movimiento\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -813,6 +813,7 @@
             this.TB_RET_IVA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TB_RET_IVA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
             this.TB_RET_IVA.Leave += new System.EventHandler(this.TB_RET_IVA_Leave);
+            this.TB_RET_IVA.Validating += new System.ComponentModel.CancelEventHandler(this.TB_RET_IVA_Validating);
             // 
             // panel21
             // 

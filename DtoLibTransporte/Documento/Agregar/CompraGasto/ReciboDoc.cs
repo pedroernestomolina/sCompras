@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DtoLibTransporte.Documento.Agregar.CompraGasto
 {
-    public class DocumentoRecibo
+    public class ReciboDoc
     {
         public string siglasDocumentoAfecta { get; set; }
         public string numDocumentoAfecta { get; set; }

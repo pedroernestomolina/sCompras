@@ -195,5 +195,59 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.MaestroConceptos();
         }
+
+
+        private void MENU_CXP_TOOLS_ALIADOS_Click(object sender, EventArgs e)
+        {
+            ToolAliados();
+        }
+        private void ToolAliados()
+        {
+            _controlador.ToolAliados();
+        }
+
+        //REPORTES
+        private void MENU_REPORTES_DOCUMENTOS_GENERAL_Click(object sender, EventArgs e)
+        {
+            ReporteGeneralDoc();
+        }
+        private void MENU_REPORTES_DOCUMENTOS_RET_IVA_Click(object sender, EventArgs e)
+        {
+            ReportesRetIva();
+        }
+        private void MENU_REPORTES_DOCUMENTOS_RET_ISLR_Click(object sender, EventArgs e)
+        {
+            ReportesRetIslr();
+        }
+        private void MENU_REPORTES_DOCUMENTOS_PLANILLA_RET_IVA_Click(object sender, EventArgs e)
+        {
+            PlanillaRetIva();
+        }
+        private void MENU_REPORTES_DOCUMENTOS_PLANILLA_RET_ISLR_Click(object sender, EventArgs e)
+        {
+            PlanillaRetIslr();
+        }
+
+        private void ReporteGeneralDoc()
+        {
+            _controlador.ReporteGeneralDocTransp();
+        }
+        private void ReportesRetIva()
+        {
+            _controlador.ReportesRetIva();
+        }
+        private void ReportesRetIslr()
+        {
+            _controlador.ReportesRetIslr();
+        }
+        private void PlanillaRetIva()
+        {
+            _controlador.PlanillaRetIva();
+        }
+        private void PlanillaRetIslr()
+        {
+            _controlador.PlanillaRetIslr();
+        }
+
     }
 }

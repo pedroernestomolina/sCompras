@@ -56,7 +56,12 @@
     <Compile Include="Data\Reportes.cs" />
     <Compile Include="Data\SistemaDocumento.cs" />
     <Compile Include="Data\Sucursal.cs" />
+    <Compile Include="Data\TranspAliadoAnticipo.cs" />
+    <Compile Include="Data\TranspAliadoPagServ.cs" />
+    <Compile Include="Data\TranspCaja.cs" />
+    <Compile Include="Data\TransporteAliado.cs" />
     <Compile Include="Data\TransporteDocumento.cs" />
+    <Compile Include="Data\TranspReportes.cs" />
     <Compile Include="Data\Usuario.cs" />
     <Compile Include="InfraEstructura\IAuditoria.cs" />
     <Compile Include="InfraEstructura\IConcepto.cs" />
@@ -75,7 +80,12 @@
     <Compile Include="InfraEstructura\ISistemaDocumento.cs" />
     <Compile Include="InfraEstructura\ISucursal.cs" />
     <Compile Include="InfraEstructura\IUsuario.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspAliado.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspAliadoAnticipo.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspAliadoPagServ.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspCaja.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspDocumento.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspReportes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

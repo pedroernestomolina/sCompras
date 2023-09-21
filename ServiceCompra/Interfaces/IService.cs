@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace ServiceCompra.Interfaces
 {
-    
     public interface IService: IDeposito, ISucursal, IProveedor, IProducto, IUsuario, IEmpresa,
         IPermiso, IConfiguracion, IDocumento, IConcepto, IReportes, IGrupo, IEstado, IReporteProv, 
         IAuditoria, ISistemaDocumento,
-        Transporte.ITranspDocumento
+        Transporte.ITranspDocumento,
+        Transporte.ITranspAliado,
+        Transporte.ITranspAliadoAnticipo,
+        Transporte.ITranspCaja,
+        Transporte.ITranspAliadoPagServ,
+        Transporte.ITranspReportes
     {
-
-        DtoLib.ResultadoEntidad<DateTime> FechaServidor();
-
+        DtoLib.ResultadoEntidad<DateTime> 
+            FechaServidor();
     }
-
 }
