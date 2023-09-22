@@ -31,6 +31,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         public BindingSource Get_CajaSource { get { return _hndCaja.Get_CajaSource; } }
         public decimal CajaGet_MontoPendMonDiv { get { return _hndCaja.Get_MontoPendMonDiv; } }
         public decimal CajaGet_MontoPendMonAct { get { return _hndCaja.Get_MontoPendMonAct; } }
+        public OOB.LibCompra.Transporte.Aliado.Entidad.Ficha Get_Aliado { get { return _hndData.Get_Aliado; } }
+        public decimal Get_TotalRetMonAct { get { return _hndData.Get_TotalRetencionMonAct; } }
+        public decimal Get_TotalRetMonDiv { get { return _hndData.Get_TotalRetencionMonDiv;  } }
+        public IEnumerable<object> Get_CajasUsadas { get { return hndCaja.Get_CajasUsadas; } }
         public Anticipos.Agregar.Vistas.Idata hndData { get { return _hndData; } }
         public Anticipos.Agregar.Vistas.Icaja hndCaja { get { return _hndCaja; } }
 

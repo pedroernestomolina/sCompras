@@ -37,6 +37,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
         public decimal Get_MontoAbonoMonDiv { get { return _montoAbonoMonDiv; } }
         public DateTime Get_FechaServidor { get { return _fechaServidor; } }
         public OOB.LibCompra.Transporte.Aliado.Entidad.Ficha Get_Aliado { get { return _aliado; } }
+        public decimal Get_TotalRetencionMonAct { get { return _montoRetencion; } }
         public decimal Get_TotalRetencionMonDiv 
         {
             get 
@@ -196,6 +197,11 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
             if (_tasaFactorCambio == 0m)
             {
                 Helpers.Msg.Alerta("TASA / FACTOR CAMBIO NO PUEDE SER CERO [ 0 ]");
+                return false;
+            }
+            if (_aplicaRet && _tasaRet == 0m) 
+            {
+                Helpers.Msg.Alerta("SI APLICA RETENCION, ESTA NO PUEDE SER CERO [ 0 ]");
                 return false;
             }
             return true;

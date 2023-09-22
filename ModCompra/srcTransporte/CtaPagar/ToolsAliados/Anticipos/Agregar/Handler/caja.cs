@@ -22,6 +22,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
 
         public BindingSource Get_CajaSource { get { return _bs; } }
         public IEnumerable <Vistas.IdataCaja> Get_Lista { get { return _bl.ToList(); } }
+        public IEnumerable<Vistas.IdataCaja> Get_CajasUsadas { get { return _bl.Where(w => w.montoAbonar > 0).ToList(); } }
 
 
         public caja()

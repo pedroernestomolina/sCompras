@@ -15,5 +15,10 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Aliado_PagoServ_ServPrestado_GetListaBy(idAliado);
         }
+        public DtoLib.Resultado 
+            Transporte_Aliado_PagoServ_AgregarPago(DtoLibTransporte.Aliado.PagoServ.AgregarPago.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Aliado_PagoServ_AgregarPago(ficha);
+        }
     }
 }

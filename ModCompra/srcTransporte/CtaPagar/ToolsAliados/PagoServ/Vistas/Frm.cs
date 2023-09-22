@@ -244,7 +244,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            if (_controlador.AbandonarIsOK)//|| _controlador.ProcesarIsOK)
+            if (_controlador.AbandonarIsOK || _controlador.ProcesarIsOK)
             {
                 e.Cancel = false;
             }
@@ -276,6 +276,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
             _controlador.data.GestPago.setTasaFactorCambio(_monto);
             TB_FACTOR_PAG_SERV.Text = _controlador.data.GestPago.Get_TasaFactorCambio.ToString("n2", _cult);
             ActualizarTotalPago();
+        }
+        private void TB_FACTOR_PAG_SERV_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = (_controlador.data.GestPago.Get_TasaFactorCambio <= 0m);
         }
         private void TB_MOTIVO_PAG_SERV_Leave(object sender, EventArgs e)
         {

@@ -146,7 +146,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -225,7 +224,6 @@
             this.panel56.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
@@ -1020,6 +1018,7 @@
             this.TB_FACTOR_PAG_SERV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TB_FACTOR_PAG_SERV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             this.TB_FACTOR_PAG_SERV.Leave += new System.EventHandler(this.TB_FACTOR_PAG_SERV_Leave);
+            this.TB_FACTOR_PAG_SERV.Validating += new System.ComponentModel.CancelEventHandler(this.TB_FACTOR_PAG_SERV_Validating);
             // 
             // panel30
             // 
@@ -1083,7 +1082,7 @@
             this.TB_MOTIVO_PAG_SERV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TB_MOTIVO_PAG_SERV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TB_MOTIVO_PAG_SERV.Location = new System.Drawing.Point(2, 2);
-            this.TB_MOTIVO_PAG_SERV.MaxLength = 200;
+            this.TB_MOTIVO_PAG_SERV.MaxLength = 300;
             this.TB_MOTIVO_PAG_SERV.Multiline = true;
             this.TB_MOTIVO_PAG_SERV.Name = "TB_MOTIVO_PAG_SERV";
             this.TB_MOTIVO_PAG_SERV.Size = new System.Drawing.Size(290, 66);
@@ -1693,7 +1692,6 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.label4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(1, 1);
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
@@ -1701,15 +1699,6 @@
             this.panel5.Padding = new System.Windows.Forms.Padding(2);
             this.panel5.Size = new System.Drawing.Size(706, 54);
             this.panel5.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "label4";
             // 
             // panel6
             // 
@@ -1856,8 +1845,6 @@
             this.panel56.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1895,7 +1882,6 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.DataGridView DGV;

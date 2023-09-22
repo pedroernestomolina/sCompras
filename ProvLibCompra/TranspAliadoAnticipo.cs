@@ -133,37 +133,35 @@ namespace ProvLibCompra
                                         id, 
                                         id_caja, 
                                         fecha_reg, 
-                                        fecha_mov, 
                                         concepto_mov, 
                                         tipo_mov, 
                                         monto_mov_mon_act,
                                         monto_mov_mon_div, 
                                         factor_cambio_mov, 
                                         estatus_anulado_mov,
-                                        mov_fue_divisa)
+                                        mov_fue_divisa,
+                                        signo)
                                     VALUES (
                                         NULL, 
                                         @id_caja, 
                                         @fecha_reg, 
-                                        @fecha_mov, 
                                         @concepto_mov, 
-                                        @tipo_mov, 
+                                        'E' 
                                         @monto_mov_mon_act,
                                         @monto_mov_mon_div, 
                                         @factor_cambio_mov, 
                                         '0',
-                                        @mov_fue_divisa)";
+                                        @mov_fue_divisa,
+                                        -1)";
                             var cjMov=rg.movimientoCaja;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
                             p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
-                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_mov", cjMov.fechaMov);
-                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", cjMov.descMov);
-                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_mov", cjMov.tipoMov);
-                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", cjMov.montoMovMonAct);
-                            p06 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
-                            p07 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);
-                            p08 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
-                            var r4 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07,p08);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", cjMov.descMov);
+                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", cjMov.montoMovMonAct);
+                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
+                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);
+                            p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
+                            var r4 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
                             if (r4 == 0)
                             {
                                 result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE CAJA";

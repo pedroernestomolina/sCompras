@@ -1,6 +1,7 @@
 ﻿using LibEntityCompra;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,336 @@ namespace ProvLibCompra
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Aliado.PagoServ.ServPrestado.Ficha>(sql, p1).ToList();
                     result.Lista = _lst;
                 }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado 
+            Transporte_Aliado_PagoServ_AgregarPago(DtoLibTransporte.Aliado.PagoServ.AgregarPago.Ficha ficha)
+        {
+            var result = new DtoLib.ResultadoEntidad<int>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2, '0');
+                        var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
+                        //
+                        var sql = @"update sistema_contadores set 
+                                        a_transp_aliado_pagoserv_recnumero=a_transp_aliado_pagoserv_recnumero+1";
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "PROBLEMA AL ACTUALIZAR TABLA CONTADORES";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        sql = "select a_transp_aliado_pagoserv_recnumero from sistema_contadores";
+                        var nRecibo = cnn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                        var numRecibo = nRecibo.ToString().Trim().PadLeft(10, '0');
+                        //
+                        //INSERTAR DOCUMENTO DE PAGO POR SERV PRESTADO
+                        sql = @"INSERT INTO transp_aliado_pagoserv (
+                                    id, 
+                                    id_aliado, 
+                                    fecha_emision, 
+                                    fecha_registro, 
+                                    aliado_nombre, 
+                                    aliado_codigo, 
+                                    aliado_cirif, 
+                                    recibo_numero, 
+                                    cnt_serv_pag, 
+                                    motivo, 
+                                    monto_mon_act, 
+                                    monto_mon_div, 
+                                    tasa_factor, 
+                                    aplica_ret, 
+                                    tasa_ret, 
+                                    retencion, 
+                                    sustraendo, 
+                                    monto_ret_mon_act, 
+                                    monto_ret_mon_div, 
+                                    total_pag_mon_act, 
+                                    total_pag_mon_div, 
+                                    estatus_anulado
+                                ) 
+                            VALUES (
+                                    NULL,
+                                    @id_aliado, 
+                                    @fecha_emision, 
+                                    @fecha_registro, 
+                                    @aliado_nombre, 
+                                    @aliado_codigo, 
+                                    @aliado_cirif, 
+                                    @recibo_numero, 
+                                    @cnt_serv_pag, 
+                                    @motivo, 
+                                    @monto_mon_act, 
+                                    @monto_mon_div, 
+                                    @tasa_factor, 
+                                    @aplica_ret, 
+                                    @tasa_ret, 
+                                    @retencion, 
+                                    @sustraendo, 
+                                    @monto_ret_mon_act, 
+                                    @monto_ret_mon_div, 
+                                    @total_pag_mon_act, 
+                                    @total_pag_mon_div, 
+                                    '0'
+                                )";
+                        var mov = ficha.movimiento;
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado",mov.idAliado);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision",mov.fechaEmision);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro",fechaSistema.Date);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@aliado_nombre",mov.nombreAliado);
+                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@aliado_codigo",mov.codigoAliado);
+                        var p05 = new MySql.Data.MySqlClient.MySqlParameter("@aliado_cirif",mov.ciRifAliado);
+                        var p06 = new MySql.Data.MySqlClient.MySqlParameter("@recibo_numero",numRecibo);
+                        var p07 = new MySql.Data.MySqlClient.MySqlParameter("@cnt_serv_pag",mov.cntServ);
+                        var p08 = new MySql.Data.MySqlClient.MySqlParameter("@motivo",mov.motivo);
+                        var p09 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mon_act",mov.montoMonAct);
+                        //
+                        var p10 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mon_div",mov.montoMonDiv);
+                        var p11 = new MySql.Data.MySqlClient.MySqlParameter("@tasa_factor",mov.tasaFactorCambio);
+                        var p12 = new MySql.Data.MySqlClient.MySqlParameter("@aplica_ret",mov.aplicaRet?"1":"0");
+                        var p13 = new MySql.Data.MySqlClient.MySqlParameter("@tasa_ret",mov.tasaRet);
+                        var p14 = new MySql.Data.MySqlClient.MySqlParameter("@retencion",mov.retencion);
+                        var p15 = new MySql.Data.MySqlClient.MySqlParameter("@sustraendo",mov.sustraendo);
+                        var p16 = new MySql.Data.MySqlClient.MySqlParameter("@monto_ret_mon_act",mov.montoRetMonAct);
+                        var p17 = new MySql.Data.MySqlClient.MySqlParameter("@monto_ret_mon_div",mov.montoRetMonDiv);
+                        var p18 = new MySql.Data.MySqlClient.MySqlParameter("@total_pag_mon_act",mov.totalPagMonAct);
+                        var p19 = new MySql.Data.MySqlClient.MySqlParameter("@total_pag_mon_div",mov.totalPagMonDiv);
+                        //
+                        var r2 = cnn.Database.ExecuteSqlCommand(sql,
+                            p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
+                            p10, p11, p12, p13, p14, p15, p16, p17, p18, p19);
+                        if (r2 == 0)
+                        {
+                            result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE PAGO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        sql = "SELECT LAST_INSERT_ID()";
+                        var idpago= cnn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                        //
+                        // INSERTO DETALLES SERVCIOS PAGADOS
+                        foreach (var det in ficha.movimiento.detalles) 
+                        {
+                            sql = @"INSERT INTO transp_aliado_pagoserv_det (
+                                        id, 
+                                        id_pagoserv, 
+                                        id_aliado, 
+                                        id_aliado_doc, 
+                                        id_aliado_serv, 
+                                        fecha_registro, 
+                                        monto_pago_mon_div, 
+                                        estatus_anulado
+                                    ) 
+                                    VALUES (
+                                        NULL,
+                                        @id_pagoserv, 
+                                        @id_aliado, 
+                                        @id_aliado_doc, 
+                                        @id_aliado_serv, 
+                                        @fecha_registro, 
+                                        @monto_pago_mon_div, 
+                                        '0'
+                                    )";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_pagoserv", idpago);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado", mov.idAliado);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado_doc", det.idAliadoDoc);
+                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado_serv", det.idAliadoDocServ);
+                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro", fechaSistema.Date);
+                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@monto_pago_mon_div", det.motnoDocSerMonDiv);
+                            var r3 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05);
+                            if (r3 == 0)
+                            {
+                                result.Mensaje = "ERROR AL REGISTRAR DETALLE DE PAGO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            //ACTUALIZAR SALDO ALIADO-DOCUMENTO
+                            sql = @"update transp_aliado_doc set 
+                                        acumulado_divisa=acumulado_divisa+@montoMonDiv
+                                    where id=@idAliadoDoc and 
+                                            estatus_anulado<>'1' and 
+                                            importe_divisa>=(acumulado_divisa+@montoMonDiv)";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idAliadoDoc", det.idAliadoDoc);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@montoMonDiv", det.motnoDocSerMonDiv);
+                            var r4 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                            if (r4 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR ALIADO-DOCUMENTO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            //ACTUALIZAR SALDO ALIADO-DOCUMENTO-SERVICIO
+                            sql = @"update transp_aliado_doc_servicio set 
+                                        monto_acumulado_div=monto_acumulado_div+@montoMonDiv
+                                    where id=@idAliadoDocServ and 
+                                            estatus_anulado<>'1' and 
+                                            importe_serv_div>=(monto_acumulado_div+@montoMonDiv)";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idAliadoDocServ", det.idAliadoDocServ);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@montoMonDiv", det.motnoDocSerMonDiv);
+                            var r5 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                            if (r5 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR ALIADO-DOCUMENTO-SERVICIO";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                        }
+                        //
+                        //INSERTAR CAJAS USADA 
+                        foreach (var rg in mov.cajas)
+                        {
+                            //INSERTAR MOV-CAJA
+                            sql = @"INSERT INTO transp_caja_mov (
+                                        id, 
+                                        id_caja, 
+                                        fecha_reg, 
+                                        concepto_mov, 
+                                        tipo_mov, 
+                                        monto_mov_mon_act,
+                                        monto_mov_mon_div, 
+                                        factor_cambio_mov, 
+                                        estatus_anulado_mov,
+                                        mov_fue_divisa,
+                                        signo)
+                                    VALUES (
+                                        NULL, 
+                                        @id_caja, 
+                                        @fecha_reg, 
+                                        @concepto_mov,
+                                        'E', 
+                                        @monto_mov_mon_act,
+                                        @monto_mov_mon_div, 
+                                        @factor_cambio_mov, 
+                                        '0',
+                                        @mov_fue_divisa,
+                                        -1)";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", "PAGO POR SERVCICIO PRESTADO SEGUN RECIBO NUMERO: "+numRecibo);
+                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", rg.montoUsadoMonAct);
+                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", rg.montoUsadoMonDiv);
+                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", mov.tasaFactorCambio);
+                            p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", rg.esDivisa ? "1" : "0");
+                            var r6 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
+                            if (r6 == 0)
+                            {
+                                result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE CAJA";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            sql = "SELECT LAST_INSERT_ID()";
+                            var idMov = cnn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                            //
+                            //INSERTAR CAJA USADA CON EL MOVIMIENTO GENERADO
+                            sql = @"INSERT INTO transp_aliado_pagoserv_caj (
+                                        id, 
+                                        id_pagoserv, 
+                                        id_aliado, 
+                                        id_caja, 
+                                        id_caja_mov, 
+                                        desc_caja, 
+                                        monto, 
+                                        es_divisa, 
+                                        fecha_registro, 
+                                        estatus_anulado
+                                    ) 
+                                    VALUES (
+                                        NULL,
+                                        @id_pagoserv, 
+                                        @id_aliado, 
+                                        @id_caja, 
+                                        @id_caja_mov, 
+                                        @desc_caja, 
+                                        @monto, 
+                                        @es_divisa, 
+                                        @fecha_registro, 
+                                        '0'
+                                    )";
+                            var cjMov = rg;
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_pagoserv", idpago);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado", mov.idAliado);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
+                            p03 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja_mov", idMov);
+                            p04 = new MySql.Data.MySqlClient.MySqlParameter("@desc_caja", rg.descCaja);
+                            p05 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.montoUsado);
+                            p06 = new MySql.Data.MySqlClient.MySqlParameter("@es_divisa", rg.esDivisa ? "1" : "0");
+                            p07 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro", fechaSistema.Date);
+                            var r7 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07);
+                            if (r7 == 0)
+                            {
+                                result.Mensaje = "ERROR AL INSERTAR ALIADO-PAGOSERV-CAJ ";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            // ACTUALIZAR SALDO CAJAS 
+                            sql = @"update transp_caja set 
+                                        monto_egreso=monto_egreso+@monto
+                                        where id=@idCaja";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCaja", rg.idCaja);
+                            p01 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.montoUsado);
+                            var r8 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                            if (r8 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR SALDO CAJA";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                        }
+                        //
+                        // ACTUALIZAR ALIADO ANTICPOS
+                        sql = @"update transp_aliado set
+                                    monto_anticipos_mon_divisa= monto_anticipos_mon_divisa-@montoAnticipo,
+                                    monto_anticipos_ret_mon_divisa=monto_anticipos_ret_mon_divisa-@montoRetAnticipo
+                                where id=@idAliado";
+                        p01 = new MySql.Data.MySqlClient.MySqlParameter("@idAliado", ficha.movimiento.idAliado );
+                        p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoAnticipo", ficha.MontoPorAnticipoUsado);
+                        p03 = new MySql.Data.MySqlClient.MySqlParameter("@montoRetAnticipo", ficha.MontoPorRetAnticipoUsado);
+                        var r9 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03);
+                        if (r9 == 0)
+                        {
+                            result.Mensaje = "ERROR AL ACTUALIZAR MONTO ANTICIPO ALIADO";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
             {

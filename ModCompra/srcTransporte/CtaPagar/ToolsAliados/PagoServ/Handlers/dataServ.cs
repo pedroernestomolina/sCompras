@@ -19,6 +19,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         public string servicio { get; set; }
         public decimal pendiente { get; set; }
         public bool isSelected { get; set; }
+        public OOB.LibCompra.Transporte.Aliado.PagoServ.ServPrestado.Ficha Ficha { get { return _ficha; } }
 
 
         public dataServ(OOB.LibCompra.Transporte.Aliado.PagoServ.ServPrestado.Ficha ficha)

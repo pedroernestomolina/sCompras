@@ -137,6 +137,10 @@
     <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\Anticipo\Agregar\Movimiento.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\Entidad\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\PagoServ\AgregarPago\Caja.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\PagoServ\AgregarPago\Detalle.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\PagoServ\AgregarPago\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Aliado\PagoServ\AgregarPago\Movimiento.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\Pendiente\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Lista\Ficha.cs" />

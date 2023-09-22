@@ -15,6 +15,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Vistas
         decimal MontoCajaPago { get; }
         BindingSource Get_CajaSource { get; }
         IEnumerable<IdataCaja> Get_Lista { get; }
+        IEnumerable<IdataCaja> Get_CajasUsadas { get; }
 
         void Inicializa();
         void CargarData();

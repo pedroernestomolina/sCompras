@@ -45,6 +45,10 @@
     <Compile Include="Aliado\Anticipo\Agregar\Ficha.cs" />
     <Compile Include="Aliado\Anticipo\Agregar\Movimiento.cs" />
     <Compile Include="Aliado\Entidad\Ficha.cs" />
+    <Compile Include="Aliado\PagoServ\AgregarPago\Caja.cs" />
+    <Compile Include="Aliado\PagoServ\AgregarPago\Detalle.cs" />
+    <Compile Include="Aliado\PagoServ\AgregarPago\Ficha.cs" />
+    <Compile Include="Aliado\PagoServ\AgregarPago\Movimiento.cs" />
     <Compile Include="Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="Aliado\Pendiente\Ficha.cs" />
     <Compile Include="Caja\Lista\Ficha.cs" />

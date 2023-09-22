@@ -174,7 +174,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
                             fechaMov = _data.Get_FechaAnticipo,
                             montoMovMonAct = cj.esDivisa ? cj.montoAbonar * _data.Get_TasaFactorCambio : cj.montoAbonar,
                             montoMovMonDiv = cj.esDivisa ? cj.montoAbonar : cj.montoAbonar / _data.Get_TasaFactorCambio,
-                            tipoMov = "E",
                             movFueDivisa = cj.esDivisa,
                         }
                     };

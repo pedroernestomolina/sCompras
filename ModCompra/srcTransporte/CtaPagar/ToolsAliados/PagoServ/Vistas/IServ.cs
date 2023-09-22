@@ -15,6 +15,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
         decimal Get_MontoSeleccionadoPagar { get; }
         BindingSource Get_Source { get; }
         string Get_DescripcionServicioActual { get; }
+        int Get_CntItemSeleccionados { get; }
+        IEnumerable<object> Get_ListaItemsSeleccionados { get; }
 
         void Inicializa();
         void CargarData();

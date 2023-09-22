@@ -11,7 +11,6 @@ namespace DtoLibTransporte.Aliado.Anticipo.Agregar
     {
         public DateTime fechaMov { get; set; }
         public string descMov { get; set; }
-        public string tipoMov { get; set; }
         public decimal montoMovMonAct{ get; set; }
         public decimal montoMovMonDiv { get; set; }
         public decimal factorCambio { get; set; }

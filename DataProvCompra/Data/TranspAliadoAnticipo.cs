@@ -54,7 +54,6 @@ namespace DataProvCompra.Data
                         fechaMov = s.movimientoCaja.fechaMov,
                         montoMovMonAct = s.movimientoCaja.montoMovMonAct,
                         montoMovMonDiv = s.movimientoCaja.montoMovMonDiv,
-                        tipoMov = s.movimientoCaja.tipoMov,
                         movFueDivisa = s.movimientoCaja.movFueDivisa,
                     },
                 };

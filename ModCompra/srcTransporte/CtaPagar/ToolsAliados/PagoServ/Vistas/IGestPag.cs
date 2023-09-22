@@ -29,7 +29,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
         BindingSource Get_CajaSource { get; }
         decimal CajaGet_MontoPendMonDiv { get; }
         decimal CajaGet_MontoPendMonAct { get; }
-
+        OOB.LibCompra.Transporte.Aliado.Entidad.Ficha Get_Aliado { get; }
+        decimal Get_TotalRetMonAct { get; }
+        decimal Get_TotalRetMonDiv { get; }
+        IEnumerable<object> Get_CajasUsadas { get; }
 
         void Inicializa();
         void CargarData();

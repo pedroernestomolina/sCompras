@@ -66,6 +66,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
             {
                 if (Helpers.Msg.Procesar())
                 {
+                    guardarPago();
                 }
             }
         }
@@ -94,7 +95,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
                 //
                 _data.CargarData();
                 var _lst = new List<Anticipos.Agregar.Vistas.IdataCaja>();
-                if ((r01.Entidad.AnticiposDiv - r01.Entidad.AnticipoRetDiv) > 0m) 
+                if ((r01.Entidad.montoAnticiposDiv - r01.Entidad.AnticipoRetDiv) > 0m) 
                 {
                     var _caja = new OOB.LibCompra.Transporte.Caja.Lista.Ficha()
                     {
@@ -137,6 +138,92 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
+            }
+        }
+        private void guardarPago()
+        {
+            try
+            {
+                var ficha = new OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Ficha();
+                var mov = new OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Movimiento()
+                {
+                    aplicaRet = _data.GestPago.Get_AplicaRet,
+                    ciRifAliado = _data.GestPago.Get_Aliado.ciRif,
+                    cntServ = _data.Servicios.Get_CntItemSeleccionados,
+                    codigoAliado = _data.GestPago.Get_Aliado.codigo,
+                    fechaEmision = _data.GestPago.Get_FechaPag,
+                    idAliado = _data.GestPago.Get_Aliado.id,
+                    montoMonAct = _data.GestPago.Get_MontoPagMonAct,
+                    montoMonDiv = _data.GestPago.Get_MontoPag,
+                    montoRetMonAct = _data.GestPago.Get_TotalRetMonAct,
+                    montoRetMonDiv = _data.GestPago.Get_TotalRetMonDiv,
+                    motivo = _data.GestPago.Get_Motivo,
+                    nombreAliado = _data.GestPago.Get_Aliado.nombreRazonSocial,
+                    retencion = (_data.GestPago.Get_MontoRetencion - _data.GestPago.Get_MontoSustraendo),
+                    sustraendo = _data.GestPago.Get_MontoSustraendo,
+                    tasaFactorCambio = _data.GestPago.Get_TasaFactorCambio,
+                    tasaRet = _data.GestPago.Get_TasaRetencion,
+                    totalPagMonAct = _data.GestPago.Get_MontoAbonoMonAct,
+                    totalPagMonDiv = _data.GestPago.Get_MontoAbonoMonDiv
+                };
+                var det = new List<OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Detalle>();
+                foreach (var rg in _data.Servicios.Get_ListaItemsSeleccionados) 
+                {
+                    var it = (dataServ)rg;
+                    var nr = new OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Detalle()
+                    {
+                        idAliadoDoc = it.Ficha.idAliadoDoc,
+                        idAliadoDocServ = it.Ficha.idAliadoServ,
+                        motnoDocSerMonDiv = it.pendiente,
+                    };
+                    det.Add(nr);
+                }
+                var caj = new List<OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Caja>();
+                foreach (var rg in _data.GestPago.Get_CajasUsadas) 
+                {
+                    var it= (Anticipos.Agregar.Handler.dataCaja)rg;
+                    var nr = new OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Caja()
+                    {
+                        descCaja = it.descripcion,
+                        esDivisa = it.esDivisa,
+                        idCaja = it.Get_Ficha.id,
+                        montoUsado = it.montoAbonar,
+                        montoUsadoMonAct = 
+                            !it.esDivisa ? 
+                            it.montoAbonar :
+                            it.montoAbonar * _data.GestPago.Get_TasaFactorCambio,
+                        montoUsadoMonDiv = 
+                            it.esDivisa ? 
+                            it.montoAbonar : 
+                            (_data.GestPago.Get_TasaFactorCambio > 0m ? it.montoAbonar / _data.GestPago.Get_TasaFactorCambio : 0m),
+                    };
+                    if (it.Get_Ficha.id > 0)  //CAJAS REALES
+                    {
+                        caj.Add(nr);
+                    }
+                    else //ANTICIPO, RETENCIONES POR ANTICIPO
+                    {
+                        if (it.Get_Ficha.id == -1) //ANTICPO
+                        {
+                            ficha.MontoPorAnticipoUsado = it.montoAbonar;
+                        }
+                        if (it.Get_Ficha.id == -2) //RETENCIONES POR ANTICIPO
+                        {
+                            ficha.MontoPorRetAnticipoUsado = it.montoAbonar;
+                        }
+                    }
+                }
+                //
+                mov.detalles=det;
+                mov.cajas = caj;
+                ficha.movimiento=mov;
+                var r01 = Sistema.MyData.Transporte_Aliado_PagoServ_AgregarPago(ficha);
+                _procesarIsOK = true;
+                Helpers.Msg.AgregarOk();
+            }
+            catch (Exception e)
+            {
+               Helpers.Msg.Error(e.Message);
             }
         }
     }

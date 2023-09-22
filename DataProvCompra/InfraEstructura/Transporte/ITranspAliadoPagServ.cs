@@ -11,5 +11,7 @@ namespace DataProvCompra.InfraEstructura.Transporte
     {
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.PagoServ.ServPrestado.Ficha>
             Transporte_Aliado_PagoServ_ServPrestado_GetListaBy(int idAliado);
+        OOB.Resultado
+            Transporte_Aliado_PagoServ_AgregarPago(OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Ficha ficha);
     }
 }

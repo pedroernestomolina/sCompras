@@ -25,6 +25,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Vistas
         decimal Get_MontoAbonoMonDiv { get; }
         DateTime Get_FechaServidor { get; }
         decimal Get_TotalRetencionMonDiv { get; }
+        decimal Get_TotalRetencionMonAct { get; }
 
         
         void Inicializa();

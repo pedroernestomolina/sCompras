@@ -21,6 +21,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         public BindingSource Get_Source { get { return _bs; } }
         public decimal Get_MontoSeleccionadoPagar { get { return _bl.Where(w => w.isSelected).Sum(s => s.pendiente); } }
         public string Get_DescripcionServicioActual { get { return _bs.Current == null ? "" : ((Vistas.IdataServ)_bs.Current).servicio; } }
+        public int Get_CntItemSeleccionados { get { return _bl.Where(w => w.isSelected).Count(); } }
+        public IEnumerable<object> Get_ListaItemsSeleccionados { get { return _bl.Where(w => w.isSelected).ToList(); } }
 
 
         public hndServ()
