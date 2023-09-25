@@ -17,5 +17,10 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Reportes_Compras_Planilla_RetIva(string idDocCompra);
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha>
             Transporte_Reportes_Compras_Planilla_RetIslr(string idDocCompra);
+
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha >
+            Transporte_Reportes_Aliado_Anticipos_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Filtro filtro);
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha>
+            Transporte_Reportes_Aliado_PagoServ_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro filtro);
     }
 }

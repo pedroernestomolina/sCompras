@@ -189,5 +189,97 @@ namespace DataProvCompra.Data
             };
             return result;
         }
+
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha> 
+            Transporte_Reportes_Aliado_Anticipos_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro()
+            {
+            };
+            var r01 = MyData.Transporte_Reportes_Aliado_Anticipos_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha()
+                        {
+                            aplicaRet = s.aplicaRet,
+                            ciRifAliado = s.ciRifAliado,
+                            estatusAnulado = s.estatusAnulado,
+                            factorCambio = s.factorCambio,
+                            fecha = s.fecha,
+                            idAliado = s.idAliado,
+                            idMov = s.idMov,
+                            montoPagoDiv = s.montoPagoDiv,
+                            montoAntSolicitadoDiv = s.montoAntSolicitadoDiv,
+                            montoRetMonAct = s.montoRetMonAct,
+                            motivo = s.motivo,
+                            nombreAliado = s.nombreAliado,
+                            numRecibo = s.numRecibo,
+                            sustraendoMonAct = s.sustraendoMonAct,
+                            tasaRet = s.tasaRet,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha> 
+            Transporte_Reportes_Aliado_PagoServ_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Aliado.PagoServ.General.Filtro()
+            {
+            };
+            var r01 = MyData.Transporte_Reportes_Aliado_PagoServ_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha()
+                        {
+                            aplicaRet = s.aplicaRet,
+                            cirifAliado = s.cirifAliado,
+                            cntServPag = s.cntServPag,
+                            codigoAliado = s.codigoAliado,
+                            estatusAnulado = s.estatusAnulado,
+                            fecha = s.fecha,
+                            idAliado = s.idAliado,
+                            idMov = s.idMov,
+                            montoPagoSelMonDiv = s.montoPagoSelMonDiv,
+                            montoRetMonAct = s.montoRetMonAct,
+                            motivo = s.motivo,
+                            nombreAliado = s.nombreAliado,
+                            numRecibo = s.numRecibo,
+                            retencion = s.retencion,
+                            sustraendo = s.sustraendo,
+                            tasaFactor = s.tasaFactor,
+                            tasaRet = s.tasaRet,
+                            totalPagoMonDiv = s.totalPagoMonDiv,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
     }
 }

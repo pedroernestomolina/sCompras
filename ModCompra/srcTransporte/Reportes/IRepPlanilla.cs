@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Reportes.Documentos
+namespace ModCompra.srcTransporte.Reportes
 {
-    public interface IRep
+    public interface IRepPlanilla: IRep
     {
-        void Generar();
+        void setIdDoc(string idDoc);
     }
 }

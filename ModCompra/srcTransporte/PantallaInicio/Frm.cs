@@ -228,6 +228,18 @@ namespace ModCompra.srcTransporte.PantallaInicio
             PlanillaRetIslr();
         }
 
+
+        private void MENU_REPORTES_CXP_ALIADO_ANTICIPO_Click(object sender, EventArgs e)
+        {
+            ReportesAliadoAnticipo();
+        }
+
+        private void MENU_REPORTES_CXP_ALIDOS_PAGO_SERV_Click(object sender, EventArgs e)
+        {
+            ReportesAliadoPagoServ();
+        }
+
+
         private void ReporteGeneralDoc()
         {
             _controlador.ReporteGeneralDocTransp();
@@ -249,5 +261,13 @@ namespace ModCompra.srcTransporte.PantallaInicio
             _controlador.PlanillaRetIslr();
         }
 
+        private void ReportesAliadoAnticipo()
+        {
+            _controlador.ReportesAliadoAnticipo();
+        }
+        private void ReportesAliadoPagoServ()
+        {
+            _controlador.ReportesAliadoPagoServ();
+        }
     }
 }

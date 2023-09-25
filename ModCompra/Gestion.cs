@@ -289,14 +289,29 @@ namespace ModCompra
         }
         public void PlanillaRetIva()
         {
-            srcTransporte.Reportes.Documentos.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
             _rep.setIdDoc("0000000038");
             _rep.Generar();
         }
         public void PlanillaRetIslr()
         {
-            srcTransporte.Reportes.Documentos.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
             _rep.setIdDoc("0000000038");
+            _rep.Generar();
+        }
+
+        public void ReportesAliadoAnticipo()
+        {
+            srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.CXP.Aliado.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.Anticipo.Imp();
+            _rep.setFiltros(_data);
+            _rep.Generar();
+        }
+        public void ReportesAliadoPagoServ()
+        {
+            srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.CXP.Aliado.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.PagoServ.Imp();
+            _rep.setFiltros(_data);
             _rep.Generar();
         }
     }

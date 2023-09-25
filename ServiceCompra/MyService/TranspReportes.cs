@@ -30,5 +30,16 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Compras_Planilla_RetIslr(idDocCompra);
         }
+
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha> 
+            Transporte_Reportes_Aliado_Anticipos_GetLista(DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Aliado_Anticipos_GetLista(filtro);
+        }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha> 
+            Transporte_Reportes_Aliado_PagoServ_GetLista(DtoLibTransporte.Reportes.Aliado.PagoServ.General.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Aliado_PagoServ_GetLista(filtro);
+        }
     }
 }

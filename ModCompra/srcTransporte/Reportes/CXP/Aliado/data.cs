@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Reportes.Documentos
+namespace ModCompra.srcTransporte.Reportes.CXP.Aliado
 {
-    public interface IRepPlanilla: IRep
+    public class data: Idata
     {
-        void setIdDoc(string idDoc);
+        public data()
+        {
+        }
     }
 }

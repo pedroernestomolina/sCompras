@@ -166,6 +166,10 @@
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Documento.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Item.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\General\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\General\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\baseFiltro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Filtro.cs" />

@@ -216,5 +216,85 @@ namespace ProvLibCompra
             }
             return result;
         }
+
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha> 
+            Transporte_Reportes_Aliado_Anticipos_GetLista(DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        id as idMov,
+                                        id_aliado as idAliado,
+                                        nombre_aliado as nombreAliado,
+                                        cirif_aliado as cirifAliado,
+                                        fecha_registro as fecha,
+                                        recibo_numero as numRecibo,
+                                        motivo as motivo,
+                                        monto_neto_mon_div as montoAntSolicitadoDiv,
+                                        aplica_ret as aplicaRet,
+                                        tasa_ret as tasaRet,
+                                        sustraendo_ret as sustraendoMonAct,
+                                        monto_retencion as montoRetMonAct,
+                                        monto_pag_mon_div as montoPagoDiv,
+                                        estatus_anulado as estatusAnulado,
+                                        tasa_factor as factorCambio
+                                    FROM transp_aliado_anticipo";
+                    var _sql_2 = @" WHERE 1=1 ";
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha>(_sql).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>
+            Transporte_Reportes_Aliado_PagoServ_GetLista(DtoLibTransporte.Reportes.Aliado.PagoServ.General.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        id as idMov,
+                                        id_aliado as idAliado,
+                                        aliado_nombre as nombreAliado,
+                                        aliado_codigo as codigoAliado,
+                                        aliado_cirif as cirifAliado,
+                                        recibo_numero as numRecibo,
+                                        fecha_registro as fecha,
+                                        motivo as motivo,
+                                        tasa_factor as tasaFactor,
+                                        monto_mon_div as montoPagoSelMonDiv,
+                                        aplica_ret as aplicaRet,
+                                        tasa_ret as tasaRet,
+                                        retencion as retencion,
+                                        sustraendo as sustraendo,
+                                        monto_ret_mon_act as montoRetMonAct,
+                                        total_pag_mon_div as totalPagoMonDiv,
+                                        estatus_anulado as estatusAnulado,
+                                        cnt_serv_pag as cntServPag
+                                    FROM transp_aliado_pagoserv";
+                    var _sql_2 = @" WHERE 1=1 ";
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>(_sql).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }
