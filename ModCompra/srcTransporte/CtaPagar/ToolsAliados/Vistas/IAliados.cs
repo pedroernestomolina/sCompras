@@ -9,5 +9,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
 {
     public interface IAliados: Utils.Tools.ITools
     {
+        void AdmDocAnticipos();
+        void AdmDocPagos();
     }
 }

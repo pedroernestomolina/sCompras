@@ -64,6 +64,8 @@ namespace ProvLibCompra
                             sum(aliDoc.acumulado_divisa) as acumuladoDiv,
                             aliado.monto_anticipos_mon_divisa montoAnticipoDiv,
                             aliado.monto_anticipos_anulado_mon_divisa montoAnticipoAnuladoDiv,
+                            aliado.monto_anticipos_ret_mon_divisa as montoAnticipoRetDiv,
+                            aliado.monto_anticipos_ret_anulado_mon_div as montoAnticipoRetAnuladoDiv,
                             count(*) as cntDoc
                         from transp_aliado as aliado
                         join transp_aliado_doc as aliDoc on aliDoc.id_aliado=aliado.id and aliDoc.estatus_anulado<>'1'
@@ -100,7 +102,9 @@ namespace ProvLibCompra
                             sum(aliDoc.importe_divisa) as importeDiv,
                             sum(aliDoc.acumulado_divisa) as acumuladoDiv,
                             aliado.monto_anticipos_mon_divisa montoAnticipoDiv,
+                            aliado.monto_anticipos_ret_mon_divisa montoAnticipoRetDiv,
                             aliado.monto_anticipos_anulado_mon_divisa montoAnticipoAnuladoDiv,
+                            aliado.monto_anticipos_ret_anulado_mon_div montoAnticipoRetAnuladoDiv,
                             count(*) as cntDoc
                         from transp_aliado as aliado
                         join transp_aliado_doc as aliDoc on aliDoc.id_aliado=aliado.id and aliDoc.estatus_anulado<>'1'

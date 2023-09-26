@@ -22,5 +22,10 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Reportes_Aliado_Anticipos_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Filtro filtro);
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha>
             Transporte_Reportes_Aliado_PagoServ_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro filtro);
+
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
+            Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov);
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Ficha>
+            Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov);
     }
 }

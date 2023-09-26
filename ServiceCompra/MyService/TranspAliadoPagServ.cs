@@ -20,5 +20,15 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Aliado_PagoServ_AgregarPago(ficha);
         }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.PagoServ.AnularPago.Ficha> 
+            Transporte_Aliado_PagoServ_AnularPago_ObtenerData(int idMovPago)
+        {
+            return ServiceProv.Transporte_Aliado_PagoServ_AnularPago_ObtenerData(idMovPago);
+        }
+        public DtoLib.Resultado 
+            Transporte_Aliado_PagoServ_AnularPago(DtoLibTransporte.Aliado.PagoServ.AnularPago.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Aliado_PagoServ_AnularPago(ficha);
+        }
     }
 }

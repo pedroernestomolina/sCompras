@@ -135,53 +135,19 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         {
             AgregarAnticipo();
         }
-        private void BT_SERV_Click(object sender, EventArgs e)
+        private void BT_AGRAGAR_PAGO_Click(object sender, EventArgs e)
         {
-            ServPrestado();
+            AgregarPagoServ();
+        }
+        private void BT_ADM_DOC_ANTICIPO_Click(object sender, EventArgs e)
+        {
+            AdmDocAnticipos();
+        }
+        private void BT_ADM_DOC_PAGO_Click(object sender, EventArgs e)
+        {
+            AdmDocPagos();
         }
 
-
-        private void BT_VER_DETALLES_CTA_Click(object sender, EventArgs e)
-        {
-            DocDetallesPend();
-        }
-        private void DocDetallesPend()
-        {
-            //_controlador.DocDetallesPend();
-        }
-        private void BT_REPORTE_CTAS_Click(object sender, EventArgs e)
-        {
-            ListadoCtasPend();
-        }
-        private void ListadoCtasPend()
-        {
-            //_controlador.ListadoCtasPend();
-        }
-        private void BT_AGREGAR_NCR_ADM_Click(object sender, EventArgs e)
-        {
-            AgregarNCrAdm();
-        }
-        private void AgregarNCrAdm()
-        {
-            //_controlador.AgregarNCrAdm();
-            //if (_controlador.AgregarNCrAdmIsOk)
-            //{
-            //    ActualizarDataPanel();
-            //}
-        }
-
-        private void BT_AGREGAR_NDB_ADM_Click(object sender, EventArgs e)
-        {
-            AgregarNDbAdm();
-        }
-        private void AgregarNDbAdm()
-        {
-            //_controlador.AgregarNDbAdm();
-            //if (_controlador.AgregarNDbAdmIsOk)
-            //{
-            //    ActualizarDataPanel();
-            //}
-        }
 
         private void BuscarCtasPendientes()
         {
@@ -193,9 +159,18 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             _controlador.data.AgregarAnticipo();
             ActualizarDataPanel_Totales();
         }
-        private void ServPrestado()
+        private void AgregarPagoServ()
         {
             _controlador.data.ServPrestado();
+            BuscarCtasPendientes();
+        }
+        private void AdmDocAnticipos()
+        {
+            _controlador.AdmDocAnticipos();
+        }
+        private void AdmDocPagos()
+        {
+            _controlador.AdmDocPagos();
         }
 
 
@@ -219,8 +194,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         {
             this.Close();
         }
-
-
         private void ActualizarDataPanel_Totales()
         {
             L_MONTO_PENDIENTE.Text = _controlador.data.CtasPendientes.Get_MontoPendiente.ToString("n2",_cult);

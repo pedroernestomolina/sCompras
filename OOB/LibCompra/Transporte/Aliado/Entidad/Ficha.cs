@@ -22,5 +22,6 @@ namespace OOB.LibCompra.Transporte.Aliado.Entidad
         public decimal AnticiposDiv { get { return montoAnticiposDiv - montoAnticiposAnuladoDiv; } }
         public decimal AnticipoRetDiv { get { return montoAnticipoRetDiv - montoAnticipoRetAnuladoDiv; } }
         public string Info { get { return ciRif.Trim() + Environment.NewLine + nombreRazonSocial; } }
+        public decimal MontoTotalPorAnticipo { get { return AnticiposDiv + AnticipoRetDiv; } }
     }
 }

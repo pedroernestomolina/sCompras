@@ -41,5 +41,16 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Aliado_PagoServ_GetLista(filtro);
         }
+
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha> 
+            Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
+        {
+            return ServiceProv.Transporte_Reportes_Aliado_Anticipos_Planilla(idMov);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha> 
+            Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov)
+        {
+            return ServiceProv.Transporte_Reportes_Aliado_PagoServ_Planilla(idMov);
+        }
     }
 }

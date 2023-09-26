@@ -127,7 +127,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
             var _pgTotal = (_pgMonDiv * _factorCambio) + _pgMonAct;
             _pgTotal = Math.Round(_pgTotal, 2, MidpointRounding.AwayFromZero);
             _restPend = (_montoPendDiv * _factorCambio) - _pgTotal;
-            _restPend = Math.Round(_restPend);
+            _restPend = Math.Round(_restPend,2, MidpointRounding.AwayFromZero);
             _montoPendMonAct = _restPend; 
             _montoPendMonDiv = 0m;
             if (_factorCambio > 0m) 

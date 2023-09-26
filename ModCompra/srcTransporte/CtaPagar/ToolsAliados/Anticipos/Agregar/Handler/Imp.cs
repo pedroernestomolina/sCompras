@@ -43,11 +43,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
         {
             if (cargarData()) 
             {
-                if (frm == null)
-                {
-                    frm = new Vistas.Frm();
-                    frm.setControlador(this);
-                }
+                frm = new Vistas.Frm();
+                frm.setControlador(this);
                 frm.ShowDialog();
             }
         }
@@ -58,8 +55,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
             _procesarIsOK = false;
             if (_data.VerificarData()) 
             {
-                var _monto= Math.Round(_data.Get_MontoAbonoMonAct, 2, MidpointRounding.AwayFromZero);
-                if (caja.MontoCajaPago == _monto)
+                var _monto = _data.Get_MontoAbonoMonAct;
+                if ((caja.MontoCajaPago-_monto)<1m)
                 {
                     if (Helpers.Msg.Procesar())
                     {
@@ -155,7 +152,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
                 fichaOOB.aliadoAbonar = new OOB.LibCompra.Transporte.Aliado.Anticipo.Agregar.AliadoAbonar()
                 {
                     idAliado = _data.Get_Aliado.id,
-                    montoAbonar = _data.Get_MontoAnticipoMonDiv,
+                    montoAbonar = (_data.Get_MontoAnticipoMonDiv - _data.Get_TotalRetencionMonDiv),
                     montoRetAbonar = _data.Get_TotalRetencionMonDiv,
                 };
                 var _lstCaja = new List<OOB.LibCompra.Transporte.Aliado.Anticipo.Agregar.AliadoCaja>();

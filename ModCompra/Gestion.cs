@@ -314,5 +314,40 @@ namespace ModCompra
             _rep.setFiltros(_data);
             _rep.Generar();
         }
+
+        public void AnularPago()
+        {
+            try
+            {
+                var r01 = Sistema.MyData.Transporte_Aliado_PagoServ_AnularPago(8);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+        }
+        public void AnularAnticipo()
+        {
+            try
+            {
+                var r01 = Sistema.MyData.Transporte_Aliado_Anticipo_Anular(39);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+        }
+        public void PlanillaAnticipo()
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Planillas.Anticipo.Imp();
+            _rep.setIdDoc("0000000038");
+            _rep.Generar();
+        }
+        public void PlanillaPagoServ()
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Planillas.PagoServ.Imp();
+            _rep.setIdDoc("0000000008");
+            _rep.Generar();
+        }
     }
 }

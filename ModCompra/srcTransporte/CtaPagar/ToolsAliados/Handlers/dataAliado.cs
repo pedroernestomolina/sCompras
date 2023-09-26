@@ -24,16 +24,20 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         public dataAliado(OOB.LibCompra.Transporte.Aliado.Pendiente.Ficha ficha)
         {
             this._ficha = ficha;
+            //
+            var _montoAnticipo = ficha.montoAnticipoDiv + ficha.montoAnticipoRetDiv;
+            var _montoAnticipoAnu = ficha.montoAnticipoAnuladoDiv + ficha.montoAnticipoRetAnuladoDiv;
+            var _anticipos = (_montoAnticipo - _montoAnticipoAnu);
+            //
             var _pendiente= (ficha.importeDiv-ficha.acumuladoDiv);
-            var _anticipos = (ficha.montoAnticipoDiv - ficha.montoAnticipoAnuladoDiv);
-            var _resta= _pendiente-anticipos;
+            var _resta= _pendiente-_anticipos;
             //
             Id = ficha.aliadoId;
             ciRif = ficha.aliadoCiRif;
             nombreRazonSocial = ficha.aliadoNombre;
             pendiente=_pendiente;
             anticipos=_anticipos;
-            montoResta=_resta-_anticipos;
+            montoResta=_resta;
             cntDocPend = _ficha.cntDoc;
         }
     }

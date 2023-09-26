@@ -205,6 +205,23 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.ToolAliados();
         }
+        private void anularPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controlador.AnularPago();
+        }
+        private void anularAnticipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controlador.AnularAnticipo();
+        }
+        private void planillaAnticipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controlador.PlanillaAnticipo();
+        }
+        private void planillaPagoServToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controlador.PlanillaPagoServ();
+        }
+
 
         //REPORTES
         private void MENU_REPORTES_DOCUMENTOS_GENERAL_Click(object sender, EventArgs e)
@@ -233,7 +250,6 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesAliadoAnticipo();
         }
-
         private void MENU_REPORTES_CXP_ALIDOS_PAGO_SERV_Click(object sender, EventArgs e)
         {
             ReportesAliadoPagoServ();

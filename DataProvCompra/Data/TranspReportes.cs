@@ -281,5 +281,84 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
+
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
+            Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
+        {
+            var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha>();
+            var r01 = MyData.Transporte_Reportes_Aliado_Anticipos_Planilla(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s= r01.Entidad;
+            var nr = new OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha()
+            {
+                aplicaRet = s.aplicaRet,
+                ciRifAliado = s.ciRifAliado,
+                fechaEmision = s.fechaEmision,
+                fechaRegistro = s.fechaRegistro,
+                montoPagado = s.montoPagado,
+                montoRet = s.montoRet,
+                montoSolicitado = s.montoSolicitado,
+                motivo = s.motivo,
+                nombreAliado = s.nombreAliado,
+                numRecibo = s.numRecibo,
+                sustraendo = s.sustraendo,
+                tasaFactor = s.tasaFactor,
+                tasaRet = s.tasaRet,
+            };
+            result.Entidad = nr;
+            return result;
+        }
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Ficha> 
+            Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov)
+        {
+            var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Ficha>();
+            var r01 = MyData.Transporte_Reportes_Aliado_PagoServ_Planilla(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s = r01.Entidad;
+            var nr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Ficha()
+            {
+                aplicaRet = s.aplicaRet,
+                ciRifAliado = s.ciRifAliado,
+                cntServ = s.cntServ,
+                fechaEmision = s.fechaEmision,
+                fechaRegistro = s.fechaRegistro,
+                montoAPagar = s.montoAPagar,
+                montoRetMonAct = s.montoRetMonAct,
+                montoRetMonDiv = s.montoRetMonDiv,
+                motivo = s.motivo,
+                nombreAliado = s.nombreAliado,
+                numRecibo = s.numRecibo,
+                retencion = s.retencion,
+                sustraendo = s.sustraendo,
+                tasaFactor = s.tasaFactor,
+                tasaRet = s.tasaRet,
+                totalPago = s.totalPago,
+                serv = s.serv.Select(ss => 
+                {
+                    var xr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Serv()
+                    {
+                        cliCiRif = ss.cliCiRif,
+                        cliNombre = ss.cliNombre,
+                        codServ = ss.codServ,
+                        descServ = ss.descServ,
+                        detServ = ss.detServ,
+                        docCodigo = ss.docCodigo,
+                        docFecha = ss.docFecha,
+                        docNombre = ss.docNombre,
+                        docNumero = ss.docNumero,
+                        montoPago = ss.montoPago,
+                    };
+                    return xr;
+                }).ToList(),
+            };
+            result.Entidad = nr;
+            return result;
+        }
     }
 }

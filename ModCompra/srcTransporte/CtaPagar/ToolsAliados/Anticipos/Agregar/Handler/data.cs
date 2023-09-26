@@ -50,7 +50,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
                 return rt; 
             } 
         }
-        public decimal Get_AliadoAnticipos { get { return _aliado != null ? _aliado.AnticiposDiv : 0m; } }
+        public decimal Get_AliadoAnticipos { get { return _aliado != null ? _aliado.MontoTotalPorAnticipo : 0m; } }
         public string Get_AliadoInfo { get { return _aliado != null ? _aliado.Info : ""; } }
 
 
@@ -174,7 +174,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
             _montoAbonoMonAct = _montoAnticipoMonAct - _montoRetencion;
             if (_tasaFactorCambio > 0m) 
             {
-                _montoAbonoMonDiv = _montoAbonoMonAct / _tasaFactorCambio;
+                _montoAbonoMonDiv = Math.Round(_montoAbonoMonAct / _tasaFactorCambio, 2, MidpointRounding.AwayFromZero);
+                _montoAbonoMonAct = Math.Round(_montoAbonoMonDiv * _tasaFactorCambio, 2, MidpointRounding.AwayFromZero);
             }
         }
         public bool IsOk()

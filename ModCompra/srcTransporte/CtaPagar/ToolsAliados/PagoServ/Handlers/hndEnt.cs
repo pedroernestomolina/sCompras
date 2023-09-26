@@ -11,7 +11,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
     {
         private decimal _factorCambio;
         private DateTime _fechaServidor;
-        //private OOB.LibCompra.Transporte.Aliado.Entidad.Ficha _aliado;
         private Vistas.IServ _hndServ;
         private Vistas.IGestPag _hndGestPag;
 
@@ -19,29 +18,12 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         public Vistas.IGestPag GestPago { get { return _hndGestPag; } }
         public decimal Get_MontoPendiente { get { return _hndServ.Get_MontoPendiente; } }
         public Vistas.IServ Servicios { get { return _hndServ; } }
-        public decimal Get_AliadoAnticipos 
-        {
-            get 
-            {
-                return _hndGestPag.Get_AliadoAnticipos;
-                //return _aliado == null ? 0m : _aliado.AnticiposDiv; 
-            } 
-        }
-        public string Get_AliadoInfo
-        {
-            get
-            {
-                return _hndGestPag.Get_AliadoInfo;
-                //return _aliado == null ? "" : _aliado.ciRif +
-                //                               Environment.NewLine +
-                //                               _aliado.nombreRazonSocial;
-            }
-        }
+        public decimal Get_AliadoAnticipos { get { return _hndGestPag.Get_AliadoAnticipos; } }
+        public string Get_AliadoInfo { get { return _hndGestPag.Get_AliadoInfo; } }
 
 
         public hndEnt()
         {
-            //_aliado = null;
             _fechaServidor = DateTime.Now.Date;
             _factorCambio = 0m;
             _hndServ= new hndServ();
@@ -49,7 +31,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         }
         public void Inicializa()
         {
-            //_aliado = null;
             _hndServ.Inicializa();
             _hndGestPag.Inicializa();
         }
@@ -60,7 +41,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         }
         public void setAliado(OOB.LibCompra.Transporte.Aliado.Entidad.Ficha ficha)
         {
-            //_aliado = ficha;
             _hndGestPag.setAliado(ficha);
         }
         public void setTasaCambio(decimal factor)

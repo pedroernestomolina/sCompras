@@ -12,6 +12,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         private bool _abandonarIsOK;
         private string _tituloTools;
         private Vistas.Idata _data;
+        private Anticipos.Administrador.Vistas.IAdmAnticipo _admAnticipo;
 
 
         public string TituloTools { get { return _tituloTools; } }
@@ -23,6 +24,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
             _tituloTools = "TOOLS PAGO ( ALIADOS )";
             _abandonarIsOK = false;
             _data = new data();
+            _admAnticipo = new Anticipos.Administrador.Handler.Imp();
         }
 
         public void Inicializa()
@@ -40,6 +42,15 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
             }
             frm.ShowDialog();
         }
+        public void AdmDocAnticipos()
+        {
+            _admAnticipo.Inicializa();
+            _admAnticipo.Inicia();
+        }
+        public void AdmDocPagos()
+        {
+        }
+
 
         public bool AbandonarIsOK { get { return _abandonarIsOK; } }
         public void AbandonarFicha()

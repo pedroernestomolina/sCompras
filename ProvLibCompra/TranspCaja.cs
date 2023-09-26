@@ -22,9 +22,9 @@ namespace ProvLibCompra
                                         id as id,
                                         descripcion,
                                         saldo_inicial as saldoInicial,
-                                        monto_ingreso as montoPorIngresos,
-                                        monto_egreso as montoPorEgresos,
-                                        monto_anulado as montoPorAnulaciones,
+                                        monto_ingreso-monto_ingreso_anulado as montoPorIngresos,
+                                        monto_egreso-monto_egreso_anulado as montoPorEgresos,
+                                        0 as montoPorAnulaciones,
                                         estatus_anulado as estatusAnulado,
                                         es_divisa as esDivisa
                                     FROM transp_caja";

@@ -296,5 +296,111 @@ namespace ProvLibCompra
             }
             return result;
         }
+
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha> 
+            Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql = @"SELECT 
+                                    fecha_emision as fechaEmision,
+                                    fecha_registro as fechaRegistro,
+                                    cirif_aliado as ciRifAliado,
+                                    nombre_aliado as nombreAliado,
+                                    monto_neto_mon_div as montoSolicitado,
+                                    tasa_factor as tasaFactor,
+                                    motivo as motivo,
+                                    aplica_ret as aplicaRet,
+                                    tasa_ret as tasaRet,
+                                    sustraendo_ret as sustraendo,
+                                    monto_retencion as montoRet,
+                                    monto_pag_mon_div as montoPagado,
+                                    recibo_numero as numRecibo
+                                FROM transp_aliado_anticipo
+                                WHERE id=@idMov";
+                    var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha>(sql, p0).FirstOrDefault();
+                    if (ent == null) 
+                    {
+                        throw new Exception("MOVIMIENTO NO ENCONTRADO");
+                    }
+                    result.Entidad= ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha> 
+            Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql = @"SELECT 
+                                    fecha_emision as fechaEmision,
+                                    fecha_registro as fechaRegistro,
+                                    aliado_nombre as nombreAliado, 
+                                    aliado_codigo as codigoAliado, 
+                                    aliado_cirif as ciRifAliado,
+                                    recibo_numero as numRecibo, 
+                                    cnt_serv_pag as cntServ, 
+                                    motivo as motivo,
+                                    monto_mon_div as montoAPagar, 
+                                    tasa_factor as tasaFactor, 
+                                    aplica_ret as aplicaRet, 
+                                    tasa_ret as tasaRet, 
+                                    retencion as retencion, 
+                                    sustraendo as sustraendo, 
+                                    monto_ret_mon_act as montoRetMonAct,
+                                    monto_ret_mon_div as montoRetMonDiv, 
+                                    total_pag_mon_div as totalPago
+                                FROM transp_aliado_pagoserv
+                                where id=@idMov";
+                    var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha>(sql, p0).FirstOrDefault();
+                    if (ent == null)
+                    {
+                        throw new Exception("MOVIMIENTO NO ENCONTRADO");
+                    }
+                    //
+                    sql = @"SELECT 
+                                aliadoDoc.doc_numero as docNumero,
+                                aliadoDoc.doc_fecha as docFecha,
+                                aliadoDoc.doc_codigo as docCodigo,
+                                aliadoDoc.doc_nombre as docNombre,
+                                pagoDet.monto_pago_mon_div as montoPago,
+                                vta.razon_social as cliNombre,
+                                vta.ci_rif as cliCiRif,
+                                aliadoDocServ.codigo_serv as codServ,
+                                aliadoDocServ.desc_serv as descServ,
+                                aliadoDocServ.detalle_serv as detServ
+                            FROM transp_aliado_pagoserv_det as pagoDet  
+                            join transp_aliado_doc as aliadoDoc on aliadoDoc.id=pagoDet.id_aliado_doc
+                            join ventas as vta on vta.auto=aliadoDoc.id_doc_ref
+                            join transp_aliado_doc_servicio as aliadoDocServ on aliadoDocServ.id=pagoDet.id_aliado_serv
+                            WHERE id_pagoserv=@idMov";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Serv>(sql, p0).ToList();
+                    //
+                    ent.serv = _lst;
+                    result.Entidad = ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

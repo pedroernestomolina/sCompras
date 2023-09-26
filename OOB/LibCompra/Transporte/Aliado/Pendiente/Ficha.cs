@@ -16,7 +16,10 @@ namespace OOB.LibCompra.Transporte.Aliado.Pendiente
         public decimal importeDiv { get; set; }
         public decimal acumuladoDiv { get; set; }
         public decimal montoAnticipoDiv { get; set; }
+        public decimal montoAnticipoRetDiv { get; set; }
         public decimal montoAnticipoAnuladoDiv { get; set; }
+        public decimal montoAnticipoRetAnuladoDiv { get; set; }
         public int cntDoc { get; set; }
+
     }
 }

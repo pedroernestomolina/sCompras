@@ -93,6 +93,26 @@ namespace ModCompra.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avance_dinero_24 {
+            get {
+                object obj = ResourceManager.GetObject("avance_dinero_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap avance_dinero_48 {
+            get {
+                object obj = ResourceManager.GetObject("avance_dinero_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap aydai_logistica {
             get {
                 object obj = ResourceManager.GetObject("aydai_logistica", resourceCulture);
@@ -673,6 +693,26 @@ namespace ModCompra.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap busqueda_doc_24 {
+            get {
+                object obj = ResourceManager.GetObject("busqueda_doc_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap busqueda_doc_48 {
+            get {
+                object obj = ResourceManager.GetObject("busqueda_doc_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap carpeta {
             get {
                 object obj = ResourceManager.GetObject("carpeta", resourceCulture);
@@ -771,12 +811,32 @@ namespace ModCompra.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap manager_doc_48 {
+            get {
+                object obj = ResourceManager.GetObject("manager_doc_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon mobile {
             get {
                 object obj = ResourceManager.GetObject("mobile", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pago_serv_traslado_64 {
+            get {
+                object obj = ResourceManager.GetObject("pago_serv_traslado_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

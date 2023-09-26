@@ -61,6 +61,8 @@ namespace DataProvCompra.Data
                             importeDiv = s.importeDiv,
                             montoAnticipoAnuladoDiv = s.montoAnticipoAnuladoDiv,
                             montoAnticipoDiv = s.montoAnticipoDiv,
+                            montoAnticipoRetDiv=s.montoAnticipoRetDiv,
+                            montoAnticipoRetAnuladoDiv=s.montoAnticipoRetAnuladoDiv,
                             cntDoc=s.cntDoc,
                         };
                         return nr;
@@ -91,6 +93,8 @@ namespace DataProvCompra.Data
                 importeDiv = s.importeDiv,
                 montoAnticipoAnuladoDiv = s.montoAnticipoAnuladoDiv,
                 montoAnticipoDiv = s.montoAnticipoDiv,
+                montoAnticipoRetAnuladoDiv = s.montoAnticipoRetAnuladoDiv,
+                montoAnticipoRetDiv = s.montoAnticipoRetDiv,
                 cntDoc = s.cntDoc,
             };
             return result;

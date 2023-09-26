@@ -115,5 +115,21 @@ namespace DataProvCompra.Data
             }
             return result;
         }
+        public OOB.Resultado 
+            Transporte_Aliado_PagoServ_AnularPago(int idMov)
+        {
+            var result = new OOB.Resultado();
+            var r01 = MyData.Transporte_Aliado_PagoServ_AnularPago_ObtenerData(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var r02 = MyData.Transporte_Aliado_PagoServ_AnularPago (r01.Entidad);
+            if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r02.Mensaje);
+            }
+            return result;
+        }
     }
 }

@@ -60,6 +60,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
                 _servPrest.Inicializa();
                 _servPrest.setServiciosAliado(item.Id);
                 _servPrest.Inicia();
+                if (_servPrest.ProcesarIsOK) 
+                {
+                    ActualizarSaldoAliado(item.Id);
+                }
             }
         }
 

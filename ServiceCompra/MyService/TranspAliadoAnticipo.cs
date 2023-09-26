@@ -15,5 +15,15 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Aliado_Anticipo_Agregar(ficha);
         }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.Anticipo.Anular.Ficha>
+            Transporte_Aliado_Anticipo_Anular_ObtenerData(int idMov)
+        {
+            return ServiceProv.Transporte_Aliado_Anticipo_Anular_ObtenerData(idMov);
+        }
+        public DtoLib.Resultado 
+            Transporte_Aliado_Anticipo_Anular(DtoLibTransporte.Aliado.Anticipo.Anular.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Aliado_Anticipo_Anular(ficha);
+        }
     }
 }

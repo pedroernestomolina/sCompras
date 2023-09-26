@@ -413,6 +413,19 @@
     <Compile Include="srcTransporte\Concepto\Maestro\data.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\dataItem.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\HndBusqDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\HndLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Vistas\IAdmAnticipo.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Vistas\IBusqDocAnticipo.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Vistas\IListaAnticipo.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\caja.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\data.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Handler\dataCaja.cs" />
@@ -462,6 +475,8 @@
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Idata.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\IRepFiltro.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Planillas\Anticipo\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Planillas\PagoServ\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\enumerados.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\Filtros\Handlers\data.cs" />
@@ -518,6 +533,8 @@
     <Compile Include="Utils\Buscar\Proveedor\Vistas\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Componente\Administrador\Vistas\IAdmin.cs" />
+    <Compile Include="Utils\Componente\Administrador\Vistas\ILista.cs" />
     <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
     <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
       <SubType>Form</SubType>
@@ -660,6 +677,9 @@
     <EmbeddedResource Include="srcTransporte\Concepto\AgregarEditar\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Agregar\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -731,6 +751,8 @@
     <Content Include="Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Imagenes\administrador.png" />
     <Content Include="Imagenes\automatizacion.jpg" />
+    <Content Include="Imagenes\avance_dinero_24.png" />
+    <Content Include="Imagenes\avance_dinero_48.png" />
     <Content Include="Imagenes\aydai-logistica.jpg" />
     <Content Include="Imagenes\bt_alerta.png" />
     <Content Include="Imagenes\bt_asignar.png" />
@@ -790,6 +812,8 @@
     <Content Include="Imagenes\bt_usuario.png" />
     <Content Include="Imagenes\bt_visor.png" />
     <Content Include="Imagenes\bt_warehouse.png" />
+    <Content Include="Imagenes\busqueda_doc_24.png" />
+    <Content Include="Imagenes\busqueda_doc_48.png" />
     <Content Include="Imagenes\carpeta.png" />
     <Content Include="Imagenes\dollar.png" />
     <Content Include="Imagenes\fecha_derecha.png" />
@@ -800,7 +824,9 @@
     <Content Include="Imagenes\inventario_2.jpg" />
     <Content Include="Imagenes\libro.png" />
     <Content Include="Imagenes\Machine-learning-1024x682.jpg" />
+    <Content Include="Imagenes\manager_doc_48.png" />
     <Content Include="Imagenes\mobile.ico" />
+    <Content Include="Imagenes\pago_serv_traslado_64.png" />
     <Content Include="Imagenes\plataforma-efosearch.jpg" />
     <Content Include="Imagenes\setup.png" />
     <Content Include="Imagenes\sinImagen.png" />
@@ -810,6 +836,8 @@
     <Content Include="Resources\administracion-compras-logistica.jpg" />
     <Content Include="Resources\administrador.png" />
     <Content Include="Resources\automatizacion.jpg" />
+    <None Include="Resources\avance_dinero_24.png" />
+    <None Include="Resources\avance_dinero_48.png" />
     <Content Include="Resources\aydai-logistica.jpg" />
     <Content Include="Resources\bt_alerta.png" />
     <Content Include="Resources\bt_asignar.png" />
@@ -868,6 +896,8 @@
     <Content Include="Resources\bt_usuario.png" />
     <Content Include="Resources\bt_visor.png" />
     <Content Include="Resources\bt_warehouse.png" />
+    <None Include="Resources\busqueda_doc_48.png" />
+    <None Include="Resources\busqueda_doc_24.png" />
     <Content Include="Resources\carpeta.png" />
     <Content Include="Resources\dollar.png" />
     <Content Include="Resources\fecha_derecha.png" />
@@ -878,7 +908,9 @@
     <Content Include="Resources\inventario_2.jpg" />
     <Content Include="Resources\libro.png" />
     <Content Include="Resources\Machine-learning-1024x682.jpg" />
+    <None Include="Resources\manager_doc_48.png" />
     <Content Include="Resources\mobile.ico" />
+    <None Include="Resources\pago_serv_traslado_64.png" />
     <Content Include="Resources\plataforma-efosearch.jpg" />
     <None Include="Resources\setup.png" />
     <Content Include="Resources\sinImagen.png" />

@@ -22,5 +22,10 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_Reportes_Aliado_Anticipos_GetLista(DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>
             Transporte_Reportes_Aliado_PagoServ_GetLista(DtoLibTransporte.Reportes.Aliado.PagoServ.General.Filtro filtro);
+
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
+            Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov);
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha>
+            Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov);
     }
 }

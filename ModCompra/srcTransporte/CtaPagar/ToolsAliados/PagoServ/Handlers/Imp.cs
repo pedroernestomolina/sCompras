@@ -37,13 +37,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         {
             if (cargarData())
             {
-                if (frm == null)
-                {
-                    frm = new Vistas.Frm();
-                    frm.setControlador(this);
-                }
-
-            } frm.ShowDialog();
+                frm = new Vistas.Frm();
+                frm.setControlador(this);
+                frm.ShowDialog();
+            } 
         }
 
 
@@ -105,7 +102,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
                         id = -1,
                         montoPorAnulaciones = 0m,
                         montoPorEgresos = 0m,
-                        montoPorIngresos = (r01.Entidad.AnticiposDiv - r01.Entidad.AnticipoRetDiv),
+                        montoPorIngresos = r01.Entidad.AnticiposDiv,
                         saldoInicial = 0m,
                     };
                     _lst.Add(new Anticipos.Agregar.Handler.dataCaja(_caja));
