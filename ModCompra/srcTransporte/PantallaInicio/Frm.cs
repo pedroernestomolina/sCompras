@@ -197,6 +197,7 @@ namespace ModCompra.srcTransporte.PantallaInicio
         }
 
 
+        //CXP
         private void MENU_CXP_TOOLS_ALIADOS_Click(object sender, EventArgs e)
         {
             ToolAliados();
@@ -205,21 +206,24 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.ToolAliados();
         }
-        private void anularPagoToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        //CAJA
+        private void MENU_CAJA_REGISTRAR_MOV_Click(object sender, EventArgs e)
         {
-            _controlador.AnularPago();
+            CajaRegistrarMov();
         }
-        private void anularAnticipoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MENU_CAJA_ADM_DOC_Click(object sender, EventArgs e)
         {
-            _controlador.AnularAnticipo();
+            CajaAdmDoc();
         }
-        private void planillaAnticipoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CajaRegistrarMov()
         {
-            _controlador.PlanillaAnticipo();
+            _controlador.CajaRegistrarMov();
         }
-        private void planillaPagoServToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CajaAdmDoc()
         {
-            _controlador.PlanillaPagoServ();
+            _controlador.CajaAdmDoc();
         }
 
 
@@ -236,16 +240,7 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesRetIslr();
         }
-        private void MENU_REPORTES_DOCUMENTOS_PLANILLA_RET_IVA_Click(object sender, EventArgs e)
-        {
-            PlanillaRetIva();
-        }
-        private void MENU_REPORTES_DOCUMENTOS_PLANILLA_RET_ISLR_Click(object sender, EventArgs e)
-        {
-            PlanillaRetIslr();
-        }
-
-
+        //
         private void MENU_REPORTES_CXP_ALIADO_ANTICIPO_Click(object sender, EventArgs e)
         {
             ReportesAliadoAnticipo();
@@ -254,8 +249,12 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesAliadoPagoServ();
         }
-
-
+        //
+        private void MENU_REPORTES_CAJA_GENERAL_MOV_Click(object sender, EventArgs e)
+        {
+            ReportesCajaGeneralMov();
+        }
+        //
         private void ReporteGeneralDoc()
         {
             _controlador.ReporteGeneralDocTransp();
@@ -268,15 +267,7 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.ReportesRetIslr();
         }
-        private void PlanillaRetIva()
-        {
-            _controlador.PlanillaRetIva();
-        }
-        private void PlanillaRetIslr()
-        {
-            _controlador.PlanillaRetIslr();
-        }
-
+        //
         private void ReportesAliadoAnticipo()
         {
             _controlador.ReportesAliadoAnticipo();
@@ -284,6 +275,11 @@ namespace ModCompra.srcTransporte.PantallaInicio
         private void ReportesAliadoPagoServ()
         {
             _controlador.ReportesAliadoPagoServ();
+        }
+        //
+        private void ReportesCajaGeneralMov()
+        {
+            _controlador.ReportesCajaGeneralMov();
         }
     }
 }

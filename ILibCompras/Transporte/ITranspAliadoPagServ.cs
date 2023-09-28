@@ -17,5 +17,8 @@ namespace ILibCompras.Transporte
             Transporte_Aliado_PagoServ_AnularPago_ObtenerData(int idMovPago);
         DtoLib.Resultado
             Transporte_Aliado_PagoServ_AnularPago(DtoLibTransporte.Aliado.PagoServ.AnularPago.Ficha ficha);
+        //
+        DtoLib.ResultadoLista<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha>
+            Transporte_Aliado_PagoServ_GetLista(DtoLibTransporte.Aliado.PagoServ.Lista.Filtro filtro);
     }
 }

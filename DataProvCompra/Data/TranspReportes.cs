@@ -360,5 +360,49 @@ namespace DataProvCompra.Data
             result.Entidad = nr;
             return result;
         }
+
+        //CAJAS
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha> 
+            Transporte_Reportes_Caja_Movimientos_GetLista(OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Caja.Movimiento.Filtro()
+            {
+            };
+            var r01 = MyData.Transporte_Reportes_Caja_Movimientos_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha()
+                        {
+                            cjDesc = s.cjDesc,
+                            cjEsDivisa = s.cjEsDivisa,
+                            estatusAnulado = s.estatusAnulado,
+                            factorCambio = s.factorCambio,
+                            fechaMov = s.fechaMov,
+                            idCaja = s.idCaja,
+                            idMov = s.idMov,
+                            montoMonAct = s.montoMonAct,
+                            montoMonDiv = s.montoMonDiv,
+                            motivoMov = s.motivoMov,
+                            movFueDivisa = s.movFueDivisa,
+                            signoMov = s.signoMov,
+                            tipoMov = s.tipoMov,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
     }
 }

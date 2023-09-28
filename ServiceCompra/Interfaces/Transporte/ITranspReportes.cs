@@ -27,5 +27,8 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov);
         DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha>
             Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov);
+
+        DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha>
+            Transporte_Reportes_Caja_Movimientos_GetLista(DtoLibTransporte.Reportes.Caja.Movimiento.Filtro filtro);
     }
 }

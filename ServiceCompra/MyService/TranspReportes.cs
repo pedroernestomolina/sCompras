@@ -10,6 +10,7 @@ namespace ServiceCompra.MyService
 {
     public partial class Service: IService
     {
+        //DOCUMENTOS
         public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.GeneralDoc.Ficha>
             Transporte_Reportes_Compras_GeneralDoc_GetLista(DtoLibTransporte.Reportes.Compras.GeneralDoc.Filtro filtro)
         {
@@ -31,6 +32,7 @@ namespace ServiceCompra.MyService
             return ServiceProv.Transporte_Reportes_Compras_Planilla_RetIslr(idDocCompra);
         }
 
+        //ALIADOS
         public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha> 
             Transporte_Reportes_Aliado_Anticipos_GetLista(DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro filtro)
         {
@@ -42,6 +44,7 @@ namespace ServiceCompra.MyService
             return ServiceProv.Transporte_Reportes_Aliado_PagoServ_GetLista(filtro);
         }
 
+        //PLANILLAS
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha> 
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
         {
@@ -51,6 +54,13 @@ namespace ServiceCompra.MyService
             Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov)
         {
             return ServiceProv.Transporte_Reportes_Aliado_PagoServ_Planilla(idMov);
+        }
+
+        //CAJA
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha> 
+            Transporte_Reportes_Caja_Movimientos_GetLista(DtoLibTransporte.Reportes.Caja.Movimiento.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Caja_Movimientos_GetLista(filtro);
         }
     }
 }

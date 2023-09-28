@@ -25,5 +25,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Aliado_Anticipo_Anular(ficha);
         }
+        //
+        public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Anticipo.Lista.Ficha> 
+            Transporte_Aliado_Anticipo_GetLista(DtoLibTransporte.Aliado.Anticipo.Lista.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Aliado_Anticipo_GetLista(filtro);
+        }
     }
 }

@@ -9,15 +9,24 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
 {
     public class HndBusqDoc: Vistas.IBusqDocAnticipo
     {
+        private Utils.Componente.Busqueda.Vistas.IBusqueda _busqueda;
+
+
         public HndBusqDoc()
         {
+            _busqueda = new hndBusqueda();
         }
         public void Inicializa()
         {
+            _busqueda.Inicializa();
         }
-        public void Buscar()
+        public IEnumerable<Object>Buscar()
         {
-            Helpers.Msg.Alerta("BUSCANDO");
+            return _busqueda.Buscar();
+        }
+        public void setFiltros(object filtros)
+        {
+            _busqueda.setFiltros(filtros);
         }
     }
 }

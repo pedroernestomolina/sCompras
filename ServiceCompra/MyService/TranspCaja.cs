@@ -15,5 +15,17 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Caja_GetLista();
         }
+
+        //MOVIMIENTOS
+        public DtoLib.Resultado
+            Transporte_Caja_Movimientos_Agregar(DtoLibTransporte.Caja.Movimiento.Crud.Agregar.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Caja_Movimientos_Agregar(ficha);
+        }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Caja.Movimiento.Lista.Ficha> 
+            Transporte_Caja_Movimientos_GetLista(DtoLibTransporte.Caja.Movimiento.Lista.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Caja_Movimientos_GetLista(filtro);
+        }
     }
 }

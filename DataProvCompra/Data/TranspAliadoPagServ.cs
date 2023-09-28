@@ -131,5 +131,46 @@ namespace DataProvCompra.Data
             }
             return result;
         }
+        //
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Ficha> 
+            Transporte_Aliado_PagoServ_GetLista(OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Aliado.PagoServ.Lista.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+            };
+            var r01 = MyData.Transporte_Aliado_PagoServ_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Ficha()
+                        {
+                            cirifAliado = s.cirifAliado,
+                            cntServPag = s.cntServPag,
+                            estatusAnulado = s.estatusAnulado,
+                            fecha = s.fecha,
+                            idMov = s.idMov,
+                            montoPagoSelMonDiv = s.montoPagoSelMonDiv,
+                            motivo = s.motivo,
+                            nombreAliado = s.nombreAliado,
+                            numRecibo = s.numRecibo,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
     }
 }

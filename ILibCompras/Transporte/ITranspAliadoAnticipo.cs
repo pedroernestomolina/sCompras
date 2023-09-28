@@ -15,5 +15,8 @@ namespace ILibCompras.Transporte
             Transporte_Aliado_Anticipo_Anular_ObtenerData(int idMov);
         DtoLib.Resultado
             Transporte_Aliado_Anticipo_Anular(DtoLibTransporte.Aliado.Anticipo.Anular.Ficha ficha);
+        //
+        DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Anticipo.Lista.Ficha>
+            Transporte_Aliado_Anticipo_GetLista(DtoLibTransporte.Aliado.Anticipo.Lista.Filtro filtro);
     }
 }

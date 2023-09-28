@@ -13,5 +13,8 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Aliado_Anticipo_Agregar(OOB.LibCompra.Transporte.Aliado.Anticipo.Agregar.Ficha ficha);
         OOB.Resultado
             Transporte_Aliado_Anticipo_Anular(int idMov);
+        //
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Ficha>
+            Transporte_Aliado_Anticipo_GetLista(OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Filtro filtro);
     }
 }

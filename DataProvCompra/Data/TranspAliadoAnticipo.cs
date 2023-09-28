@@ -82,5 +82,46 @@ namespace DataProvCompra.Data
             }
             return result;
         }
+        //
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Ficha> 
+            Transporte_Aliado_Anticipo_GetLista(OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Aliado.Anticipo.Lista.Filtro()
+            {
+                Desde = filtro.desde,
+                Hasta = filtro.hasta,
+            };
+            var r01 = MyData.Transporte_Aliado_Anticipo_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Ficha()
+                        {
+                            ciRifAliado = s.ciRifAliado,
+                            estatusAnulado = s.estatusAnulado,
+                            fecha = s.fecha,
+                            idAliado = s.idAliado,
+                            idMov = s.idMov,
+                            montoAntSolicitadoDiv = s.montoAntSolicitadoDiv,
+                            motivo = s.motivo,
+                            nombreAliado = s.nombreAliado,
+                            numRecibo = s.numRecibo,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
     }
 }

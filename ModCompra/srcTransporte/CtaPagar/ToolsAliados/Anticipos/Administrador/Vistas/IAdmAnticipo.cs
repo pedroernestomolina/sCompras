@@ -9,6 +9,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
 {
     public interface IAdmAnticipo: Utils.Componente.Administrador.Vistas.IAdmin
     {
+
         IBusqDocAnticipo BusqDoc { get; }
     }
 }

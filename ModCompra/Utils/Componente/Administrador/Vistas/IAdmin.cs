@@ -10,10 +10,14 @@ namespace ModCompra.Utils.Componente.Administrador.Vistas
     public interface IAdmin: HlpGestion.IGestion, HlpGestion.IAbandonar
     {
         ILista data { get; }
+        IFiltro filtros { get; }
         string Get_TituloAdm { get; }
         int Get_CntItem { get; }
 
 
         void Buscar();
+        void AnularItem();
+        void VisualizarDocumento();
+        void Imprimir();
     }
 }

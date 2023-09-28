@@ -225,18 +225,12 @@ namespace ModCompra
         }
 
 
+        //
         // TRANSPORTE
-        ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
-        public void RegistrarCompraGasto()
-        {
-            if (_compraGasto == null) 
-            {
-                _compraGasto = new ModCompra.srcTransporte.CompraGasto.Handlres.Generar.Imp();
-            }
-            _compraGasto.Inicializa();
-            _compraGasto.Inicia();
-        }
+        //
 
+
+        //MAESTRO
         Utils.Maestro.IMaestro _concepto;
         public void MaestroConceptos()
         {
@@ -248,6 +242,19 @@ namespace ModCompra
             _concepto.Inicia();
         }
 
+        //DOCUMENTOS
+        ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
+        public void RegistrarCompraGasto()
+        {
+            if (_compraGasto == null) 
+            {
+                _compraGasto = new ModCompra.srcTransporte.CompraGasto.Handlres.Generar.Imp();
+            }
+            _compraGasto.Inicializa();
+            _compraGasto.Inicia();
+        }
+
+        //CXP
         srcTransporte.CtaPagar.ToolsAliados.Vistas.IAliados _toolAliados;
         public void ToolAliados()
         {
@@ -259,7 +266,21 @@ namespace ModCompra
             _toolAliados.Inicia();
         }
 
+        //CAJA
+        public void CajaRegistrarMov()
+        {
+            srcTransporte.Caja.Movimiento.Agregar.Vistas.IMov _mov = new srcTransporte.Caja.Movimiento.Agregar.Handler.Imp();
+            _mov.Inicializa();
+            _mov.Inicia();
+        }
+        public void CajaAdmDoc()
+        {
+            srcTransporte.Caja.Administrador.Vistas.IAdm _adm = new srcTransporte.Caja.Administrador.Handler.Imp();
+            _adm.Inicializa();
+            _adm.Inicia();
+        }
 
+        
         //REPORTES
         public void ReporteGeneralDocTransp()
         {
@@ -287,19 +308,6 @@ namespace ModCompra
             _rep.setFiltros(_data);
             _rep.Generar();
         }
-        public void PlanillaRetIva()
-        {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
-            _rep.setIdDoc("0000000038");
-            _rep.Generar();
-        }
-        public void PlanillaRetIslr()
-        {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
-            _rep.setIdDoc("0000000038");
-            _rep.Generar();
-        }
-
         public void ReportesAliadoAnticipo()
         {
             srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
@@ -314,40 +322,27 @@ namespace ModCompra
             _rep.setFiltros(_data);
             _rep.Generar();
         }
+        public void ReportesCajaGeneralMov()
+        {
+            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.GeneralMov.Imp();
+            _rep.setFiltros(null);
+            _rep.Generar();
+        }
 
-        public void AnularPago()
-        {
-            try
-            {
-                var r01 = Sistema.MyData.Transporte_Aliado_PagoServ_AnularPago(8);
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
-        }
-        public void AnularAnticipo()
-        {
-            try
-            {
-                var r01 = Sistema.MyData.Transporte_Aliado_Anticipo_Anular(39);
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
-        }
-        public void PlanillaAnticipo()
-        {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Planillas.Anticipo.Imp();
-            _rep.setIdDoc("0000000038");
-            _rep.Generar();
-        }
-        public void PlanillaPagoServ()
-        {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Planillas.PagoServ.Imp();
-            _rep.setIdDoc("0000000008");
-            _rep.Generar();
-        }
+
+
+        //public void PlanillaRetIva()
+        //{
+        //    srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
+        //    _rep.setIdDoc("0000000038");
+        //    _rep.Generar();
+        //}
+        //public void PlanillaRetIslr()
+        //{
+        //    srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
+        //    _rep.setIdDoc("0000000038");
+        //    _rep.Generar();
+        //}
     }
 }

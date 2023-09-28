@@ -27,5 +27,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov);
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Ficha>
             Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov);
+
+        //CAJA
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha>
+            Transporte_Reportes_Caja_Movimientos_GetLista(OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro filtro);
     }
 }

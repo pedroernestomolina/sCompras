@@ -30,5 +30,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Aliado_PagoServ_AnularPago(ficha);
         }
+        //
+        public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha> 
+            Transporte_Aliado_PagoServ_GetLista(DtoLibTransporte.Aliado.PagoServ.Lista.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Aliado_PagoServ_GetLista(filtro);
+        }
     }
 }

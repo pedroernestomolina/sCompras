@@ -610,5 +610,55 @@ namespace ProvLibCompra
             }
             return result;
         }
+        //
+        public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha>
+            Transporte_Aliado_PagoServ_GetLista(DtoLibTransporte.Aliado.PagoServ.Lista.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        id as idMov,
+                                        aliado_nombre as nombreAliado,
+                                        aliado_cirif as cirifAliado,
+                                        recibo_numero as numRecibo,
+                                        fecha_registro as fecha,
+                                        motivo as motivo,
+                                        monto_mon_div as montoPagoSelMonDiv,
+                                        estatus_anulado as estatusAnulado,
+                                        cnt_serv_pag as cntServPag
+                                    FROM transp_aliado_pagoserv";
+                    var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro != null)
+                    {
+                        if (filtro.Desde.HasValue)
+                        {
+                            _sql_2 += " and fecha_registro>=@desde ";
+                            p1.ParameterName = "@desde";
+                            p1.Value = filtro.Desde.Value;
+                        }
+                        if (filtro.Hasta.HasValue)
+                        {
+                            _sql_2 += " and fecha_registro<=@hasta ";
+                            p2.ParameterName = "@hasta";
+                            p2.Value = filtro.Hasta.Value;
+                        }
+                    }
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha>(_sql, p1, p2).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

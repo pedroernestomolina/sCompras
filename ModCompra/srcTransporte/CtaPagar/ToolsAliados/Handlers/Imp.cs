@@ -13,6 +13,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         private string _tituloTools;
         private Vistas.Idata _data;
         private Anticipos.Administrador.Vistas.IAdmAnticipo _admAnticipo;
+        private PagoServ.Administrador.Vistas.IAdmPagoServ _admPago;
 
 
         public string TituloTools { get { return _tituloTools; } }
@@ -25,6 +26,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
             _abandonarIsOK = false;
             _data = new data();
             _admAnticipo = new Anticipos.Administrador.Handler.Imp();
+            _admPago = new PagoServ.Administrador.Handler.Imp();
         }
 
         public void Inicializa()
@@ -46,9 +48,13 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         {
             _admAnticipo.Inicializa();
             _admAnticipo.Inicia();
+            _data.CtasPendientes.CargarCtas();
         }
         public void AdmDocPagos()
         {
+            _admPago.Inicializa();
+            _admPago.Inicia();
+            _data.CtasPendientes.CargarCtas();
         }
 
 

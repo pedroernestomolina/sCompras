@@ -10,6 +10,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
     public interface IBusqDocAnticipo
     {
         void Inicializa();
-        void Buscar();
+        IEnumerable<object> Buscar();
+        void setFiltros(object filtros);
     }
 }
