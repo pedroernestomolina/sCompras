@@ -78,5 +78,130 @@ namespace ProvLibCompra
             }
             return result;
         }
+        public DtoLib.ResultadoId 
+            Transporte_Caja_Agregar(DtoLibTransporte.Caja.Crud.Agregar.Ficha ficha)
+        {
+            var result = new DtoLib.ResultadoId();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var sql = @"INSERT INTO transp_caja (
+                                        id, 
+                                        descripcion, 
+                                        fecha_registro, 
+                                        saldo_inicial, 
+                                        monto_ingreso, 
+                                        monto_egreso, 
+                                        estatus_anulado, 
+                                        es_divisa, 
+                                        monto_ingreso_anulado, 
+                                        monto_egreso_anulado, 
+                                        codigo)
+                                    VALUES (
+                                        NULL, 
+                                        @descripcion, 
+                                        @fecha_registro, 
+                                        @saldo_inicial, 
+                                        0, 
+                                        0, 
+                                        '0', 
+                                        @es_divisa, 
+                                        0, 
+                                        0, 
+                                        @codigo)";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@descripcion", ficha.descripcion);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro", fechaSistema.Date);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@saldo_inicial", ficha.saldoInicial);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@es_divisa", ficha.esDivisa?"1":"0");
+                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.codigo);
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "ERROR AL INSERTAR CAJA";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        sql = "SELECT LAST_INSERT_ID()";
+                        var idEnt = cnn.Database.SqlQuery<int>(sql).FirstOrDefault();
+                        result.Id = idEnt;
+                        //
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado 
+            Transporte_Caja_Editar(DtoLibTransporte.Caja.Crud.Editar.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var sql = @"UPDATE transp_caja set 
+                                        descripcion=@descripcion, 
+                                        saldo_inicial=@saldo_inicial, 
+                                        es_divisa=@es_divisa, 
+                                        codigo=@codigo
+                                    where id=@idCaja";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCaja", ficha.id);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@descripcion", ficha.descripcion);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@saldo_inicial", ficha.saldoInicial);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@es_divisa", ficha.esDivisa ? "1" : "0");
+                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.codigo);
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "ERROR AL ACTUALIZAR CAJA";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

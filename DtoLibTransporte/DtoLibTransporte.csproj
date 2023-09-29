@@ -60,6 +60,9 @@
     <Compile Include="Aliado\PagoServ\Lista\Filtro.cs" />
     <Compile Include="Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="Aliado\Pendiente\Ficha.cs" />
+    <Compile Include="Caja\Crud\Agregar\Ficha.cs" />
+    <Compile Include="Caja\Crud\baseAgregarEditar.cs" />
+    <Compile Include="Caja\Crud\Editar\Ficha.cs" />
     <Compile Include="Caja\Crud\Entidad\Ficha.cs" />
     <Compile Include="Caja\Lista\Ficha.cs" />
     <Compile Include="Caja\Movimiento\Crud\Agregar\Ficha.cs" />

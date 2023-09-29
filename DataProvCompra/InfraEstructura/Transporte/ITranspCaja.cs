@@ -13,5 +13,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Caja_GetLista();
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Caja.Crud.Entidad.Ficha>
             Transporte_Caja_GetById(int idCja);
+        OOB.ResultadoId
+            Transporte_Caja_Agregar(OOB.LibCompra.Transporte.Caja.Crud.Agregar.Ficha ficha);
+        OOB.Resultado
+            Transporte_Caja_Editar(OOB.LibCompra.Transporte.Caja.Crud.Editar.Ficha ficha);
     }
 }

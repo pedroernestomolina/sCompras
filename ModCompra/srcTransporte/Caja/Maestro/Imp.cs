@@ -43,38 +43,38 @@ namespace ModCompra.srcTransporte.Caja.Maestro
             }
         }
 
-        //private AgregarEditar.Vistas.IAgregar _agregar;
+        private AgregarEditar.Vistas.IAgregar _agregar;
         public void AgregarItem()
         {
-            //if (_agregar == null) 
-            //{
-            //    _agregar = new AgregarEditar.Handlers.Agregar.Imp();
-            //}
-            //_agregar.Inicializa();
-            //_agregar.Inicia();
-            //if (_agregar.ProcesarIsOK) 
-            //{
-            //    InsertarItemLista(_agregar.IdConceptoAgregado);
-            //}
+            if (_agregar == null)
+            {
+                _agregar = new AgregarEditar.Handlers.Agregar.Imp();
+            }
+            _agregar.Inicializa();
+            _agregar.Inicia();
+            if (_agregar.ProcesarIsOK)
+            {
+                InsertarItemLista(_agregar.IdItemAgregado);
+            }
         }
-        //private AgregarEditar.Vistas.IEditar _editar;
+        private AgregarEditar.Vistas.IEditar _editar;
         public void EditarItem()
         {
-            //if (_lista.ItemActual != null)
-            //{
-            //    if (_editar == null)
-            //    {
-            //        _editar  = new AgregarEditar.Handlers.Editar.Imp();
-            //    }
-            //    var _item = ((data)_lista.ItemActual);
-            //    _editar.Inicializa();
-            //    _editar.setConceptoEditar(_item.Ficha.id);
-            //    _editar.Inicia();
-            //    if (_editar.ProcesarIsOK) 
-            //    {
-            //        ActualizarItemLista(_item.Ficha.id);
-            //    }
-            //}
+            if (_lista.ItemActual != null)
+            {
+                if (_editar == null)
+                {
+                    _editar  = new AgregarEditar.Handlers.Editar.Imp();
+                }
+                var _item = ((data)_lista.ItemActual);
+                _editar.Inicializa();
+                _editar.setItemEditar(_item.Ficha.id);
+                _editar.Inicia();
+                if (_editar.ProcesarIsOK) 
+                {
+                    ActualizarItemLista(_item.Ficha.id);
+                }
+            }
         }
 
 
@@ -102,8 +102,9 @@ namespace ModCompra.srcTransporte.Caja.Maestro
         {
             try
             {
-                var xr1 = Sistema.MyData.Transporte_Documento_Concepto_GetById(idItem);
-                var _data = new data(xr1.Entidad);
+                var xr1 = Sistema.MyData.Transporte_Caja_GetById(idItem);
+                var obj = new OOB.LibCompra.Transporte.Caja.Lista.Ficha(xr1.Entidad);
+                var _data = new data(obj);
                 _lista.AgregarItem(_data);
             }
             catch (Exception e)
@@ -115,8 +116,9 @@ namespace ModCompra.srcTransporte.Caja.Maestro
         {
             try
             {
-                var xr1 = Sistema.MyData.Transporte_Documento_Concepto_GetById(idItem);
-                var _data = new data(xr1.Entidad);
+                var xr1 = Sistema.MyData.Transporte_Caja_GetById(idItem);
+                var obj = new OOB.LibCompra.Transporte.Caja.Lista.Ficha(xr1.Entidad);
+                var _data = new data(obj);
                 _lista.RemoverItemBy(_data);
                 _lista.AgregarItem(_data);
             }

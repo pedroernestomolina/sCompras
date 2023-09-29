@@ -72,5 +72,43 @@ namespace DataProvCompra.Data
             result.Entidad = nr;
             return result;
         }
+        public OOB.ResultadoId 
+            Transporte_Caja_Agregar(OOB.LibCompra.Transporte.Caja.Crud.Agregar.Ficha ficha)
+        {
+            var result = new OOB.ResultadoId();
+            var fichaDTO = new DtoLibTransporte.Caja.Crud.Agregar.Ficha()
+            {
+                esDivisa = ficha.esDivisa,
+                saldoInicial = ficha.saldoInicial,
+                codigo = ficha.codigo,
+                descripcion = ficha.descripcion,
+            };
+            var r01 = MyData.Transporte_Caja_Agregar(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            result.Id = r01.Id;
+            return result;
+        }
+        public OOB.Resultado 
+            Transporte_Caja_Editar(OOB.LibCompra.Transporte.Caja.Crud.Editar.Ficha ficha)
+        {
+            var result = new OOB.Resultado();
+            var fichaDTO = new DtoLibTransporte.Caja.Crud.Editar.Ficha()
+            {
+                id = ficha.id,
+                esDivisa = ficha.esDivisa,
+                saldoInicial = ficha.saldoInicial,
+                codigo = ficha.codigo,
+                descripcion = ficha.descripcion,
+            };
+            var r01 = MyData.Transporte_Caja_Editar(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return result;
+        }
     }
 }

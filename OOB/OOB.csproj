@@ -147,6 +147,9 @@
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\Lista\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\Pendiente\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Caja\Crud\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Caja\Crud\baseAgregarEditar.cs" />
+    <Compile Include="LibCompra\Transporte\Caja\Crud\Editar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Movimiento\Crud\Agregar\Ficha.cs" />

@@ -423,6 +423,20 @@
     <Compile Include="srcTransporte\Caja\Administrador\Vistas\IdataItem.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Vistas\IFiltroAadm.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Vistas\IListaAdm.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Handlers\Agregar\Imp.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Handlers\data.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Handlers\Editar\Imp.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Handlers\impBase.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\IAgregar.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\IAgregarEditar.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\Idata.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\IEditar.cs" />
     <Compile Include="srcTransporte\Caja\Maestro\data.cs" />
     <Compile Include="srcTransporte\Caja\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Caja\Maestro\ImpLista.cs" />
@@ -761,6 +775,9 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Caja\Administrador\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Caja\Maestro\AgregarEditar\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\Frm.resx">

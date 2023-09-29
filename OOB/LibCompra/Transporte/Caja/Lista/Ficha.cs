@@ -18,5 +18,22 @@ namespace OOB.LibCompra.Transporte.Caja.Lista
         public decimal montoPorAnulaciones { get; set; }
         public string estatusAnulado { get; set; }
         public string esDivisa { get; set; }
+
+
+        public Ficha() 
+        {
+        }
+        public Ficha(Crud.Entidad.Ficha ficha)
+        {
+            id = ficha.id;
+            codigo = ficha.codigo;
+            descripcion = ficha.descripcion;
+            saldoInicial = ficha.saldoInicial;
+            montoPorIngresos = (ficha.montoIngreso -ficha.montoIngresoAnulado);
+            montoPorEgresos = (ficha.montoEgreso-ficha.montoEgresoAnulado);
+            montoPorAnulaciones = 0m;
+            estatusAnulado = ficha.estatusAnulado;
+            esDivisa = ficha.esDivisa;
+        }
     }
 }
