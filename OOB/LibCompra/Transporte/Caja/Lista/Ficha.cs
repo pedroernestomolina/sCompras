@@ -10,6 +10,7 @@ namespace OOB.LibCompra.Transporte.Caja.Lista
     public class Ficha
     {
         public int id { get; set; }
+        public string codigo { get; set; }
         public string descripcion { get; set; }
         public decimal saldoInicial { get; set; }
         public decimal montoPorIngresos { get; set; }

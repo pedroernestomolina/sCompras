@@ -131,7 +131,7 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
             {
                 try
                 {
-                    var r01 = Sistema.MyData.Transporte_Aliado_Anticipo_Anular(it.idMov);
+                    var r01 = Sistema.MyData.Transporte_Caja_Movimientos_Anular(it.idMov);
                     it.setEstatusAnulado();
                     Helpers.Msg.EliminarOk();
                 }
@@ -143,13 +143,10 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
         }
         private void visualizarItem(dataItem it)
         {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Planillas.Anticipo.Imp();
-            _rep.setIdDoc(it.idMov.ToString().Trim());
-            _rep.Generar();
         }
         private void imprimirItems()
         {
-            srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.Anticipo.Imp();
+            srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.CajaMov.Imp();
             _rep.setFiltrosBusq("");
             _rep.setDataCargar(_lista.Get_Items);
             _rep.Generar();

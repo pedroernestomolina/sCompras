@@ -147,6 +147,7 @@
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\Lista\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\Pendiente\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Caja\Crud\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Movimiento\Crud\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Movimiento\Lista\Ficha.cs" />
@@ -201,9 +202,7 @@
     <Compile Include="ResultadoId.cs" />
     <Compile Include="ResultadoLista.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LibCompra\Transporte\Caja\Crud\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,11 +10,12 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
     public interface IdataItem
     {
         DateTime FechaMov { get; set; }
-        string AliadoNombre { get; set; }
-        string AliadoCiRif { get; set; }
-        string ReciboNro { get; set; }
         decimal Monto { get; set; }
         string Motivo { get; set; }
         string Estatus { get; set; }
+        string TipoMov { get; set; }
+        int SignoMov { get; set; }
+        string CajaDesc { get; set; }
+        string EsDivisa { get; set; }
     }
 }

@@ -15,7 +15,8 @@ namespace ServiceCompra.Interfaces
         Transporte.ITranspAliadoAnticipo,
         Transporte.ITranspCaja,
         Transporte.ITranspAliadoPagServ,
-        Transporte.ITranspReportes
+        Transporte.ITranspReportes,
+        Transporte.ITranspCajaMov
     {
         DtoLib.ResultadoEntidad<DateTime> 
             FechaServidor();

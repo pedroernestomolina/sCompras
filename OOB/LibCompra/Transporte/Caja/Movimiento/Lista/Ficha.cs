@@ -16,7 +16,7 @@ namespace OOB.LibCompra.Transporte.Caja.Movimiento.Lista
         public DateTime fechaMov { get; set; }
         public string motivoMov { get; set; }
         public string tipoMov { get; set; }
-        public int signo{ get; set; }
+        public int signoMov { get; set; }
         public decimal montoMonAct { get; set; }
         public decimal montoMonDiv { get; set; }
         public decimal factorCambio { get; set; }

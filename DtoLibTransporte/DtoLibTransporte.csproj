@@ -60,8 +60,10 @@
     <Compile Include="Aliado\PagoServ\Lista\Filtro.cs" />
     <Compile Include="Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="Aliado\Pendiente\Ficha.cs" />
+    <Compile Include="Caja\Crud\Entidad\Ficha.cs" />
     <Compile Include="Caja\Lista\Ficha.cs" />
     <Compile Include="Caja\Movimiento\Crud\Agregar\Ficha.cs" />
+    <Compile Include="Caja\Movimiento\Crud\Anular\Ficha.cs" />
     <Compile Include="Caja\Movimiento\Lista\Ficha.cs" />
     <Compile Include="Caja\Movimiento\Lista\Filtro.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\ReciboDoc.cs" />
@@ -108,9 +110,7 @@
     <Compile Include="Reportes\Compras\Retencion\Filtro.cs" />
     <Compile Include="Reportes\Compras\enumerados.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Caja\Crud\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

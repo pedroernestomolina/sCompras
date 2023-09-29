@@ -241,6 +241,17 @@ namespace ModCompra
             _concepto.Inicializa();
             _concepto.Inicia();
         }
+        Utils.Maestro.IMaestro _cajaMaster;
+        public void MaestroCaja()
+        {
+            if (_cajaMaster== null)
+            {
+                _cajaMaster = new ModCompra.srcTransporte.Caja.Maestro.Imp();
+            }
+            _cajaMaster.Inicializa();
+            _cajaMaster.Inicia();
+        }
+
 
         //DOCUMENTOS
         ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
@@ -329,7 +340,13 @@ namespace ModCompra
             _rep.setFiltros(null);
             _rep.Generar();
         }
-
+        public void ReportesCajaEdoCta()
+        {
+            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.EdoCta.Imp();
+            _rep.setFiltros(null);
+            _rep.Generar();
+        }
 
 
         //public void PlanillaRetIva()

@@ -43,7 +43,7 @@ namespace ModCompra.Utils.Componente.Monto.Vistas
         {
             if (e.KeyCode == Keys.Enter)
             {
-                this.SelectNextControl((Control)sender, true, true, true, true);
+                this.SelectNextControl((System.Windows.Forms.Control)sender, true, true, true, true);
             }
         }
 

@@ -423,6 +423,10 @@
     <Compile Include="srcTransporte\Caja\Administrador\Vistas\IdataItem.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Vistas\IFiltroAadm.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Vistas\IListaAdm.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\data.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\Imp.cs" />
+    <Compile Include="srcTransporte\Caja\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Handler\HndEnt.cs" />
     <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Handler\Imp.cs" />
     <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\Frm.cs">
       <SubType>Form</SubType>
@@ -430,6 +434,7 @@
     <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\IHndEnt.cs" />
     <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\IMov.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataConcepto.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataCondicionPagoDoc.cs" />
@@ -537,6 +542,7 @@
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Idata.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataAliado.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataCtasPend.cs" />
+    <Compile Include="srcTransporte\Reportes\Caja\EdoCta\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\data.cs" />
@@ -562,6 +568,7 @@
     <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetISLR\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetIva\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Anticipo\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\CajaMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\PagoServ\Imp.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
@@ -619,6 +626,12 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Componente\Monto\Vistas\IMonto.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Caja\data.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Caja\Imp.cs" />
+    <Compile Include="Utils\Control\TipoCombo\ICtrl.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Idata.cs" />
+    <Compile Include="Utils\Control\TipoCombo\TipoMovCaja\data.cs" />
+    <Compile Include="Utils\Control\TipoCombo\TipoMovCaja\Imp.cs" />
     <Compile Include="Utils\Maestro\Frm.cs">
       <SubType>Form</SubType>
     </Compile>

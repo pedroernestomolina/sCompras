@@ -187,9 +187,19 @@ namespace ModCompra.srcTransporte.PantallaInicio
             _controlador.RegistrarCompraGasto();
         }
 
+
+        //MAESTROS
         private void MENU_MAESTRO_CONCEPTOS_Click(object sender, EventArgs e)
         {
             MaestroConceptos();
+        }
+        private void MENU_MAESTRO_CAJA_Click(object sender, EventArgs e)
+        {
+            MaestroCaja();
+        }
+        private void MaestroCaja()
+        {
+            _controlador.MaestroCaja();
         }
         private void MaestroConceptos()
         {
@@ -254,6 +264,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesCajaGeneralMov();
         }
+        private void MENU_REPORTES_CAJA_EDO_CTA_Click(object sender, EventArgs e)
+        {
+            ReportesCajaEdoCta();
+        }
         //
         private void ReporteGeneralDoc()
         {
@@ -280,6 +294,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
         private void ReportesCajaGeneralMov()
         {
             _controlador.ReportesCajaGeneralMov();
+        }
+        private void ReportesCajaEdoCta()
+        {
+            _controlador.ReportesCajaEdoCta();
         }
     }
 }

@@ -15,12 +15,14 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
 
 
         public DateTime FechaMov { get; set; }
-        public string AliadoNombre { get; set; }
-        public string AliadoCiRif { get; set; }
-        public string ReciboNro { get; set; }
-        public decimal Monto { get; set; }
         public string Motivo { get; set; }
+        public decimal Monto { get; set; }
+        public string TipoMov { get; set; }
+        public int SignoMov { get; set; }
         public string Estatus { get; set; }
+        public string CajaDesc { get; set; }
+        public string EsDivisa { get; set; }
+        //
         public int idMov { get { return _idMov; } }
         public bool isAnulado { get { return _isAnulado; } }
 
@@ -28,13 +30,14 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
         public dataItem(OOB.LibCompra.Transporte.Caja.Movimiento.Lista.Ficha ficha)
         {
             _ficha = ficha;
-            //FechaMov = ficha.fecha;
-            //AliadoNombre = ficha.nombreAliado;
-            //AliadoCiRif = ficha.ciRifAliado;
-            //ReciboNro = ficha.numRecibo;
-            //Monto = ficha.montoAntSolicitadoDiv;
-            //Motivo = ficha.motivo;
+            FechaMov = ficha.fechaMov;
+            Monto = ficha.movFueDivisa.ToUpper().Trim() == "1" ? ficha.montoMonDiv : ficha.montoMonAct;
+            Motivo = ficha.motivoMov;
             Estatus = ficha.estatusAnulado == "1" ? "ANULADO" : "";
+            TipoMov= ficha.tipoMov=="I"?"INGRESO":"EGRESO";
+            SignoMov = ficha.signoMov;
+            CajaDesc = ficha.cjDesc;
+            EsDivisa= ficha.cjEsDivisa.Trim().ToUpper()=="1"?"$":"";
             _idMov = ficha.idMov;
             _isAnulado = ficha.estatusAnulado == "1" ;
         }

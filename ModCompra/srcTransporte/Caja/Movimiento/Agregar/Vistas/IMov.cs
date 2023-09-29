@@ -9,5 +9,6 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Vistas
 {
     public interface IMov: HlpGestion.IGestion, HlpGestion.IAbandonar, HlpGestion.IProcesar
     {
+        IHndEnt Hnd { get; }
     }
 }
