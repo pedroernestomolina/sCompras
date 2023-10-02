@@ -166,11 +166,13 @@
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Recibo.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Resultado.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\Auditoria.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\DocRetCompra.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\Proveedor.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\Retencion.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\GetData\Documento.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\GetData\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\GetData\RetDoc.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\GetData\RetRec.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Concepto\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Concepto\baseFicha.cs" />

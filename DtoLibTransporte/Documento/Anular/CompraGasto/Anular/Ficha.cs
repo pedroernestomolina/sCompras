@@ -14,5 +14,6 @@ namespace DtoLibTransporte.Documento.Anular.CompraGasto.Anular
         public Proveedor proveedor { get; set; }
         public List<Auditoria> auditoria { get; set; }
         public List<Retencion> retenciones { get; set; }
+        public List<DocRetCompra> docRetCompra { get; set; }
     }
 }

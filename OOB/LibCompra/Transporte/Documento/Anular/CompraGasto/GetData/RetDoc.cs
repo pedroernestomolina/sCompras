@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.GetData
 {
-    public class Ficha
+    public class RetDoc
     {
-        public Documento documento { get; set; }
-        public List<RetRec> retencionRecibo { get; set; }
-        public List<RetDoc> retencionDoc { get; set; }
+        public string autoDocCompraRet { get; set; }
     }
 }

@@ -124,7 +124,7 @@ namespace ModCompra.Fabrica.Transporte
                         motivo = "ANULADO AL ANULAR DOCUMENTO DE COMPRA DE REF: " + r01.Entidad.documento.documento,
                         nombreUsuario = Sistema.UsuarioP.nombreUsu,
                     };
-                    auditorias.Add(audPorRet);
+                    //auditorias.Add(audPorRet);
                     //
                     var audPorRec = new OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular.Auditoria()
                     {
@@ -137,7 +137,7 @@ namespace ModCompra.Fabrica.Transporte
                         motivo = "ANULADO AL ANULAR DOCUMENTO DE COMPRA DE REF: " + r01.Entidad.documento.documento,
                         nombreUsuario = Sistema.UsuarioP.nombreUsu,
                     };
-                    auditorias.Add(audPorRec);
+                    //auditorias.Add(audPorRec);
                 }
                 var ficha = new OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular.Ficha()
                 {
@@ -157,6 +157,14 @@ namespace ModCompra.Fabrica.Transporte
                             autoRecibo = s.autoRecibo,
                         };
                         return nr;
+                    }).ToList(),
+                    docRetCompra = r01.Entidad.retencionDoc.Select(xr =>
+                    {
+                        var xnr = new OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular.DocRetCompra()
+                        {
+                            autoDocRetCompra = xr.autoDocCompraRet,
+                        };
+                        return xnr;
                     }).ToList(),
                 };
                 var r02 = Sistema.MyData.Transporte_Documento_Anular_CompraGrasto(ficha);

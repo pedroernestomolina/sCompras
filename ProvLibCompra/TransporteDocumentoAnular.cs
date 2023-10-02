@@ -14,7 +14,7 @@ namespace ProvLibCompra
         class verificarAnular 
         {
             public string estatusAnulado { get; set; }
-            public DateTime fechaEmision { get; set; }
+            public DateTime fechaRegistro { get; set; }
             public string estatusCierreContable { get; set; }
         }
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.Ficha>
@@ -57,10 +57,21 @@ namespace ProvLibCompra
                     p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxP", autoCxp);
                     var _entRetRec = cnn.Database.SqlQuery<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.RetRec>(sql, p1).ToList();
                     //
+                    //OBTENER DATA DE LAS RESPECTIVAS RETENCIONES REALIZADAS AL PROCESAR DOCUMENTO 
+                    sql = @"SELECT 
+                                compRetDet.auto as autoDocCompraRet
+                            FROM compras_retenciones_detalle as compRetDet
+                            join compras as compra on compra.auto=compRetDet.auto_documento
+                            where compRetDet.auto_documento=@autoDocCompra and
+                                (compra.retencion_iva>0 or compra.retencion_islr>0)";
+                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCompra", autoDoc);
+                    var _lstRetComp= cnn.Database.SqlQuery<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.RetDoc>(sql, p1).ToList();
+                    //
                     result.Entidad = new DtoLibTransporte.Documento.Anular.CompraGasto.GetData.Ficha()
                     {
                         documento = _ent,
                         retencionRecibo = _entRetRec,
+                        retencionDoc = _lstRetComp,
                     };
                 }
             }
@@ -187,33 +198,68 @@ namespace ProvLibCompra
                         }
                         cnn.SaveChanges();
                         //
-                        foreach (var rg in ficha.retenciones) 
+                        if (ficha.retenciones != null)
                         {
-                            sql = @"update cxp set 
+                            foreach (var rg in ficha.retenciones)
+                            {
+                                sql = @"update cxp set 
                                     estatus_anulado='1'
                                 where auto=@autoRet";
-                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoRet", rg.autoCxP);
-                            var r5 = cnn.Database.ExecuteSqlCommand(sql, p00);
-                            if (r5 == 0)
-                            {
-                                result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO CXP DOCUMENTO RETENCION";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
-                            }
-                            cnn.SaveChanges();
-                            //
-                            sql = @"update cxp_recibos set 
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoRet", rg.autoCxP);
+                                var r5 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                                if (r5 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO CXP DOCUMENTO RETENCION";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cnn.SaveChanges();
+                                //
+                                sql = @"update cxp_recibos set 
                                     estatus_anulado='1'
                                 where auto=@autoRecibo";
-                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoRecibo", rg.autoRecibo);
-                            var r6 = cnn.Database.ExecuteSqlCommand(sql, p00);
-                            if (r6 == 0)
-                            {
-                                result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO RECIBO DOCUMENTO RETENCION";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoRecibo", rg.autoRecibo);
+                                var r6 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                                if (r6 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS ANULADO RECIBO DOCUMENTO RETENCION";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cnn.SaveChanges();
                             }
-                            cnn.SaveChanges();
+                        }
+                        //
+                        if (ficha.docRetCompra != null)
+                        {
+                            foreach (var rg in ficha.docRetCompra)
+                            {
+                                sql = @"update compras_retenciones set 
+                                            estatus_anulado='1'
+                                        where auto=@autoDocCompraRet";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCompraRet", rg.autoDocRetCompra);
+                                var r7 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                                if (r7 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS DOCUMENTO COMPRA RETENCION";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cnn.SaveChanges();
+                                //
+                                sql = @"update compras_retenciones_detalle set 
+                                            estatus_anulado='1'
+                                        where auto=@autoDocCompraRet";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCompraRet", rg.autoDocRetCompra);
+                                var r8 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                                if (r8 == 0)
+                                {
+                                    result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS DOCUMENTO COMPRA RETENCION DETALLE";
+                                    result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                    return result;
+                                }
+                                cnn.SaveChanges();
+                            }
                         }
                         ts.Commit();
                     }
@@ -248,7 +294,7 @@ namespace ProvLibCompra
                     var fechaSistema = cnn.Database.SqlQuery<DateTime>(_sql).FirstOrDefault();
                     //
                     _sql = @"select 
-                                fecha as fechaEmision,
+                                fecha_registro as fechaRegistro,
                                 estatus_anulado as estatusAnulado,
                                 estatus_cierre_contable as estatusCierreContable
                             from compras 
@@ -267,7 +313,7 @@ namespace ProvLibCompra
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;
                         return rt;
                     }
-                    if (_ent.fechaEmision.Year != fechaSistema.Year || _ent.fechaEmision.Month != fechaSistema.Month)
+                    if (_ent.fechaRegistro.Year != fechaSistema.Year || _ent.fechaRegistro.Month != fechaSistema.Month)
                     {
                         rt.Mensaje = "DOCUMENTO SE ENCUENTRA EN OTRO PERIODO";
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;

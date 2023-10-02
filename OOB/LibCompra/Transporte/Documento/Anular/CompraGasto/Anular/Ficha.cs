@@ -14,5 +14,6 @@ namespace OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular
         public List<Auditoria> auditoria { get; set; }
         public Proveedor proveedor { get; set; }
         public List<Retencion> retenciones { get; set; }
+        public List<DocRetCompra> docRetCompra { get; set; }
     }
 }

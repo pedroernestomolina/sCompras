@@ -472,6 +472,14 @@ namespace DataProvCompra.Data
                     };
                     return nr;
                 }).ToList(),
+                retencionDoc = s.retencionDoc.Select(xx =>
+                {
+                    var xr = new OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.GetData.RetDoc()
+                    {
+                        autoDocCompraRet = xx.autoDocCompraRet,
+                    };
+                    return xr;
+                }).ToList(),
             };
             return result;
         }
@@ -511,6 +519,14 @@ namespace DataProvCompra.Data
                         autoRecibo = s.autoRecibo,
                     };
                     return nr;
+                }).ToList(),
+                docRetCompra = ficha.docRetCompra.Select(t =>
+                {
+                    var xnr = new DtoLibTransporte.Documento.Anular.CompraGasto.Anular.DocRetCompra()
+                    {
+                        autoDocRetCompra = t.autoDocRetCompra,
+                    };
+                    return xnr;
                 }).ToList(),
             };
             var r01 = MyData.Transporte_Documento_Anular_CompraGrasto(fichaDTO);

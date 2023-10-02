@@ -54,6 +54,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
             c1.Width = 130;
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
+            c1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "Documento";
@@ -88,6 +89,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
             c5.Width = 80;
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
+            c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "RetTasa";
