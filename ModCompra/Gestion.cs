@@ -225,11 +225,15 @@ namespace ModCompra
         }
 
 
+        /////////////////////////
+        //
         //
         // TRANSPORTE
         //
-
-
+        //
+        /////////////////////////
+        //
+        //
         //MAESTRO
         Utils.Maestro.IMaestro _concepto;
         public void MaestroConceptos()
@@ -252,7 +256,6 @@ namespace ModCompra
             _cajaMaster.Inicia();
         }
 
-
         //DOCUMENTOS
         ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
         public void RegistrarCompraGasto()
@@ -264,6 +267,13 @@ namespace ModCompra
             _compraGasto.Inicializa();
             _compraGasto.Inicia();
         }
+        public void AdministradorDocRet()
+        {
+            srcTransporte.Retencion.Administrador.Vistas.IAdm _adm = new srcTransporte.Retencion.Administrador.Handler.Imp();
+            _adm.Inicializa();
+            _adm.Inicia();
+        }
+
 
         //CXP
         srcTransporte.CtaPagar.ToolsAliados.Vistas.IAliados _toolAliados;
@@ -347,19 +357,5 @@ namespace ModCompra
             _rep.setFiltros(null);
             _rep.Generar();
         }
-
-
-        //public void PlanillaRetIva()
-        //{
-        //    srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
-        //    _rep.setIdDoc("0000000038");
-        //    _rep.Generar();
-        //}
-        //public void PlanillaRetIslr()
-        //{
-        //    srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
-        //    _rep.setIdDoc("0000000038");
-        //    _rep.Generar();
-        //}
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="Transporte\ITranspCajaMov.cs" />
     <Compile Include="Transporte\ITranspConcepto.cs" />
     <Compile Include="Transporte\ITranspDocumento.cs" />
+    <Compile Include="Transporte\ITranspDocumentoRet.cs" />
     <Compile Include="Transporte\ITranspReportes.cs" />
   </ItemGroup>
   <ItemGroup>

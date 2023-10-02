@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.Vistas
+namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
 {
     public partial class Frm : Form
     {
-        private Vistas.IAdmPagoServ _controlador;
+        private Vistas.IAdm _controlador;
 
 
         public Frm()
@@ -40,45 +40,44 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
             DGV.ReadOnly = true;
 
             var c0 = new DataGridViewTextBoxColumn();
-            c0.DataPropertyName = "ReciboNro";
-            c0.HeaderText = "Recibo Nro";
+            c0.DataPropertyName = "Fecha";
+            c0.HeaderText = "Fecha";
             c0.Visible = true;
             c0.Width = 80;
             c0.HeaderCell.Style.Font = f;
             c0.DefaultCellStyle.Font = f1;
 
             var c1 = new DataGridViewTextBoxColumn();
-            c1.DataPropertyName = "FechaMov";
-            c1.HeaderText = "Fecha";
+            c1.DataPropertyName = "TipoRet";
+            c1.HeaderText = "TipoRet";
             c1.Visible = true;
-            c1.Width = 80;
+            c1.Width = 130;
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
 
             var c2 = new DataGridViewTextBoxColumn();
-            c2.DataPropertyName = "AliadoNombre";
-            c2.HeaderText = "Aliado";
+            c2.DataPropertyName = "Documento";
+            c2.HeaderText = "Documento";
             c2.Visible = true;
-            c2.MinimumWidth = 200;
+            c2.Width = 110;
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
-            c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             var c3 = new DataGridViewTextBoxColumn();
-            c3.DataPropertyName = "AliadoCiRif";
-            c3.HeaderText = "CiRif";
+            c3.DataPropertyName = "ProvNombre";
+            c3.HeaderText = "Proveedor";
             c3.Visible = true;
-            c3.Width = 100;
+            c3.MinimumWidth = 250;
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f1;
+            c3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             var c4 = new DataGridViewTextBoxColumn();
-            c4.DataPropertyName = "Monto";
-            c4.HeaderText = "Monto $";
+            c4.DataPropertyName = "ProvCiRif";
+            c4.HeaderText = "CiRif";
             c4.Visible = true;
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
-            c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c4.Width = 100;
 
             var c5 = new DataGridViewTextBoxColumn();
@@ -90,12 +89,35 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
 
+            var c6 = new DataGridViewTextBoxColumn();
+            c6.DataPropertyName = "RetTasa";
+            c6.HeaderText = "%Ret";
+            c6.Name = "Estatus";
+            c6.Visible = true;
+            c6.Width = 80;
+            c6.HeaderCell.Style.Font = f;
+            c6.DefaultCellStyle.Font = f1;
+            c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c6.DefaultCellStyle.Format = "n2";
+
+            var c7 = new DataGridViewTextBoxColumn();
+            c7.DataPropertyName = "RetMonto";
+            c7.HeaderText = "Importe Ret";
+            c7.Visible = true;
+            c7.Width = 100;
+            c7.HeaderCell.Style.Font = f;
+            c7.DefaultCellStyle.Font = f1;
+            c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c7.DefaultCellStyle.Format = "n2";
+
             DGV.Columns.Add(c0);
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
+            DGV.Columns.Add(c6);
+            DGV.Columns.Add(c7);
         }
         private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -122,7 +144,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
             DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
             Actualizar();
         }
-        public void setControlador(Vistas.IAdmPagoServ ctr)
+        public void setControlador(Vistas.IAdm ctr)
         {
             _controlador = ctr;
         }

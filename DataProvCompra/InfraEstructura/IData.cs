@@ -16,7 +16,8 @@ namespace DataProvCompra.InfraEstructura
         Transporte.ITranspCaja,
         Transporte.ITranspAliadoPagServ,
         Transporte.ITranspReportes,
-        Transporte.ITranspCajaMov
+        Transporte.ITranspCajaMov,
+        Transporte.ITranspDocumentoRet
     {
         OOB.ResultadoEntidad<DateTime> 
             FechaServidor();

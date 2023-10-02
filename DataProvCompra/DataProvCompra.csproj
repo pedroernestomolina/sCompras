@@ -60,6 +60,7 @@
     <Compile Include="Data\TranspAliadoPagServ.cs" />
     <Compile Include="Data\TranspCaja.cs" />
     <Compile Include="Data\TranspCajaMov.cs" />
+    <Compile Include="Data\TransporteDocumentoRet.cs" />
     <Compile Include="Data\TransporteAliado.cs" />
     <Compile Include="Data\TransporteDocumento.cs" />
     <Compile Include="Data\TranspReportes.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="InfraEstructura\Transporte\ITranspCaja.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspCajaMov.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspDocumento.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspDocumentoRet.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspReportes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -583,7 +583,28 @@
     <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetIva\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Anticipo\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\CajaMov\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\DocumentoRet\Class1.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\DocumentoRet\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\PagoServ\Imp.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\dataFiltro.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\dataItem.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndBusqDoc.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\hndBusqueda.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndFiltro.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndLista.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IAdm.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IBusqDoc.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IdataFiltro.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IdataItem.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IFiltroAdm.cs" />
+    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IListaAdm.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
     <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\ICompraGasto.cs" />
@@ -805,6 +826,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Retencion\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Auditoria\Visualizar\VisualizarFrm.resx">

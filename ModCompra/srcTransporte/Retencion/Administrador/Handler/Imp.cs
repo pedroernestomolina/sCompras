@@ -1,0 +1,152 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
+{
+    public class Imp: Vistas.IAdm
+    {
+        private bool _abandonarIsOK;
+        private Vistas.IListaAdm _lista;
+        private Vistas.IBusqDoc _busqDoc;
+        private Vistas.IFiltroAdm _filtro;
+
+
+        public Utils.Componente.Administrador.Vistas.ILista data { get { return _lista; } }
+        public Vistas.IBusqDoc BusqDoc { get { return _busqDoc; } }
+        public Utils.Componente.Administrador.Vistas.IFiltro filtros { get { return _filtro; } }
+        public string Get_TituloAdm { get { return "Administrador Documentos: RETENCIONES"; } }
+        public int Get_CntItem { get { return _lista.Get_CntItem; } }
+        
+
+        public Imp()
+        {
+            _abandonarIsOK = false;
+            _lista = new HndLista();
+            _busqDoc = new HndBusqDoc();
+            _filtro = new HndFiltro();
+        }
+        public void Inicializa()
+        {
+            _abandonarIsOK = false;
+            _lista.Inicializa();
+            _busqDoc.Inicializa();
+            _filtro.Inicializa();
+        }
+        Vistas.Frm frm;
+        public void Inicia()
+        {
+            if (cargarData()) 
+            {
+                if (frm == null) 
+                {
+                    frm = new Vistas.Frm();
+                    frm.setControlador(this);
+                }
+                frm.ShowDialog();
+            }
+        }
+        public void Buscar()
+        {
+            if (_filtro.VerificarFiltros())
+            {
+                _busqDoc.setFiltros(_filtro.Get_Filtros);
+                var r01 = _busqDoc.Buscar();
+                if (r01 != null)
+                {
+                    var lst = new List<Vistas.IdataItem>();
+                    foreach (var rg in r01)
+                    {
+                        var nr = new dataItem((OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Ficha)rg);
+                        lst.Add(nr);
+                    }
+                    _lista.setDataCargar(lst);
+                }
+            }
+        }
+        public void AnularItem()
+        {
+        }
+        public void VisualizarDocumento()
+        {
+            if (_lista.ItemActual != null)
+            {
+                var it = (dataItem)_lista.ItemActual;
+                visualizarItem(it);
+                _lista.Refresca();
+            }
+        }
+        public void Imprimir()
+        {
+            if (_lista.Get_CntItem > 0) 
+            {
+                imprimirItems();
+            }
+        }
+
+
+        public bool AbandonarIsOK { get { return _abandonarIsOK; } }
+        public void AbandonarFicha()
+        {
+            _abandonarIsOK = Helpers.Msg.Abandonar();
+        }
+
+
+        private bool cargarData()
+        {
+            try
+            {
+                var r01 = Sistema.MyData.FechaServidor();
+                var _ano = r01.Entidad.Year;
+                var _mes = r01.Entidad.Month;
+                var _dia = DateTime.DaysInMonth(_ano, _mes);
+                _filtro.setDesde(new DateTime(_ano, _mes, 01));
+                _filtro.setHasta(new DateTime(_ano, _mes, _dia));
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
+        }
+        private void visualizarItem(dataItem it)
+        {
+            if (it != null) 
+            {
+                if (it.Ficha.tipoRetCod == "07") 
+                {
+                    PlanillaRetIva(it.Ficha.autoDocRef);
+                }
+                else
+                {
+                    PlanillaRetIslr(it.Ficha.autoDocRef);
+                }
+            }
+        }
+        private void imprimirItems()
+        {
+            srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.DocumentoRet.Imp();
+            _rep.setFiltrosBusq("");
+            _rep.setDataCargar(_lista.Get_Items);
+            _rep.Generar();
+        }
+
+
+        public void PlanillaRetIva(string autoDoc)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
+            _rep.setIdDoc(autoDoc);
+            _rep.Generar();
+        }
+        public void PlanillaRetIslr(string autoDoc)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
+            _rep.setIdDoc(autoDoc);
+            _rep.Generar();
+        }
+    }
+}

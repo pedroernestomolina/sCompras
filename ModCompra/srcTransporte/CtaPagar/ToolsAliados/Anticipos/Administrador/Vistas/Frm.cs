@@ -28,6 +28,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
             var f2 = new Font("Serif", 10, FontStyle.Bold);
 
             DGV.Columns.Clear();
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -108,10 +109,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
         private void DGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex != -1 && e.RowIndex != -1)
-            //{
-            //    SeleccionarItem();
-            //}
         }
         private void Frm_Load(object sender, EventArgs e)
         {
@@ -124,11 +121,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
             DTP_DESDE.Value = _controlador.filtros.Get_Desde;
             DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
             Actualizar();
-
-            //CB_SUCURSAL.DataSource = _controlador.SucursalSource;
-            //CB_SUCURSAL.SelectedIndex = -1;
-            //CB_TIPO_DOC.DataSource = _controlador.TipoDocSource;
-            //CB_TIPO_DOC.SelectedIndex = -1;
         }
         public void setControlador(Vistas.IAdmAnticipo ctr)
         {
@@ -201,12 +193,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         {
             _controlador.filtros.Limpiar();
             ActualizarPant();
-            //DTP_DESDE.Value = DateTime.Now;
-            //DTP_HASTA.Value = DateTime.Now;
-            //CB_SUCURSAL.SelectedIndex = -1;
-            //CB_TIPO_DOC.SelectedIndex = -1;
-            //TB_CADENA_BUS_PROV.Text = "";
-            //LimpiarProveedor();
         }
         private void LimpiarData()
         {
@@ -220,7 +206,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
         private void SeleccionarItem()
         {
-            //_controlador.SeleccionarItem();
         }
         private void VisualizarDocumento()
         {
@@ -232,7 +217,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
         private void VisualizarAnulacion()
         {
-            //_controlador.VisualizarAnulacion();
         }
         private void AnularItem()
         {
@@ -256,71 +240,3 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
     }
 }
-
-
-
-//private void BT_BUSCAR_PROVEEDOR_Click(object sender, EventArgs e)
-//{
-//    BuscarProveedor();
-//}
-//private void BuscarProveedor()
-//{
-//    _controlador.BuscarProveedor();
-//    TB_CADENA_BUS_PROV.Text = _controlador.Proveedor;
-//}
-
-//private void TB_CADENA_BUS_PROV_Leave(object sender, EventArgs e)
-//{
-//    _controlador.setCadenaBusProv(TB_CADENA_BUS_PROV.Text.Trim().ToUpper());
-//}
-
-//private void L_PROVEEDOR_Click(object sender, EventArgs e)
-//{
-//    LimpiarProveedor();
-//}
-
-//private void LimpiarProveedor()
-//{
-//    TB_CADENA_BUS_PROV.Text = "";
-//    _controlador.setCadenaBusProv("");
-//    _controlador.LimpiarProveedor();
-//}
-
-
-//private void DTP_DESDE_ValueChanged(object sender, EventArgs e)
-//{
-//    _controlador.setFechaDesde(DTP_DESDE.Value);
-//}
-
-//private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
-//{
-//    _controlador.setFechaHasta(DTP_HASTA.Value);
-//}
-
-//private void CB_TIPO_DOC_SelectedIndexChanged(object sender, EventArgs e)
-//{
-//    _controlador.setTipoDoc("");
-//    if (CB_TIPO_DOC.SelectedIndex!=-1)
-//    {
-//        _controlador.setTipoDoc(CB_TIPO_DOC.SelectedValue.ToString());
-//    }
-//}
-
-//private void CB_SUCURSAL_SelectedIndexChanged(object sender, EventArgs e)
-//{
-//    _controlador.setSucursal("");
-//    if (CB_SUCURSAL.SelectedIndex != -1)
-//    {
-//        _controlador.setSucursal(CB_SUCURSAL.SelectedValue.ToString());
-//    }
-//}
-
-//private void L_TIPO_DOC_Click(object sender, EventArgs e)
-//{
-//    CB_TIPO_DOC.SelectedIndex = -1;
-//}
-
-//private void L_SUCURSAL_Click(object sender, EventArgs e)
-//{
-//    CB_SUCURSAL.SelectedIndex = -1;
-//}

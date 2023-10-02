@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Documento.Lista
 {
-    
     public class Resumen
     {
-
         public string auto { get; set; }
         public DateTime fechaEmision { get; set; }
         public string documento { get; set; }

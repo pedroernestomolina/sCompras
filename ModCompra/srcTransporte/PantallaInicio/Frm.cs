@@ -83,15 +83,6 @@ namespace ModCompra.srcTransporte.PantallaInicio
             this.Visible = true;
         }
 
-        private void MENU_DOCUMENTOS_ADMINISTRADOR_Click(object sender, EventArgs e)
-        {
-            AdministradorDoc();
-        }
-        private void AdministradorDoc()
-        {
-            _controlador.AdministradorDoc();
-        }
-
         private void MENU_REPORTES_GENERAL_DOCUMENTOS_Click(object sender, EventArgs e)
         {
             ReporteGeneralDocumentos();
@@ -178,15 +169,38 @@ namespace ModCompra.srcTransporte.PantallaInicio
             _controlador.ConfiguracionSistema();
         }
 
+
+        /////////////////////////////////////////////////
+        //
+        // TRANSPORTE
+        //
+        /////////////////////////////////////////////////
+        //
+        //DOCUMENTOS
         private void MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO_Click(object sender, EventArgs e)
         {
             RegistrarCompraGasto();
+        }
+        private void MENU_DOCUMENTOS_ADMINISTRADOR_Click(object sender, EventArgs e)
+        {
+            AdministradorDoc();
+        }
+        private void MENU_DOC_ADM_RET_Click(object sender, EventArgs e)
+        {
+            AdministradorDocRet();
         }
         private void RegistrarCompraGasto()
         {
             _controlador.RegistrarCompraGasto();
         }
-
+        private void AdministradorDoc()
+        {
+            _controlador.AdministradorDoc();
+        }
+        private void AdministradorDocRet()
+        {
+            _controlador.AdministradorDocRet();
+        }
 
         //MAESTROS
         private void MENU_MAESTRO_CONCEPTOS_Click(object sender, EventArgs e)

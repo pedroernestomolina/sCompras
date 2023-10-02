@@ -79,6 +79,7 @@
     <Compile Include="TranspAliadoPagServ.cs" />
     <Compile Include="TranspCaja.cs" />
     <Compile Include="TranspCajaMov.cs" />
+    <Compile Include="TranspDocumentoRet.cs" />
     <Compile Include="TransporteAliado.cs" />
     <Compile Include="TransporteConcepto.cs" />
     <Compile Include="TransporteDocumentoAgregar.cs" />
