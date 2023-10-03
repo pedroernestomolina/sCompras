@@ -1,4 +1,4 @@
-﻿namespace ModCompra.srcTransporte.Filtro.PagoServ
+﻿namespace ModCompra.srcTransporte.Filtro.DocRetencion
 {
     partial class Frm
     {
@@ -46,19 +46,19 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.CB_ESTATUS = new System.Windows.Forms.ComboBox();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.L_TIPO_MOV_CAJA = new System.Windows.Forms.Label();
+            this.L_TIPO_RETENCION = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.CB_TIPO_MOV_CAJA = new System.Windows.Forms.ComboBox();
+            this.CB_TIPO_RETENCION = new System.Windows.Forms.ComboBox();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.L_CAJA = new System.Windows.Forms.Label();
+            this.L_PROVEEDOR = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.CB_CAJA = new System.Windows.Forms.ComboBox();
+            this.CB_PROVEEDOR = new System.Windows.Forms.ComboBox();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.TB_CAJA = new System.Windows.Forms.TextBox();
+            this.TB_PROVEEDOR = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -309,7 +309,7 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.L_TIPO_MOV_CAJA);
+            this.panel13.Controls.Add(this.L_TIPO_RETENCION);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel13.Location = new System.Drawing.Point(0, 128);
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
@@ -318,18 +318,18 @@
             this.panel13.Size = new System.Drawing.Size(168, 28);
             this.panel13.TabIndex = 6;
             // 
-            // L_TIPO_MOV_CAJA
+            // L_TIPO_RETENCION
             // 
-            this.L_TIPO_MOV_CAJA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_TIPO_MOV_CAJA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_TIPO_MOV_CAJA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_TIPO_MOV_CAJA.Location = new System.Drawing.Point(2, 2);
-            this.L_TIPO_MOV_CAJA.Name = "L_TIPO_MOV_CAJA";
-            this.L_TIPO_MOV_CAJA.Size = new System.Drawing.Size(164, 24);
-            this.L_TIPO_MOV_CAJA.TabIndex = 1;
-            this.L_TIPO_MOV_CAJA.Text = "Tipo Mov Caja ?:";
-            this.L_TIPO_MOV_CAJA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_TIPO_MOV_CAJA.Click += new System.EventHandler(this.L_TIPO_MOV_CAJA_Click);
+            this.L_TIPO_RETENCION.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_TIPO_RETENCION.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_TIPO_RETENCION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TIPO_RETENCION.Location = new System.Drawing.Point(2, 2);
+            this.L_TIPO_RETENCION.Name = "L_TIPO_RETENCION";
+            this.L_TIPO_RETENCION.Size = new System.Drawing.Size(164, 24);
+            this.L_TIPO_RETENCION.TabIndex = 1;
+            this.L_TIPO_RETENCION.Text = "Tipo Retención ?:";
+            this.L_TIPO_RETENCION.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_TIPO_RETENCION.Click += new System.EventHandler(this.L_TIPO_RETENCION_Click);
             // 
             // panel14
             // 
@@ -359,7 +359,7 @@
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.CB_TIPO_MOV_CAJA);
+            this.panel15.Controls.Add(this.CB_TIPO_RETENCION);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Location = new System.Drawing.Point(0, 0);
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
@@ -368,22 +368,22 @@
             this.panel15.Size = new System.Drawing.Size(316, 28);
             this.panel15.TabIndex = 0;
             // 
-            // CB_TIPO_MOV_CAJA
+            // CB_TIPO_RETENCION
             // 
-            this.CB_TIPO_MOV_CAJA.Dock = System.Windows.Forms.DockStyle.Left;
-            this.CB_TIPO_MOV_CAJA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_TIPO_MOV_CAJA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_TIPO_MOV_CAJA.FormattingEnabled = true;
-            this.CB_TIPO_MOV_CAJA.Location = new System.Drawing.Point(2, 2);
-            this.CB_TIPO_MOV_CAJA.Name = "CB_TIPO_MOV_CAJA";
-            this.CB_TIPO_MOV_CAJA.Size = new System.Drawing.Size(173, 24);
-            this.CB_TIPO_MOV_CAJA.TabIndex = 0;
-            this.CB_TIPO_MOV_CAJA.SelectedIndexChanged += new System.EventHandler(this.CB_TIPO_MOV_CAJA_SelectedIndexChanged);
-            this.CB_TIPO_MOV_CAJA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTR_KeyDown);
+            this.CB_TIPO_RETENCION.Dock = System.Windows.Forms.DockStyle.Left;
+            this.CB_TIPO_RETENCION.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_TIPO_RETENCION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_TIPO_RETENCION.FormattingEnabled = true;
+            this.CB_TIPO_RETENCION.Location = new System.Drawing.Point(2, 2);
+            this.CB_TIPO_RETENCION.Name = "CB_TIPO_RETENCION";
+            this.CB_TIPO_RETENCION.Size = new System.Drawing.Size(173, 24);
+            this.CB_TIPO_RETENCION.TabIndex = 0;
+            this.CB_TIPO_RETENCION.SelectedIndexChanged += new System.EventHandler(this.CB_TIPO_MOV_CAJA_SelectedIndexChanged);
+            this.CB_TIPO_RETENCION.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTR_KeyDown);
             // 
             // panel16
             // 
-            this.panel16.Controls.Add(this.L_CAJA);
+            this.panel16.Controls.Add(this.L_PROVEEDOR);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(0, 156);
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
@@ -392,18 +392,18 @@
             this.panel16.Size = new System.Drawing.Size(168, 58);
             this.panel16.TabIndex = 8;
             // 
-            // L_CAJA
+            // L_PROVEEDOR
             // 
-            this.L_CAJA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.L_CAJA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_CAJA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_CAJA.Location = new System.Drawing.Point(2, 2);
-            this.L_CAJA.Name = "L_CAJA";
-            this.L_CAJA.Size = new System.Drawing.Size(164, 54);
-            this.L_CAJA.TabIndex = 2;
-            this.L_CAJA.Text = "Caja A Buscar ?:";
-            this.L_CAJA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_CAJA.Click += new System.EventHandler(this.L_CAJA_Click);
+            this.L_PROVEEDOR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.L_PROVEEDOR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_PROVEEDOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_PROVEEDOR.Location = new System.Drawing.Point(2, 2);
+            this.L_PROVEEDOR.Name = "L_PROVEEDOR";
+            this.L_PROVEEDOR.Size = new System.Drawing.Size(164, 54);
+            this.L_PROVEEDOR.TabIndex = 2;
+            this.L_PROVEEDOR.Text = "Proveedor A Buscar ?:";
+            this.L_PROVEEDOR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_PROVEEDOR.Click += new System.EventHandler(this.L_PROVEEDOR_Click);
             // 
             // panel17
             // 
@@ -434,7 +434,7 @@
             // 
             // panel18
             // 
-            this.panel18.Controls.Add(this.CB_CAJA);
+            this.panel18.Controls.Add(this.CB_PROVEEDOR);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel18.Location = new System.Drawing.Point(0, 26);
             this.panel18.Margin = new System.Windows.Forms.Padding(0);
@@ -443,23 +443,23 @@
             this.panel18.Size = new System.Drawing.Size(316, 28);
             this.panel18.TabIndex = 0;
             // 
-            // CB_CAJA
+            // CB_PROVEEDOR
             // 
-            this.CB_CAJA.Dock = System.Windows.Forms.DockStyle.Left;
-            this.CB_CAJA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_CAJA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_CAJA.FormattingEnabled = true;
-            this.CB_CAJA.Location = new System.Drawing.Point(2, 0);
-            this.CB_CAJA.Margin = new System.Windows.Forms.Padding(1);
-            this.CB_CAJA.Name = "CB_CAJA";
-            this.CB_CAJA.Size = new System.Drawing.Size(311, 24);
-            this.CB_CAJA.TabIndex = 0;
-            this.CB_CAJA.SelectedIndexChanged += new System.EventHandler(this.CB_CAJA_SelectedIndexChanged);
-            this.CB_CAJA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTR_KeyDown);
+            this.CB_PROVEEDOR.Dock = System.Windows.Forms.DockStyle.Left;
+            this.CB_PROVEEDOR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_PROVEEDOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_PROVEEDOR.FormattingEnabled = true;
+            this.CB_PROVEEDOR.Location = new System.Drawing.Point(2, 0);
+            this.CB_PROVEEDOR.Margin = new System.Windows.Forms.Padding(1);
+            this.CB_PROVEEDOR.Name = "CB_PROVEEDOR";
+            this.CB_PROVEEDOR.Size = new System.Drawing.Size(311, 24);
+            this.CB_PROVEEDOR.TabIndex = 0;
+            this.CB_PROVEEDOR.SelectedIndexChanged += new System.EventHandler(this.CB_PROVEEDOR_SelectedIndexChanged);
+            this.CB_PROVEEDOR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTR_KeyDown);
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.TB_CAJA);
+            this.panel19.Controls.Add(this.TB_PROVEEDOR);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel19.Location = new System.Drawing.Point(0, 0);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
@@ -468,19 +468,19 @@
             this.panel19.Size = new System.Drawing.Size(316, 26);
             this.panel19.TabIndex = 1;
             // 
-            // TB_CAJA
+            // TB_PROVEEDOR
             // 
-            this.TB_CAJA.BackColor = System.Drawing.Color.Yellow;
-            this.TB_CAJA.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_CAJA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_CAJA.Location = new System.Drawing.Point(2, 2);
-            this.TB_CAJA.Margin = new System.Windows.Forms.Padding(1);
-            this.TB_CAJA.MaxLength = 20;
-            this.TB_CAJA.Name = "TB_CAJA";
-            this.TB_CAJA.Size = new System.Drawing.Size(173, 22);
-            this.TB_CAJA.TabIndex = 0;
-            this.TB_CAJA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTR_KeyDown);
-            this.TB_CAJA.Leave += new System.EventHandler(this.TB_CAJA_Leave);
+            this.TB_PROVEEDOR.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PROVEEDOR.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PROVEEDOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PROVEEDOR.Location = new System.Drawing.Point(2, 2);
+            this.TB_PROVEEDOR.Margin = new System.Windows.Forms.Padding(1);
+            this.TB_PROVEEDOR.MaxLength = 20;
+            this.TB_PROVEEDOR.Name = "TB_PROVEEDOR";
+            this.TB_PROVEEDOR.Size = new System.Drawing.Size(173, 22);
+            this.TB_PROVEEDOR.TabIndex = 0;
+            this.TB_PROVEEDOR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTR_KeyDown);
+            this.TB_PROVEEDOR.Leave += new System.EventHandler(this.TB_PROVEEDOR_Leave);
             // 
             // panel4
             // 
@@ -627,18 +627,18 @@
         private System.Windows.Forms.Label L_ESTATUS_DOC;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Label L_TIPO_MOV_CAJA;
+        private System.Windows.Forms.Label L_TIPO_RETENCION;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.ComboBox CB_TIPO_MOV_CAJA;
+        private System.Windows.Forms.ComboBox CB_TIPO_RETENCION;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Label L_CAJA;
+        private System.Windows.Forms.Label L_PROVEEDOR;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.ComboBox CB_CAJA;
+        private System.Windows.Forms.ComboBox CB_PROVEEDOR;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.TextBox TB_CAJA;
+        private System.Windows.Forms.TextBox TB_PROVEEDOR;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Button BT_SALIR;

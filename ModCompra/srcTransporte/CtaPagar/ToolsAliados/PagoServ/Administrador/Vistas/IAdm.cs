@@ -5,21 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.Utils.Componente.Administrador.Vistas
+namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.Vistas
 {
-    public interface IFiltro: HlpGestion.IGestion
+    public interface IAdm: Utils.Componente.Administrador.Vistas.IAdmin
     {
         DateTime Get_Desde { get; }
         DateTime Get_Hasta { get; }
         bool Get_IsActivoDesde { get; }
         bool Get_IsActivoHasta { get; }
-        object Get_Filtros { get; }
-
         void setDesde(DateTime fecha);
         void setHasta(DateTime fecha);
         void ActivarDesde(bool modo);
         void ActivarHasta(bool modo);
-        void Limpiar();
-        bool VerificarFiltros();
+
+        IBusqDoc BusqDoc { get; }
+        void FitrosBusqueda();
+        void FiltrosLimpiar();
     }
 }

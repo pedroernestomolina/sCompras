@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModCompra.srcTransporte.Filtro.Vistas
+namespace ModCompra.srcTransporte.Filtro.DocRetencion
 {
     public partial class Frm : Form
     {
-        private IFiltro _controlador;
+        private Vistas.IFiltro _controlador;
 
 
         private void InicializaCB() 
         {
             CB_ESTATUS.DisplayMember = "desc";
             CB_ESTATUS.ValueMember = "id";
-            CB_TIPO_MOV_CAJA.DisplayMember = "desc";
-            CB_TIPO_MOV_CAJA.ValueMember = "id";
-            CB_CAJA.DisplayMember = "desc";
-            CB_CAJA.ValueMember = "id";
+            CB_TIPO_RETENCION.DisplayMember = "desc";
+            CB_TIPO_RETENCION.ValueMember = "id";
+            CB_PROVEEDOR.DisplayMember = "desc";
+            CB_PROVEEDOR.ValueMember = "id";
         }
         public Frm()
         {
@@ -35,14 +35,13 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         {
             _modoInicializar = true;
             CB_ESTATUS.DataSource = _controlador.HndFiltro.Get_EstatusSource;
-            CB_TIPO_MOV_CAJA.DataSource = _controlador.HndFiltro.Get_TipoMovCajaSource;
-            CB_CAJA.DataSource = _controlador.HndFiltro.Get_CajaSource;
-            TB_CAJA.Text = _controlador.HndFiltro.GetCaja_TextoBuscar;
+            CB_TIPO_RETENCION.DataSource = _controlador.HndFiltro.Get_TipoRetencionSource;
+            CB_PROVEEDOR.DataSource = _controlador.HndFiltro.Get_ProveedorSource;
+            TB_PROVEEDOR.Text = _controlador.HndFiltro.GetCaja_TextoBuscar;
             //
             CB_ESTATUS.SelectedValue = _controlador.HndFiltro.Get_EstatusById;
-            CB_TIPO_MOV_CAJA.SelectedValue = _controlador.HndFiltro.Get_TipoMovCajaById;
-            CB_CAJA.SelectedValue = _controlador.HndFiltro.Get_CajaById;
-
+            CB_TIPO_RETENCION.SelectedValue = _controlador.HndFiltro.Get_TipoRetencionById;
+            CB_PROVEEDOR.SelectedValue = _controlador.HndFiltro.Get_ProveedorById;
             _modoInicializar = false;
         }
         private void CTR_KeyDown(object sender, KeyEventArgs e)
@@ -58,9 +57,9 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         }
 
 
-        private void TB_CAJA_Leave(object sender, EventArgs e)
+        private void TB_PROVEEDOR_Leave(object sender, EventArgs e)
         {
-            _controlador.HndFiltro.setCajaBuscar(TB_CAJA.Text.Trim().ToUpper());
+            _controlador.HndFiltro.setProveedorBuscar(TB_PROVEEDOR.Text.Trim().ToUpper());
         }
         private void CB_ESTATUS_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -74,32 +73,32 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         private void CB_TIPO_MOV_CAJA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.HndFiltro.setTipoMovCajaById("");
-            if (CB_TIPO_MOV_CAJA.SelectedIndex != -1)
+            _controlador.HndFiltro.setTipoRetencionById("");
+            if (CB_TIPO_RETENCION.SelectedIndex != -1)
             {
-                _controlador.HndFiltro.setTipoMovCajaById(CB_TIPO_MOV_CAJA.SelectedValue.ToString());
+                _controlador.HndFiltro.setTipoRetencionById(CB_TIPO_RETENCION.SelectedValue.ToString());
             }
         }
-        private void CB_CAJA_SelectedIndexChanged(object sender, EventArgs e)
+        private void CB_PROVEEDOR_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.HndFiltro.setCajaById("");
-            if (CB_CAJA.SelectedIndex != -1)
+            _controlador.HndFiltro.setProveedorById("");
+            if (CB_PROVEEDOR.SelectedIndex != -1)
             {
-                _controlador.HndFiltro.setCajaById(CB_CAJA.SelectedValue.ToString());
+                _controlador.HndFiltro.setProveedorById(CB_PROVEEDOR.SelectedValue.ToString());
             }
         }
         private void L_ESTATUS_DOC_Click(object sender, EventArgs e)
         {
             CB_ESTATUS.SelectedIndex = -1;
         }
-        private void L_TIPO_MOV_CAJA_Click(object sender, EventArgs e)
+        private void L_TIPO_RETENCION_Click(object sender, EventArgs e)
         {
-            CB_TIPO_MOV_CAJA.SelectedIndex = -1;
+            CB_TIPO_RETENCION.SelectedIndex = -1;
         }
-        private void L_CAJA_Click(object sender, EventArgs e)
+        private void L_PROVEEDOR_Click(object sender, EventArgs e)
         {
-            CB_CAJA.SelectedIndex = -1;
+            CB_PROVEEDOR.SelectedIndex = -1;
         }
 
 

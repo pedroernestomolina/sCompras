@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.Vistas
 {
-    public interface IAdmPagoServ: Utils.Componente.Administrador.Vistas.IAdmin
+    public interface IBusqDoc
     {
-        IBusqDocPagoServ BusqDoc { get; }
-        void LimpiarFiltros();
+        void Inicializa();
+        IEnumerable<object> Buscar();
+        void setFiltros(object filtros);
     }
 }

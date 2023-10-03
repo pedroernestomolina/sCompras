@@ -140,6 +140,8 @@ namespace DataProvCompra.Data
             {
                 Desde = filtro.Desde,
                 Hasta = filtro.Hasta,
+                Estatus = filtro.Estatus,
+                IdAliado = filtro.IdAliado,
             };
             var r01 = MyData.Transporte_Aliado_PagoServ_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

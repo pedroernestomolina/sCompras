@@ -31,6 +31,11 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         void setTipoMovCajaById(string id);
 
         //
+        BindingSource Get_TipoRetencionSource { get; }
+        string Get_TipoRetencionById { get; }
+        void setTipoRetencionById(string id);
+        
+        //
         BindingSource Get_CajaSource { get; }
         string Get_CajaById { get; }
         string GetCaja_TextoBuscar { get; }
@@ -43,6 +48,13 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         string GetAliado_TextoBuscar { get; }
         void setAliadoById(string id);
         void setAliadoBuscar(string desc);
+
+        //
+        BindingSource Get_ProveedorSource { get; }
+        string Get_ProveedorById { get; }
+        string GetProveedor_TextoBuscar { get; }
+        void setProveedorById(string id);
+        void setProveedorBuscar(string desc);
 
         //
         void Inicializa();

@@ -13,7 +13,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
 {
     public partial class Frm : Form
     {
-        private Vistas.IAdmPagoServ _controlador;
+        private Vistas.IAdm _controlador;
 
 
         public Frm()
@@ -119,7 +119,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
             ActualizarPant();
             Actualizar();
         }
-        public void setControlador(Vistas.IAdmPagoServ ctr)
+        public void setControlador(Vistas.IAdm ctr)
         {
             _controlador = ctr;
         }
@@ -129,24 +129,24 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
         {
             if (DTP_DESDE.Checked)
             {
-                //_controlador.setDesde(DTP_DESDE.Value);
-                //_controlador.ActivarDesde(true);
+                _controlador.setDesde(DTP_DESDE.Value);
+                _controlador.ActivarDesde(true);
             }
-            else 
+            else
             {
-                //_controlador.ActivarDesde(false);
+                _controlador.ActivarDesde(false);
             }
         }
         private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
         {
             if (DTP_HASTA.Checked)
             {
-                //_controlador.setHasta(DTP_HASTA.Value);
-                //_controlador.ActivarHasta(true);
+                _controlador.setHasta(DTP_HASTA.Value);
+                _controlador.ActivarHasta(true);
             }
-            else 
+            else
             {
-                //_controlador.ActivarHasta(false);
+                _controlador.ActivarHasta(false);
             }
         }
 
@@ -188,7 +188,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
 
         private void LimpiarFiltros()
         {
-            _controlador.LimpiarFiltros();
+            _controlador.FiltrosLimpiar();
             ActualizarPant();
         }
         private void LimpiarData()
@@ -230,10 +230,19 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
         }
         private void ActualizarPant()
         {
-            //DTP_DESDE.Checked = _controlador.Get_IsActivoDesde;
-            //DTP_HASTA.Checked = _controlador.Get_IsActivoHasta;
-            //DTP_DESDE.Value = _controlador.Get_Desde;
-            //DTP_HASTA.Value = _controlador.Get_Hasta;
+            DTP_DESDE.Checked = _controlador.Get_IsActivoDesde;
+            DTP_HASTA.Checked = _controlador.Get_IsActivoHasta;
+            DTP_DESDE.Value = _controlador.Get_Desde;
+            DTP_HASTA.Value = _controlador.Get_Hasta;
+        }
+
+        private void BT_FILTROS_BUSQ_Click(object sender, EventArgs e)
+        {
+            FitrosBusqueda();
+        }
+        private void FitrosBusqueda()
+        {
+            _controlador.FitrosBusqueda();
         }
     }
 }

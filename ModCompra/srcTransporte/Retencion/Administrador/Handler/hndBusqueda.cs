@@ -21,7 +21,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
         }
         public void setFiltros(object filtros)
         {
-            var filt= (dataFiltro)filtros;
+            var filt= (Filtro.Vistas.IdataFiltrar)filtros;
             _filtro = new OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Filtro()
             {
             };

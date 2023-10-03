@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Filtro.Handler
+namespace ModCompra.srcTransporte.Filtro.DocRetencion
 {
     public class Imp: Vistas.IFiltro
     {
@@ -21,7 +21,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         {
             _abandonarIsOK = false;
             _procesarIsOK = false;
-            _hndFiltro = new HndFiltro();
+            _hndFiltro = new Handler.HndFiltro();
         }
         public void Inicializa()
         {
@@ -29,14 +29,14 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _procesarIsOK = false;
             _hndFiltro.Inicializa();
         }
-        Vistas.Frm frm;
+        Frm frm;
         public void Inicia()
         {
             if (cargarData())
             {
                 if (frm == null) 
                 {
-                    frm = new Vistas.Frm();
+                    frm = new Frm();
                     frm.setControlador(this);
                 }
                 frm.ShowDialog();

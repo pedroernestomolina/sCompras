@@ -11,5 +11,7 @@ namespace DtoLibTransporte.Aliado.PagoServ.Lista
     {
         public DateTime? Desde { get; set; }
         public DateTime? Hasta { get; set; }
+        public int IdAliado { get; set; }
+        public string Estatus { get; set; }
     }
 }

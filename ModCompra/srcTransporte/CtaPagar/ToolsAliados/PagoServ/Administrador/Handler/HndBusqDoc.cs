@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.Handler
 {
-    public class HndBusqDoc: Vistas.IBusqDocPagoServ
+    public class HndBusqDoc: Vistas.IBusqDoc
     {
         private Utils.Componente.Busqueda.Vistas.IBusqueda _busqueda;
 

@@ -633,6 +633,8 @@ namespace ProvLibCompra
                     var _sql_2 = @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     if (filtro != null)
                     {
                         if (filtro.Desde.HasValue)
@@ -647,9 +649,21 @@ namespace ProvLibCompra
                             p2.ParameterName = "@hasta";
                             p2.Value = filtro.Hasta.Value;
                         }
+                        if (filtro.IdAliado != -1)
+                        {
+                            _sql_2 += " and id_aliado=@idAliado ";
+                            p3.ParameterName = "@idAliado";
+                            p3.Value = filtro.IdAliado;
+                        }
+                        if (filtro.Estatus != "")
+                        {
+                            _sql_2 += " and estatus_anulado=@estatus ";
+                            p4.ParameterName = "@estatus";
+                            p4.Value = filtro.Estatus.Trim().ToUpper() == "I" ? "1" : "0";
+                        }
                     }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha>(_sql, p1, p2).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Aliado.PagoServ.Lista.Ficha>(_sql, p1, p2, p3, p4).ToList();
                     result.Lista = _lst;
                 }
             }

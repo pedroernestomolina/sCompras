@@ -16,6 +16,8 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         private Utils.FiltrosCB.ICtrlSinBusqueda _tipoMovCaja;
         private Utils.FiltrosCB.ICtrlConBusqueda _caja;
         private Utils.FiltrosCB.ICtrlConBusqueda _aliado;
+        private Utils.FiltrosCB.ICtrlSinBusqueda _tipoRet;
+        private Utils.FiltrosCB.ICtrlConBusqueda _proveedor;
 
 
         public HndFiltro()
@@ -24,8 +26,10 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _hasta = new Utils.FiltroFecha.Imp();
             _estatusDoc = new Utils.FiltrosCB.SinBusqueda.EstatusDoc.Imp();
             _tipoMovCaja = new Utils.FiltrosCB.SinBusqueda.TipoMovCaja.Imp();
+            _tipoRet = new Utils.FiltrosCB.SinBusqueda.TipoRetencion.Imp();
             _caja = new Utils.FiltrosCB.ConBusqueda.Caja.Imp();
             _aliado = new Utils.FiltrosCB.ConBusqueda.Aliado.Imp();
+            _proveedor = new Utils.FiltrosCB.ConBusqueda.Proveedor.Imp();
         }
         public void Inicializa()
         {
@@ -33,15 +37,20 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _hasta.Inicializa();
             _estatusDoc.Inicializa();
             _tipoMovCaja.Inicializa();
+            _tipoRet.Inicializa();
             _caja.Inicializa();
             _aliado.Inicializa();
+            _proveedor.Inicializa();
         }
         public void CargarData()
         {
             _estatusDoc.ObtenerData();
             _tipoMovCaja.ObtenerData();
+            _tipoRet.ObtenerData();
             _caja.ObtenerData();
             _aliado.ObtenerData();
+            _proveedor.ObtenerData();
+
         }
         public void Limpiar()
         {
@@ -51,6 +60,8 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _tipoMovCaja.LimpiarOpcion();
             _caja.LimpiarOpcion();
             _aliado.LimpiarOpcion();
+            _tipoRet.LimpiarOpcion();
+            _proveedor.LimpiarOpcion();
         }
 
 
@@ -93,6 +104,14 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         }
 
         //
+        public BindingSource Get_TipoRetencionSource { get { return _tipoRet.GetSource; } }
+        public string Get_TipoRetencionById { get { return _tipoRet.GetId; } }
+        public void setTipoRetencionById(string id)
+        {
+            _tipoRet.setFichaById(id);
+        }
+
+        //
         public BindingSource Get_CajaSource { get { return _caja.GetSource; } }
         public string Get_CajaById { get { return _caja.GetId; } }
         public string GetCaja_TextoBuscar { get { return ""; } }
@@ -117,6 +136,20 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         {
             _aliado.setTextoBuscar(desc);
         }
+
+        //
+        public BindingSource Get_ProveedorSource { get { return _proveedor.GetSource; } }
+        public string Get_ProveedorById { get { return _proveedor.GetId; } }
+        public string GetProveedor_TextoBuscar { get { return ""; } }
+        public void setProveedorById(string id)
+        {
+            _proveedor.setFichaById(id);
+        }
+        public void setProveedorBuscar(string desc)
+        {
+            _proveedor.setTextoBuscar(desc);
+        }
+
 
         //
         public Vistas.IdataFiltrar Get_Filtros

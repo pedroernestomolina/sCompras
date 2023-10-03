@@ -503,11 +503,9 @@
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\dataAliado.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\dataCtasPend.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Handlers\Imp.cs" />
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\dataFiltro.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\hndBusqueda.cs" />
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\HndFiltro.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\HndLista.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Handler\Imp.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\Frm.cs">
@@ -516,12 +514,10 @@
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IAdmPagoServ.cs" />
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IBusqDocPagoServ.cs" />
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IdataFiltro.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IAdm.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IBusqDoc.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IdataItem.cs" />
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IFiltroPagoServ.cs" />
-    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IListaPagoServ.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Administrador\Vistas\IListaAdm.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\dataServ.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\hndEnt.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\hndGestPag.cs" />
@@ -555,9 +551,15 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Filtro\Caja\Imp.cs" />
+    <Compile Include="srcTransporte\Filtro\DocRetencion\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Filtro\DocRetencion\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Filtro\DocRetencion\Imp.cs" />
     <Compile Include="srcTransporte\Filtro\Handler\dataFiltrar.cs" />
     <Compile Include="srcTransporte\Filtro\Handler\HndFiltro.cs" />
-    <Compile Include="srcTransporte\Filtro\Handler\Imp.cs" />
     <Compile Include="srcTransporte\Filtro\Anticipo\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -565,19 +567,6 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Filtro\Anticipo\Imp.cs" />
-    <Compile Include="srcTransporte\Filtro\PagoServ\Frm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="srcTransporte\Filtro\PagoServ\Frm.Designer.cs">
-      <DependentUpon>Frm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="srcTransporte\Filtro\PagoServ\Imp.cs" />
-    <Compile Include="srcTransporte\Filtro\Vistas\Frm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="srcTransporte\Filtro\Vistas\Frm.Designer.cs">
-      <DependentUpon>Frm.cs</DependentUpon>
-    </Compile>
     <Compile Include="srcTransporte\Filtro\Vistas\IdataFiltrar.cs" />
     <Compile Include="srcTransporte\Filtro\Vistas\IFiltro.cs" />
     <Compile Include="srcTransporte\Filtro\Vistas\IHndFiltro.cs" />
@@ -611,11 +600,9 @@
     <Compile Include="srcTransporte\Reportes\ListaAdm\DocumentoRet\Class1.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\DocumentoRet\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\PagoServ\Imp.cs" />
-    <Compile Include="srcTransporte\Retencion\Administrador\Handler\dataFiltro.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\hndBusqueda.cs" />
-    <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndFiltro.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndLista.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\Imp.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\Frm.cs">
@@ -626,9 +613,7 @@
     </Compile>
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IAdm.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IBusqDoc.cs" />
-    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IdataFiltro.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IdataItem.cs" />
-    <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IFiltroAdm.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IListaAdm.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
@@ -673,11 +658,8 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Componente\Administrador\Vistas\IAdmin.cs" />
-    <Compile Include="Utils\Componente\Administrador\Vistas\IFiltro.cs" />
     <Compile Include="Utils\Componente\Administrador\Vistas\ILista.cs" />
     <Compile Include="Utils\Componente\Busqueda\Vistas\IBusqueda.cs" />
-    <Compile Include="Utils\Componente\FiltroFecha\Handlers\Imp.cs" />
-    <Compile Include="Utils\Componente\FiltroFecha\Vistas\IFecha.cs" />
     <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
     <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
       <SubType>Form</SubType>
@@ -696,12 +678,16 @@
     <Compile Include="Utils\FiltroFecha\IFecha.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\Imp.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Proveedor\data.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Proveedor\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Caja\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Caja\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ICtrlSinBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\ICtrlConBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\Idata.cs" />
     <Compile Include="Utils\FiltrosCB\ITextoBuscar.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\data.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoMovCaja\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoMovCaja\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\EstatusDoc\data.cs" />
@@ -872,10 +858,7 @@
     <EmbeddedResource Include="srcTransporte\Filtro\Caja\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="srcTransporte\Filtro\PagoServ\Frm.resx">
-      <DependentUpon>Frm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="srcTransporte\Filtro\Vistas\Frm.resx">
+    <EmbeddedResource Include="srcTransporte\Filtro\DocRetencion\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">

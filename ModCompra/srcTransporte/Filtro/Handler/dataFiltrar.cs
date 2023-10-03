@@ -15,6 +15,8 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         public Vistas.Enumerados.TipoMovCaja TipoMovCaja { get; set; }
         public int IdCaja { get; set; }
         public int IdAliado { get; set; }
+        public Vistas.Enumerados.TipoRetencion TipoRetencion { get; set; }
+        public string IdProveedor { get; set; }
 
 
         public dataFiltrar()
@@ -23,8 +25,10 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             Hasta = null;
             EstatusDoc = Vistas.Enumerados.EstatusDoc.SinDefinir;
             TipoMovCaja = Vistas.Enumerados.TipoMovCaja.SinDefinir;
+            TipoRetencion = Vistas.Enumerados.TipoRetencion.SinDefinir;
             IdCaja = -1;
             IdAliado = -1;
+            IdProveedor = "";
         }
         public void Inicializa()
         {
@@ -32,8 +36,10 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             Hasta = null;
             EstatusDoc = Vistas.Enumerados.EstatusDoc.SinDefinir;
             TipoMovCaja = Vistas.Enumerados.TipoMovCaja.SinDefinir;
+            TipoRetencion = Vistas.Enumerados.TipoRetencion.SinDefinir;
             IdCaja = -1;
             IdAliado = -1;
+            IdProveedor = "";
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         private string _tituloTools;
         private Vistas.Idata _data;
         private Anticipos.Administrador.Vistas.IAdm _admAnticipo;
-        private PagoServ.Administrador.Vistas.IAdmPagoServ _admPago;
+        private PagoServ.Administrador.Vistas.IAdm _admPago;
 
 
         public string TituloTools { get { return _tituloTools; } }

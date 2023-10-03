@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.Vistas
 {
-    public interface IListaPagoServ: Utils.Componente.Administrador.Vistas.ILista
+    public interface IListaAdm: Utils.Componente.Administrador.Vistas.ILista
     {
     }
 }
