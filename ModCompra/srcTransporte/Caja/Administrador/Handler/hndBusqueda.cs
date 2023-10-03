@@ -21,11 +21,33 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
         }
         public void setFiltros(object filtros)
         {
-            var filt= (dataFiltro)filtros;
+            var filt= (Filtro.Vistas.IdataFiltrar)filtros;
+            var _estatus = "";
+            var _tipMov = "";
+            var _idCaja = filt.IdCaja;
+            if (filt.EstatusDoc != Filtro.Vistas.Enumerados.EstatusDoc.SinDefinir)
+            {
+                _estatus = "A";
+                if (filt.EstatusDoc == Filtro.Vistas.Enumerados.EstatusDoc.Anulado)
+                {
+                    _estatus = "I";
+                }
+            }
+            if (filt.TipoMovCaja != Filtro.Vistas.Enumerados.TipoMovCaja.SinDefinir )
+            {
+                _tipMov = "I";
+                if (filt.TipoMovCaja== Filtro.Vistas.Enumerados.TipoMovCaja.Egreso)
+                {
+                    _tipMov= "E";
+                }
+            }
             _filtro = new OOB.LibCompra.Transporte.Caja.Movimiento.Lista.Filtro()
             {
                 Desde = filt.Desde,
                 Hasta = filt.Hasta,
+                Estatus =_estatus,
+                TipoMovimiento= _tipMov,
+                IdCaja=_idCaja,
             };
         }
         public IEnumerable<object>Buscar()

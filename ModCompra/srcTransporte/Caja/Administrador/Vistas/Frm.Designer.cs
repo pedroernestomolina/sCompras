@@ -64,7 +64,7 @@
             this.panel20 = new System.Windows.Forms.Panel();
             this.BT_LIMPIAR_FILTROS = new System.Windows.Forms.Button();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.BT_FILTROS_BUSQ = new System.Windows.Forms.Button();
             this.panel21 = new System.Windows.Forms.Panel();
             this.BT_BUSCAR = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -576,7 +576,7 @@
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.button6);
+            this.panel19.Controls.Add(this.BT_FILTROS_BUSQ);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel19.Location = new System.Drawing.Point(1, 4);
             this.panel19.Margin = new System.Windows.Forms.Padding(1);
@@ -585,18 +585,19 @@
             this.panel19.Size = new System.Drawing.Size(27, 40);
             this.panel19.TabIndex = 0;
             // 
-            // button6
+            // BT_FILTROS_BUSQ
             // 
-            this.button6.BackgroundImage = global::ModCompra.Properties.Resources.bt_consulta;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(2, 2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(23, 36);
-            this.button6.TabIndex = 1;
-            this.button6.UseVisualStyleBackColor = true;
+            this.BT_FILTROS_BUSQ.BackgroundImage = global::ModCompra.Properties.Resources.bt_consulta;
+            this.BT_FILTROS_BUSQ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_FILTROS_BUSQ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_FILTROS_BUSQ.FlatAppearance.BorderSize = 0;
+            this.BT_FILTROS_BUSQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_FILTROS_BUSQ.Location = new System.Drawing.Point(2, 2);
+            this.BT_FILTROS_BUSQ.Name = "BT_FILTROS_BUSQ";
+            this.BT_FILTROS_BUSQ.Size = new System.Drawing.Size(23, 36);
+            this.BT_FILTROS_BUSQ.TabIndex = 1;
+            this.BT_FILTROS_BUSQ.UseVisualStyleBackColor = true;
+            this.BT_FILTROS_BUSQ.Click += new System.EventHandler(this.BT_FILTROS_BUSQ_Click);
             // 
             // panel21
             // 
@@ -945,7 +946,7 @@
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Button BT_LIMPIAR_FILTROS;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button BT_FILTROS_BUSQ;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button BT_BUSCAR;
     }

@@ -91,6 +91,8 @@ namespace DataProvCompra.Data
             {
                 Desde = filtro.desde,
                 Hasta = filtro.hasta,
+                Estatus = filtro.Estatus,
+                IdAliado = filtro.IdAliado,
             };
             var r01 = MyData.Transporte_Aliado_Anticipo_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

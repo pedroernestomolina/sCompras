@@ -10,5 +10,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
     public interface IAdmPagoServ: Utils.Componente.Administrador.Vistas.IAdmin
     {
         IBusqDocPagoServ BusqDoc { get; }
+        void LimpiarFiltros();
     }
 }

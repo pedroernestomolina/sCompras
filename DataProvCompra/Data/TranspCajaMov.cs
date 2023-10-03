@@ -42,6 +42,9 @@ namespace DataProvCompra.Data
             {
                 Desde = filtro.Desde,
                 Hasta = filtro.Hasta,
+                Estatus = filtro.Estatus,
+                IdCaja = filtro.IdCaja,
+                TipoMovimiento = filtro.TipoMovimiento,
             };
             var r01 = MyData.Transporte_Caja_Movimientos_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

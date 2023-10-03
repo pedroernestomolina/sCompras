@@ -35,6 +35,37 @@ namespace DataProvCompra.Data
             };
             return result;
         }
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Entidad.Ficha>
+            Transporte_Aliado_GetLista()
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Entidad.Ficha>();
+            var r01 = MyData.Transporte_Aliado_GetLista();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Aliado.Entidad.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0) 
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Aliado.Entidad.Ficha()
+                        {
+                            ciRif = s.ciRif,
+                            codigo = s.codigo,
+                            id = s.id,
+                            nombreRazonSocial = s.nombreRazonSocial,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
+
         public OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Pendiente.Ficha> 
             Transporte_Aliado_Pediente_GetLista()
         {

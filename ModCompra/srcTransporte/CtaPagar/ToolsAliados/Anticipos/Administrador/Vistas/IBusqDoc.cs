@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.Vistas
 {
-    public interface IListaAnticipo: Utils.Componente.Administrador.Vistas.ILista
+    public interface IBusqDoc
     {
+        void Inicializa();
+        IEnumerable<object> Buscar();
+        void setFiltros(object filtros);
     }
 }

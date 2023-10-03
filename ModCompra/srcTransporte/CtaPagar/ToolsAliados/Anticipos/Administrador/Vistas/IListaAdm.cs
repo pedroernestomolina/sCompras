@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.Vistas
 {
-    public interface IAdmAnticipo: Utils.Componente.Administrador.Vistas.IAdmin
+    public interface IListaAdm: Utils.Componente.Administrador.Vistas.ILista
     {
-
-        IBusqDocAnticipo BusqDoc { get; }
     }
 }

@@ -132,10 +132,6 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         }
         private void DGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex != -1 && e.RowIndex != -1)
-            //{
-            //    SeleccionarItem();
-            //}
         }
         private void Frm_Load(object sender, EventArgs e)
         {
@@ -143,16 +139,11 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
             DGV.DataSource = _controlador.data.Get_Source;
             DGV.Refresh();
 
-            DTP_DESDE.Checked = _controlador.filtros.Get_IsActivoDesde;
-            DTP_HASTA.Checked = _controlador.filtros.Get_IsActivoHasta;
-            DTP_DESDE.Value = _controlador.filtros.Get_Desde;
-            DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
+            DTP_DESDE.Checked = _controlador.Get_IsActivoDesde;
+            DTP_HASTA.Checked = _controlador.Get_IsActivoHasta;
+            DTP_DESDE.Value = _controlador.Get_Desde;
+            DTP_HASTA.Value = _controlador.Get_Hasta;
             Actualizar();
-
-            //CB_SUCURSAL.DataSource = _controlador.SucursalSource;
-            //CB_SUCURSAL.SelectedIndex = -1;
-            //CB_TIPO_DOC.DataSource = _controlador.TipoDocSource;
-            //CB_TIPO_DOC.SelectedIndex = -1;
         }
         public void setControlador(Vistas.IAdm ctr)
         {
@@ -164,24 +155,24 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         {
             if (DTP_DESDE.Checked)
             {
-                _controlador.filtros.setDesde(DTP_DESDE.Value);
-                _controlador.filtros.ActivarDesde(true);
+                _controlador.setDesde(DTP_DESDE.Value);
+                _controlador.ActivarDesde(true);
             }
             else 
             {
-                _controlador.filtros.ActivarDesde(false);
+                _controlador.ActivarDesde(false);
             }
         }
         private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
         {
             if (DTP_HASTA.Checked)
             {
-                _controlador.filtros.setHasta(DTP_HASTA.Value);
-                _controlador.filtros.ActivarHasta(true);
+                _controlador.setHasta(DTP_HASTA.Value);
+                _controlador.ActivarHasta(true);
             }
             else 
             {
-                _controlador.filtros.ActivarHasta(false);
+                _controlador.ActivarHasta(false);
             }
         }
 
@@ -195,6 +186,10 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         }
 
 
+        private void BT_FILTROS_BUSQ_Click(object sender, EventArgs e)
+        {
+            FitrosBusqueda();
+        }
         private void BT_LIMPIAR_FILTROS_Click(object sender, EventArgs e)
         {
             LimpiarFiltros();
@@ -221,16 +216,14 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         }
 
 
+        private void FitrosBusqueda()
+        {
+            _controlador.FitrosBusqueda();
+        }
         private void LimpiarFiltros()
         {
-            _controlador.filtros.Limpiar();
+            _controlador.FiltrosLimpiar();
             ActualizarPant();
-            //DTP_DESDE.Value = DateTime.Now;
-            //DTP_HASTA.Value = DateTime.Now;
-            //CB_SUCURSAL.SelectedIndex = -1;
-            //CB_TIPO_DOC.SelectedIndex = -1;
-            //TB_CADENA_BUS_PROV.Text = "";
-            //LimpiarProveedor();
         }
         private void LimpiarData()
         {
@@ -244,7 +237,6 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         }
         private void SeleccionarItem()
         {
-            //_controlador.SeleccionarItem();
         }
         private void VisualizarDocumento()
         {
@@ -256,7 +248,6 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         }
         private void VisualizarAnulacion()
         {
-            //_controlador.VisualizarAnulacion();
         }
         private void AnularItem()
         {
@@ -273,78 +264,10 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
         }
         private void ActualizarPant()
         {
-            DTP_DESDE.Checked = _controlador.filtros.Get_IsActivoDesde;
-            DTP_HASTA.Checked = _controlador.filtros.Get_IsActivoHasta;
-            DTP_DESDE.Value = _controlador.filtros.Get_Desde;
-            DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
+            DTP_DESDE.Checked = _controlador.Get_IsActivoDesde;
+            DTP_HASTA.Checked = _controlador.Get_IsActivoHasta;
+            DTP_DESDE.Value = _controlador.Get_Desde;
+            DTP_HASTA.Value = _controlador.Get_Hasta;
         }
     }
 }
-
-
-
-//private void BT_BUSCAR_PROVEEDOR_Click(object sender, EventArgs e)
-//{
-//    BuscarProveedor();
-//}
-//private void BuscarProveedor()
-//{
-//    _controlador.BuscarProveedor();
-//    TB_CADENA_BUS_PROV.Text = _controlador.Proveedor;
-//}
-
-//private void TB_CADENA_BUS_PROV_Leave(object sender, EventArgs e)
-//{
-//    _controlador.setCadenaBusProv(TB_CADENA_BUS_PROV.Text.Trim().ToUpper());
-//}
-
-//private void L_PROVEEDOR_Click(object sender, EventArgs e)
-//{
-//    LimpiarProveedor();
-//}
-
-//private void LimpiarProveedor()
-//{
-//    TB_CADENA_BUS_PROV.Text = "";
-//    _controlador.setCadenaBusProv("");
-//    _controlador.LimpiarProveedor();
-//}
-
-
-//private void DTP_DESDE_ValueChanged(object sender, EventArgs e)
-//{
-//    _controlador.setFechaDesde(DTP_DESDE.Value);
-//}
-
-//private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
-//{
-//    _controlador.setFechaHasta(DTP_HASTA.Value);
-//}
-
-//private void CB_TIPO_DOC_SelectedIndexChanged(object sender, EventArgs e)
-//{
-//    _controlador.setTipoDoc("");
-//    if (CB_TIPO_DOC.SelectedIndex!=-1)
-//    {
-//        _controlador.setTipoDoc(CB_TIPO_DOC.SelectedValue.ToString());
-//    }
-//}
-
-//private void CB_SUCURSAL_SelectedIndexChanged(object sender, EventArgs e)
-//{
-//    _controlador.setSucursal("");
-//    if (CB_SUCURSAL.SelectedIndex != -1)
-//    {
-//        _controlador.setSucursal(CB_SUCURSAL.SelectedValue.ToString());
-//    }
-//}
-
-//private void L_TIPO_DOC_Click(object sender, EventArgs e)
-//{
-//    CB_TIPO_DOC.SelectedIndex = -1;
-//}
-
-//private void L_SUCURSAL_Click(object sender, EventArgs e)
-//{
-//    CB_SUCURSAL.SelectedIndex = -1;
-//}

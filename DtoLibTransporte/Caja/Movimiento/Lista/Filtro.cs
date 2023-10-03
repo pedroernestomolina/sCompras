@@ -11,5 +11,8 @@ namespace DtoLibTransporte.Caja.Movimiento.Lista
     {
         public DateTime? Desde { get; set; }
         public DateTime? Hasta { get; set; }
+        public int IdCaja { get; set; }
+        public string TipoMovimiento { get; set; }
+        public string Estatus { get; set; }
     }
 }

@@ -11,6 +11,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
     {
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Aliado.Entidad.Ficha>
             Transporte_Aliado_GetFichaById(int id);
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Entidad.Ficha>
+            Transporte_Aliado_GetLista();
+
        OOB.ResultadoLista<OOB.LibCompra.Transporte.Aliado.Pendiente.Ficha>
             Transporte_Aliado_Pediente_GetLista();
        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Aliado.Pendiente.Ficha>

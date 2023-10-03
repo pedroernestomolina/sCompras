@@ -21,11 +21,22 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
         public void setFiltros(object filtros)
         {
-            var filt= (dataFiltro)filtros;
+            var filt = (Filtro.Vistas.IdataFiltrar)filtros;
+            var _estatus = "";
+            if (filt.EstatusDoc != Filtro.Vistas.Enumerados.EstatusDoc.SinDefinir)
+            {
+                _estatus = "A";
+                if (filt.EstatusDoc == Filtro.Vistas.Enumerados.EstatusDoc.Anulado)
+                {
+                    _estatus = "I";
+                }
+            }
             _filtro = new OOB.LibCompra.Transporte.Aliado.Anticipo.Lista.Filtro()
             {
                 desde = filt.Desde,
                 hasta = filt.Hasta,
+                Estatus=_estatus,
+                IdAliado=filt.IdAliado,
             };
         }
         public IEnumerable<object>Buscar()

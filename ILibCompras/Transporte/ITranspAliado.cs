@@ -11,6 +11,8 @@ namespace ILibCompras.Transporte
     {
         DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.Entidad.Ficha>
             Transporte_Aliado_GetFichaById(int id);
+        DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Entidad.Ficha>
+            Transporte_Aliado_GetLista();
 
         DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Pendiente.Ficha>
             Transporte_Aliado_Pediente_GetLista();

@@ -47,6 +47,35 @@ namespace ProvLibCompra
             }
             return result;
         }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Entidad.Ficha> 
+            Transporte_Aliado_GetLista()
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Entidad.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var _sql_1 = @"select 
+                                    id,
+                                    codigo,
+                                    ciRif,
+                                    nombreRazonSocial
+                                from transp_aliado ";
+                    var _sql_2 = @" where 1=1 ";
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Aliado.Entidad.Ficha>(_sql, p1).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
         public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Pendiente.Ficha> 
             Transporte_Aliado_Pediente_GetLista()
         {

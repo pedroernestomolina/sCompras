@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.Handler
 {
-    public class Imp: Vistas.IAdmAnticipo
+    public class Imp: Vistas.IAdm
     {
         private bool _abandonarIsOK;
-        private Vistas.IListaAnticipo _lista;
-        private Vistas.IBusqDocAnticipo _busqDoc;
-        private Vistas.IFiltroAnticipo _filtro;
+        private Vistas.IListaAdm _lista;
+        private Vistas.IBusqDoc _busqDoc;
+        private srcTransporte.Filtro.Vistas.IFiltro _ctrFiltro;
 
 
         public Utils.Componente.Administrador.Vistas.ILista data { get { return _lista; } }
-        public Vistas.IBusqDocAnticipo BusqDoc { get { return _busqDoc; } }
-        public Utils.Componente.Administrador.Vistas.IFiltro filtros { get { return _filtro; } }
+        public Vistas.IBusqDoc BusqDoc { get { return _busqDoc; } }
         public string Get_TituloAdm { get { return "Administrador Documentos: ANTCIPOS"; } }
         public int Get_CntItem { get { return _lista.Get_CntItem; } }
         
@@ -27,14 +26,14 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
             _abandonarIsOK = false;
             _lista = new HndLista();
             _busqDoc = new HndBusqDoc();
-            _filtro = new HndFiltro();
+            _ctrFiltro = new srcTransporte.Filtro.Anticipo.Imp();
         }
         public void Inicializa()
         {
             _abandonarIsOK = false;
             _lista.Inicializa();
             _busqDoc.Inicializa();
-            _filtro.Inicializa();
+            _ctrFiltro.Inicializa();
         }
         Vistas.Frm frm;
         public void Inicia()
@@ -51,9 +50,9 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
         public void Buscar()
         {
-            if (_filtro.VerificarFiltros())
+            if (_ctrFiltro.HndFiltro.VerificarFiltros())
             {
-                _busqDoc.setFiltros(_filtro.Get_Filtros);
+                _busqDoc.setFiltros(_ctrFiltro.HndFiltro.Get_Filtros);
                 var r01 = _busqDoc.Buscar();
                 if (r01 != null)
                 {
@@ -114,8 +113,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
                 var _ano = r01.Entidad.Year;
                 var _mes = r01.Entidad.Month;
                 var _dia = DateTime.DaysInMonth(_ano, _mes);
-                _filtro.setDesde(new DateTime(_ano, _mes, 01));
-                _filtro.setHasta(new DateTime(_ano, _mes, _dia));
+                _ctrFiltro.HndFiltro.setDesde(new DateTime(_ano, _mes, 01));
+                _ctrFiltro.HndFiltro.setHasta(new DateTime(_ano, _mes, _dia));
                 return true;
             }
             catch (Exception e)
@@ -153,6 +152,39 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
             _rep.setFiltrosBusq("");
             _rep.setDataCargar(_lista.Get_Items);
             _rep.Generar();
+        }
+
+
+        //
+        //
+        public DateTime Get_Desde { get { return _ctrFiltro.HndFiltro.Get_Desde; } }
+        public DateTime Get_Hasta { get { return _ctrFiltro.HndFiltro.Get_Hasta; } }
+        public bool Get_IsActivoDesde { get { return _ctrFiltro.HndFiltro.Get_IsActivoDesde; } }
+        public bool Get_IsActivoHasta { get { return _ctrFiltro.HndFiltro.Get_IsActivoDesde; } }
+        public void setDesde(DateTime fecha)
+        {
+            _ctrFiltro.HndFiltro.setDesde(fecha);
+        }
+        public void setHasta(DateTime fecha)
+        {
+            _ctrFiltro.HndFiltro.setHasta(fecha);
+        }
+        public void ActivarDesde(bool modo)
+        {
+            _ctrFiltro.HndFiltro.ActivarDesde(modo);
+        }
+        public void ActivarHasta(bool modo)
+        {
+            _ctrFiltro.HndFiltro.ActivarHasta(modo);
+        }
+
+        public void FitrosBusqueda()
+        {
+            _ctrFiltro.Inicia();
+        }
+        public void FiltrosLimpiar()
+        {
+            _ctrFiltro.Limpiar();
         }
     }
 }

@@ -152,6 +152,9 @@ namespace ProvLibCompra
                     var _sql_2 = @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
                     if (filtro != null)
                     {
                         if (filtro.Desde.HasValue)
@@ -166,9 +169,27 @@ namespace ProvLibCompra
                             p2.ParameterName = "@hasta";
                             p2.Value = filtro.Hasta.Value;
                         }
+                        if (filtro.IdCaja!=-1)
+                        {
+                            _sql_2 += " and cj.id=@idCaja ";
+                            p3.ParameterName = "@idCaja";
+                            p3.Value = filtro.IdCaja;
+                        }
+                        if (filtro.TipoMovimiento != "")
+                        {
+                            _sql_2 += " and cjMov.tipo_mov=@tipoMov ";
+                            p4.ParameterName = "@tipoMov";
+                            p4.Value = filtro.TipoMovimiento;
+                        }
+                        if (filtro.Estatus != "")
+                        {
+                            _sql_2 += " and cjMov.estatus_anulado_mov=@estatus";
+                            p5.ParameterName = "@estatus";
+                            p5.Value = filtro.Estatus.Trim().ToUpper()=="I"?"1":"0";
+                        }
                     }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Caja.Movimiento.Lista.Ficha>(_sql, p1, p2).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Caja.Movimiento.Lista.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
             }

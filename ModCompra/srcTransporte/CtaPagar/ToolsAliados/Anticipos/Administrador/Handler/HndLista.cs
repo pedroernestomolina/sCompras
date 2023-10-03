@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.Handler
 {
-    public class HndLista: Vistas.IListaAnticipo
+    public class HndLista: Vistas.IListaAdm
     {
         private List<Vistas.IdataItem> _lst;
         private BindingList<Vistas.IdataItem> _bl;

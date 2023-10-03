@@ -140,10 +140,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
             DGV.DataSource = _controlador.data.Get_Source;
             DGV.Refresh();
 
-            DTP_DESDE.Checked = _controlador.filtros.Get_IsActivoDesde;
-            DTP_HASTA.Checked = _controlador.filtros.Get_IsActivoHasta;
-            DTP_DESDE.Value = _controlador.filtros.Get_Desde;
-            DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
+            ActualizarPant();
             Actualizar();
         }
         public void setControlador(Vistas.IAdm ctr)
@@ -156,24 +153,24 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
         {
             if (DTP_DESDE.Checked)
             {
-                _controlador.filtros.setDesde(DTP_DESDE.Value);
-                _controlador.filtros.ActivarDesde(true);
+                //_controlador.filtros.setDesde(DTP_DESDE.Value);
+                //_controlador.filtros.ActivarDesde(true);
             }
             else 
             {
-                _controlador.filtros.ActivarDesde(false);
+                //_controlador.filtros.ActivarDesde(false);
             }
         }
         private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
         {
             if (DTP_HASTA.Checked)
             {
-                _controlador.filtros.setHasta(DTP_HASTA.Value);
-                _controlador.filtros.ActivarHasta(true);
+                //_controlador.filtros.setHasta(DTP_HASTA.Value);
+                //_controlador.filtros.ActivarHasta(true);
             }
             else 
             {
-                _controlador.filtros.ActivarHasta(false);
+                //_controlador.filtros.ActivarHasta(false);
             }
         }
 
@@ -215,7 +212,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
 
         private void LimpiarFiltros()
         {
-            _controlador.filtros.Limpiar();
+            //_controlador.filtros.Limpiar();
             ActualizarPant();
         }
         private void LimpiarData()
@@ -257,10 +254,10 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
         }
         private void ActualizarPant()
         {
-            DTP_DESDE.Checked = _controlador.filtros.Get_IsActivoDesde;
-            DTP_HASTA.Checked = _controlador.filtros.Get_IsActivoHasta;
-            DTP_DESDE.Value = _controlador.filtros.Get_Desde;
-            DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
+            //DTP_DESDE.Checked = _controlador.filtros.Get_IsActivoDesde;
+            //DTP_HASTA.Checked = _controlador.filtros.Get_IsActivoHasta;
+            //DTP_DESDE.Value = _controlador.filtros.Get_Desde;
+            //DTP_HASTA.Value = _controlador.filtros.Get_Hasta;
         }
     }
 }

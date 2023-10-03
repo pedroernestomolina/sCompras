@@ -11,5 +11,7 @@ namespace OOB.LibCompra.Transporte.Aliado.Anticipo.Lista
     {
         public DateTime? desde { get; set; }
         public DateTime? hasta { get; set; }
+        public int IdAliado { get; set; }
+        public string Estatus { get; set; }
     }
 }

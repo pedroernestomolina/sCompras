@@ -15,6 +15,12 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Aliado_GetFichaById(id);
         }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Entidad.Ficha>
+            Transporte_Aliado_GetLista()
+        {
+            return ServiceProv.Transporte_Aliado_GetLista();
+        }
+
         public DtoLib.ResultadoLista<DtoLibTransporte.Aliado.Pendiente.Ficha> 
             Transporte_Aliado_Pediente_GetLista()
         {

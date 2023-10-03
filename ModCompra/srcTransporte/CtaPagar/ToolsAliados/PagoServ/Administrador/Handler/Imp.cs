@@ -154,5 +154,11 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.H
             _rep.setDataCargar(_lista.Get_Items);
             _rep.Generar();
         }
+
+
+        public void LimpiarFiltros()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

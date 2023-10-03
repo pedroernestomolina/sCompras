@@ -12,7 +12,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         private bool _abandonarIsOK;
         private string _tituloTools;
         private Vistas.Idata _data;
-        private Anticipos.Administrador.Vistas.IAdmAnticipo _admAnticipo;
+        private Anticipos.Administrador.Vistas.IAdm _admAnticipo;
         private PagoServ.Administrador.Vistas.IAdmPagoServ _admPago;
 
 
