@@ -33,7 +33,13 @@ namespace ProvLibCompra
                                         fecha_registro as fechaReg,
                                         mes_relacion as mesRel,
                                         ano_relacion as anoRel,
-                                        desc_compras_concepto as desConcepto
+                                        desc_compras_concepto as desConcepto,
+                                        documento as numeroDoc,
+                                        base as montoBase,
+                                        impuesto as montoImpuesto,
+                                        exento as montoExento,
+                                        igtf_monto as montoIgtf
+
                                     FROM compras ";
                     var _sql_2 = @" WHERE 1=1 ";
                     var _sql = _sql_1 + _sql_2;
@@ -73,7 +79,8 @@ namespace ProvLibCompra
                                         tasa_retencion as tasaRet,
                                         retencion as totalRet,
                                         retencion_monto as retencionMonto,
-                                        retencion_sustraendo as retencionSustraendo
+                                        retencion_sustraendo as retSustraendo,
+                                        estatus_anulado as estatusAnulado
                                  FROM compras_retenciones ";
                     var _sql_2= @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();

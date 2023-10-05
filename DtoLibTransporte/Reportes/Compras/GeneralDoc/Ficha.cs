@@ -23,5 +23,10 @@ namespace DtoLibTransporte.Reportes.Compras.GeneralDoc
         public string mesRel { get; set; }
         public string anoRel { get; set; }
         public string desConcepto { get; set; }
+        public string numeroDoc { get; set; }
+        public decimal montoBase { get; set; }
+        public decimal montoImpuesto { get; set; }
+        public decimal montoExento { get; set; }
+        public decimal montoIgtf { get; set; }
     }
 }

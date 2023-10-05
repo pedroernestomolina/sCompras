@@ -26,5 +26,6 @@ namespace OOB.LibCompra.Transporte.Reportes.Compras.Retencion
         public decimal totalRet { get; set; }
         public decimal retMonto { get; set; }
         public decimal retSustraendo { get; set; }
+        public string estatusAnulado { get; set; }
     }
 }

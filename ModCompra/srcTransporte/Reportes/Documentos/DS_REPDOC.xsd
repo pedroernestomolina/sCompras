@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_REPDOC" targetNamespace="http://tempuri.org/DS_REPDOC.xsd" xmlns:mstns="http://tempuri.org/DS_REPDOC.xsd" xmlns="http://tempuri.org/DS_REPDOC.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_REPDOC" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_REPDOC" msprop:Generator_UserDSName="DS_REPDOC">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Ret_Islr" msprop:Generator_TableClassName="Ret_IslrDataTable" msprop:Generator_TableVarName="tableRet_Islr" msprop:Generator_RowChangedName="Ret_IslrRowChanged" msprop:Generator_TablePropName="Ret_Islr" msprop:Generator_RowDeletingName="Ret_IslrRowDeleting" msprop:Generator_RowChangingName="Ret_IslrRowChanging" msprop:Generator_RowEvHandlerName="Ret_IslrRowChangeEventHandler" msprop:Generator_RowDeletedName="Ret_IslrRowDeleted" msprop:Generator_RowClassName="Ret_IslrRow" msprop:Generator_UserTableName="Ret_Islr" msprop:Generator_RowEvArgName="Ret_IslrRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
+              <xs:element name="prov" msprop:Generator_ColumnVarNameInTable="columnprov" msprop:Generator_ColumnPropNameInRow="prov" msprop:Generator_ColumnPropNameInTable="provColumn" msprop:Generator_UserColumnName="prov" type="xs:string" minOccurs="0" />
+              <xs:element name="montoTotal" msprop:Generator_ColumnVarNameInTable="columnmontoTotal" msprop:Generator_ColumnPropNameInRow="montoTotal" msprop:Generator_ColumnPropNameInTable="montoTotalColumn" msprop:Generator_UserColumnName="montoTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoExento" msprop:Generator_ColumnVarNameInTable="columnmontoExento" msprop:Generator_ColumnPropNameInRow="montoExento" msprop:Generator_ColumnPropNameInTable="montoExentoColumn" msprop:Generator_UserColumnName="montoExento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoBase" msprop:Generator_ColumnVarNameInTable="columnmontoBase" msprop:Generator_ColumnPropNameInRow="montoBase" msprop:Generator_ColumnPropNameInTable="montoBaseColumn" msprop:Generator_UserColumnName="montoBase" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoImpuesto" msprop:Generator_ColumnVarNameInTable="columnmontoImpuesto" msprop:Generator_ColumnPropNameInRow="montoImpuesto" msprop:Generator_ColumnPropNameInTable="montoImpuestoColumn" msprop:Generator_UserColumnName="montoImpuesto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaRet" msprop:Generator_ColumnVarNameInTable="columntasaRet" msprop:Generator_ColumnPropNameInRow="tasaRet" msprop:Generator_ColumnPropNameInTable="tasaRetColumn" msprop:Generator_UserColumnName="tasaRet" type="xs:decimal" minOccurs="0" />
+              <xs:element name="sustraendo" msprop:Generator_ColumnVarNameInTable="columnsustraendo" msprop:Generator_ColumnPropNameInRow="sustraendo" msprop:Generator_ColumnPropNameInTable="sustraendoColumn" msprop:Generator_UserColumnName="sustraendo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoRetenido" msprop:Generator_ColumnVarNameInTable="columnmontoRetenido" msprop:Generator_ColumnPropNameInRow="montoRetenido" msprop:Generator_ColumnPropNameInTable="montoRetenidoColumn" msprop:Generator_UserColumnName="montoRetenido" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fechaRet" msprop:Generator_ColumnVarNameInTable="columnfechaRet" msprop:Generator_ColumnPropNameInRow="fechaRet" msprop:Generator_ColumnPropNameInTable="fechaRetColumn" msprop:Generator_UserColumnName="fechaRet" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ret_Iva" msprop:Generator_TableClassName="Ret_IvaDataTable" msprop:Generator_TableVarName="tableRet_Iva" msprop:Generator_TablePropName="Ret_Iva" msprop:Generator_RowDeletingName="Ret_IvaRowDeleting" msprop:Generator_RowChangingName="Ret_IvaRowChanging" msprop:Generator_RowEvHandlerName="Ret_IvaRowChangeEventHandler" msprop:Generator_RowDeletedName="Ret_IvaRowDeleted" msprop:Generator_UserTableName="Ret_Iva" msprop:Generator_RowChangedName="Ret_IvaRowChanged" msprop:Generator_RowEvArgName="Ret_IvaRowChangeEvent" msprop:Generator_RowClassName="Ret_IvaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
+              <xs:element name="prov" msprop:Generator_ColumnVarNameInTable="columnprov" msprop:Generator_ColumnPropNameInRow="prov" msprop:Generator_ColumnPropNameInTable="provColumn" msprop:Generator_UserColumnName="prov" type="xs:string" minOccurs="0" />
+              <xs:element name="montoTotal" msprop:Generator_ColumnVarNameInTable="columnmontoTotal" msprop:Generator_ColumnPropNameInRow="montoTotal" msprop:Generator_ColumnPropNameInTable="montoTotalColumn" msprop:Generator_UserColumnName="montoTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoExento" msprop:Generator_ColumnVarNameInTable="columnmontoExento" msprop:Generator_ColumnPropNameInRow="montoExento" msprop:Generator_ColumnPropNameInTable="montoExentoColumn" msprop:Generator_UserColumnName="montoExento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoBase" msprop:Generator_ColumnVarNameInTable="columnmontoBase" msprop:Generator_ColumnPropNameInRow="montoBase" msprop:Generator_ColumnPropNameInTable="montoBaseColumn" msprop:Generator_UserColumnName="montoBase" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoImpuesto" msprop:Generator_ColumnVarNameInTable="columnmontoImpuesto" msprop:Generator_ColumnPropNameInRow="montoImpuesto" msprop:Generator_ColumnPropNameInTable="montoImpuestoColumn" msprop:Generator_UserColumnName="montoImpuesto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaRet" msprop:Generator_ColumnVarNameInTable="columntasaRet" msprop:Generator_ColumnPropNameInRow="tasaRet" msprop:Generator_ColumnPropNameInTable="tasaRetColumn" msprop:Generator_UserColumnName="tasaRet" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoRetenido" msprop:Generator_ColumnVarNameInTable="columnmontoRetenido" msprop:Generator_ColumnPropNameInRow="montoRetenido" msprop:Generator_ColumnPropNameInTable="montoRetenidoColumn" msprop:Generator_UserColumnName="montoRetenido" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fechaRet" msprop:Generator_ColumnVarNameInTable="columnfechaRet" msprop:Generator_ColumnPropNameInRow="fechaRet" msprop:Generator_ColumnPropNameInTable="fechaRetColumn" msprop:Generator_UserColumnName="fechaRet" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="General" msprop:Generator_TableClassName="GeneralDataTable" msprop:Generator_TableVarName="tableGeneral" msprop:Generator_RowChangedName="GeneralRowChanged" msprop:Generator_TablePropName="General" msprop:Generator_RowDeletingName="GeneralRowDeleting" msprop:Generator_RowChangingName="GeneralRowChanging" msprop:Generator_RowEvHandlerName="GeneralRowChangeEventHandler" msprop:Generator_RowDeletedName="GeneralRowDeleted" msprop:Generator_RowClassName="GeneralRow" msprop:Generator_UserTableName="General" msprop:Generator_RowEvArgName="GeneralRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fechaDoc" msprop:Generator_ColumnVarNameInTable="columnfechaDoc" msprop:Generator_ColumnPropNameInRow="fechaDoc" msprop:Generator_ColumnPropNameInTable="fechaDocColumn" msprop:Generator_UserColumnName="fechaDoc" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="siglasDoc" msprop:Generator_ColumnVarNameInTable="columnsiglasDoc" msprop:Generator_ColumnPropNameInRow="siglasDoc" msprop:Generator_ColumnPropNameInTable="siglasDocColumn" msprop:Generator_UserColumnName="siglasDoc" type="xs:string" minOccurs="0" />
+              <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
+              <xs:element name="prov" msprop:Generator_ColumnVarNameInTable="columnprov" msprop:Generator_ColumnPropNameInRow="prov" msprop:Generator_ColumnPropNameInTable="provColumn" msprop:Generator_UserColumnName="prov" type="xs:string" minOccurs="0" />
+              <xs:element name="neto" msprop:Generator_ColumnVarNameInTable="columnneto" msprop:Generator_ColumnPropNameInRow="neto" msprop:Generator_ColumnPropNameInTable="netoColumn" msprop:Generator_UserColumnName="neto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalDoc" msprop:Generator_ColumnVarNameInTable="columntotalDoc" msprop:Generator_ColumnPropNameInRow="totalDoc" msprop:Generator_ColumnPropNameInTable="totalDocColumn" msprop:Generator_UserColumnName="totalDoc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoExento" msprop:Generator_ColumnVarNameInTable="columnmontoExento" msprop:Generator_ColumnPropNameInRow="montoExento" msprop:Generator_ColumnPropNameInTable="montoExentoColumn" msprop:Generator_UserColumnName="montoExento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoIva" msprop:Generator_ColumnVarNameInTable="columnmontoIva" msprop:Generator_ColumnPropNameInRow="montoIva" msprop:Generator_ColumnPropNameInTable="montoIvaColumn" msprop:Generator_UserColumnName="montoIva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoIgtf" msprop:Generator_ColumnVarNameInTable="columnmontoIgtf" msprop:Generator_ColumnPropNameInRow="montoIgtf" msprop:Generator_ColumnPropNameInTable="montoIgtfColumn" msprop:Generator_UserColumnName="montoIgtf" type="xs:decimal" minOccurs="0" />
+              <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="montoBase" msprop:Generator_ColumnVarNameInTable="columnmontoBase" msprop:Generator_ColumnPropNameInRow="montoBase" msprop:Generator_ColumnPropNameInTable="montoBaseColumn" msprop:Generator_UserColumnName="montoBase" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

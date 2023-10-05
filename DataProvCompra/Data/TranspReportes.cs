@@ -49,6 +49,7 @@ namespace DataProvCompra.Data
                             tasaRet = s.tasaRet,
                             totalDoc = s.totalDoc,
                             totalRet = s.totalRet,
+                            estatusAnulado= s.estatusAnulado
                         };
                         return nr;
                     }).ToList();
@@ -92,6 +93,11 @@ namespace DataProvCompra.Data
                             siglasDoc = s.siglasDoc,
                             signoDoc = s.signoDoc,
                             totalDoc = s.totalDoc,
+                            montoBase = s.montoBase,
+                            montoExento = s.montoExento,
+                            montoIgtf = s.montoIgtf,
+                            montoImpuesto = s.montoImpuesto,
+                            numeroDoc = s.numeroDoc,
                         };
                         return nr;
                     }).ToList();

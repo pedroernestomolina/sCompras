@@ -40,7 +40,6 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Planillas\RepPlanilla_RetIva.rdlc";
             var ds = new DS_PLANILLA();
 
-
             DataRow rt = ds.Tables["RetIva"].NewRow();
             rt["comprobante_nro"] = ficha.comprobanteRet;
             rt["fecha"] = ficha.fechaRet;
