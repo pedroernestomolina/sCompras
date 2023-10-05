@@ -227,6 +227,12 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         public void SetIncluirLibroCompras()
         {
             _incluirLibroCompra = !_incluirLibroCompra;
+            if (!_incluirLibroCompra)
+            {
+                SetTasaRetISLR(0m);
+                SetMontoSustraendoISLR(0m);
+                SetTasaRetIva(0m);
+            }
         }
         public void SetNotasDoc(string notas)
         {

@@ -195,6 +195,14 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             {
                 _filtroRet.IdAliado = int.Parse(_aliado.GetId);
             }
+            if (_proveedor.GetItem != null)
+            {
+                _filtroRet.IdProveedor = _proveedor.GetId;
+            }
+            if (_tipoRet.GetItem != null)
+            {
+                _filtroRet.TipoRetencion = _tipoRet.GetId == "1" ? Vistas.Enumerados.TipoRetencion.Iva : Vistas.Enumerados.TipoRetencion.ISLR;
+            }
             return _filtroRet;
         }
     }

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace ModCompra.Reportes.Documento
 {
-    
     public class Gestion
     {
         private OOB.LibCompra.Documento.Visualizar.Ficha ficha;
@@ -99,7 +98,5 @@ namespace ModCompra.Reportes.Documento
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

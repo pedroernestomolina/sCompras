@@ -48,6 +48,7 @@
             this.Controls.Add(this.reportViewer1);
             this.KeyPreview = true;
             this.Name = "ReporteFrm";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ReporteFrm_Load);
             this.ResumeLayout(false);
 

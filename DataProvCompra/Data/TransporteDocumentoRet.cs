@@ -16,6 +16,11 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Ficha>();
             var filtroDTO = new DtoLibTransporte.DocumentoRet.ListaAdm.Filtro()
             {
+                Desde = filtro.Desde,
+                Estatus = filtro.Estatus,
+                Hasta = filtro.Hasta,
+                IdProveedor = filtro.IdProveedor,
+                TipoRetencion = filtro.TipoRetencion,
             };
             var r01 = MyData.Transporte_DocumentoRet_GetLista (filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -42,6 +47,7 @@ namespace DataProvCompra.Data
                             tipoRetCod = s.tipoRetCod,
                             tipoRetDesc = s.tipoRetDesc,
                             estatusAnulado = s.estatusAnulado,
+                            signoRet= s.signoRet,
                         };
                         return nr;
                     }).ToList();

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_PLANILLA" targetNamespace="http://tempuri.org/DS_PLANILLA.xsd" xmlns:mstns="http://tempuri.org/DS_PLANILLA.xsd" xmlns="http://tempuri.org/DS_PLANILLA.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_PLANILLA" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_PLANILLA" msprop:Generator_UserDSName="DS_PLANILLA">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RetIva" msprop:Generator_TableClassName="RetIvaDataTable" msprop:Generator_TableVarName="tableRetIva" msprop:Generator_TablePropName="RetIva" msprop:Generator_RowDeletingName="RetIvaRowDeleting" msprop:Generator_RowChangingName="RetIvaRowChanging" msprop:Generator_RowEvHandlerName="RetIvaRowChangeEventHandler" msprop:Generator_RowDeletedName="RetIvaRowDeleted" msprop:Generator_UserTableName="RetIva" msprop:Generator_RowChangedName="RetIvaRowChanged" msprop:Generator_RowEvArgName="RetIvaRowChangeEvent" msprop:Generator_RowClassName="RetIvaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="comprobante_nro" msprop:Generator_ColumnVarNameInTable="columncomprobante_nro" msprop:Generator_ColumnPropNameInRow="comprobante_nro" msprop:Generator_ColumnPropNameInTable="comprobante_nroColumn" msprop:Generator_UserColumnName="comprobante_nro" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="ano_rel" msprop:Generator_ColumnVarNameInTable="columnano_rel" msprop:Generator_ColumnPropNameInRow="ano_rel" msprop:Generator_ColumnPropNameInTable="ano_relColumn" msprop:Generator_UserColumnName="ano_rel" type="xs:string" minOccurs="0" />
+              <xs:element name="mes_rel" msprop:Generator_ColumnVarNameInTable="columnmes_rel" msprop:Generator_ColumnPropNameInRow="mes_rel" msprop:Generator_ColumnPropNameInTable="mes_relColumn" msprop:Generator_UserColumnName="mes_rel" type="xs:string" minOccurs="0" />
+              <xs:element name="prov_nombre" msprop:Generator_ColumnVarNameInTable="columnprov_nombre" msprop:Generator_ColumnPropNameInRow="prov_nombre" msprop:Generator_ColumnPropNameInTable="prov_nombreColumn" msprop:Generator_UserColumnName="prov_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="prov_cirif" msprop:Generator_ColumnVarNameInTable="columnprov_cirif" msprop:Generator_ColumnPropNameInRow="prov_cirif" msprop:Generator_ColumnPropNameInTable="prov_cirifColumn" msprop:Generator_UserColumnName="prov_cirif" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RetIslr" msprop:Generator_TableClassName="RetIslrDataTable" msprop:Generator_TableVarName="tableRetIslr" msprop:Generator_TablePropName="RetIslr" msprop:Generator_RowDeletingName="RetIslrRowDeleting" msprop:Generator_RowChangingName="RetIslrRowChanging" msprop:Generator_RowEvHandlerName="RetIslrRowChangeEventHandler" msprop:Generator_RowDeletedName="RetIslrRowDeleted" msprop:Generator_UserTableName="RetIslr" msprop:Generator_RowChangedName="RetIslrRowChanged" msprop:Generator_RowEvArgName="RetIslrRowChangeEvent" msprop:Generator_RowClassName="RetIslrRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RetIva_Det" msprop:Generator_TableClassName="RetIva_DetDataTable" msprop:Generator_TableVarName="tableRetIva_Det" msprop:Generator_RowChangedName="RetIva_DetRowChanged" msprop:Generator_TablePropName="RetIva_Det" msprop:Generator_RowDeletingName="RetIva_DetRowDeleting" msprop:Generator_RowChangingName="RetIva_DetRowChanging" msprop:Generator_RowEvHandlerName="RetIva_DetRowChangeEventHandler" msprop:Generator_RowDeletedName="RetIva_DetRowDeleted" msprop:Generator_RowClassName="RetIva_DetRow" msprop:Generator_UserTableName="RetIva_Det" msprop:Generator_RowEvArgName="RetIva_DetRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="operacion" msprop:Generator_ColumnVarNameInTable="columnoperacion" msprop:Generator_ColumnPropNameInRow="operacion" msprop:Generator_ColumnPropNameInTable="operacionColumn" msprop:Generator_UserColumnName="operacion" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="facturaNro" msprop:Generator_ColumnVarNameInTable="columnfacturaNro" msprop:Generator_ColumnPropNameInRow="facturaNro" msprop:Generator_ColumnPropNameInTable="facturaNroColumn" msprop:Generator_UserColumnName="facturaNro" type="xs:string" minOccurs="0" />
+              <xs:element name="controlNro" msprop:Generator_ColumnVarNameInTable="columncontrolNro" msprop:Generator_ColumnPropNameInRow="controlNro" msprop:Generator_ColumnPropNameInTable="controlNroColumn" msprop:Generator_UserColumnName="controlNro" type="xs:string" minOccurs="0" />
+              <xs:element name="ntDebitoNro" msprop:Generator_ColumnVarNameInTable="columnntDebitoNro" msprop:Generator_ColumnPropNameInRow="ntDebitoNro" msprop:Generator_ColumnPropNameInTable="ntDebitoNroColumn" msprop:Generator_UserColumnName="ntDebitoNro" type="xs:string" minOccurs="0" />
+              <xs:element name="ntCReditoNro" msprop:Generator_ColumnVarNameInTable="columnntCReditoNro" msprop:Generator_ColumnPropNameInRow="ntCReditoNro" msprop:Generator_ColumnPropNameInTable="ntCReditoNroColumn" msprop:Generator_UserColumnName="ntCReditoNro" type="xs:string" minOccurs="0" />
+              <xs:element name="tipoTrans" msprop:Generator_ColumnVarNameInTable="columntipoTrans" msprop:Generator_ColumnPropNameInRow="tipoTrans" msprop:Generator_ColumnPropNameInTable="tipoTransColumn" msprop:Generator_UserColumnName="tipoTrans" type="xs:string" minOccurs="0" />
+              <xs:element name="nroFactAfecta" msprop:Generator_ColumnVarNameInTable="columnnroFactAfecta" msprop:Generator_ColumnPropNameInRow="nroFactAfecta" msprop:Generator_ColumnPropNameInTable="nroFactAfectaColumn" msprop:Generator_UserColumnName="nroFactAfecta" type="xs:string" minOccurs="0" />
+              <xs:element name="montoConIva" msprop:Generator_ColumnVarNameInTable="columnmontoConIva" msprop:Generator_ColumnPropNameInRow="montoConIva" msprop:Generator_ColumnPropNameInTable="montoConIvaColumn" msprop:Generator_UserColumnName="montoConIva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoExento" msprop:Generator_ColumnVarNameInTable="columnmontoExento" msprop:Generator_ColumnPropNameInRow="montoExento" msprop:Generator_ColumnPropNameInTable="montoExentoColumn" msprop:Generator_UserColumnName="montoExento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoBase" msprop:Generator_ColumnVarNameInTable="columnmontoBase" msprop:Generator_ColumnPropNameInRow="montoBase" msprop:Generator_ColumnPropNameInTable="montoBaseColumn" msprop:Generator_UserColumnName="montoBase" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaAlicuota" msprop:Generator_ColumnVarNameInTable="columntasaAlicuota" msprop:Generator_ColumnPropNameInRow="tasaAlicuota" msprop:Generator_ColumnPropNameInTable="tasaAlicuotaColumn" msprop:Generator_UserColumnName="tasaAlicuota" type="xs:decimal" minOccurs="0" />
+              <xs:element name="impuestoIva" msprop:Generator_ColumnVarNameInTable="columnimpuestoIva" msprop:Generator_ColumnPropNameInRow="impuestoIva" msprop:Generator_ColumnPropNameInTable="impuestoIvaColumn" msprop:Generator_UserColumnName="impuestoIva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaRetencion" msprop:Generator_ColumnVarNameInTable="columntasaRetencion" msprop:Generator_ColumnPropNameInRow="tasaRetencion" msprop:Generator_ColumnPropNameInTable="tasaRetencionColumn" msprop:Generator_UserColumnName="tasaRetencion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoRetencion" msprop:Generator_ColumnVarNameInTable="columnmontoRetencion" msprop:Generator_ColumnPropNameInRow="montoRetencion" msprop:Generator_ColumnPropNameInTable="montoRetencionColumn" msprop:Generator_UserColumnName="montoRetencion" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

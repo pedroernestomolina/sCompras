@@ -581,8 +581,6 @@
     <Compile Include="srcTransporte\Reportes\CXP\Planillas\PagoServ\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\enumerados.cs" />
-    <Compile Include="srcTransporte\Reportes\Documentos\Filtros\Handlers\data.cs" />
-    <Compile Include="srcTransporte\Reportes\Documentos\Filtros\Vistas\Idata.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\Idata.cs" />
     <Compile Include="srcTransporte\Reportes\IRep.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\IRepFiltro.cs" />
@@ -593,12 +591,25 @@
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\baseImp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\islr.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
-    <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetISLR\Imp.cs" />
-    <Compile Include="srcTransporte\Reportes\Documentos\Planillas\RetIva\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Reportes\Planillas\RetISLR\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Planillas\RetIva\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Anticipo\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\CajaMov\Imp.cs" />
-    <Compile Include="srcTransporte\Reportes\ListaAdm\DocumentoRet\Class1.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\DocumentoRet\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\DS_ADM.cs">
+      <DependentUpon>DS_ADM.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Reportes\ListaAdm\DS_ADM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_ADM.xsd</DependentUpon>
+    </Compile>
     <Compile Include="srcTransporte\Reportes\ListaAdm\PagoServ\Imp.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndBusqDoc.cs" />
@@ -864,6 +875,15 @@
     <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_Retencion.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_RetIslr.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_RetIva.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Retencion\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -913,6 +933,28 @@
     </None>
     <None Include="Reportes\DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\ListaAdm\DS_ADM.xsc">
+      <DependentUpon>DS_ADM.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\ListaAdm\DS_ADM.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_ADM.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="srcTransporte\Reportes\ListaAdm\DS_ADM.xss">
+      <DependentUpon>DS_ADM.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.xsc">
+      <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_PLANILLA.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.xss">
+      <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

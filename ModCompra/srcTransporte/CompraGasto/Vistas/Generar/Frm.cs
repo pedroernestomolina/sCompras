@@ -101,6 +101,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
             TB_SUSTRAENDO_ISLR.Text = _controlador.data.Get_SustraendoISLR.ToString("n2", _cult);
             //
+            RETENCIONES.Enabled = _controlador.data.Get_IncluirLibroCompras;
+            //
             _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -187,6 +189,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         private void CHB_INCLUIR_LIBRO_COMPRA_CheckedChanged(object sender, EventArgs e)
         {
             _controlador.data.SetIncluirLibroCompras();
+            RETENCIONES.Enabled = _controlador.data.Get_IncluirLibroCompras;
+            ActualizaTotal();
         }
         private void TB_NOTAS_Leave(object sender, EventArgs e)
         {

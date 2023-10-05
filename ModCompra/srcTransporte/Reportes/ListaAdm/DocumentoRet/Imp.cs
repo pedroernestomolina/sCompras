@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using ModCompra.Reportes;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +41,41 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm.DocumentoRet
 
         private void imprimir()
         {
+            var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\ListaAdm\RepAdm_Retencion.rdlc";
+            var ds = new DS_ADM();
+
+            foreach (var rg in _lst)
+            {
+                var it = (Retencion.Administrador.Handler.dataItem)rg;
+                var _monto = it.Ficha.retMonto * it.Ficha.signoRet;
+                if (it.Ficha.estatusAnulado == "1") 
+                {
+                    _monto = 0m;
+                }
+                DataRow rt = ds.Tables["Retencion"].NewRow();
+                rt["fecha"] = rg.Fecha;
+                rt["tipoRet"] = rg.TipoRet;
+                rt["documento"] = rg.Documento;
+                rt["prov"] = rg.ProvCiRif+Environment.NewLine+rg.ProvNombre;
+                rt["estatus"] = rg.Estatus;
+                rt["tasaRet"] = rg.RetTasa;
+                rt["montoRet"] = _monto;
+                ds.Tables["Retencion"].Rows.Add(rt);
+            }
+
+            var Rds = new List<ReportDataSource>();
+            var pmt = new List<ReportParameter>();
+            //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
+            //pmt.Add(new ReportParameter("EMPRESA_NOMBRE", Sistema.Negocio.Nombre));
+            //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
+            //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
+            Rds.Add(new ReportDataSource("Retencion", ds.Tables["Retencion"]));
+
+            var frp = new ReporteFrm();
+            frp.rds = Rds;
+            frp.prmts = pmt;
+            frp.Path = pt;
+            frp.ShowDialog();
         }
     }
 }

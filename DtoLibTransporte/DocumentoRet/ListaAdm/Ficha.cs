@@ -20,5 +20,6 @@ namespace DtoLibTransporte.DocumentoRet.ListaAdm
         public string estatusAnulado { get; set; }
         public string tipoRetCod { get; set; }
         public string tipoRetDesc { get; set; }
+        public int signoRet { get; set; }
     }
 }

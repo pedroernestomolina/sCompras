@@ -137,13 +137,13 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
 
         public void PlanillaRetIva(string autoDoc)
         {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetIva.Imp();
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetIva.Imp();
             _rep.setIdDoc(autoDoc);
             _rep.Generar();
         }
         public void PlanillaRetIslr(string autoDoc)
         {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Documentos.Planillas.RetISLR.Imp();
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetISLR.Imp();
             _rep.setIdDoc(autoDoc);
             _rep.Generar();
         }

@@ -9,5 +9,10 @@ namespace DtoLibTransporte.DocumentoRet.ListaAdm
 {
     public class Filtro
     {
+        public DateTime? Desde { get; set; }
+        public DateTime? Hasta { get; set; }
+        public string IdProveedor { get; set; }
+        public string Estatus { get; set; }
+        public string TipoRetencion  { get; set; }
     }
 }

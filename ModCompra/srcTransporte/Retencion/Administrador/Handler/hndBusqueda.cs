@@ -22,8 +22,31 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
         public void setFiltros(object filtros)
         {
             var filt= (Filtro.Vistas.IdataFiltrar)filtros;
+            var _estatus = "";
+            var _tipoRet = "";
+            if (filt.EstatusDoc != Filtro.Vistas.Enumerados.EstatusDoc.SinDefinir)
+            {
+                _estatus = "A";
+                if (filt.EstatusDoc == Filtro.Vistas.Enumerados.EstatusDoc.Anulado)
+                {
+                    _estatus = "I";
+                }
+            }
+            if (filt.TipoRetencion!= Filtro.Vistas.Enumerados.TipoRetencion.SinDefinir)
+            {
+                _tipoRet= "07";
+                if (filt.TipoRetencion == Filtro.Vistas.Enumerados.TipoRetencion.ISLR)
+                {
+                    _tipoRet = "08";
+                }
+            }
             _filtro = new OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Filtro()
             {
+                Desde = filt.Desde,
+                Hasta= filt.Hasta,
+                Estatus = _estatus,
+                IdProveedor= filt.IdProveedor,
+                TipoRetencion=_tipoRet,
             };
         }
         public IEnumerable<object>Buscar()

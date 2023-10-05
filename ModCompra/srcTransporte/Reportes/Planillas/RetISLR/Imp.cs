@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Reportes.Documentos.Planillas.RetISLR
+namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
 {
     public class Imp: IRepPlanilla
     {

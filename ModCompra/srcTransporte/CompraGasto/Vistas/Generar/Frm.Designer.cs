@@ -201,7 +201,7 @@
             this.panel87 = new System.Windows.Forms.Panel();
             this.L_MONTO_MON_DIVISA = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel82 = new System.Windows.Forms.Panel();
+            this.RETENCIONES = new System.Windows.Forms.Panel();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
             this.panel88 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
@@ -355,7 +355,7 @@
             this.panel86.SuspendLayout();
             this.panel87.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.panel82.SuspendLayout();
+            this.RETENCIONES.SuspendLayout();
             this.tableLayoutPanel21.SuspendLayout();
             this.panel88.SuspendLayout();
             this.tableLayoutPanel22.SuspendLayout();
@@ -2526,7 +2526,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.panel82);
+            this.tabPage3.Controls.Add(this.RETENCIONES);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(654, 583);
@@ -2534,14 +2534,14 @@
             this.tabPage3.Text = "Retenciones";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // panel82
+            // RETENCIONES
             // 
-            this.panel82.Controls.Add(this.tableLayoutPanel21);
-            this.panel82.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel82.Location = new System.Drawing.Point(0, 0);
-            this.panel82.Name = "panel82";
-            this.panel82.Size = new System.Drawing.Size(654, 583);
-            this.panel82.TabIndex = 1;
+            this.RETENCIONES.Controls.Add(this.tableLayoutPanel21);
+            this.RETENCIONES.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RETENCIONES.Location = new System.Drawing.Point(0, 0);
+            this.RETENCIONES.Name = "RETENCIONES";
+            this.RETENCIONES.Size = new System.Drawing.Size(654, 583);
+            this.RETENCIONES.TabIndex = 1;
             // 
             // tableLayoutPanel21
             // 
@@ -3216,7 +3216,7 @@
             this.panel86.ResumeLayout(false);
             this.panel87.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.panel82.ResumeLayout(false);
+            this.RETENCIONES.ResumeLayout(false);
             this.tableLayoutPanel21.ResumeLayout(false);
             this.panel88.ResumeLayout(false);
             this.tableLayoutPanel22.ResumeLayout(false);
@@ -3426,7 +3426,7 @@
         private System.Windows.Forms.Label L_MONTO_MON_DIVISA;
         private System.Windows.Forms.Panel panel81;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Panel panel82;
+        private System.Windows.Forms.Panel RETENCIONES;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
         private System.Windows.Forms.Panel panel88;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
