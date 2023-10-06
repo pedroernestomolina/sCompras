@@ -190,6 +190,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Serv.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Caja\Saldo\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Caja\Saldo\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\baseFiltro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Filtro.cs" />

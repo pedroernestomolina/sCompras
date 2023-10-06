@@ -570,6 +570,11 @@
     <Compile Include="srcTransporte\Filtro\Vistas\IdataFiltrar.cs" />
     <Compile Include="srcTransporte\Filtro\Vistas\IFiltro.cs" />
     <Compile Include="srcTransporte\Filtro\Vistas\IHndFiltro.cs" />
+    <Compile Include="srcTransporte\Reportes\Caja\DS_CAJA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_CAJA.xsd</DependentUpon>
+    </Compile>
     <Compile Include="srcTransporte\Reportes\Caja\EdoCta\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
@@ -884,6 +889,12 @@
     <EmbeddedResource Include="srcTransporte\PantallaInicio\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Caja\RepCajaEdoCta.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Caja\RepCajaMov.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_General.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -891,6 +902,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_RetIva.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_PagoServ.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_Anticipo.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_CajaMov.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_Retencion.rdlc">
@@ -951,6 +971,17 @@
     </None>
     <None Include="Reportes\DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\Caja\DS_CAJA.xsc">
+      <DependentUpon>DS_CAJA.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\Caja\DS_CAJA.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_CAJA.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="srcTransporte\Reportes\Caja\DS_CAJA.xss">
+      <DependentUpon>DS_CAJA.xsd</DependentUpon>
     </None>
     <None Include="srcTransporte\Reportes\Documentos\DS_REPDOC.xsc">
       <DependentUpon>DS_REPDOC.xsd</DependentUpon>

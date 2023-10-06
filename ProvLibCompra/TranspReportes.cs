@@ -450,5 +450,41 @@ namespace ProvLibCompra
             }
             return result;
         }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Caja.Saldo.Ficha> 
+            Transporte_Reportes_Caja_Saldo_Al(DtoLibTransporte.Reportes.Caja.Saldo.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Caja.Saldo.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        sum(cjMov.monto_mov_mon_act*signo) as montoMonAct,
+                                        sum(cjMov.monto_mov_mon_div*signo) as montoMonDiv,
+                                        cj.es_divisa as esDivisa
+                                   FROM transp_caja_mov as cjMov
+                                        join transp_caja as cj on cj.id=cjMov.id_caja 
+                                   WHERE id_caja=@idCaja and
+                                         estatus_anulado_mov='0' and
+                                         fecha_reg<@fecha";
+                    var _sql_2 = @"";
+                    var _sql = _sql_1 + _sql_2;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("idCaja",filtro.idCaja);
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter("fecha",filtro.fecha);
+                    var _ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Caja.Saldo.Ficha>(_sql, p1, p2).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        throw new Exception("PROBLEMA AL CONSULTAR SALDO CAJA");
+                    }
+                    result.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

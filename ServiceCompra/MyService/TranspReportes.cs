@@ -62,5 +62,10 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Caja_Movimientos_GetLista(filtro);
         }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Caja.Saldo.Ficha> 
+            Transporte_Reportes_Caja_Saldo_Al(DtoLibTransporte.Reportes.Caja.Saldo.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Caja_Saldo_Al(filtro);
+        }
     }
 }

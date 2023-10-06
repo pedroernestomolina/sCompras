@@ -50,12 +50,12 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
                 rt["siglasDoc"] = rg.siglasDoc;
                 rt["documento"] = rg.numeroDoc;
                 rt["prov"] = rg.prvCiRif + Environment.NewLine + rg.prvNombre;
-                rt["neto"] = rg.netoDoc;
-                rt["totalDoc"] = rg.totalDoc;
-                rt["montoExento"] = rg.montoExento;
-                rt["montoBase"] = rg.montoBase;
-                rt["montoIva"] = rg.montoImpuesto;
-                rt["montoIgtf"] = rg.montoIgtf;
+                rt["neto"] = rg.netoDoc * rg.signoDoc;
+                rt["totalDoc"] = rg.totalDoc * rg.signoDoc;
+                rt["montoExento"] = rg.montoExento * rg.signoDoc;
+                rt["montoBase"] = rg.montoBase * rg.signoDoc;
+                rt["montoIva"] = rg.montoImpuesto * rg.signoDoc;
+                rt["montoIgtf"] = rg.montoIgtf * rg.signoDoc;
                 rt["estatus"] = rg.estatusDoc == "1" ? "ANULADO" : "";
                 if (rg.estatusDoc.Trim().ToUpper() == "1")
                 {

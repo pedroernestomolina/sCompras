@@ -167,10 +167,12 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         private void AdmDocAnticipos()
         {
             _controlador.AdmDocAnticipos();
+            BuscarCtasPendientes();
         }
         private void AdmDocPagos()
         {
             _controlador.AdmDocPagos();
+            BuscarCtasPendientes();
         }
 
 

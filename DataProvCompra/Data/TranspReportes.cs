@@ -410,5 +410,29 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Ficha> 
+            Transporte_Reportes_Caja_Saldo_Al(OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Filtro filtro)
+        {
+            var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Caja.Saldo.Filtro()
+            {
+                fecha = filtro.fecha,
+                idCaja = filtro.idCaja,
+            };
+            var r01 = MyData.Transporte_Reportes_Caja_Saldo_Al(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var ent = new OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Ficha();
+            if (r01.Entidad != null)
+            {
+                ent.montoMonAct = r01.Entidad.montoMonAct.HasValue ? r01.Entidad.montoMonAct.Value : 0;
+                ent.montoMonDiv = r01.Entidad.montoMonDiv.HasValue ? r01.Entidad.montoMonDiv.Value : 0;
+                ent.esDivisa = r01.Entidad.esDivisa;
+            }
+            result.Entidad = ent;
+            return result;
+        }
     }
 }

@@ -31,5 +31,7 @@ namespace DataProvCompra.InfraEstructura.Transporte
         //CAJA
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha>
             Transporte_Reportes_Caja_Movimientos_GetLista(OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro filtro);
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Ficha>
+            Transporte_Reportes_Caja_Saldo_Al(OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Filtro filtro);
     }
 }
