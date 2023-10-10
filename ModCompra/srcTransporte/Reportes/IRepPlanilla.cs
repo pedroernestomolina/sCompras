@@ -9,6 +9,6 @@ namespace ModCompra.srcTransporte.Reportes
 {
     public interface IRepPlanilla: IRep
     {
-        void setIdDoc(string idDoc);
+        void setIdDoc(object idDoc);
     }
 }

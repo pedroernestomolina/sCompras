@@ -331,16 +331,16 @@ namespace ModCompra
         }
         public void ReportesAliadoAnticipo()
         {
-            srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.CXP.Aliado.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.Anticipo.Imp();
-            _rep.setFiltros(_data);
+            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.Anticipo.Imp();
+            _rep.setFiltros(null);
             _rep.Generar();
         }
         public void ReportesAliadoPagoServ()
         {
-            srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.CXP.Aliado.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.PagoServ.Imp();
-            _rep.setFiltros(_data);
+            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.PagoServ.Imp();
+            _rep.setFiltros(null);
             _rep.Generar();
         }
         public void ReportesCajaGeneralMov()
@@ -355,6 +355,21 @@ namespace ModCompra
             //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
             srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.EdoCta.Imp();
             _rep.setFiltros(null);
+            _rep.Generar();
+        }
+        public void ReporteMaestroConcepto()
+        {
+            srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Concepto.Imp();
+            _rep.Generar();
+        }
+        public void ReportesMaestroCaja()
+        {
+            srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Caja.Imp();
+            _rep.Generar();
+        }
+        public void ReporteMaestroProveedorTransporte()
+        {
+            srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Proveedor.Imp();
             _rep.Generar();
         }
     }

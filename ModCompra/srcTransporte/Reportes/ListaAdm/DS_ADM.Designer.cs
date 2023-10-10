@@ -1070,6 +1070,12 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             private global::System.Data.DataColumn columnestatus;
             
+            private global::System.Data.DataColumn columnaplicaRet;
+            
+            private global::System.Data.DataColumn columnmontoRet;
+            
+            private global::System.Data.DataColumn columnmontoPag;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AnticipoMovDataTable() {
@@ -1145,6 +1151,30 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn aplicaRetColumn {
+                get {
+                    return this.columnaplicaRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoRetColumn {
+                get {
+                    return this.columnmontoRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoPagColumn {
+                get {
+                    return this.columnmontoPag;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1180,14 +1210,17 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AnticipoMovRow AddAnticipoMovRow(System.DateTime fecha, string recibo, string aliado, decimal monto, string estatus) {
+            public AnticipoMovRow AddAnticipoMovRow(System.DateTime fecha, string recibo, string aliado, decimal monto, string estatus, string aplicaRet, decimal montoRet, decimal montoPag) {
                 AnticipoMovRow rowAnticipoMovRow = ((AnticipoMovRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fecha,
                         recibo,
                         aliado,
                         monto,
-                        estatus};
+                        estatus,
+                        aplicaRet,
+                        montoRet,
+                        montoPag};
                 rowAnticipoMovRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAnticipoMovRow);
                 return rowAnticipoMovRow;
@@ -1215,6 +1248,9 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 this.columnaliado = base.Columns["aliado"];
                 this.columnmonto = base.Columns["monto"];
                 this.columnestatus = base.Columns["estatus"];
+                this.columnaplicaRet = base.Columns["aplicaRet"];
+                this.columnmontoRet = base.Columns["montoRet"];
+                this.columnmontoPag = base.Columns["montoPag"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1230,6 +1266,12 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 base.Columns.Add(this.columnmonto);
                 this.columnestatus = new global::System.Data.DataColumn("estatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnestatus);
+                this.columnaplicaRet = new global::System.Data.DataColumn("aplicaRet", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaplicaRet);
+                this.columnmontoRet = new global::System.Data.DataColumn("montoRet", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoRet);
+                this.columnmontoPag = new global::System.Data.DataColumn("montoPag", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoPag);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1373,6 +1415,12 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             private global::System.Data.DataColumn columnestatus;
             
+            private global::System.Data.DataColumn columnaplicaRet;
+            
+            private global::System.Data.DataColumn columnmontoRet;
+            
+            private global::System.Data.DataColumn columnmontoPag;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PagoServDataTable() {
@@ -1448,6 +1496,30 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn aplicaRetColumn {
+                get {
+                    return this.columnaplicaRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoRetColumn {
+                get {
+                    return this.columnmontoRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoPagColumn {
+                get {
+                    return this.columnmontoPag;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1483,14 +1555,17 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PagoServRow AddPagoServRow(System.DateTime fecha, string recibo, string aliado, decimal monto, string estatus) {
+            public PagoServRow AddPagoServRow(System.DateTime fecha, string recibo, string aliado, decimal monto, string estatus, string aplicaRet, decimal montoRet, decimal montoPag) {
                 PagoServRow rowPagoServRow = ((PagoServRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fecha,
                         recibo,
                         aliado,
                         monto,
-                        estatus};
+                        estatus,
+                        aplicaRet,
+                        montoRet,
+                        montoPag};
                 rowPagoServRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoServRow);
                 return rowPagoServRow;
@@ -1518,6 +1593,9 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 this.columnaliado = base.Columns["aliado"];
                 this.columnmonto = base.Columns["monto"];
                 this.columnestatus = base.Columns["estatus"];
+                this.columnaplicaRet = base.Columns["aplicaRet"];
+                this.columnmontoRet = base.Columns["montoRet"];
+                this.columnmontoPag = base.Columns["montoPag"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1533,6 +1611,12 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 base.Columns.Add(this.columnmonto);
                 this.columnestatus = new global::System.Data.DataColumn("estatus", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnestatus);
+                this.columnaplicaRet = new global::System.Data.DataColumn("aplicaRet", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaplicaRet);
+                this.columnmontoRet = new global::System.Data.DataColumn("montoRet", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoRet);
+                this.columnmontoPag = new global::System.Data.DataColumn("montoPag", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoPag);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2205,6 +2289,54 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string aplicaRet {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnticipoMov.aplicaRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'aplicaRet\' in table \'AnticipoMov\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnticipoMov.aplicaRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoRet {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableAnticipoMov.montoRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoRet\' in table \'AnticipoMov\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnticipoMov.montoRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoPag {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableAnticipoMov.montoPagColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoPag\' in table \'AnticipoMov\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnticipoMov.montoPagColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsfechaNull() {
                 return this.IsNull(this.tableAnticipoMov.fechaColumn);
             }
@@ -2261,6 +2393,42 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetestatusNull() {
                 this[this.tableAnticipoMov.estatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsaplicaRetNull() {
+                return this.IsNull(this.tableAnticipoMov.aplicaRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetaplicaRetNull() {
+                this[this.tableAnticipoMov.aplicaRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoRetNull() {
+                return this.IsNull(this.tableAnticipoMov.montoRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoRetNull() {
+                this[this.tableAnticipoMov.montoRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoPagNull() {
+                return this.IsNull(this.tableAnticipoMov.montoPagColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoPagNull() {
+                this[this.tableAnticipoMov.montoPagColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2360,6 +2528,54 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string aplicaRet {
+                get {
+                    try {
+                        return ((string)(this[this.tablePagoServ.aplicaRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'aplicaRet\' in table \'PagoServ\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoServ.aplicaRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoRet {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePagoServ.montoRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoRet\' in table \'PagoServ\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoServ.montoRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoPag {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePagoServ.montoPagColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoPag\' in table \'PagoServ\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoServ.montoPagColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsfechaNull() {
                 return this.IsNull(this.tablePagoServ.fechaColumn);
             }
@@ -2416,6 +2632,42 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetestatusNull() {
                 this[this.tablePagoServ.estatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsaplicaRetNull() {
+                return this.IsNull(this.tablePagoServ.aplicaRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetaplicaRetNull() {
+                this[this.tablePagoServ.aplicaRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoRetNull() {
+                return this.IsNull(this.tablePagoServ.montoRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoRetNull() {
+                this[this.tablePagoServ.montoRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoPagNull() {
+                return this.IsNull(this.tablePagoServ.montoPagColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoPagNull() {
+                this[this.tablePagoServ.montoPagColumn] = global::System.Convert.DBNull;
             }
         }
         

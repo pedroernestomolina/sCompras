@@ -578,12 +578,7 @@
     <Compile Include="srcTransporte\Reportes\Caja\EdoCta\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
-    <Compile Include="srcTransporte\Reportes\CXP\Aliado\data.cs" />
-    <Compile Include="srcTransporte\Reportes\CXP\Aliado\Idata.cs" />
-    <Compile Include="srcTransporte\Reportes\CXP\Aliado\IRepFiltro.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\imp.cs" />
-    <Compile Include="srcTransporte\Reportes\CXP\Planillas\Anticipo\Imp.cs" />
-    <Compile Include="srcTransporte\Reportes\CXP\Planillas\PagoServ\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\DS_REPDOC.cs">
       <DependentUpon>DS_REPDOC.xsd</DependentUpon>
@@ -605,11 +600,25 @@
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\baseImp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\islr.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
+    <Compile Include="srcTransporte\Reportes\Maestros\Caja\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Maestros\Concepto\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.cs">
+      <DependentUpon>DS_MAESTRO.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_MAESTRO.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Reportes\Maestros\Proveedor\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
     </Compile>
+    <Compile Include="srcTransporte\Reportes\Planillas\ReciboAnticipoAliado\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Planillas\ReciboPagoAliado\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\RetISLR\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\RetIva\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Anticipo\Imp.cs" />
@@ -895,6 +904,12 @@
     <EmbeddedResource Include="srcTransporte\Reportes\Caja\RepCajaMov.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_PagoServ.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_Anticipo.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_General.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -914,6 +929,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_Retencion.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Caja.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Concepto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_PagoAliado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_RetIslr.rdlc">
@@ -1004,6 +1028,17 @@
     </None>
     <None Include="srcTransporte\Reportes\ListaAdm\DS_ADM.xss">
       <DependentUpon>DS_ADM.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.xsc">
+      <DependentUpon>DS_MAESTRO.xsd</DependentUpon>
+    </None>
+    <None Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_MAESTRO.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.xss">
+      <DependentUpon>DS_MAESTRO.xsd</DependentUpon>
     </None>
     <None Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.xsc">
       <DependentUpon>DS_PLANILLA.xsd</DependentUpon>

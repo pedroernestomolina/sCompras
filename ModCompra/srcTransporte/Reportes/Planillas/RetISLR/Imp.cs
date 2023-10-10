@@ -18,9 +18,9 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
         public Imp()
         {
         }
-        public void setIdDoc(string idDoc)
+        public void setIdDoc(object idDoc)
         {
-            _idDoc = idDoc;
+            _idDoc = (string)idDoc;
         }
         public void Generar()
         {

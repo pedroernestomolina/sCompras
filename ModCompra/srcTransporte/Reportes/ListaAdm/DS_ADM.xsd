@@ -47,6 +47,9 @@
               <xs:element name="aliado" msprop:Generator_ColumnVarNameInTable="columnaliado" msprop:Generator_ColumnPropNameInRow="aliado" msprop:Generator_ColumnPropNameInTable="aliadoColumn" msprop:Generator_UserColumnName="aliado" type="xs:string" minOccurs="0" />
               <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
               <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="aplicaRet" msprop:Generator_ColumnVarNameInTable="columnaplicaRet" msprop:Generator_ColumnPropNameInRow="aplicaRet" msprop:Generator_ColumnPropNameInTable="aplicaRetColumn" msprop:Generator_UserColumnName="aplicaRet" type="xs:string" minOccurs="0" />
+              <xs:element name="montoRet" msprop:Generator_ColumnVarNameInTable="columnmontoRet" msprop:Generator_ColumnPropNameInRow="montoRet" msprop:Generator_ColumnPropNameInTable="montoRetColumn" msprop:Generator_UserColumnName="montoRet" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPag" msprop:Generator_ColumnVarNameInTable="columnmontoPag" msprop:Generator_ColumnPropNameInRow="montoPag" msprop:Generator_ColumnPropNameInTable="montoPagColumn" msprop:Generator_UserColumnName="montoPag" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -58,6 +61,9 @@
               <xs:element name="aliado" msprop:Generator_ColumnVarNameInTable="columnaliado" msprop:Generator_ColumnPropNameInRow="aliado" msprop:Generator_ColumnPropNameInTable="aliadoColumn" msprop:Generator_UserColumnName="aliado" type="xs:string" minOccurs="0" />
               <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
               <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="aplicaRet" msprop:Generator_ColumnVarNameInTable="columnaplicaRet" msprop:Generator_ColumnPropNameInRow="aplicaRet" msprop:Generator_ColumnPropNameInTable="aplicaRetColumn" msprop:Generator_UserColumnName="aplicaRet" type="xs:string" minOccurs="0" />
+              <xs:element name="montoRet" msprop:Generator_ColumnVarNameInTable="columnmontoRet" msprop:Generator_ColumnPropNameInRow="montoRet" msprop:Generator_ColumnPropNameInTable="montoRetColumn" msprop:Generator_UserColumnName="montoRet" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPag" msprop:Generator_ColumnVarNameInTable="columnmontoPag" msprop:Generator_ColumnPropNameInRow="montoPag" msprop:Generator_ColumnPropNameInTable="montoPagColumn" msprop:Generator_UserColumnName="montoPag" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

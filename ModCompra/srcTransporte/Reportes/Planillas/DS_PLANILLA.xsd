@@ -72,6 +72,35 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="PagoAliado" msprop:Generator_TableClassName="PagoAliadoDataTable" msprop:Generator_TableVarName="tablePagoAliado" msprop:Generator_RowChangedName="PagoAliadoRowChanged" msprop:Generator_TablePropName="PagoAliado" msprop:Generator_RowDeletingName="PagoAliadoRowDeleting" msprop:Generator_RowChangingName="PagoAliadoRowChanging" msprop:Generator_RowEvHandlerName="PagoAliadoRowChangeEventHandler" msprop:Generator_RowDeletedName="PagoAliadoRowDeleted" msprop:Generator_RowClassName="PagoAliadoRow" msprop:Generator_UserTableName="PagoAliado" msprop:Generator_RowEvArgName="PagoAliadoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="reciboNro" msprop:Generator_ColumnVarNameInTable="columnreciboNro" msprop:Generator_ColumnPropNameInRow="reciboNro" msprop:Generator_ColumnPropNameInTable="reciboNroColumn" msprop:Generator_UserColumnName="reciboNro" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tasaFactor" msprop:Generator_ColumnVarNameInTable="columntasaFactor" msprop:Generator_ColumnPropNameInRow="tasaFactor" msprop:Generator_ColumnPropNameInTable="tasaFactorColumn" msprop:Generator_UserColumnName="tasaFactor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPago" msprop:Generator_ColumnVarNameInTable="columnmontoPago" msprop:Generator_ColumnPropNameInRow="montoPago" msprop:Generator_ColumnPropNameInTable="montoPagoColumn" msprop:Generator_UserColumnName="montoPago" type="xs:decimal" minOccurs="0" />
+              <xs:element name="aliadoCiRif" msprop:Generator_ColumnVarNameInTable="columnaliadoCiRif" msprop:Generator_ColumnPropNameInRow="aliadoCiRif" msprop:Generator_ColumnPropNameInTable="aliadoCiRifColumn" msprop:Generator_UserColumnName="aliadoCiRif" type="xs:string" minOccurs="0" />
+              <xs:element name="aliadoNombre" msprop:Generator_ColumnVarNameInTable="columnaliadoNombre" msprop:Generator_ColumnPropNameInRow="aliadoNombre" msprop:Generator_ColumnPropNameInTable="aliadoNombreColumn" msprop:Generator_UserColumnName="aliadoNombre" type="xs:string" minOccurs="0" />
+              <xs:element name="conceptoMotivo" msprop:Generator_ColumnVarNameInTable="columnconceptoMotivo" msprop:Generator_ColumnPropNameInRow="conceptoMotivo" msprop:Generator_ColumnPropNameInTable="conceptoMotivoColumn" msprop:Generator_UserColumnName="conceptoMotivo" type="xs:string" minOccurs="0" />
+              <xs:element name="retTasa" msprop:Generator_ColumnVarNameInTable="columnretTasa" msprop:Generator_ColumnPropNameInRow="retTasa" msprop:Generator_ColumnPropNameInTable="retTasaColumn" msprop:Generator_UserColumnName="retTasa" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retSustraendo" msprop:Generator_ColumnVarNameInTable="columnretSustraendo" msprop:Generator_ColumnPropNameInRow="retSustraendo" msprop:Generator_ColumnPropNameInTable="retSustraendoColumn" msprop:Generator_UserColumnName="retSustraendo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="retMonto" msprop:Generator_ColumnVarNameInTable="columnretMonto" msprop:Generator_ColumnPropNameInRow="retMonto" msprop:Generator_ColumnPropNameInTable="retMontoColumn" msprop:Generator_UserColumnName="retMonto" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPagado" msprop:Generator_ColumnVarNameInTable="columnmontoPagado" msprop:Generator_ColumnPropNameInRow="montoPagado" msprop:Generator_ColumnPropNameInTable="montoPagadoColumn" msprop:Generator_UserColumnName="montoPagado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="isAnulado" msprop:Generator_ColumnVarNameInTable="columnisAnulado" msprop:Generator_ColumnPropNameInRow="isAnulado" msprop:Generator_ColumnPropNameInTable="isAnuladoColumn" msprop:Generator_UserColumnName="isAnulado" type="xs:string" minOccurs="0" />
+              <xs:element name="retencion" msprop:Generator_ColumnVarNameInTable="columnretencion" msprop:Generator_ColumnPropNameInRow="retencion" msprop:Generator_ColumnPropNameInTable="retencionColumn" msprop:Generator_UserColumnName="retencion" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PagoAliado_Serv" msprop:Generator_TableClassName="PagoAliado_ServDataTable" msprop:Generator_TableVarName="tablePagoAliado_Serv" msprop:Generator_TablePropName="PagoAliado_Serv" msprop:Generator_RowDeletingName="PagoAliado_ServRowDeleting" msprop:Generator_RowChangingName="PagoAliado_ServRowChanging" msprop:Generator_RowEvHandlerName="PagoAliado_ServRowChangeEventHandler" msprop:Generator_RowDeletedName="PagoAliado_ServRowDeleted" msprop:Generator_UserTableName="PagoAliado_Serv" msprop:Generator_RowChangedName="PagoAliado_ServRowChanged" msprop:Generator_RowEvArgName="PagoAliado_ServRowChangeEvent" msprop:Generator_RowClassName="PagoAliado_ServRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cliente" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="servicio" msprop:Generator_ColumnVarNameInTable="columnservicio" msprop:Generator_ColumnPropNameInRow="servicio" msprop:Generator_ColumnPropNameInTable="servicioColumn" msprop:Generator_UserColumnName="servicio" type="xs:string" minOccurs="0" />
+              <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
+              <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

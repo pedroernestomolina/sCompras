@@ -283,6 +283,19 @@ namespace ModCompra.srcTransporte.PantallaInicio
             ReportesCajaEdoCta();
         }
         //
+        private void MENU_REPORTES_MAESTRO_PROVEEDOR_Click(object sender, EventArgs e)
+        {
+            ReporteMaestroProveedor();
+        }
+        private void MENU_REPORTES_MAESTRO_CONCEPTO_Click(object sender, EventArgs e)
+        {
+            ReporteMaestroConcepto();
+        }
+        private void MENU_REPORTES_MAESTRO_CAJA_Click(object sender, EventArgs e)
+        {
+            ReportesMaestroCaja();
+        }
+        //
         private void ReporteGeneralDoc()
         {
             _controlador.ReporteGeneralDocTransp();
@@ -312,6 +325,19 @@ namespace ModCompra.srcTransporte.PantallaInicio
         private void ReportesCajaEdoCta()
         {
             _controlador.ReportesCajaEdoCta();
+        }
+        //
+        private void ReporteMaestroProveedor() 
+        {
+            _controlador.ReporteMaestroProveedorTransporte();
+        }
+        private void ReporteMaestroConcepto()
+        {
+            _controlador.ReporteMaestroConcepto();
+        }
+        private void ReportesMaestroCaja()
+        {
+            _controlador.ReportesMaestroCaja();
         }
     }
 }

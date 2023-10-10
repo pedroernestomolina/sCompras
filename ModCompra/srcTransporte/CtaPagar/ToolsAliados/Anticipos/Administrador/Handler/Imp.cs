@@ -142,8 +142,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Administrador.
         }
         private void visualizarItem(dataItem it)
         {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Planillas.Anticipo.Imp();
-            _rep.setIdDoc(it.idMov.ToString().Trim());
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboAnticipoAliado.Imp();
+            _rep.setIdDoc(it.idMov);
             _rep.Generar();
         }
         private void imprimirItems()

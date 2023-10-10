@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Reportes.CXP.Planillas.PagoServ
+namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboAnticipoAliado
 {
-    public class Imp: IRepPlanilla
+    public class Imp : IRepPlanilla
     {
         private int _idDoc;
 
@@ -15,15 +15,15 @@ namespace ModCompra.srcTransporte.Reportes.CXP.Planillas.PagoServ
         public Imp()
         {
         }
-        public void setIdDoc(string idDoc)
+        public void setIdDoc(object idDoc)
         {
-            _idDoc = int.Parse(idDoc);
+            _idDoc = (int)idDoc;
         }
         public void Generar()
         {
             try
             {
-                var r01 = Sistema.MyData.Transporte_Reportes_Aliado_PagoServ_Planilla (_idDoc);
+                var r01 = Sistema.MyData.Transporte_Reportes_Aliado_Anticipos_Planilla(_idDoc);
                 imprimir(r01.Entidad);
             }
             catch (Exception e)
@@ -32,7 +32,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.Planillas.PagoServ
             }
         }
 
-        private void imprimir(OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Ficha ficha)
+        private void imprimir(OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha ficha)
         {
         }
     }
