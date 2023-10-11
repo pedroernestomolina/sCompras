@@ -57,10 +57,10 @@ namespace ProvLibCompra
             }
             return result;
         }
-        public DtoLib.Resultado 
+        public DtoLib.ResultadoId
             Transporte_Aliado_PagoServ_AgregarPago(DtoLibTransporte.Aliado.PagoServ.AgregarPago.Ficha ficha)
         {
-            var result = new DtoLib.ResultadoEntidad<int>();
+            var result = new DtoLib.ResultadoId();
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -375,6 +375,7 @@ namespace ProvLibCompra
                         cnn.SaveChanges();
                         //
                         ts.Commit();
+                        result.Id = idpago;
                     }
                 }
             }

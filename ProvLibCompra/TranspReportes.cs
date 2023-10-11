@@ -255,6 +255,22 @@ namespace ProvLibCompra
                     {
                         throw new Exception("MOVIMIENTO NO ENCONTRADO");
                     }
+                    //
+                    sql = @"SELECT 
+                                cj.descripcion as cjDesc,
+                                cjMov.mov_fue_divisa as esDivisa,
+                                case 
+                                    when cjMov.mov_fue_divisa='1' then monto_mov_mon_div 
+                                    else monto_mov_mon_act
+                                end as monto
+                            FROM transp_aliado_anticipo_caja as antCj
+                            join transp_caja_mov as cjMov on cjMov.id=antCj.id_caja_mov
+                            join transp_caja as cj on cj.id=cjMov.id_caja
+                            where antCj.id_anticipo=@idMov";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _cjs = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Caja>(sql, p0).ToList();
+                    //
+                    ent.caja = _cjs;
                     result.Entidad = ent;
                 }
             }
@@ -290,7 +306,8 @@ namespace ProvLibCompra
                                     sustraendo as sustraendo, 
                                     monto_ret_mon_act as montoRetMonAct,
                                     monto_ret_mon_div as montoRetMonDiv, 
-                                    total_pag_mon_div as totalPago
+                                    total_pag_mon_div as totalPago,
+                                    (monto_anticipo_usado+monto_anticipo_ret_usado) as anticipo
                                 FROM transp_aliado_pagoserv
                                 where id=@idMov";
                     var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
@@ -319,7 +336,17 @@ namespace ProvLibCompra
                     p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Serv>(sql, p0).ToList();
                     //
+                    sql = @"SELECT 
+                                desc_caja as cjDesc,
+                                monto as monto,
+                                es_divisa as esDivisa
+                            FROM transp_aliado_pagoserv_caj
+                            where id_pagoserv=@idMov";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _cjs = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Caja>(sql, p0).ToList();
+                    //
                     ent.serv = _lst;
+                    ent.caja = _cjs;
                     result.Entidad = ent;
                 }
             }

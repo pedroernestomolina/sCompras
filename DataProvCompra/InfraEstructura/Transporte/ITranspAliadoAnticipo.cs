@@ -9,7 +9,7 @@ namespace DataProvCompra.InfraEstructura.Transporte
 {
     public interface ITranspAliadoAnticipo
     {
-        OOB.Resultado
+        OOB.ResultadoId
             Transporte_Aliado_Anticipo_Agregar(OOB.LibCompra.Transporte.Aliado.Anticipo.Agregar.Ficha ficha);
         OOB.Resultado
             Transporte_Aliado_Anticipo_Anular(int idMov);

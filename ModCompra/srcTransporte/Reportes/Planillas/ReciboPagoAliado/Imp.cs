@@ -45,7 +45,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
             rt["fecha"] = ficha.fechaEmision;
             rt["tasaFactor"] = ficha.tasaFactor;
             rt["montoPago"] = ficha.montoAPagar;
-            rt["aliadoCiRif"] = ficha.ciRifAliado;
+            rt["aliadoCiRif"] = ficha.ciRifAliado + Environment.NewLine + ficha.nombreAliado;
             rt["aliadoNombre"] = ficha.nombreAliado;
             rt["conceptoMotivo"] = ficha.motivo;
             rt["retTasa"] = ficha.tasaRet;
@@ -64,7 +64,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
                 rtDt["monto"] = sv.montoPago;
                 ds.Tables["PagoAliado_Serv"].Rows.Add(rtDt);
             }
-
+            if (ficha.anticipo > 0m) 
+            {
+                DataRow rtDt = ds.Tables["PagoAliado_Caja"].NewRow();
+                rtDt["desc"] = "ANTICIPO";
+                rtDt["monto"] = ficha.anticipo;
+                rtDt["esDivisa"] = "$";
+                ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
+            }
+            foreach (var sv in ficha.caja)
+            {
+                DataRow rtDt = ds.Tables["PagoAliado_Caja"].NewRow();
+                rtDt["desc"] = sv.cjDesc;
+                rtDt["monto"] = sv.monto;
+                rtDt["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
+                ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
+            }
 
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
@@ -73,6 +88,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
             //pmt.Add(new ReportParameter("EMP_DIR", Sistema.Negocio.DireccionFiscal));
             Rds.Add(new ReportDataSource("PagoAliado", ds.Tables["PagoAliado"]));
             Rds.Add(new ReportDataSource("PagoAliado_Serv", ds.Tables["PagoAliado_Serv"]));
+            Rds.Add(new ReportDataSource("PagoAliado_Caja", ds.Tables["PagoAliado_Caja"]));
 
             var frp = new ReporteFrm();
             frp.rds = Rds;

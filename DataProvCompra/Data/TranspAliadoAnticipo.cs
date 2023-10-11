@@ -10,10 +10,10 @@ namespace DataProvCompra.Data
 {
     public partial class DataProv: IData
     {
-        public OOB.Resultado 
+        public OOB.ResultadoId
             Transporte_Aliado_Anticipo_Agregar(OOB.LibCompra.Transporte.Aliado.Anticipo.Agregar.Ficha ficha)
         {
-            var result = new OOB.Resultado();
+            var result = new OOB.ResultadoId();
             var fichaDTO = new DtoLibTransporte.Aliado.Anticipo.Agregar.Ficha();
             var mov = new DtoLibTransporte.Aliado.Anticipo.Agregar.Movimiento()
             {
@@ -64,6 +64,7 @@ namespace DataProvCompra.Data
             {
                 throw new Exception(r01.Mensaje);
             }
+            result.Id = r01.Id;
             return result;
         }
         public OOB.Resultado 

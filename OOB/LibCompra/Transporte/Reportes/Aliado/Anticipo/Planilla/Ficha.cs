@@ -22,5 +22,6 @@ namespace OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla
         public decimal montoRet { get; set; }
         public decimal montoPagado { get; set; }
         public string numRecibo { get; set; }
+        public List<Caja> caja { get; set; }
     }
 }

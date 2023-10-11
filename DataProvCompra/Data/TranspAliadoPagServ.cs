@@ -53,10 +53,10 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
-        public OOB.Resultado 
+        public OOB.ResultadoId
             Transporte_Aliado_PagoServ_AgregarPago(OOB.LibCompra.Transporte.Aliado.PagoServ.AgregarPago.Ficha ficha)
         {
-            var result = new OOB.Resultado();
+            var result = new OOB.ResultadoId();
             var fichaDTO = new DtoLibTransporte.Aliado.PagoServ.AgregarPago.Ficha();
             var fm = ficha.movimiento;
             var mov = new DtoLibTransporte.Aliado.PagoServ.AgregarPago.Movimiento()
@@ -113,6 +113,7 @@ namespace DataProvCompra.Data
             {
                 throw new Exception(r01.Mensaje);
             }
+            result.Id = r01.Id;
             return result;
         }
         public OOB.Resultado 

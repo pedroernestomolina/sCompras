@@ -58,6 +58,7 @@
     <Compile Include="Data\Sucursal.cs" />
     <Compile Include="Data\TranspAliadoAnticipo.cs" />
     <Compile Include="Data\TranspAliadoPagServ.cs" />
+    <Compile Include="Data\TranspBeneficiario.cs" />
     <Compile Include="Data\TranspCaja.cs" />
     <Compile Include="Data\TranspCajaMov.cs" />
     <Compile Include="Data\TransporteDocumentoRet.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="InfraEstructura\Transporte\ITranspAliado.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspAliadoAnticipo.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspAliadoPagServ.cs" />
+    <Compile Include="InfraEstructura\Transporte\ITranspBeneficiario.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspCaja.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspCajaMov.cs" />
     <Compile Include="InfraEstructura\Transporte\ITranspDocumento.cs" />

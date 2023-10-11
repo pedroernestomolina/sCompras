@@ -217,11 +217,19 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
                 var r01 = Sistema.MyData.Transporte_Aliado_PagoServ_AgregarPago(ficha);
                 _procesarIsOK = true;
                 Helpers.Msg.AgregarOk();
+                visuliazarPago(r01.Id);
             }
             catch (Exception e)
             {
                Helpers.Msg.Error(e.Message);
             }
+        }
+
+        private void visuliazarPago(int idMov)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboPagoAliado.Imp();
+            _rep.setIdDoc(idMov);
+            _rep.Generar();
         }
     }
 }

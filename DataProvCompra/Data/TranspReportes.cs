@@ -313,6 +313,16 @@ namespace DataProvCompra.Data
                 sustraendo = s.sustraendo,
                 tasaFactor = s.tasaFactor,
                 tasaRet = s.tasaRet,
+                caja = s.caja.Select(xt =>
+                {
+                    var xxr = new OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Caja()
+                    {
+                        cjDesc = xt.cjDesc,
+                        esDivisa = xt.esDivisa,
+                        monto = xt.monto,
+                    };
+                    return xxr;
+                }).ToList(),
             };
             result.Entidad = nr;
             return result;
@@ -345,6 +355,17 @@ namespace DataProvCompra.Data
                 tasaFactor = s.tasaFactor,
                 tasaRet = s.tasaRet,
                 totalPago = s.totalPago,
+                anticipo=s.anticipo,
+                caja= s.caja.Select(xt =>
+                {
+                    var xxr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Caja()
+                    {
+                        cjDesc = xt.cjDesc,
+                        esDivisa = xt.esDivisa,
+                        monto = xt.monto,
+                    };
+                    return xxr;
+                }).ToList(),
                 serv = s.serv.Select(ss => 
                 {
                     var xr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Serv()

@@ -211,6 +211,14 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             MaestroCaja();
         }
+        private void MENU_MAESTRO_BENEFICIARIOS_Click(object sender, EventArgs e)
+        {
+            MaestroBeneficiarios();
+        }
+        private void MaestroBeneficiarios()
+        {
+            _controlador.MaestroBeneficiarios();
+        }
         private void MaestroCaja()
         {
             _controlador.MaestroCaja();

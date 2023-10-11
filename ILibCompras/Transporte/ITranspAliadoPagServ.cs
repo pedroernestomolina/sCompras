@@ -11,7 +11,7 @@ namespace ILibCompras.Transporte
     {
         DtoLib.ResultadoLista<DtoLibTransporte.Aliado.PagoServ.ServPrestado.Ficha>
             Transporte_Aliado_PagoServ_ServPrestado_GetListaBy(int idAliado);
-        DtoLib.Resultado
+        DtoLib.ResultadoId
             Transporte_Aliado_PagoServ_AgregarPago(DtoLibTransporte.Aliado.PagoServ.AgregarPago.Ficha ficha);
         DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.PagoServ.AnularPago.Ficha>
             Transporte_Aliado_PagoServ_AnularPago_ObtenerData(int idMovPago);

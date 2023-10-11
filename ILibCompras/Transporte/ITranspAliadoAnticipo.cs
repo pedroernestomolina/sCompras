@@ -9,7 +9,7 @@ namespace ILibCompras.Transporte
 {
     public interface ITranspAliadoAnticipo
     {
-        DtoLib.Resultado
+        DtoLib.ResultadoId
             Transporte_Aliado_Anticipo_Agregar(DtoLibTransporte.Aliado.Anticipo.Agregar.Ficha ficha);
         DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.Anticipo.Anular.Ficha>
             Transporte_Aliado_Anticipo_Anular_ObtenerData(int idMov);

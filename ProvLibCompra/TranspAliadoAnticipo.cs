@@ -11,10 +11,10 @@ namespace ProvLibCompra
 {
     public partial class Provider: ILibCompras.IProvider
     {
-        public DtoLib.Resultado 
+        public DtoLib.ResultadoId 
             Transporte_Aliado_Anticipo_Agregar(DtoLibTransporte.Aliado.Anticipo.Agregar.Ficha ficha)
         {
-            var result = new DtoLib.Resultado();
+            var result = new DtoLib.ResultadoId();
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -223,6 +223,7 @@ namespace ProvLibCompra
                             cnn.SaveChanges();
                         }
                         ts.Commit();
+                        result.Id = idAnticipo;
                     }
                 }
             }

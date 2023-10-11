@@ -147,6 +147,11 @@
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\Lista\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\PagoServ\ServPrestado\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Aliado\Pendiente\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Crud\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Crud\baseAgregarEditar.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Crud\Editar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Crud\Entidad\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\baseAgregarEditar.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\Editar\Ficha.cs" />
@@ -183,9 +188,11 @@
     <Compile Include="LibCompra\Transporte\Documento\Entidad\Item.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\General\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\General\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\Planilla\Caja.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\Planilla\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Caja.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Serv.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Ficha.cs" />

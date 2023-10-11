@@ -255,6 +255,16 @@ namespace ModCompra
             _cajaMaster.Inicializa();
             _cajaMaster.Inicia();
         }
+        Utils.Maestro.IMaestro _beneficiario;
+        public void MaestroBeneficiarios()
+        {
+            if (_beneficiario == null)
+            {
+                _beneficiario = new ModCompra.srcTransporte.Beneficiario.Maestro.Imp();
+            }
+            _beneficiario.Inicializa();
+            _beneficiario.Inicia();
+        }
 
         //DOCUMENTOS
         ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;

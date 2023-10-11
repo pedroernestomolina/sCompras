@@ -180,12 +180,19 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
                 var r01 = Sistema.MyData.Transporte_Aliado_Anticipo_Agregar(fichaOOB);
                 _procesarIsOK = true;
                 Helpers.Msg.AgregarOk();
+                visualizarPlanilla(r01.Id);
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return;
             }
+        }
+        private void visualizarPlanilla(int idMov)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboAnticipoAliado.Imp();
+            _rep.setIdDoc(idMov);
+            _rep.Generar();
         }
     }
 }

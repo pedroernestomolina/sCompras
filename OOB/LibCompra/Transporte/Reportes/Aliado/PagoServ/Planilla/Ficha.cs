@@ -25,6 +25,8 @@ namespace OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla
         public decimal montoRetMonAct { get; set; }
         public decimal montoRetMonDiv { get; set; }
         public decimal totalPago { get; set; }
+        public decimal anticipo { get; set; }
         public List<Serv> serv { get; set; }
+        public List<Caja> caja { get; set; }
     }
 }

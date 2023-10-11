@@ -404,6 +404,23 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\Agregar\Imp.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\data.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\Editar\Imp.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\impBase.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\IAgregar.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\IAgregarEditar.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\Idata.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\IEditar.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\data.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\Imp.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Maestro\ImpLista.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Handler\hndBusqueda.cs" />
@@ -856,6 +873,9 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Caja\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -935,6 +955,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Concepto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_AnticipoAliado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_PagoAliado.rdlc">
