@@ -382,5 +382,19 @@ namespace ModCompra
             srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Proveedor.Imp();
             _rep.Generar();
         }
+
+        //BENEFICIARIO
+        public void BeneficiarioRegMov()
+        {
+            srcTransporte.Beneficiario.Movimiento.Vistas.IHnd _hnd = new srcTransporte.Beneficiario.Movimiento.Handler.Imp();
+            _hnd.Inicializa();
+            _hnd.Inicia();
+        }
+        public void BeneficiarioAdm()
+        {
+            srcTransporte.Beneficiario.AdmMov.Vistas.IAdm _adm = new srcTransporte.Beneficiario.AdmMov.Handler.Imp();
+            _adm.Inicializa();
+            _adm.Inicia();
+        }
     }
 }

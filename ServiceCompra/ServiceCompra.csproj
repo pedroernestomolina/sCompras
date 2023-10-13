@@ -59,6 +59,7 @@
     <Compile Include="Interfaces\Transporte\ITranspAliadoAnticipo.cs" />
     <Compile Include="Interfaces\Transporte\ITranspAliadoPagServ.cs" />
     <Compile Include="Interfaces\Transporte\ITranspBeneficiario.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspBeneficiarioMov.cs" />
     <Compile Include="Interfaces\Transporte\ITranspCaja.cs" />
     <Compile Include="Interfaces\Transporte\ITranspCajaMov.cs" />
     <Compile Include="Interfaces\Transporte\ITranspDocumento.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="MyService\TranspAliadoAnticipo.cs" />
     <Compile Include="MyService\TranspAliadoPagServ.cs" />
     <Compile Include="MyService\TranspBeneficiario.cs" />
+    <Compile Include="MyService\TranspBeneficiarioMov.cs" />
     <Compile Include="MyService\TranspCaja.cs" />
     <Compile Include="MyService\TranspCajaMov.cs" />
     <Compile Include="MyService\TranspDocumento.cs" />

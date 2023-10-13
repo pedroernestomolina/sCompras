@@ -78,6 +78,7 @@
     <Compile Include="TranspAliadoAnticipo.cs" />
     <Compile Include="TranspAliadoPagServ.cs" />
     <Compile Include="TranspBeneficiario.cs" />
+    <Compile Include="TranspBeneficiarioMov.cs" />
     <Compile Include="TranspCaja.cs" />
     <Compile Include="TranspCajaMov.cs" />
     <Compile Include="TranspDocumentoRet.cs" />

@@ -259,6 +259,25 @@ namespace ModCompra.srcTransporte.PantallaInicio
         }
 
 
+        //BENEFICIARIO
+        private void MENU_BENFICIARIO_REGISTRAR_MOV_Click(object sender, EventArgs e)
+        {
+            BeneficiarioRegMov();
+        }
+        private void MENU_BENEFICIARIO_ADM_Click(object sender, EventArgs e)
+        {
+            BeneficiarioAdm();
+        }
+        private void BeneficiarioRegMov()
+        {
+            _controlador.BeneficiarioRegMov();
+        }
+        private void BeneficiarioAdm()
+        {
+            _controlador.BeneficiarioAdm();
+        }
+
+
         //REPORTES
         private void MENU_REPORTES_DOCUMENTOS_GENERAL_Click(object sender, EventArgs e)
         {

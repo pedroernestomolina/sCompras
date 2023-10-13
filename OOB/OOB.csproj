@@ -152,6 +152,12 @@
     <Compile Include="LibCompra\Transporte\Beneficiario\Crud\Editar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Beneficiario\Crud\Entidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Beneficiario\Lista\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Mov\Agregar\CajaMovimiento.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Mov\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Mov\Agregar\MovCaja.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Mov\Agregar\Movimiento.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Mov\Lista\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Beneficiario\Mov\Lista\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\baseAgregarEditar.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Crud\Editar\Ficha.cs" />

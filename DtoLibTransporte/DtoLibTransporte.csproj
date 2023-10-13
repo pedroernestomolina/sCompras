@@ -65,6 +65,12 @@
     <Compile Include="Beneficiario\Crud\Editar\Ficha.cs" />
     <Compile Include="Beneficiario\Crud\Entidad\Ficha.cs" />
     <Compile Include="Beneficiario\Lista\Ficha.cs" />
+    <Compile Include="Beneficiario\Mov\Agregar\MovCaja.cs" />
+    <Compile Include="Beneficiario\Mov\Agregar\CajaMovimiento.cs" />
+    <Compile Include="Beneficiario\Mov\Agregar\Ficha.cs" />
+    <Compile Include="Beneficiario\Mov\Agregar\Movimiento.cs" />
+    <Compile Include="Beneficiario\Mov\Lista\Ficha.cs" />
+    <Compile Include="Beneficiario\Mov\Lista\Filtro.cs" />
     <Compile Include="Caja\Crud\Agregar\Ficha.cs" />
     <Compile Include="Caja\Crud\baseAgregarEditar.cs" />
     <Compile Include="Caja\Crud\Editar\Ficha.cs" />

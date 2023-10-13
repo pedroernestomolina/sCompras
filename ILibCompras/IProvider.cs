@@ -19,7 +19,8 @@ namespace ILibCompras
         Transporte.ITranspReportes,
         Transporte.ITranspCajaMov,
         Transporte.ITranspDocumentoRet,
-        Transporte.ITranspBeneficiario
+        Transporte.ITranspBeneficiario,
+        Transporte.ITranspBeneficiarioMov
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
     }

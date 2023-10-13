@@ -404,6 +404,21 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\dataItem.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\HndBusqDoc.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\hndBusqueda.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\HndLista.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Vistas\IAdm.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Vistas\IBusqDoc.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Vistas\IdataItem.cs" />
+    <Compile Include="srcTransporte\Beneficiario\AdmMov\Vistas\IListaAdm.cs" />
     <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\Agregar\Imp.cs" />
     <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\data.cs" />
     <Compile Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Handlers\Editar\Imp.cs" />
@@ -421,6 +436,16 @@
     <Compile Include="srcTransporte\Beneficiario\Maestro\data.cs" />
     <Compile Include="srcTransporte\Beneficiario\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Beneficiario\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Movimiento\Handler\HndMov.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Movimiento\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Movimiento\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Beneficiario\Movimiento\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Beneficiario\Movimiento\Vistas\IHndMov.cs" />
+    <Compile Include="srcTransporte\Beneficiario\Movimiento\Vistas\IHnd.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\Caja\Administrador\Handler\hndBusqueda.cs" />
@@ -711,6 +736,10 @@
     <Compile Include="Utils\Componente\Administrador\Vistas\IAdmin.cs" />
     <Compile Include="Utils\Componente\Administrador\Vistas\ILista.cs" />
     <Compile Include="Utils\Componente\Busqueda\Vistas\IBusqueda.cs" />
+    <Compile Include="Utils\Componente\CajaMonto\Handler\data.cs" />
+    <Compile Include="Utils\Componente\CajaMonto\Handler\Hnd.cs" />
+    <Compile Include="Utils\Componente\CajaMonto\Vista\Idata.cs" />
+    <Compile Include="Utils\Componente\CajaMonto\Vista\IHnd.cs" />
     <Compile Include="Utils\Componente\Monto\Handler\Imp.cs" />
     <Compile Include="Utils\Componente\Monto\Vistas\Frm.cs">
       <SubType>Form</SubType>
@@ -719,8 +748,12 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Componente\Monto\Vistas\IMonto.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Beneficiario\data.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Beneficiario\Imp.cs" />
     <Compile Include="Utils\Control\TipoCombo\Caja\data.cs" />
     <Compile Include="Utils\Control\TipoCombo\Caja\Imp.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Concepto\data.cs" />
+    <Compile Include="Utils\Control\TipoCombo\Concepto\Imp.cs" />
     <Compile Include="Utils\Control\TipoCombo\ICtrl.cs" />
     <Compile Include="Utils\Control\TipoCombo\Idata.cs" />
     <Compile Include="Utils\Control\TipoCombo\TipoMovCaja\data.cs" />
@@ -873,7 +906,13 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Beneficiario\AdmMov\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Beneficiario\Maestro\AgregarEditar\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Beneficiario\Movimiento\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Caja\Administrador\Vistas\Frm.resx">

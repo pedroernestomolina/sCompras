@@ -61,6 +61,7 @@
     <Compile Include="Transporte\ITranspAliadoAnticipo.cs" />
     <Compile Include="Transporte\ITranspAliadoPagServ.cs" />
     <Compile Include="Transporte\ITranspBeneficiario.cs" />
+    <Compile Include="Transporte\ITranspBeneficiarioMov.cs" />
     <Compile Include="Transporte\ITranspCaja.cs" />
     <Compile Include="Transporte\ITranspCajaMov.cs" />
     <Compile Include="Transporte\ITranspConcepto.cs" />
