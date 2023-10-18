@@ -72,6 +72,10 @@
             this.MENU_DOCUMENTOS_ADMINISTRADOR = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.MENU_DOC_ADM_RET = new System.Windows.Forms.ToolStripMenuItem();
+            this.beneficiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_BENFICIARIO_REGISTRAR_MOV = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.MENU_BENEFICIARIO_ADM = new System.Windows.Forms.ToolStripMenuItem();
             this.ctasXPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsCuentasPorPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorDocumentosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,10 +120,8 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.beneficiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MENU_BENFICIARIO_REGISTRAR_MOV = new System.Windows.Forms.ToolStripMenuItem();
-            this.MENU_BENEFICIARIO_ADM = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.MENU_REPORTES_BENEFICIARIO = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_REPORTES_BENEFICIARIO_MOV = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -183,11 +185,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(666, 1);
+            this.panel2.Location = new System.Drawing.Point(665, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(217, 52);
+            this.panel2.Size = new System.Drawing.Size(218, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -198,7 +200,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(213, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(214, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -213,7 +215,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(345, 52);
+            this.panel7.Size = new System.Drawing.Size(344, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -232,7 +234,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(341, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(340, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -266,7 +268,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(258, 22);
+            this.panel14.Size = new System.Drawing.Size(257, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -276,7 +278,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(254, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(253, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -312,7 +314,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(258, 22);
+            this.panel16.Size = new System.Drawing.Size(257, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -322,7 +324,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(254, 18);
+            this.L_HOST.Size = new System.Drawing.Size(253, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -331,7 +333,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(348, 1);
+            this.panel17.Location = new System.Drawing.Point(347, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -402,7 +404,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(550, 1);
+            this.panel20.Location = new System.Drawing.Point(549, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -599,6 +601,35 @@
             this.MENU_DOC_ADM_RET.Text = "Administrador de Retenciones";
             this.MENU_DOC_ADM_RET.Click += new System.EventHandler(this.MENU_DOC_ADM_RET_Click);
             // 
+            // beneficiarioToolStripMenuItem
+            // 
+            this.beneficiarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MENU_BENFICIARIO_REGISTRAR_MOV,
+            this.toolStripMenuItem9,
+            this.MENU_BENEFICIARIO_ADM});
+            this.beneficiarioToolStripMenuItem.Name = "beneficiarioToolStripMenuItem";
+            this.beneficiarioToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.beneficiarioToolStripMenuItem.Text = "Beneficiario";
+            // 
+            // MENU_BENFICIARIO_REGISTRAR_MOV
+            // 
+            this.MENU_BENFICIARIO_REGISTRAR_MOV.Name = "MENU_BENFICIARIO_REGISTRAR_MOV";
+            this.MENU_BENFICIARIO_REGISTRAR_MOV.Size = new System.Drawing.Size(235, 22);
+            this.MENU_BENFICIARIO_REGISTRAR_MOV.Text = "Registrar Movimiento";
+            this.MENU_BENFICIARIO_REGISTRAR_MOV.Click += new System.EventHandler(this.MENU_BENFICIARIO_REGISTRAR_MOV_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(232, 6);
+            // 
+            // MENU_BENEFICIARIO_ADM
+            // 
+            this.MENU_BENEFICIARIO_ADM.Name = "MENU_BENEFICIARIO_ADM";
+            this.MENU_BENEFICIARIO_ADM.Size = new System.Drawing.Size(235, 22);
+            this.MENU_BENEFICIARIO_ADM.Text = "Administrador De Movimiento";
+            this.MENU_BENEFICIARIO_ADM.Click += new System.EventHandler(this.MENU_BENEFICIARIO_ADM_Click);
+            // 
             // ctasXPagarToolStripMenuItem
             // 
             this.ctasXPagarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -665,7 +696,8 @@
             this.documentosToolStripMenuItem1,
             this.proveedoreToolStripMenuItem,
             this.cxPToolStripMenuItem,
-            this.cajaToolStripMenuItem});
+            this.cajaToolStripMenuItem,
+            this.MENU_REPORTES_BENEFICIARIO});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -727,21 +759,21 @@
             // MENU_REPORTES_MAESTRO_PROVEEDOR
             // 
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Name = "MENU_REPORTES_MAESTRO_PROVEEDOR";
-            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Size = new System.Drawing.Size(139, 22);
+            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Size = new System.Drawing.Size(152, 22);
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Text = "Proveedores";
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_PROVEEDOR_Click);
             // 
             // MENU_REPORTES_MAESTRO_CONCEPTO
             // 
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Name = "MENU_REPORTES_MAESTRO_CONCEPTO";
-            this.MENU_REPORTES_MAESTRO_CONCEPTO.Size = new System.Drawing.Size(139, 22);
+            this.MENU_REPORTES_MAESTRO_CONCEPTO.Size = new System.Drawing.Size(152, 22);
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Text = "Conceptos";
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_CONCEPTO_Click);
             // 
             // MENU_REPORTES_MAESTRO_CAJA
             // 
             this.MENU_REPORTES_MAESTRO_CAJA.Name = "MENU_REPORTES_MAESTRO_CAJA";
-            this.MENU_REPORTES_MAESTRO_CAJA.Size = new System.Drawing.Size(139, 22);
+            this.MENU_REPORTES_MAESTRO_CAJA.Size = new System.Drawing.Size(152, 22);
             this.MENU_REPORTES_MAESTRO_CAJA.Text = "Cajas";
             this.MENU_REPORTES_MAESTRO_CAJA.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_CAJA_Click);
             // 
@@ -760,27 +792,27 @@
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO,
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV});
             this.aliadoToolStripMenuItem.Name = "aliadoToolStripMenuItem";
-            this.aliadoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.aliadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aliadoToolStripMenuItem.Text = "Aliado";
             // 
             // MENU_REPORTES_CXP_ALIADO_ANTICIPO
             // 
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Name = "MENU_REPORTES_CXP_ALIADO_ANTICIPO";
-            this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Size = new System.Drawing.Size(150, 22);
+            this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Size = new System.Drawing.Size(152, 22);
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Text = "Anticipo";
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Click += new System.EventHandler(this.MENU_REPORTES_CXP_ALIADO_ANTICIPO_Click);
             // 
             // MENU_REPORTES_CXP_ALIDOS_PAGO_SERV
             // 
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Name = "MENU_REPORTES_CXP_ALIDOS_PAGO_SERV";
-            this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Size = new System.Drawing.Size(150, 22);
+            this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Size = new System.Drawing.Size(152, 22);
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Text = "Pago Servicios";
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Click += new System.EventHandler(this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV_Click);
             // 
             // documentoToolStripMenuItem
             // 
             this.documentoToolStripMenuItem.Name = "documentoToolStripMenuItem";
-            this.documentoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.documentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.documentoToolStripMenuItem.Text = "Documento";
             // 
             // cajaToolStripMenuItem
@@ -1016,34 +1048,19 @@
             this.panel10.Size = new System.Drawing.Size(120, 335);
             this.panel10.TabIndex = 0;
             // 
-            // beneficiarioToolStripMenuItem
+            // MENU_REPORTES_BENEFICIARIO
             // 
-            this.beneficiarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MENU_BENFICIARIO_REGISTRAR_MOV,
-            this.toolStripMenuItem9,
-            this.MENU_BENEFICIARIO_ADM});
-            this.beneficiarioToolStripMenuItem.Name = "beneficiarioToolStripMenuItem";
-            this.beneficiarioToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.beneficiarioToolStripMenuItem.Text = "Beneficiario";
+            this.MENU_REPORTES_BENEFICIARIO.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MENU_REPORTES_BENEFICIARIO_MOV});
+            this.MENU_REPORTES_BENEFICIARIO.Name = "MENU_REPORTES_BENEFICIARIO";
+            this.MENU_REPORTES_BENEFICIARIO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_BENEFICIARIO.Text = "Beneficiario";
             // 
-            // MENU_BENFICIARIO_REGISTRAR_MOV
+            // MENU_REPORTES_BENEFICIARIO_MOV
             // 
-            this.MENU_BENFICIARIO_REGISTRAR_MOV.Name = "MENU_BENFICIARIO_REGISTRAR_MOV";
-            this.MENU_BENFICIARIO_REGISTRAR_MOV.Size = new System.Drawing.Size(235, 22);
-            this.MENU_BENFICIARIO_REGISTRAR_MOV.Text = "Registrar Movimiento";
-            this.MENU_BENFICIARIO_REGISTRAR_MOV.Click += new System.EventHandler(this.MENU_BENFICIARIO_REGISTRAR_MOV_Click);
-            // 
-            // MENU_BENEFICIARIO_ADM
-            // 
-            this.MENU_BENEFICIARIO_ADM.Name = "MENU_BENEFICIARIO_ADM";
-            this.MENU_BENEFICIARIO_ADM.Size = new System.Drawing.Size(235, 22);
-            this.MENU_BENEFICIARIO_ADM.Text = "Administrador De Movimiento";
-            this.MENU_BENEFICIARIO_ADM.Click += new System.EventHandler(this.MENU_BENEFICIARIO_ADM_Click);
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(232, 6);
+            this.MENU_REPORTES_BENEFICIARIO_MOV.Name = "MENU_REPORTES_BENEFICIARIO_MOV";
+            this.MENU_REPORTES_BENEFICIARIO_MOV.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_BENEFICIARIO_MOV.Text = "Movimientos";
             // 
             // Frm
             // 
@@ -1183,5 +1200,7 @@
         private System.Windows.Forms.ToolStripMenuItem MENU_BENFICIARIO_REGISTRAR_MOV;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem MENU_BENEFICIARIO_ADM;
+        private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_BENEFICIARIO;
+        private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_BENEFICIARIO_MOV;
     }
 }

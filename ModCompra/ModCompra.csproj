@@ -586,6 +586,13 @@
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Idata.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataAliado.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataCtasPend.cs" />
+    <Compile Include="srcTransporte\Filtro\Beneficiario\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Filtro\Beneficiario\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Filtro\Beneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Filtro\Caja\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -642,6 +649,7 @@
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\baseImp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\islr.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\Beneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Caja\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Concepto\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.cs">
@@ -760,6 +768,8 @@
     <Compile Include="Utils\Control\TipoCombo\TipoMovCaja\Imp.cs" />
     <Compile Include="Utils\FiltroFecha\Imp.cs" />
     <Compile Include="Utils\FiltroFecha\IFecha.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Beneficiario\data.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Beneficiario\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Proveedor\data.cs" />
@@ -945,6 +955,9 @@
     <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Filtro\Beneficiario\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Filtro\Anticipo\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -976,6 +989,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_RetIva.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_BeneficiarioMov.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_PagoServ.rdlc">

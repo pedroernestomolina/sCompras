@@ -57,11 +57,16 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         void setProveedorBuscar(string desc);
 
         //
+        BindingSource Get_BeneficiarioSource { get; }
+        string Get_BeneficiarioById { get; }
+        void setBeneficiarioBuscar(string p);
+        void setBeneficiarioById(string desc);
+
+        //
         void Inicializa();
         void CargarData();
         void Limpiar();
         bool VerificarFiltros();
         IdataFiltrar Get_Filtros { get; }
-
     }
 }

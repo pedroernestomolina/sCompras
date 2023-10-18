@@ -244,6 +244,7 @@ namespace ProvLibCompra
             }
             return result;
         }
+        //
         public DtoLib.Resultado 
             Transporte_Aliado_Anticipo_Anular(DtoLibTransporte.Aliado.Anticipo.Anular.Ficha ficha)
         {
@@ -354,8 +355,8 @@ namespace ProvLibCompra
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             return result;
-
         }
+        //
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.Anticipo.Anular.Ficha> 
             Transporte_Aliado_Anticipo_Anular_ObtenerData(int idMov)
         {

@@ -250,10 +250,154 @@ namespace ProvLibCompra
                             p4.ParameterName = "@estatus";
                             p4.Value = filtro.Estatus.Trim().ToUpper() == "I" ? "1" : "0";
                         }
+                        if (filtro.IdBeneficiario != -1)
+                        {
+                            _sql_2 += " and id_beneficiario=@idBeneficiario ";
+                            p3.ParameterName = "@idBeneficiario";
+                            p3.Value = filtro.IdBeneficiario;
+                        }
                     }
                     var _sql = _sql_1 + _sql_2;
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Beneficiario.Mov.Lista.Ficha>(_sql, p1, p2, p3, p4).ToList();
                     result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        //
+        public DtoLib.Resultado 
+            Transporte_Beneficiario_Mov_Anular(DtoLibTransporte.Beneficiario.Mov.Anular.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2, '0');
+                        var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
+                        //
+                        //ANULAR DOCUMENTO DE ANTICIPO 
+                        var sql = @"update transp_beneficiario_mov set 
+                                        estatus_anulado='1'
+                                    where id=@idMov";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", ficha.idMov);
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                        if (r1 == 0)
+                        {
+                            result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS BENEFICIARIO-MOV";
+                            result.Result = DtoLib.Enumerados.EnumResult.isError;
+                            return result;
+                        }
+                        cnn.SaveChanges();
+                        //
+                        //ANULAR CAJA MOVIMIENTO 
+                        foreach (var rg in ficha.cajas)
+                        {
+                            sql = @"update transp_caja_mov set
+                                        estatus_anulado_mov='1'
+                                    where id=@idCajaMov";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCajaMov", rg.idCajaMov);
+                            var r3 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                            if (r3 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS CAJA-MOV";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            // ANULAR CAJA-MOV-BENEFICIARIO
+                            sql = @"update transp_beneficiario_caj set 
+                                        estatus_anulado='1'
+                                    where id=@idBeneficiarioMov";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idBeneficiarioMov", rg.idBeneficiarioMov);
+                            var r4 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                            if (r4 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR ESTATUS BENFICIARIO-CAJA";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                            //
+                            // ACTUALIZAR SALDO CAJAS 
+                            sql = @"update transp_caja set 
+                                        monto_egreso_anulado=monto_egreso_anulado+@monto
+                                    where id=@idCaja";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCaja", rg.idCaja);
+                            var p01 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.monto);
+                            var r6 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
+                            if (r6 == 0)
+                            {
+                                result.Mensaje = "ERROR AL ACTUALIZAR SALDO CAJA";
+                                result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                return result;
+                            }
+                            cnn.SaveChanges();
+                        }
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        //
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Beneficiario.Mov.Anular.Ficha> 
+            Transporte_Beneficiario_Mov_Anular_ObtenerData(int idMov)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Beneficiario.Mov.Anular.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql = @"SELECT 
+                                    id as idMov
+                                FROM transp_beneficiario_mov 
+                                where id=@idMov";
+                    var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _ent = cnn.Database.SqlQuery<DtoLibTransporte.Beneficiario.Mov.Anular.Ficha>(sql, p0).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        result.Mensaje = "MOVIMIENTO NO ENCONTRADO";
+                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                        return result;
+                    }
+                    //
+                    sql = @"SELECT 
+                                id as idBeneficiarioMov,
+                                id_caja as idCaja,
+                                id_caja_mov as idCajaMov,
+                                monto_mov as monto
+                            FROM transp_beneficiario_caj 
+                            where id_mov=@idMov";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _det = cnn.Database.SqlQuery<DtoLibTransporte.Beneficiario.Mov.Anular.caja>(sql, p0).ToList();
+                    _ent.cajas = _det;
+                    //
+                    result.Entidad = _ent;
                 }
             }
             catch (Exception e)

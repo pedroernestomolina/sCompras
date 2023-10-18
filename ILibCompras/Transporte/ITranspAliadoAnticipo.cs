@@ -11,8 +11,10 @@ namespace ILibCompras.Transporte
     {
         DtoLib.ResultadoId
             Transporte_Aliado_Anticipo_Agregar(DtoLibTransporte.Aliado.Anticipo.Agregar.Ficha ficha);
+        //
         DtoLib.ResultadoEntidad<DtoLibTransporte.Aliado.Anticipo.Anular.Ficha>
             Transporte_Aliado_Anticipo_Anular_ObtenerData(int idMov);
+        //
         DtoLib.Resultado
             Transporte_Aliado_Anticipo_Anular(DtoLibTransporte.Aliado.Anticipo.Anular.Ficha ficha);
         //

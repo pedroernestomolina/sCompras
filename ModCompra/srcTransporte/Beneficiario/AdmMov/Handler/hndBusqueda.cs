@@ -36,6 +36,7 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
                 Desde = filt.Desde,
                 Hasta = filt.Hasta,
                 Estatus=_estatus,
+                IdBeneficiario=filt.IdBeneficiario,
             };
         }
         public IEnumerable<object>Buscar()

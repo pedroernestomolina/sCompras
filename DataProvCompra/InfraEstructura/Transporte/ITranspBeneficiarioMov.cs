@@ -14,5 +14,8 @@ namespace DataProvCompra.InfraEstructura.Transporte
         //
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Beneficiario.Mov.Lista.Ficha>
             Transporte_Beneficiario_Mov_GetLista(OOB.LibCompra.Transporte.Beneficiario.Mov.Lista.Filtro filtro);
+        //
+        OOB.Resultado
+            Transporte_Beneficiario_Mov_Anular(int idMov);
     }
 }

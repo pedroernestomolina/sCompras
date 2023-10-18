@@ -14,5 +14,11 @@ namespace ILibCompras.Transporte
         //
         DtoLib.ResultadoLista<DtoLibTransporte.Beneficiario.Mov.Lista.Ficha>
             Transporte_Beneficiario_Mov_GetLista(DtoLibTransporte.Beneficiario.Mov.Lista.Filtro filtro);
+        //
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Beneficiario.Mov.Anular.Ficha>
+            Transporte_Beneficiario_Mov_Anular_ObtenerData(int idMov);
+        //
+        DtoLib.Resultado
+            Transporte_Beneficiario_Mov_Anular(DtoLibTransporte.Beneficiario.Mov.Anular.Ficha ficha);
     }
 }

@@ -18,6 +18,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         private Utils.FiltrosCB.ICtrlConBusqueda _aliado;
         private Utils.FiltrosCB.ICtrlSinBusqueda _tipoRet;
         private Utils.FiltrosCB.ICtrlConBusqueda _proveedor;
+        private Utils.FiltrosCB.ICtrlConBusqueda _beneficiario;
 
 
         public HndFiltro()
@@ -30,6 +31,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _caja = new Utils.FiltrosCB.ConBusqueda.Caja.Imp();
             _aliado = new Utils.FiltrosCB.ConBusqueda.Aliado.Imp();
             _proveedor = new Utils.FiltrosCB.ConBusqueda.Proveedor.Imp();
+            _beneficiario = new Utils.FiltrosCB.ConBusqueda.Beneficiario.Imp();
         }
         public void Inicializa()
         {
@@ -41,6 +43,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _caja.Inicializa();
             _aliado.Inicializa();
             _proveedor.Inicializa();
+            _beneficiario.Inicializa();
         }
         public void CargarData()
         {
@@ -50,6 +53,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _caja.ObtenerData();
             _aliado.ObtenerData();
             _proveedor.ObtenerData();
+            _beneficiario.ObtenerData();
 
         }
         public void Limpiar()
@@ -62,6 +66,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _aliado.LimpiarOpcion();
             _tipoRet.LimpiarOpcion();
             _proveedor.LimpiarOpcion();
+            _beneficiario.LimpiarOpcion();
         }
 
 
@@ -150,6 +155,19 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             _proveedor.setTextoBuscar(desc);
         }
 
+        //
+        public BindingSource Get_BeneficiarioSource { get { return _beneficiario.GetSource; } }
+        public string Get_BeneficiarioById { get { return _beneficiario.GetId; } }
+        public void setBeneficiarioBuscar(string desc)
+        {
+            _beneficiario.setTextoBuscar(desc);
+        }
+        public void setBeneficiarioById(string id)
+        {
+            _beneficiario.setFichaById(id);
+        }
+
+
 
         //
         public Vistas.IdataFiltrar Get_Filtros
@@ -202,6 +220,10 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             if (_tipoRet.GetItem != null)
             {
                 _filtroRet.TipoRetencion = _tipoRet.GetId == "1" ? Vistas.Enumerados.TipoRetencion.Iva : Vistas.Enumerados.TipoRetencion.ISLR;
+            }
+            if (_beneficiario.GetItem != null)
+            {
+                _filtroRet.IdBeneficiario = int.Parse(_beneficiario.GetId);
             }
             return _filtroRet;
         }

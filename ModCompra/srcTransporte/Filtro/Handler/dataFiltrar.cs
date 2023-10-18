@@ -17,6 +17,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
         public int IdAliado { get; set; }
         public Vistas.Enumerados.TipoRetencion TipoRetencion { get; set; }
         public string IdProveedor { get; set; }
+        public int IdBeneficiario { get; set; }
 
 
         public dataFiltrar()
@@ -29,6 +30,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             IdCaja = -1;
             IdAliado = -1;
             IdProveedor = "";
+            IdBeneficiario = -1;
         }
         public void Inicializa()
         {
@@ -40,6 +42,7 @@ namespace ModCompra.srcTransporte.Filtro.Handler
             IdCaja = -1;
             IdAliado = -1;
             IdProveedor = "";
+            IdBeneficiario = -1;
         }
     }
 }

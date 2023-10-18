@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModCompra.HlpGestion
 {
-
     public interface IAbandonar
     {
-
         bool AbandonarIsOK { get; }
         void AbandonarFicha();
-
     }
-
 }

@@ -12,5 +12,6 @@ namespace OOB.LibCompra.Transporte.Beneficiario.Mov.Lista
         public DateTime? Desde { get; set; }
         public DateTime? Hasta { get; set; }
         public string Estatus { get; set; }
+        public int IdBeneficiario { get; set; }
     }
 }

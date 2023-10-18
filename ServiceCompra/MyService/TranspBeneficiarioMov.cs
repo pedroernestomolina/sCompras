@@ -21,5 +21,17 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Beneficiario_Mov_GetLista(filtro);
         }
+        //
+        public DtoLib.Resultado Transporte_Beneficiario_Mov_Anular(DtoLibTransporte.Beneficiario.Mov.Anular.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Beneficiario_Mov_Anular(ficha);
+        }
+        //
+
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Beneficiario.Mov.Anular.Ficha> 
+            Transporte_Beneficiario_Mov_Anular_ObtenerData(int idMov)
+        {
+            return ServiceProv.Transporte_Beneficiario_Mov_Anular_ObtenerData(idMov);
+        }
     }
 }

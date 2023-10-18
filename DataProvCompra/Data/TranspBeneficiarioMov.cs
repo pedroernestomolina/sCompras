@@ -67,6 +67,7 @@ namespace DataProvCompra.Data
                 Desde = filtro.Desde,
                 Hasta = filtro.Hasta,
                 Estatus = filtro.Estatus,
+                IdBeneficiario = filtro.IdBeneficiario,
             };
             var r01 = MyData.Transporte_Beneficiario_Mov_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -96,6 +97,23 @@ namespace DataProvCompra.Data
                 }
             }
             result.Lista = lst;
+            return result;
+        }
+        //
+        public OOB.Resultado 
+            Transporte_Beneficiario_Mov_Anular(int idMov)
+        {
+            var result = new OOB.Resultado();
+            var r01 = MyData.Transporte_Beneficiario_Mov_Anular_ObtenerData(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var r02 = MyData.Transporte_Beneficiario_Mov_Anular(r01.Entidad);
+            if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r02.Mensaje);
+            }
             return result;
         }
     }

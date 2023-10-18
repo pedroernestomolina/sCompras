@@ -26,7 +26,7 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
             _abandonarIsOK = false;
             _lista = new HndLista();
             _busqDoc = new HndBusqDoc();
-            _ctrFiltro = new srcTransporte.Filtro.Anticipo.Imp();
+            _ctrFiltro = new srcTransporte.Filtro.Beneficiario.Imp();
         }
         public void Inicializa()
         {
@@ -125,20 +125,20 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
         }
         private void anulaItem(dataItem it)
         {
-            //var seg= Helpers.Msg.Procesar("Anular Movimiento de Anticipo ?");
-            //if (seg)
-            //{
-            //    try
-            //    {
-            //        var r01 = Sistema.MyData.Transporte_Aliado_Anticipo_Anular(it.idMov);
-            //        it.setEstatusAnulado();
-            //        Helpers.Msg.EliminarOk();
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Helpers.Msg.Error(e.Message);
-            //    }
-            //}
+            var seg = Helpers.Msg.Procesar("Anular Movimiento ?");
+            if (seg)
+            {
+                try
+                {
+                    var r01 = Sistema.MyData.Transporte_Beneficiario_Mov_Anular(it.idMov);
+                    it.setEstatusAnulado();
+                    Helpers.Msg.EliminarOk();
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
+            }
         }
         private void visualizarItem(dataItem it)
         {
@@ -148,10 +148,10 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
         }
         private void imprimirItems()
         {
-            //srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.Anticipo.Imp();
-            //_rep.setFiltrosBusq("");
-            //_rep.setDataCargar(_lista.Get_Items);
-            //_rep.Generar();
+            srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.Beneficiario.Imp();
+            _rep.setFiltrosBusq("");
+            _rep.setDataCargar(_lista.Get_Items);
+            _rep.Generar();
         }
 
 

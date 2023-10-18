@@ -23,6 +23,7 @@ namespace ModCompra.srcTransporte.Filtro.Vistas
         int IdCaja { get; set; }
         int IdAliado { get; set; }
         string IdProveedor { get; set; }
+        int IdBeneficiario { get; set; }
 
         void Inicializa();
     }

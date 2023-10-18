@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModCompra.HlpGestion
 {
-    
     public interface IProcesar
     {
-
         bool ProcesarIsOK { get; }
         void Procesar();
-
     }
-
 }
