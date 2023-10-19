@@ -201,6 +201,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Caja.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Serv.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Beneficiario\Movimiento\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Beneficiario\Movimiento\Fitro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Saldo\Ficha.cs" />
@@ -208,6 +210,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Compras\baseFiltro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\GeneralDoc\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\LibroSeniat\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Compras\LibroSeniat\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\baseFicha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\Islr\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\Retencion\Ficha.cs" />

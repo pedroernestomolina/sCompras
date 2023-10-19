@@ -31,6 +31,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Compras_Planilla_RetIslr(idDocCompra);
         }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>
+            Transporte_Reportes_Compras_LibroSeniat_GetLista(DtoLibTransporte.Reportes.Compras.LibroSeniat.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Compras_LibroSeniat_GetLista(filtro);
+        }
 
         //ALIADOS
         public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha> 
@@ -66,6 +71,13 @@ namespace ServiceCompra.MyService
             Transporte_Reportes_Caja_Saldo_Al(DtoLibTransporte.Reportes.Caja.Saldo.Filtro filtro)
         {
             return ServiceProv.Transporte_Reportes_Caja_Saldo_Al(filtro);
+        }
+
+        //BENEFICIARIO
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha> 
+            Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Beneficiario_Movimiento_GetLista(filtro);
         }
     }
 }

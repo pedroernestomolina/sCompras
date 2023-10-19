@@ -382,6 +382,21 @@ namespace ModCompra
             srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Proveedor.Imp();
             _rep.Generar();
         }
+        public void ReportesBeneficiarioMovimiento()
+        {
+            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Beneficiario.Movimiento.Imp();
+            _rep.setFiltros(null);
+            _rep.Generar();
+        }
+        public void ReporteLibroSeniat()
+        {
+            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
+            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.LibroSeniat.Imp();
+            _rep.setFiltros(null);
+            _rep.Generar();
+        }
+
 
         //BENEFICIARIO
         public void BeneficiarioRegMov()

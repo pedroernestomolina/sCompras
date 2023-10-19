@@ -95,5 +95,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         void ActualizarRetencion_Iva_ISLR();
         //
         void FiltrarConcepto(string desc);
+        //
+        string Get_MaquinaFiscal { get;  }
+        void SetMaquinaFiscal(string desc);
     }
 }

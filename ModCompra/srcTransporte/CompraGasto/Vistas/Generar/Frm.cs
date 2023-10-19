@@ -51,6 +51,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             CB_CONDICION_PAGO.DataSource = _controlador.data.Get_CondicionPago_Source;
             TB_NUMERO_DOC.Text = _controlador.data.Get_NumeroDoc;
             TB_CONTROL_DOC.Text = _controlador.data.Get_NumeroControlDoc;
+            TB_MAQ_FISCAL.Text = _controlador.data.Get_MaquinaFiscal;
             TB_DIAS_CREDITO.Text = _controlador.data.Get_DiasCreditoDoc.ToString("n0");
             DTP_FECHA_EMISION_DOC.Value = _controlador.data.Get_FechaEmisionDoc;
             L_FECHA_VENCIMIENTO_DOC.Text = _controlador.data.Get_FechaVenceDoc.ToShortDateString();
@@ -150,6 +151,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             _controlador.data.SetNumeroControlDoc(TB_CONTROL_DOC.Text.Trim().ToUpper());
             TB_CONTROL_DOC.Text = _controlador.data.Get_NumeroControlDoc;
+        }
+        private void TB_MAQ_FISCAL_Leave(object sender, EventArgs e)
+        {
+            _controlador.data.SetMaquinaFiscal(TB_MAQ_FISCAL.Text.Trim().ToUpper());
+            TB_MAQ_FISCAL.Text = _controlador.data.Get_MaquinaFiscal;
         }
         private void DTP_FECHA_EMISION_DOC_ValueChanged(object sender, EventArgs e)
         {

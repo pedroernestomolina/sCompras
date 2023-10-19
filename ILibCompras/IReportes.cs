@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ILibCompras
 {
-    
     public interface IReportes
     {
-
         DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraPorDepartamento.Ficha> 
             Reportes_ComprasPorDepartamento(DtoLibCompra.Reportes.CompraPorDepartamento.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraDocumento.Ficha> 
@@ -21,7 +19,5 @@ namespace ILibCompras
             Reportes_CompraPorProducto(DtoLibCompra.Reportes.CompraPorProducto.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibCompra.Reportes.CompraConCambioPrecios.Ficha>
             Reportes_CompraConCambioPrecios(DtoLibCompra.Reportes.CompraConCambioPrecios.Filtro filtro);
-
     }
-
 }

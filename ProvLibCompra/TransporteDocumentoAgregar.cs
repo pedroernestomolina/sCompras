@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProvLibCompra
 {
-    public partial class Provider: ILibCompras.IProvider
+    public partial class Provider : ILibCompras.IProvider
     {
-        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.CompraGasto.Resultado> 
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.CompraGasto.Resultado>
             Transporte_Documento_Agregar_CompraGrasto(DtoLibTransporte.Documento.Agregar.CompraGasto.Ficha ficha)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.CompraGasto.Resultado>();
@@ -22,8 +22,8 @@ namespace ProvLibCompra
                     using (var ts = cnn.Database.BeginTransaction())
                     {
                         var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
-                        var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2,'0');
-                        var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4,'0');
+                        var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2, '0');
+                        var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
                         //
                         var sql = "update sistema_contadores set a_compras=a_compras+1, a_cxp=a_cxp+1";
                         var r1 = cnn.Database.ExecuteSqlCommand(sql);
@@ -39,8 +39,8 @@ namespace ProvLibCompra
                         var autoEntCxP = aMovCxP.ToString().Trim().PadLeft(10, '0');
                         var _tipoDocumentoCompra = "";
                         switch (ficha.documento.tipoDocumentoCompra)
-                        { 
-                            case  DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.MERCANCIA:
+                        {
+                            case DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.MERCANCIA:
                                 _tipoDocumentoCompra = "1";
                                 break;
                             case DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO:
@@ -145,8 +145,9 @@ namespace ProvLibCompra
                                 tipo_documento_compra,
                                 sustraendo_ret_islr,
                                 monto_ret_islr,
-                                auto_sistema_documento
-                            ) VALUES (
+                                auto_sistema_documento,
+                                maquina_fiscal)
+                            VALUES (
                                 @auto, 
                                 @documento, 
                                 @fecha, 
@@ -242,101 +243,102 @@ namespace ProvLibCompra
                                 @tipo_documento_compra,
                                 @sustraendo_ret_islr,
                                 @monto_ret_islr,
-                                @auto_sistema_documento
-                            )";
-                        var doc= ficha.documento;
-                        var p00= new MySql.Data.MySqlClient.MySqlParameter("@auto",autoEntCompra);
-                        var p01= new MySql.Data.MySqlClient.MySqlParameter("@documento",doc.numeroDoc);
-                        var p02= new MySql.Data.MySqlClient.MySqlParameter("@fecha",doc.fechaEmisDoc);
-                        var p03= new MySql.Data.MySqlClient.MySqlParameter("@fecha_vencimiento",doc.fechaVencDoc);
-                        var p04= new MySql.Data.MySqlClient.MySqlParameter("@razon_social",doc.nombreProv);
-                        var p05= new MySql.Data.MySqlClient.MySqlParameter("@dir_fiscal",doc.dirFiscalProv);
-                        var p06= new MySql.Data.MySqlClient.MySqlParameter("@ci_rif",doc.ciRifProv);
-                        var p07= new MySql.Data.MySqlClient.MySqlParameter("@tipo",doc.codTipoDoc);
-                        var p08= new MySql.Data.MySqlClient.MySqlParameter("@exento",doc.montoExento);
-                        var p09= new MySql.Data.MySqlClient.MySqlParameter("@base1",doc.montoBase1);
+                                @auto_sistema_documento,
+                                @maquina_fiscal)";
+                        var doc = ficha.documento;
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoEntCompra);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@documento", doc.numeroDoc);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", doc.fechaEmisDoc);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_vencimiento", doc.fechaVencDoc);
+                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@razon_social", doc.nombreProv);
+                        var p05 = new MySql.Data.MySqlClient.MySqlParameter("@dir_fiscal", doc.dirFiscalProv);
+                        var p06 = new MySql.Data.MySqlClient.MySqlParameter("@ci_rif", doc.ciRifProv);
+                        var p07 = new MySql.Data.MySqlClient.MySqlParameter("@tipo", doc.codTipoDoc);
+                        var p08 = new MySql.Data.MySqlClient.MySqlParameter("@exento", doc.montoExento);
+                        var p09 = new MySql.Data.MySqlClient.MySqlParameter("@base1", doc.montoBase1);
                         //
-                        var p10= new MySql.Data.MySqlClient.MySqlParameter("@base2",doc.montoBase2);
-                        var p11= new MySql.Data.MySqlClient.MySqlParameter("@base3",doc.montoBase3);
-                        var p12= new MySql.Data.MySqlClient.MySqlParameter("@impuesto1",doc.montoImpuesto1);
-                        var p13= new MySql.Data.MySqlClient.MySqlParameter("@impuesto2",doc.montoImpuesto2);
-                        var p14= new MySql.Data.MySqlClient.MySqlParameter("@impuesto3",doc.montoImpuesto3);
-                        var p15= new MySql.Data.MySqlClient.MySqlParameter("@base",doc.montoBase);
-                        var p16= new MySql.Data.MySqlClient.MySqlParameter("@impuesto",doc.montoImpuesto);
-                        var p17= new MySql.Data.MySqlClient.MySqlParameter("@total",doc.montoTotal);
-                        var p18= new MySql.Data.MySqlClient.MySqlParameter("@tasa1",doc.tasaIva1);
-                        var p19= new MySql.Data.MySqlClient.MySqlParameter("@tasa2",doc.tasaIva2);
+                        var p10 = new MySql.Data.MySqlClient.MySqlParameter("@base2", doc.montoBase2);
+                        var p11 = new MySql.Data.MySqlClient.MySqlParameter("@base3", doc.montoBase3);
+                        var p12 = new MySql.Data.MySqlClient.MySqlParameter("@impuesto1", doc.montoImpuesto1);
+                        var p13 = new MySql.Data.MySqlClient.MySqlParameter("@impuesto2", doc.montoImpuesto2);
+                        var p14 = new MySql.Data.MySqlClient.MySqlParameter("@impuesto3", doc.montoImpuesto3);
+                        var p15 = new MySql.Data.MySqlClient.MySqlParameter("@base", doc.montoBase);
+                        var p16 = new MySql.Data.MySqlClient.MySqlParameter("@impuesto", doc.montoImpuesto);
+                        var p17 = new MySql.Data.MySqlClient.MySqlParameter("@total", doc.montoTotal);
+                        var p18 = new MySql.Data.MySqlClient.MySqlParameter("@tasa1", doc.tasaIva1);
+                        var p19 = new MySql.Data.MySqlClient.MySqlParameter("@tasa2", doc.tasaIva2);
                         //
-                        var p20= new MySql.Data.MySqlClient.MySqlParameter("@tasa3",doc.tasaIva3);
-                        var p21= new MySql.Data.MySqlClient.MySqlParameter("@nota",doc.notasDoc);
-                        var p22= new MySql.Data.MySqlClient.MySqlParameter("@tasa_retencion_iva",doc.tasaRetencionIva);
-                        var p23= new MySql.Data.MySqlClient.MySqlParameter("@tasa_retencion_islr",doc.tasaRetencionISLR);
-                        var p24= new MySql.Data.MySqlClient.MySqlParameter("@retencion_iva",doc.montoRetencionIva);
-                        var p25= new MySql.Data.MySqlClient.MySqlParameter("@retencion_islr",doc.totalRetISLR);
-                        var p26= new MySql.Data.MySqlClient.MySqlParameter("@auto_proveedor",doc.autoProv);
-                        var p27= new MySql.Data.MySqlClient.MySqlParameter("@codigo_proveedor",doc.codigoProv);
-                        var p28= new MySql.Data.MySqlClient.MySqlParameter("@mes_relacion", mesRelacion);
-                        var p29= new MySql.Data.MySqlClient.MySqlParameter("@control",doc.numeroControlDoc);
+                        var p20 = new MySql.Data.MySqlClient.MySqlParameter("@tasa3", doc.tasaIva3);
+                        var p21 = new MySql.Data.MySqlClient.MySqlParameter("@nota", doc.notasDoc);
+                        var p22 = new MySql.Data.MySqlClient.MySqlParameter("@tasa_retencion_iva", doc.tasaRetencionIva);
+                        var p23 = new MySql.Data.MySqlClient.MySqlParameter("@tasa_retencion_islr", doc.tasaRetencionISLR);
+                        var p24 = new MySql.Data.MySqlClient.MySqlParameter("@retencion_iva", doc.montoRetencionIva);
+                        var p25 = new MySql.Data.MySqlClient.MySqlParameter("@retencion_islr", doc.totalRetISLR);
+                        var p26 = new MySql.Data.MySqlClient.MySqlParameter("@auto_proveedor", doc.autoProv);
+                        var p27 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_proveedor", doc.codigoProv);
+                        var p28 = new MySql.Data.MySqlClient.MySqlParameter("@mes_relacion", mesRelacion);
+                        var p29 = new MySql.Data.MySqlClient.MySqlParameter("@control", doc.numeroControlDoc);
                         //
-                        var p30= new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro",fechaSistema.Date);
-                        var p31= new MySql.Data.MySqlClient.MySqlParameter("@orden_compra","");
-                        var p32= new MySql.Data.MySqlClient.MySqlParameter("@dias",doc.diasCreditoDoc);
-                        var p39= new MySql.Data.MySqlClient.MySqlParameter("@columna","");
+                        var p30 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_registro", fechaSistema.Date);
+                        var p31 = new MySql.Data.MySqlClient.MySqlParameter("@orden_compra", "");
+                        var p32 = new MySql.Data.MySqlClient.MySqlParameter("@dias", doc.diasCreditoDoc);
+                        var p39 = new MySql.Data.MySqlClient.MySqlParameter("@columna", "");
                         //
-                        var p40= new MySql.Data.MySqlClient.MySqlParameter("@estatus_anulado","0");
-                        var p41= new MySql.Data.MySqlClient.MySqlParameter("@aplica",doc.aplicaNumeroDoc);
-                        var p42= new MySql.Data.MySqlClient.MySqlParameter("@comprobante_retencion",doc.comprobanteRetencionNro);
-                        var p43= new MySql.Data.MySqlClient.MySqlParameter("@subtotal_neto",doc.subTotalNeto);
-                        var p44= new MySql.Data.MySqlClient.MySqlParameter("@telefono",doc.telefonoProv);
-                        var p45= new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio",doc.factorCambio);
-                        var p46= new MySql.Data.MySqlClient.MySqlParameter("@condicion_pago",doc.codicionPagoDoc);
-                        var p47= new MySql.Data.MySqlClient.MySqlParameter("@usuario",doc.nombreUsuario);
-                        var p48= new MySql.Data.MySqlClient.MySqlParameter("@codigo_usuario",doc.codigoUsuario);
-                        var p49= new MySql.Data.MySqlClient.MySqlParameter("@codigo_sucursal",doc.codigoSucursal);
+                        var p40 = new MySql.Data.MySqlClient.MySqlParameter("@estatus_anulado", "0");
+                        var p41 = new MySql.Data.MySqlClient.MySqlParameter("@aplica", doc.aplicaNumeroDoc);
+                        var p42 = new MySql.Data.MySqlClient.MySqlParameter("@comprobante_retencion", doc.comprobanteRetencionNro);
+                        var p43 = new MySql.Data.MySqlClient.MySqlParameter("@subtotal_neto", doc.subTotalNeto);
+                        var p44 = new MySql.Data.MySqlClient.MySqlParameter("@telefono", doc.telefonoProv);
+                        var p45 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio", doc.factorCambio);
+                        var p46 = new MySql.Data.MySqlClient.MySqlParameter("@condicion_pago", doc.codicionPagoDoc);
+                        var p47 = new MySql.Data.MySqlClient.MySqlParameter("@usuario", doc.nombreUsuario);
+                        var p48 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_usuario", doc.codigoUsuario);
+                        var p49 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_sucursal", doc.codigoSucursal);
                         //
-                        var p50= new MySql.Data.MySqlClient.MySqlParameter("@hora",fechaSistema.ToShortTimeString());
-                        var p51= new MySql.Data.MySqlClient.MySqlParameter("@monto_divisa",doc.montoDivisa);
-                        var p52= new MySql.Data.MySqlClient.MySqlParameter("@estacion",doc.estacionEquipo);
-                        var p54= new MySql.Data.MySqlClient.MySqlParameter("@saldo_pendiente",doc.saldoPendiente);
-                        var p55= new MySql.Data.MySqlClient.MySqlParameter("@ano_relacion",anoRelacion);
-                        var p56= new MySql.Data.MySqlClient.MySqlParameter("@comprobante_retencion_islr",doc.comprobanteRetencionISLR);
-                        var p58= new MySql.Data.MySqlClient.MySqlParameter("@auto_usuario",doc.autoUsuario);
-                        var p59= new MySql.Data.MySqlClient.MySqlParameter("@situacion","Procesado");
+                        var p50 = new MySql.Data.MySqlClient.MySqlParameter("@hora", fechaSistema.ToShortTimeString());
+                        var p51 = new MySql.Data.MySqlClient.MySqlParameter("@monto_divisa", doc.montoDivisa);
+                        var p52 = new MySql.Data.MySqlClient.MySqlParameter("@estacion", doc.estacionEquipo);
+                        var p54 = new MySql.Data.MySqlClient.MySqlParameter("@saldo_pendiente", doc.saldoPendiente);
+                        var p55 = new MySql.Data.MySqlClient.MySqlParameter("@ano_relacion", anoRelacion);
+                        var p56 = new MySql.Data.MySqlClient.MySqlParameter("@comprobante_retencion_islr", doc.comprobanteRetencionISLR);
+                        var p58 = new MySql.Data.MySqlClient.MySqlParameter("@auto_usuario", doc.autoUsuario);
+                        var p59 = new MySql.Data.MySqlClient.MySqlParameter("@situacion", "Procesado");
                         //
-                        var p60= new MySql.Data.MySqlClient.MySqlParameter("@signo",doc.signoDoc);
-                        var p61= new MySql.Data.MySqlClient.MySqlParameter("@serie",doc.siglasDoc);
-                        var p62= new MySql.Data.MySqlClient.MySqlParameter("@tarifa","");
-                        var p63= new MySql.Data.MySqlClient.MySqlParameter("@tipo_remision",doc.aplicaCodTipoDoc);
-                        var p64= new MySql.Data.MySqlClient.MySqlParameter("@documento_remision",doc.aplicaNumeroDoc);
-                        var p65= new MySql.Data.MySqlClient.MySqlParameter("@auto_remision","");
-                        var p66= new MySql.Data.MySqlClient.MySqlParameter("@documento_nombre",doc.nombreDoc);
-                        var p67= new MySql.Data.MySqlClient.MySqlParameter("@subtotal_impuesto",doc.subTotalImpuesto);
-                        var p68= new MySql.Data.MySqlClient.MySqlParameter("@subtotal",doc.subTotal);
-                        var p69= new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp",autoEntCxP);
+                        var p60 = new MySql.Data.MySqlClient.MySqlParameter("@signo", doc.signoDoc);
+                        var p61 = new MySql.Data.MySqlClient.MySqlParameter("@serie", doc.siglasDoc);
+                        var p62 = new MySql.Data.MySqlClient.MySqlParameter("@tarifa", "");
+                        var p63 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_remision", doc.aplicaCodTipoDoc);
+                        var p64 = new MySql.Data.MySqlClient.MySqlParameter("@documento_remision", doc.aplicaNumeroDoc);
+                        var p65 = new MySql.Data.MySqlClient.MySqlParameter("@auto_remision", "");
+                        var p66 = new MySql.Data.MySqlClient.MySqlParameter("@documento_nombre", doc.nombreDoc);
+                        var p67 = new MySql.Data.MySqlClient.MySqlParameter("@subtotal_impuesto", doc.subTotalImpuesto);
+                        var p68 = new MySql.Data.MySqlClient.MySqlParameter("@subtotal", doc.subTotal);
+                        var p69 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp", autoEntCxP);
                         //
-                        var p70= new MySql.Data.MySqlClient.MySqlParameter("@tipo_proveedor","");
-                        var p71= new MySql.Data.MySqlClient.MySqlParameter("@planilla","");
-                        var p72= new MySql.Data.MySqlClient.MySqlParameter("@expediente","");
-                        var p75= new MySql.Data.MySqlClient.MySqlParameter("@neto",doc.montoNeto);
-                        var p79= new MySql.Data.MySqlClient.MySqlParameter("@documento_tipo",doc.moduloDoc);
+                        var p70 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_proveedor", "");
+                        var p71 = new MySql.Data.MySqlClient.MySqlParameter("@planilla", "");
+                        var p72 = new MySql.Data.MySqlClient.MySqlParameter("@expediente", "");
+                        var p75 = new MySql.Data.MySqlClient.MySqlParameter("@neto", doc.montoNeto);
+                        var p79 = new MySql.Data.MySqlClient.MySqlParameter("@documento_tipo", doc.moduloDoc);
                         //
-                        var p80= new MySql.Data.MySqlClient.MySqlParameter("@denominacion_fiscal","");
-                        var p81= new MySql.Data.MySqlClient.MySqlParameter("@auto_concepto","");
-                        var p82= new MySql.Data.MySqlClient.MySqlParameter("@fecha_retencion", doc.fechaRetencion);
-                        var p83= new MySql.Data.MySqlClient.MySqlParameter("@estatus_cierre_contable","0");
-                        var p84= new MySql.Data.MySqlClient.MySqlParameter("@cierre_ftp","");
-                        var p85= new MySql.Data.MySqlClient.MySqlParameter("@estatus_fiscal",doc.estatusFiscal);
-                        var p86= new MySql.Data.MySqlClient.MySqlParameter("@id_compras_concepto",doc.idComprasConcepto);
-                        var p87= new MySql.Data.MySqlClient.MySqlParameter("@desc_compras_concepto",doc.descComprasConcepto);
-                        var p88= new MySql.Data.MySqlClient.MySqlParameter("@codigo_compras_concepto",doc.codigoComprasConcepto);
-                        var p89= new MySql.Data.MySqlClient.MySqlParameter("@auto_sucursal", doc.autoSucursal);
+                        var p80 = new MySql.Data.MySqlClient.MySqlParameter("@denominacion_fiscal", "");
+                        var p81 = new MySql.Data.MySqlClient.MySqlParameter("@auto_concepto", "");
+                        var p82 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_retencion", doc.fechaRetencion);
+                        var p83 = new MySql.Data.MySqlClient.MySqlParameter("@estatus_cierre_contable", "0");
+                        var p84 = new MySql.Data.MySqlClient.MySqlParameter("@cierre_ftp", "");
+                        var p85 = new MySql.Data.MySqlClient.MySqlParameter("@estatus_fiscal", doc.estatusFiscal);
+                        var p86 = new MySql.Data.MySqlClient.MySqlParameter("@id_compras_concepto", doc.idComprasConcepto);
+                        var p87 = new MySql.Data.MySqlClient.MySqlParameter("@desc_compras_concepto", doc.descComprasConcepto);
+                        var p88 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_compras_concepto", doc.codigoComprasConcepto);
+                        var p89 = new MySql.Data.MySqlClient.MySqlParameter("@auto_sucursal", doc.autoSucursal);
                         //
-                        var p90= new MySql.Data.MySqlClient.MySqlParameter("@desc_sucursal", doc.descSucursal);
+                        var p90 = new MySql.Data.MySqlClient.MySqlParameter("@desc_sucursal", doc.descSucursal);
                         var p91 = new MySql.Data.MySqlClient.MySqlParameter("@igtf_monto", doc.igtfMonto);
                         var p92 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento_compra", _tipoDocumentoCompra);
                         var p93 = new MySql.Data.MySqlClient.MySqlParameter("@sustraendo_ret_islr", doc.sustraendoRetISLR);
                         var p94 = new MySql.Data.MySqlClient.MySqlParameter("@monto_ret_islr", doc.montoRetISLR);
                         var p95 = new MySql.Data.MySqlClient.MySqlParameter("@auto_sistema_documento", doc.autoSistemaDocumento);
+                        var p96 = new MySql.Data.MySqlClient.MySqlParameter("@maquina_fiscal", doc.maquinafiscal);
                         //
                         var r2 = cnn.Database.ExecuteSqlCommand(sql,
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
@@ -348,8 +350,8 @@ namespace ProvLibCompra
                             p60, p61, p62, p63, p64, p65, p66, p67, p68, p69,
                             p70, p71, p72, p75, p79,
                             p80, p81, p82, p83, p84, p85, p86, p87, p88, p89,
-                            p90, p91, p92, p93, p94, p95);
-                        if (r2==0)
+                            p90, p91, p92, p93, p94, p95, p96);
+                        if (r2 == 0)
                         {
                             result.Mensaje = "ERROR AL INSERTAR DOCUMENTO";
                             result.Result = DtoLib.Enumerados.EnumResult.isError;
@@ -496,7 +498,7 @@ namespace ProvLibCompra
                                             a_compras_retenciones=a_compras_retenciones+1, 
                                             a_compras_retencion_iva=a_compras_retencion_iva+1";
                                 }
-                                else 
+                                else
                                 {
                                     sql = @"update sistema_contadores set 
                                             a_compras_retenciones=a_compras_retenciones+1, 
@@ -513,7 +515,7 @@ namespace ProvLibCompra
                                     var numCompraRet = n.ToString().Trim().PadLeft(8, '0');
                                     numDocCompraRet = anoRelacion + mesRelacion + numCompraRet;
                                 }
-                                else 
+                                else
                                 {
                                     var n = cnn.Database.SqlQuery<int>("select a_compras_retencion_islr from sistema_contadores").FirstOrDefault();
                                     numDocCompraRet = n.ToString().Trim().PadLeft(10, '0');
@@ -578,7 +580,7 @@ namespace ProvLibCompra
                                         @auto_sistema_documento,
                                         @retencion_monto,
                                         @retencion_sustraendo)";
-                                var _docRet= rgDocRet;
+                                var _docRet = rgDocRet;
                                 p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoCompraRet);
                                 p01 = new MySql.Data.MySqlClient.MySqlParameter("@documento", numDocCompraRet);
                                 p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
@@ -618,6 +620,24 @@ namespace ProvLibCompra
                                     return result;
                                 }
                                 cnn.SaveChanges();
+                                //
+                                //ACTUALIZAR DOCUMENTO DE COMPRA - COMPROBANTE DE RETENCION
+                                if (rgDocRet.EsIva)
+                                {
+                                    p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoCompra", autoEntCompra);
+                                    p01 = new MySql.Data.MySqlClient.MySqlParameter("@numComprobRetencion", numDocCompraRet);
+                                    sql = @"update compras set comprobante_retencion=@numComprobRetencion
+                                            where auto=@autoCompra";
+                                    var rt1 = cnn.Database.ExecuteSqlCommand(sql,
+                                        p00, p01);
+                                    if (rt1 == 0)
+                                    {
+                                        result.Mensaje = "ERROR AL ACTUALIZAR DOCUMENTO [ COMPRAS - COMPROBANTE RETENCION ]";
+                                        result.Result = DtoLib.Enumerados.EnumResult.isError;
+                                        return result;
+                                    }
+                                    cnn.SaveChanges();
+                                }
                                 //
                                 // INSERTAR COMPRA RETENCION DETALLE 
                                 sql = @"INSERT INTO compras_retenciones_detalle (
@@ -932,10 +952,10 @@ namespace ProvLibCompra
                         }
                         //
                         ts.Commit();
-                        result.Entidad  = new DtoLibTransporte.Documento.Agregar.CompraGasto.Resultado()
+                        result.Entidad = new DtoLibTransporte.Documento.Agregar.CompraGasto.Resultado()
                         {
-                             autoDocCompra= autoEntCompra,
-                             autoDocCxp=autoEntCxP,
+                            autoDocCompra = autoEntCompra,
+                            autoDocCxp = autoEntCxP,
                         };
                     }
                 }
@@ -957,7 +977,7 @@ namespace ProvLibCompra
             }
             return result;
         }
-        public DtoLib.Resultado 
+        public DtoLib.Resultado
             Transporte_Documento_Agregar_CompraGrasto_Verificar(DtoLibTransporte.Documento.Agregar.CompraGasto.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
@@ -965,11 +985,11 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    if (ficha.documento == null) 
+                    if (ficha.documento == null)
                     {
                         throw new Exception("DATOS DEL DOCUMENTO NO PUEDE ESTAR VACIO");
                     }
-                    if (ficha.documento.montoTotal <= 0m) 
+                    if (ficha.documento.montoTotal <= 0m)
                     {
                         throw new Exception("MONTO DOCUMENTO COMPRA A REGISTRAR NO PUEDE SER CERO (0)");
                     }
@@ -993,27 +1013,27 @@ namespace ProvLibCompra
                     {
                         foreach (var rg in ficha.documento.docRet)
                         {
-                            if (rg.MontoTotal <= 0m) 
+                            if (rg.MontoTotal <= 0m)
                             {
                                 throw new Exception("MONTO DEL DOCUMENTO [ RETENCION ] NO PUEDE SER CERO (0)");
                             }
-                            if (rg.docRetDetalle ==null)
+                            if (rg.docRetDetalle == null)
                             {
                                 throw new Exception("DETALLE DEL DOCUMENTO RETENCION NO PUEDE ESTAR VACIO");
                             }
-                            if (rg.cxpRetencion ==null)
+                            if (rg.cxpRetencion == null)
                             {
                                 throw new Exception("CXP RETENCION NO PUEDE ESTAR VACIO");
                             }
-                            if (rg.cxpReciboRetencion ==null)
+                            if (rg.cxpReciboRetencion == null)
                             {
                                 throw new Exception("CXP RECIBO RETENCION NO PUEDE ESTAR VACIO");
                             }
-                            if (rg.cxpReciboRetencion.docRecibo ==null)
+                            if (rg.cxpReciboRetencion.docRecibo == null)
                             {
                                 throw new Exception("CXP RECIBO DOCUMENTOS INVOLUCRADO EN RETENCION NO PUEDE ESTAR VACIO");
                             }
-                            if (rg.cxpReciboRetencion.docRecibo.Count()==0)
+                            if (rg.cxpReciboRetencion.docRecibo.Count() == 0)
                             {
                                 throw new Exception("CXP RECIBO DOCUMENTOS INVOLUCRADO EN RETENCION NO PUEDE ESTAR VACIO");
                             }
@@ -1028,7 +1048,7 @@ namespace ProvLibCompra
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter("@autoPrv", ficha.documento.autoProv);
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter("@tipoDoc", ficha.documento.codTipoDoc);
                     var r1 = cnn.Database.SqlQuery<int?>(sql, p1, p2, p3).FirstOrDefault();
-                    if (r1.HasValue) 
+                    if (r1.HasValue)
                     {
                         if (r1.Value >= 1)
                         {

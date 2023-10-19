@@ -279,6 +279,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
 
 
         //REPORTES
+        private void MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT_Click(object sender, EventArgs e)
+        {
+            ReportesLibroSeniat();
+        }
         private void MENU_REPORTES_DOCUMENTOS_GENERAL_Click(object sender, EventArgs e)
         {
             ReporteGeneralDoc();
@@ -323,6 +327,15 @@ namespace ModCompra.srcTransporte.PantallaInicio
             ReportesMaestroCaja();
         }
         //
+        private void MENU_REPORTES_BENEFICIARIO_MOV_Click(object sender, EventArgs e)
+        {
+            ReportesBeneficiarioMovimiento();
+        }
+        //
+        private void ReportesLibroSeniat()
+        {
+            _controlador.ReporteLibroSeniat();
+        }
         private void ReporteGeneralDoc()
         {
             _controlador.ReporteGeneralDocTransp();
@@ -365,6 +378,11 @@ namespace ModCompra.srcTransporte.PantallaInicio
         private void ReportesMaestroCaja()
         {
             _controlador.ReportesMaestroCaja();
+        }
+        //
+        private void ReportesBeneficiarioMovimiento()
+        {
+            _controlador.ReportesBeneficiarioMovimiento();
         }
     }
 }

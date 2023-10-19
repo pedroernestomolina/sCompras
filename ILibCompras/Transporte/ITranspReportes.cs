@@ -18,6 +18,8 @@ namespace ILibCompras.Transporte
             Transporte_Reportes_Compras_Planilla_RetIva(string idDocCompra);
         DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha>
             Transporte_Reportes_Compras_Planilla_RetIslr(string idDocCompra);
+        DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>
+            Transporte_Reportes_Compras_LibroSeniat_GetLista(DtoLibTransporte.Reportes.Compras.LibroSeniat.Filtro filtro);
 
         //CAJA
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha>
@@ -36,5 +38,9 @@ namespace ILibCompras.Transporte
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov);
         DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha>
             Transporte_Reportes_Aliado_PagoServ_Planilla(int idMov);
+
+        //BENEFICIARIOS
+        DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>
+            Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro);
     }
 }

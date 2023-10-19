@@ -120,6 +120,8 @@
     <Compile Include="Reportes\Aliado\PagoServ\Planilla\Caja.cs" />
     <Compile Include="Reportes\Aliado\PagoServ\Planilla\Ficha.cs" />
     <Compile Include="Reportes\Aliado\PagoServ\Planilla\Serv.cs" />
+    <Compile Include="Reportes\Beneficiario\Movimiento\Ficha.cs" />
+    <Compile Include="Reportes\Beneficiario\Movimiento\Fitro.cs" />
     <Compile Include="Reportes\Caja\Movimiento\Ficha.cs" />
     <Compile Include="Reportes\Caja\Movimiento\Filtro.cs" />
     <Compile Include="Reportes\Caja\Saldo\Ficha.cs" />
@@ -127,6 +129,8 @@
     <Compile Include="Reportes\Compras\baseFiltro.cs" />
     <Compile Include="Reportes\Compras\GeneralDoc\Ficha.cs" />
     <Compile Include="Reportes\Compras\GeneralDoc\Filtro.cs" />
+    <Compile Include="Reportes\Compras\LibroSeniat\Ficha.cs" />
+    <Compile Include="Reportes\Compras\LibroSeniat\Filtro.cs" />
     <Compile Include="Reportes\Compras\Planilla\Retencion\baseFicha.cs" />
     <Compile Include="Reportes\Compras\Planilla\Retencion\Islr\Ficha.cs" />
     <Compile Include="Reportes\Compras\Planilla\Retencion\Iva\Ficha.cs" />

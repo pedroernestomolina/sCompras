@@ -224,6 +224,50 @@ namespace ProvLibCompra
             }
             return result;
         }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>
+            Transporte_Reportes_Compras_LibroSeniat_GetLista(DtoLibTransporte.Reportes.Compras.LibroSeniat.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        fecha as fechaEmision,
+                                        ci_rif as prvCiRif,
+                                        razon_social as prvRazonSocial,
+                                        documento as numDoc,
+                                        control as numControl,
+                                        tipo as codTipoDoc,
+                                        aplica as numDocAplica,
+                                        total as totalDoc,
+                                        exento as montoExento,
+                                        base1 as montoBase1,
+                                        impuesto1 as montoIva1,
+                                        tasa1 as tasa1,
+                                        base2 as montoBase2,
+                                        impuesto2 as montoIva2,
+                                        tasa2 as tasa2,
+                                        base3 as montoBase3,
+                                        impuesto3 as montoIva3,
+                                        tasa3 as tasa3,
+                                        comprobante_retencion as comprobanteRetencion,
+                                        maquina_fiscal as maquinaFiscal
+                                FROM compras";
+                    var _sql_2 = @"";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>(_sql, p1).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
         //PLANILLAS
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
@@ -504,6 +548,69 @@ namespace ProvLibCompra
                         throw new Exception("PROBLEMA AL CONSULTAR SALDO CAJA");
                     }
                     result.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
+        //BENEFICIAIRO
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha> 
+            Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        nombre_bene as nombreBene,
+                                        cirif_bene as cirifBene,
+                                        fecha_registro as fechaReg,
+                                        monto_div as montoDiv,
+                                        estatus_anulado as estatusAnulado,
+                                        desc_concepto as descConcepto,
+                                        cod_concepto as codConcepto
+                                    FROM transp_beneficiario_mov ";
+                    var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro != null)
+                    {
+                        if (filtro.Desde.HasValue)
+                        {
+                            _sql_2 += " and fecha_registro>=@desde ";
+                            p1.ParameterName = "@desde";
+                            p1.Value = filtro.Desde.Value;
+                        }
+                        if (filtro.Hasta.HasValue)
+                        {
+                            _sql_2 += " and fecha_registro<=@hasta ";
+                            p2.ParameterName = "@hasta";
+                            p2.Value = filtro.Hasta.Value;
+                        }
+                        if (filtro.Estatus != "")
+                        {
+                            _sql_2 += " and estatus_anulado=@estatus ";
+                            p4.ParameterName = "@estatus";
+                            p4.Value = filtro.Estatus.Trim().ToUpper() == "I" ? "1" : "0";
+                        }
+                        if (filtro.IdBeneficiario != -1)
+                        {
+                            _sql_2 += " and id_beneficiario=@idBeneficiario ";
+                            p3.ParameterName = "@idBeneficiario";
+                            p3.Value = filtro.IdBeneficiario;
+                        }
+                    }
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>(_sql, p1, p2, p3, p4).ToList();
+                    result.Lista = _lst;
                 }
             }
             catch (Exception e)

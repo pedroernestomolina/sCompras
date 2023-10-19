@@ -82,6 +82,7 @@ namespace DataProvCompra.Data
                 igtfMonto = doc.igtfMonto,
                 tipoDocumentoCompra = (DtoLibTransporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra)doc.tipoDocumentoCompra,
                 autoSistemaDocumento = doc.autoSistemaDocumento,
+                maquinafiscal = doc.maquinafiscal,
             };
             var prv = ficha.proveedor;
             var proveedor = new DtoLibTransporte.Documento.Agregar.CompraGasto.Proveedor()

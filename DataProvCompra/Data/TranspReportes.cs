@@ -10,6 +10,7 @@ namespace DataProvCompra.Data
 {
     public partial class DataProv: IData
     {
+        //DOCUMENTOS
         public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Ficha> 
             Transporte_Reportes_Compras_Retenciones_GetLista(OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Filtro filtro)
         {
@@ -195,7 +196,56 @@ namespace DataProvCompra.Data
             };
             return result;
         }
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Ficha>
+            Transporte_Reportes_Compras_LibroSeniat_GetLista(OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Compras.LibroSeniat.Filtro()
+            {
+            };
+            var r01 = MyData.Transporte_Reportes_Compras_LibroSeniat_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Ficha()
+                        {
+                            comprobanteRetencion = s.comprobanteRetencion,
+                            fechaEmision = s.fechaEmision,
+                            montoBase1 = s.montoBase1,
+                            montoBase2 = s.montoBase2,
+                            montoBase3 = s.montoBase3,
+                            montoExento = s.montoExento,
+                            montoIva1 = s.montoIva1,
+                            montoIva2 = s.montoIva2,
+                            montoIva3 = s.montoIva3,
+                            numControl = s.numControl,
+                            numDoc = s.numDoc,
+                            numDocAplica = s.numDocAplica,
+                            prvCiRif = s.prvCiRif,
+                            prvRazonSocial = s.prvRazonSocial,
+                            tasa1 = s.tasa1,
+                            tasa2 = s.tasa2,
+                            tasa3 = s.tasa3,
+                            totalDoc = s.totalDoc,
+                            maquinaFiscal=s.maquinaFiscal
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
 
+        //ALIADOS
         public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha> 
             Transporte_Reportes_Aliado_Anticipos_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Filtro filtro)
         {
@@ -288,6 +338,7 @@ namespace DataProvCompra.Data
             return result;
         }
 
+        //ALIADO-PLANILLA
         public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
         {
@@ -453,6 +504,48 @@ namespace DataProvCompra.Data
                 ent.esDivisa = r01.Entidad.esDivisa;
             }
             result.Entidad = ent;
+            return result;
+        }
+
+        //BENEFICIARIO
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Ficha> 
+            Transporte_Reportes_Beneficiario_Movimiento_GetLista(OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Fitro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro ()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                Estatus = filtro.Estatus,
+                IdBeneficiario = filtro.IdBeneficiario,
+            };
+            var r01 = MyData.Transporte_Reportes_Beneficiario_Movimiento_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Ficha()
+                        {
+                            cirifBene = s.cirifBene,
+                            codConcepto = s.codConcepto,
+                            descConcepto = s.descConcepto,
+                            estatusAnulado = s.estatusAnulado,
+                            fechaReg = s.fechaReg,
+                            montoDiv = s.montoDiv,
+                            nombreBene = s.nombreBene,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
             return result;
         }
     }

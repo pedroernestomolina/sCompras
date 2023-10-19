@@ -140,6 +140,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _tasaRetISLR = 0m;
             _montoRetISLR = 0m;
             _montoSustraendoISLR = 0m;
+            //
+            _maquinaFiscal = "";
         }
         public void Inicializa()
         {
@@ -175,6 +177,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             _tasaRetISLR = 0m;
             _montoRetISLR = 0m;
             _montoSustraendoISLR = 0m;
+            //
+            _maquinaFiscal = "";
         }
 
 
@@ -466,6 +470,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 _id = _lst.First().id;
             }
             _concepto.setFichaById(_id);
+        }
+
+
+        //
+        private string _maquinaFiscal;
+        public string Get_MaquinaFiscal { get { return _maquinaFiscal; } }
+        public void SetMaquinaFiscal(string desc)
+        {
+            _maquinaFiscal = desc;
         }
     }
 }

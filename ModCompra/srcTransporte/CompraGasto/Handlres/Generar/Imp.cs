@@ -255,6 +255,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     igtfMonto = _data.Get_MontoIGTF,
                     tipoDocumentoCompra = OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO,
                     autoSistemaDocumento = _sistDoc.Entidad.autoId,
+                    maquinafiscal= _data.Get_MaquinaFiscal,
                 };
                 ficha.cxp = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
                 {
