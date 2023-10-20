@@ -9,6 +9,7 @@ namespace ModCompra.Utils.FiltrosCB
 {
     public interface ITextoBuscar
     {
+        string Get_TextoBuscar { get; }
         void setTextoBuscar(string desc);
     }
 }

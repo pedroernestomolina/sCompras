@@ -31,6 +31,9 @@ namespace DataProvCompra.Data
                             id = s.id,
                             cirif = s.cirif,
                             nombreRazonSocial = s.nombreRazonSocial,
+                            direccion = s.direccion,
+                            estatus = s.estatus,
+                            telefono = s.telefono,
                         };
                         return nr;
                     }).ToList();

@@ -47,5 +47,6 @@ namespace ModCompra.Utils.FiltrosCB.ConBusqueda.Beneficiario
                 Helpers.Msg.Error(e.Message);
             }
         }
+        public string Get_TextoBuscar { get { return ""; } }
     }
 }

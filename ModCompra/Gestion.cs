@@ -382,6 +382,12 @@ namespace ModCompra
             srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Proveedor.Imp();
             _rep.Generar();
         }
+        public void ReportesMaestroBeneficiairo()
+        {
+            srcTransporte.Reportes.IRep _rep = new srcTransporte.Reportes.Maestros.Beneficiario.Imp();
+            _rep.Generar();
+        }
+
         public void ReportesBeneficiarioMovimiento()
         {
             //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
@@ -391,10 +397,16 @@ namespace ModCompra
         }
         public void ReporteLibroSeniat()
         {
-            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.LibroSeniat.Imp();
-            _rep.setFiltros(null);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.Documentos.LibroSeniat.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.LibroSeniat.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
         }
 
 

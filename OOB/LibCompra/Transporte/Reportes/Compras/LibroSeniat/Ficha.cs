@@ -28,5 +28,6 @@ namespace OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat
         public decimal tasa3 { get; set; }
         public string comprobanteRetencion { get; set; }
         public string maquinaFiscal { get; set; }
+        public string codTipoDoc { get; set; }
     }
 }

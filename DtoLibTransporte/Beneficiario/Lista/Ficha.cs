@@ -12,5 +12,8 @@ namespace DtoLibTransporte.Beneficiario.Lista
         public int id { get; set; }
         public string cirif { get; set; }
         public string nombreRazonSocial { get; set; }
+        public string telefono { get; set; }
+        public string direccion { get; set; }
+        public string estatus { get; set; }
     }
 }

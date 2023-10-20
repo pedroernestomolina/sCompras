@@ -650,6 +650,7 @@
     </Compile>
     <Compile Include="srcTransporte\Reportes\Documentos\enumerados.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\Idata.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\LibroSeniat\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\LibroSeniat\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\IRep.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\IRepFiltro.cs" />
@@ -661,6 +662,7 @@
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\islr.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Beneficiario\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Maestros\Beneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Caja\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Concepto\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\DS_MAESTRO.cs">
@@ -695,6 +697,17 @@
       <DependentUpon>DS_ADM.xsd</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Reportes\ListaAdm\PagoServ\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Handler\Filtros.cs" />
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IFiltroActivar.cs" />
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IFiltros.cs" />
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IHnd.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Handler\hndBusqueda.cs" />
@@ -999,6 +1012,9 @@
     <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_General.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_LibroSeniat.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Documentos\RepDoc_RetIslr.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1020,6 +1036,9 @@
     <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_Retencion.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Beneficiario.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Caja.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1037,6 +1056,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_RetIva.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\RepFiltro\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Retencion\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
@@ -1347,9 +1369,7 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="srcTransporte\Reportes\Documentos\CompraGasto\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>

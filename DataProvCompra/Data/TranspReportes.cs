@@ -235,7 +235,8 @@ namespace DataProvCompra.Data
                             tasa2 = s.tasa2,
                             tasa3 = s.tasa3,
                             totalDoc = s.totalDoc,
-                            maquinaFiscal=s.maquinaFiscal
+                            maquinaFiscal = s.maquinaFiscal,
+                            codTipoDoc = s.codTipoDoc,
                         };
                         return nr;
                     }).ToList();

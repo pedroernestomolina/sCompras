@@ -326,6 +326,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesMaestroCaja();
         }
+        private void MENU_REPORTES_MAESTRO_BENEFICIARIO_Click(object sender, EventArgs e)
+        {
+            ReportesMaestroBeneficiairo();
+        }
         //
         private void MENU_REPORTES_BENEFICIARIO_MOV_Click(object sender, EventArgs e)
         {
@@ -378,6 +382,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
         private void ReportesMaestroCaja()
         {
             _controlador.ReportesMaestroCaja();
+        }
+        private void ReportesMaestroBeneficiairo()
+        {
+            _controlador.ReportesMaestroBeneficiairo();
         }
         //
         private void ReportesBeneficiarioMovimiento()

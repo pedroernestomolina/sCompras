@@ -54,7 +54,10 @@ namespace ProvLibCompra
                     var _sql_1 = @"select 
                                         id as id,
                                         cirif as ciRif,
-                                        nombre_razonsocial as nombreRazonSocial
+                                        nombre_razonsocial as nombreRazonSocial,
+                                        direccion as direccion,
+                                        telefono as telefono,
+                                        estatus_anulado as estatus
                                     from transp_beneficiario";
                     var _sql = _sql_1;
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Beneficiario.Lista.Ficha>(_sql).ToList();

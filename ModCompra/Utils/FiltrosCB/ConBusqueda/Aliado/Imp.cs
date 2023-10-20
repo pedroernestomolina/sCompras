@@ -9,6 +9,9 @@ namespace ModCompra.Utils.FiltrosCB.ConBusqueda.Aliado
 {
     public class Imp: LibUtilitis.CtrlCB.ImpCB ,  ICtrlConBusqueda
     {
+        public string Get_TextoBuscar { get { return ""; } }
+
+
         public Imp()
             :base()
         {
