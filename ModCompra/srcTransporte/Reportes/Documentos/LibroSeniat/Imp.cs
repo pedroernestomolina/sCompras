@@ -13,23 +13,40 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
     public class Imp: srcTransporte.Reportes.IRepFiltro
     {
         private OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Filtro _filtro;
+        private OOB.LibCompra.Empresa.Fiscal.Ficha _tasaFiscal;
+        private string pd;
+        private string ph;
 
 
         public Imp()
         {
+            _tasaFiscal = null;
+            pd = "";
+            ph = "";
+
         }
         public void setFiltros(object filtros)
         {
-            var _ft= (Reportes.RepFiltro.Vista.IFiltros)filtros;
+            var ft= (Reportes.RepFiltro.Vista.IFiltros)filtros;
             _filtro = new OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Filtro()
             {
+                Desde = ft.Desde,
+                Hasta = ft.Hasta,
             };
+            pd = "Desde " + ft.Desde.Value.ToShortDateString();
+            ph = "Hasta " + ft.Hasta.Value.ToShortDateString();
         }
         public void Generar()
         {
             try
             {
                 var r01 = Sistema.MyData.Transporte_Reportes_Compras_LibroSeniat_GetLista(_filtro);
+                var r02 = Sistema.MyData.Empresa_GetTasas();
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r02.Mensaje);
+                }
+                _tasaFiscal = r02.Entidad;
                 imprimir(r01.Lista);
             }
             catch (Exception e)
@@ -43,7 +60,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Documentos\RepDoc_LibroSeniat.rdlc";
             var ds = new DS_REPDOC();
-
+            
             var _op = 0;
             foreach (var rg in list)
             {
@@ -90,18 +107,20 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
                 rt["base3"] = rg.montoBase3;
                 rt["iva3"] = rg.montoIva3;
                 rt["comprobanteRet"] = rg.comprobanteRetencion;
-
-                //if (rg.estatusDoc.Trim().ToUpper() == "1")
-                //{
-                //    rt["neto"] = 0m;
-                //    rt["totalDoc"] = 0m;
-                //    rt["montoIva"] = 0m;
-                //    rt["montoExento"] = 0m;
-                //    rt["montoIgtf"] = 0m;
-                //    rt["montoBase"] = 0m;
-                //}
                 ds.Tables["Libro"].Rows.Add(rt);
             }
+            DataRow rt2 = ds.Tables["LibroEnc"].NewRow();
+            rt2["periodo_desde"] = pd;
+            rt2["periodo_hasta"] = ph;
+            rt2["tipo_contribuyente"] = "ORDINARIO";
+            rt2["titulo"] = "Libro de Compras "+pd+", "+ph;
+            rt2["nombreRazonSocial"] = Sistema.Negocio.Nombre.Trim();
+            rt2["ciRif"] = Sistema.Negocio.CiRif.Trim();
+            rt2["dirFiscal"] = Sistema.Negocio.DireccionFiscal.Trim();
+            rt2["descTasa1"] = "Tasa General  " + _tasaFiscal.Tasa1.ToString("n2");
+            rt2["descTasa2"] = "Tasa Reducida " + _tasaFiscal.Tasa2.ToString("n2");
+            rt2["descTasa3"] = "Tasa Gen+Adic " + _tasaFiscal.Tasa3.ToString("n2");
+            ds.Tables["LibroEnc"].Rows.Add(rt2);
 
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
@@ -110,6 +129,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
             Rds.Add(new ReportDataSource("Libro", ds.Tables["Libro"]));
+            Rds.Add(new ReportDataSource("LibroEnc", ds.Tables["LibroEnc"]));
 
             var frp = new ReporteFrm();
             frp.rds = Rds;

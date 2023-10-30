@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace DtoLibTransporte.Reportes.Compras.LibroSeniat
 {
-    public class Filtro
+    public class Filtro: baseFiltro
     {
+        public Filtro()
+            :base()
+        {
+        }
     }
 }

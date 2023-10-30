@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
+namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
 {
     public class FiltroActivar: Reportes.RepFiltro.Vista.IFiltroActivar
     {
@@ -29,11 +29,11 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
         public FiltroActivar()
         {
             _tipoMovCaja = false;
-            _estatus = false;
+            _estatus = true;
             _aliado = false;
-            _proveedor = false;
+            _proveedor = true;
             _caja = false;
-            _concepto = false;
+            _concepto = true;
             _beneficiario = false;
         }
     }

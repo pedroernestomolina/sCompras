@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
 {
-    public class Imp: IRepFiltro
+    public class Imp : srcTransporte.Reportes.IRepFiltro
     {
         private OOB.LibCompra.Transporte.Reportes.Compras.GeneralDoc.Filtro _filtro;
 
@@ -18,10 +18,25 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
         public Imp()
         {
         }
-        public void setFiltros(Idata data)
+        public void setFiltros(object filtros)
         {
+            var ft = (Reportes.RepFiltro.Vista.IFiltros)filtros;
+            var _estatusDoc = "";
+            if (ft.EstatusDocumento != RepFiltro.Vista.enumerados.EstatusDoc.SinDefinir) 
+            {
+                _estatusDoc = "0";
+                if (ft.EstatusDocumento == RepFiltro.Vista.enumerados.EstatusDoc.Inactivo)
+                {
+                    _estatusDoc = "1";
+                }
+            }
             _filtro = new OOB.LibCompra.Transporte.Reportes.Compras.GeneralDoc.Filtro()
             {
+                Desde = ft.Desde,
+                Hasta = ft.Hasta,
+                EstatusDoc = _estatusDoc,
+                IdConcepto = ft.IdConcepto,
+                IdProveedor = ft.IdProveedor,
             };
         }
         public void Generar()

@@ -7,20 +7,13 @@ using System.Threading.Tasks;
 
 namespace ModCompra.srcTransporte.Reportes.Documentos.ListaRet
 {
-    abstract public class baseImp: IRepFiltro
+    abstract public class baseImp: srcTransporte.Reportes.IRepFiltro 
     {
-        private OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Filtro _filtro;
+        protected OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Filtro _filtro;
 
 
         public baseImp()
         {
-        }
-        public void setFiltros(Idata data)
-        {
-            _filtro = new OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Filtro()
-            {
-                tipoRet = (OOB.LibCompra.Transporte.Reportes.Compras.enumerados.tipoRetencion)data.tipoRetencion,
-            };
         }
         public void Generar()
         {
@@ -34,8 +27,13 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaRet
                 Helpers.Msg.Error(e.Message);
             }
         }
+        public void setFiltros(object filtros)
+        {
+            _setFiltros(filtros);
+        }
 
 
         abstract protected void imprimir(List<OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Ficha> list);
+        abstract protected void _setFiltros(object filtros);
     }
 }

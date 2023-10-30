@@ -315,29 +315,60 @@ namespace ModCompra
         //REPORTES
         public void ReporteGeneralDocTransp()
         {
-            srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
-            //
-            srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaGeneralDoc.Imp();
-            _rep.setFiltros(_data);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.Documentos.ListaGeneralDoc.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaGeneralDoc.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReportesRetIva()
         {
-            srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
-            _data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Iva);
-            //
-            srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.iva();
-            _rep.setFiltros(_data);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.Documentos.ListaRet.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.iva();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
+        //    srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
+        //    _data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Iva);
+        //    //
+        //    srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.iva();
+        //    _rep.setFiltros(_data);
+        //    _rep.Generar();
         }
         public void ReportesRetIslr()
         {
-            srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
-            _data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Islr);
-            //
-            srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.islr();
-            _rep.setFiltros(_data);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.Documentos.ListaRet.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.islr();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
+            //srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
+            //_data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Islr);
+            ////
+            //srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.islr();
+            //_rep.setFiltros(_data);
+            //_rep.Generar();
         }
         public void ReportesAliadoAnticipo()
         {
@@ -398,6 +429,8 @@ namespace ModCompra
         public void ReporteLibroSeniat()
         {
             srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(false);
+            _filtro.Hasta.setActivarCheck(false);
             _filtro.Inicializa();
             _filtro.setFiltrosCargar(new srcTransporte.Reportes.Documentos.LibroSeniat.FiltroActivar());
             _filtro.Inicia();

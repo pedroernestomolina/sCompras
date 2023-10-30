@@ -39,11 +39,45 @@ namespace ProvLibCompra
                                         impuesto as montoImpuesto,
                                         exento as montoExento,
                                         igtf_monto as montoIgtf
-
                                     FROM compras ";
                     var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_2 += " and fecha>=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_2 += " and fecha<=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
+                    if (filtro.IdProveedor!="")
+                    {
+                        _sql_2 += " and auto_proveedor=@idProveedor ";
+                        p3.ParameterName = "@idProveedor";
+                        p3.Value = filtro.IdProveedor;
+                    }
+                    if (filtro.IdConcepto != -1)
+                    {
+                        _sql_2 += " and id_compras_concepto=@idConcepto ";
+                        p4.ParameterName = "@idConcepto";
+                        p4.Value = filtro.IdConcepto;
+                    }
+                    if (filtro.EstatusDoc != "")
+                    {
+                        _sql_2 += " and estatus_anulado=@estatus ";
+                        p5.ParameterName = "@estatus";
+                        p5.Value = filtro.EstatusDoc;
+                    }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.GeneralDoc.Ficha>(_sql).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.GeneralDoc.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
             }
@@ -84,6 +118,34 @@ namespace ProvLibCompra
                                  FROM compras_retenciones ";
                     var _sql_2= @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_2 += " and fecha>=@desde ";
+                        p2.ParameterName = "@desde";
+                        p2.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_2 += " and fecha<=@hasta ";
+                        p3.ParameterName = "@hasta";
+                        p3.Value = filtro.Hasta;
+                    }
+                    if (filtro.IdProveedor != "")
+                    {
+                        _sql_2 += " and auto_proveedor=@idProveedor ";
+                        p4.ParameterName = "@idProveedor";
+                        p4.Value = filtro.IdProveedor;
+                    }
+                    if (filtro.EstatusDoc != "")
+                    {
+                        _sql_2 += " and estatus_anulado=@estatus ";
+                        p5.ParameterName = "@estatus";
+                        p5.Value = filtro.EstatusDoc;
+                    }
                     if (filtro.tipoRet != DtoLibTransporte.Reportes.Compras.enumerados.tipoRetencion.SinDefinir) 
                     {
                         p1.ParameterName = "@tipoRet";
@@ -98,7 +160,7 @@ namespace ProvLibCompra
                         _sql_2 += " and tipo=@tipoRet ";
                     }
                     var _sql = _sql_1+_sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.Retencion.Ficha>(_sql, p1).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.Retencion.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
             }
@@ -232,6 +294,8 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var _sql_1 = @"SELECT 
                                         fecha as fechaEmision,
                                         ci_rif as prvCiRif,
@@ -254,10 +318,21 @@ namespace ProvLibCompra
                                         comprobante_retencion as comprobanteRetencion,
                                         maquina_fiscal as maquinaFiscal
                                 FROM compras";
-                    var _sql_2 = @"";
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var _sql_2 = @" WHERE 1=1 and estatus_anulado='0' and tipo in ('01','02','03') ";
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_2 += " and fecha>=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value =filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_2 += " and fecha<=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>(_sql, p1).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.LibroSeniat.Ficha>(_sql, p1, p2).ToList();
                     result.Lista = _lst;
                 }
             }

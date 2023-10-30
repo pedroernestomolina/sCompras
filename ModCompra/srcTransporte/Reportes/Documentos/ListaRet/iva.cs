@@ -59,5 +59,27 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaRet
             frp.Path = pt;
             frp.ShowDialog();
         }
+
+        protected override void _setFiltros(object filtros)
+        {
+            var ft = (Reportes.RepFiltro.Vista.IFiltros)filtros;
+            var _estatusDoc = "";
+            if (ft.EstatusDocumento != RepFiltro.Vista.enumerados.EstatusDoc.SinDefinir) 
+            {
+                _estatusDoc = "0";
+                if (ft.EstatusDocumento == RepFiltro.Vista.enumerados.EstatusDoc.Inactivo)
+                {
+                    _estatusDoc = "1";
+                }
+            }
+            _filtro = new OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Filtro()
+            {
+                tipoRet = OOB.LibCompra.Transporte.Reportes.Compras.enumerados.tipoRetencion.IVA,
+                Desde = ft.Desde,
+                EstatusDoc = _estatusDoc,
+                Hasta = ft.Hasta,
+                IdProveedor = ft.IdProveedor,
+            };
+        }
     }
 }

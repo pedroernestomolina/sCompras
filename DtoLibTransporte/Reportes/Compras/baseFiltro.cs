@@ -9,5 +9,7 @@ namespace DtoLibTransporte.Reportes.Compras
 {
     public class baseFiltro
     {
+        public DateTime? Desde { get; set; }
+        public DateTime? Hasta { get; set; }
     }
 }

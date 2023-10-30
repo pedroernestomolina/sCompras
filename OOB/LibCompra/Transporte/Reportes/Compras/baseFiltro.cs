@@ -9,5 +9,7 @@ namespace OOB.LibCompra.Transporte.Reportes.Compras
 {
     public class baseFiltro
     {
+        public DateTime? Desde { get; set; }
+        public DateTime? Hasta { get; set; }
     }
 }

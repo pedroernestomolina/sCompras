@@ -17,6 +17,10 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Compras.Retencion.Ficha>();
             var filtroDTO = new DtoLibTransporte.Reportes.Compras.Retencion.Filtro()
             {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                EstatusDoc = filtro.EstatusDoc,
+                IdProveedor = filtro.IdProveedor,
                 tipoRet = (DtoLibTransporte.Reportes.Compras.enumerados.tipoRetencion)filtro.tipoRet,
             };
             var r01 = MyData.Transporte_Reportes_Compras_Retenciones_GetLista(filtroDTO);
@@ -65,6 +69,11 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Compras.GeneralDoc.Ficha>();
             var filtroDTO = new DtoLibTransporte.Reportes.Compras.GeneralDoc.Filtro()
             {
+                Desde = filtro.Desde,
+                EstatusDoc = filtro.EstatusDoc,
+                Hasta = filtro.Hasta,
+                IdConcepto = filtro.IdConcepto,
+                IdProveedor = filtro.IdProveedor,
             };
             var r01 = MyData.Transporte_Reportes_Compras_GeneralDoc_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -202,6 +211,8 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Compras.LibroSeniat.Ficha>();
             var filtroDTO = new DtoLibTransporte.Reportes.Compras.LibroSeniat.Filtro()
             {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
             };
             var r01 = MyData.Transporte_Reportes_Compras_LibroSeniat_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

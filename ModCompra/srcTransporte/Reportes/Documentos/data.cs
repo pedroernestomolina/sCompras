@@ -5,25 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra.srcTransporte.Reportes.Documentos
-{
-    public class data: Idata
-    {
-        private enumerados.tipoRetencion _tipoRetencion;
+//namespace ModCompra.srcTransporte.Reportes.Documentos
+//{
+//    public class data: Idata
+//    {
+//        private enumerados.tipoRetencion _tipoRetencion;
 
 
-        public enumerados.tipoRetencion tipoRetencion { get { return _tipoRetencion; } }
+//        public enumerados.tipoRetencion tipoRetencion { get { return _tipoRetencion; } }
 
 
-        public data()
-        {
-            _tipoRetencion = enumerados.tipoRetencion.SinDefinir;
-        }
+//        public data()
+//        {
+//            _tipoRetencion = enumerados.tipoRetencion.SinDefinir;
+//        }
 
 
-        public void setTipoRetencion(enumerados.tipoRetencion tipo)
-        {
-            _tipoRetencion = tipo;
-        }
-    }
-}
+//        public void setTipoRetencion(enumerados.tipoRetencion tipo)
+//        {
+//            _tipoRetencion = tipo;
+//        }
+//    }
+//}

@@ -1134,7 +1134,7 @@
         <DataSetName>Ret_Islr</DataSetName>
         <Top>0.17639cm</Top>
         <Height>1.95875cm</Height>
-        <Width>21.2662cm</Width>
+        <Width>21.26617cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1148,9 +1148,52 @@
   <Width>8.4871in</Width>
   <Page>
     <PageHeader>
-      <Height>2.73995cm</Height>
+      <Height>2.63412cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>REPORTE: RETENCION DE ISLR</Value>
+                  <Style>
+                    <FontSize>14pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.76072cm</Top>
+          <Height>0.73229cm</Height>
+          <Width>10.64917cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line1">
+          <Top>2.59884cm</Top>
+          <Height>0cm</Height>
+          <Width>21.26617cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+      </ReportItems>
       <Style>
         <Border>
           <Style>None</Style>

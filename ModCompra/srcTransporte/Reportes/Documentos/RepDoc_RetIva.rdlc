@@ -1023,7 +1023,6 @@
         </TablixRowHierarchy>
         <DataSetName>Ret_Iva</DataSetName>
         <Top>0.14111cm</Top>
-        <Left>0cm</Left>
         <Height>1.95875cm</Height>
         <Width>20.52651cm</Width>
         <Style>
@@ -1036,12 +1035,55 @@
     <Height>3.02083in</Height>
     <Style />
   </Body>
-  <Width>8.36141in</Width>
+  <Width>8.15308in</Width>
   <Page>
     <PageHeader>
-      <Height>2.54cm</Height>
+      <Height>2.43417cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox2">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>REPORTE: RETENCION DE IVA</Value>
+                  <Style>
+                    <FontSize>14pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.52549cm</Top>
+          <Height>0.73229cm</Height>
+          <Width>10.64917cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line1">
+          <Top>2.36361cm</Top>
+          <Height>0cm</Height>
+          <Width>20.52651cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+      </ReportItems>
       <Style>
         <Border>
           <Style>None</Style>

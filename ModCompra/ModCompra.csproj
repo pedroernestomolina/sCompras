@@ -652,6 +652,8 @@
     <Compile Include="srcTransporte\Reportes\Documentos\Idata.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\LibroSeniat\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\LibroSeniat\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\ListaGeneralDoc\FiltroActivar.cs" />
+    <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\IRep.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\IRepFiltro.cs" />
     <Compile Include="srcTransporte\Reportes\IRepFiltro.cs" />
@@ -699,12 +701,14 @@
     <Compile Include="srcTransporte\Reportes\ListaAdm\PagoServ\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\RepFiltro\Handler\Filtros.cs" />
     <Compile Include="srcTransporte\Reportes\RepFiltro\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Handler\ImpFechaRep.cs" />
     <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IFechaRep.cs" />
     <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IFiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IFiltros.cs" />
     <Compile Include="srcTransporte\Reportes\RepFiltro\Vista\IHnd.cs" />
@@ -796,6 +800,8 @@
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Beneficiario\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Aliado\Imp.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Concepto\data.cs" />
+    <Compile Include="Utils\FiltrosCB\ConBusqueda\Concepto\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Proveedor\data.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Proveedor\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\ConBusqueda\Caja\data.cs" />
