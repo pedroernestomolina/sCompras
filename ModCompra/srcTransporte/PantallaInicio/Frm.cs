@@ -234,6 +234,14 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ToolAliados();
         }
+        private void MENU_CXP_TOOLS_DOCUMENTOS_Click(object sender, EventArgs e)
+        {
+            ToolsDocumentos();
+        }
+        private void ToolsDocumentos()
+        {
+            _controlador.ToolsDocumentos();
+        }
         private void ToolAliados()
         {
             _controlador.ToolAliados();

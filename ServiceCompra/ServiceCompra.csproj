@@ -62,6 +62,7 @@
     <Compile Include="Interfaces\Transporte\ITranspBeneficiarioMov.cs" />
     <Compile Include="Interfaces\Transporte\ITranspCaja.cs" />
     <Compile Include="Interfaces\Transporte\ITranspCajaMov.cs" />
+    <Compile Include="Interfaces\Transporte\ITranspCxpDoc.cs" />
     <Compile Include="Interfaces\Transporte\ITranspDocumento.cs" />
     <Compile Include="Interfaces\IUsuario.cs" />
     <Compile Include="Interfaces\Transporte\ITranspDocumentoRet.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="MyService\TranspBeneficiarioMov.cs" />
     <Compile Include="MyService\TranspCaja.cs" />
     <Compile Include="MyService\TranspCajaMov.cs" />
+    <Compile Include="MyService\TranspCxpDoc.cs" />
     <Compile Include="MyService\TranspDocumento.cs" />
     <Compile Include="MyService\TranspDocumentoRet.cs" />
     <Compile Include="MyService\TranspReportes.cs" />

@@ -166,6 +166,9 @@
     <Compile Include="LibCompra\Transporte\Caja\Movimiento\Crud\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Movimiento\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Caja\Movimiento\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\baseFicha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\DocEntidad\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\DocPend\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\CxP.cs" />

@@ -296,6 +296,17 @@ namespace ModCompra
             _toolAliados.Inicializa();
             _toolAliados.Inicia();
         }
+        srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
+        public void ToolsDocumentos()
+        {
+            if (_toolDoc == null)
+            {
+                _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
+            }
+            _toolDoc.Inicializa();
+            _toolDoc.Inicia();
+        }
+
 
         //CAJA
         public void CajaRegistrarMov()

@@ -512,6 +512,41 @@
     <Compile Include="srcTransporte\Concepto\Maestro\data.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\IHndCtasPend.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\IHndTool.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Handler\baseAgregarEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Agregar\IMetAgregar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Agregar\MetAgregar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\dataItem.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Editar\IMetEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Editar\MetEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\IAgregarEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\IHndData.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Metodo.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompLista\IitemLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompLista\ILista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompLista\ImpLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\Principal\Handler\ImpMetPago.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\Principal\Vista\IMetPag.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Handler\HndData.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Handler\ImpPagoDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\IHndData.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\IPagoDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Handler\dataItemCtasPend.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\IdataItemCtaPend.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ITools.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Anticipos\Administrador\Handler\hndBusqueda.cs" />
@@ -586,6 +621,18 @@
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Idata.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataAliado.cs" />
     <Compile Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\IdataCtasPend.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Handler\ImpToolDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Handler\ImpHndCtasPendDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Handler\ImpHndToolDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\IHndCtasPendDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\IToolDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\IHndToolDoc.cs" />
     <Compile Include="srcTransporte\Filtro\Beneficiario\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -810,6 +857,8 @@
     <Compile Include="Utils\FiltrosCB\ICtrlConBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\Idata.cs" />
     <Compile Include="Utils\FiltrosCB\ITextoBuscar.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\Imp.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\IMedioPago.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoMovCaja\data.cs" />
@@ -983,6 +1032,15 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Filtro\Beneficiario\Frm.resx">
@@ -1241,6 +1299,7 @@
     <Content Include="Imagenes\bt_notificacion.png" />
     <Content Include="Imagenes\bt_ok_2.png" />
     <Content Include="Imagenes\bt_ok_3.png" />
+    <Content Include="Imagenes\bt_pago_transf_48.png" />
     <Content Include="Imagenes\bt_price.png" />
     <Content Include="Imagenes\bt_proceso.png" />
     <Content Include="Imagenes\bt_proveedor.png" />
@@ -1325,6 +1384,7 @@
     <Content Include="Resources\bt_notificacion.png" />
     <Content Include="Resources\bt_ok_2.png" />
     <Content Include="Resources\bt_ok_3.png" />
+    <None Include="Resources\bt_pago_transf_48.png" />
     <Content Include="Resources\bt_price.png" />
     <Content Include="Resources\bt_proceso.png" />
     <Content Include="Resources\bt_proveedor.png" />

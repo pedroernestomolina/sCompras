@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public static IService MyData;
 
 
@@ -25,7 +23,6 @@ namespace DataProvCompra.Data
         public OOB.ResultadoEntidad<DateTime> FechaServidor()
         {
             var result = new OOB.ResultadoEntidad<DateTime>();
-
             var r01 = MyData.FechaServidor();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -33,11 +30,8 @@ namespace DataProvCompra.Data
                 result.Result = OOB.Enumerados.EnumResult.isError;
                 return result;
             }
-
             result.Entidad = (DateTime)r01.Entidad;
             return result;
         }
-
     }
-
 }

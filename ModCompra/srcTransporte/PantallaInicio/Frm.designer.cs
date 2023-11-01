@@ -77,7 +77,7 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
             this.MENU_BENEFICIARIO_ADM = new System.Windows.Forms.ToolStripMenuItem();
             this.ctasXPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsCuentasPorPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_CXP_TOOLS_DOCUMENTOS = new System.Windows.Forms.ToolStripMenuItem();
             this.administradorDocumentosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_CXP_TOOLS_ALIADOS = new System.Windows.Forms.ToolStripMenuItem();
             this.cajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +95,7 @@
             this.MENU_REPORTES_MAESTRO_PROVEEDOR = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_MAESTRO_CONCEPTO = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_MAESTRO_CAJA = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO = new System.Windows.Forms.ToolStripMenuItem();
             this.cxPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aliadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,7 +123,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.MENU_REPORTES_MAESTRO_BENEFICIARIO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -186,11 +186,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(662, 1);
+            this.panel2.Location = new System.Drawing.Point(661, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(221, 52);
+            this.panel2.Size = new System.Drawing.Size(222, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -201,7 +201,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(217, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(218, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -216,7 +216,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(342, 52);
+            this.panel7.Size = new System.Drawing.Size(341, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -235,7 +235,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(338, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(337, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -269,7 +269,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(256, 22);
+            this.panel14.Size = new System.Drawing.Size(255, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -279,7 +279,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(252, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(251, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -315,7 +315,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(256, 22);
+            this.panel16.Size = new System.Drawing.Size(255, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -325,7 +325,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(252, 18);
+            this.L_HOST.Size = new System.Drawing.Size(251, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -334,7 +334,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(345, 1);
+            this.panel17.Location = new System.Drawing.Point(344, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -405,7 +405,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(547, 1);
+            this.panel20.Location = new System.Drawing.Point(546, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -634,19 +634,19 @@
             // ctasXPagarToolStripMenuItem
             // 
             this.ctasXPagarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsCuentasPorPagarToolStripMenuItem,
             this.administradorDocumentosToolStripMenuItem1,
-            this.MENU_CXP_TOOLS_ALIADOS});
+            this.MENU_CXP_TOOLS_ALIADOS,
+            this.MENU_CXP_TOOLS_DOCUMENTOS});
             this.ctasXPagarToolStripMenuItem.Name = "ctasXPagarToolStripMenuItem";
             this.ctasXPagarToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.ctasXPagarToolStripMenuItem.Text = "CxP";
             // 
-            // toolsCuentasPorPagarToolStripMenuItem
+            // MENU_CXP_TOOLS_DOCUMENTOS
             // 
-            this.toolsCuentasPorPagarToolStripMenuItem.Name = "toolsCuentasPorPagarToolStripMenuItem";
-            this.toolsCuentasPorPagarToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.toolsCuentasPorPagarToolStripMenuItem.Text = "Tools Cuentas Por Pagar";
-            this.toolsCuentasPorPagarToolStripMenuItem.Visible = false;
+            this.MENU_CXP_TOOLS_DOCUMENTOS.Name = "MENU_CXP_TOOLS_DOCUMENTOS";
+            this.MENU_CXP_TOOLS_DOCUMENTOS.Size = new System.Drawing.Size(221, 22);
+            this.MENU_CXP_TOOLS_DOCUMENTOS.Text = "Tools Documentos";
+            this.MENU_CXP_TOOLS_DOCUMENTOS.Click += new System.EventHandler(this.MENU_CXP_TOOLS_DOCUMENTOS_Click);
             // 
             // administradorDocumentosToolStripMenuItem1
             // 
@@ -712,7 +712,7 @@
             this.MENU_REPORTES_DOCUMENTOS_RET_IVA,
             this.MENU_REPORTES_DOCUMENTOS_RET_ISLR});
             this.documentosToolStripMenuItem1.Name = "documentosToolStripMenuItem1";
-            this.documentosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.documentosToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.documentosToolStripMenuItem1.Text = "Documentos";
             // 
             // MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT
@@ -756,29 +756,36 @@
             this.MENU_REPORTES_MAESTRO_CAJA,
             this.MENU_REPORTES_MAESTRO_BENEFICIARIO});
             this.proveedoreToolStripMenuItem.Name = "proveedoreToolStripMenuItem";
-            this.proveedoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.proveedoreToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.proveedoreToolStripMenuItem.Text = "Maestro";
             // 
             // MENU_REPORTES_MAESTRO_PROVEEDOR
             // 
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Name = "MENU_REPORTES_MAESTRO_PROVEEDOR";
-            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Text = "Proveedores";
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_PROVEEDOR_Click);
             // 
             // MENU_REPORTES_MAESTRO_CONCEPTO
             // 
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Name = "MENU_REPORTES_MAESTRO_CONCEPTO";
-            this.MENU_REPORTES_MAESTRO_CONCEPTO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_CONCEPTO.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Text = "Conceptos";
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_CONCEPTO_Click);
             // 
             // MENU_REPORTES_MAESTRO_CAJA
             // 
             this.MENU_REPORTES_MAESTRO_CAJA.Name = "MENU_REPORTES_MAESTRO_CAJA";
-            this.MENU_REPORTES_MAESTRO_CAJA.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_CAJA.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_CAJA.Text = "Cajas";
             this.MENU_REPORTES_MAESTRO_CAJA.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_CAJA_Click);
+            // 
+            // MENU_REPORTES_MAESTRO_BENEFICIARIO
+            // 
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Name = "MENU_REPORTES_MAESTRO_BENEFICIARIO";
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Size = new System.Drawing.Size(139, 22);
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Text = "Beneficiario";
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_BENEFICIARIO_Click);
             // 
             // cxPToolStripMenuItem
             // 
@@ -786,7 +793,7 @@
             this.aliadoToolStripMenuItem,
             this.documentoToolStripMenuItem});
             this.cxPToolStripMenuItem.Name = "cxPToolStripMenuItem";
-            this.cxPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cxPToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cxPToolStripMenuItem.Text = "CxP";
             // 
             // aliadoToolStripMenuItem
@@ -795,7 +802,7 @@
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO,
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV});
             this.aliadoToolStripMenuItem.Name = "aliadoToolStripMenuItem";
-            this.aliadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aliadoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.aliadoToolStripMenuItem.Text = "Aliado";
             // 
             // MENU_REPORTES_CXP_ALIADO_ANTICIPO
@@ -815,7 +822,7 @@
             // documentoToolStripMenuItem
             // 
             this.documentoToolStripMenuItem.Name = "documentoToolStripMenuItem";
-            this.documentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.documentoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.documentoToolStripMenuItem.Text = "Documento";
             // 
             // cajaToolStripMenuItem
@@ -824,7 +831,7 @@
             this.MENU_REPORTES_CAJA_EDO_CTA,
             this.MENU_REPORTES_CAJA_GENERAL_MOV});
             this.cajaToolStripMenuItem.Name = "cajaToolStripMenuItem";
-            this.cajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cajaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cajaToolStripMenuItem.Text = "Caja";
             // 
             // MENU_REPORTES_CAJA_EDO_CTA
@@ -846,13 +853,13 @@
             this.MENU_REPORTES_BENEFICIARIO.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MENU_REPORTES_BENEFICIARIO_MOV});
             this.MENU_REPORTES_BENEFICIARIO.Name = "MENU_REPORTES_BENEFICIARIO";
-            this.MENU_REPORTES_BENEFICIARIO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_BENEFICIARIO.Size = new System.Drawing.Size(142, 22);
             this.MENU_REPORTES_BENEFICIARIO.Text = "Beneficiario";
             // 
             // MENU_REPORTES_BENEFICIARIO_MOV
             // 
             this.MENU_REPORTES_BENEFICIARIO_MOV.Name = "MENU_REPORTES_BENEFICIARIO_MOV";
-            this.MENU_REPORTES_BENEFICIARIO_MOV.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_BENEFICIARIO_MOV.Size = new System.Drawing.Size(144, 22);
             this.MENU_REPORTES_BENEFICIARIO_MOV.Text = "Movimientos";
             this.MENU_REPORTES_BENEFICIARIO_MOV.Click += new System.EventHandler(this.MENU_REPORTES_BENEFICIARIO_MOV_Click);
             // 
@@ -1066,13 +1073,6 @@
             this.panel10.Size = new System.Drawing.Size(120, 335);
             this.panel10.TabIndex = 0;
             // 
-            // MENU_REPORTES_MAESTRO_BENEFICIARIO
-            // 
-            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Name = "MENU_REPORTES_MAESTRO_BENEFICIARIO";
-            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Size = new System.Drawing.Size(152, 22);
-            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Text = "Beneficiario";
-            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_BENEFICIARIO_Click);
-            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1175,7 +1175,7 @@
         private System.Windows.Forms.ToolStripMenuItem MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO;
         private System.Windows.Forms.ToolStripMenuItem MENU_MAESTRO_CONCEPTOS;
         private System.Windows.Forms.ToolStripMenuItem ctasXPagarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsCuentasPorPagarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MENU_CXP_TOOLS_DOCUMENTOS;
         private System.Windows.Forms.ToolStripMenuItem MENU_CXP_TOOLS_ALIADOS;
         private System.Windows.Forms.ToolStripMenuItem documentosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT;

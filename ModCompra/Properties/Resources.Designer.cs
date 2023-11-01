@@ -553,6 +553,16 @@ namespace ModCompra.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_pago_transf_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_pago_transf_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_price {
             get {
                 object obj = ResourceManager.GetObject("bt_price", resourceCulture);

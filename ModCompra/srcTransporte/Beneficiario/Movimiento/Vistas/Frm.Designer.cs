@@ -974,7 +974,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.3487F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.6513F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel12.Controls.Add(this.panel37, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.panel38, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.panel39, 1, 1);
@@ -1020,7 +1020,7 @@
             this.panel38.Margin = new System.Windows.Forms.Padding(0);
             this.panel38.Name = "panel38";
             this.panel38.Padding = new System.Windows.Forms.Padding(2);
-            this.panel38.Size = new System.Drawing.Size(122, 22);
+            this.panel38.Size = new System.Drawing.Size(121, 22);
             this.panel38.TabIndex = 1;
             // 
             // L_MONTO_PEND_MON_DIV
@@ -1029,7 +1029,7 @@
             this.L_MONTO_PEND_MON_DIV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_MONTO_PEND_MON_DIV.Location = new System.Drawing.Point(2, 2);
             this.L_MONTO_PEND_MON_DIV.Name = "L_MONTO_PEND_MON_DIV";
-            this.L_MONTO_PEND_MON_DIV.Size = new System.Drawing.Size(118, 18);
+            this.L_MONTO_PEND_MON_DIV.Size = new System.Drawing.Size(117, 18);
             this.L_MONTO_PEND_MON_DIV.TabIndex = 3;
             this.L_MONTO_PEND_MON_DIV.Text = "Monto Bs:";
             this.L_MONTO_PEND_MON_DIV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1064,7 +1064,7 @@
             this.panel40.Margin = new System.Windows.Forms.Padding(0);
             this.panel40.Name = "panel40";
             this.panel40.Padding = new System.Windows.Forms.Padding(2);
-            this.panel40.Size = new System.Drawing.Size(122, 22);
+            this.panel40.Size = new System.Drawing.Size(121, 22);
             this.panel40.TabIndex = 3;
             // 
             // L_MONTO_PEND_MON_ACT
@@ -1073,7 +1073,7 @@
             this.L_MONTO_PEND_MON_ACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_MONTO_PEND_MON_ACT.Location = new System.Drawing.Point(2, 2);
             this.L_MONTO_PEND_MON_ACT.Name = "L_MONTO_PEND_MON_ACT";
-            this.L_MONTO_PEND_MON_ACT.Size = new System.Drawing.Size(118, 18);
+            this.L_MONTO_PEND_MON_ACT.Size = new System.Drawing.Size(117, 18);
             this.L_MONTO_PEND_MON_ACT.TabIndex = 3;
             this.L_MONTO_PEND_MON_ACT.Text = "Monto Bs:";
             this.L_MONTO_PEND_MON_ACT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
