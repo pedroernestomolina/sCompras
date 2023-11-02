@@ -35,7 +35,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
             DGV.MultiSelect = false;
 
             var xc1 = new DataGridViewTextBoxColumn();
-            xc1.DataPropertyName = "Metodo";
+            xc1.DataPropertyName = "TitMedioPago";
             xc1.HeaderText = "Medio Pago";
             xc1.Visible = true;
             xc1.MinimumWidth = 100;
@@ -46,7 +46,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
             xc1.ReadOnly = true;
 
             var xc11 = new DataGridViewTextBoxColumn();
-            xc11.DataPropertyName = "Monto";
+            xc11.DataPropertyName = "TitMonto";
             xc11.HeaderText = "Monto";
             xc11.Visible = true;
             xc11.MinimumWidth = 100;
@@ -58,7 +58,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
             xc11.ReadOnly = true;
 
             var xc12 = new DataGridViewTextBoxColumn();
-            xc12.DataPropertyName = "Tasa";
+            xc12.DataPropertyName = "TitTasa";
             xc12.HeaderText = "Tasa";
             xc12.Visible = true;
             xc12.MinimumWidth = 60;
@@ -67,9 +67,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
             xc12.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             xc12.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             xc12.ReadOnly = true;
+            xc12.DefaultCellStyle.Format = "n2";
 
             var xc2 = new DataGridViewTextBoxColumn();
-            xc2.DataPropertyName = "Importe";
+            xc2.DataPropertyName = "TitImporte";
             xc2.HeaderText = "Importe";
             xc2.Visible = true;
             xc2.Width = 120;
@@ -295,13 +296,17 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
         private void AgregarMetPago()
         {
             _controlador.HndMetPag.AgregarMet();
+            ActualizarTotalCaja();
         }
         private void EditarMetPago()
         {
+            _controlador.HndMetPag.EditarMet();
+            ActualizarTotalCaja();
         }
         private void EliminarMetPago()
         {
             _controlador.HndMetPag.EliminarMet();
+            ActualizarTotalCaja();
         }
 
 

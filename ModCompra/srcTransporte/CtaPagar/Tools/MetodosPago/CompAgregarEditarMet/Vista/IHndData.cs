@@ -10,6 +10,12 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
 {
     public interface IHndData
     {
+        string TitMedioPago { get; }
+        decimal TitMonto { get; }
+        decimal TitTasa { get; }
+        decimal TitImporte { get; }
+
+        decimal Get_MontoResta { get; }
         Utils.FiltrosCB.SinBusqueda.MedioPago.IMedioPago MedioPago { get; }
         decimal Get_Monto { get; }
         decimal Get_Factor { get; }
@@ -21,7 +27,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
         bool Get_AplicaFactor { get; }
         string Get_Referencia { get; }
         string Get_Lote { get; }
-        bool GetAplicaMovCaja { get; }
+        bool Get_AplicaMovCaja { get; }
 
 
         void setMonto(decimal monto);
@@ -36,5 +42,9 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
         void setLote(string lote);
         void setReferencia(string referenc);
         void setAplicaMovCaja(bool modo);
+
+        void Inicializa();
+        void Cargardata();
+        bool DataIsOK();
     }
 }

@@ -62,7 +62,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
         public void ActualizarSaldoCaja()
         {
             _hndMetPag.setMontoPagarDiv(_hndData.Get_MontoPag);
-            _hndCaja.setMontoPendDiv(_hndData.Get_MontoPag);
+            _hndCaja.setMontoPendDiv(_hndMetPag.Get_ImporteMovCaja);
             _hndCaja.setFactorCambio(_hndData.Get_TasaFactorCambio);
             _hndCaja.ActualizarSaldosPend();
         }

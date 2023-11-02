@@ -15,20 +15,13 @@ namespace ModCompra.Utils.FiltrosCB.SinBusqueda.MedioPago
         }
         public void ObtenerData()
         {
-            try
+            var _lst = new List<Idata>();
+            var r01 = Sistema.MyData.Transporte_MedioPago_GetLista();
+            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
             {
-                var _lst = new List<Idata>();
-                var r01 = Sistema.MyData.tran.Transporte_Aliado_GetLista();
-                foreach (var rg in r01.Lista.OrderBy(o => o.nombreRazonSocial).ToList())
-                {
-                    _lst.Add(new data(rg));
-                }
-                this.CargarData(_lst);
+                _lst.Add(new data(rg));
             }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
+            this.CargarData(_lst);
         }
     }
 }

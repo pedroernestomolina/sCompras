@@ -515,11 +515,11 @@
     <Compile Include="srcTransporte\CtaPagar\Tools\IHndCtasPend.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\IHndTool.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Handler\baseAgregarEditar.cs" />
-    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Agregar\IMetAgregar.cs" />
-    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Agregar\MetAgregar.cs" />
-    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\dataItem.cs" />
-    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Editar\IMetEditar.cs" />
-    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Editar\MetEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Handler\ImpEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Handler\ImpAgregar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Handler\ImpHndData.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\IEditar.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\IAgregar.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\IAgregarEditar.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\IHndData.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\Frm.cs">
@@ -528,7 +528,6 @@
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\MetodoCobro\Metodo.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompLista\IitemLista.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompLista\ILista.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompLista\ImpLista.cs" />
@@ -857,6 +856,7 @@
     <Compile Include="Utils\FiltrosCB\ICtrlConBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\Idata.cs" />
     <Compile Include="Utils\FiltrosCB\ITextoBuscar.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\IMedioPago.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\data.cs" />

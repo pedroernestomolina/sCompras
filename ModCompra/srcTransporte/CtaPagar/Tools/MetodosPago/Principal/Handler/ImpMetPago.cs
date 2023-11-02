@@ -19,7 +19,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.Principal.Handler
         public BindingSource Get_Source { get { return _lista.Get_Source; } }
         public decimal Get_MontoPagar { get { return _montoPagarDiv; } }
         public decimal Get_MontoPend { get { return _montoPendDiv; } }
-        public decimal Get_MontoRecibido { get { return _montoRecibidoDiv; } }
+        public decimal Get_MontoRecibido { get { return _lista.Get_Importe; } }
+        public decimal Get_ImporteMovCaja { get { return _lista.Get_ImporteMovCaja; } }
 
 
         public ImpMetPago()
@@ -37,15 +38,48 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.Principal.Handler
         public void setMontoPagarDiv(decimal monto)
         {
             _montoPagarDiv = monto;
-            _montoPendDiv = monto;
+            _montoPendDiv = monto - _lista.Get_Importe;
         }
-
 
         public void AgregarMet()
         {
+           CompAgregarEditarMet.Vista.IAgregar _agMet = new CompAgregarEditarMet.Handler.ImpAgregar();
+            _agMet.Inicializa();
+            _agMet.setMontoPend(_montoPendDiv);
+            _agMet.Inicia();
+            if (_agMet.ProcesarIsOK)
+            {
+                _lista.Agregar(_agMet.HndData);
+                _montoPendDiv = _montoPagarDiv - _lista.Get_Importe;
+            }
+        }
+        public void EditarMet()
+        {
+            if (_lista.ItemActual == null)
+            {
+                return;
+            }
+            var it = _lista.ItemActual;
+            CompAgregarEditarMet.Vista.IEditar _edMet = new CompAgregarEditarMet.Handler.ImpEditar();
+            _edMet.Inicializa();
+            _edMet.setItemEditar(it);
+            _edMet.setMontoPend(_montoPendDiv);
+            _edMet.Inicia();
+            if (_edMet.ProcesarIsOK)
+            {
+                _lista.EliminarItem(it);
+                _lista.Agregar(_edMet.HndData);
+                _montoPendDiv = _montoPagarDiv - _lista.Get_Importe;
+            }
         }
         public void EliminarMet()
         {
+            if (_lista.ItemActual == null)
+            {
+                return;
+            }
+            _lista.EliminarItemActual();
+            _montoPendDiv = _montoPagarDiv - _lista.Get_Importe;
         }
     }
 }

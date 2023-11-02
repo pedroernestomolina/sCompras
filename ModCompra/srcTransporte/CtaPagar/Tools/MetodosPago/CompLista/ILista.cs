@@ -12,7 +12,12 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompLista
     {
         BindingSource Get_Source { get; }
         object ItemActual { get; }
+        decimal Get_Importe { get; }
+        decimal Get_ImporteMovCaja { get; }
 
         void Inicializa();
+        void Agregar(object data);
+        void EliminarItemActual();
+        void EliminarItem(object it);
     }
 }

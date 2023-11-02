@@ -19,7 +19,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
         private void InicializaCombo()
         {
             CB_METODO_PAGO.ValueMember = "id";
-            CB_METODO_PAGO.DisplayMember = "descripcion";
+            CB_METODO_PAGO.DisplayMember = "desc";
         }
         public Frm()
         {
@@ -35,7 +35,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
         {
             _modoInicializa = true;
             L_TITULO.Text = _controlador.Get_TituloFicha;
-            L_RESTA.Text = _controlador.Get_MontoResta.ToString("n2");
+            L_RESTA.Text = _controlador.HndData.Get_MontoResta.ToString("n2");
             CB_METODO_PAGO.DataSource = _controlador.HndData.MedioPago.GetSource ;
             CB_METODO_PAGO.SelectedValue = _controlador.HndData.MedioPago.GetId;
             TB_MONTO.Text = _controlador.HndData.Get_Monto.ToString();
@@ -48,7 +48,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
             TB_DETALLE_OPERACION.Text = _controlador.HndData.Get_DetalleOp;
             TB_REF.Text = _controlador.HndData.Get_Referencia;
             TB_LOTE.Text = _controlador.HndData.Get_Lote;
-            CHB_APLICA_MOV_CAJA.Checked = _controlador.HndData.GetAplicaMovCaja;
+            CHB_APLICA_MOV_CAJA.Checked = _controlador.HndData.Get_AplicaMovCaja;
             _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -82,10 +82,17 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
             var _monto = decimal.Parse(TB_MONTO.Text);
             _controlador.HndData.setMonto(_monto);
         }
+        private void TB_MONTO_Validating(object sender, CancelEventArgs e)
+        {
+        }
         private void TB_FACTOR_CAMBIO_Leave(object sender, EventArgs e)
         {
             var _factor = decimal.Parse(TB_FACTOR_CAMBIO.Text);
             _controlador.HndData.setFactor(_factor);
+        }
+        private void TB_FACTOR_CAMBIO_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.HndData.Get_Factor <= 0m;
         }
         private void TB_BANCO_Leave(object sender, EventArgs e)
         {
@@ -110,6 +117,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
         private void DTP_FECHA_OPERACION_Leave(object sender, EventArgs e)
         {
             _controlador.HndData.setFechaOperacion(DTP_FECHA_OPERACION.Value);
+        }
+        private void DTP_FECHA_OPERACION_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = _controlador.HndData.Get_FechaOp > _controlador.Get_FechaServidor;
         }
         private void TB_DETALLE_OPERACION_Leave(object sender, EventArgs e)
         {

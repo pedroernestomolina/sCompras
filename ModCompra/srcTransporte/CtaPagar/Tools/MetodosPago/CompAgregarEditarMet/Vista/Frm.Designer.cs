@@ -291,6 +291,7 @@
             this.TB_MONTO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TB_MONTO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
             this.TB_MONTO.Leave += new System.EventHandler(this.TB_MONTO_Leave);
+            this.TB_MONTO.Validating += new System.ComponentModel.CancelEventHandler(this.TB_MONTO_Validating);
             // 
             // panel16
             // 
@@ -544,6 +545,7 @@
             this.DTP_FECHA_OPERACION.TabIndex = 0;
             this.DTP_FECHA_OPERACION.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
             this.DTP_FECHA_OPERACION.Leave += new System.EventHandler(this.DTP_FECHA_OPERACION_Leave);
+            this.DTP_FECHA_OPERACION.Validating += new System.ComponentModel.CancelEventHandler(this.DTP_FECHA_OPERACION_Validating);
             // 
             // panel26
             // 
@@ -595,6 +597,7 @@
             this.TB_FACTOR_CAMBIO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.TB_FACTOR_CAMBIO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
             this.TB_FACTOR_CAMBIO.Leave += new System.EventHandler(this.TB_FACTOR_CAMBIO_Leave);
+            this.TB_FACTOR_CAMBIO.Validating += new System.ComponentModel.CancelEventHandler(this.TB_FACTOR_CAMBIO_Validating);
             // 
             // panel28
             // 
@@ -732,6 +735,7 @@
             this.TB_LOTE.Size = new System.Drawing.Size(174, 22);
             this.TB_LOTE.TabIndex = 21;
             this.TB_LOTE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
+            this.TB_LOTE.Leave += new System.EventHandler(this.TB_LOTE_Leave);
             // 
             // panel6
             // 
@@ -777,6 +781,7 @@
             this.TB_REF.Size = new System.Drawing.Size(174, 22);
             this.TB_REF.TabIndex = 2;
             this.TB_REF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Frm_KeyDown);
+            this.TB_REF.Leave += new System.EventHandler(this.TB_REF_Leave);
             // 
             // panel11
             // 

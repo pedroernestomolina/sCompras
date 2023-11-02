@@ -18,10 +18,10 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    var sql_1 = @"select 
-                                        auto as id, 
-                                        codigo, 
-                                        nombre 
+                    var sql_1 = @"select
+                                    auto as id, 
+                                    codigo, 
+                                    nombre 
                                 from empresa_medios 
                                 where estatus_pago='1'";
                     var sql = sql_1;
@@ -45,9 +45,9 @@ namespace ProvLibCompra
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
                     var sql_1 = @"select 
-                                        auto as id, 
-                                        codigo, 
-                                        nombre 
+                                    auto as id, 
+                                    codigo, 
+                                    nombre 
                                 from empresa_medios 
                                 where auto=@id";
                     var sql = sql_1;

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace DtoLibTransporte.MedioPago.Entidad
 {
-    public class Ficha
+    public class Ficha: baseFicha
     {
-        public string id { get; set; }
-        public string codigo { get; set; }
-        public string nombre { get; set; }
+        public Ficha()
+            :base()
+        {
+        }
     }
 }

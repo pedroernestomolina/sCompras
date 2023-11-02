@@ -12,7 +12,9 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMe
     {
         string Get_TituloFicha { get; }
         decimal Get_MontoResta { get; }
-
+        DateTime Get_FechaServidor { get; }
         IHndData HndData { get; }
+
+        void setMontoPend(decimal monto);
     }
 }

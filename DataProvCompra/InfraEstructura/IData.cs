@@ -20,7 +20,8 @@ namespace DataProvCompra.InfraEstructura
         Transporte.ITranspDocumentoRet,
         Transporte.ITranspBeneficiario,
         Transporte.ITranspBeneficiarioMov,
-        Transporte.ITranspCxpDoc
+        Transporte.ITranspCxpDoc,
+        Transporte.ITranspMedioPago
     {
         OOB.ResultadoEntidad<DateTime> 
             FechaServidor();

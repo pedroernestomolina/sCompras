@@ -14,9 +14,11 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.Principal.Vista
         decimal Get_MontoPagar { get; }
         decimal Get_MontoPend { get; }
         decimal Get_MontoRecibido { get; }
+        decimal Get_ImporteMovCaja { get; }
 
         void Inicializa();
         void AgregarMet();
+        void EditarMet();
         void EliminarMet();
 
         void setMontoPagarDiv(decimal monto);

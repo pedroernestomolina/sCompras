@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace DtoLibTransporte.MedioPago.Lista
+namespace OOB.LibCompra.Transporte.MedioPago.Entidad
 {
     public class Ficha: baseFicha
     {
