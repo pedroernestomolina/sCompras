@@ -52,13 +52,11 @@
             this.panel25 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
-            this.TB_MONTO_PAG = new LibControles.NumeroDecimal();
             this.panel27 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.panel29 = new System.Windows.Forms.Panel();
-            this.TB_FACTOR_PAG = new LibControles.NumeroDecimal();
             this.panel30 = new System.Windows.Forms.Panel();
             this.L_MONTO_MONEDA_ACT = new System.Windows.Forms.Label();
             this.panel31 = new System.Windows.Forms.Panel();
@@ -120,37 +118,37 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.panel22 = new System.Windows.Forms.Panel();
-            this.L_MONTO = new System.Windows.Forms.Label();
+            this.L_METPAG_MONTO = new System.Windows.Forms.Label();
             this.panel34 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel35 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel36 = new System.Windows.Forms.Panel();
-            this.L_METODO_PAGO = new System.Windows.Forms.Label();
+            this.L_METPAG_METODO = new System.Windows.Forms.Label();
             this.panel37 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel38 = new System.Windows.Forms.Panel();
-            this.L_BANCO = new System.Windows.Forms.Label();
+            this.L_METPAG_BANCO = new System.Windows.Forms.Label();
             this.panel39 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel40 = new System.Windows.Forms.Panel();
-            this.L_NRO_CTA = new System.Windows.Forms.Label();
+            this.L_METPAG_NRO_CTA = new System.Windows.Forms.Label();
             this.panel41 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.panel42 = new System.Windows.Forms.Panel();
-            this.L_REF = new System.Windows.Forms.Label();
+            this.L_METPAG_NRO_REF = new System.Windows.Forms.Label();
             this.panel43 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.L_FECHA_OPERACION = new System.Windows.Forms.Label();
             this.panel44 = new System.Windows.Forms.Panel();
-            this.L_FECHA_OP = new System.Windows.Forms.Label();
+            this.L_METPAG_FECHA_OPERACION = new System.Windows.Forms.Label();
             this.panel45 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.panel46 = new System.Windows.Forms.Panel();
-            this.L_APLICA_FACTOR = new System.Windows.Forms.Label();
+            this.L_METPAG_APLICA_FACTOR_CAMBIO = new System.Windows.Forms.Label();
             this.panel47 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.panel57 = new System.Windows.Forms.Panel();
-            this.L_DETALLE_OP = new System.Windows.Forms.Label();
+            this.L_METPAG_DETALLE_OPERACION = new System.Windows.Forms.Label();
             this.panel58 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.panel59 = new System.Windows.Forms.Panel();
@@ -193,6 +191,12 @@
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
+            this.TB_MONTO_PAG = new LibControles.NumeroDecimal();
+            this.TB_FACTOR_PAG = new LibControles.NumeroDecimal();
+            this.panel81 = new System.Windows.Forms.Panel();
+            this.panel82 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.L_DOC_MONTO_PEND = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -298,6 +302,8 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel81.SuspendLayout();
+            this.panel82.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -623,21 +629,6 @@
             this.panel26.Size = new System.Drawing.Size(303, 28);
             this.panel26.TabIndex = 5;
             // 
-            // TB_MONTO_PAG
-            // 
-            this.TB_MONTO_PAG.BackColor = System.Drawing.Color.Yellow;
-            this.TB_MONTO_PAG.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_MONTO_PAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_MONTO_PAG.Location = new System.Drawing.Point(2, 2);
-            this.TB_MONTO_PAG.MaxLength = 12;
-            this.TB_MONTO_PAG.Name = "TB_MONTO_PAG";
-            this.TB_MONTO_PAG.Size = new System.Drawing.Size(91, 22);
-            this.TB_MONTO_PAG.TabIndex = 0;
-            this.TB_MONTO_PAG.Text = "0";
-            this.TB_MONTO_PAG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_MONTO_PAG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
-            this.TB_MONTO_PAG.Leave += new System.EventHandler(this.TB_MONTO_PAG_Leave);
-            // 
             // panel27
             // 
             this.panel27.Controls.Add(this.label9);
@@ -697,22 +688,6 @@
             this.panel29.Padding = new System.Windows.Forms.Padding(2);
             this.panel29.Size = new System.Drawing.Size(98, 28);
             this.panel29.TabIndex = 0;
-            // 
-            // TB_FACTOR_PAG
-            // 
-            this.TB_FACTOR_PAG.BackColor = System.Drawing.Color.Yellow;
-            this.TB_FACTOR_PAG.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_FACTOR_PAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_FACTOR_PAG.Location = new System.Drawing.Point(2, 2);
-            this.TB_FACTOR_PAG.MaxLength = 12;
-            this.TB_FACTOR_PAG.Name = "TB_FACTOR_PAG";
-            this.TB_FACTOR_PAG.Size = new System.Drawing.Size(90, 22);
-            this.TB_FACTOR_PAG.TabIndex = 1;
-            this.TB_FACTOR_PAG.Text = "0";
-            this.TB_FACTOR_PAG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_FACTOR_PAG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
-            this.TB_FACTOR_PAG.Leave += new System.EventHandler(this.TB_FACTOR_PAG_Leave);
-            this.TB_FACTOR_PAG.Validating += new System.ComponentModel.CancelEventHandler(this.TB_FACTOR_PAG_Validating);
             // 
             // panel30
             // 
@@ -848,19 +823,22 @@
             this.tableLayoutPanel19.Controls.Add(this.panel76, 1, 4);
             this.tableLayoutPanel19.Controls.Add(this.panel77, 0, 5);
             this.tableLayoutPanel19.Controls.Add(this.panel78, 1, 5);
-            this.tableLayoutPanel19.Controls.Add(this.panel79, 0, 6);
-            this.tableLayoutPanel19.Controls.Add(this.panel80, 1, 6);
+            this.tableLayoutPanel19.Controls.Add(this.panel79, 0, 7);
+            this.tableLayoutPanel19.Controls.Add(this.panel80, 1, 7);
+            this.tableLayoutPanel19.Controls.Add(this.panel81, 0, 6);
+            this.tableLayoutPanel19.Controls.Add(this.panel82, 1, 6);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel19.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 8;
+            this.tableLayoutPanel19.RowCount = 9;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel19.Size = new System.Drawing.Size(380, 324);
@@ -1114,11 +1092,11 @@
             // 
             this.panel79.Controls.Add(this.label27);
             this.panel79.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel79.Location = new System.Drawing.Point(1, 169);
+            this.panel79.Location = new System.Drawing.Point(1, 199);
             this.panel79.Margin = new System.Windows.Forms.Padding(1);
             this.panel79.Name = "panel79";
             this.panel79.Padding = new System.Windows.Forms.Padding(2);
-            this.panel79.Size = new System.Drawing.Size(94, 76);
+            this.panel79.Size = new System.Drawing.Size(94, 61);
             this.panel79.TabIndex = 11;
             // 
             // label27
@@ -1127,7 +1105,7 @@
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(2, 2);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(90, 72);
+            this.label27.Size = new System.Drawing.Size(90, 57);
             this.label27.TabIndex = 4;
             this.label27.Text = "Motivo:";
             this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1136,11 +1114,11 @@
             // 
             this.panel80.Controls.Add(this.L_DOC_MOTIVO);
             this.panel80.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel80.Location = new System.Drawing.Point(97, 169);
+            this.panel80.Location = new System.Drawing.Point(97, 199);
             this.panel80.Margin = new System.Windows.Forms.Padding(1);
             this.panel80.Name = "panel80";
             this.panel80.Padding = new System.Windows.Forms.Padding(2);
-            this.panel80.Size = new System.Drawing.Size(282, 76);
+            this.panel80.Size = new System.Drawing.Size(282, 61);
             this.panel80.TabIndex = 12;
             // 
             // L_DOC_MOTIVO
@@ -1149,7 +1127,7 @@
             this.L_DOC_MOTIVO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_DOC_MOTIVO.Location = new System.Drawing.Point(2, 2);
             this.L_DOC_MOTIVO.Name = "L_DOC_MOTIVO";
-            this.L_DOC_MOTIVO.Size = new System.Drawing.Size(278, 72);
+            this.L_DOC_MOTIVO.Size = new System.Drawing.Size(278, 57);
             this.L_DOC_MOTIVO.TabIndex = 2;
             this.L_DOC_MOTIVO.Text = "label29";
             // 
@@ -1474,7 +1452,7 @@
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel22.Controls.Add(this.L_MONTO);
+            this.panel22.Controls.Add(this.L_METPAG_MONTO);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel22.Location = new System.Drawing.Point(157, 69);
             this.panel22.Margin = new System.Windows.Forms.Padding(1);
@@ -1483,16 +1461,16 @@
             this.panel22.Size = new System.Drawing.Size(233, 24);
             this.panel22.TabIndex = 3;
             // 
-            // L_MONTO
+            // L_METPAG_MONTO
             // 
-            this.L_MONTO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_MONTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_MONTO.Location = new System.Drawing.Point(2, 2);
-            this.L_MONTO.Name = "L_MONTO";
-            this.L_MONTO.Size = new System.Drawing.Size(229, 20);
-            this.L_MONTO.TabIndex = 1;
-            this.L_MONTO.Text = "label13";
-            this.L_MONTO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_MONTO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_MONTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_MONTO.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_MONTO.Name = "L_METPAG_MONTO";
+            this.L_METPAG_MONTO.Size = new System.Drawing.Size(229, 20);
+            this.L_METPAG_MONTO.TabIndex = 1;
+            this.L_METPAG_MONTO.Text = "label13";
+            this.L_METPAG_MONTO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel34
             // 
@@ -1541,7 +1519,7 @@
             // panel36
             // 
             this.panel36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel36.Controls.Add(this.L_METODO_PAGO);
+            this.panel36.Controls.Add(this.L_METPAG_METODO);
             this.panel36.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel36.Location = new System.Drawing.Point(157, 41);
             this.panel36.Margin = new System.Windows.Forms.Padding(1);
@@ -1550,16 +1528,16 @@
             this.panel36.Size = new System.Drawing.Size(233, 26);
             this.panel36.TabIndex = 1;
             // 
-            // L_METODO_PAGO
+            // L_METPAG_METODO
             // 
-            this.L_METODO_PAGO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_METODO_PAGO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_METODO_PAGO.Location = new System.Drawing.Point(2, 2);
-            this.L_METODO_PAGO.Name = "L_METODO_PAGO";
-            this.L_METODO_PAGO.Size = new System.Drawing.Size(229, 22);
-            this.L_METODO_PAGO.TabIndex = 0;
-            this.L_METODO_PAGO.Text = "label13";
-            this.L_METODO_PAGO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_METODO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_METODO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_METODO.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_METODO.Name = "L_METPAG_METODO";
+            this.L_METPAG_METODO.Size = new System.Drawing.Size(229, 22);
+            this.L_METPAG_METODO.TabIndex = 0;
+            this.L_METPAG_METODO.Text = "label13";
+            this.L_METPAG_METODO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel37
             // 
@@ -1586,7 +1564,7 @@
             // panel38
             // 
             this.panel38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel38.Controls.Add(this.L_BANCO);
+            this.panel38.Controls.Add(this.L_METPAG_BANCO);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel38.Location = new System.Drawing.Point(157, 137);
             this.panel38.Margin = new System.Windows.Forms.Padding(1);
@@ -1595,16 +1573,16 @@
             this.panel38.Size = new System.Drawing.Size(233, 26);
             this.panel38.TabIndex = 5;
             // 
-            // L_BANCO
+            // L_METPAG_BANCO
             // 
-            this.L_BANCO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_BANCO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_BANCO.Location = new System.Drawing.Point(2, 2);
-            this.L_BANCO.Name = "L_BANCO";
-            this.L_BANCO.Size = new System.Drawing.Size(229, 22);
-            this.L_BANCO.TabIndex = 2;
-            this.L_BANCO.Text = "label14";
-            this.L_BANCO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_BANCO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_BANCO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_BANCO.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_BANCO.Name = "L_METPAG_BANCO";
+            this.L_METPAG_BANCO.Size = new System.Drawing.Size(229, 22);
+            this.L_METPAG_BANCO.TabIndex = 2;
+            this.L_METPAG_BANCO.Text = "label14";
+            this.L_METPAG_BANCO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel39
             // 
@@ -1631,7 +1609,7 @@
             // panel40
             // 
             this.panel40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel40.Controls.Add(this.L_NRO_CTA);
+            this.panel40.Controls.Add(this.L_METPAG_NRO_CTA);
             this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel40.Location = new System.Drawing.Point(157, 165);
             this.panel40.Margin = new System.Windows.Forms.Padding(1);
@@ -1640,16 +1618,16 @@
             this.panel40.Size = new System.Drawing.Size(233, 26);
             this.panel40.TabIndex = 7;
             // 
-            // L_NRO_CTA
+            // L_METPAG_NRO_CTA
             // 
-            this.L_NRO_CTA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_NRO_CTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_NRO_CTA.Location = new System.Drawing.Point(2, 2);
-            this.L_NRO_CTA.Name = "L_NRO_CTA";
-            this.L_NRO_CTA.Size = new System.Drawing.Size(229, 22);
-            this.L_NRO_CTA.TabIndex = 2;
-            this.L_NRO_CTA.Text = "label15";
-            this.L_NRO_CTA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_NRO_CTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_NRO_CTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_NRO_CTA.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_NRO_CTA.Name = "L_METPAG_NRO_CTA";
+            this.L_METPAG_NRO_CTA.Size = new System.Drawing.Size(229, 22);
+            this.L_METPAG_NRO_CTA.TabIndex = 2;
+            this.L_METPAG_NRO_CTA.Text = "label15";
+            this.L_METPAG_NRO_CTA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel41
             // 
@@ -1676,7 +1654,7 @@
             // panel42
             // 
             this.panel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel42.Controls.Add(this.L_REF);
+            this.panel42.Controls.Add(this.L_METPAG_NRO_REF);
             this.panel42.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel42.Location = new System.Drawing.Point(157, 193);
             this.panel42.Margin = new System.Windows.Forms.Padding(1);
@@ -1685,20 +1663,20 @@
             this.panel42.Size = new System.Drawing.Size(233, 26);
             this.panel42.TabIndex = 9;
             // 
-            // L_REF
+            // L_METPAG_NRO_REF
             // 
-            this.L_REF.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_REF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_REF.Location = new System.Drawing.Point(2, 2);
-            this.L_REF.Name = "L_REF";
-            this.L_REF.Size = new System.Drawing.Size(229, 22);
-            this.L_REF.TabIndex = 2;
-            this.L_REF.Text = "label16";
-            this.L_REF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_NRO_REF.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_NRO_REF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_NRO_REF.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_NRO_REF.Name = "L_METPAG_NRO_REF";
+            this.L_METPAG_NRO_REF.Size = new System.Drawing.Size(229, 22);
+            this.L_METPAG_NRO_REF.TabIndex = 2;
+            this.L_METPAG_NRO_REF.Text = "label16";
+            this.L_METPAG_NRO_REF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel43
             // 
-            this.panel43.Controls.Add(this.label13);
+            this.panel43.Controls.Add(this.L_FECHA_OPERACION);
             this.panel43.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel43.Location = new System.Drawing.Point(1, 221);
             this.panel43.Margin = new System.Windows.Forms.Padding(1);
@@ -1707,21 +1685,21 @@
             this.panel43.Size = new System.Drawing.Size(154, 26);
             this.panel43.TabIndex = 10;
             // 
-            // label13
+            // L_FECHA_OPERACION
             // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(2, 2);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(150, 22);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Fecha Operación:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_FECHA_OPERACION.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_FECHA_OPERACION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_FECHA_OPERACION.Location = new System.Drawing.Point(2, 2);
+            this.L_FECHA_OPERACION.Name = "L_FECHA_OPERACION";
+            this.L_FECHA_OPERACION.Size = new System.Drawing.Size(150, 22);
+            this.L_FECHA_OPERACION.TabIndex = 4;
+            this.L_FECHA_OPERACION.Text = "Fecha Operación:";
+            this.L_FECHA_OPERACION.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel44
             // 
             this.panel44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel44.Controls.Add(this.L_FECHA_OP);
+            this.panel44.Controls.Add(this.L_METPAG_FECHA_OPERACION);
             this.panel44.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel44.Location = new System.Drawing.Point(157, 221);
             this.panel44.Margin = new System.Windows.Forms.Padding(1);
@@ -1730,16 +1708,16 @@
             this.panel44.Size = new System.Drawing.Size(233, 26);
             this.panel44.TabIndex = 11;
             // 
-            // L_FECHA_OP
+            // L_METPAG_FECHA_OPERACION
             // 
-            this.L_FECHA_OP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_FECHA_OP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_FECHA_OP.Location = new System.Drawing.Point(2, 2);
-            this.L_FECHA_OP.Name = "L_FECHA_OP";
-            this.L_FECHA_OP.Size = new System.Drawing.Size(229, 22);
-            this.L_FECHA_OP.TabIndex = 2;
-            this.L_FECHA_OP.Text = "label17";
-            this.L_FECHA_OP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_FECHA_OPERACION.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_FECHA_OPERACION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_FECHA_OPERACION.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_FECHA_OPERACION.Name = "L_METPAG_FECHA_OPERACION";
+            this.L_METPAG_FECHA_OPERACION.Size = new System.Drawing.Size(229, 22);
+            this.L_METPAG_FECHA_OPERACION.TabIndex = 2;
+            this.L_METPAG_FECHA_OPERACION.Text = "label17";
+            this.L_METPAG_FECHA_OPERACION.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel45
             // 
@@ -1766,7 +1744,7 @@
             // panel46
             // 
             this.panel46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel46.Controls.Add(this.L_APLICA_FACTOR);
+            this.panel46.Controls.Add(this.L_METPAG_APLICA_FACTOR_CAMBIO);
             this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel46.Location = new System.Drawing.Point(157, 95);
             this.panel46.Margin = new System.Windows.Forms.Padding(1);
@@ -1775,16 +1753,16 @@
             this.panel46.Size = new System.Drawing.Size(233, 40);
             this.panel46.TabIndex = 13;
             // 
-            // L_APLICA_FACTOR
+            // L_METPAG_APLICA_FACTOR_CAMBIO
             // 
-            this.L_APLICA_FACTOR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_APLICA_FACTOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_APLICA_FACTOR.Location = new System.Drawing.Point(2, 2);
-            this.L_APLICA_FACTOR.Name = "L_APLICA_FACTOR";
-            this.L_APLICA_FACTOR.Size = new System.Drawing.Size(229, 36);
-            this.L_APLICA_FACTOR.TabIndex = 2;
-            this.L_APLICA_FACTOR.Text = "label13";
-            this.L_APLICA_FACTOR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.Name = "L_METPAG_APLICA_FACTOR_CAMBIO";
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.Size = new System.Drawing.Size(229, 36);
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.TabIndex = 2;
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.Text = "label13";
+            this.L_METPAG_APLICA_FACTOR_CAMBIO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel47
             // 
@@ -1811,7 +1789,7 @@
             // panel57
             // 
             this.panel57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel57.Controls.Add(this.L_DETALLE_OP);
+            this.panel57.Controls.Add(this.L_METPAG_DETALLE_OPERACION);
             this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel57.Location = new System.Drawing.Point(157, 249);
             this.panel57.Margin = new System.Windows.Forms.Padding(1);
@@ -1821,15 +1799,15 @@
             this.panel57.Size = new System.Drawing.Size(233, 120);
             this.panel57.TabIndex = 15;
             // 
-            // L_DETALLE_OP
+            // L_METPAG_DETALLE_OPERACION
             // 
-            this.L_DETALLE_OP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_DETALLE_OP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_DETALLE_OP.Location = new System.Drawing.Point(2, 2);
-            this.L_DETALLE_OP.Name = "L_DETALLE_OP";
-            this.L_DETALLE_OP.Size = new System.Drawing.Size(229, 116);
-            this.L_DETALLE_OP.TabIndex = 2;
-            this.L_DETALLE_OP.Text = "label18";
+            this.L_METPAG_DETALLE_OPERACION.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_METPAG_DETALLE_OPERACION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_METPAG_DETALLE_OPERACION.Location = new System.Drawing.Point(2, 2);
+            this.L_METPAG_DETALLE_OPERACION.Name = "L_METPAG_DETALLE_OPERACION";
+            this.L_METPAG_DETALLE_OPERACION.Size = new System.Drawing.Size(229, 116);
+            this.L_METPAG_DETALLE_OPERACION.TabIndex = 2;
+            this.L_METPAG_DETALLE_OPERACION.Text = "label18";
             // 
             // panel58
             // 
@@ -2343,6 +2321,81 @@
             this.BT_SALIR.UseVisualStyleBackColor = true;
             this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
             // 
+            // TB_MONTO_PAG
+            // 
+            this.TB_MONTO_PAG.BackColor = System.Drawing.Color.Yellow;
+            this.TB_MONTO_PAG.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_MONTO_PAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_MONTO_PAG.Location = new System.Drawing.Point(2, 2);
+            this.TB_MONTO_PAG.MaxLength = 12;
+            this.TB_MONTO_PAG.Name = "TB_MONTO_PAG";
+            this.TB_MONTO_PAG.Size = new System.Drawing.Size(91, 22);
+            this.TB_MONTO_PAG.TabIndex = 0;
+            this.TB_MONTO_PAG.Text = "0";
+            this.TB_MONTO_PAG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_MONTO_PAG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_MONTO_PAG.Leave += new System.EventHandler(this.TB_MONTO_PAG_Leave);
+            // 
+            // TB_FACTOR_PAG
+            // 
+            this.TB_FACTOR_PAG.BackColor = System.Drawing.Color.Yellow;
+            this.TB_FACTOR_PAG.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_FACTOR_PAG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_FACTOR_PAG.Location = new System.Drawing.Point(2, 2);
+            this.TB_FACTOR_PAG.MaxLength = 12;
+            this.TB_FACTOR_PAG.Name = "TB_FACTOR_PAG";
+            this.TB_FACTOR_PAG.Size = new System.Drawing.Size(90, 22);
+            this.TB_FACTOR_PAG.TabIndex = 1;
+            this.TB_FACTOR_PAG.Text = "0";
+            this.TB_FACTOR_PAG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_FACTOR_PAG.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_FACTOR_PAG.Leave += new System.EventHandler(this.TB_FACTOR_PAG_Leave);
+            this.TB_FACTOR_PAG.Validating += new System.ComponentModel.CancelEventHandler(this.TB_FACTOR_PAG_Validating);
+            // 
+            // panel81
+            // 
+            this.panel81.Controls.Add(this.label13);
+            this.panel81.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel81.Location = new System.Drawing.Point(1, 169);
+            this.panel81.Margin = new System.Windows.Forms.Padding(1);
+            this.panel81.Name = "panel81";
+            this.panel81.Padding = new System.Windows.Forms.Padding(2);
+            this.panel81.Size = new System.Drawing.Size(94, 28);
+            this.panel81.TabIndex = 13;
+            // 
+            // panel82
+            // 
+            this.panel82.Controls.Add(this.L_DOC_MONTO_PEND);
+            this.panel82.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel82.Location = new System.Drawing.Point(97, 169);
+            this.panel82.Margin = new System.Windows.Forms.Padding(1);
+            this.panel82.Name = "panel82";
+            this.panel82.Padding = new System.Windows.Forms.Padding(2);
+            this.panel82.Size = new System.Drawing.Size(282, 28);
+            this.panel82.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(2, 2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 24);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Monto Pend:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_DOC_MONTO_PEND
+            // 
+            this.L_DOC_MONTO_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_DOC_MONTO_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_DOC_MONTO_PEND.Location = new System.Drawing.Point(2, 2);
+            this.L_DOC_MONTO_PEND.Name = "L_DOC_MONTO_PEND";
+            this.L_DOC_MONTO_PEND.Size = new System.Drawing.Size(278, 24);
+            this.L_DOC_MONTO_PEND.TabIndex = 3;
+            this.L_DOC_MONTO_PEND.Text = "label29";
+            this.L_DOC_MONTO_PEND.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2463,6 +2516,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel81.ResumeLayout(false);
+            this.panel82.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2557,37 +2612,37 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.Label L_MONTO;
+        private System.Windows.Forms.Label L_METPAG_MONTO;
         private System.Windows.Forms.Panel panel34;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel35;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel36;
-        private System.Windows.Forms.Label L_METODO_PAGO;
+        private System.Windows.Forms.Label L_METPAG_METODO;
         private System.Windows.Forms.Panel panel37;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel38;
-        private System.Windows.Forms.Label L_BANCO;
+        private System.Windows.Forms.Label L_METPAG_BANCO;
         private System.Windows.Forms.Panel panel39;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel40;
-        private System.Windows.Forms.Label L_NRO_CTA;
+        private System.Windows.Forms.Label L_METPAG_NRO_CTA;
         private System.Windows.Forms.Panel panel41;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel42;
-        private System.Windows.Forms.Label L_REF;
+        private System.Windows.Forms.Label L_METPAG_NRO_REF;
         private System.Windows.Forms.Panel panel43;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label L_FECHA_OPERACION;
         private System.Windows.Forms.Panel panel44;
-        private System.Windows.Forms.Label L_FECHA_OP;
+        private System.Windows.Forms.Label L_METPAG_FECHA_OPERACION;
         private System.Windows.Forms.Panel panel45;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel46;
-        private System.Windows.Forms.Label L_APLICA_FACTOR;
+        private System.Windows.Forms.Label L_METPAG_APLICA_FACTOR_CAMBIO;
         private System.Windows.Forms.Panel panel47;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel57;
-        private System.Windows.Forms.Label L_DETALLE_OP;
+        private System.Windows.Forms.Label L_METPAG_DETALLE_OPERACION;
         private System.Windows.Forms.Panel panel58;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
         private System.Windows.Forms.Panel panel59;
@@ -2634,5 +2689,9 @@
         private System.Windows.Forms.Label L_DOC_CONCEPTO;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label L_DOC_MOTIVO;
+        private System.Windows.Forms.Panel panel81;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel82;
+        private System.Windows.Forms.Label L_DOC_MONTO_PEND;
     }
 }

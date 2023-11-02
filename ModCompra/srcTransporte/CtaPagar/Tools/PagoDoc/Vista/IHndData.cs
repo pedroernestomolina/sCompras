@@ -22,8 +22,11 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
         string Get_InfoDoc_Condicion { get; }
         string Get_InfoDoc_Concepto { get; }
         string Get_InfoDoc_Motivo { get; }
+        decimal Get_InfoDoc_MontoPend { get; }
 
         void Inicializa();
+        bool ProcesarIsOk();
+
         void setTasaCambioActual(object tasaActual);
         void setFechaServidor(object fecha);
         void setDocPagar(object ficha);

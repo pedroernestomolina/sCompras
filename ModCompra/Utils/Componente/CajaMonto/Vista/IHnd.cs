@@ -19,11 +19,12 @@ namespace ModCompra.Utils.Componente.CajaMonto.Vista
 
         void Inicializa();
         void CargarData();
-        void setDataCargar(IEnumerable<Idata> _lst);
-        void setFactorCambio(decimal factor);
-        void setMontoPendDiv(decimal montoDiv);
         void EditarMontoAbonar();
         void ActualizarSaldosPend();
         bool IsOk();
+
+        void setDataCargar(IEnumerable<Idata> _lst);
+        void setFactorCambio(decimal factor);
+        void setMontoPendDiv(decimal montoDiv);
     }
 }

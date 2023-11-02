@@ -197,7 +197,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
         {
             _modoInicializa = true;
             //
-            DGV.DataSource = _controlador.HndMetPag.Get_Source;
+            var _bdMetPg = _controlador.HndMetPag.Get_Source;
+            _bdMetPg.CurrentChanged += _bdMetPg_CurrentChanged;
+            DGV.DataSource = _bdMetPg;
+            ActualizarItemMetPag();
             //
             DGV_CAJA.DataSource = _controlador.HndCaja.Get_CajaSource;
             //
@@ -211,11 +214,29 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
             L_DOC_CONTROL.Text = _controlador.HndData.Get_InfoDoc_Control;
             L_DOC_CONDICION.Text = _controlador.HndData.Get_InfoDoc_Condicion;
             L_DOC_CONCEPTO.Text = _controlador.HndData.Get_InfoDoc_Concepto;
-            L_DOC_MOTIVO.Text = _controlador.HndData.Get_InfoDoc_Motivo; 
+            L_DOC_MOTIVO.Text = _controlador.HndData.Get_InfoDoc_Motivo;
+            L_DOC_MONTO_PEND.Text = _controlador.HndData.Get_InfoDoc_MontoPend.ToString("n2"); 
             ActualizarTotalPago();
             //
             _modoInicializa = false;
         }
+        void _bdMetPg_CurrentChanged(object sender, EventArgs e)
+        {
+            _controlador.HndMetPag.ActualizarItem();
+            ActualizarItemMetPag();
+        }
+        private void ActualizarItemMetPag()
+        {
+            L_METPAG_METODO.Text = _controlador.HndMetPag.Get_ItemInfo_Metodo;
+            L_METPAG_MONTO.Text = _controlador.HndMetPag.Get_ItemInfo_Monto.ToString("n2");
+            L_METPAG_APLICA_FACTOR_CAMBIO.Text = _controlador.HndMetPag.Get_ItemInfo_AplicaFactorCambio;
+            L_METPAG_BANCO.Text = _controlador.HndMetPag.Get_ItemInfo_Banco;
+            L_METPAG_NRO_CTA.Text = _controlador.HndMetPag.Get_ItemInfo_NroCta;
+            L_METPAG_NRO_REF.Text = _controlador.HndMetPag.Get_ItemInfo_NroRef;
+            L_METPAG_FECHA_OPERACION.Text = _controlador.HndMetPag.Get_ItemInfo_FechaOperacion.ToShortDateString();
+            L_METPAG_DETALLE_OPERACION.Text = _controlador.HndMetPag.Get_ItemInfo_DetalleOperacion;
+        }
+
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;

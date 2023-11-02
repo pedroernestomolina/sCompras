@@ -20,7 +20,19 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.Principal.Vista
         void AgregarMet();
         void EditarMet();
         void EliminarMet();
+        bool ProcesarIsOk();
 
         void setMontoPagarDiv(decimal monto);
+
+        //
+        void ActualizarItem();
+        string Get_ItemInfo_Metodo { get; }
+        decimal Get_ItemInfo_Monto { get; }
+        string Get_ItemInfo_AplicaFactorCambio { get; }
+        string Get_ItemInfo_Banco { get; }
+        string Get_ItemInfo_NroCta { get; }
+        string Get_ItemInfo_NroRef { get; }
+        DateTime Get_ItemInfo_FechaOperacion { get; }
+        string Get_ItemInfo_DetalleOperacion { get; }
     }
 }

@@ -77,9 +77,18 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
         public void Procesar()
         {
             _procesarIsOK = false;
-            var rt = Helpers.Msg.Procesar();
-            if (rt) 
+            if (_hndData.ProcesarIsOk())
             {
+                if (_hndMetPag.ProcesarIsOk())
+                {
+                    if (_hndCaja.IsOk())
+                    {
+                        var rt = Helpers.Msg.Procesar();
+                        if (rt)
+                        {
+                        }
+                    }
+                }
             }
         }
 
