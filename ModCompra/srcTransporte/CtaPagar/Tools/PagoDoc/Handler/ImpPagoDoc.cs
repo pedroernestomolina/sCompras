@@ -86,6 +86,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                         var rt = Helpers.Msg.Procesar();
                         if (rt)
                         {
+                            procesarPago();
                         }
                     }
                 }
@@ -119,6 +120,60 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
+            }
+        }
+        private void procesarPago()
+        {
+            try
+            {
+                var _fichaSistDoc= new OOB.LibCompra.SistemaDocumento.Entidad.Busqueda()
+                {
+                    codigoDoc = "01",
+                    TipoDoc = "CXP",
+                };
+                var _sistDocPag = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
+                //
+
+                var fichaOOB = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.Ficha()
+                {
+                    Recibo = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataRecibo()
+                    {
+                        autoSistemaDoc = _sistDocPag.Entidad.autoId,
+                        codSistemaDoc = _sistDocPag.Entidad.siglas,
+                        importeDivisa = _hndData.Get_MontoPag,
+                        importeMonAct = _hndData.Get_MontoPagMonAct,
+                        montoRecibidoDivisa = _hndData.Get_MontoPag,
+                        montoRecibidoMonAct = _hndData.Get_MontoPagMonAct,
+                        nota = _hndData.Get_Motivo,
+                        prvAuto = _hndData.GetFicha_DocPagar.autoProv,
+                        prvCiRif = _hndData.GetFicha_DocPagar.ciRif,
+                        prvCodigo = _hndData.GetFicha_DocPagar.codProv,
+                        prvDirFiscal = _hndData.GetFicha_DocPagar.dirFiscalPrv,
+                        prvNombre = _hndData.GetFicha_DocPagar.nombreRazonSocial,
+                        prvTlf = _hndData.GetFicha_DocPagar.telefonoPrv,
+                        tasaCambio = _hndData.Get_TasaFactorCambio,
+                        usuarioAuto = Sistema.UsuarioP.autoUsu,
+                        usuarioNombre = Sistema.UsuarioP.nombreUsu,
+                    },
+                };
+                var lstDoc = new List<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboDoc>();
+                var ndoc = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboDoc()
+                {
+                    autoCxpDoc = _docPagar.Id,
+                    codTipoDc = _hndData.GetFicha_DocPagar.tipoDoc,
+                    importeDivisa = _hndData.Get_MontoPag,
+                    numDoc = _hndData.GetFicha_DocPagar.docNro,
+                };
+                lstDoc.Add(ndoc);
+                fichaOOB.Recibo.reciboDoc = lstDoc;
+                //
+                var r01 = Sistema.MyData.Transporte_CxpDoc_GestionPago_Agregar(fichaOOB);
+                _procesarIsOK = true;
+                Helpers.Msg.AgregarOk();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
             }
         }
     }

@@ -20,5 +20,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_CxpDoc_GetDocPend_ById(idCxP);
         }
+        //
+        public DtoLib.Resultado 
+            Transporte_CxpDoc_GestionPago_Agregar(DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha ficha)
+        {
+            return ServiceProv.Transporte_CxpDoc_GestionPago_Agregar(ficha);
+        }
     }
 }

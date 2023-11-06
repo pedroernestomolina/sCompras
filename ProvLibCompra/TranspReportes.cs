@@ -191,6 +191,7 @@ namespace ProvLibCompra
                                         retDet.control as numControlDoc,
                                         retDet.tipo as tipoDoc,
                                         compra.aplica,
+                                        compra.maquina_fiscal as maquinaFiscal,
                                         retDet.total,
                                         retDet.exento,
                                         retDet.base1,

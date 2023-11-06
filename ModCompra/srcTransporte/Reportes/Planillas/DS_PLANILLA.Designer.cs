@@ -619,7 +619,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetIvaRow AddRetIvaRow(string comprobante_nro, string fecha, string ano_rel, string mes_rel, string prov_nombre, string prov_cirif) {
+            public RetIvaRow AddRetIvaRow(string comprobante_nro, System.DateTime fecha, string ano_rel, string mes_rel, string prov_nombre, string prov_cirif) {
                 RetIvaRow rowRetIvaRow = ((RetIvaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         comprobante_nro,
@@ -663,7 +663,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             private void InitClass() {
                 this.columncomprobante_nro = new global::System.Data.DataColumn("comprobante_nro", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncomprobante_nro);
-                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha);
                 this.columnano_rel = new global::System.Data.DataColumn("ano_rel", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnano_rel);
@@ -1167,6 +1167,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             private global::System.Data.DataColumn columnmontoRetencion;
             
+            private global::System.Data.DataColumn columnmaquinaFiscal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RetIva_DetDataTable() {
@@ -1322,6 +1324,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn maquinaFiscalColumn {
+                get {
+                    return this.columnmaquinaFiscal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1357,7 +1367,23 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetIva_DetRow AddRetIva_DetRow(string operacion, string fecha, string facturaNro, string controlNro, string ntDebitoNro, string ntCReditoNro, string tipoTrans, string nroFactAfecta, decimal montoConIva, decimal montoExento, decimal montoBase, decimal tasaAlicuota, decimal impuestoIva, decimal tasaRetencion, decimal montoRetencion) {
+            public RetIva_DetRow AddRetIva_DetRow(
+                        string operacion, 
+                        System.DateTime fecha, 
+                        string facturaNro, 
+                        string controlNro, 
+                        string ntDebitoNro, 
+                        string ntCReditoNro, 
+                        string tipoTrans, 
+                        string nroFactAfecta, 
+                        decimal montoConIva, 
+                        decimal montoExento, 
+                        decimal montoBase, 
+                        decimal tasaAlicuota, 
+                        decimal impuestoIva, 
+                        decimal tasaRetencion, 
+                        decimal montoRetencion, 
+                        string maquinaFiscal) {
                 RetIva_DetRow rowRetIva_DetRow = ((RetIva_DetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         operacion,
@@ -1374,7 +1400,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                         tasaAlicuota,
                         impuestoIva,
                         tasaRetencion,
-                        montoRetencion};
+                        montoRetencion,
+                        maquinaFiscal};
                 rowRetIva_DetRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRetIva_DetRow);
                 return rowRetIva_DetRow;
@@ -1412,6 +1439,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 this.columnimpuestoIva = base.Columns["impuestoIva"];
                 this.columntasaRetencion = base.Columns["tasaRetencion"];
                 this.columnmontoRetencion = base.Columns["montoRetencion"];
+                this.columnmaquinaFiscal = base.Columns["maquinaFiscal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1419,7 +1447,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             private void InitClass() {
                 this.columnoperacion = new global::System.Data.DataColumn("operacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnoperacion);
-                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfecha = new global::System.Data.DataColumn("fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha);
                 this.columnfacturaNro = new global::System.Data.DataColumn("facturaNro", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfacturaNro);
@@ -1447,6 +1475,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 base.Columns.Add(this.columntasaRetencion);
                 this.columnmontoRetencion = new global::System.Data.DataColumn("montoRetencion", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmontoRetencion);
+                this.columnmaquinaFiscal = new global::System.Data.DataColumn("maquinaFiscal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmaquinaFiscal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1730,7 +1760,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetIslr_DetRow AddRetIslr_DetRow(string fechaDoc, string numeroDoc, string numeroControl, decimal montoTotalDoc, decimal montoBaseRet, decimal tasaRet, decimal sustraendo, decimal montoRet) {
+            public RetIslr_DetRow AddRetIslr_DetRow(System.DateTime fechaDoc, string numeroDoc, string numeroControl, decimal montoTotalDoc, decimal montoBaseRet, decimal tasaRet, decimal sustraendo, decimal montoRet) {
                 RetIslr_DetRow rowRetIslr_DetRow = ((RetIslr_DetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fechaDoc,
@@ -1776,7 +1806,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnfechaDoc = new global::System.Data.DataColumn("fechaDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnfechaDoc = new global::System.Data.DataColumn("fechaDoc", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfechaDoc);
                 this.columnnumeroDoc = new global::System.Data.DataColumn("numeroDoc", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnumeroDoc);
@@ -2929,10 +2959,10 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string fecha {
+            public System.DateTime fecha {
                 get {
                     try {
-                        return ((string)(this[this.tableRetIva.fechaColumn]));
+                        return ((global::System.DateTime)(this[this.tableRetIva.fechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'fecha\' in table \'RetIva\' is DBNull.", e);
@@ -3323,10 +3353,10 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string fecha {
+            public System.DateTime fecha {
                 get {
                     try {
-                        return ((string)(this[this.tableRetIva_Det.fechaColumn]));
+                        return ((global::System.DateTime)(this[this.tableRetIva_Det.fechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'fecha\' in table \'RetIva_Det\' is DBNull.", e);
@@ -3547,6 +3577,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string maquinaFiscal {
+                get {
+                    try {
+                        return ((string)(this[this.tableRetIva_Det.maquinaFiscalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'maquinaFiscal\' in table \'RetIva_Det\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRetIva_Det.maquinaFiscalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsoperacionNull() {
                 return this.IsNull(this.tableRetIva_Det.operacionColumn);
             }
@@ -3724,6 +3770,18 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             public void SetmontoRetencionNull() {
                 this[this.tableRetIva_Det.montoRetencionColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmaquinaFiscalNull() {
+                return this.IsNull(this.tableRetIva_Det.maquinaFiscalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmaquinaFiscalNull() {
+                this[this.tableRetIva_Det.maquinaFiscalColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -3742,10 +3800,10 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string fechaDoc {
+            public System.DateTime fechaDoc {
                 get {
                     try {
-                        return ((string)(this[this.tableRetIslr_Det.fechaDocColumn]));
+                        return ((global::System.DateTime)(this[this.tableRetIslr_Det.fechaDocColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'fechaDoc\' in table \'RetIslr_Det\' is DBNull.", e);

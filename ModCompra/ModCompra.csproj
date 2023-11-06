@@ -723,6 +723,10 @@
       <DependentUpon>DS_MAESTRO.xsd</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Reportes\Maestros\Proveedor\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.cs">
+      <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="srcTransporte\Reportes\Planillas\DS_PLANILLA.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

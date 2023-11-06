@@ -71,6 +71,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
             rtDt["ntDebitoNro"] = _ntDebito;
             rtDt["ntCReditoNro"] = _ntCredito;
             rtDt["controlNro"] = ficha.numControlDoc;
+            rtDt["maquinaFiscal"] = ficha.maquinaFiscal;
             rtDt["tipoTrans"] = "";
             rtDt["nroFactAfecta"] = ficha.aplica;
             rtDt["montoConIva"] = ficha.total;

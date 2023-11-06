@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-    public partial class DataProv: IData
+    public partial class DataProv : IData
     {
-        public OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha> 
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha>
             Transporte_CxpDoc_GetLista_DocPend()
         {
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha>();
@@ -22,7 +22,7 @@ namespace DataProvCompra.Data
             var lst = new List<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha>();
             if (r01 != null)
             {
-                if (r01.Lista.Count > 0) 
+                if (r01.Lista.Count > 0)
                 {
                     lst = r01.Lista.Select(s =>
                     {
@@ -49,7 +49,7 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
-        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha> 
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha>
             Transporte_CxpDoc_GetDocPend_ById(string idCxP)
         {
             var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha>();
@@ -60,7 +60,7 @@ namespace DataProvCompra.Data
             }
             if (r01 != null)
             {
-                var s= r01.Entidad;
+                var s = r01.Entidad;
                 result.Entidad = new OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha()
                 {
                     acumuladoDiv = s.acumuladoDiv,
@@ -87,7 +87,55 @@ namespace DataProvCompra.Data
                     fechaReg = s.fechaReg,
                     mesRelacion = s.mesRelacion,
                     condicion = s.condicion,
+                    dirFiscalPrv = s.dirFiscalPrv,
+                    telefonoPrv = s.telefonoPrv,
                 };
+            }
+            return result;
+        }
+        //
+        public OOB.Resultado
+            Transporte_CxpDoc_GestionPago_Agregar(OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.Ficha ficha)
+        {
+            var result = new OOB.Resultado();
+            var rec = ficha.Recibo;
+            var fichaDTO = new DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha()
+            {
+                Recibo = new DtoLibTransporte.CxpDoc.Pago.Agregar.DataRecibo()
+                {
+                    importeMonAct = rec.importeMonAct,
+                    importeDivisa = rec.importeDivisa,
+                    montoRecibidoMonAct = rec.montoRecibidoMonAct,
+                    montoRecibidoDivisa = rec.montoRecibidoDivisa,
+                    nota = rec.nota,
+                    prvAuto = rec.prvAuto,
+                    prvCiRif = rec.prvCiRif,
+                    prvCodigo = rec.prvCodigo,
+                    prvDirFiscal = rec.prvDirFiscal,
+                    prvNombre = rec.prvNombre,
+                    prvTlf = rec.prvTlf,
+                    tasaCambio = rec.tasaCambio,
+                    usuarioAuto = rec.usuarioAuto,
+                    usuarioNombre = rec.usuarioNombre,
+                    autoSistemaDoc = rec.autoSistemaDoc,
+                    codSistemaDoc = rec.codSistemaDoc,
+                    reciboDoc = rec.reciboDoc.Select(s =>
+                    {
+                        var nr = new DtoLibTransporte.CxpDoc.Pago.Agregar.DataReciboDoc()
+                        {
+                            autoCxpDoc = s.autoCxpDoc,
+                            codTipoDc = s.codTipoDc,
+                            importeDivisa = s.importeDivisa,
+                            numDoc = s.numDoc,
+                        };
+                        return nr;
+                    }).ToList(),
+                }
+            };
+            var r01 = MyData.Transporte_CxpDoc_GestionPago_Agregar(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
             }
             return result;
         }

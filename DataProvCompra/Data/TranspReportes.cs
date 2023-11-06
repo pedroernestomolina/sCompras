@@ -155,6 +155,7 @@ namespace DataProvCompra.Data
                 tasaRet = s.tasaRet,
                 tipoDoc = s.tipoDoc,
                 total = s.total,
+                maquinaFiscal= s.maquinaFiscal
             };
             return result;
         }

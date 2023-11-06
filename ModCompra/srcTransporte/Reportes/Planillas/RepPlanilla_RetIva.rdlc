@@ -492,49 +492,52 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.92654cm</Width>
+              <Width>0.81338cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.43906cm</Width>
+              <Width>1.3259cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83888cm</Width>
+              <Width>1.72572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83888cm</Width>
+              <Width>1.72572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83888cm</Width>
+              <Width>1.67085cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83888cm</Width>
+              <Width>1.72572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.35276cm</Width>
+              <Width>1.72572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83888cm</Width>
+              <Width>1.2396cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.03888cm</Width>
+              <Width>1.72572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.03888cm</Width>
+              <Width>1.92572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.03888cm</Width>
+              <Width>1.92572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.43888cm</Width>
+              <Width>1.92572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.03888cm</Width>
+              <Width>1.32572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.43888cm</Width>
+              <Width>1.92572cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.03888cm</Width>
+              <Width>1.32572cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.92572cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -719,6 +722,41 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox18</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Nro MAQUINA FISCAL</Value>
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1298,6 +1336,7 @@
                               <Value>=Fields!fecha.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
+                                <Format>d</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -1371,6 +1410,39 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>controlNro</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="maquinaFiscal">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!maquinaFiscal.Value</Value>
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>maquinaFiscal</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1894,6 +1966,39 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox147">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -2286,6 +2391,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -2308,7 +2414,7 @@
         <Top>5.58863cm</Top>
         <Left>0.258cm</Left>
         <Height>1.98521cm</Height>
-        <Width>25.98487cm</Width>
+        <Width>25.95841cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -2337,9 +2443,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox44</rd:DefaultName>
         <Top>4.91808cm</Top>
-        <Left>17.22203cm</Left>
+        <Left>15.86207cm</Left>
         <Height>0.6cm</Height>
-        <Width>5.51663cm</Width>
+        <Width>7.10289cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -2710,7 +2816,7 @@
     <Height>4.54167in</Height>
     <Style />
   </Body>
-  <Width>10.43068in</Width>
+  <Width>10.43069in</Width>
   <Page>
     <PageHeader>
       <Height>3.86292cm</Height>
@@ -2894,8 +3000,8 @@
     </PageFooter>
     <PageHeight>21.59cm</PageHeight>
     <PageWidth>27.94cm</PageWidth>
-    <LeftMargin>0cm</LeftMargin>
-    <RightMargin>0cm</RightMargin>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
     <TopMargin>0cm</TopMargin>
     <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
@@ -2952,30 +3058,34 @@
         </Field>
         <Field Name="montoConIva">
           <DataField>montoConIva</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="montoExento">
           <DataField>montoExento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="montoBase">
           <DataField>montoBase</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="tasaAlicuota">
           <DataField>tasaAlicuota</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="impuestoIva">
           <DataField>impuestoIva</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="tasaRetencion">
           <DataField>tasaRetencion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="montoRetencion">
           <DataField>montoRetencion</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="maquinaFiscal">
+          <DataField>maquinaFiscal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

@@ -23,6 +23,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Vista
         string Get_InfoDoc_Concepto { get; }
         string Get_InfoDoc_Motivo { get; }
         decimal Get_InfoDoc_MontoPend { get; }
+        OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha GetFicha_DocPagar { get; }
+
 
         void Inicializa();
         bool ProcesarIsOk();

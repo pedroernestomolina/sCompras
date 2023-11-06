@@ -354,8 +354,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             }
             if (Get_NumeroControlDoc.Trim() == "")
             {
-                Helpers.Msg.Alerta("NUMERO DE CONTROL DEL DOCUMENTO NO PUEDE ESTAR VACIO");
-                return false;
+                //Helpers.Msg.Alerta("NUMERO DE CONTROL DEL DOCUMENTO NO PUEDE ESTAR VACIO");
+                //return false;
             }
             if (!Get_FechaEmisionDocIsValida)
             {

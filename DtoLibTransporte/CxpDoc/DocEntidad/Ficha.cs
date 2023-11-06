@@ -20,6 +20,8 @@ namespace DtoLibTransporte.CxpDoc.DocEntidad
         public string conceptoCod { get; set; }
         public string conceptoDesc { get; set; }
         public string condicion { get; set; }
+        public string dirFiscalPrv { get; set; }
+        public string telefonoPrv { get; set; }
 
 
         public Ficha()

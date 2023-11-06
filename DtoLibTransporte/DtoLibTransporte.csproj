@@ -85,6 +85,9 @@
     <Compile Include="CxpDoc\DocEntidad\Ficha.cs" />
     <Compile Include="CxpDoc\DocPend\Ficha.cs" />
     <Compile Include="CxpDoc\baseFicha.cs" />
+    <Compile Include="CxpDoc\Pago\Agregar\DataReciboDoc.cs" />
+    <Compile Include="CxpDoc\Pago\Agregar\DataRecibo.cs" />
+    <Compile Include="CxpDoc\Pago\Agregar\Ficha.cs" />
     <Compile Include="DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="DocumentoRet\ListaAdm\Filtro.cs" />
     <Compile Include="Documento\Agregar\CompraGasto\ReciboDoc.cs" />

@@ -36,5 +36,6 @@ namespace OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion
         public decimal retencion3 { get; set; }
         public decimal tasaRet { get; set; }
         public decimal totalRet { get; set; }
+        public string maquinaFiscal { get; set; }
     }
 }

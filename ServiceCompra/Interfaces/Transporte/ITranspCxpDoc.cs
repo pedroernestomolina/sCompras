@@ -13,5 +13,8 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_CxpDoc_GetLista_DocPend();
         DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.DocEntidad.Ficha>
             Transporte_CxpDoc_GetDocPend_ById(string idCxP);
+        //
+        DtoLib.Resultado
+            Transporte_CxpDoc_GestionPago_Agregar(DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha ficha);
     }
 }

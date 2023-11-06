@@ -41,6 +41,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
         public string Get_InfoDoc_Concepto { get { return _infoDocConcepto; } }
         public string Get_InfoDoc_Motivo { get { return _infoDocMotivo; } }
         public decimal Get_InfoDoc_MontoPend { get { return _infoDocMontoPend; } }
+        public OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha GetFicha_DocPagar { get { return _docPagar; } }
 
 
         public HndData()
