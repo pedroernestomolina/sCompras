@@ -17,5 +17,7 @@ namespace DtoLibTransporte.Documento.Anular.CompraGasto.GetData
         public string tipoDocumentoCompra { get; set; }
         public string autoSistemaDoc { get; set; }
         public string autoSistemaDocCxp { get; set; }
+        public decimal importeDiv { get; set; }
+        public decimal acumuladoDiv { get; set; }
     }
 }

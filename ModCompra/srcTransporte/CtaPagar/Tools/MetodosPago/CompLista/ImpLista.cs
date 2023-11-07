@@ -21,6 +21,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompLista
         public decimal Get_Importe { get { return _bl.Sum(s => s.TitImporte); } }
         public decimal Get_ImporteMovCaja { get { return _bl.Where(w => w.Get_AplicaMovCaja).Sum(s => s.TitImporte); } }
         public int Get_CntItems { get { return _bs.Count; } }
+        public IEnumerable<object> Get_Lista { get { return _bl.ToList(); } }
 
 
         public ImpLista()

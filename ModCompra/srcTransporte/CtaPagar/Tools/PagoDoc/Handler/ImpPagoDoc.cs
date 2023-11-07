@@ -133,7 +133,6 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                 };
                 var _sistDocPag = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
                 //
-
                 var fichaOOB = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.Ficha()
                 {
                     Recibo = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataRecibo()
@@ -156,6 +155,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                         usuarioNombre = Sistema.UsuarioP.nombreUsu,
                     },
                 };
+                //
                 var lstDoc = new List<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboDoc>();
                 var ndoc = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboDoc()
                 {
@@ -166,6 +166,55 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                 };
                 lstDoc.Add(ndoc);
                 fichaOOB.Recibo.reciboDoc = lstDoc;
+                //
+                var _lstMP = new List<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboMetodoPago>();
+                foreach (var rg in _hndMetPag.Get_Lista_MetPago_Registrado) 
+                {
+                    var it = (ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompAgregarEditarMet.Vista.IHndData)rg;
+                    var nr = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboMetodoPago()
+                    {
+                        autoMedPago = it.MedioPago.GetItem.id,
+                        autoUsuario = Sistema.UsuarioP.autoUsu,
+                        codigoMedPago = it.MedioPago.GetItem.codigo,
+                        descMedPago = it.MedioPago.GetItem.desc,
+                        OpAplicaConversion = it.Get_AplicaFactor,
+                        OpBanco = it.Get_Banco,
+                        OpDetalle = it.Get_DetalleOp,
+                        OpFecha = it.Get_FechaOp,
+                        OpLote = it.Get_Lote,
+                        OpMonto = it.Get_Monto,
+                        OpNroCta = it.Get_NroCta,
+                        OpNroTransf = it.Get_CheqRefTrans,
+                        OpRef = it.Get_Referencia,
+                        OpTasa = it.Get_Factor,
+                    };
+                    _lstMP.Add(nr);
+                }
+                fichaOOB.Recibo.metpago = _lstMP;
+                //
+                var _lstCaja = new List<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar .DataCaja>();
+                var _factorCambio = _hndCaja.Get_FactorCambio;
+                foreach (var rg in  _hndCaja.Get_Lista.Where(w => w.montoAbonar > 0).ToList())
+                {
+                    var cj = (Utils.Componente.CajaMonto.Handler.data)rg;
+                    var nr = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataCaja()
+                    {
+                        idCaja = cj.Get_Ficha.id,
+                        monto = cj.montoAbonar,
+                        codCaja = cj.Get_Ficha.codigo,
+                        descCaja = cj.Get_Ficha.descripcion,
+                        cajaMov = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.CajaMov()
+                        {
+                            descMov = "",
+                            factorCambio = _factorCambio,
+                            montoMovMonAct = cj.esDivisa ? cj.montoAbonar * _factorCambio : cj.montoAbonar,
+                            montoMovMonDiv = cj.esDivisa ? cj.montoAbonar : cj.montoAbonar / _factorCambio,
+                            movFueDivisa = cj.esDivisa,
+                        }
+                    };
+                    _lstCaja.Add(nr);
+                }
+                fichaOOB.Cajas = _lstCaja;
                 //
                 var r01 = Sistema.MyData.Transporte_CxpDoc_GestionPago_Agregar(fichaOOB);
                 _procesarIsOK = true;

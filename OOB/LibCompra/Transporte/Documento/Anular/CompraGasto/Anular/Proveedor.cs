@@ -11,5 +11,7 @@ namespace OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular
     {
         public string autoProv { get; set; }
         public decimal montoDebito { get; set; }
+
+        public decimal montoCredito { get; set; }
     }
 }

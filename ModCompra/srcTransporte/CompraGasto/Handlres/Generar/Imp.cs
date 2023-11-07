@@ -178,7 +178,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     _aplicaFechaDoc = _data.Get_Aplica_FechaDoc;
                     _aplicaNumeroDoc = _data.Get_Aplica_NumeroDoc;
                 }
-                var _acumulado = _data.Get_MontoRetIva + _data.Get_MontoRetISLR;
+                var _acumulado = _data.Get_MontoRetIva + _data.Get_MontoRetISLR + _data.Get_SustraendoISLR;
                 var _resta = _data.Get_MontoMonAct - _acumulado;
                 var _acumuladoDiv = 0m;
                 var _restaDiv = 0m;
@@ -279,11 +279,13 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     notas = "",
                     autoSistemaDoc = _sistDocCxp.Entidad.autoId
                 };
+                var _montoRetencionesDivisa = 0m;
                 if (_data.Get_IncluirLibroCompras)
                 {
                     if (_data.Get_MontoRetIva > 0m)
                     {
                         var _montoRetIvaDivisa = _data.Get_MontoRetIva / _data.Get_FactorCambio;
+                        _montoRetencionesDivisa += _montoRetIvaDivisa;
                         ficha.retIva = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
                         {
                             acumulado = 0m,
@@ -328,7 +330,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                             autoSistemaDoc = _sistDocRetIva.Entidad.autoId,
                             docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
                             {
-                                importe = _data.Get_MontoRetIva,
+                                importe = _montoRetIvaDivisa,
                                 numDocumentoAfecta = _data.Get_NumeroDoc,
                                 siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
                                 tipoOperacionRealizar = "Abono",
@@ -338,6 +340,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     if (_data.Get_MontoRetISLR > 0m)
                     {
                         var _montoRetISLRDivisa = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR) / _data.Get_FactorCambio;
+                        _montoRetencionesDivisa += _montoRetISLRDivisa;
                         ficha.retISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
                         {
                             acumulado = 0m,
@@ -382,7 +385,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                             autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
                             docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
                             {
-                                importe = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
+                                importe = _montoRetISLRDivisa,
                                 numDocumentoAfecta = _data.Get_NumeroDoc,
                                 siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
                                 tipoOperacionRealizar = "Abono",
@@ -395,6 +398,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     autoProv = _prv.Ficha.autoId,
                     fechaEmiDoc = _data.Get_FechaEmisionDoc,
                     montoDebito = _data.Get_MontoMonDivisa,
+                    montoCredito = _montoRetencionesDivisa,
                 };
                 var r01 = Sistema.MyData.Transporte_Documento_Agregar_CompraGrasto(ficha);
                 _procesarIsOK = true;

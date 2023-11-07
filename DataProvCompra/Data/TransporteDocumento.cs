@@ -90,6 +90,7 @@ namespace DataProvCompra.Data
                 autoProv = prv.autoProv,
                 fechaEmiDoc = prv.fechaEmiDoc,
                 montoDebito = prv.montoDebito,
+                montoCredito= prv.montoCredito,
             };
             var cxp = ficha.cxp;
             var docCxp = new DtoLibTransporte.Documento.Agregar.CompraGasto.CxP()
@@ -461,6 +462,8 @@ namespace DataProvCompra.Data
                     autoSistemaDoc = s.documento.autoSistemaDoc,
                     tipoDocumentoCompra = s.documento.tipoDocumentoCompra,
                     autoSistemaDocCxp = s.documento.autoSistemaDocCxp,
+                    importeDiv= s.documento.importeDiv,
+                    acumuladoDiv = s.documento.acumuladoDiv,
                 },
                 retencionRecibo = s.retencionRecibo.Select(ss =>
                 {
@@ -511,6 +514,7 @@ namespace DataProvCompra.Data
                 {
                     autoProv = ficha.proveedor.autoProv,
                     montoDebito = ficha.proveedor.montoDebito,
+                    montoCredito = ficha.proveedor.montoCredito,
                 },
                 retenciones = ficha.retenciones.Select(s =>
                 {

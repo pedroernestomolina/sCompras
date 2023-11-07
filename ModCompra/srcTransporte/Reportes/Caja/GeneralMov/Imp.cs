@@ -19,8 +19,35 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
         {
             _filtro = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro();
         }
-        public void setFiltros(object data)
+        public void setFiltros(object filtros)
         {
+            var ft = (Reportes.RepFiltro.Vista.IFiltros)filtros;
+            var _estatusDoc = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.EstatusDoc.SinDefinir;
+            if (ft.EstatusDocumento != RepFiltro.Vista.enumerados.EstatusDoc.SinDefinir)
+            {
+                _estatusDoc =  OOB.LibCompra.Transporte.Reportes.Caja.enumerados.EstatusDoc.Activo;
+                if (ft.EstatusDocumento == RepFiltro.Vista.enumerados.EstatusDoc.Inactivo)
+                {
+                    _estatusDoc = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.EstatusDoc.Anulado;
+                }
+            }
+            var _tipoMov = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.TipoMovCaja.SinDefinir;
+            if (ft.TipoMovCaja  != RepFiltro.Vista.enumerados.TipoMovCaja.SinDefinir )
+            {
+                _tipoMov = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.TipoMovCaja.Ingreso;
+                if (ft.TipoMovCaja ==  RepFiltro.Vista.enumerados.TipoMovCaja.Egreso)
+                {
+                    _tipoMov = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.TipoMovCaja.Egreso;
+                }
+            }
+            _filtro = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro()
+            {
+                Desde = ft.Desde,
+                Hasta = ft.Hasta,
+                IdCaja = ft.IdCaja,
+                EstatusDoc = _estatusDoc,
+                TipoMov = _tipoMov,
+            };
         }
         public void Generar()
         {

@@ -488,6 +488,16 @@
     </Compile>
     <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\IHndEnt.cs" />
     <Compile Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\IMov.cs" />
+    <Compile Include="srcTransporte\CompraGastoAliadoPagServ\Handlres\Generar\HndData.cs" />
+    <Compile Include="srcTransporte\CompraGastoAliadoPagServ\Handlres\Generar\Imp.cs" />
+    <Compile Include="srcTransporte\CompraGastoAliadoPagServ\Vistas\Generar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CompraGastoAliadoPagServ\Vistas\Generar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CompraGastoAliadoPagServ\Vistas\Generar\ICompraGasto.cs" />
+    <Compile Include="srcTransporte\CompraGastoAliadoPagServ\Vistas\Generar\IHndData.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataConcepto.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\dataCondicionPagoDoc.cs" />
     <Compile Include="srcTransporte\CompraGasto\Handlres\Generar\data.cs" />
@@ -680,7 +690,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_CAJA.xsd</DependentUpon>
     </Compile>
+    <Compile Include="srcTransporte\Reportes\Caja\EdoCta\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\EdoCta\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\imp.cs" />
@@ -863,6 +875,9 @@
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\IMedioPago.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Sucursal\data.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Sucursal\ISucursal.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\Sucursal\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoRetencion\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\TipoMovCaja\data.cs" />
@@ -1015,6 +1030,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Caja\Movimiento\Agregar\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CompraGastoAliadoPagServ\Vistas\Generar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\CompraGasto\Vistas\Generar\Frm.resx">

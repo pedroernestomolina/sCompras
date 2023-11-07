@@ -33,7 +33,9 @@ namespace ProvLibCompra
                                     doc.tipo as codigoTipoDoc,
                                     doc.tipo_documento_compra as tipoDocumentoCompra,
                                     doc.auto_sistema_documento as autoSistemaDoc,
-                                    cta.auto_sistema_documento as autoSistemaDocCxp
+                                    cta.auto_sistema_documento as autoSistemaDocCxp,
+                                    cta.importeDivisa as importeDiv,
+                                    cta.acumulado_divisa as acumuladoDiv
                                 from compras as doc
                                 join cxp as cta on cta.auto=doc.auto_cxp
                                 where doc.auto=@autoDoc";
@@ -173,10 +175,12 @@ namespace ProvLibCompra
                         //
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.proveedor.autoProv);
                         var p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoDebito", ficha.proveedor.montoDebito);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@montoCredito", ficha.proveedor.montoCredito);
                         sql = @"update proveedores set
-                                    debitos=debitos-@montoDebito
+                                    debitos=debitos-@montoDebito,
+                                    creditos=creditos-@montoCredito
                                 where auto=@autoProv";
-                        var r3 = cnn.Database.ExecuteSqlCommand(sql, p01, p02);
+                        var r3 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03);
                         if (r3 == 0)
                         {
                             result.Mensaje = "ERROR AL ACTUALIZAR DATA PROVEEDOR";

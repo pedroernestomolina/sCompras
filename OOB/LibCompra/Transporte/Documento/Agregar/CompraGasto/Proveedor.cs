@@ -12,5 +12,6 @@ namespace OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto
         public string autoProv { get; set; }
         public decimal montoDebito { get; set; }
         public DateTime fechaEmiDoc { get; set; }
+        public decimal montoCredito { get; set; }
     }
 }

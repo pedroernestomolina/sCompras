@@ -130,8 +130,53 @@ namespace DataProvCompra.Data
                         };
                         return nr;
                     }).ToList(),
-                }
+                    metPago = rec.metpago.Select(ss => 
+                    {
+                        var mt = new DtoLibTransporte.CxpDoc.Pago.Agregar.DataReciboMetodoPago()
+                        {
+                            autoMedPago = ss.autoMedPago,
+                            autoUsuario = ss.autoUsuario,
+                            codigoMedPago = ss.codigoMedPago,
+                            descMedPago = ss.descMedPago,
+                            OpAplicaConversion = ss.OpAplicaConversion,
+                            OpBanco = ss.OpBanco,
+                            OpDetalle = ss.OpDetalle,
+                            OpFecha = ss.OpFecha,
+                            OpLote = ss.OpLote,
+                            OpMonto = ss.OpMonto,
+                            OpNroCta = ss.OpNroCta,
+                            OpNroTransf = ss.OpNroTransf,
+                            OpRef = ss.OpRef,
+                            OpTasa = ss.OpTasa,
+                        };
+                        return mt;
+                    }).ToList(),
+                },
             };
+            if (ficha.Cajas != null)
+            {
+                var lt = new List<DtoLibTransporte.CxpDoc.Pago.Agregar.DataCaja>();
+                foreach (var rg in ficha.Cajas)
+                {
+                    var mv = new DtoLibTransporte.CxpDoc.Pago.Agregar.DataCaja() 
+                    {
+                        idCaja = rg.idCaja,
+                        codCaja = rg.codCaja,
+                        descCaja = rg.descCaja,
+                        monto = rg.monto,
+                        cajaMov = new DtoLibTransporte.CxpDoc.Pago.Agregar.CajaMov()
+                        {
+                            descMov = rg.cajaMov.descMov,
+                            factorCambio = rg.cajaMov.factorCambio,
+                            montoMovMonAct = rg.cajaMov.montoMovMonAct,
+                            montoMovMonDiv = rg.cajaMov.montoMovMonDiv,
+                            movFueDivisa = rg.cajaMov.movFueDivisa,
+                        },
+                    };
+                    lt.Add(mv);
+                }
+                fichaDTO.Cajas = lt;
+            }
             var r01 = MyData.Transporte_CxpDoc_GestionPago_Agregar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {

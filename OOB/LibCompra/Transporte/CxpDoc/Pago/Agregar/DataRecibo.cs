@@ -26,5 +26,6 @@ namespace OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar
         public string autoSistemaDoc { get; set; }
         public string codSistemaDoc { get; set; }
         public List<DataReciboDoc> reciboDoc { get; set; }
+        public List<DataReciboMetodoPago> metpago { get; set; }
     }
 }

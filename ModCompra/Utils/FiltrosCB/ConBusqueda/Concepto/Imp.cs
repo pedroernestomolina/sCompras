@@ -18,20 +18,13 @@ namespace ModCompra.Utils.FiltrosCB.ConBusqueda.Concepto
         }
         public void ObtenerData()
         {
-            try
+            var _lst = new List<Idata>();
+            var r01 = Sistema.MyData.Transporte_Documento_Concepto_GetLista();
+            foreach (var rg in r01.Lista.OrderBy(o => o.descripcion).ToList())
             {
-                var _lst = new List<Idata>();
-                var r01 = Sistema.MyData.Transporte_Documento_Concepto_GetLista();
-                foreach (var rg in r01.Lista.OrderBy(o => o.descripcion).ToList()) 
-                {
-                    _lst.Add(new data(rg));
-                }
-                this.CargarData(_lst);
+                _lst.Add(new data(rg));
             }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-            }
+            this.CargarData(_lst);
         }
         public void setTextoBuscar(string desc)
         {

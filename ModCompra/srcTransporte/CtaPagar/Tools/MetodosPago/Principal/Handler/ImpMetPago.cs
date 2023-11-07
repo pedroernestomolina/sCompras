@@ -21,6 +21,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.Principal.Handler
         public decimal Get_MontoPend { get { return _montoPendDiv; } }
         public decimal Get_MontoRecibido { get { return _lista.Get_Importe; } }
         public decimal Get_ImporteMovCaja { get { return _lista.Get_ImporteMovCaja; } }
+        public IEnumerable<object> Get_Lista_MetPago_Registrado { get { return _lista.Get_Lista; } }
 
 
         public ImpMetPago()

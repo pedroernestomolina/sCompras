@@ -1580,6 +1580,12 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
             
             private global::System.Data.DataColumn columncomprobanteRet;
             
+            private global::System.Data.DataColumn columnfechaRet;
+            
+            private global::System.Data.DataColumn columnporctRet;
+            
+            private global::System.Data.DataColumn columnmontoRet;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public LibroDataTable() {
@@ -1783,6 +1789,30 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fechaRetColumn {
+                get {
+                    return this.columnfechaRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn porctRetColumn {
+                get {
+                    return this.columnporctRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoRetColumn {
+                get {
+                    return this.columnmontoRet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1839,7 +1869,10 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
                         decimal iva2, 
                         decimal base3, 
                         decimal iva3, 
-                        string comprobanteRet) {
+                        string comprobanteRet, 
+                        System.DateTime fechaRet, 
+                        decimal porctRet, 
+                        decimal montoRet) {
                 LibroRow rowLibroRow = ((LibroRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         operacionNro,
@@ -1862,7 +1895,10 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
                         iva2,
                         base3,
                         iva3,
-                        comprobanteRet};
+                        comprobanteRet,
+                        fechaRet,
+                        porctRet,
+                        montoRet};
                 rowLibroRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLibroRow);
                 return rowLibroRow;
@@ -1906,6 +1942,9 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
                 this.columnbase3 = base.Columns["base3"];
                 this.columniva3 = base.Columns["iva3"];
                 this.columncomprobanteRet = base.Columns["comprobanteRet"];
+                this.columnfechaRet = base.Columns["fechaRet"];
+                this.columnporctRet = base.Columns["porctRet"];
+                this.columnmontoRet = base.Columns["montoRet"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1953,6 +1992,12 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
                 base.Columns.Add(this.columniva3);
                 this.columncomprobanteRet = new global::System.Data.DataColumn("comprobanteRet", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncomprobanteRet);
+                this.columnfechaRet = new global::System.Data.DataColumn("fechaRet", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfechaRet);
+                this.columnporctRet = new global::System.Data.DataColumn("porctRet", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnporctRet);
+                this.columnmontoRet = new global::System.Data.DataColumn("montoRet", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoRet);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3689,6 +3734,54 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fechaRet {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableLibro.fechaRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fechaRet\' in table \'Libro\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLibro.fechaRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal porctRet {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableLibro.porctRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'porctRet\' in table \'Libro\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLibro.porctRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoRet {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableLibro.montoRetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoRet\' in table \'Libro\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLibro.montoRetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsoperacionNroNull() {
                 return this.IsNull(this.tableLibro.operacionNroColumn);
             }
@@ -3937,6 +4030,42 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcomprobanteRetNull() {
                 this[this.tableLibro.comprobanteRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfechaRetNull() {
+                return this.IsNull(this.tableLibro.fechaRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfechaRetNull() {
+                this[this.tableLibro.fechaRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsporctRetNull() {
+                return this.IsNull(this.tableLibro.porctRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetporctRetNull() {
+                this[this.tableLibro.porctRetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoRetNull() {
+                return this.IsNull(this.tableLibro.montoRetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoRetNull() {
+                this[this.tableLibro.montoRetColumn] = global::System.Convert.DBNull;
             }
         }
         

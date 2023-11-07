@@ -400,5 +400,14 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.ReportesBeneficiarioMovimiento();
         }
+
+        private void MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO_Click(object sender, EventArgs e)
+        {
+            RegistrarCompraAliado();
+        }
+        private void RegistrarCompraAliado()
+        {
+            _controlador.RegistrarCompraAliado();
+        }
     }
 }

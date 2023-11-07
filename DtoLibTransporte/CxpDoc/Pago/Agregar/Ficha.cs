@@ -10,5 +10,6 @@ namespace DtoLibTransporte.CxpDoc.Pago.Agregar
     public class Ficha
     {
         public DataRecibo Recibo { get; set; }
+        public List<DataCaja> Cajas { get; set; }
     }
 }

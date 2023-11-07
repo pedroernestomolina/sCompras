@@ -15,6 +15,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.MetodosPago.CompLista
         decimal Get_Importe { get; }
         decimal Get_ImporteMovCaja { get; }
         int Get_CntItems { get; }
+        IEnumerable<object> Get_Lista { get; }
 
         void Inicializa();
         void Agregar(object data);

@@ -169,8 +169,11 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\baseFicha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\DocEntidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\DocPend\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\CajaMov.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataCaja.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataRecibo.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboDoc.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboMetodoPago.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Filtro.cs" />
@@ -212,6 +215,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Serv.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Beneficiario\Movimiento\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Beneficiario\Movimiento\Fitro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Caja\baseFiltro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Caja\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Movimiento\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Caja\Saldo\Ficha.cs" />

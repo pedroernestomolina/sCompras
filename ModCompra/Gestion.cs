@@ -353,12 +353,6 @@ namespace ModCompra
                 _rep.setFiltros(_filtro.Get_Filtros);
                 _rep.Generar();
             }
-        //    srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
-        //    _data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Iva);
-        //    //
-        //    srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.iva();
-        //    _rep.setFiltros(_data);
-        //    _rep.Generar();
         }
         public void ReportesRetIslr()
         {
@@ -374,12 +368,6 @@ namespace ModCompra
                 _rep.setFiltros(_filtro.Get_Filtros);
                 _rep.Generar();
             }
-            //srcTransporte.Reportes.Documentos.Idata _data = new srcTransporte.Reportes.Documentos.data();
-            //_data.setTipoRetencion(srcTransporte.Reportes.Documentos.enumerados.tipoRetencion.Islr);
-            ////
-            //srcTransporte.Reportes.Documentos.IRepFiltro _rep = new srcTransporte.Reportes.Documentos.ListaRet.islr();
-            //_rep.setFiltros(_data);
-            //_rep.Generar();
         }
         public void ReportesAliadoAnticipo()
         {
@@ -397,17 +385,48 @@ namespace ModCompra
         }
         public void ReportesCajaGeneralMov()
         {
-            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.GeneralMov.Imp();
-            _rep.setFiltros(null);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.Caja.GeneralMov.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.GeneralMov.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReportesCajaEdoCta()
         {
-            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.EdoCta.Imp();
-            _rep.setFiltros(null);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(false);
+            _filtro.Hasta.setActivarCheck(false);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.Caja.EdoCta.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                if (_filtro.Get_Filtros.IdCaja == -1) 
+                {
+                    Helpers.Msg.Alerta("DEBES INDICAR / SELECCIONAR UNA CAJA");
+                    return;
+                }
+                if (_filtro.Get_Filtros.Desde.HasValue  == false)
+                {
+                    Helpers.Msg.Alerta("DEBES INDICAR FECHA INICIO DEL MOVIMIENTO");
+                    return;
+                }
+                if (_filtro.Get_Filtros.Hasta.HasValue == false)
+                {
+                    Helpers.Msg.Alerta("DEBES INDICAR FECHA FINAL DEL MOVIMIENTO");
+                    return;
+                }
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.Caja.EdoCta.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReporteMaestroConcepto()
         {
@@ -466,6 +485,17 @@ namespace ModCompra
             srcTransporte.Beneficiario.AdmMov.Vistas.IAdm _adm = new srcTransporte.Beneficiario.AdmMov.Handler.Imp();
             _adm.Inicializa();
             _adm.Inicia();
+        }
+
+        ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar.ICompraGasto _compraAliado;
+        public void RegistrarCompraAliado()
+        {
+            if (_compraAliado == null)
+            {
+                _compraAliado = new ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar.Imp();
+            }
+            _compraAliado.Inicializa();
+            _compraAliado.Inicia();
         }
     }
 }

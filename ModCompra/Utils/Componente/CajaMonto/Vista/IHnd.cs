@@ -10,6 +10,7 @@ namespace ModCompra.Utils.Componente.CajaMonto.Vista
 {
     public interface IHnd
     {
+        decimal Get_FactorCambio { get; }
         decimal Get_MontoPendMonAct { get; }
         decimal Get_MontoPendMonDiv { get; }
         decimal MontoCajaPago { get; }

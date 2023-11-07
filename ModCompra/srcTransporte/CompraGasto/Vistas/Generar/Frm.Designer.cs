@@ -136,6 +136,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.panel54 = new System.Windows.Forms.Panel();
             this.CHB_INCLUIR_LIBRO_COMPRA = new System.Windows.Forms.CheckBox();
+            this.panel82 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.panel108 = new System.Windows.Forms.Panel();
+            this.TB_MAQ_FISCAL = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.MONTOS_DOCUMENTO = new System.Windows.Forms.Panel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
@@ -244,10 +248,6 @@
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
-            this.panel82 = new System.Windows.Forms.Panel();
-            this.panel108 = new System.Windows.Forms.Panel();
-            this.label29 = new System.Windows.Forms.Label();
-            this.TB_MAQ_FISCAL = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -321,6 +321,8 @@
             this.panel42.SuspendLayout();
             this.panel53.SuspendLayout();
             this.panel54.SuspendLayout();
+            this.panel82.SuspendLayout();
+            this.panel108.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.MONTOS_DOCUMENTO.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -384,8 +386,6 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel82.SuspendLayout();
-            this.panel108.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1732,6 +1732,52 @@
             this.CHB_INCLUIR_LIBRO_COMPRA.UseVisualStyleBackColor = true;
             this.CHB_INCLUIR_LIBRO_COMPRA.CheckedChanged += new System.EventHandler(this.CHB_INCLUIR_LIBRO_COMPRA_CheckedChanged);
             this.CHB_INCLUIR_LIBRO_COMPRA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            // 
+            // panel82
+            // 
+            this.panel82.Controls.Add(this.label29);
+            this.panel82.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel82.Location = new System.Drawing.Point(0, 78);
+            this.panel82.Margin = new System.Windows.Forms.Padding(0);
+            this.panel82.Name = "panel82";
+            this.panel82.Padding = new System.Windows.Forms.Padding(2);
+            this.panel82.Size = new System.Drawing.Size(191, 28);
+            this.panel82.TabIndex = 26;
+            // 
+            // label29
+            // 
+            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(2, 2);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(187, 24);
+            this.label29.TabIndex = 1;
+            this.label29.Text = "Nro Registro/Maq Fiscal ?:";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel108
+            // 
+            this.panel108.Controls.Add(this.TB_MAQ_FISCAL);
+            this.panel108.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel108.Location = new System.Drawing.Point(191, 78);
+            this.panel108.Margin = new System.Windows.Forms.Padding(0);
+            this.panel108.Name = "panel108";
+            this.panel108.Padding = new System.Windows.Forms.Padding(2);
+            this.panel108.Size = new System.Drawing.Size(447, 28);
+            this.panel108.TabIndex = 27;
+            // 
+            // TB_MAQ_FISCAL
+            // 
+            this.TB_MAQ_FISCAL.BackColor = System.Drawing.Color.Yellow;
+            this.TB_MAQ_FISCAL.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_MAQ_FISCAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_MAQ_FISCAL.Location = new System.Drawing.Point(2, 2);
+            this.TB_MAQ_FISCAL.MaxLength = 20;
+            this.TB_MAQ_FISCAL.Name = "TB_MAQ_FISCAL";
+            this.TB_MAQ_FISCAL.Size = new System.Drawing.Size(198, 24);
+            this.TB_MAQ_FISCAL.TabIndex = 2;
+            this.TB_MAQ_FISCAL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.TB_MAQ_FISCAL.Leave += new System.EventHandler(this.TB_MAQ_FISCAL_Leave);
             // 
             // tabPage2
             // 
@@ -3084,52 +3130,6 @@
             this.BT_SALIR.UseVisualStyleBackColor = true;
             this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
             // 
-            // panel82
-            // 
-            this.panel82.Controls.Add(this.label29);
-            this.panel82.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel82.Location = new System.Drawing.Point(0, 78);
-            this.panel82.Margin = new System.Windows.Forms.Padding(0);
-            this.panel82.Name = "panel82";
-            this.panel82.Padding = new System.Windows.Forms.Padding(2);
-            this.panel82.Size = new System.Drawing.Size(191, 28);
-            this.panel82.TabIndex = 26;
-            // 
-            // panel108
-            // 
-            this.panel108.Controls.Add(this.TB_MAQ_FISCAL);
-            this.panel108.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel108.Location = new System.Drawing.Point(191, 78);
-            this.panel108.Margin = new System.Windows.Forms.Padding(0);
-            this.panel108.Name = "panel108";
-            this.panel108.Padding = new System.Windows.Forms.Padding(2);
-            this.panel108.Size = new System.Drawing.Size(447, 28);
-            this.panel108.TabIndex = 27;
-            // 
-            // label29
-            // 
-            this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(2, 2);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(187, 24);
-            this.label29.TabIndex = 1;
-            this.label29.Text = "Nro Registro/Maq Fiscal ?:";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // TB_MAQ_FISCAL
-            // 
-            this.TB_MAQ_FISCAL.BackColor = System.Drawing.Color.Yellow;
-            this.TB_MAQ_FISCAL.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_MAQ_FISCAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_MAQ_FISCAL.Location = new System.Drawing.Point(2, 2);
-            this.TB_MAQ_FISCAL.MaxLength = 20;
-            this.TB_MAQ_FISCAL.Name = "TB_MAQ_FISCAL";
-            this.TB_MAQ_FISCAL.Size = new System.Drawing.Size(198, 24);
-            this.TB_MAQ_FISCAL.TabIndex = 2;
-            this.TB_MAQ_FISCAL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
-            this.TB_MAQ_FISCAL.Leave += new System.EventHandler(this.TB_MAQ_FISCAL_Leave);
-            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3224,6 +3224,9 @@
             this.panel53.ResumeLayout(false);
             this.panel54.ResumeLayout(false);
             this.panel54.PerformLayout();
+            this.panel82.ResumeLayout(false);
+            this.panel108.ResumeLayout(false);
+            this.panel108.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.MONTOS_DOCUMENTO.ResumeLayout(false);
             this.tableLayoutPanel18.ResumeLayout(false);
@@ -3300,9 +3303,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.panel82.ResumeLayout(false);
-            this.panel108.ResumeLayout(false);
-            this.panel108.PerformLayout();
             this.ResumeLayout(false);
 
         }

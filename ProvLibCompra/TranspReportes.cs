@@ -305,7 +305,7 @@ namespace ProvLibCompra
                                         control as numControl,
                                         tipo as codTipoDoc,
                                         aplica as numDocAplica,
-                                        total as totalDoc,
+                                        total-igtf_monto as totalDoc,
                                         exento as montoExento,
                                         base1 as montoBase1,
                                         impuesto1 as montoIva1,
@@ -317,7 +317,10 @@ namespace ProvLibCompra
                                         impuesto3 as montoIva3,
                                         tasa3 as tasa3,
                                         comprobante_retencion as comprobanteRetencion,
-                                        maquina_fiscal as maquinaFiscal
+                                        maquina_fiscal as maquinaFiscal,
+                                        tasa_retencion_iva as tasaRet,
+                                        retencion_iva as montoRet,
+                                        fecha_retencion as fechaRet
                                 FROM compras";
                     var _sql_2 = @" WHERE 1=1 and estatus_anulado='0' and tipo in ('01','02','03') ";
                     if (filtro.Desde.HasValue)
@@ -585,8 +588,53 @@ namespace ProvLibCompra
                                     FROM transp_caja_mov as cjMov
                                     join transp_caja as cj on cj.id=cjMov.id_caja ";
                     var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_2 += " and cjMov.fecha_reg >=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_2 += " and cjMov.fecha_reg <=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
+                    if (filtro.TipoMov != DtoLibTransporte.Reportes.Caja.enumerados.TipoMovCaja.SinDefinir)
+                    {
+                        var _tipoMov = "I";
+                        if (filtro.TipoMov == DtoLibTransporte.Reportes.Caja.enumerados.TipoMovCaja.Egreso)
+                        {
+                            _tipoMov = "E";
+                        }
+                        _sql_2 += " and cjMov.tipo_mov=@tipoMov ";
+                        p3.ParameterName = "@tipoMov";
+                        p3.Value = _tipoMov;
+                    }
+                    if (filtro.IdCaja != -1)
+                    {
+                        _sql_2 += " and cj.id=@idCaja ";
+                        p4.ParameterName = "@idCaja";
+                        p4.Value = filtro.IdCaja;
+                    }
+                    if (filtro.EstatusDoc != DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc.SinDefinir)
+                    {
+                        var _estatusDoc = "0";
+                        if (filtro.EstatusDoc == DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc.Anulado) 
+                        {
+                            _estatusDoc = "1";
+                        }
+                        _sql_2 += " and cjMov.estatus_anulado_mov=@estatus ";
+                        p5.ParameterName = "@estatus";
+                        p5.Value = _estatusDoc;
+                    }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha>(_sql).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
             }

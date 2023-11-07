@@ -388,15 +388,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             L_MONTO.Text = _controlador.data.Get_Monto.ToString("n2", _cult);
             L_MONTO_MON_ACT.Text = _controlador.data.Get_MontoMonAct.ToString("n2", _cult);
             L_MONTO_MON_DIVISA.Text = _controlador.data.Get_MontoMonDivisa.ToString("n2", _cult);
-            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
+            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString();
             //
             L_BASE_RET_IVA.Text = _controlador.data.Get_SubtotalImp.ToString("n2", _cult);
             L_BASE_RET_ISLR.Text = _controlador.data.Get_SubtotalNeto.ToString("n2", _cult);
-            TB_RET_IVA_PORC.Text = _controlador.data.Get_TasaRetIva.ToString("n2", _cult);
+            TB_RET_IVA_PORC.Text = _controlador.data.Get_TasaRetIva.ToString();
             L_MONTO_RET_IVA.Text = _controlador.data.Get_MontoRetIva.ToString("n2", _cult);
-            TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString("n2", _cult);
-            TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString("n2", _cult);
-            TB_SUSTRAENDO_ISLR.Text = _controlador.data.Get_SustraendoISLR.ToString("n2", _cult);
+            TB_RET_ISLR_PORC.Text = _controlador.data.Get_TasaRetISLR.ToString();
+            TB_RET_ISLR_MONTO.Text = _controlador.data.Get_MontoRetISLR.ToString();
+            TB_SUSTRAENDO_ISLR.Text = _controlador.data.Get_SustraendoISLR.ToString();
         }
 
         private void TB_CONCEPTO_TextChanged(object sender, EventArgs e)

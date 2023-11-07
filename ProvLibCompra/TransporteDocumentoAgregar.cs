@@ -362,13 +362,15 @@ namespace ProvLibCompra
                         // ACTUALIZAR PROVEEDOR SALDO/FECHA
                         sql = @"update proveedores set
                                     debitos=debitos+@montoDebito,
+                                    creditos=creditos+@montoCredito,
                                     fecha_ult_compra=@fechaEmision
                                 where auto=@autoProv";
                         var _prv = ficha.documento.proveedor;
                         p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", _prv.autoProv);
                         p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoDebito", _prv.montoDebito);
                         p03 = new MySql.Data.MySqlClient.MySqlParameter("@fechaEmision", _prv.fechaEmiDoc);
-                        var r3 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03);
+                        p04 = new MySql.Data.MySqlClient.MySqlParameter("@montoCredito", _prv.montoCredito);
+                        var r3 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03, p04);
                         if (r3 == 0)
                         {
                             result.Mensaje = "ERROR AL ACTUALIZAR DATA PROVEEDOR";
@@ -626,15 +628,16 @@ namespace ProvLibCompra
                                 {
                                     p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoCompra", autoEntCompra);
                                     p01 = new MySql.Data.MySqlClient.MySqlParameter("@numComprobRetencion", numDocCompraRet);
-                                    sql = @"update compras set comprobante_retencion=@numComprobRetencion
+                                    p02 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                                    sql = @"update compras set 
+                                                comprobante_retencion=@numComprobRetencion,
+                                                fecha_retencion=@fecha
                                             where auto=@autoCompra";
                                     var rt1 = cnn.Database.ExecuteSqlCommand(sql,
-                                        p00, p01);
+                                        p00, p01, p02);
                                     if (rt1 == 0)
                                     {
-                                        result.Mensaje = "ERROR AL ACTUALIZAR DOCUMENTO [ COMPRAS - COMPROBANTE RETENCION ]";
-                                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                        return result;
+                                        throw new Exception("ERROR AL ACTUALIZAR DOCUMENTO [ COMPRAS - COMPROBANTE RETENCION ]");
                                     }
                                     cnn.SaveChanges();
                                 }

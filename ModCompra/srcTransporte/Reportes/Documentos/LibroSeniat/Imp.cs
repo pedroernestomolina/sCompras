@@ -107,12 +107,15 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.LibroSeniat
                 rt["base3"] = rg.montoBase3;
                 rt["iva3"] = rg.montoIva3;
                 rt["comprobanteRet"] = rg.comprobanteRetencion;
+                rt["fechaRet"] = rg.fechaRet;
+                rt["porctRet"] = rg.tasaRet;
+                rt["montoRet"] = rg.montoRet;
                 ds.Tables["Libro"].Rows.Add(rt);
             }
             DataRow rt2 = ds.Tables["LibroEnc"].NewRow();
             rt2["periodo_desde"] = pd;
             rt2["periodo_hasta"] = ph;
-            rt2["tipo_contribuyente"] = "ORDINARIO";
+            rt2["tipo_contribuyente"] = "ESPECIAL";
             rt2["titulo"] = "Libro de Compras "+pd+", "+ph;
             rt2["nombreRazonSocial"] = Sistema.Negocio.Nombre.Trim();
             rt2["ciRif"] = Sistema.Negocio.CiRif.Trim();

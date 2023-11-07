@@ -123,6 +123,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -186,11 +187,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(660, 1);
+            this.panel2.Location = new System.Drawing.Point(659, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(223, 52);
+            this.panel2.Size = new System.Drawing.Size(224, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -201,7 +202,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(219, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(220, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -409,7 +410,7 @@
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(113, 52);
+            this.panel20.Size = new System.Drawing.Size(112, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -425,7 +426,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(109, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(108, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -436,7 +437,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(99, 46);
+            this.panel21.Size = new System.Drawing.Size(98, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -446,7 +447,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(95, 42);
+            this.L_HORA.Size = new System.Drawing.Size(94, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -565,7 +566,8 @@
             this.toolStripMenuItem2,
             this.MENU_DOCUMENTOS_ADMINISTRADOR,
             this.toolStripMenuItem5,
-            this.MENU_DOC_ADM_RET});
+            this.MENU_DOC_ADM_RET,
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
             this.documentosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.documentosToolStripMenuItem.Text = "Documentos";
@@ -573,33 +575,33 @@
             // MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO
             // 
             this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO.Name = "MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO";
-            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO.Size = new System.Drawing.Size(290, 22);
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO.Size = new System.Drawing.Size(293, 22);
             this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO.Text = "Registrar Documento De Compra / Gasto";
             this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO.Click += new System.EventHandler(this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(287, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(290, 6);
             // 
             // MENU_DOCUMENTOS_ADMINISTRADOR
             // 
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Image = global::ModCompra.Properties.Resources.administrador;
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Name = "MENU_DOCUMENTOS_ADMINISTRADOR";
-            this.MENU_DOCUMENTOS_ADMINISTRADOR.Size = new System.Drawing.Size(290, 22);
+            this.MENU_DOCUMENTOS_ADMINISTRADOR.Size = new System.Drawing.Size(293, 22);
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Text = "Administrador de Documentos";
             this.MENU_DOCUMENTOS_ADMINISTRADOR.Click += new System.EventHandler(this.MENU_DOCUMENTOS_ADMINISTRADOR_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(287, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(290, 6);
             // 
             // MENU_DOC_ADM_RET
             // 
             this.MENU_DOC_ADM_RET.Image = global::ModCompra.Properties.Resources.administrador;
             this.MENU_DOC_ADM_RET.Name = "MENU_DOC_ADM_RET";
-            this.MENU_DOC_ADM_RET.Size = new System.Drawing.Size(290, 22);
+            this.MENU_DOC_ADM_RET.Size = new System.Drawing.Size(293, 22);
             this.MENU_DOC_ADM_RET.Text = "Administrador de Retenciones";
             this.MENU_DOC_ADM_RET.Click += new System.EventHandler(this.MENU_DOC_ADM_RET_Click);
             // 
@@ -1074,6 +1076,13 @@
             this.panel10.Size = new System.Drawing.Size(120, 335);
             this.panel10.TabIndex = 0;
             // 
+            // MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO
+            // 
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO.Name = "MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO";
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO.Size = new System.Drawing.Size(293, 22);
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO.Text = "Registrar Documento de Compra / Aliado";
+            this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO.Click += new System.EventHandler(this.MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO_Click);
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1215,5 +1224,6 @@
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_BENEFICIARIO;
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_BENEFICIARIO_MOV;
         private System.Windows.Forms.ToolStripMenuItem MENU_REPORTES_MAESTRO_BENEFICIARIO;
+        private System.Windows.Forms.ToolStripMenuItem MENU_DOCUMENTOS_REGISTRAR_COMPRA_ALIADO;
     }
 }

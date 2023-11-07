@@ -23,6 +23,7 @@ namespace ModCompra.Utils.Componente.CajaMonto.Handler
         public BindingSource Get_CajaSource { get { return _bs; } }
         public IEnumerable <Vista.Idata> Get_Lista { get { return _bl.ToList(); } }
         public IEnumerable<Vista.Idata> Get_CajasUsadas { get { return _bl.Where(w => w.montoAbonar > 0).ToList(); } }
+        public decimal Get_FactorCambio { get { return _factorCambio; } }
 
 
         public Hnd()

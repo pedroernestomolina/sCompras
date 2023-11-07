@@ -249,6 +249,9 @@ namespace DataProvCompra.Data
                             totalDoc = s.totalDoc,
                             maquinaFiscal = s.maquinaFiscal,
                             codTipoDoc = s.codTipoDoc,
+                            fechaRet = s.fechaRet,
+                            montoRet = s.montoRet,
+                            tasaRet = s.tasaRet,
                         };
                         return nr;
                     }).ToList();
@@ -459,6 +462,11 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha>();
             var filtroDTO = new DtoLibTransporte.Reportes.Caja.Movimiento.Filtro()
             {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdCaja = filtro.IdCaja,
+                EstatusDoc = (DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc)filtro.EstatusDoc,
+                TipoMov = (DtoLibTransporte.Reportes.Caja.enumerados.TipoMovCaja)filtro.TipoMov,
             };
             var r01 = MyData.Transporte_Reportes_Caja_Movimientos_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

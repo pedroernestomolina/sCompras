@@ -19,8 +19,15 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
         {
             _filtro = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro();
         }
-        public void setFiltros(object data)
+        public void setFiltros(object filtros)
         {
+            var ft = (Reportes.RepFiltro.Vista.IFiltros)filtros;
+            _filtro = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro()
+            {
+                Desde = ft.Desde,
+                Hasta = ft.Hasta,
+                IdCaja = ft.IdCaja,
+            };
         }
         public void Generar()
         {
@@ -29,8 +36,8 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
                 var r01 = Sistema.MyData.Transporte_Reportes_Caja_Movimientos_GetLista(_filtro);
                 var filtro2 = new OOB.LibCompra.Transporte.Reportes.Caja.Saldo.Filtro()
                 {
-                    fecha = new DateTime(2023, 10, 01),
-                    idCaja = 2,
+                    fecha = _filtro.Desde.Value.AddDays(-1),
+                    idCaja = _filtro.IdCaja,
                 };
                 var r02 = Sistema.MyData.Transporte_Reportes_Caja_Saldo_Al(filtro2);
                 var _saldoIni = r02.Entidad.esDivisa.Trim().ToUpper() == "1" ? r02.Entidad.montoMonDiv : r02.Entidad.montoMonAct;

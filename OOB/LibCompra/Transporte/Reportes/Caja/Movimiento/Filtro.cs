@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Transporte.Reportes.Caja.Movimiento
 {
-    public class Filtro
+    public class Filtro: baseFiltro
     {
+        public enumerados.TipoMovCaja TipoMov { get; set; }
+        public enumerados.EstatusDoc EstatusDoc { get; set; }
+        public int IdCaja { get; set; }
     }
 }

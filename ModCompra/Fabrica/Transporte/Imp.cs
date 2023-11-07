@@ -147,7 +147,8 @@ namespace ModCompra.Fabrica.Transporte
                     proveedor = new OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular.Proveedor()
                     {
                         autoProv = r01.Entidad.documento.autoPrv,
-                        montoDebito = r01.Entidad.documento.total,
+                        montoDebito = r01.Entidad.documento.importeDiv,
+                        montoCredito = r01.Entidad.documento.acumuladoDiv,
                     },
                     retenciones = r01.Entidad.retencionRecibo.Select(s =>
                     {
