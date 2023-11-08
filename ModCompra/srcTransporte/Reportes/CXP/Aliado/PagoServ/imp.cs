@@ -13,18 +13,37 @@ namespace ModCompra.srcTransporte.Reportes.CXP.Aliado.PagoServ
 {
     public class Imp : IRepFiltro
     {
+        private OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro _filtro;
+
+
         public Imp()
         {
         }
         public void setFiltros(object filtros)
         {
+            var ft = (Reportes.RepFiltro.Vista.IFiltros)filtros;
+            var _estatusDoc = OOB.LibCompra.Transporte.Reportes.Aliado.enumerados.EstatusDoc.SinDefinir;
+            if (ft.EstatusDocumento != RepFiltro.Vista.enumerados.EstatusDoc.SinDefinir)
+            {
+                _estatusDoc = OOB.LibCompra.Transporte.Reportes.Aliado.enumerados.EstatusDoc.Activo;
+                if (ft.EstatusDocumento == RepFiltro.Vista.enumerados.EstatusDoc.Inactivo)
+                {
+                    _estatusDoc = OOB.LibCompra.Transporte.Reportes.Aliado.enumerados.EstatusDoc.Anulado;
+                }
+            }
+            _filtro = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro()
+            {
+                Desde = ft.Desde,
+                Hasta = ft.Hasta,
+                IdAliado = ft.IdAliado,
+                EstatusDoc = _estatusDoc,
+            };
         }
         public void Generar()
         {
             try
             {
-                var filtroOOB = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro();
-                var r01 = Sistema.MyData.Transporte_Reportes_Aliado_PagoServ_GetLista(filtroOOB);
+                var r01 = Sistema.MyData.Transporte_Reportes_Aliado_PagoServ_GetLista(_filtro);
                 imprimir(r01.Lista);
             }
             catch (Exception e)
@@ -57,6 +76,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.Aliado.PagoServ
                     rt["montoPag"] = 0m;
                 }
                 rt["estatus"] = rg.estatusAnulado.Trim().ToUpper() == "1" ? "ANULADO" : "";
+                rt["procesado"] = rg.estatusProcesado.Trim().ToUpper() == "1" ? "PROCESADO" : "";
                 ds.Tables["PagoServ"].Rows.Add(rt);
             }
 

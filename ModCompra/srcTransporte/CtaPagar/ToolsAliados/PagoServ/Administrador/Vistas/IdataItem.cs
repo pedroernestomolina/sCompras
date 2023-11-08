@@ -16,5 +16,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
         decimal Monto { get; set; }
         string Motivo { get; set; }
         string Estatus { get; set; }
+        string Procesado { get; set; }
     }
 }

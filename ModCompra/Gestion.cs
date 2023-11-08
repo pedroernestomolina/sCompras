@@ -371,17 +371,33 @@ namespace ModCompra
         }
         public void ReportesAliadoAnticipo()
         {
-            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.Anticipo.Imp();
-            _rep.setFiltros(null);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.CXP.Aliado.Anticipo.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.Anticipo.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReportesAliadoPagoServ()
         {
-            //srcTransporte.Reportes.CXP.Aliado.Idata _data = new srcTransporte.Reportes.CXP.Aliado.data();
-            srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.PagoServ.Imp();
-            _rep.setFiltros(null);
-            _rep.Generar();
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.CXP.Aliado.PagoServ.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.PagoServ.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
         }
         public void ReportesCajaGeneralMov()
         {

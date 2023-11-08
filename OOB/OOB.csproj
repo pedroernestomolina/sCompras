@@ -177,6 +177,13 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\DocRetencion.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\DocRetencionDet.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\Documento.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\enumerados.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\Proveedor.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\Resultado.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\CxP.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Documento.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\DocumentoRecibo.cs" />
@@ -185,6 +192,14 @@
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Proveedor.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Recibo.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGasto\Resultado.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Agregar\DePagoAliado\ObtenerData\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\Anular\Auditoria.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\Anular\DocRetCompra.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\Anular\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\Anular\Proveedor.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\GetData\Documento.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\GetData\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGastoAliado\GetData\RetDoc.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\Auditoria.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\DocRetCompra.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Anular\CompraGasto\Anular\Ficha.cs" />
@@ -208,6 +223,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\General\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\Planilla\Caja.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\Planilla\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\baseFiltro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Caja.cs" />

@@ -23,5 +23,18 @@ namespace ILibCompras.Transporte
 
         DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Entidad.Ficha> 
             Transporte_Documento_Entidad_CompraGrasto_GetById(string autoDoc);
+
+        //
+        //
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha>
+            Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(int idPagoServ);
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.CompraGastoAliado.Resultado>
+            Transporte_Documento_Agregar_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Agregar.CompraGastoAliado.Ficha ficha);
+        DtoLib.Resultado
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_Verificar(string autoDoc);
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.Ficha>
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(string autoDoc);
+        DtoLib.Resultado
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha);
     }
 }

@@ -11,7 +11,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
     {
         private decimal _factorCambio;
         private OOB.LibCompra.Empresa.Fiscal.Ficha _tasasFiscal;
-        private Vistas.Generar.IHndData  _hndData;
+        private OOB.LibCompra.Transporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha _pagoServ;
+        private Vistas.Generar.IHndData _hndData;
 
 
         public Vistas.Generar.IHndData HndData { get { return _hndData; } }
@@ -21,6 +22,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
         {
             _factorCambio = 0m;
             _tasasFiscal = null;
+            _pagoServ = null;
             _hndData = new Handlres.Generar.HndData();
         }
 
@@ -30,6 +32,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             _abandonarIsOK = false;
             _procesarIsOK = false;
             _tasasFiscal = null;
+            _pagoServ = null;
             _hndData.Inicializa();
         }
         Vistas.Generar.Frm frm;
@@ -93,6 +96,10 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                 _tasasFiscal = r03.Entidad;
                 _hndData.CargarData();
                 _hndData.setFechaServidor(r01.Entidad);
+
+                var r04 = Sistema.MyData.Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(11);
+                _pagoServ = r04.Entidad;
+
                 return true;
             }
             catch (Exception e)
@@ -122,41 +129,41 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                 var _sistDocRetIslr = Sistema.MyData.SistemaDocumento_Get(_fichaSistDoc);
                 //
                 var _montoBase = 0m;
-                var _montoNeto = _montoBase + _data.TasaEx.Get_Base;
+                var _montoNeto = _montoBase + _pagoServ.totalMonAct;
                 var _montoImpuesto = 0m;
                 var _subTotal = _montoNeto + _montoImpuesto;
-                var _sucursal = (Utils.FiltrosCB.ConBusqueda.Concepto.data)_hndData.Sucursal.GetItem;
+                var _sucursal = (Utils.FiltrosCB.SinBusqueda.Sucursal.data)_hndData.Sucursal.GetItem;
                 var _concepto = (Utils.FiltrosCB.ConBusqueda.Concepto.data)_hndData.Concepto.GetItem;
                 var _aplicaTipoDoc = "";
                 var _aplicaNumeroDoc = "";
                 var _aplicaFechaDoc = new DateTime(2000, 01, 01);
                 var _fechaRetencion = new DateTime(2000, 01, 01);
                 //
-                var ficha = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Ficha();
-                ficha.documento = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Documento()
+                var ficha = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGastoAliado.Ficha();
+                ficha.documento = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGastoAliado.Documento()
                 {
                     aplicaCodTipoDoc = _aplicaTipoDoc,
                     aplicaFechaDoc = _aplicaFechaDoc,
                     aplicaNumeroDoc = _aplicaNumeroDoc,
                     autoProv = _prv.Ficha.autoId,
-                    autoSucursal = _sucursal.id ,
+                    autoSucursal = _sucursal.id,
                     autoUsuario = Sistema.UsuarioP.autoUsu,
                     ciRifProv = _prv.Ficha.ciRif,
                     codicionPagoDoc = "CONTADO",
                     codigoComprasConcepto = _concepto.codigo,
                     codigoProv = _prv.Ficha.codigo,
-                    codigoSucursal = _sucursal.codigo ,
+                    codigoSucursal = _sucursal.codigo,
                     codigoUsuario = Sistema.UsuarioP.codigoUsu,
                     codTipoDoc = _sistDoc.Entidad.codigo,
                     comprobanteRetencionISLR = "",
                     comprobanteRetencionNro = "",
-                    descComprasConcepto = _concepto.desc ,
+                    descComprasConcepto = _concepto.desc,
                     descSucursal = _sucursal.desc,
                     diasCreditoDoc = 0,
                     dirFiscalProv = _prv.Ficha.direccionFiscal,
                     estacionEquipo = Sistema.EquipoEstacion,
                     estatusFiscal = "1",
-                    factorCambio = _factorCambio,
+                    factorCambio = _pagoServ.tasaCambio,
                     fechaEmisDoc = _hndData.Get_FechaEmisionDoc,
                     fechaRetencion = _fechaRetencion,
                     fechaVencDoc = _hndData.Get_FechaEmisionDoc,
@@ -166,18 +173,18 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                     montoBase1 = 0m,
                     montoBase2 = 0m,
                     montoBase3 = 0m,
-                    montoDivisa = _data.Get_MontoMonDivisa,
-                    montoExento = _data.TasaEx.Get_Base,
+                    montoDivisa = _pagoServ.totalMonDiv,
+                    montoExento = _pagoServ.totalMonAct,
                     montoImpuesto = 0m,
                     montoImpuesto1 = 0m,
                     montoImpuesto2 = 0m,
                     montoImpuesto3 = 0m,
                     montoNeto = _montoNeto,
-                    sustraendoRetISLR = _data.Get_SustraendoISLR,
-                    montoRetISLR = _data.Get_MontoRetISLR,
-                    totalRetISLR = (_data.Get_SustraendoISLR + _data.Get_MontoRetISLR),
+                    sustraendoRetISLR = _pagoServ.sustraendo,
+                    montoRetISLR = _pagoServ.retencion,
+                    totalRetISLR = _pagoServ.totalRetMonAct,
                     montoRetencionIva = 0m,
-                    montoTotal = _data.Get_MontoMonAct,
+                    montoTotal = _pagoServ.totalMonAct,
                     nombreDoc = _sistDoc.Entidad.nombre,
                     nombreProv = _prv.Ficha.nombreRazonSocial,
                     nombreUsuario = Sistema.UsuarioP.nombreUsu,
@@ -190,60 +197,32 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                     subTotal = _subTotal,
                     subTotalImpuesto = _montoImpuesto,
                     subTotalNeto = _montoNeto,
-                    tasaIva1 = _tasasFiscal.Tasa1 ,
-                    tasaIva2 = _tasasFiscal.Tasa2 ,
-                    tasaIva3 = _tasasFiscal.Tasa3 ,
-                    tasaRetencionISLR = _data.Get_TasaRetISLR,
+                    tasaIva1 = _tasasFiscal.Tasa1,
+                    tasaIva2 = _tasasFiscal.Tasa2,
+                    tasaIva3 = _tasasFiscal.Tasa3,
+                    tasaRetencionISLR = _pagoServ.tasaRet,
                     tasaRetencionIva = 0m,
                     telefonoProv = _prv.Ficha.identidad.telefono,
                     igtfMonto = 0m,
-                    tipoDocumentoCompra = OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO,
+                    tipoDocumentoCompra = OOB.LibCompra.Transporte.Documento.Agregar.CompraGastoAliado.enumerados.tipoDocumentoCompra.GASTO,
                     autoSistemaDocumento = _sistDoc.Entidad.autoId,
-                    maquinafiscal= "",
+                    maquinafiscal = "",
+                    SistDocRetIslrAuto = _sistDocRetIslr.Entidad.autoId,
+                    SistDocRetIslrCodigo = _sistDocRetIslr.Entidad.codigo,
+                    SistDocRetIslrNombre = _sistDocRetIslr.Entidad.nombre,
+                    idPagoServAliado = _pagoServ.idPago,
                 };
-                var _montoRetencionesDivisa = 0m;
-                if (_data.Get_MontoRetISLR > 0m)
-                {
-                    var _montoRetISLRDivisa = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR) / _data.Get_FactorCambio;
-                    _montoRetencionesDivisa += _montoRetISLRDivisa;
-                    ficha.recISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
-                    {
-                        documento = _sistDocRetIslr.Entidad.siglas,
-                        importe = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
-                        importeDivisa = _montoRetISLRDivisa,
-                        montoRecibido = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
-                        montoRecibidoDivisa = _montoRetISLRDivisa,
-                        nota = "RETENCION ISLR " + _data.Get_TasaRetISLR.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
-                        prvAuto = _prv.Ficha.autoId,
-                        prvCiRif = _prv.Ficha.ciRif,
-                        prvCodigo = _prv.Ficha.codigo,
-                        prvDirFiscal = _prv.Ficha.direccionFiscal,
-                        prvNombre = _prv.Ficha.nombreRazonSocial,
-                        prvTlf = _prv.Ficha.identidad.telefono,
-                        tasaCambio = _factorCambio ,
-                        usuarioAuto = Sistema.UsuarioP.autoUsu,
-                        usuarioNombre = Sistema.UsuarioP.nombreUsu,
-                        autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
-                        docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
-                        {
-                            importe = _montoRetISLRDivisa,
-                            numDocumentoAfecta = _data.Get_NumeroDoc,
-                            siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
-                            tipoOperacionRealizar = "Abono",
-                        }
-                    };
-                }
-                ficha.proveedor = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Proveedor()
+                ficha.documento.proveedor = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGastoAliado.Proveedor()
                 {
                     autoProv = _prv.Ficha.autoId,
-                    fechaEmiDoc = _data.Get_FechaEmisionDoc,
-                    montoDebito = _data.Get_MontoMonDivisa,
-                    montoCredito = _montoRetencionesDivisa,
+                    fechaEmiDoc = HndData.Get_FechaEmisionDoc,
+                    montoDebito = _pagoServ.totalMonDiv,
+                    montoCredito = _pagoServ.totalMonDiv,
                 };
-                var r01 = Sistema.MyData.Transporte_Documento_Agregar_CompraGrasto(ficha);
+                var r01 = Sistema.MyData.Transporte_Documento_Agregar_CompraGrasto_DePagoAliadoServ(ficha);
                 _procesarIsOK = true;
                 Helpers.Msg.AgregarOk();
-                if (_data.Get_MontoRetISLR > 0m)
+                if (_pagoServ.totalRetMonAct > 0m)
                 {
                     PlanillaRetIslr(r01.Entidad.autoDocCompra);
                 }

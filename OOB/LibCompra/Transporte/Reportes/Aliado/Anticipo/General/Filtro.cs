@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General
 {
-    public class Filtro
+    public class Filtro: baseFiltro
     {
+        public int IdAliado { get; set; }
+        public enumerados.EstatusDoc EstatusDoc { get; set; }
     }
 }

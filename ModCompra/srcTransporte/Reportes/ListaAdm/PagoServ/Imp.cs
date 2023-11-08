@@ -50,6 +50,7 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm.PagoServ
                 rt["fecha"] = rg.FechaMov;
                 rt["recibo"] = rg.ReciboNro;
                 rt["aliado"] = rg.AliadoCiRif + Environment.NewLine + rg.AliadoNombre;
+                rt["procesado"] = rg.Procesado;
                 rt["monto"] = rg.Monto;
                 if (rg.Estatus.Trim() != "")
                 {

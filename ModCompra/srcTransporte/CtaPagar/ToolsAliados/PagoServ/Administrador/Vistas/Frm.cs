@@ -90,11 +90,20 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.V
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
 
+            var c6 = new DataGridViewTextBoxColumn();
+            c6.DataPropertyName = "Procesado";
+            c6.HeaderText = "Procesado";
+            c6.Visible = true;
+            c6.Width = 80;
+            c6.HeaderCell.Style.Font = f;
+            c6.DefaultCellStyle.Font = f1;
+
             DGV.Columns.Add(c0);
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
+            DGV.Columns.Add(c6);
             DGV.Columns.Add(c5);
         }
         private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

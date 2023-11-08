@@ -508,8 +508,42 @@ namespace ProvLibCompra
                                         tasa_factor as factorCambio
                                     FROM transp_aliado_anticipo";
                     var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_2 += " and fecha_registro >=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_2 += " and fecha_registro <=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
+                    if (filtro.IdAliado != -1)
+                    {
+                        _sql_2 += " and id_aliado=@idAliado ";
+                        p4.ParameterName = "@idAliado";
+                        p4.Value = filtro.IdAliado;
+                    }
+                    if (filtro.EstatusDoc != DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.SinDefinir)
+                    {
+                        var _estatusDoc = "0";
+                        if (filtro.EstatusDoc ==  DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.Anulado)
+                        {
+                            _estatusDoc = "1";
+                        }
+                        _sql_2 += " and estatus_anulado=@estatus ";
+                        p5.ParameterName = "@estatus";
+                        p5.Value = _estatusDoc;
+                    }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha>(_sql).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
             }
@@ -546,11 +580,46 @@ namespace ProvLibCompra
                                         monto_ret_mon_act as montoRetMonAct,
                                         total_pag_mon_div as totalPagoMonDiv,
                                         estatus_anulado as estatusAnulado,
+                                        estatus_procesado as estatusProcesado,
                                         cnt_serv_pag as cntServPag
                                     FROM transp_aliado_pagoserv";
                     var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_2 += " and fecha_registro >=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_2 += " and fecha_registro <=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
+                    if (filtro.IdAliado != -1)
+                    {
+                        _sql_2 += " and id_aliado=@idAliado ";
+                        p4.ParameterName = "@idAliado";
+                        p4.Value = filtro.IdAliado;
+                    }
+                    if (filtro.EstatusDoc != DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.SinDefinir)
+                    {
+                        var _estatusDoc = "0";
+                        if (filtro.EstatusDoc == DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.Anulado)
+                        {
+                            _estatusDoc = "1";
+                        }
+                        _sql_2 += " and estatus_anulado=@estatus ";
+                        p5.ParameterName = "@estatus";
+                        p5.Value = _estatusDoc;
+                    }
                     var _sql = _sql_1 + _sql_2;
-                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>(_sql).ToList();
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
             }

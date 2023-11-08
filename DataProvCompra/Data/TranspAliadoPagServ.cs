@@ -167,6 +167,7 @@ namespace DataProvCompra.Data
                             motivo = s.motivo,
                             nombreAliado = s.nombreAliado,
                             numRecibo = s.numRecibo,
+                            estatusProcesado = s.estatusProcesado,
                         };
                         return nr;
                     }).ToList();

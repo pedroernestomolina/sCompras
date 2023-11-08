@@ -71,5 +71,33 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Documento_Entidad_CompraGrasto_GetById(autoDoc);
         }
+
+
+        //
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha> 
+            Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(int idPagoServ)
+        {
+            return ServiceProv.Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(idPagoServ);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.CompraGastoAliado.Resultado> 
+            Transporte_Documento_Agregar_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Agregar.CompraGastoAliado.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Documento_Agregar_CompraGrasto_DePagoAliadoServ(ficha);
+        }
+        public DtoLib.Resultado 
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_Verificar(string autoDoc)
+        {
+            return ServiceProv.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_Verificar(autoDoc);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.Ficha> 
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(string autoDoc)
+        {
+            return ServiceProv.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(autoDoc);
+        }
+        public DtoLib.Resultado 
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha)
+        {
+            return ServiceProv.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(ficha);
+        }
     }
 }

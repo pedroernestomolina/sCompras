@@ -17,6 +17,7 @@ namespace DtoLibTransporte.Aliado.PagoServ.Lista
         public string motivo { get; set; }
         public decimal montoPagoSelMonDiv { get; set; }
         public string estatusAnulado { get; set; }
+        public string estatusProcesado { get; set; }
         public int cntServPag { get; set; }
     }
 }

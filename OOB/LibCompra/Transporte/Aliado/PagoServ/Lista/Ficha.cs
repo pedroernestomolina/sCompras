@@ -18,5 +18,6 @@ namespace OOB.LibCompra.Transporte.Aliado.PagoServ.Lista
         public decimal montoPagoSelMonDiv { get; set; }
         public string estatusAnulado { get; set; }
         public int cntServPag { get; set; }
+        public string estatusProcesado { get; set; }
     }
 }

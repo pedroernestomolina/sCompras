@@ -78,6 +78,18 @@ namespace ModCompra.Fabrica.Transporte
         private OOB.Resultado 
             anularGasto(string idDoc, string motivo)
         {
+            if (CompraIsAliado)
+            {
+                return AnularCompraDeAliadoPagoServ(idDoc, motivo);
+            }
+            else 
+            {
+                return AnularCompraGasto(idDoc, motivo);
+            }
+        }
+        private OOB.Resultado 
+            AnularCompraGasto(string idDoc, string motivo)
+        {
             var rt = new OOB.Resultado();
             try
             {
@@ -173,6 +185,58 @@ namespace ModCompra.Fabrica.Transporte
                 {
                     throw new Exception(r02.Mensaje);
                 }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+            }
+            return rt;
+        }
+        private OOB.Resultado
+            AnularCompraDeAliadoPagoServ(string idDoc, string motivo)
+        {
+            var rt = new OOB.Resultado();
+            try
+            {
+                var v01 = Sistema.MyData.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_Verificar(idDoc);
+                //
+                var v02 = Sistema.MyData.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(idDoc);
+                //
+                var auditorias = new List<OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Auditoria>();
+                var audPorCompra = new OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Auditoria()
+                {
+                    autoDoc = idDoc,
+                    autoSistemaDocumento = v02.Entidad.documento.autoSistemaDoc,
+                    autoUsuario = Sistema.UsuarioP.autoUsu,
+                    codigoUsuario = Sistema.UsuarioP.codigoUsu,
+                    estacion = Sistema.EquipoEstacion,
+                    ip = "",
+                    motivo = motivo,
+                    nombreUsuario = Sistema.UsuarioP.nombreUsu,
+                };
+                auditorias.Add(audPorCompra);
+                var ficha = new OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Ficha()
+                {
+                    autoDocCompra = idDoc,
+                    auditoria = auditorias,
+                    proveedor = new OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Proveedor()
+                    {
+                        autoProv = v02.Entidad.documento.autoPrv,
+                        montoDebito = v02.Entidad.documento.totalDivisa,
+                        montoCredito = v02.Entidad.documento.totalDivisa,
+                    },
+                    docRetCompra = v02.Entidad.retencionDoc.Select(xr =>
+                    {
+                        var xnr = new OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.DocRetCompra()
+                        {
+                            autoDocRetCompra = xr.autoDocCompraRet,
+                        };
+                        return xnr;
+                    }).ToList(),
+                };
+                //
+                var v03= Sistema.MyData.Transporte_Documento_Anular_CompraGrasto(ficha);
             }
             catch (Exception e)
             {

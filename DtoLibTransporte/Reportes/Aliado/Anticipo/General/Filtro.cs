@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace DtoLibTransporte.Reportes.Aliado.Anticipo.General
 {
-    public class Filtro
+    public class Filtro: baseFiltro
     {
+        public enumerados.EstatusDoc EstatusDoc { get; set; }
+        public int IdAliado { get; set; }
     }
 }

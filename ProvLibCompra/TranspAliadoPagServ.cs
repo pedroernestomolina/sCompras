@@ -109,8 +109,8 @@ namespace ProvLibCompra
                                     total_pag_mon_div, 
                                     estatus_anulado,
                                     monto_anticipo_usado,
-                                    monto_anticipo_ret_usado
-                                ) 
+                                    monto_anticipo_ret_usado,
+                                    estatus_procesado) 
                             VALUES (
                                     NULL,
                                     @id_aliado, 
@@ -135,8 +135,8 @@ namespace ProvLibCompra
                                     @total_pag_mon_div, 
                                     '0',
                                     @monto_anticipo_usado,
-                                    @monto_anticipo_ret_usado
-                                )";
+                                    @monto_anticipo_ret_usado,
+                                    '0')";
                         var mov = ficha.movimiento;
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado",mov.idAliado);
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision",mov.fechaEmision);
@@ -412,7 +412,9 @@ namespace ProvLibCompra
                         //
                         var sql = @"update transp_aliado_pagoserv 
                                         set estatus_anulado='1'
-                                    where id=@idPago";
+                                    where id=@idPago 
+                                            and estatus_anulado='0' 
+                                            and estatus_procesado='0'";
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@idPago", ficha.idMovPago);
                         var r1 = cnn.Database.ExecuteSqlCommand(sql,p00);
                         if (r1 == 0)
@@ -629,6 +631,7 @@ namespace ProvLibCompra
                                         motivo as motivo,
                                         monto_mon_div as montoPagoSelMonDiv,
                                         estatus_anulado as estatusAnulado,
+                                        estatus_procesado as estatusProcesado,
                                         cnt_serv_pag as cntServPag
                                     FROM transp_aliado_pagoserv";
                     var _sql_2 = @" WHERE 1=1 ";

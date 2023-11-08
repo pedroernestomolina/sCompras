@@ -1456,6 +1456,8 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             private global::System.Data.DataColumn columnmontoPag;
             
+            private global::System.Data.DataColumn columnprocesado;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PagoServDataTable() {
@@ -1555,6 +1557,14 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn procesadoColumn {
+                get {
+                    return this.columnprocesado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1590,7 +1600,7 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PagoServRow AddPagoServRow(System.DateTime fecha, string recibo, string aliado, decimal monto, string estatus, string aplicaRet, decimal montoRet, decimal montoPag) {
+            public PagoServRow AddPagoServRow(System.DateTime fecha, string recibo, string aliado, decimal monto, string estatus, string aplicaRet, decimal montoRet, decimal montoPag, string procesado) {
                 PagoServRow rowPagoServRow = ((PagoServRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         fecha,
@@ -1600,7 +1610,8 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                         estatus,
                         aplicaRet,
                         montoRet,
-                        montoPag};
+                        montoPag,
+                        procesado};
                 rowPagoServRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoServRow);
                 return rowPagoServRow;
@@ -1631,6 +1642,7 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 this.columnaplicaRet = base.Columns["aplicaRet"];
                 this.columnmontoRet = base.Columns["montoRet"];
                 this.columnmontoPag = base.Columns["montoPag"];
+                this.columnprocesado = base.Columns["procesado"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1652,6 +1664,8 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 base.Columns.Add(this.columnmontoRet);
                 this.columnmontoPag = new global::System.Data.DataColumn("montoPag", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmontoPag);
+                this.columnprocesado = new global::System.Data.DataColumn("procesado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprocesado);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2914,6 +2928,22 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string procesado {
+                get {
+                    try {
+                        return ((string)(this[this.tablePagoServ.procesadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'procesado\' in table \'PagoServ\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoServ.procesadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsfechaNull() {
                 return this.IsNull(this.tablePagoServ.fechaColumn);
             }
@@ -3006,6 +3036,18 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetmontoPagNull() {
                 this[this.tablePagoServ.montoPagColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsprocesadoNull() {
+                return this.IsNull(this.tablePagoServ.procesadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetprocesadoNull() {
+                this[this.tablePagoServ.procesadoColumn] = global::System.Convert.DBNull;
             }
         }
         

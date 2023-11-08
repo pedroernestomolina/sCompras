@@ -21,6 +21,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.H
         public decimal Monto { get; set; }
         public string Motivo { get; set; }
         public string Estatus { get; set; }
+        public string Procesado { get; set; }
         public int idMov { get { return _idMov; } }
         public bool isAnulado { get { return _isAnulado; } }
 
@@ -35,6 +36,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Administrador.H
             Monto = ficha.montoPagoSelMonDiv;
             Motivo = ficha.motivo;
             Estatus = ficha.estatusAnulado == "1" ? "ANULADO" : "";
+            Procesado = ficha.estatusProcesado == "1" ? "PROCESADO" : "";
             _idMov = ficha.idMov;
             _isAnulado = ficha.estatusAnulado == "1" ;
         }

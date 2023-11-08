@@ -888,7 +888,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE DE RETENCIONES</Value>
+                  <Value>LISTADO DE RETENCIONES</Value>
                   <Style>
                     <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -914,7 +914,6 @@
         </Textbox>
         <Line Name="Line1">
           <Top>2.36361cm</Top>
-          <Left>0cm</Left>
           <Height>0cm</Height>
           <Width>20.09292cm</Width>
           <ZIndex>1</ZIndex>

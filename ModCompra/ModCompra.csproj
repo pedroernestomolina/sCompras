@@ -694,7 +694,9 @@
     <Compile Include="srcTransporte\Reportes\Caja\EdoCta\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\DS_REPDOC.cs">

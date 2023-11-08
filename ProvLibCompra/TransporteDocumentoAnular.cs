@@ -352,5 +352,273 @@ namespace ProvLibCompra
             }
             return rt;
         }
+
+        //
+        public DtoLib.Resultado
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_Verificar(string autoDoc)
+        {
+            var rt = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql = "select now()";
+                    var fechaSistema = cnn.Database.SqlQuery<DateTime>(_sql).FirstOrDefault();
+                    //
+                    _sql = @"select 
+                                fecha_registro as fechaRegistro,
+                                estatus_anulado as estatusAnulado,
+                                estatus_cierre_contable as estatusCierreContable
+                            from compras as c 
+                            join compras_rel_transp_aliado_pagoserv as relPagServ on c.auto=relPagServ.auto_compra
+                            where auto=@autoDoc";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
+                    var _ent = cnn.Database.SqlQuery<verificarAnular>(_sql, p1).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        throw new Exception("DOCUMENTO NO ENCONTRADO");
+                    }
+                    if (_ent.estatusAnulado == "1")
+                    {
+                        throw new Exception("DOCUMENTO YA ANULADO");
+                    }
+                    if (_ent.fechaRegistro.Year != fechaSistema.Year || _ent.fechaRegistro.Month != fechaSistema.Month)
+                    {
+                        throw new Exception("DOCUMENTO SE ENCUENTRA EN OTRO PERIODO");
+                    }
+                    if (_ent.estatusCierreContable == "1")
+                    {
+                        throw new Exception("DOCUMENTO SE ENCUENTRA BLOQUEADO CONTABLEMENTE");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return rt;
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.Ficha>
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(string autoDoc)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql = @"select 
+                                    doc.documento as documento,
+                                    doc.auto_proveedor as autoPrv,
+                                    doc.auto_cxp as autoCxp,
+                                    doc.total as total,
+                                    doc.tipo as codigoTipoDoc,
+                                    doc.tipo_documento_compra as tipoDocumentoCompra,
+                                    doc.auto_sistema_documento as autoSistemaDoc,
+                                    doc.monto_divisa as totalDivisa,
+                                    relPagServ.id as idRelPagServ,
+                                    relPagServ.id_trans_alido_pago_serv as idTranspAliadoPagServ
+                                from compras as doc
+                                join compras_rel_transp_aliado_pagoserv as relPagServ on doc.auto=relPagServ.auto_compra
+                                where doc.auto=@autoDoc";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", autoDoc);
+                    var _ent = cnn.Database.SqlQuery<DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.Documento>(sql, p1).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        throw new Exception("DOCUMENTO NO ENCONTRADO");
+                    }
+                    //
+                    //OBTENER DATA DE LAS RESPECTIVAS RETENCIONES REALIZADAS AL PROCESAR DOCUMENTO 
+                    sql = @"SELECT 
+                                compRetDet.auto as autoDocCompraRet
+                            FROM compras_retenciones_detalle as compRetDet
+                            join compras as compra on compra.auto=compRetDet.auto_documento
+                            where compRetDet.auto_documento=@autoDocCompra and
+                                (compra.retencion_iva>0 or compra.retencion_islr>0)";
+                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCompra", autoDoc);
+                    var _lstRetComp = cnn.Database.SqlQuery<DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.RetDoc>(sql, p1).ToList();
+                    //
+                    result.Entidad = new DtoLibTransporte.Documento.Anular.CompraGastoAliado.GetData.Ficha()
+                    {
+                        documento = _ent,
+                        retencionDoc = _lstRetComp,
+                    };
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.Resultado
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        //
+                        var sql = "update sistema_contadores set a_compras=a_compras+1, a_cxp=a_cxp+1";
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql);
+                        if (r1 == 0)
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR TABLA CONTADORES");
+                        }
+                        //
+                        sql = @"INSERT INTO auditoria_documentos (
+                                    auto_documento, 
+                                    auto_sistema_documentos, 
+                                    auto_usuario,
+                                    usuario,
+                                    codigo, 
+                                    fecha, 
+                                    hora, 
+                                    memo, 
+                                    estacion, 
+                                    ip
+                                )
+                                VALUES (
+                                    @auto_documento, 
+                                    @auto_sistema_documentos, 
+                                    @auto_usuario,
+                                    @usuario,
+                                    @codigo, 
+                                    @fecha, 
+                                    @hora, 
+                                    @memo, 
+                                    @estacion, 
+                                    @ip
+                                )";
+                        foreach (var rg in ficha.auditoria)
+                        {
+                            var p1 = new MySql.Data.MySqlClient.MySqlParameter("@auto_documento", rg.autoDoc);
+                            var p2 = new MySql.Data.MySqlClient.MySqlParameter("@auto_sistema_documentos", rg.autoSistemaDocumento);
+                            var p3 = new MySql.Data.MySqlClient.MySqlParameter("@auto_usuario", rg.autoUsuario);
+                            var p4 = new MySql.Data.MySqlClient.MySqlParameter("@usuario", rg.nombreUsuario);
+                            var p5 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", rg.codigoUsuario);
+                            var p6 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                            var p7 = new MySql.Data.MySqlClient.MySqlParameter("@hora", fechaSistema.ToShortTimeString());
+                            var p8 = new MySql.Data.MySqlClient.MySqlParameter("@memo", rg.motivo);
+                            var p9 = new MySql.Data.MySqlClient.MySqlParameter("@estacion", rg.estacion);
+                            var p10 = new MySql.Data.MySqlClient.MySqlParameter("@ip", rg.ip);
+                            var v1 = cnn.Database.ExecuteSqlCommand(sql, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10);
+                            if (v1 == 0)
+                            {
+                                throw new Exception("PROBLEMA AL REGISTRAR MOVIMIENTO AUDITORIA");
+                            }
+                        }
+                        //
+                        sql = @"update compras set 
+                                    estatus_anulado='1'
+                                where auto=@autoDoc";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoDoc", ficha.autoDocCompra);
+                        var r2 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                        if (r2 == 0)
+                        {
+                            throw new Exception("ERROR AL ACTUALIZAR ESTATUS ANULADO DOCUMENTO COMPRA");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.proveedor.autoProv);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoDebito", ficha.proveedor.montoDebito);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@montoCredito", ficha.proveedor.montoCredito);
+                        sql = @"update proveedores set
+                                    debitos=debitos-@montoDebito,
+                                    creditos=creditos-@montoCredito
+                                where auto=@autoProv";
+                        var r3 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03);
+                        if (r3 == 0)
+                        {
+                            throw new Exception("ERROR AL ACTUALIZAR DATA PROVEEDOR");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        if (ficha.docRetCompra != null)
+                        {
+                            foreach (var rg in ficha.docRetCompra)
+                            {
+                                sql = @"update compras_retenciones set 
+                                            estatus_anulado='1'
+                                        where auto=@autoDocCompraRet";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCompraRet", rg.autoDocRetCompra);
+                                var r7 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                                if (r7 == 0)
+                                {
+                                    throw new Exception("ERROR AL ACTUALIZAR ESTATUS DOCUMENTO COMPRA RETENCION");
+                                }
+                                cnn.SaveChanges();
+                                //
+                                sql = @"update compras_retenciones_detalle set 
+                                            estatus_anulado='1'
+                                        where auto=@autoDocCompraRet";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoDocCompraRet", rg.autoDocRetCompra);
+                                var r8 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                                if (r8 == 0)
+                                {
+                                    throw new Exception("ERROR AL ACTUALIZAR ESTATUS DOCUMENTO COMPRA RETENCION DETALLE");
+                                }
+                                cnn.SaveChanges();
+                            }
+                        }
+                        //
+                        sql = @"update transp_aliado_pagoserv set 
+                                    estatus_procesado='1'
+                                where id=@idPagoServ";
+                        p00 = new MySql.Data.MySqlClient.MySqlParameter("@idPagoServ", ficha.idPagoServicio);
+                        var r9 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                        if (r9 == 0)
+                        {
+                            throw new Exception("ERROR AL ACTUALIZAR ESTATUS TABLA [ TRANSP_ALIADO_PAGOSERV ] ");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        sql = @"update compras_rel_transp_aliado_pagoservtransp_aliado_pagoserv set 
+                                    estatus_procesado='1'
+                                where id=@idRelacion";
+                        p00 = new MySql.Data.MySqlClient.MySqlParameter("@idRelacion", ficha.idRelCompraPago);
+                        var r10 = cnn.Database.ExecuteSqlCommand(sql, p00);
+                        if (r10 == 0)
+                        {
+                            throw new Exception("ERROR AL ACTUALIZAR ESTATUS TABLA [ COMPRAS_REL_TRANSP_ALIADO_PAGOSERV ] ");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

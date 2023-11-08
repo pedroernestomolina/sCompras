@@ -268,6 +268,10 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Ficha>();
             var filtroDTO = new DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro()
             {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdAliado = filtro.IdAliado,
+                EstatusDoc = (DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc)filtro.EstatusDoc,
             };
             var r01 = MyData.Transporte_Reportes_Aliado_Anticipos_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -312,6 +316,10 @@ namespace DataProvCompra.Data
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha>();
             var filtroDTO = new DtoLibTransporte.Reportes.Aliado.PagoServ.General.Filtro()
             {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdAliado = filtro.IdAliado,
+                EstatusDoc = (DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc)filtro.EstatusDoc,
             };
             var r01 = MyData.Transporte_Reportes_Aliado_PagoServ_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -345,6 +353,7 @@ namespace DataProvCompra.Data
                             tasaFactor = s.tasaFactor,
                             tasaRet = s.tasaRet,
                             totalPagoMonDiv = s.totalPagoMonDiv,
+                            estatusProcesado= s.estatusProcesado,
                         };
                         return nr;
                     }).ToList();
