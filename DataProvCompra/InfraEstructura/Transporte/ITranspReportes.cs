@@ -26,6 +26,8 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Reportes_Aliado_Anticipos_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.General.Filtro filtro);
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Ficha>
             Transporte_Reportes_Aliado_PagoServ_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.General.Filtro filtro);
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Ficha>
+            Transporte_Reportes_Aliado_MovCaja_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Filtro filtro);
 
         //ALIADOS-PLANILLA
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
@@ -42,5 +44,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
         //BENEFICIARIO
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Ficha>
             Transporte_Reportes_Beneficiario_Movimiento_GetLista(OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Fitro filtro);
+
+        //CXP
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha>
+            Transporte_Reportes_Cxp_Documentos_PagosEmitidos(OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Filtro filtro);
     }
 }

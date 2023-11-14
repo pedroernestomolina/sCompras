@@ -16,6 +16,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         string Get_Notas { get; }
         Utils.Buscar.Proveedor.Vistas.IProveedor Proveedor {get;}
         Utils.FiltrosCB.ICtrlConBusqueda Concepto { get;}
+        Utils.FiltrosCB.ICtrlConBusqueda Aliado { get; }
         Utils.FiltrosCB.ICtrlSinBusqueda Sucursal { get; }
         bool Get_FechaEmisionDocIsOk { get; }
 
@@ -29,5 +30,6 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         void setFechaServidor(DateTime dateTime);
         bool Verificar();
         void BuscarProveedor();
+        void BuscarPagoServAliadoSinProcesar();
     }
 }

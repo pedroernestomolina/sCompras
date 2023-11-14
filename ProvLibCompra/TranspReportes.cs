@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProvLibCompra
 {
-    public partial class Provider: ILibCompras.IProvider
+    public partial class Provider : ILibCompras.IProvider
     {
         //DOCUMENTOS
         public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.GeneralDoc.Ficha>
@@ -58,7 +58,7 @@ namespace ProvLibCompra
                         p2.ParameterName = "@hasta";
                         p2.Value = filtro.Hasta;
                     }
-                    if (filtro.IdProveedor!="")
+                    if (filtro.IdProveedor != "")
                     {
                         _sql_2 += " and auto_proveedor=@idProveedor ";
                         p3.ParameterName = "@idProveedor";
@@ -88,7 +88,7 @@ namespace ProvLibCompra
             }
             return result;
         }
-        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.Retencion.Ficha> 
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.Retencion.Ficha>
             Transporte_Reportes_Compras_Retenciones_GetLista(DtoLibTransporte.Reportes.Compras.Retencion.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Compras.Retencion.Ficha>();
@@ -116,7 +116,7 @@ namespace ProvLibCompra
                                         retencion_sustraendo as retSustraendo,
                                         estatus_anulado as estatusAnulado
                                  FROM compras_retenciones ";
-                    var _sql_2= @" WHERE 1=1 ";
+                    var _sql_2 = @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
@@ -146,7 +146,7 @@ namespace ProvLibCompra
                         p5.ParameterName = "@estatus";
                         p5.Value = filtro.EstatusDoc;
                     }
-                    if (filtro.tipoRet != DtoLibTransporte.Reportes.Compras.enumerados.tipoRetencion.SinDefinir) 
+                    if (filtro.tipoRet != DtoLibTransporte.Reportes.Compras.enumerados.tipoRetencion.SinDefinir)
                     {
                         p1.ParameterName = "@tipoRet";
                         if (filtro.tipoRet == DtoLibTransporte.Reportes.Compras.enumerados.tipoRetencion.IVA)
@@ -159,7 +159,7 @@ namespace ProvLibCompra
                         }
                         _sql_2 += " and tipo=@tipoRet ";
                     }
-                    var _sql = _sql_1+_sql_2;
+                    var _sql = _sql_1 + _sql_2;
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.Retencion.Ficha>(_sql, p1, p2, p3, p4, p5).ToList();
                     result.Lista = _lst;
                 }
@@ -171,7 +171,7 @@ namespace ProvLibCompra
             }
             return result;
         }
-        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Iva.Ficha> 
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Iva.Ficha>
             Transporte_Reportes_Compras_Planilla_RetIva(string idDocCompra)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Iva.Ficha>();
@@ -217,7 +217,7 @@ namespace ProvLibCompra
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDocCompra);
                     var _sql = _sql_1 + _sql_2;
                     var _ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Iva.Ficha>(_sql, p1).FirstOrDefault();
-                    result.Entidad= _ent;
+                    result.Entidad = _ent;
                 }
             }
             catch (Exception e)
@@ -227,7 +227,7 @@ namespace ProvLibCompra
             }
             return result;
         }
-        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha> 
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha>
             Transporte_Reportes_Compras_Planilla_RetIslr(string idDocCompra)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha>();
@@ -327,7 +327,7 @@ namespace ProvLibCompra
                     {
                         _sql_2 += " and fecha>=@desde ";
                         p1.ParameterName = "@desde";
-                        p1.Value =filtro.Desde;
+                        p1.Value = filtro.Desde;
                     }
                     if (filtro.Hasta.HasValue)
                     {
@@ -482,7 +482,7 @@ namespace ProvLibCompra
         }
 
         //ALIADOS
-        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha> 
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha>
             Transporte_Reportes_Aliado_Anticipos_GetLista(DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.Anticipo.General.Ficha>();
@@ -534,7 +534,7 @@ namespace ProvLibCompra
                     if (filtro.EstatusDoc != DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.SinDefinir)
                     {
                         var _estatusDoc = "0";
-                        if (filtro.EstatusDoc ==  DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.Anulado)
+                        if (filtro.EstatusDoc == DtoLibTransporte.Reportes.Aliado.enumerados.EstatusDoc.Anulado)
                         {
                             _estatusDoc = "1";
                         }
@@ -630,9 +630,104 @@ namespace ProvLibCompra
             }
             return result;
         }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.MovCaja.Ficha>
+            Transporte_Reportes_Aliado_MovCaja_GetLista(DtoLibTransporte.Reportes.Aliado.MovCaja.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.MovCaja.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        rel.id_aliado as idAliado, 
+                                        rel.id_caja as idCaja, 
+                                        rel.id_caja_mov as idCajaMov,
+                                        rel.desc_caja as cajaDescripcion,
+                                        rel.fecha_registro as fechaMov,
+                                        cajaMov.concepto_mov as conceptoMov,
+                                        cajaMov.monto_mov_mon_act as montoMonAct,
+                                        cajaMov.monto_mov_mon_div as montoMonDiv,
+                                        cajaMov.signo as signo,
+                                        pgServ.recibo_numero as reciboNro,
+                                        pgServ.tasa_factor as tasaFactor,
+                                        pgServ.aliado_nombre as nombreAliado,
+                                        pgServ.aliado_cirif as ciRifAliado,
+                                        'PAGO/SERVICIO' as tipoMov
+                                    FROM transp_aliado_pagoserv_caj as rel
+                                    join transp_aliado_pagoserv as pgServ on rel.id_pagoserv=pgServ.id
+                                    join transp_caja_mov as cajaMov on rel.id_caja_mov=cajaMov.id
+                                    where rel.estatus_anulado='0' ";
+
+                    var _sql_2 = @"SELECT 
+                                        rel.id_aliado as idAliado, 
+                                        rel.id_caja as idCaja, 
+                                        rel.id_caja_mov as idCajaMov,
+                                        caja.descripcion as cajaDescripcion,
+                                        rel.fecha_reg as fechaMov,
+                                        cajaMov.concepto_mov as conceptoMov,
+                                        cajaMov.monto_mov_mon_act as montoMonAct,
+                                        cajaMov.monto_mov_mon_div as montoMonDiv,
+                                        cajaMov.signo as signo,
+                                        aliadoAnt.recibo_numero as reciboNro,
+                                        aliadoAnt.tasa_factor as tasaFactor,
+                                        aliadoAnt.nombre_aliado as nombreAliado,
+                                        aliadoAnt.cirif_aliado as ciRifAliado,
+                                        'ANTICIPOS' as tipoMov
+                                    FROM transp_aliado_anticipo_caja as rel
+                                    join transp_aliado_anticipo as aliadoAnt on rel.id_anticipo=aliadoAnt.id
+                                    join transp_caja_mov as cajaMov on rel.id_caja_mov=cajaMov.id
+                                    join transp_caja as caja on rel.id_caja=caja.id
+                                    where rel.estatus_anulado='0' ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro.Desde.HasValue)
+                    {
+                        _sql_1 += " and rel.fecha_registro >=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+
+                        _sql_2 += " and rel.fecha_reg >=@desde ";
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        _sql_1 += " and rel.fecha_registro <=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+
+                        _sql_2 += " and rel.fecha_reg <=@hasta ";
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
+                    if (filtro.IdAliado != -1)
+                    {
+                        _sql_1 += " and rel.id_aliado=@idAliado ";
+                        p3.ParameterName = "@idAliado";
+                        p3.Value = filtro.IdAliado;
+
+                        _sql_2 += " and rel.id_aliado=@idAliado ";
+                        p3.ParameterName = "@idAliado";
+                        p3.Value = filtro.IdAliado;
+                    }
+                    var _sql = _sql_1 + " union ( " + _sql_2 + " )";
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Aliado.MovCaja.Ficha>(_sql, p1, p2, p3).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
 
         //CAJA
-        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha> 
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha>
             Transporte_Reportes_Caja_Movimientos_GetLista(DtoLibTransporte.Reportes.Caja.Movimiento.Filtro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Caja.Movimiento.Ficha>();
@@ -694,7 +789,7 @@ namespace ProvLibCompra
                     if (filtro.EstatusDoc != DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc.SinDefinir)
                     {
                         var _estatusDoc = "0";
-                        if (filtro.EstatusDoc == DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc.Anulado) 
+                        if (filtro.EstatusDoc == DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc.Anulado)
                         {
                             _estatusDoc = "1";
                         }
@@ -714,7 +809,7 @@ namespace ProvLibCompra
             }
             return result;
         }
-        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Caja.Saldo.Ficha> 
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Caja.Saldo.Ficha>
             Transporte_Reportes_Caja_Saldo_Al(DtoLibTransporte.Reportes.Caja.Saldo.Filtro filtro)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Caja.Saldo.Ficha>();
@@ -733,8 +828,8 @@ namespace ProvLibCompra
                                          fecha_reg<@fecha";
                     var _sql_2 = @"";
                     var _sql = _sql_1 + _sql_2;
-                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("idCaja",filtro.idCaja);
-                    var p2 = new MySql.Data.MySqlClient.MySqlParameter("fecha",filtro.fecha);
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("idCaja", filtro.idCaja);
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter("fecha", filtro.fecha);
                     var _ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Caja.Saldo.Ficha>(_sql, p1, p2).FirstOrDefault();
                     if (_ent == null)
                     {
@@ -752,7 +847,7 @@ namespace ProvLibCompra
         }
 
         //BENEFICIAIRO
-        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha> 
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>
             Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro)
         {
             var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>();
@@ -803,6 +898,70 @@ namespace ProvLibCompra
                     }
                     var _sql = _sql_1 + _sql_2;
                     var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>(_sql, p1, p2, p3, p4).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
+        //CXP
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha> 
+            Transporte_Reportes_Cxp_Documentos_PagosEmitidos(DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        rec.documento as reciboNro,
+                                        rec.importe_divisa as importe,
+                                        rec.proveedor as provNombre,
+                                        rec.ci_rif as provCiRif,
+                                        rec.fecha as fecha,
+                                        rec.tasa_cambio as tasaFactor,
+                                        rec.nota as nota,
+                                        rec.estatus_anulado as estatus
+                                    FROM cxp_recibos as rec";
+                    var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro != null)
+                    {
+                        if (filtro.Desde.HasValue)
+                        {
+                            _sql_2 += " and rec.fecha>=@desde ";
+                            p1.ParameterName = "@desde";
+                            p1.Value = filtro.Desde.Value;
+                        }
+                        if (filtro.Hasta.HasValue)
+                        {
+                            _sql_2 += " and rec.fecha<=@hasta ";
+                            p2.ParameterName = "@hasta";
+                            p2.Value = filtro.Hasta.Value;
+                        }
+                        if (filtro.EstatusDoc != DtoLibTransporte.Reportes.Cxp.enumerados.EstatusDoc.SinDefinir)
+                        {
+                            _sql_2 += " and rec.estatus_anulado=@estatus ";
+                            p4.ParameterName = "@estatus";
+                            p4.Value = filtro.EstatusDoc== DtoLibTransporte.Reportes.Cxp.enumerados.EstatusDoc.Anulado ? "1" : "0";
+                        }
+                        if (filtro.IdProveedor != "")
+                        {
+                            _sql_2 += " and rec.auto_proveedor=@idProveedor";
+                            p3.ParameterName = "@idProveedor";
+                            p3.Value = filtro.IdProveedor;
+                        }
+                    }
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha>(_sql, p1, p2, p3, p4).ToList();
                     result.Lista = _lst;
                 }
             }

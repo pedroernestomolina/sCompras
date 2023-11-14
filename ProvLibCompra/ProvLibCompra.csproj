@@ -81,6 +81,7 @@
     <Compile Include="TranspBeneficiarioMov.cs" />
     <Compile Include="TranspCaja.cs" />
     <Compile Include="TranspCajaMov.cs" />
+    <Compile Include="TransporteDocumentoPagoServAliado.cs" />
     <Compile Include="TranspCxpDoc.cs" />
     <Compile Include="TranspDocumentoRet.cs" />
     <Compile Include="TranspMedioPago.cs" />

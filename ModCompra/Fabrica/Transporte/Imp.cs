@@ -54,7 +54,7 @@ namespace ModCompra.Fabrica.Transporte
             }
             return rt;
         }
-        public OOB.Resultado 
+        public OOB.Resultado
             AnularDocCompra_NotaCredito(string idDoc, string motivo)
         {
             var rt = new OOB.Resultado();
@@ -75,19 +75,29 @@ namespace ModCompra.Fabrica.Transporte
         }
 
 
-        private OOB.Resultado 
+        private OOB.Resultado
             anularGasto(string idDoc, string motivo)
         {
-            if (CompraIsAliado)
+            var r01 = Sistema.MyData.Transporte_Documento_ChequearSiEs_CompraGrasto_DePagoAliadoServ(idDoc);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                var rt = new OOB.Resultado()
+                {
+                    Mensaje = r01.Mensaje,
+                    Result = OOB.Enumerados.EnumResult.isError,
+                };
+                return rt;
+            }
+            if (r01.Entidad) //RETORNA TRUE EN CASO DE SER DOCUMENTO TIPO PAGO SERVICIO ALIADO
             {
                 return AnularCompraDeAliadoPagoServ(idDoc, motivo);
             }
-            else 
+            else
             {
                 return AnularCompraGasto(idDoc, motivo);
             }
         }
-        private OOB.Resultado 
+        private OOB.Resultado
             AnularCompraGasto(string idDoc, string motivo)
         {
             var rt = new OOB.Resultado();
@@ -218,6 +228,8 @@ namespace ModCompra.Fabrica.Transporte
                 auditorias.Add(audPorCompra);
                 var ficha = new OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Ficha()
                 {
+                    idPagoServicio = v02.Entidad.documento.idTranspAliadoPagServ,
+                    idRelCompraPago = v02.Entidad.documento.idRelPagServ,
                     autoDocCompra = idDoc,
                     auditoria = auditorias,
                     proveedor = new OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Proveedor()
@@ -236,7 +248,7 @@ namespace ModCompra.Fabrica.Transporte
                     }).ToList(),
                 };
                 //
-                var v03= Sistema.MyData.Transporte_Documento_Anular_CompraGrasto(ficha);
+                var v03 = Sistema.MyData.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(ficha);
             }
             catch (Exception e)
             {

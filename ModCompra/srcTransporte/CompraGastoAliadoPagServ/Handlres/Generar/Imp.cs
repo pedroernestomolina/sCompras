@@ -97,7 +97,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                 _hndData.CargarData();
                 _hndData.setFechaServidor(r01.Entidad);
 
-                var r04 = Sistema.MyData.Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(11);
+                var r04 = Sistema.MyData.Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(14);
                 _pagoServ = r04.Entidad;
 
                 return true;
@@ -244,6 +244,10 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetISLR.Imp();
             _rep.setIdDoc(autoDoc);
             _rep.Generar();
+        }
+        public void BuscarPagoServAliadoSinProcesar()
+        {
+            _hndData.BuscarPagoServAliadoSinProcesar();
         }
     }
 }

@@ -225,6 +225,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\Anticipo\Planilla\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\baseFiltro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\enumerados.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\MovCaja\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Aliado\MovCaja\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\General\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Aliado\PagoServ\Planilla\Caja.cs" />
@@ -249,6 +251,10 @@
     <Compile Include="LibCompra\Transporte\Reportes\Compras\Retencion\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\Iva\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\baseFiltro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\enumerados.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Filtro.cs" />
     <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Buscar\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Data\Ficha.cs" />

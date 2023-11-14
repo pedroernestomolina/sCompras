@@ -26,6 +26,8 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_Reportes_Aliado_Anticipos_GetLista(DtoLibTransporte.Reportes.Aliado.Anticipo.General.Filtro filtro);
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.PagoServ.General.Ficha>
             Transporte_Reportes_Aliado_PagoServ_GetLista(DtoLibTransporte.Reportes.Aliado.PagoServ.General.Filtro filtro);
+        DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.MovCaja.Ficha>
+            Transporte_Reportes_Aliado_MovCaja_GetLista(DtoLibTransporte.Reportes.Aliado.MovCaja.Filtro filtro);
 
         //PLANILLA-ALIADO
         DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
@@ -42,5 +44,9 @@ namespace ServiceCompra.Interfaces.Transporte
         //BENEFICIARIO
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>
             Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro);
+
+        //CXP
+        DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha>
+            Transporte_Reportes_Cxp_Documentos_PagosEmitidos(DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro filtro);
     }
 }

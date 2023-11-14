@@ -696,8 +696,12 @@
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Aliado\MovCaja\FiltroActivar.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Aliado\MovCaja\imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Documentos\Pagos\FiltroActivar.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Documentos\Pagos\imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\DS_REPDOC.cs">
       <DependentUpon>DS_REPDOC.xsd</DependentUpon>
@@ -791,6 +795,16 @@
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IBusqDoc.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IdataItem.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IListaAdm.cs" />
+    <Compile Include="Utils\Buscar\AliadoPagoServ\Handler\data.cs" />
+    <Compile Include="Utils\Buscar\AliadoPagoServ\Handler\Imp.cs" />
+    <Compile Include="Utils\Buscar\AliadoPagoServ\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Buscar\AliadoPagoServ\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Buscar\AliadoPagoServ\Vista\Idata.cs" />
+    <Compile Include="Utils\Buscar\AliadoPagoServ\Vista\IHnd.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\data.cs" />
     <Compile Include="Utils\Buscar\Proveedor\Handler\Imp.cs" />
     <Compile Include="srcTransporte\CompraGasto\Vistas\Generar\ICompraGasto.cs" />
@@ -1091,6 +1105,12 @@
     <EmbeddedResource Include="srcTransporte\Reportes\Caja\RepCajaMov.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_AliadoMovCaja.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_DocPagosEmitidos.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_PagoServ.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1155,6 +1175,9 @@
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\PantallaInicio\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Buscar\AliadoPagoServ\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Buscar\Proveedor\Vistas\Frm.resx">

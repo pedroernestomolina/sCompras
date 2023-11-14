@@ -362,6 +362,52 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Ficha>
+            Transporte_Reportes_Aliado_MovCaja_GetLista(OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Aliado.MovCaja.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdAliado = filtro.IdAliado,
+            };
+            var r01 = MyData.Transporte_Reportes_Aliado_MovCaja_GetLista(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Aliado.MovCaja.Ficha()
+                        {
+                            cajaDescripcion = s.cajaDescripcion,
+                            ciRifAliado = s.ciRifAliado,
+                            conceptoMov = s.conceptoMov,
+                            fechaMov = s.fechaMov,
+                            idAliado = s.idAliado,
+                            idCaja = s.idCaja,
+                            idCajaMov = s.idCajaMov,
+                            montoMonAct = s.montoMonAct,
+                            montoMonDiv = s.montoMonDiv,
+                            nombreAliado = s.nombreAliado,
+                            reciboNro = s.reciboNro,
+                            signo = s.signo,
+                            tasaFactor = s.tasaFactor,
+                            tipoMov = s.tipoMov,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
 
         //ALIADO-PLANILLA
         public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
@@ -570,6 +616,49 @@ namespace DataProvCompra.Data
                             fechaReg = s.fechaReg,
                             montoDiv = s.montoDiv,
                             nombreBene = s.nombreBene,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
+            return result;
+        }
+
+        //BENEFICIARIO
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha> 
+            Transporte_Reportes_Cxp_Documentos_PagosEmitidos(OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                EstatusDoc = (DtoLibTransporte.Reportes.Cxp.enumerados.EstatusDoc) filtro.EstatusDoc,
+                IdProveedor = filtro.IdProveedor,
+            };
+            var r01 = MyData.Transporte_Reportes_Cxp_Documentos_PagosEmitidos(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha()
+                        {
+                            estatus = s.estatus,
+                            fecha = s.fecha,
+                            importe = s.importe,
+                            nota = s.nota,
+                            provCiRif = s.provCiRif,
+                            provNombre = s.provNombre,
+                            reciboNro = s.reciboNro,
+                            tasaFactor = s.tasaFactor,
                         };
                         return nr;
                     }).ToList();

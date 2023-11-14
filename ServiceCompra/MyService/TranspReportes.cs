@@ -48,6 +48,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Aliado_PagoServ_GetLista(filtro);
         }
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.MovCaja.Ficha> 
+            Transporte_Reportes_Aliado_MovCaja_GetLista(DtoLibTransporte.Reportes.Aliado.MovCaja.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Aliado_MovCaja_GetLista(filtro);
+        }
 
         //PLANILLAS
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha> 
@@ -78,6 +83,13 @@ namespace ServiceCompra.MyService
             Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro)
         {
             return ServiceProv.Transporte_Reportes_Beneficiario_Movimiento_GetLista(filtro);
+        }
+
+        //CXP
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha> 
+            Transporte_Reportes_Cxp_Documentos_PagosEmitidos(DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Cxp_Documentos_PagosEmitidos(filtro);
         }
     }
 }

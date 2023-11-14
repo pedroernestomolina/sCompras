@@ -144,6 +144,8 @@
     <Compile Include="Reportes\Aliado\Anticipo\General\Filtro.cs" />
     <Compile Include="Reportes\Aliado\Anticipo\Planilla\Caja.cs" />
     <Compile Include="Reportes\Aliado\Anticipo\Planilla\Ficha.cs" />
+    <Compile Include="Reportes\Aliado\MovCaja\Ficha.cs" />
+    <Compile Include="Reportes\Aliado\MovCaja\Filtro.cs" />
     <Compile Include="Reportes\Aliado\PagoServ\General\Ficha.cs" />
     <Compile Include="Reportes\Aliado\PagoServ\General\Filtro.cs" />
     <Compile Include="Reportes\Aliado\PagoServ\Planilla\Caja.cs" />
@@ -168,6 +170,10 @@
     <Compile Include="Reportes\Compras\Retencion\Ficha.cs" />
     <Compile Include="Reportes\Compras\Retencion\Filtro.cs" />
     <Compile Include="Reportes\Compras\enumerados.cs" />
+    <Compile Include="Reportes\Cxp\baseFiltro.cs" />
+    <Compile Include="Reportes\Cxp\enumerados.cs" />
+    <Compile Include="Reportes\Cxp\PagosEmitidos\Ficha.cs" />
+    <Compile Include="Reportes\Cxp\PagosEmitidos\Filtro.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DocumentoRet\Crud\Entidad\" />

@@ -40,5 +40,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_Verificar(string autoDoc);
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.GetData.Ficha>
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(string autoDoc);
+        OOB.Resultado
+            Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(OOB.LibCompra.Transporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha);
+        OOB.ResultadoEntidad<bool>
+            Transporte_Documento_ChequearSiEs_CompraGrasto_DePagoAliadoServ(string autoDoc);
     }
 }

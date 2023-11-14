@@ -36,5 +36,7 @@ namespace ILibCompras.Transporte
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(string autoDoc);
         DtoLib.Resultado
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha);
+        DtoLib.ResultadoEntidad<bool>
+            Transporte_Documento_ChequearSiEs_CompraGrasto_DePagoAliadoServ(string autoDoc);
     }
 }

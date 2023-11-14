@@ -30,6 +30,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
             CB_CONCEPTO.ValueMember = "id";
             CB_SUCURSAL.DisplayMember = "desc";
             CB_SUCURSAL.ValueMember = "id";
+            CB_ALIADO.DisplayMember = "desc";
+            CB_ALIADO.ValueMember = "id";
         }
         public void setControlador(ICompraGasto ctr)
         {
@@ -47,9 +49,13 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
             //
             CB_SUCURSAL.DataSource = _controlador.HndData.Sucursal.GetSource ;
             CB_CONCEPTO.DataSource = _controlador.HndData.Concepto.GetSource ;
+            CB_ALIADO.DataSource = _controlador.HndData.Aliado.GetSource;
             CB_SUCURSAL.SelectedValue = _controlador.HndData.Sucursal.GetId ;
             CB_CONCEPTO.SelectedValue = _controlador.HndData.Concepto.GetId ;
+            CB_ALIADO.SelectedValue = _controlador.HndData.Aliado.GetId ; 
             TB_NOTAS.Text = _controlador.HndData.Get_Notas;
+            TB_CONCEPTO.Text = _controlador.HndData.Concepto.Get_TextoBuscar ;
+            TB_ALIADO.Text = _controlador.HndData.Aliado.Get_TextoBuscar;
             //
             L_PROVEEDOR.Text = _controlador.HndData.Proveedor.Get_Inf;
             TB_PROVEEDOR.Text = _controlador.HndData.Proveedor.Get_Buscar;
@@ -91,8 +97,20 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         {
             e.Cancel = _controlador.HndData.Get_FechaEmisionDocIsOk;
         }
-        
-
+        private void TB_ALIADO_TextChanged(object sender, EventArgs e)
+        {
+            _controlador.HndData.Aliado.setTextoBuscar(TB_ALIADO.Text);
+            CB_ALIADO.Refresh();
+        }
+        private void CB_ALIADO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializa) return;
+            _controlador.HndData.Aliado.setFichaById("");
+            if (CB_ALIADO.SelectedIndex != -1)
+            {
+                _controlador.HndData.Aliado.setFichaById(CB_ALIADO.SelectedValue.ToString());
+            }
+        }
         private void CB_SUCURSAL_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) return;
@@ -169,6 +187,15 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         {
             L_PROVEEDOR.Text = _controlador.HndData.Proveedor.Get_Inf;
             TB_PROVEEDOR.Text = _controlador.HndData.Proveedor.Get_Buscar;
+        }
+
+        private void BT_BUSCAR_SERV_Click(object sender, EventArgs e)
+        {
+            BuscarPagoServAliadoSinProcesar();
+        }
+        private void BuscarPagoServAliadoSinProcesar()
+        {
+            _controlador.BuscarPagoServAliadoSinProcesar();
         }
     }
 }

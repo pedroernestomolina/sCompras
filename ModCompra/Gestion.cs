@@ -399,6 +399,37 @@ namespace ModCompra
                 _rep.Generar();
             }
         }
+        public void ReportesAliadoMovCaja()
+        {
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.CXP.Aliado.MovCaja.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Aliado.MovCaja.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
+        }
+        public void ReportesCxpDocumentos_PagosEmitidos()
+        {
+            srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();
+            _filtro.Desde.setActivarCheck(true);
+            _filtro.Hasta.setActivarCheck(true);
+            _filtro.Inicializa();
+            _filtro.setFiltrosCargar(new srcTransporte.Reportes.CXP.Documentos.Pagos.FiltroActivar());
+            _filtro.Inicia();
+            if (_filtro.ProcesarIsOK)
+            {
+                srcTransporte.Reportes.IRepFiltro _rep = new srcTransporte.Reportes.CXP.Documentos.Pagos.Imp();
+                _rep.setFiltros(_filtro.Get_Filtros);
+                _rep.Generar();
+            }
+        }
+
         public void ReportesCajaGeneralMov()
         {
             srcTransporte.Reportes.RepFiltro.Vista.IHnd _filtro = new srcTransporte.Reportes.RepFiltro.Handler.Imp();

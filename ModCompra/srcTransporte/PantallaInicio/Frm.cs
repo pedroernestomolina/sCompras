@@ -312,6 +312,14 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesAliadoPagoServ();
         }
+        private void MENU_REPORTES_CXP_ALIDOS_MOV_CAJA_Click(object sender, EventArgs e)
+        {
+            ReportesAliadoMovCaja();
+        }
+        private void MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS_Click(object sender, EventArgs e)
+        {
+            ReportesCxpDocumentos_PagosEmitidos();
+        }
         //
         private void MENU_REPORTES_CAJA_GENERAL_MOV_Click(object sender, EventArgs e)
         {
@@ -368,6 +376,14 @@ namespace ModCompra.srcTransporte.PantallaInicio
         private void ReportesAliadoPagoServ()
         {
             _controlador.ReportesAliadoPagoServ();
+        }
+        private void ReportesAliadoMovCaja()
+        {
+            _controlador.ReportesAliadoMovCaja();
+        }
+        private void ReportesCxpDocumentos_PagosEmitidos()
+        {
+            _controlador.ReportesCxpDocumentos_PagosEmitidos();
         }
         //
         private void ReportesCajaGeneralMov()

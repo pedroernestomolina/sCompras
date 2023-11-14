@@ -28,8 +28,7 @@ namespace ServiceCompra.Interfaces.Transporte
 
         DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Entidad.Ficha>
             Transporte_Documento_Entidad_CompraGrasto_GetById(string autoDoc);
-
-        
+                
         //
         //
         DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha>
@@ -42,5 +41,7 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ_GetData(string autoDoc);
         DtoLib.Resultado
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha);
+        DtoLib.ResultadoEntidad<bool>
+            Transporte_Documento_ChequearSiEs_CompraGrasto_DePagoAliadoServ(string autoDoc);
     }
 }

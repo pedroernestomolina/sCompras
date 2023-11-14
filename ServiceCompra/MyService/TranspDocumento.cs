@@ -23,7 +23,6 @@ namespace ServiceCompra.MyService
             }
             return ServiceProv.Transporte_Documento_Agregar_CompraGrasto(ficha);
         }
-
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.Ficha> 
             Transporte_Documento_Anular_CompraGrasto_GetData(string autoDoc)
         {
@@ -44,7 +43,6 @@ namespace ServiceCompra.MyService
             }
             return ServiceProv.Transporte_Documento_Anular_CompraGrasto(ficha);
         }
-
         public DtoLib.ResultadoLista<DtoLibTransporte.Documento.Concepto.Entidad.Ficha> 
             Transporte_Documento_Concepto_GetLista()
         {
@@ -65,7 +63,6 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Documento_Concepto_GetById(id);
         }
-
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Documento.Entidad.Ficha> 
             Transporte_Documento_Entidad_CompraGrasto_GetById(string autoDoc)
         {
@@ -98,6 +95,11 @@ namespace ServiceCompra.MyService
             Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(DtoLibTransporte.Documento.Anular.CompraGastoAliado.Anular.Ficha ficha)
         {
             return ServiceProv.Transporte_Documento_Anular_CompraGrasto_DePagoAliadoServ(ficha);
+        }
+        public DtoLib.ResultadoEntidad<bool>
+            Transporte_Documento_ChequearSiEs_CompraGrasto_DePagoAliadoServ(string autoDoc)
+        {
+            return ServiceProv.Transporte_Documento_ChequearSiEs_CompraGrasto_DePagoAliadoServ(autoDoc);
         }
     }
 }

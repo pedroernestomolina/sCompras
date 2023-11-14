@@ -61,6 +61,8 @@
             this.BT_AGREGAR_PAGO = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
             this.BT_ADM_DOC_PAGO = new System.Windows.Forms.Button();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -90,6 +92,7 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -419,15 +422,17 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
             this.tableLayoutPanel7.Controls.Add(this.panel15, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 2);
+            this.tableLayoutPanel7.Controls.Add(this.panel18, 0, 3);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 4;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowCount = 5;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.33334F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(195, 637);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
@@ -436,11 +441,11 @@
             this.tableLayoutPanel7.SetColumnSpan(this.panel15, 2);
             this.panel15.Controls.Add(this.BT_AGREGAR_PAGO);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(1, 64);
+            this.panel15.Location = new System.Drawing.Point(1, 54);
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(193, 125);
+            this.panel15.Size = new System.Drawing.Size(193, 110);
             this.panel15.TabIndex = 6;
             // 
             // BT_AGREGAR_PAGO
@@ -451,7 +456,7 @@
             this.BT_AGREGAR_PAGO.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_AGREGAR_PAGO.Location = new System.Drawing.Point(2, 2);
             this.BT_AGREGAR_PAGO.Name = "BT_AGREGAR_PAGO";
-            this.BT_AGREGAR_PAGO.Size = new System.Drawing.Size(189, 121);
+            this.BT_AGREGAR_PAGO.Size = new System.Drawing.Size(189, 106);
             this.BT_AGREGAR_PAGO.TabIndex = 0;
             this.BT_AGREGAR_PAGO.Text = "Gestión  Pago de Documento";
             this.BT_AGREGAR_PAGO.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -463,11 +468,11 @@
             this.tableLayoutPanel7.SetColumnSpan(this.panel17, 2);
             this.panel17.Controls.Add(this.BT_ADM_DOC_PAGO);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(1, 191);
+            this.panel17.Location = new System.Drawing.Point(1, 166);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Padding = new System.Windows.Forms.Padding(2);
-            this.panel17.Size = new System.Drawing.Size(193, 125);
+            this.panel17.Size = new System.Drawing.Size(193, 110);
             this.panel17.TabIndex = 7;
             // 
             // BT_ADM_DOC_PAGO
@@ -478,12 +483,39 @@
             this.BT_ADM_DOC_PAGO.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_ADM_DOC_PAGO.Location = new System.Drawing.Point(2, 2);
             this.BT_ADM_DOC_PAGO.Name = "BT_ADM_DOC_PAGO";
-            this.BT_ADM_DOC_PAGO.Size = new System.Drawing.Size(189, 121);
+            this.BT_ADM_DOC_PAGO.Size = new System.Drawing.Size(189, 106);
             this.BT_ADM_DOC_PAGO.TabIndex = 1;
             this.BT_ADM_DOC_PAGO.Text = "Administrador de Documentos de Pagos";
             this.BT_ADM_DOC_PAGO.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_ADM_DOC_PAGO.UseVisualStyleBackColor = true;
             this.BT_ADM_DOC_PAGO.Click += new System.EventHandler(this.BT_ADM_DOC_PAGO_Click);
+            // 
+            // panel18
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel18, 2);
+            this.panel18.Controls.Add(this.button1);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(1, 278);
+            this.panel18.Margin = new System.Windows.Forms.Padding(1);
+            this.panel18.Name = "panel18";
+            this.panel18.Padding = new System.Windows.Forms.Padding(2);
+            this.panel18.Size = new System.Drawing.Size(193, 90);
+            this.panel18.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ModCompra.Properties.Resources.bt_imprimir;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 86);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Imprimir\r\nLista";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // P_PIE
             // 
@@ -599,6 +631,7 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -648,5 +681,7 @@
         private System.Windows.Forms.Button BT_ADM_DOC_PAGO;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label L_CNT_ITEM;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Button button1;
     }
 }

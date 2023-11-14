@@ -18,6 +18,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
         private Utils.FiltrosCB.ICtrlConBusqueda _concepto;
         private Utils.FiltrosCB.ICtrlSinBusqueda _sucursal;
         private Utils.Buscar.Proveedor.Vistas.IProveedor _proveedor;
+        private Utils.FiltrosCB.ICtrlConBusqueda _aliado;
+        private List<OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Ficha> _servPg;
 
 
         public string Get_NumeroDoc { get { return _numeroDoc; } }
@@ -28,6 +30,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
         public Utils.FiltrosCB.ICtrlConBusqueda Concepto { get { return _concepto; } }
         public Utils.FiltrosCB.ICtrlSinBusqueda Sucursal { get { return _sucursal; } }
         public Utils.Buscar.Proveedor.Vistas.IProveedor Proveedor { get { return _proveedor; } }
+        public Utils.FiltrosCB.ICtrlConBusqueda Aliado { get { return _aliado; } }
 
 
         public HndData()
@@ -40,6 +43,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             _concepto = new Utils.FiltrosCB.ConBusqueda.Concepto.Imp();
             _sucursal = new Utils.FiltrosCB.SinBusqueda.Sucursal.Imp();
             _proveedor = new Utils.Buscar.Proveedor.Handler.Imp();
+            _aliado = new Utils.FiltrosCB.ConBusqueda.Aliado.Imp();
+            _servPg = null;
         }
         public void Inicializa()
         {
@@ -50,11 +55,14 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             _concepto.Inicializa();
             _sucursal.Inicializa();
             _proveedor.Inicializa();
+            _aliado.Inicializa();
+            _servPg = null;
         }
         public void CargarData()
         {
             _concepto.ObtenerData();
             _sucursal.ObtenerData();
+            _aliado.ObtenerData();
         }
 
 
@@ -90,12 +98,17 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             }
             if (Get_NumeroControlDoc.Trim() == "")
             {
-                Helpers.Msg.Alerta("NUMERO DE CONTROL DEL DOCUMENTO NO PUEDE ESTAR VACIO");
-                return false;
+                //Helpers.Msg.Alerta("NUMERO DE CONTROL DEL DOCUMENTO NO PUEDE ESTAR VACIO");
+                //return false;
             }
             if (_proveedor.Get_Ficha == null)
             {
                 Helpers.Msg.Alerta("PROVEEDOR NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_aliado.GetItem == null)
+            {
+                Helpers.Msg.Alerta("ALIADO NO PUEDE ESTAR VACIO");
                 return false;
             }
             if (_sucursal.GetItem == null)
@@ -126,7 +139,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                 try
                 {
                     var r01 = Sistema.MyData.Proveedor_GetFicha(_prv.id);
-                    if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+                    if (r01.Result == OOB.Enumerados.EnumResult.isError)
                     {
                         throw new Exception(r01.Mensaje);
                     }
@@ -136,6 +149,39 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                     Helpers.Msg.Error(e.Message);
                 }
             }
+        }
+        public void BuscarPagoServAliadoSinProcesar()
+        {
+            if (_aliado.GetItem != null)
+            {
+                try
+                {
+                    Buscar();
+                    CargarLista();
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
+            }
+        }
+
+        private void CargarLista()
+        {
+             Utils.Buscar.AliadoPagoServ.Vista.IHnd _pgServ = new Utils.Buscar.AliadoPagoServ.Handler.Imp();
+             _pgServ.Inicializa();
+             _pgServ.setDataCargar(_servPg);
+             _pgServ.Inicia();
+        }
+        private void Buscar()
+        {
+            var filtro = new OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Filtro()
+            {
+                IdAliado = int.Parse(_aliado.GetId),
+                Estatus = "0",
+            };
+            var r01 = Sistema.MyData.Transporte_Aliado_PagoServ_GetLista(filtro);
+            _servPg= r01.Lista.Where(w => w.estatusProcesado == "0").ToList();
         }
     }
 }

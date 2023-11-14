@@ -10,5 +10,6 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
     public interface ICompraGasto : HlpGestion.IGestion, HlpGestion.IAbandonar, HlpGestion.IProcesar
     {
         IHndData HndData { get; }
+        void BuscarPagoServAliadoSinProcesar();
     }
 }

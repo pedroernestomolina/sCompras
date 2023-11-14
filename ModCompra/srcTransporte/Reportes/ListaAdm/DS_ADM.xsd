@@ -79,6 +79,34 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="AliadoMovCaja" msprop:Generator_TableClassName="AliadoMovCajaDataTable" msprop:Generator_TableVarName="tableAliadoMovCaja" msprop:Generator_RowChangedName="AliadoMovCajaRowChanged" msprop:Generator_TablePropName="AliadoMovCaja" msprop:Generator_RowDeletingName="AliadoMovCajaRowDeleting" msprop:Generator_RowChangingName="AliadoMovCajaRowChanging" msprop:Generator_RowEvHandlerName="AliadoMovCajaRowChangeEventHandler" msprop:Generator_RowDeletedName="AliadoMovCajaRowDeleted" msprop:Generator_RowClassName="AliadoMovCajaRow" msprop:Generator_UserTableName="AliadoMovCaja" msprop:Generator_RowEvArgName="AliadoMovCajaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="aliado" msprop:Generator_ColumnVarNameInTable="columnaliado" msprop:Generator_ColumnPropNameInRow="aliado" msprop:Generator_ColumnPropNameInTable="aliadoColumn" msprop:Generator_UserColumnName="aliado" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="concepto" msprop:Generator_ColumnVarNameInTable="columnconcepto" msprop:Generator_ColumnPropNameInRow="concepto" msprop:Generator_ColumnPropNameInTable="conceptoColumn" msprop:Generator_UserColumnName="concepto" type="xs:string" minOccurs="0" />
+              <xs:element name="caja" msprop:Generator_ColumnVarNameInTable="columncaja" msprop:Generator_ColumnPropNameInRow="caja" msprop:Generator_ColumnPropNameInTable="cajaColumn" msprop:Generator_UserColumnName="caja" type="xs:string" minOccurs="0" />
+              <xs:element name="tasaFactor" msprop:Generator_ColumnVarNameInTable="columntasaFactor" msprop:Generator_ColumnPropNameInRow="tasaFactor" msprop:Generator_ColumnPropNameInTable="tasaFactorColumn" msprop:Generator_UserColumnName="tasaFactor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoMonAct" msprop:Generator_ColumnVarNameInTable="columnmontoMonAct" msprop:Generator_ColumnPropNameInRow="montoMonAct" msprop:Generator_ColumnPropNameInTable="montoMonActColumn" msprop:Generator_UserColumnName="montoMonAct" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoMonDiv" msprop:Generator_ColumnVarNameInTable="columnmontoMonDiv" msprop:Generator_ColumnPropNameInRow="montoMonDiv" msprop:Generator_ColumnPropNameInTable="montoMonDivColumn" msprop:Generator_UserColumnName="montoMonDiv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tipoMov" msprop:Generator_ColumnVarNameInTable="columntipoMov" msprop:Generator_ColumnPropNameInRow="tipoMov" msprop:Generator_ColumnPropNameInTable="tipoMovColumn" msprop:Generator_UserColumnName="tipoMov" type="xs:string" minOccurs="0" />
+              <xs:element name="reciboNro" msprop:Generator_ColumnVarNameInTable="columnreciboNro" msprop:Generator_ColumnPropNameInRow="reciboNro" msprop:Generator_ColumnPropNameInTable="reciboNroColumn" msprop:Generator_UserColumnName="reciboNro" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CxpDocPagosEmitidos" msprop:Generator_TableClassName="CxpDocPagosEmitidosDataTable" msprop:Generator_TableVarName="tableCxpDocPagosEmitidos" msprop:Generator_TablePropName="CxpDocPagosEmitidos" msprop:Generator_RowDeletingName="CxpDocPagosEmitidosRowDeleting" msprop:Generator_RowChangingName="CxpDocPagosEmitidosRowChanging" msprop:Generator_RowEvHandlerName="CxpDocPagosEmitidosRowChangeEventHandler" msprop:Generator_RowDeletedName="CxpDocPagosEmitidosRowDeleted" msprop:Generator_UserTableName="CxpDocPagosEmitidos" msprop:Generator_RowChangedName="CxpDocPagosEmitidosRowChanged" msprop:Generator_RowEvArgName="CxpDocPagosEmitidosRowChangeEvent" msprop:Generator_RowClassName="CxpDocPagosEmitidosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="proveedor" msprop:Generator_ColumnVarNameInTable="columnproveedor" msprop:Generator_ColumnPropNameInRow="proveedor" msprop:Generator_ColumnPropNameInTable="proveedorColumn" msprop:Generator_UserColumnName="proveedor" type="xs:string" minOccurs="0" />
+              <xs:element name="reciboNro" msprop:Generator_ColumnVarNameInTable="columnreciboNro" msprop:Generator_ColumnPropNameInRow="reciboNro" msprop:Generator_ColumnPropNameInTable="reciboNroColumn" msprop:Generator_UserColumnName="reciboNro" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="importe" msprop:Generator_ColumnVarNameInTable="columnimporte" msprop:Generator_ColumnPropNameInRow="importe" msprop:Generator_ColumnPropNameInTable="importeColumn" msprop:Generator_UserColumnName="importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaFactor" msprop:Generator_ColumnVarNameInTable="columntasaFactor" msprop:Generator_ColumnPropNameInRow="tasaFactor" msprop:Generator_ColumnPropNameInTable="tasaFactorColumn" msprop:Generator_UserColumnName="tasaFactor" type="xs:decimal" minOccurs="0" />
+              <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="nota" msprop:Generator_ColumnVarNameInTable="columnnota" msprop:Generator_ColumnPropNameInRow="nota" msprop:Generator_ColumnPropNameInTable="notaColumn" msprop:Generator_UserColumnName="nota" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

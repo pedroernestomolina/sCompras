@@ -70,6 +70,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.MenuP.SuspendLayout();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -96,6 +98,7 @@
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuP
@@ -400,6 +403,7 @@
             this.tableLayoutPanel7.Controls.Add(this.panel16, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel15, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 5);
+            this.tableLayoutPanel7.Controls.Add(this.panel19, 0, 6);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
@@ -600,6 +604,33 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
+            // panel19
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel19, 2);
+            this.panel19.Controls.Add(this.button1);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(1, 475);
+            this.panel19.Margin = new System.Windows.Forms.Padding(1);
+            this.panel19.Name = "panel19";
+            this.panel19.Padding = new System.Windows.Forms.Padding(2);
+            this.panel19.Size = new System.Drawing.Size(193, 77);
+            this.panel19.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::ModCompra.Properties.Resources.bt_imprimir;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.Location = new System.Drawing.Point(2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 73);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Imprimir\r\nLista";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,6 +673,7 @@
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -690,5 +722,7 @@
         private System.Windows.Forms.Button BT_AGRAGAR_PAGO;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Button BT_ADM_DOC_PAGO;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button button1;
     }
 }
