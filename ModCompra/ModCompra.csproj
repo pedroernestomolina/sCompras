@@ -1189,6 +1189,9 @@
     <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_AnticipoAliado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_CxpPagoEmitido.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_PagoAliado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

@@ -37,34 +37,28 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboCxpPagoEmitido
 
         private void imprimir(OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha ficha)
         {
-            //var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Planillas\RepPlanilla_PagoAliado.rdlc";
-            //var ds = new DS_PLANILLA();
+            var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Planillas\RepPlanilla_CxpPagoEmitido.rdlc";
+            var ds = new DS_PLANILLA();
 
-            //DataRow rt = ds.Tables["PagoAliado"].NewRow();
-            //rt["reciboNro"] = ficha.numRecibo;
-            //rt["fecha"] = ficha.fechaEmision;
-            //rt["tasaFactor"] = ficha.tasaFactor;
-            //rt["montoPago"] = ficha.montoAPagar;
-            //rt["aliadoCiRif"] = ficha.ciRifAliado + Environment.NewLine + ficha.nombreAliado;
-            //rt["aliadoNombre"] = ficha.nombreAliado;
-            //rt["conceptoMotivo"] = ficha.motivo;
-            //rt["retTasa"] = ficha.tasaRet;
-            //rt["retSustraendo"] = ficha.sustraendo;
-            //rt["retencion"] = ficha.retencion;
-            //rt["retMonto"] = ficha.montoRetMonDiv;
-            //rt["montoPagado"] = ficha.totalPago;
-            //rt["isAnulado"] = "";
-            //ds.Tables["PagoAliado"].Rows.Add(rt);
+            DataRow rt = ds.Tables["CxpPagoDoc"].NewRow();
+            rt["reciboNro"] = ficha.reciboNro;
+            rt["fecha"] = ficha.fechaMov;
+            rt["tasaCambio"] = ficha.tasaCambio;
+            rt["montoPago"] = ficha.importeDiv;
+            rt["notas"] = ficha.notasMov ;
+            rt["proveedor"] = ficha.ciRifProv + Environment.NewLine + ficha.nombreProv;
+            rt["isAnulado"] = ficha.estatusMov.Trim().ToUpper() == "1" ? "ANULADO" : "";
+            ds.Tables["CxpPagoDoc"].Rows.Add(rt);
             //foreach (var sv in ficha.serv)
             //{
             //    DataRow rtDt = ds.Tables["PagoAliado_Serv"].NewRow();
-            //    rtDt["cliente"] = sv.cliCiRif+Environment.NewLine+sv.cliNombre;
-            //    rtDt["servicio"] = sv.codServ+Environment.NewLine+sv.descServ+Environment.NewLine+sv.detServ;
-            //    rtDt["documento"] = sv.docNumero+Environment.NewLine+sv.docFecha.ToShortDateString()+Environment.NewLine+sv.docNombre;
+            //    rtDt["cliente"] = sv.cliCiRif + Environment.NewLine + sv.cliNombre;
+            //    rtDt["servicio"] = sv.codServ + Environment.NewLine + sv.descServ + Environment.NewLine + sv.detServ;
+            //    rtDt["documento"] = sv.docNumero + Environment.NewLine + sv.docFecha.ToShortDateString() + Environment.NewLine + sv.docNombre;
             //    rtDt["monto"] = sv.montoPago;
             //    ds.Tables["PagoAliado_Serv"].Rows.Add(rtDt);
             //}
-            //if (ficha.anticipo > 0m) 
+            //if (ficha.anticipo > 0m)
             //{
             //    DataRow rtDt = ds.Tables["PagoAliado_Caja"].NewRow();
             //    rtDt["desc"] = "ANTICIPO";
@@ -72,29 +66,29 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboCxpPagoEmitido
             //    rtDt["esDivisa"] = "$";
             //    ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
             //}
-            //foreach (var sv in ficha.caja)
-            //{
-            //    DataRow rtDt = ds.Tables["PagoAliado_Caja"].NewRow();
-            //    rtDt["desc"] = sv.cjDesc;
-            //    rtDt["monto"] = sv.monto;
-            //    rtDt["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
-            //    ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
-            //}
+            foreach (var sv in ficha.caja)
+            {
+                DataRow rtDt = ds.Tables["CxpPagoDoc_Caja"].NewRow();
+                rtDt["desc"] = "( "+sv.cjCod.Trim()+" ) " + sv.cjDesc;
+                rtDt["monto"] = sv.monto;
+                rtDt["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
+                ds.Tables["CxpPagoDoc_Caja"].Rows.Add(rtDt);
+            }
 
-            //var Rds = new List<ReportDataSource>();
-            //var pmt = new List<ReportParameter>();
-            ////pmt.Add(new ReportParameter("EMP_CIRIF", Sistema.Negocio.CiRif));
-            ////pmt.Add(new ReportParameter("EMP_NOMBRE", Sistema.Negocio.Nombre));
-            ////pmt.Add(new ReportParameter("EMP_DIR", Sistema.Negocio.DireccionFiscal));
-            //Rds.Add(new ReportDataSource("PagoAliado", ds.Tables["PagoAliado"]));
+            var Rds = new List<ReportDataSource>();
+            var pmt = new List<ReportParameter>();
+            //pmt.Add(new ReportParameter("EMP_CIRIF", Sistema.Negocio.CiRif));
+            //pmt.Add(new ReportParameter("EMP_NOMBRE", Sistema.Negocio.Nombre));
+            //pmt.Add(new ReportParameter("EMP_DIR", Sistema.Negocio.DireccionFiscal));
+            Rds.Add(new ReportDataSource("CxpPagoDoc", ds.Tables["CxpPagoDoc"]));
             //Rds.Add(new ReportDataSource("PagoAliado_Serv", ds.Tables["PagoAliado_Serv"]));
-            //Rds.Add(new ReportDataSource("PagoAliado_Caja", ds.Tables["PagoAliado_Caja"]));
+            Rds.Add(new ReportDataSource("CxpPagoDoc_Caja", ds.Tables["CxpPagoDoc_Caja"]));
 
-            //var frp = new ReporteFrm();
-            //frp.rds = Rds;
-            //frp.prmts = pmt;
-            //frp.Path = pt;
-            //frp.ShowDialog();
+            var frp = new ReporteFrm();
+            frp.rds = Rds;
+            frp.prmts = pmt;
+            frp.Path = pt;
+            frp.ShowDialog();
         }
     }
 }
