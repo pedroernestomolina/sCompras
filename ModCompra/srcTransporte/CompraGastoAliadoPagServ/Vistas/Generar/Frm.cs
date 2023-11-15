@@ -56,6 +56,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
             TB_NOTAS.Text = _controlador.HndData.Get_Notas;
             TB_CONCEPTO.Text = _controlador.HndData.Concepto.Get_TextoBuscar ;
             TB_ALIADO.Text = _controlador.HndData.Aliado.Get_TextoBuscar;
+            L_PAGO_SERV_PRESTADO.Text = _controlador.HndData.Get_PagoServPrestado;
             //
             L_PROVEEDOR.Text = _controlador.HndData.Proveedor.Get_Inf;
             TB_PROVEEDOR.Text = _controlador.HndData.Proveedor.Get_Buscar;
@@ -122,6 +123,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         }
         private void TB_CONCEPTO_TextChanged(object sender, EventArgs e)
         {
+            if (_modoInicializa) return;
             _controlador.HndData.Concepto.setTextoBuscar(TB_CONCEPTO.Text);
             CB_CONCEPTO.Refresh();
         }
@@ -196,6 +198,7 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         private void BuscarPagoServAliadoSinProcesar()
         {
             _controlador.BuscarPagoServAliadoSinProcesar();
+            L_PAGO_SERV_PRESTADO.Text = _controlador.HndData.Get_PagoServPrestado;
         }
     }
 }

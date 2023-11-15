@@ -35,9 +35,15 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
             _gPago.setDocumentoPagar(_ctasPend.Get_ItemActual);
             _gPago.Inicia();
         }
+        private Administrador.Vistas.IAdm _adm;
         public void AdmDocPagos()
         {
-            Helpers.Msg.Alerta("ADM DE DOC DE PAGO");
+            if (_adm == null) 
+            {
+                _adm = new Administrador.Handler.Imp();
+            }
+            _adm.Inicializa();
+            _adm.Inicia();
         }
     }
 }

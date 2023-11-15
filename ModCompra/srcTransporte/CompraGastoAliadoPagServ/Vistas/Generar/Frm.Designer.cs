@@ -82,8 +82,13 @@
             this.panel31 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.panel35 = new System.Windows.Forms.Panel();
+            this.CB_ALIADO = new System.Windows.Forms.ComboBox();
             this.panel32 = new System.Windows.Forms.Panel();
+            this.TB_ALIADO = new System.Windows.Forms.TextBox();
             this.panel33 = new System.Windows.Forms.Panel();
+            this.L_PAGO_SERV_PRESTADO = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.BT_BUSCAR_SERV = new System.Windows.Forms.Button();
             this.panel41 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.panel43 = new System.Windows.Forms.Panel();
@@ -102,10 +107,6 @@
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
-            this.TB_ALIADO = new System.Windows.Forms.TextBox();
-            this.CB_ALIADO = new System.Windows.Forms.ComboBox();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.BT_BUSCAR_SERV = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -147,6 +148,8 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.panel35.SuspendLayout();
             this.panel32.SuspendLayout();
+            this.panel33.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel41.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.panel43.SuspendLayout();
@@ -157,7 +160,6 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -847,6 +849,18 @@
             this.panel35.Size = new System.Drawing.Size(190, 30);
             this.panel35.TabIndex = 3;
             // 
+            // CB_ALIADO
+            // 
+            this.CB_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CB_ALIADO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_ALIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CB_ALIADO.FormattingEnabled = true;
+            this.CB_ALIADO.Location = new System.Drawing.Point(2, 2);
+            this.CB_ALIADO.Name = "CB_ALIADO";
+            this.CB_ALIADO.Size = new System.Drawing.Size(186, 24);
+            this.CB_ALIADO.TabIndex = 2;
+            this.CB_ALIADO.SelectedIndexChanged += new System.EventHandler(this.CB_ALIADO_SelectedIndexChanged);
+            // 
             // panel32
             // 
             this.panel32.Controls.Add(this.TB_ALIADO);
@@ -858,15 +872,64 @@
             this.panel32.Size = new System.Drawing.Size(190, 26);
             this.panel32.TabIndex = 1;
             // 
+            // TB_ALIADO
+            // 
+            this.TB_ALIADO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.TB_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_ALIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_ALIADO.Location = new System.Drawing.Point(2, 2);
+            this.TB_ALIADO.MaxLength = 20;
+            this.TB_ALIADO.Name = "TB_ALIADO";
+            this.TB_ALIADO.Size = new System.Drawing.Size(186, 24);
+            this.TB_ALIADO.TabIndex = 3;
+            this.TB_ALIADO.TextChanged += new System.EventHandler(this.TB_ALIADO_TextChanged);
+            // 
             // panel33
             // 
+            this.panel33.Controls.Add(this.L_PAGO_SERV_PRESTADO);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel33.Location = new System.Drawing.Point(190, 0);
-            this.panel33.Margin = new System.Windows.Forms.Padding(0);
+            this.panel33.Location = new System.Drawing.Point(191, 1);
+            this.panel33.Margin = new System.Windows.Forms.Padding(1);
             this.panel33.Name = "panel33";
-            this.tableLayoutPanel11.SetRowSpan(this.panel33, 2);
-            this.panel33.Size = new System.Drawing.Size(446, 56);
+            this.panel33.Padding = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel11.SetRowSpan(this.panel33, 3);
+            this.panel33.Size = new System.Drawing.Size(444, 84);
             this.panel33.TabIndex = 2;
+            // 
+            // L_PAGO_SERV_PRESTADO
+            // 
+            this.L_PAGO_SERV_PRESTADO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.L_PAGO_SERV_PRESTADO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_PAGO_SERV_PRESTADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_PAGO_SERV_PRESTADO.Location = new System.Drawing.Point(2, 2);
+            this.L_PAGO_SERV_PRESTADO.Name = "L_PAGO_SERV_PRESTADO";
+            this.L_PAGO_SERV_PRESTADO.Size = new System.Drawing.Size(440, 80);
+            this.L_PAGO_SERV_PRESTADO.TabIndex = 2;
+            this.L_PAGO_SERV_PRESTADO.Text = "PAGO";
+            this.L_PAGO_SERV_PRESTADO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.BT_BUSCAR_SERV);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(1, 57);
+            this.panel8.Margin = new System.Windows.Forms.Padding(1);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(2);
+            this.panel8.Size = new System.Drawing.Size(188, 28);
+            this.panel8.TabIndex = 4;
+            // 
+            // BT_BUSCAR_SERV
+            // 
+            this.BT_BUSCAR_SERV.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BT_BUSCAR_SERV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_BUSCAR_SERV.Location = new System.Drawing.Point(111, 2);
+            this.BT_BUSCAR_SERV.Name = "BT_BUSCAR_SERV";
+            this.BT_BUSCAR_SERV.Size = new System.Drawing.Size(75, 24);
+            this.BT_BUSCAR_SERV.TabIndex = 1;
+            this.BT_BUSCAR_SERV.Text = "Buscar";
+            this.BT_BUSCAR_SERV.UseVisualStyleBackColor = true;
+            this.BT_BUSCAR_SERV.Click += new System.EventHandler(this.BT_BUSCAR_SERV_Click);
             // 
             // panel41
             // 
@@ -1090,53 +1153,6 @@
             this.BT_SALIR.UseVisualStyleBackColor = true;
             this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
             // 
-            // TB_ALIADO
-            // 
-            this.TB_ALIADO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.TB_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_ALIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_ALIADO.Location = new System.Drawing.Point(2, 2);
-            this.TB_ALIADO.MaxLength = 20;
-            this.TB_ALIADO.Name = "TB_ALIADO";
-            this.TB_ALIADO.Size = new System.Drawing.Size(186, 24);
-            this.TB_ALIADO.TabIndex = 3;
-            this.TB_ALIADO.TextChanged += new System.EventHandler(this.TB_ALIADO_TextChanged);
-            // 
-            // CB_ALIADO
-            // 
-            this.CB_ALIADO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CB_ALIADO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CB_ALIADO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CB_ALIADO.FormattingEnabled = true;
-            this.CB_ALIADO.Location = new System.Drawing.Point(2, 2);
-            this.CB_ALIADO.Name = "CB_ALIADO";
-            this.CB_ALIADO.Size = new System.Drawing.Size(186, 24);
-            this.CB_ALIADO.TabIndex = 2;
-            this.CB_ALIADO.SelectedIndexChanged += new System.EventHandler(this.CB_ALIADO_SelectedIndexChanged);
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.BT_BUSCAR_SERV);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(1, 57);
-            this.panel8.Margin = new System.Windows.Forms.Padding(1);
-            this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.panel8.Size = new System.Drawing.Size(188, 28);
-            this.panel8.TabIndex = 4;
-            // 
-            // BT_BUSCAR_SERV
-            // 
-            this.BT_BUSCAR_SERV.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BT_BUSCAR_SERV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_BUSCAR_SERV.Location = new System.Drawing.Point(111, 2);
-            this.BT_BUSCAR_SERV.Name = "BT_BUSCAR_SERV";
-            this.BT_BUSCAR_SERV.Size = new System.Drawing.Size(75, 24);
-            this.BT_BUSCAR_SERV.TabIndex = 1;
-            this.BT_BUSCAR_SERV.Text = "Buscar";
-            this.BT_BUSCAR_SERV.UseVisualStyleBackColor = true;
-            this.BT_BUSCAR_SERV.Click += new System.EventHandler(this.BT_BUSCAR_SERV_Click);
-            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1196,6 +1212,8 @@
             this.panel35.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
+            this.panel33.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.panel41.ResumeLayout(false);
             this.tableLayoutPanel15.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
@@ -1207,7 +1225,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1292,5 +1309,6 @@
         private System.Windows.Forms.ComboBox CB_ALIADO;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button BT_BUSCAR_SERV;
+        private System.Windows.Forms.Label L_PAGO_SERV_PRESTADO;
     }
 }

@@ -15,13 +15,14 @@ namespace ModCompra.Utils.Buscar.AliadoPagoServ.Handler
         private BindingList<Vista.Idata> _bl;
         private BindingSource _bs;
         private bool _itemSeleccionadoIsOk;
+        private data _itemSeleccionado;
 
 
         public BindingSource Get_Data { get { return _bs; } }
         public int Get_CntItem { get { return _bs.Count; } }
         public object ItemActual { get { return _bs.Current; } }
         public bool ItemSeleccionadoIsOk { get { return _itemSeleccionadoIsOk; } }
-        public object ItemSeleccionado { get { return (data)_bs.Current; } }
+        public object ItemSeleccionado { get { return _itemSeleccionado; } }
 
 
         public Imp()
@@ -32,6 +33,7 @@ namespace ModCompra.Utils.Buscar.AliadoPagoServ.Handler
             _bs.DataSource = _bl;
             _bs.CurrencyManager.Refresh();
             _itemSeleccionadoIsOk = false;
+            _itemSeleccionado = null;
         }
         public void Inicializa()
         {
@@ -40,6 +42,7 @@ namespace ModCompra.Utils.Buscar.AliadoPagoServ.Handler
             _bs.DataSource = _bl;
             _bs.CurrencyManager.Refresh();
             _itemSeleccionadoIsOk = false;
+            _itemSeleccionado = null;
         }
         Vista.Frm frm;
         public void Inicia()
@@ -69,16 +72,13 @@ namespace ModCompra.Utils.Buscar.AliadoPagoServ.Handler
         }
         public void SeleccionarItem()
         {
-            //_itemSeleccionadoIsOk = false;
-            //if (ItemActual != null)
-            //{
-            //    var item = (data)ItemActual;
-            //    if (!item.Ficha.IsActivo)
-            //    {
-            //        Helpers.Msg.Alerta("PROVEEDOR [ ESTATUS ] INCORRECTO");
-            //    }
-            //    _itemSeleccionadoIsOk = true;
-            //}
+            _itemSeleccionadoIsOk = false;
+            _itemSeleccionado = null;
+            if (ItemActual != null)
+            {
+                _itemSeleccionado = (data)ItemActual;
+                _itemSeleccionadoIsOk = true;
+            }
         }
 
         public bool AbandonarIsOK { get { return true; } }

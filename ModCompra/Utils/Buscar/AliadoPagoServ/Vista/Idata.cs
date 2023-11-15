@@ -9,5 +9,10 @@ namespace ModCompra.Utils.Buscar.AliadoPagoServ.Vista
 {
     public interface Idata
     {
+        string ERecibo { get; set; }
+        DateTime EFecha { get; set; }
+        string EMotivo { get; set; }
+        decimal EImporte { get; set; }
+        int ECntServPag { get; set; }
     }
 }

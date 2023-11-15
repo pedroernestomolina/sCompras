@@ -48,5 +48,9 @@ namespace ServiceCompra.Interfaces.Transporte
         //CXP
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha>
             Transporte_Reportes_Cxp_Documentos_PagosEmitidos(DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro filtro);
+        //CXP-PLANILLA
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha>
+            Transporte_Reportes_Cxp_PagoEmitido_Planilla(string idMov);
+
     }
 }

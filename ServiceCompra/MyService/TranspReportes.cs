@@ -54,7 +54,7 @@ namespace ServiceCompra.MyService
             return ServiceProv.Transporte_Reportes_Aliado_MovCaja_GetLista(filtro);
         }
 
-        //PLANILLAS
+        //ALIDOS-PLANILLAS
         public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha> 
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov)
         {
@@ -90,6 +90,12 @@ namespace ServiceCompra.MyService
             Transporte_Reportes_Cxp_Documentos_PagosEmitidos(DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro filtro)
         {
             return ServiceProv.Transporte_Reportes_Cxp_Documentos_PagosEmitidos(filtro);
+        }
+        //CXP-PLANILLA
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha> 
+            Transporte_Reportes_Cxp_PagoEmitido_Planilla(string idMov)
+        {
+            return ServiceProv.Transporte_Reportes_Cxp_PagoEmitido_Planilla(idMov);
         }
     }
 }

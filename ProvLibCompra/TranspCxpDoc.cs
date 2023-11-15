@@ -112,11 +112,10 @@ namespace ProvLibCompra
             }
             return result;
         }
-
-        public DtoLib.Resultado
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.Resultado>
             Transporte_CxpDoc_GestionPago_Agregar(DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha ficha)
         {
-            var result = new DtoLib.Resultado();
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.Resultado>();
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -571,6 +570,10 @@ namespace ProvLibCompra
                                     throw new Exception("ERROR AL INSERTAR REGISTRO EN TABLA [ CXP_MEDIO_PAGO ]");
                                 }
                                 cnn.SaveChanges();
+                                result.Entidad = new DtoLibTransporte.CxpDoc.Pago.Agregar.Resultado()
+                                {
+                                    autoRecibo = _autoRecibo,
+                                };
                             }
                         }
                         ts.Commit();
@@ -585,6 +588,74 @@ namespace ProvLibCompra
             catch (DbUpdateException ex)
             {
                 result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.ResultadoLista<DtoLibTransporte.CxpDoc.Pago.Lista.Ficha> 
+            Transporte_CxpDoc_GetLista_PagosEmitidos(DtoLibTransporte.CxpDoc.Pago.Lista.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.CxpDoc.Pago.Lista.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        rec.auto as idMov,
+                                        rec.documento as reciboNro,
+                                        rec.importe_divisa as importe,
+                                        rec.proveedor as provNombre,
+                                        rec.ci_rif as provCiRif,
+                                        rec.fecha as fecha,
+                                        rec.tasa_cambio as tasaFactor,
+                                        rec.nota as nota,
+                                        rec.estatus_anulado as estatusDoc
+                                    FROM cxp_recibos as rec";
+                    var _sql_2 = @" WHERE 1=1 ";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p4 = new MySql.Data.MySqlClient.MySqlParameter();
+                    if (filtro != null)
+                    {
+                        if (filtro.Desde.HasValue)
+                        {
+                            _sql_2 += " and rec.fecha>=@desde ";
+                            p1.ParameterName = "@desde";
+                            p1.Value = filtro.Desde.Value;
+                        }
+                        if (filtro.Hasta.HasValue)
+                        {
+                            _sql_2 += " and rec.fecha<=@hasta ";
+                            p2.ParameterName = "@hasta";
+                            p2.Value = filtro.Hasta.Value;
+                        }
+                        if (filtro.EstatusDoc != DtoLibTransporte.CxpDoc.Pago.Lista.enumerados.EstatusDoc.SinDefinir)
+                        {
+                            _sql_2 += " and rec.estatus_anulado=@estatus ";
+                            p4.ParameterName = "@estatus";
+                            p4.Value = filtro.EstatusDoc == DtoLibTransporte.CxpDoc.Pago.Lista.enumerados.EstatusDoc.Anulado ? "1" : "0";
+                        }
+                        if (filtro.IdProveedor != "")
+                        {
+                            _sql_2 += " and rec.auto_proveedor=@idProveedor";
+                            p3.ParameterName = "@idProveedor";
+                            p3.Value = filtro.IdProveedor;
+                        }
+                    }
+                    var _sql = _sql_1 + _sql_2;
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.CxpDoc.Pago.Lista.Ficha>(_sql, p1, p2, p3, p4).ToList();
+                    result.Lista = _lst;
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)

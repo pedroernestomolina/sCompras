@@ -48,5 +48,8 @@ namespace DataProvCompra.InfraEstructura.Transporte
         //CXP
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha>
             Transporte_Reportes_Cxp_Documentos_PagosEmitidos(OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Filtro filtro);
+        //CXP-PLANILLA
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha>
+            Transporte_Reportes_Cxp_PagoEmitido_Planilla(string idMov);
     }
 }

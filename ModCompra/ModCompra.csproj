@@ -522,6 +522,21 @@
     <Compile Include="srcTransporte\Concepto\Maestro\data.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\dataItem.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\HndBusqDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\hndBusqueda.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\HndLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\IAdm.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\IBusqDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\IdataItem.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\IListaAdm.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\IHndCtasPend.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\IHndTool.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Handler\baseAgregarEditar.cs" />
@@ -656,6 +671,13 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Filtro\Caja\Imp.cs" />
+    <Compile Include="srcTransporte\Filtro\CxpPagosEmitido\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Filtro\CxpPagosEmitido\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Filtro\CxpPagosEmitido\Imp.cs" />
     <Compile Include="srcTransporte\Filtro\DocRetencion\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -728,6 +750,7 @@
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\islr.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Beneficiario\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\CxpPagosEmitidos\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Beneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Caja\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Concepto\Imp.cs" />
@@ -751,6 +774,7 @@
       <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Reportes\Planillas\ReciboAnticipoAliado\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Planillas\ReciboCxpPagoEmitido\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\ReciboPagoAliado\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\RetISLR\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\RetIva\Imp.cs" />
@@ -1072,6 +1096,9 @@
     <EmbeddedResource Include="srcTransporte\CtaPagar\ToolsAliados\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\CtaPagar\Tools\Administrador\Vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\CtaPagar\Tools\MetodosPago\CompAgregarEditarMet\Vista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1088,6 +1115,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Filtro\Caja\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Filtro\CxpPagosEmitido\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Filtro\DocRetencion\Frm.resx">
@@ -1141,7 +1171,10 @@
     <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_CajaMov.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_Retencion.rdlc">
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_Retencion.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_DocPagosEmitidos.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Beneficiario.rdlc">

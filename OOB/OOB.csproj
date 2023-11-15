@@ -175,6 +175,10 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboDoc.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboMetodoPago.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Resultado.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\enumerados.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Documento\Agregar\CompraGastoAliado\DocRetencion.cs" />
@@ -255,6 +259,10 @@
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Planilla\Caja.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Planilla\Documento.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Planilla\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Planilla\MetodoPago.cs" />
     <Compile Include="LibCompra\Usuario\ActualizarSesion\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Buscar\Ficha.cs" />
     <Compile Include="LibCompra\Usuario\Data\Ficha.cs" />

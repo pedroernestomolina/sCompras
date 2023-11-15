@@ -14,11 +14,13 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Vistas.Generar
         string Get_NumeroControlDoc { get; }
         DateTime Get_FechaEmisionDoc { get; }
         string Get_Notas { get; }
+        string Get_PagoServPrestado { get; }
         Utils.Buscar.Proveedor.Vistas.IProveedor Proveedor {get;}
         Utils.FiltrosCB.ICtrlConBusqueda Concepto { get;}
         Utils.FiltrosCB.ICtrlConBusqueda Aliado { get; }
         Utils.FiltrosCB.ICtrlSinBusqueda Sucursal { get; }
         bool Get_FechaEmisionDocIsOk { get; }
+        OOB.LibCompra.Transporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha Get_PagoServ { get; }
 
         void Inicializa();
         void CargarData();

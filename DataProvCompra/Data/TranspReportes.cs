@@ -625,7 +625,7 @@ namespace DataProvCompra.Data
             return result;
         }
 
-        //BENEFICIARIO
+        //CXP
         public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha> 
             Transporte_Reportes_Cxp_Documentos_PagosEmitidos(OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Filtro filtro)
         {
@@ -665,6 +665,73 @@ namespace DataProvCompra.Data
                 }
             }
             result.Lista = lst;
+            return result;
+        }
+        //CXP-PLANILLA
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha> 
+            Transporte_Reportes_Cxp_PagoEmitido_Planilla(string idMov)
+        {
+            var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha>();
+            var r01 = MyData.Transporte_Reportes_Cxp_PagoEmitido_Planilla(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s = r01.Entidad;
+            var nr = new OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha()
+            {
+                ciRifProv = s.ciRifProv,
+                dirProv = s.dirProv,
+                estatusMov = s.estatusMov,
+                fechaMov = s.fechaMov,
+                importeDiv = s.importeDiv,
+                montoRecDiv = s.montoRecDiv,
+                nombreProv = s.nombreProv,
+                notasMov = s.notasMov,
+                reciboNro = s.reciboNro,
+                tasaCambio = s.tasaCambio,
+                doc = s.doc.Select(xd =>
+                {
+                    var tr = new OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Documento()
+                    {
+                        fechaEmisionDoc = xd.fechaEmisionDoc,
+                        numeroDoc = xd.numeroDoc,
+                        siglasDoc = xd.siglasDoc,
+                    };
+                    return tr;
+                }).ToList(),
+                metPago= s.metPago.Select(xm =>
+                {
+                    var tm = new OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.MetodoPago()
+                    {
+                        codMet = xm.codMet,
+                        descMet = xm.descMet,
+                        opAplicaConversion = xm.opAplicaConversion,
+                        opBanco = xm.opBanco,
+                        opDetalle = xm.opDetalle,
+                        opFecha = xm.opFecha,
+                        opLote = xm.opLote,
+                        opMonto = xm.opMonto,
+                        opNroCta = xm.opNroCta,
+                        opNroTransf = xm.opNroTransf,
+                        opRef = xm.opRef,
+                        opTasa = xm.opTasa,
+                    };
+                    return tm;
+                }).ToList(),
+                caja = s.caja.Select(xt =>
+                {
+                    var xxr = new OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Caja()
+                    {
+                        cjDesc = xt.cjDesc,
+                        esDivisa = xt.esDivisa,
+                        monto = xt.monto,
+                        cjCod = xt.cjCod
+                    };
+                    return xxr;
+                }).ToList(),
+            };
+            result.Entidad = nr;
             return result;
         }
     }

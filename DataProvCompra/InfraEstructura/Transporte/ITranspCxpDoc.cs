@@ -13,8 +13,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
             Transporte_CxpDoc_GetLista_DocPend();
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha>
             Transporte_CxpDoc_GetDocPend_ById(string idCxP);
-        //
-        OOB.Resultado
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.Resultado>
             Transporte_CxpDoc_GestionPago_Agregar(OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.Ficha ficha);
+        OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.Pago.Lista.Ficha>
+            Transporte_CxpDoc_GetLista_PagosEmitidos(OOB.LibCompra.Transporte.CxpDoc.Pago.Lista.Filtro filtro);
     }
 }

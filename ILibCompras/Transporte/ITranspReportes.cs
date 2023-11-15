@@ -35,7 +35,7 @@ namespace ILibCompras.Transporte
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Aliado.MovCaja.Ficha>
             Transporte_Reportes_Aliado_MovCaja_GetLista(DtoLibTransporte.Reportes.Aliado.MovCaja.Filtro filtro);
 
-        //PLANILLAS
+        //ALIDOS-PLANILLAS
         DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.Anticipo.Planilla.Ficha>
             Transporte_Reportes_Aliado_Anticipos_Planilla(int idMov);
         DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla.Ficha>
@@ -48,5 +48,8 @@ namespace ILibCompras.Transporte
         //CXP
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha>
             Transporte_Reportes_Cxp_Documentos_PagosEmitidos(DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Filtro filtro);
+        //CXP-PLANILLA
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla.Ficha>
+            Transporte_Reportes_Cxp_PagoEmitido_Planilla(string idMov);
     }
 }

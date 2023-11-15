@@ -218,12 +218,19 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                 //
                 var r01 = Sistema.MyData.Transporte_CxpDoc_GestionPago_Agregar(fichaOOB);
                 _procesarIsOK = true;
+                visualizarItem(r01.Entidad.autoRecibo);
                 Helpers.Msg.AgregarOk();
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+        private void visualizarItem(string idMov)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboCxpPagoEmitido.Imp();
+            _rep.setIdDoc(idMov);
+            _rep.Generar();
         }
     }
 }

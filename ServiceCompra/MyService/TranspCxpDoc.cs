@@ -20,11 +20,15 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_CxpDoc_GetDocPend_ById(idCxP);
         }
-        //
-        public DtoLib.Resultado 
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.Resultado>
             Transporte_CxpDoc_GestionPago_Agregar(DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha ficha)
         {
             return ServiceProv.Transporte_CxpDoc_GestionPago_Agregar(ficha);
+        }
+        public DtoLib.ResultadoLista<DtoLibTransporte.CxpDoc.Pago.Lista.Ficha> 
+            Transporte_CxpDoc_GetLista_PagosEmitidos(DtoLibTransporte.CxpDoc.Pago.Lista.Filtro filtro)
+        {
+            return ServiceProv.Transporte_CxpDoc_GetLista_PagosEmitidos(filtro);
         }
     }
 }

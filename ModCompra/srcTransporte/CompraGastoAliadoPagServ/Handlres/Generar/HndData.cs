@@ -20,6 +20,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
         private Utils.Buscar.Proveedor.Vistas.IProveedor _proveedor;
         private Utils.FiltrosCB.ICtrlConBusqueda _aliado;
         private List<OOB.LibCompra.Transporte.Aliado.PagoServ.Lista.Ficha> _servPg;
+        private OOB.LibCompra.Transporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha _pagoServ;
+        private string _pagoServPrestado_Inf;
 
 
         public string Get_NumeroDoc { get { return _numeroDoc; } }
@@ -27,10 +29,12 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
         public DateTime Get_FechaEmisionDoc { get { return _fechaEmisionDoc; } }
         public string Get_Notas { get { return _notas; } }
         public bool Get_FechaEmisionDocIsOk { get { return _fechaEmisionDoc > _fechaServidor; } }
+        public string Get_PagoServPrestado { get { return _pagoServPrestado_Inf; } }
         public Utils.FiltrosCB.ICtrlConBusqueda Concepto { get { return _concepto; } }
         public Utils.FiltrosCB.ICtrlSinBusqueda Sucursal { get { return _sucursal; } }
         public Utils.Buscar.Proveedor.Vistas.IProveedor Proveedor { get { return _proveedor; } }
         public Utils.FiltrosCB.ICtrlConBusqueda Aliado { get { return _aliado; } }
+        public OOB.LibCompra.Transporte.Documento.Agregar.DePagoAliado.ObtenerData.Ficha Get_PagoServ { get { return _pagoServ; } }
 
 
         public HndData()
@@ -45,6 +49,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             _proveedor = new Utils.Buscar.Proveedor.Handler.Imp();
             _aliado = new Utils.FiltrosCB.ConBusqueda.Aliado.Imp();
             _servPg = null;
+            _pagoServ = null;
+            _pagoServPrestado_Inf = "";
         }
         public void Inicializa()
         {
@@ -57,6 +63,8 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
             _proveedor.Inicializa();
             _aliado.Inicializa();
             _servPg = null;
+            _pagoServ = null;
+            _pagoServPrestado_Inf = "";
         }
         public void CargarData()
         {
@@ -101,14 +109,19 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
                 //Helpers.Msg.Alerta("NUMERO DE CONTROL DEL DOCUMENTO NO PUEDE ESTAR VACIO");
                 //return false;
             }
-            if (_proveedor.Get_Ficha == null)
-            {
-                Helpers.Msg.Alerta("PROVEEDOR NO PUEDE ESTAR VACIO");
-                return false;
-            }
             if (_aliado.GetItem == null)
             {
                 Helpers.Msg.Alerta("ALIADO NO PUEDE ESTAR VACIO");
+                return false;
+            }
+            if (_pagoServ== null)
+            {
+                Helpers.Msg.Alerta("DEBES SELECCIONAR UN PAGO DE SERVCIO DEL ALIADO");
+                return false;
+            }
+            if (_proveedor.Get_Ficha == null)
+            {
+                Helpers.Msg.Alerta("PROVEEDOR NO PUEDE ESTAR VACIO");
                 return false;
             }
             if (_sucursal.GetItem == null)
@@ -172,6 +185,23 @@ namespace ModCompra.srcTransporte.CompraGastoAliadoPagServ.Handlres.Generar
              _pgServ.Inicializa();
              _pgServ.setDataCargar(_servPg);
              _pgServ.Inicia();
+             if (_pgServ.ItemSeleccionadoIsOk) 
+             {
+                 try
+                 {
+                     var _item = (Utils.Buscar.AliadoPagoServ.Handler.data)_pgServ.ItemSeleccionado;
+                     var r01 = Sistema.MyData.Transporte_Documento_CompraGasto_ObtenerDato_PagoServAliado(_item.Ficha.idMov);
+                     _pagoServ = r01.Entidad;
+                     _pagoServPrestado_Inf = "("+_item.Ficha.cirifAliado.Trim()+")"+ 
+                                                _item.Ficha.nombreAliado+Environment.NewLine+
+                                                "Recibo Nro: "+_item.ERecibo.Trim()+
+                                                ", Monto: "+_item.EImporte.ToString("n2") ;
+                 }
+                 catch (Exception e)
+                 {
+                     Helpers.Msg.Error(e.Message);
+                 }
+             }
         }
         private void Buscar()
         {
