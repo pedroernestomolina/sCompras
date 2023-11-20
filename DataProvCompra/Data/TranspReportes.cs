@@ -624,6 +624,43 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
+        //BENEFICIARIO-PLANILLA
+        public OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Beneficiario.Planilla.Ficha>
+            Transporte_Reportes_Beneficiario_Planilla(int idMov)
+        {
+            var result = new OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Beneficiario.Planilla.Ficha>();
+            var r01 = MyData.Transporte_Reportes_Beneficiario_Planilla(idMov);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var s = r01.Entidad;
+            var nr = new OOB.LibCompra.Transporte.Reportes.Beneficiario.Planilla.Ficha()
+            {
+                ciRifBene = s.ciRifBene,
+                codConcepto = s.codConcepto,
+                descConcepto = s.descConcepto,
+                fechaEmision = s.fechaEmision,
+                fechaRegistro = s.fechaRegistro,
+                montoSolicitado = s.montoSolicitado,
+                motivo = s.motivo,
+                nombreBene = s.nombreBene,
+                numRecibo = s.numRecibo,
+                tasaFactor = s.tasaFactor,
+                caja = s.caja.Select(xt =>
+                {
+                    var xxr = new OOB.LibCompra.Transporte.Reportes.Beneficiario.Planilla.Caja()
+                    {
+                        cjDesc = xt.cjDesc,
+                        esDivisa = xt.esDivisa,
+                        monto = xt.monto,
+                    };
+                    return xxr;
+                }).ToList(),
+            };
+            result.Entidad = nr;
+            return result;
+        }
 
         //CXP
         public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha> 

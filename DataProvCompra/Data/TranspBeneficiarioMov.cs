@@ -91,6 +91,7 @@ namespace DataProvCompra.Data
                             idMov = s.idMov,
                             montoDiv = s.montoDiv,
                             nombreBene = s.nombreBene,
+                            reciboNro = s.reciboNro,
                         };
                         return nr;
                     }).ToList();

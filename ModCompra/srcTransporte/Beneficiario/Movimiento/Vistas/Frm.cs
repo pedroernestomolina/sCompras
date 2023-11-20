@@ -162,6 +162,7 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Vistas
         {
             var _monto = decimal.Parse(TB_MONTO_MOV.Text);
             _controlador.Mov.setMontoMov(_monto);
+            _controlador.ActualizarSaldoCaja();
             TB_MONTO_MOV.Text = _controlador.Mov.Get_MontoMov.ToString("n2", _cult);
             L_MONTO_MON_ACT.Text = "Monto En Bs" + Environment.NewLine + _controlador.Mov.Get_MontoMonAct.ToString("n2", _cult);
         }
@@ -169,6 +170,7 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Vistas
         {
             var _monto = decimal.Parse(TB_FACTOR_CAMBIO.Text);
             _controlador.Mov.setFactorCambio(_monto);
+            _controlador.ActualizarSaldoCaja();
             TB_FACTOR_CAMBIO.Text = _controlador.Mov.Get_FactorCambio.ToString("n2", _cult);
             L_MONTO_MON_ACT.Text = "Monto En Bs" + Environment.NewLine + _controlador.Mov.Get_MontoMonAct.ToString("n2", _cult);
         }

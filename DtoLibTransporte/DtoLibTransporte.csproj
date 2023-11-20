@@ -157,6 +157,8 @@
     <Compile Include="Reportes\Aliado\PagoServ\Planilla\Serv.cs" />
     <Compile Include="Reportes\Beneficiario\Movimiento\Ficha.cs" />
     <Compile Include="Reportes\Beneficiario\Movimiento\Fitro.cs" />
+    <Compile Include="Reportes\Beneficiario\Planilla\Caja.cs" />
+    <Compile Include="Reportes\Beneficiario\Planilla\Ficha.cs" />
     <Compile Include="Reportes\Caja\baseFiltro.cs" />
     <Compile Include="Reportes\Caja\enumerados.cs" />
     <Compile Include="Reportes\Caja\Movimiento\Ficha.cs" />

@@ -44,6 +44,9 @@ namespace DataProvCompra.InfraEstructura.Transporte
         //BENEFICIARIO
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Ficha>
             Transporte_Reportes_Beneficiario_Movimiento_GetLista(OOB.LibCompra.Transporte.Reportes.Beneficiario.Movimiento.Fitro filtro);
+        //BENEFICIARIO
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.Reportes.Beneficiario.Planilla.Ficha>
+            Transporte_Reportes_Beneficiario_Planilla(int idMov);
 
         //CXP
         OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Ficha>

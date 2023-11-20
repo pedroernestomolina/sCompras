@@ -102,10 +102,12 @@ namespace ModCompra.Utils.Componente.CajaMonto.Handler
         public void setFactorCambio(decimal factor)
         {
             _factorCambio = factor;
+            ActualizarSaldosPend();
         }
         public void setMontoPendDiv(decimal montoDiv)
         {
             _montoPendDiv = montoDiv;
+            ActualizarSaldosPend();
         }
 
         public decimal Get_MontoPendMonAct { get { return _montoPendMonAct; } }

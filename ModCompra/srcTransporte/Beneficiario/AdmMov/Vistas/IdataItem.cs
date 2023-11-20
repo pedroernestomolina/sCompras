@@ -9,6 +9,7 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Vistas
 {
     public interface IdataItem
     {
+        string ReciboNro { get; set; }
         DateTime FechaMov { get; set; }
         string BeneficiarioNombre { get; set; }
         string BeneficiarioCiRif { get; set; }

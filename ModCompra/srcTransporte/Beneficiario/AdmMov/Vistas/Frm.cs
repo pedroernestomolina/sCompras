@@ -39,6 +39,15 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Vistas
             DGV.MultiSelect = false;
             DGV.ReadOnly = true;
 
+            var c0 = new DataGridViewTextBoxColumn();
+            c0.DataPropertyName = "ReciboNro";
+            c0.HeaderText = "Recibo";
+            c0.Visible = true;
+            c0.Width = 90;
+            c0.HeaderCell.Style.Font = f;
+            c0.DefaultCellStyle.Font = f1;
+            c0.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             var c1 = new DataGridViewTextBoxColumn();
             c1.DataPropertyName = "FechaMov";
             c1.HeaderText = "Fecha";
@@ -91,6 +100,7 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Vistas
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
 
+            DGV.Columns.Add(c0);
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c6);
             DGV.Columns.Add(c2);

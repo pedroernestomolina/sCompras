@@ -774,6 +774,7 @@
       <DependentUpon>DS_PLANILLA.xsd</DependentUpon>
     </Compile>
     <Compile Include="srcTransporte\Reportes\Planillas\ReciboAnticipoAliado\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\Planillas\ReciboBeneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\ReciboCxpPagoEmitido\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\ReciboPagoAliado\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Planillas\RetISLR\Imp.cs" />
@@ -1184,6 +1185,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Concepto.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_Beneficiario.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Planillas\RepPlanilla_AnticipoAliado.rdlc">

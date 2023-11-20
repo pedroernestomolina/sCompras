@@ -909,6 +909,61 @@ namespace ProvLibCompra
             }
             return result;
         }
+        //BENEFICIAIRO-PLANILLA
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Beneficiario.Planilla.Ficha> 
+            Transporte_Reportes_Beneficiario_Planilla(int idMov)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Beneficiario.Planilla.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql = @"SELECT 
+                                    fecha_mov as fechaEmision,
+                                    fecha_registro as fechaRegistro,
+                                    cirif_bene as ciRifBene,
+                                    nombre_bene as nombreBene,
+                                    monto_div as montoSolicitado,
+                                    factor_tasa as tasaFactor,
+                                    notas as motivo,
+                                    recibo_nro as numRecibo,
+                                    desc_concepto as descConcepto,
+                                    cod_concepto as codConcepto
+                                FROM transp_beneficiario_mov
+                                WHERE id=@idMov";
+                    var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var ent = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Beneficiario.Planilla.Ficha>(sql, p0).FirstOrDefault();
+                    if (ent == null)
+                    {
+                        throw new Exception("MOVIMIENTO NO ENCONTRADO");
+                    }
+                    //
+                    sql = @"SELECT 
+                                cj.descripcion as cjDesc,
+                                cjMov.mov_fue_divisa as esDivisa,
+                                case 
+                                    when cjMov.mov_fue_divisa='1' then monto_mov_mon_div 
+                                    else monto_mov_mon_act
+                                end as monto
+                            FROM transp_beneficiario_caj as beneCj
+                            join transp_caja_mov as cjMov on cjMov.id=beneCj.id_caja_mov
+                            join transp_caja as cj on cj.id=cjMov.id_caja
+                            where beneCj.id_mov=@idMov";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
+                    var _cjs = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Beneficiario.Planilla.Caja>(sql, p0).ToList();
+                    //
+                    ent.caja = _cjs;
+                    result.Entidad = ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+
 
         //CXP
         public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha> 

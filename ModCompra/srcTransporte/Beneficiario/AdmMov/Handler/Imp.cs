@@ -142,9 +142,9 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
         }
         private void visualizarItem(dataItem it)
         {
-            //srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboAnticipoAliado.Imp();
-            //_rep.setIdDoc(it.idMov);
-            //_rep.Generar();
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboBeneficiario.Imp();
+            _rep.setIdDoc(it.idMov);
+            _rep.Generar();
         }
         private void imprimirItems()
         {

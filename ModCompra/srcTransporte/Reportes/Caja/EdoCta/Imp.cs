@@ -27,6 +27,8 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
                 Desde = ft.Desde,
                 Hasta = ft.Hasta,
                 IdCaja = ft.IdCaja,
+                EstatusDoc = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.EstatusDoc.SinDefinir,
+                TipoMov = OOB.LibCompra.Transporte.Reportes.Caja.enumerados.TipoMovCaja.SinDefinir,
             };
         }
         public void Generar()

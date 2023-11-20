@@ -84,6 +84,12 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Beneficiario_Movimiento_GetLista(filtro);
         }
+        //BENEFICIARIO-PLANILLA
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Beneficiario.Planilla.Ficha> 
+            Transporte_Reportes_Beneficiario_Planilla(int idMov)
+        {
+            return ServiceProv.Transporte_Reportes_Beneficiario_Planilla(idMov);
+        }
 
         //CXP
         public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha> 
@@ -97,5 +103,7 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Cxp_PagoEmitido_Planilla(idMov);
         }
+
+
     }
 }

@@ -708,7 +708,6 @@
             this.BT_VISUALIZAR.TabIndex = 1;
             this.toolTip1.SetToolTip(this.BT_VISUALIZAR, "Visualizar Documento");
             this.BT_VISUALIZAR.UseVisualStyleBackColor = true;
-            this.BT_VISUALIZAR.Visible = false;
             this.BT_VISUALIZAR.Click += new System.EventHandler(this.BT_VISUALIZAR_Click);
             // 
             // panel10

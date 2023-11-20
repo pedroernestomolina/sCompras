@@ -23,8 +23,18 @@ namespace ProvLibCompra
                     {
                         var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
                         //
+                        var sql = @"update sistema_contadores set 
+                                        a_transp_beneficiario_recnumero=a_transp_beneficiario_recnumero+1";
+                        var r1 = cnn.Database.ExecuteSqlCommand(sql);
+                        if (r1 == 0)
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR TABLA CONTADORES");
+                        }
+                        var aRecibo = cnn.Database.SqlQuery<int>("select a_transp_beneficiario_recnumero from sistema_contadores").FirstOrDefault();
+                        var autoRecibo = aRecibo.ToString().Trim().PadLeft(10, '0');
+                        //
                         //INSERTAR MOVIMIENTO-BENEFICIARIO
-                        var sql = @"INSERT INTO transp_beneficiario_mov (
+                        sql = @"INSERT INTO transp_beneficiario_mov (
                                         id, 
                                         id_beneficiario, 
                                         id_concepto, 
@@ -37,7 +47,8 @@ namespace ProvLibCompra
                                         monto_div, 
                                         factor_tasa, 
                                         notas, 
-                                        estatus_anulado)
+                                        estatus_anulado,
+                                        recibo_nro)
                                     VALUES 
                                         (NULL, 
                                         @id_beneficiario, 
@@ -51,7 +62,8 @@ namespace ProvLibCompra
                                         @monto_div, 
                                         @factor_tasa, 
                                         @notas, 
-                                        '0')";
+                                        '0',
+                                        @recibo_nro)";
                         var mov = ficha.mov;
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_beneficiario", mov.idBeneficiario);
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@id_concepto", mov.idConcepto);
@@ -65,15 +77,14 @@ namespace ProvLibCompra
                         var p09 = new MySql.Data.MySqlClient.MySqlParameter("@factor_tasa", mov.factorTasa);
                         //
                         var p10 = new MySql.Data.MySqlClient.MySqlParameter("@notas",mov.notasMov);
+                        var p11 = new MySql.Data.MySqlClient.MySqlParameter("@recibo_nro", autoRecibo);
                         //
-                        var r1 = cnn.Database.ExecuteSqlCommand(sql,
+                        r1 = cnn.Database.ExecuteSqlCommand(sql,
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
-                            p10);
+                            p10, p11);
                         if (r1 == 0)
                         {
-                            result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE ABONO";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("ERROR AL INSERTAR MOVIMIENTO DE ABONO");
                         }
                         cnn.SaveChanges();
                         //
@@ -118,9 +129,7 @@ namespace ProvLibCompra
                             var r2 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
                             if (r2 == 0)
                             {
-                                result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE CAJA";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("ERROR AL INSERTAR MOVIMIENTO DE CAJA");
                             }
                             cnn.SaveChanges();
                             //
@@ -163,9 +172,7 @@ namespace ProvLibCompra
                             var r3 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07);
                             if (r3 == 0)
                             {
-                                result.Mensaje = "ERROR AL INSERTAR BENFICIARIO-MOV-CAJA";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("ERROR AL INSERTAR BENFICIARIO-MOV-CAJA");
                             }
                             cnn.SaveChanges();
                             //
@@ -178,9 +185,7 @@ namespace ProvLibCompra
                             var r4 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
                             if (r4 == 0)
                             {
-                                result.Mensaje = "ERROR AL ACTUALIZAR SALDO CAJA";
-                                result.Result = DtoLib.Enumerados.EnumResult.isError;
-                                return result;
+                                throw new Exception("ERROR AL ACTUALIZAR SALDO CAJA");
                             }
                             cnn.SaveChanges();
                         }
@@ -217,6 +222,7 @@ namespace ProvLibCompra
                 {
                     var _sql_1 = @"SELECT 
                                         id as idMov,
+                                        recibo_nro as reciboNro,
                                         nombre_bene as nombreBene,
                                         cirif_bene as cirifBene,
                                         fecha_registro as fechaReg,

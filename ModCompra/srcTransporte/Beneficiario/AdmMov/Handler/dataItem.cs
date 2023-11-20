@@ -14,6 +14,7 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
         private OOB.LibCompra.Transporte.Beneficiario.Mov.Lista.Ficha _ficha;
 
 
+        public string ReciboNro { get; set; }
         public DateTime FechaMov { get; set; }
         public string BeneficiarioNombre { get; set; }
         public string BeneficiarioCiRif { get; set; }
@@ -28,6 +29,7 @@ namespace ModCompra.srcTransporte.Beneficiario.AdmMov.Handler
         public dataItem(OOB.LibCompra.Transporte.Beneficiario.Mov.Lista.Ficha ficha)
         {
             _ficha = ficha;
+            ReciboNro = ficha.reciboNro;
             FechaMov = ficha.fechaReg;
             BeneficiarioNombre = ficha.nombreBene;
             BeneficiarioCiRif = ficha.cirifBene;

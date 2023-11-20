@@ -44,6 +44,9 @@ namespace ILibCompras.Transporte
         //BENEFICIARIOS
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Beneficiario.Movimiento.Ficha>
             Transporte_Reportes_Beneficiario_Movimiento_GetLista(DtoLibTransporte.Reportes.Beneficiario.Movimiento.Fitro filtro);
+        //BENEFICIARIO-PLANILLA
+        DtoLib.ResultadoEntidad<DtoLibTransporte.Reportes.Beneficiario.Planilla.Ficha>
+            Transporte_Reportes_Beneficiario_Planilla(int idMov);
 
         //CXP
         DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Ficha>

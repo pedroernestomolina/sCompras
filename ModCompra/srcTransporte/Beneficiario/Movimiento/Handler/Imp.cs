@@ -144,6 +144,7 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Handler
                 };
                 var r01 = Sistema.MyData.Transporte_Beneficiario_Mov_Agregar(ficha);
                 _procesarIsOK = true;
+                visualizarItem(r01.Id);
                 Helpers.Msg.AgregarOk();
             }
             catch (Exception e)
@@ -157,6 +158,13 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Handler
             _caj.setFactorCambio(_mov.Get_FactorCambio );
             _caj.setMontoPendDiv(_mov.Get_MontoMov);
             _caj.ActualizarSaldosPend();
+        }
+
+        private void visualizarItem(int it)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.ReciboBeneficiario.Imp();
+            _rep.setIdDoc(it);
+            _rep.Generar();
         }
     }
 }

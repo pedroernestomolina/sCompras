@@ -10,6 +10,7 @@ namespace DtoLibTransporte.Beneficiario.Mov.Lista
     public class Ficha
     {
         public int idMov { get; set; }
+        public string reciboNro { get; set; }
         public DateTime fechaReg { get; set; }
         public string nombreBene { get; set; }
         public string cirifBene { get; set; }
