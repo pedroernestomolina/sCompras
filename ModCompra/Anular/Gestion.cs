@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModCompra.Anular
 {
-    
     public class Gestion
     {
-
-        
         public string Motivo { get; set; }
         public bool IsAnularOK { get; set; }
 
@@ -56,7 +53,5 @@ namespace ModCompra.Anular
                 IsAnularOK = true;
             }
         }
-
     }
-
 }

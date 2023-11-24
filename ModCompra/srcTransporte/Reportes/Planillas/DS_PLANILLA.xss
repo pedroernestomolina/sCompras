@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:RetIslr_Det" ZOrder="7" X="719" Y="236" Height="181" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
     <Shape ID="DesignTable:PagoAliado" ZOrder="6" X="428" Y="377" Height="257" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="253" />
     <Shape ID="DesignTable:PagoAliado_Serv" ZOrder="5" X="620" Y="449" Height="105" Width="163" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
-    <Shape ID="DesignTable:PagoAliado_Caja" ZOrder="4" X="807" Y="448" Height="86" Width="162" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
+    <Shape ID="DesignTable:PagoAliado_Caja" ZOrder="4" X="807" Y="448" Height="105" Width="162" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="101" />
     <Shape ID="DesignTable:CxpPagoDoc" ZOrder="3" X="1002" Y="176" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
     <Shape ID="DesignTable:CxpPagoDoc_Caja" ZOrder="2" X="1064" Y="384" Height="86" Width="169" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="82" />
     <Shape ID="DesignTable:Beneficiario" ZOrder="1" X="236" Y="380" Height="162" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />

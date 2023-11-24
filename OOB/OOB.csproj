@@ -176,6 +176,8 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboMetodoPago.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Resultado.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Anular\auditoria.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Anular\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\Filtro.cs" />

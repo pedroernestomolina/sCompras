@@ -147,6 +147,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         {
             AdmDocPagos();
         }
+        private void BT_PAG_PEND_Click(object sender, EventArgs e)
+        {
+            ListaPagosPend();
+        }
 
 
         private void BuscarCtasPendientes()
@@ -174,6 +178,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             _controlador.AdmDocPagos();
             BuscarCtasPendientes();
         }
+        private void ListaPagosPend()
+        {
+            _controlador.data.ImprimirLista();
+        }
 
 
         private void TSM_ARCHIVO_SALIR_Click(object sender, EventArgs e)
@@ -198,6 +206,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         }
         private void ActualizarDataPanel_Totales()
         {
+            L_CNT_ITEM.Text = "Cant Items: " + _controlador.data.CtasPendientes.Get_CntItem.ToString("n0");
             L_MONTO_PENDIENTE.Text = _controlador.data.CtasPendientes.Get_MontoPendiente.ToString("n2",_cult);
         }
     }

@@ -663,6 +663,36 @@ namespace ModCompra.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_tools_24 {
+            get {
+                object obj = ResourceManager.GetObject("bt_tools_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_tools_32 {
+            get {
+                object obj = ResourceManager.GetObject("bt_tools_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_tools_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_tools_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_usuario {
             get {
                 object obj = ResourceManager.GetObject("bt_usuario", resourceCulture);

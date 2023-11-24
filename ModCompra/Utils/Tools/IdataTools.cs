@@ -12,5 +12,6 @@ namespace ModCompra.Utils.Tools
         IdataCtasPendientes CtasPendientes { get; }
         void AgregarAnticipo();
         void ServPrestado();
+        void ImprimirLista();
     }
 }

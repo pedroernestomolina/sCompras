@@ -14,6 +14,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools
         decimal Get_MontoPendiente { get; }
         object Get_ItemActual { get; }
         int Get_CntItem { get; }
+        IEnumerable<object> Get_Items { get; }
 
         void Inicializa();
         void CargarCtas();

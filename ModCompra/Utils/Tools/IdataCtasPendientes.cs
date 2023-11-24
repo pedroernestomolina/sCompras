@@ -13,6 +13,8 @@ namespace ModCompra.Utils.Tools
         BindingSource GetSource { get; }
         decimal Get_MontoPendiente { get; }
         object ItemActual { get; }
+        int Get_CntItem { get; }
+        IEnumerable<object> Get_Items { get; }
 
 
         void Inicializa();

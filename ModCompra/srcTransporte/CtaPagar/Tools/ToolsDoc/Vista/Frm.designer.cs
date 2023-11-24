@@ -62,7 +62,7 @@
             this.panel17 = new System.Windows.Forms.Panel();
             this.BT_ADM_DOC_PAGO = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BT_IMPRIMIR_LISTA = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -493,7 +493,7 @@
             // panel18
             // 
             this.tableLayoutPanel7.SetColumnSpan(this.panel18, 2);
-            this.panel18.Controls.Add(this.button1);
+            this.panel18.Controls.Add(this.BT_IMPRIMIR_LISTA);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel18.Location = new System.Drawing.Point(1, 278);
             this.panel18.Margin = new System.Windows.Forms.Padding(1);
@@ -502,20 +502,20 @@
             this.panel18.Size = new System.Drawing.Size(193, 90);
             this.panel18.TabIndex = 8;
             // 
-            // button1
+            // BT_IMPRIMIR_LISTA
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ModCompra.Properties.Resources.bt_imprimir;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 86);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Imprimir\r\nLista";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.BT_IMPRIMIR_LISTA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_IMPRIMIR_LISTA.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_IMPRIMIR_LISTA.Image = global::ModCompra.Properties.Resources.bt_imprimir;
+            this.BT_IMPRIMIR_LISTA.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_IMPRIMIR_LISTA.Location = new System.Drawing.Point(2, 2);
+            this.BT_IMPRIMIR_LISTA.Name = "BT_IMPRIMIR_LISTA";
+            this.BT_IMPRIMIR_LISTA.Size = new System.Drawing.Size(189, 86);
+            this.BT_IMPRIMIR_LISTA.TabIndex = 3;
+            this.BT_IMPRIMIR_LISTA.Text = "Imprimir\r\nLista";
+            this.BT_IMPRIMIR_LISTA.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_IMPRIMIR_LISTA.UseVisualStyleBackColor = true;
+            this.BT_IMPRIMIR_LISTA.Click += new System.EventHandler(this.BT_IMPRIMIR_LISTA_Click);
             // 
             // P_PIE
             // 
@@ -682,6 +682,6 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label L_CNT_ITEM;
         private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BT_IMPRIMIR_LISTA;
     }
 }

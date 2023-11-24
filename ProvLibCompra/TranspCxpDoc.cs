@@ -665,5 +665,255 @@ namespace ProvLibCompra
             }
             return result;
         }
+        //
+        public DtoLib.Resultado 
+            Transporte_CxpDoc_GestionPago_Anular(DtoLibTransporte.CxpDoc.Pago.Anular.Ficha ficha)
+        {
+            var result = new DtoLib.Resultado();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    using (var ts = cnn.Database.BeginTransaction())
+                    {
+                        var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
+                        var mesRelacion = fechaSistema.Month.ToString().Trim().PadLeft(2, '0');
+                        var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
+                        //
+                        // INSERTAR AUDITORIA
+                        var _sql = @"INSERT INTO auditoria_documentos (
+                                    auto_documento, 
+                                    auto_sistema_documentos, 
+                                    auto_usuario,
+                                    usuario,
+                                    codigo, 
+                                    fecha, 
+                                    hora, 
+                                    memo, 
+                                    estacion, 
+                                    ip)
+                                VALUES (
+                                    @auto_documento, 
+                                    '0000000013', 
+                                    @auto_usuario,
+                                    @usuario,
+                                    @codigo, 
+                                    @fecha, 
+                                    @hora, 
+                                    @memo, 
+                                    @estacion, 
+                                    '')";
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@auto_documento", ficha.autoRecibo);
+                        var p2 = new MySql.Data.MySqlClient.MySqlParameter("@auto_usuario", ficha.auditoria.autoUsuario);
+                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@usuario", ficha.auditoria.nombreUsuario);
+                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.auditoria.codigoUsuario);
+                        var p5 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                        var p6 = new MySql.Data.MySqlClient.MySqlParameter("@hora", fechaSistema.ToShortTimeString());
+                        var p7 = new MySql.Data.MySqlClient.MySqlParameter("@memo", ficha.auditoria.motivo);
+                        var p8 = new MySql.Data.MySqlClient.MySqlParameter("@estacion", ficha.auditoria.estacionEquipo);
+                        var v1 = cnn.Database.ExecuteSqlCommand(_sql, p1, p2, p3, p4, p5, p6, p7, p8);
+                        if (v1 == 0)
+                        {
+                            throw new Exception("PROBLEMA AL INSERTAR MOVIMIENTO DE AUDITORIA, TABLA [ AUDITORIA_DOCUMENTOS ]");
+                        }
+                        //
+                        // ACTUALIZA ESTATUS ANULADO CXP - PAGO
+                        _sql = @"update cxp set estatus_anulado='1'
+                                        where auto=@autoPag and estatus_anulado='0'";
+                        var p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoPag", ficha.autoPago);
+                        var xr2 = cnn.Database.ExecuteSqlCommand(_sql, p00);
+                        if (xr2 == 0)
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR ESTATUS PAGO EN TABLA [ CXP ]");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        // ACTUALIZO ESTATUS RECIBO
+                        _sql= @"update cxp_recibos set estatus_anulado='1'
+                                        where auto=@autoRecibo and estatus_anulado='0'";
+                        p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoRecibo", ficha.autoRecibo);
+                        var xr3 = cnn.Database.ExecuteSqlCommand(_sql, p00);
+                        if (xr3 == 0)
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR ESTATUS RECIBO EN TABLA [ CXP_RECIBOS ]");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        // ACTUALIZAR SALDO PROVEEDOR 
+                        _sql = @"update proveedores set
+                                    creditos=creditos-@montoRecibo
+                                where auto=@autoProv";
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.autoProveedor);
+                        var p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoRecibo", ficha.importeDiv);
+                        var xr4 = cnn.Database.ExecuteSqlCommand(_sql, p01, p02);
+                        if (xr4 == 0)
+                        {
+                            throw new Exception("ERROR AL ACTUALIZAR SALDO PROVEEDOR");
+                        }
+                        cnn.SaveChanges();
+                        //
+                        //
+                        if (ficha.documentos!= null)
+                        {
+                            foreach (var doc in ficha.documentos)
+                            {
+                                //
+                                // ACTUALIZAR SALDO CXP
+                                _sql = @"update cxp set
+                                    acumulado_divisa=acumulado_divisa-@montoRecibo,
+                                    resta_divisa=resta_divisa+@montoRecibo,
+                                    estatus_cancelado='0'
+                                where auto=@autoCxp";
+                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxp", doc.autoCxpRef);
+                                p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoRecibo", doc.importeDiv);
+                                var d1 = cnn.Database.ExecuteSqlCommand(_sql, p01, p02);
+                                if (d1 == 0)
+                                {
+                                    throw new Exception("ERROR AL ACTUALIZAR SALDO DOCUMENTO EN TABLA [ CXP ]");
+                                }
+                                cnn.SaveChanges();
+                            }
+                        }
+                        if (ficha.cajas != null)
+                        {
+                            foreach (var rg in ficha.cajas)
+                            {
+                                //
+                                //ACTUALIZAR ESTATUS ANULADO RECIBO-CAJA
+                                _sql = @"update cxp_recibos_caj set 
+                                        estatus_anulado='1'
+                                    where id=@idRecCaja and estatus_anulado='0'";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@idRecCaja", rg.idRecCaja);
+                                var r1 = cnn.Database.ExecuteSqlCommand(_sql, p00);
+                                if (r1 == 0)
+                                {
+                                    throw new Exception("PROBLEMA AL ACTUALIZAR ESTATUS MOVIMIENTO(RECIBO-CAJA), TABLA [ CXP_RECIBOS_CAJA ]");
+                                }
+                                cnn.SaveChanges();
+                                //
+                                // ACTUALIZAR ESTATUS ANULADO CAJA MOVIMIENTO
+                                _sql = @"update transp_caja_mov set 
+                                        estatus_anulado_mov='1'
+                                    where id=@idCajaMov";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCajaMov", rg.idCajaMov);
+                                var r2 = cnn.Database.ExecuteSqlCommand(_sql, p00);
+                                if (r2 == 0)
+                                {
+                                    throw new Exception("PROBLEMA AL ACTUALIZAR ESTATUS MOVIMIENTO(CAJA_MOV), TABLA [ TRANSP_CAJA_MOV ]");
+                                }
+                                cnn.SaveChanges();
+                                //
+                                // ACTUALIZAR SALDO CAJAS 
+                                _sql = @"update transp_caja set 
+                                        monto_egreso_anulado=monto_egreso_anulado+@monto
+                                        where id=@idCaja";
+                                p00 = new MySql.Data.MySqlClient.MySqlParameter("@idCaja", rg.idCaja);
+                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@monto", rg.monto);
+                                var r3 = cnn.Database.ExecuteSqlCommand(_sql, p00, p01);
+                                if (r3 == 0)
+                                {
+                                    throw new Exception("PROBLEMA AL ACTUALIZAR SALDO CAJA, TABLA [ TRANSP_CAJA ]");
+                                }
+                                cnn.SaveChanges();
+                            }
+                        }
+                        //
+                        //METODOS DE PAGO
+                        if (ficha.cntMetPago > 0)
+                        {
+                            _sql = @"update cxp_medio_pago set estatus_anulado='1'
+                                        where auto_recibo=@autoRecibo";
+                            p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoRecibo", ficha.autoRecibo);
+                            var xr5 = cnn.Database.ExecuteSqlCommand(_sql, p00);
+                            if (xr5 == 0)
+                            {
+                                throw new Exception("PROBLEMA AL ACTUALIZAR ESTATUS METODOS DE PAGO, TABLA [ CXP_MEDIO_PAGO ]");
+                            }
+                            cnn.SaveChanges();
+                        }
+                        //
+                        ts.Commit();
+                    }
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                result.Mensaje = Helpers.MYSQL_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (DbUpdateException ex)
+            {
+                result.Mensaje = Helpers.ENTITY_VerificaError(ex);
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Anular.Ficha> 
+            Transporte_CxpDoc_GestionPago_Anular_ObtenerData(string idRecPago)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Anular.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql = @"SELECT
+                                    rec.auto as autoRecibo,
+                                    rec.auto_cxp as autoPago,
+                                    rec.auto_proveedor as autoProveedor,
+                                    rec.importe_divisa as importeDiv,
+                                    cxp.tipo_documento as tipoDoc
+                                FROM cxp_recibos as rec
+                                join cxp as cxp on cxp.auto=rec.auto_cxp
+                                WHERE rec.auto=@idRecPago";
+                    var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idRecPago", idRecPago);
+                    var _ent = cnn.Database.SqlQuery<DtoLibTransporte.CxpDoc.Pago.Anular.Ficha>(sql, p0).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        throw new Exception("MOVIMIENTO DE PAGO NO ENCONTRADO");
+                    }
+                    //
+                    sql = @"SELECT 
+                                auto_cxp as autoCxpRef,
+                                importe as importeDiv
+                            FROM cxp_documentos
+                            WHERE auto_cxp_recibo=@idRecPago";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idRecPago", idRecPago);
+                    var _doc = cnn.Database.SqlQuery<DtoLibTransporte.CxpDoc.Pago.Anular.Documento>(sql, p0).ToList();
+                    _ent.documentos = _doc;
+                    //
+                    sql = @"select 
+                                id as  idRecCaja,
+                                id_caja as idCaja,
+                                id_mov_caja as idCajaMov, 
+                                monto as monto 
+                            FROM cxp_recibos_caj 
+                            WHERE auto_recibo=@idRecPago";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idRecPago", idRecPago);
+                    var _caj = cnn.Database.SqlQuery<DtoLibTransporte.CxpDoc.Pago.Anular.Caja>(sql, p0).ToList();
+                    _ent.cajas = _caj;
+                    //
+                    sql = @"SELECT 
+                                count(*) as cntMetPago
+                            FROM cxp_medio_pago 
+                            WHERE auto_recibo=@idRecPago";
+                    p0 = new MySql.Data.MySqlClient.MySqlParameter("@idRecPago", idRecPago);
+                    var _met= (int)cnn.Database.SqlQuery<int>(sql, p0).FirstOrDefault();
+                    _ent.cntMetPago= _met;
+                    //
+                    result.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
     }
 }

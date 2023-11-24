@@ -19,6 +19,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         public BindingSource GetSource { get { return _bs; } }
         public object ItemActual { get { return _bs.Current; } }
         public decimal Get_MontoPendiente { get { return _bl.Sum(s=>s.montoResta); } }
+        public int Get_CntItem { get { return _bs.Count; } }
+        public IEnumerable<object> Get_Items { get { return _bl.ToList(); } }
 
 
         public dataCtasPend()

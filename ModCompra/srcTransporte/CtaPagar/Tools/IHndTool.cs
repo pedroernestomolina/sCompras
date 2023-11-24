@@ -14,5 +14,6 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools
         void Inicializa();
         void GestionPago();
         void AdmDocPagos();
+        void ImprimirLista();
     }
 }

@@ -229,5 +229,34 @@ namespace DataProvCompra.Data
             result.Lista = lst;
             return result;
         }
+        //
+        public OOB.Resultado 
+            Transporte_CxpDoc_GestionPago_Anular(OOB.LibCompra.Transporte.CxpDoc.Pago.Anular.Ficha ficha)
+        {
+            var result = new OOB.Resultado();
+            var r01 = MyData.Transporte_CxpDoc_GestionPago_Anular_ObtenerData(ficha.idRecibo);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            if (r01.Entidad.tipoDoc.Trim().ToUpper() != "PAG") 
+            {
+                throw new Exception("SOLO SE PERMITE ANULAR TIPO DE DOCUMENTOS PAGO");
+            }
+            r01.Entidad.auditoria = new DtoLibTransporte.CxpDoc.Pago.Anular.Auditoria()
+            {
+                autoUsuario = ficha.auditoria.autoUsuario,
+                codigoUsuario = ficha.auditoria.codigoUsuario,
+                estacionEquipo = ficha.auditoria.estacionEquipo,
+                motivo = ficha.auditoria.motivo,
+                nombreUsuario = ficha.auditoria.nombreUsuario,
+            };
+            var r02 = MyData.Transporte_CxpDoc_GestionPago_Anular(r01.Entidad);
+            if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return result;
+        }
     }
 }

@@ -17,5 +17,10 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_CxpDoc_GestionPago_Agregar(DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha ficha);
         DtoLib.ResultadoLista<DtoLibTransporte.CxpDoc.Pago.Lista.Ficha>
             Transporte_CxpDoc_GetLista_PagosEmitidos(DtoLibTransporte.CxpDoc.Pago.Lista.Filtro filtro);
+        //
+        DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Anular.Ficha>
+            Transporte_CxpDoc_GestionPago_Anular_ObtenerData(string idRecPago);
+        DtoLib.Resultado
+            Transporte_CxpDoc_GestionPago_Anular(DtoLibTransporte.CxpDoc.Pago.Anular.Ficha ficha);
     }
 }

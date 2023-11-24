@@ -66,6 +66,17 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
                 }
             }
         }
+        public void ImprimirLista()
+        {
+            if (_ctasPendientes.Get_CntItem > 0)
+            {
+                var _items = _ctasPendientes.Get_Items;
+                srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.ToolsAliado.Imp();
+                _rep.setFiltrosBusq("");
+                _rep.setDataCargar(_items);
+                _rep.Generar();
+            }
+        }
 
 
         private void ActualizarSaldoAliado(int id)

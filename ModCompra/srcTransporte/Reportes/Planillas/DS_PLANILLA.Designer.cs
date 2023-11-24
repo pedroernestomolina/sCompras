@@ -2770,6 +2770,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             private global::System.Data.DataColumn columnesDivisa;
             
+            private global::System.Data.DataColumn columnmontoDiv;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PagoAliado_CajaDataTable() {
@@ -2829,6 +2831,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoDivColumn {
+                get {
+                    return this.columnmontoDiv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2864,12 +2874,13 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PagoAliado_CajaRow AddPagoAliado_CajaRow(string desc, decimal monto, string esDivisa) {
+            public PagoAliado_CajaRow AddPagoAliado_CajaRow(string desc, decimal monto, string esDivisa, decimal montoDiv) {
                 PagoAliado_CajaRow rowPagoAliado_CajaRow = ((PagoAliado_CajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         desc,
                         monto,
-                        esDivisa};
+                        esDivisa,
+                        montoDiv};
                 rowPagoAliado_CajaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoAliado_CajaRow);
                 return rowPagoAliado_CajaRow;
@@ -2895,6 +2906,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 this.columndesc = base.Columns["desc"];
                 this.columnmonto = base.Columns["monto"];
                 this.columnesDivisa = base.Columns["esDivisa"];
+                this.columnmontoDiv = base.Columns["montoDiv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2906,6 +2918,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 base.Columns.Add(this.columnmonto);
                 this.columnesDivisa = new global::System.Data.DataColumn("esDivisa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnesDivisa);
+                this.columnmontoDiv = new global::System.Data.DataColumn("montoDiv", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoDiv);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5636,6 +5650,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoDiv {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePagoAliado_Caja.montoDivColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoDiv\' in table \'PagoAliado_Caja\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoAliado_Caja.montoDivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsdescNull() {
                 return this.IsNull(this.tablePagoAliado_Caja.descColumn);
             }
@@ -5668,6 +5698,18 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetesDivisaNull() {
                 this[this.tablePagoAliado_Caja.esDivisaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoDivNull() {
+                return this.IsNull(this.tablePagoAliado_Caja.montoDivColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoDivNull() {
+                this[this.tablePagoAliado_Caja.montoDivColumn] = global::System.Convert.DBNull;
             }
         }
         

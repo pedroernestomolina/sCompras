@@ -107,6 +107,32 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="ToolsAliadoPagoPend" msprop:Generator_TableClassName="ToolsAliadoPagoPendDataTable" msprop:Generator_TableVarName="tableToolsAliadoPagoPend" msprop:Generator_RowChangedName="ToolsAliadoPagoPendRowChanged" msprop:Generator_TablePropName="ToolsAliadoPagoPend" msprop:Generator_RowDeletingName="ToolsAliadoPagoPendRowDeleting" msprop:Generator_RowChangingName="ToolsAliadoPagoPendRowChanging" msprop:Generator_RowEvHandlerName="ToolsAliadoPagoPendRowChangeEventHandler" msprop:Generator_RowDeletedName="ToolsAliadoPagoPendRowDeleted" msprop:Generator_RowClassName="ToolsAliadoPagoPendRow" msprop:Generator_UserTableName="ToolsAliadoPagoPend" msprop:Generator_RowEvArgName="ToolsAliadoPagoPendRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="aliado" msprop:Generator_ColumnVarNameInTable="columnaliado" msprop:Generator_ColumnPropNameInRow="aliado" msprop:Generator_ColumnPropNameInTable="aliadoColumn" msprop:Generator_UserColumnName="aliado" type="xs:string" minOccurs="0" />
+              <xs:element name="pendiente" msprop:Generator_ColumnVarNameInTable="columnpendiente" msprop:Generator_ColumnPropNameInRow="pendiente" msprop:Generator_ColumnPropNameInTable="pendienteColumn" msprop:Generator_UserColumnName="pendiente" type="xs:decimal" minOccurs="0" />
+              <xs:element name="anticipos" msprop:Generator_ColumnVarNameInTable="columnanticipos" msprop:Generator_ColumnPropNameInRow="anticipos" msprop:Generator_ColumnPropNameInTable="anticiposColumn" msprop:Generator_UserColumnName="anticipos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="resta" msprop:Generator_ColumnVarNameInTable="columnresta" msprop:Generator_ColumnPropNameInRow="resta" msprop:Generator_ColumnPropNameInTable="restaColumn" msprop:Generator_UserColumnName="resta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cntDoc" msprop:Generator_ColumnVarNameInTable="columncntDoc" msprop:Generator_ColumnPropNameInRow="cntDoc" msprop:Generator_ColumnPropNameInTable="cntDocColumn" msprop:Generator_UserColumnName="cntDoc" type="xs:int" minOccurs="0" />
+              <xs:element name="item" msprop:Generator_ColumnVarNameInTable="columnitem" msprop:Generator_ColumnPropNameInRow="item" msprop:Generator_ColumnPropNameInTable="itemColumn" msprop:Generator_UserColumnName="item" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ToolsPagoDocPend" msprop:Generator_TableClassName="ToolsPagoDocPendDataTable" msprop:Generator_TableVarName="tableToolsPagoDocPend" msprop:Generator_TablePropName="ToolsPagoDocPend" msprop:Generator_RowDeletingName="ToolsPagoDocPendRowDeleting" msprop:Generator_RowChangingName="ToolsPagoDocPendRowChanging" msprop:Generator_RowEvHandlerName="ToolsPagoDocPendRowChangeEventHandler" msprop:Generator_RowDeletedName="ToolsPagoDocPendRowDeleted" msprop:Generator_UserTableName="ToolsPagoDocPend" msprop:Generator_RowChangedName="ToolsPagoDocPendRowChanged" msprop:Generator_RowEvArgName="ToolsPagoDocPendRowChangeEvent" msprop:Generator_RowClassName="ToolsPagoDocPendRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="docNro" msprop:Generator_ColumnVarNameInTable="columndocNro" msprop:Generator_ColumnPropNameInRow="docNro" msprop:Generator_ColumnPropNameInTable="docNroColumn" msprop:Generator_UserColumnName="docNro" type="xs:string" minOccurs="0" />
+              <xs:element name="docTipo" msprop:Generator_ColumnVarNameInTable="columndocTipo" msprop:Generator_ColumnPropNameInRow="docTipo" msprop:Generator_ColumnPropNameInTable="docTipoColumn" msprop:Generator_UserColumnName="docTipo" type="xs:string" minOccurs="0" />
+              <xs:element name="proveedor" msprop:Generator_ColumnVarNameInTable="columnproveedor" msprop:Generator_ColumnPropNameInRow="proveedor" msprop:Generator_ColumnPropNameInTable="proveedorColumn" msprop:Generator_UserColumnName="proveedor" type="xs:string" minOccurs="0" />
+              <xs:element name="importe" msprop:Generator_ColumnVarNameInTable="columnimporte" msprop:Generator_ColumnPropNameInRow="importe" msprop:Generator_ColumnPropNameInTable="importeColumn" msprop:Generator_UserColumnName="importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="acumulado" msprop:Generator_ColumnVarNameInTable="columnacumulado" msprop:Generator_ColumnPropNameInRow="acumulado" msprop:Generator_ColumnPropNameInTable="acumuladoColumn" msprop:Generator_UserColumnName="acumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="resta" msprop:Generator_ColumnVarNameInTable="columnresta" msprop:Generator_ColumnPropNameInRow="resta" msprop:Generator_ColumnPropNameInTable="restaColumn" msprop:Generator_UserColumnName="resta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="item" msprop:Generator_ColumnVarNameInTable="columnitem" msprop:Generator_ColumnPropNameInRow="item" msprop:Generator_ColumnPropNameInTable="itemColumn" msprop:Generator_UserColumnName="item" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

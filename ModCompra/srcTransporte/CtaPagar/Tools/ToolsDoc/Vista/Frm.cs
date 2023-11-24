@@ -157,6 +157,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
         {
             AdmDocPagos();
         }
+        private void BT_IMPRIMIR_LISTA_Click(object sender, EventArgs e)
+        {
+            ImprimirLista();
+        }
 
 
         private void BuscarCtasPendientes()
@@ -174,6 +178,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
             _controlador.Hnd.AdmDocPagos();
             ActualizarDataPanel_Totales();
             BuscarCtasPendientes();
+        }
+        private void ImprimirLista()
+        {
+            _controlador.Hnd.ImprimirLista();
         }
 
 

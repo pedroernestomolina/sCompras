@@ -45,5 +45,16 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
             _adm.Inicializa();
             _adm.Inicia();
         }
+        public void ImprimirLista()
+        {
+            if (_ctasPend.Get_CntItem > 0)
+            {
+                var _items = _ctasPend.Get_Items;
+                srcTransporte.Reportes.IRepListAdm _rep = new srcTransporte.Reportes.ListaAdm.ToolsPagoDoc.Imp();
+                _rep.setFiltrosBusq("");
+                _rep.setDataCargar(_items);
+                _rep.Generar();
+            }
+        }
     }
 }

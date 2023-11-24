@@ -30,5 +30,16 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_CxpDoc_GetLista_PagosEmitidos(filtro);
         }
+        //
+        public DtoLib.Resultado 
+            Transporte_CxpDoc_GestionPago_Anular(DtoLibTransporte.CxpDoc.Pago.Anular.Ficha ficha)
+        {
+            return ServiceProv.Transporte_CxpDoc_GestionPago_Anular(ficha);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Anular.Ficha> 
+            Transporte_CxpDoc_GestionPago_Anular_ObtenerData(string idRecPago)
+        {
+            return ServiceProv.Transporte_CxpDoc_GestionPago_Anular_ObtenerData(idRecPago);
+        }
     }
 }

@@ -123,22 +123,44 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.Administrador.Handler
                 return false;
             }
         }
+        private Anular.Vista.IAnular _anular;
         private void anulaItem(dataItem it)
         {
-            //var seg= Helpers.Msg.Procesar("Anular Movimiento de Anticipo ?");
-            //if (seg)
-            //{
-            //    try
-            //    {
-            //        var r01 = Sistema.MyData.Transporte_Aliado_Anticipo_Anular(it.idMov);
-            //        it.setEstatusAnulado();
-            //        Helpers.Msg.EliminarOk();
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Helpers.Msg.Error(e.Message);
-            //    }
-            //}
+            if (_anular==null)
+            {
+                _anular = new Anular.Handler.Imp();
+            }
+            _anular.Inicializa();
+            _anular.Inicia();
+            if (_anular.ProcesarIsOK)
+            {
+                var seg = Helpers.Msg.Procesar("Anular Movimiento ?");
+                if (seg)
+                {
+                    try
+                    {
+                        var fichaOOB = new OOB.LibCompra.Transporte.CxpDoc.Pago.Anular.Ficha()
+                        {
+                            idRecibo = it.Ficha.idMov,
+                            auditoria = new OOB.LibCompra.Transporte.CxpDoc.Pago.Anular.Auditoria()
+                            {
+                                autoUsuario = Sistema.UsuarioP.autoUsu,
+                                codigoUsuario = Sistema.UsuarioP.codigoUsu,
+                                estacionEquipo = Sistema.EquipoEstacion,
+                                motivo = _anular.Get_Motivo,
+                                nombreUsuario = Sistema.UsuarioP.nombreUsu,
+                            },
+                        };
+                        var r01 = Sistema.MyData.Transporte_CxpDoc_GestionPago_Anular(fichaOOB);
+                        it.setEstatusAnulado();
+                        Helpers.Msg.EliminarOk();
+                    }
+                    catch (Exception e)
+                    {
+                        Helpers.Msg.Error(e.Message);
+                    }
+                }
+            }
         }
         private void visualizarItem(dataItem it)
         {

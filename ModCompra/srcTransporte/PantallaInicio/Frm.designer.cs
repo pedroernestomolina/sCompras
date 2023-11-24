@@ -103,6 +103,7 @@
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_CXP_DOCUMENTOS = new System.Windows.Forms.ToolStripMenuItem();
+            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS = new System.Windows.Forms.ToolStripMenuItem();
             this.cajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_CAJA_EDO_CTA = new System.Windows.Forms.ToolStripMenuItem();
             this.MENU_REPORTES_CAJA_GENERAL_MOV = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,7 +126,6 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -189,11 +189,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(656, 1);
+            this.panel2.Location = new System.Drawing.Point(654, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(227, 52);
+            this.panel2.Size = new System.Drawing.Size(229, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -204,7 +204,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(223, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(225, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -219,7 +219,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(337, 52);
+            this.panel7.Size = new System.Drawing.Size(336, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -238,7 +238,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(333, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(332, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -272,7 +272,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(252, 22);
+            this.panel14.Size = new System.Drawing.Size(251, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -282,7 +282,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(248, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(247, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -318,7 +318,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(252, 22);
+            this.panel16.Size = new System.Drawing.Size(251, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -328,7 +328,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(248, 18);
+            this.L_HOST.Size = new System.Drawing.Size(247, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,7 +337,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(340, 1);
+            this.panel17.Location = new System.Drawing.Point(339, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -408,11 +408,11 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(542, 1);
+            this.panel20.Location = new System.Drawing.Point(541, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(112, 52);
+            this.panel20.Size = new System.Drawing.Size(111, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -428,7 +428,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(108, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(107, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -439,7 +439,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(98, 46);
+            this.panel21.Size = new System.Drawing.Size(97, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -449,7 +449,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(94, 42);
+            this.L_HORA.Size = new System.Drawing.Size(93, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -527,6 +527,7 @@
             // 
             // MENU_MAESTRO_CONCEPTOS
             // 
+            this.MENU_MAESTRO_CONCEPTOS.Image = global::ModCompra.Properties.Resources.libro;
             this.MENU_MAESTRO_CONCEPTOS.Name = "MENU_MAESTRO_CONCEPTOS";
             this.MENU_MAESTRO_CONCEPTOS.Size = new System.Drawing.Size(141, 22);
             this.MENU_MAESTRO_CONCEPTOS.Text = "Conceptos";
@@ -539,6 +540,7 @@
             // 
             // MENU_MAESTRO_BENEFICIARIOS
             // 
+            this.MENU_MAESTRO_BENEFICIARIOS.Image = ((System.Drawing.Image)(resources.GetObject("MENU_MAESTRO_BENEFICIARIOS.Image")));
             this.MENU_MAESTRO_BENEFICIARIOS.Name = "MENU_MAESTRO_BENEFICIARIOS";
             this.MENU_MAESTRO_BENEFICIARIOS.Size = new System.Drawing.Size(141, 22);
             this.MENU_MAESTRO_BENEFICIARIOS.Text = "Beneficiarios";
@@ -551,6 +553,7 @@
             // 
             // MENU_MAESTRO_CAJA
             // 
+            this.MENU_MAESTRO_CAJA.Image = ((System.Drawing.Image)(resources.GetObject("MENU_MAESTRO_CAJA.Image")));
             this.MENU_MAESTRO_CAJA.Name = "MENU_MAESTRO_CAJA";
             this.MENU_MAESTRO_CAJA.Size = new System.Drawing.Size(141, 22);
             this.MENU_MAESTRO_CAJA.Text = "Cajas ";
@@ -638,6 +641,7 @@
             // 
             // MENU_BENEFICIARIO_ADM
             // 
+            this.MENU_BENEFICIARIO_ADM.Image = global::ModCompra.Properties.Resources.administrador;
             this.MENU_BENEFICIARIO_ADM.Name = "MENU_BENEFICIARIO_ADM";
             this.MENU_BENEFICIARIO_ADM.Size = new System.Drawing.Size(235, 22);
             this.MENU_BENEFICIARIO_ADM.Text = "Administrador De Movimiento";
@@ -662,6 +666,7 @@
             // 
             // MENU_CXP_TOOLS_ALIADOS
             // 
+            this.MENU_CXP_TOOLS_ALIADOS.Image = ((System.Drawing.Image)(resources.GetObject("MENU_CXP_TOOLS_ALIADOS.Image")));
             this.MENU_CXP_TOOLS_ALIADOS.Name = "MENU_CXP_TOOLS_ALIADOS";
             this.MENU_CXP_TOOLS_ALIADOS.Size = new System.Drawing.Size(221, 22);
             this.MENU_CXP_TOOLS_ALIADOS.Text = "Tools Aliados";
@@ -669,6 +674,7 @@
             // 
             // MENU_CXP_TOOLS_DOCUMENTOS
             // 
+            this.MENU_CXP_TOOLS_DOCUMENTOS.Image = ((System.Drawing.Image)(resources.GetObject("MENU_CXP_TOOLS_DOCUMENTOS.Image")));
             this.MENU_CXP_TOOLS_DOCUMENTOS.Name = "MENU_CXP_TOOLS_DOCUMENTOS";
             this.MENU_CXP_TOOLS_DOCUMENTOS.Size = new System.Drawing.Size(221, 22);
             this.MENU_CXP_TOOLS_DOCUMENTOS.Text = "Tools Documentos";
@@ -698,6 +704,7 @@
             // 
             // MENU_CAJA_ADM_DOC
             // 
+            this.MENU_CAJA_ADM_DOC.Image = global::ModCompra.Properties.Resources.administrador;
             this.MENU_CAJA_ADM_DOC.Name = "MENU_CAJA_ADM_DOC";
             this.MENU_CAJA_ADM_DOC.Size = new System.Drawing.Size(221, 22);
             this.MENU_CAJA_ADM_DOC.Text = "Administrador Documentos";
@@ -724,11 +731,12 @@
             this.MENU_REPORTES_DOCUMENTOS_RET_IVA,
             this.MENU_REPORTES_DOCUMENTOS_RET_ISLR});
             this.documentosToolStripMenuItem1.Name = "documentosToolStripMenuItem1";
-            this.documentosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.documentosToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.documentosToolStripMenuItem1.Text = "Documentos";
             // 
             // MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT
             // 
+            this.MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT.Image")));
             this.MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT.Name = "MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT";
             this.MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT.Size = new System.Drawing.Size(201, 22);
             this.MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT.Text = "Libro de Compras Fiscal";
@@ -741,6 +749,7 @@
             // 
             // MENU_REPORTES_GENERAL_DOC
             // 
+            this.MENU_REPORTES_GENERAL_DOC.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_GENERAL_DOC.Image")));
             this.MENU_REPORTES_GENERAL_DOC.Name = "MENU_REPORTES_GENERAL_DOC";
             this.MENU_REPORTES_GENERAL_DOC.Size = new System.Drawing.Size(201, 22);
             this.MENU_REPORTES_GENERAL_DOC.Text = "General de Documentos";
@@ -748,6 +757,7 @@
             // 
             // MENU_REPORTES_DOCUMENTOS_RET_IVA
             // 
+            this.MENU_REPORTES_DOCUMENTOS_RET_IVA.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_DOCUMENTOS_RET_IVA.Image")));
             this.MENU_REPORTES_DOCUMENTOS_RET_IVA.Name = "MENU_REPORTES_DOCUMENTOS_RET_IVA";
             this.MENU_REPORTES_DOCUMENTOS_RET_IVA.Size = new System.Drawing.Size(201, 22);
             this.MENU_REPORTES_DOCUMENTOS_RET_IVA.Text = "Retenciones de IVA";
@@ -755,6 +765,7 @@
             // 
             // MENU_REPORTES_DOCUMENTOS_RET_ISLR
             // 
+            this.MENU_REPORTES_DOCUMENTOS_RET_ISLR.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_DOCUMENTOS_RET_ISLR.Image")));
             this.MENU_REPORTES_DOCUMENTOS_RET_ISLR.Name = "MENU_REPORTES_DOCUMENTOS_RET_ISLR";
             this.MENU_REPORTES_DOCUMENTOS_RET_ISLR.Size = new System.Drawing.Size(201, 22);
             this.MENU_REPORTES_DOCUMENTOS_RET_ISLR.Text = "Retenciones de ISLR";
@@ -768,34 +779,38 @@
             this.MENU_REPORTES_MAESTRO_CAJA,
             this.MENU_REPORTES_MAESTRO_BENEFICIARIO});
             this.proveedoreToolStripMenuItem.Name = "proveedoreToolStripMenuItem";
-            this.proveedoreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.proveedoreToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.proveedoreToolStripMenuItem.Text = "Maestro";
             // 
             // MENU_REPORTES_MAESTRO_PROVEEDOR
             // 
+            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_MAESTRO_PROVEEDOR.Image")));
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Name = "MENU_REPORTES_MAESTRO_PROVEEDOR";
-            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_PROVEEDOR.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Text = "Proveedores";
             this.MENU_REPORTES_MAESTRO_PROVEEDOR.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_PROVEEDOR_Click);
             // 
             // MENU_REPORTES_MAESTRO_CONCEPTO
             // 
+            this.MENU_REPORTES_MAESTRO_CONCEPTO.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_MAESTRO_CONCEPTO.Image")));
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Name = "MENU_REPORTES_MAESTRO_CONCEPTO";
-            this.MENU_REPORTES_MAESTRO_CONCEPTO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_CONCEPTO.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Text = "Conceptos";
             this.MENU_REPORTES_MAESTRO_CONCEPTO.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_CONCEPTO_Click);
             // 
             // MENU_REPORTES_MAESTRO_CAJA
             // 
+            this.MENU_REPORTES_MAESTRO_CAJA.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_MAESTRO_CAJA.Image")));
             this.MENU_REPORTES_MAESTRO_CAJA.Name = "MENU_REPORTES_MAESTRO_CAJA";
-            this.MENU_REPORTES_MAESTRO_CAJA.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_CAJA.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_CAJA.Text = "Cajas";
             this.MENU_REPORTES_MAESTRO_CAJA.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_CAJA_Click);
             // 
             // MENU_REPORTES_MAESTRO_BENEFICIARIO
             // 
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_MAESTRO_BENEFICIARIO.Image")));
             this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Name = "MENU_REPORTES_MAESTRO_BENEFICIARIO";
-            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Size = new System.Drawing.Size(139, 22);
             this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Text = "Beneficiario";
             this.MENU_REPORTES_MAESTRO_BENEFICIARIO.Click += new System.EventHandler(this.MENU_REPORTES_MAESTRO_BENEFICIARIO_Click);
             // 
@@ -805,7 +820,7 @@
             this.aliadoToolStripMenuItem,
             this.MENU_REPORTES_CXP_DOCUMENTOS});
             this.cxPToolStripMenuItem.Name = "cxPToolStripMenuItem";
-            this.cxPToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cxPToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cxPToolStripMenuItem.Text = "CxP";
             // 
             // aliadoToolStripMenuItem
@@ -815,27 +830,30 @@
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV,
             this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA});
             this.aliadoToolStripMenuItem.Name = "aliadoToolStripMenuItem";
-            this.aliadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aliadoToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.aliadoToolStripMenuItem.Text = "Aliado";
             // 
             // MENU_REPORTES_CXP_ALIADO_ANTICIPO
             // 
+            this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_CXP_ALIADO_ANTICIPO.Image")));
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Name = "MENU_REPORTES_CXP_ALIADO_ANTICIPO";
-            this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Size = new System.Drawing.Size(150, 22);
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Text = "Anticipo";
             this.MENU_REPORTES_CXP_ALIADO_ANTICIPO.Click += new System.EventHandler(this.MENU_REPORTES_CXP_ALIADO_ANTICIPO_Click);
             // 
             // MENU_REPORTES_CXP_ALIDOS_PAGO_SERV
             // 
+            this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Image")));
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Name = "MENU_REPORTES_CXP_ALIDOS_PAGO_SERV";
-            this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Size = new System.Drawing.Size(150, 22);
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Text = "Pago Servicios";
             this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV.Click += new System.EventHandler(this.MENU_REPORTES_CXP_ALIDOS_PAGO_SERV_Click);
             // 
             // MENU_REPORTES_CXP_ALIDOS_MOV_CAJA
             // 
+            this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Image")));
             this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Name = "MENU_REPORTES_CXP_ALIDOS_MOV_CAJA";
-            this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Size = new System.Drawing.Size(150, 22);
             this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Text = "Relacion Caja";
             this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA.Click += new System.EventHandler(this.MENU_REPORTES_CXP_ALIDOS_MOV_CAJA_Click);
             // 
@@ -844,8 +862,16 @@
             this.MENU_REPORTES_CXP_DOCUMENTOS.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS});
             this.MENU_REPORTES_CXP_DOCUMENTOS.Name = "MENU_REPORTES_CXP_DOCUMENTOS";
-            this.MENU_REPORTES_CXP_DOCUMENTOS.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_CXP_DOCUMENTOS.Size = new System.Drawing.Size(137, 22);
             this.MENU_REPORTES_CXP_DOCUMENTOS.Text = "Documento";
+            // 
+            // MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS
+            // 
+            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Image = global::ModCompra.Properties.Resources.bt_imprimir_3;
+            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Name = "MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS";
+            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Size = new System.Drawing.Size(155, 22);
+            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Text = "Pagos Emitidos";
+            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Click += new System.EventHandler(this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS_Click);
             // 
             // cajaToolStripMenuItem
             // 
@@ -853,11 +879,12 @@
             this.MENU_REPORTES_CAJA_EDO_CTA,
             this.MENU_REPORTES_CAJA_GENERAL_MOV});
             this.cajaToolStripMenuItem.Name = "cajaToolStripMenuItem";
-            this.cajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cajaToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cajaToolStripMenuItem.Text = "Caja";
             // 
             // MENU_REPORTES_CAJA_EDO_CTA
             // 
+            this.MENU_REPORTES_CAJA_EDO_CTA.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_CAJA_EDO_CTA.Image")));
             this.MENU_REPORTES_CAJA_EDO_CTA.Name = "MENU_REPORTES_CAJA_EDO_CTA";
             this.MENU_REPORTES_CAJA_EDO_CTA.Size = new System.Drawing.Size(187, 22);
             this.MENU_REPORTES_CAJA_EDO_CTA.Text = "Estado Cuenta";
@@ -865,6 +892,7 @@
             // 
             // MENU_REPORTES_CAJA_GENERAL_MOV
             // 
+            this.MENU_REPORTES_CAJA_GENERAL_MOV.Image = ((System.Drawing.Image)(resources.GetObject("MENU_REPORTES_CAJA_GENERAL_MOV.Image")));
             this.MENU_REPORTES_CAJA_GENERAL_MOV.Name = "MENU_REPORTES_CAJA_GENERAL_MOV";
             this.MENU_REPORTES_CAJA_GENERAL_MOV.Size = new System.Drawing.Size(187, 22);
             this.MENU_REPORTES_CAJA_GENERAL_MOV.Text = "General Movimientos";
@@ -875,11 +903,12 @@
             this.MENU_REPORTES_BENEFICIARIO.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MENU_REPORTES_BENEFICIARIO_MOV});
             this.MENU_REPORTES_BENEFICIARIO.Name = "MENU_REPORTES_BENEFICIARIO";
-            this.MENU_REPORTES_BENEFICIARIO.Size = new System.Drawing.Size(152, 22);
+            this.MENU_REPORTES_BENEFICIARIO.Size = new System.Drawing.Size(142, 22);
             this.MENU_REPORTES_BENEFICIARIO.Text = "Beneficiario";
             // 
             // MENU_REPORTES_BENEFICIARIO_MOV
             // 
+            this.MENU_REPORTES_BENEFICIARIO_MOV.Image = global::ModCompra.Properties.Resources.bt_imprimir_3;
             this.MENU_REPORTES_BENEFICIARIO_MOV.Name = "MENU_REPORTES_BENEFICIARIO_MOV";
             this.MENU_REPORTES_BENEFICIARIO_MOV.Size = new System.Drawing.Size(144, 22);
             this.MENU_REPORTES_BENEFICIARIO_MOV.Text = "Movimientos";
@@ -1094,13 +1123,6 @@
             this.tableLayoutPanel4.SetRowSpan(this.panel10, 2);
             this.panel10.Size = new System.Drawing.Size(120, 335);
             this.panel10.TabIndex = 0;
-            // 
-            // MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS
-            // 
-            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Name = "MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS";
-            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Size = new System.Drawing.Size(155, 22);
-            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Text = "Pagos Emitidos";
-            this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS.Click += new System.EventHandler(this.MENU_REPORTES_CXP_DOCUMENTOS_PAGOS_EMITIDOS_Click);
             // 
             // Frm
             // 

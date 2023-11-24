@@ -404,6 +404,14 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="srcTransporte\Anular\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Anular\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Anular\Handler\Imp.cs" />
+    <Compile Include="srcTransporte\Anular\Vista\IAnular.cs" />
     <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\Beneficiario\AdmMov\Handler\hndBusqueda.cs" />
@@ -751,6 +759,8 @@
     <Compile Include="srcTransporte\Reportes\Documentos\ListaRet\iva.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\Beneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\ListaAdm\CxpPagosEmitidos\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\ToolsAliado\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\ListaAdm\ToolsPagoDoc\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Beneficiario\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Caja\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\Maestros\Concepto\Imp.cs" />
@@ -1055,6 +1065,9 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Anular\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Beneficiario\AdmMov\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1176,6 +1189,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_DocPagosEmitidos.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_ToolsAliado.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\ListaAdm\RepAdm_ToolsPagoDoc.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Maestros\RepMaestro_Beneficiario.rdlc">
@@ -1397,6 +1416,9 @@
     <Content Include="Imagenes\bt_status.png" />
     <Content Include="Imagenes\bt_sumar.png" />
     <Content Include="Imagenes\bt_sumar_2.png" />
+    <Content Include="Imagenes\bt_tools_24.png" />
+    <Content Include="Imagenes\bt_tools_32.png" />
+    <Content Include="Imagenes\bt_tools_48.png" />
     <Content Include="Imagenes\bt_usuario %282%29.png" />
     <Content Include="Imagenes\bt_usuario.png" />
     <Content Include="Imagenes\bt_visor.png" />
@@ -1482,6 +1504,9 @@
     <Content Include="Resources\bt_status.png" />
     <Content Include="Resources\bt_sumar.png" />
     <Content Include="Resources\bt_sumar_2.png" />
+    <None Include="Resources\bt_tools_32.png" />
+    <None Include="Resources\bt_tools_48.png" />
+    <None Include="Resources\bt_tools_24.png" />
     <Content Include="Resources\bt_usuario %282%29.png" />
     <Content Include="Resources\bt_usuario.png" />
     <Content Include="Resources\bt_visor.png" />

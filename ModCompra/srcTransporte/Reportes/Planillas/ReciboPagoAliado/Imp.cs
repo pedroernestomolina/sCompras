@@ -69,14 +69,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
                 DataRow rtDt = ds.Tables["PagoAliado_Caja"].NewRow();
                 rtDt["desc"] = "ANTICIPO";
                 rtDt["monto"] = ficha.anticipo;
+                rtDt["montoDiv"] = ficha.anticipo;
                 rtDt["esDivisa"] = "$";
                 ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
             }
+            var _montoDiv = 0m;
             foreach (var sv in ficha.caja)
             {
+                _montoDiv = sv.monto;
+                if (sv.esDivisa.Trim().ToUpper() != "1") 
+                {
+                    _montoDiv /= ficha.tasaFactor;
+                }
                 DataRow rtDt = ds.Tables["PagoAliado_Caja"].NewRow();
                 rtDt["desc"] = sv.cjDesc;
                 rtDt["monto"] = sv.monto;
+                rtDt["montoDiv"] = _montoDiv;
                 rtDt["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
                 ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
             }

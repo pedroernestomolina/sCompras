@@ -19,6 +19,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
         public int Get_CntItem { get { return _bs.Count; } }
         public decimal Get_MontoPendiente { get { return _bl.Sum(s=>s.Get_Pendiente); } }
         public object Get_ItemActual { get { return _bs.Current; } }
+        public IEnumerable<object> Get_Items { get { return _bl.ToList(); } }
 
 
         public ImpHndCtasPendDoc()
