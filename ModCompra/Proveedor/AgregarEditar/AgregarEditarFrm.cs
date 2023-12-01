@@ -56,6 +56,8 @@ namespace ModCompra.Proveedor.AgregarEditar
             TB_EMAIL.Text = _controlador.GetEmail;
             TB_WEBSITE.Text = _controlador.GetWebSite;
             TB_RET_IVA.Text = _controlador.GetTasaRetIva.ToString("n2").Replace(".",",");
+            TB_COD_XML_ISLR.Text = _controlador.GetCodigoXmlIslr;
+            TB_DESC_XML_ISLR.Text = _controlador.GetDescXmlIslr; 
             isCargando = true;
 
             CB_GRUPO.DataSource = _controlador.SourceGrupo;
@@ -173,12 +175,20 @@ namespace ModCompra.Proveedor.AgregarEditar
         {
             e.Cancel = _controlador.GetTasaRetIva > 100;
         }
+        private void TB_COD_XML_ISLR_Leave(object sender, EventArgs e)
+        {
+            _controlador.setCodXmlIslr(TB_COD_XML_ISLR.Text);
+        }
+        private void TB_DESC_XML_ISLR_Leave(object sender, EventArgs e)
+        {
+            _controlador.setDescXmlIslr(TB_DESC_XML_ISLR.Text);
+        }
+
 
         private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
             Procesar();
         }
-
         private void Procesar()
         {
             _controlador.Procesar();
@@ -188,7 +198,6 @@ namespace ModCompra.Proveedor.AgregarEditar
         {
             Salir();
         }
-
         private void Salir()
         {
             _controlador.Salir();

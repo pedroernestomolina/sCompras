@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Proveedor.Editar
 {
-    
     public class Ficha
     {
-
         public string autoPrv { get; set; }
         public string idGrupo { get; set; }
         public string idEstado { get; set; }
@@ -26,8 +24,8 @@ namespace OOB.LibCompra.Proveedor.Editar
         public string denFiscal { get; set; }
         public string codPostal { get; set; }
         public decimal retIva { get; set; }
-
-
+        public string codXmlIslr { get; set; }
+        public string descXmlIslr { get; set; }
         public Ficha()
         {
             autoPrv = "";
@@ -44,8 +42,8 @@ namespace OOB.LibCompra.Proveedor.Editar
             pais = "";
             codPostal = "";
             retIva = 0.0m;
+            codXmlIslr = "";
+            descXmlIslr = "";
         }
-
     }
-
 }

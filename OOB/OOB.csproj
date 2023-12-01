@@ -261,6 +261,8 @@
     <Compile Include="LibCompra\Transporte\Reportes\Compras\Planilla\Retencion\Iva\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\baseFiltro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\enumerados.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagoPorConceptos\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagoPorConceptos\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\Reportes\Cxp\PagosEmitidos\Planilla\Caja.cs" />

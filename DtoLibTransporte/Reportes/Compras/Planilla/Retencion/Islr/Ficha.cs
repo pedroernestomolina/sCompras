@@ -14,5 +14,7 @@ namespace DtoLibTransporte.Reportes.Compras.Planilla.Retencion.Islr
         public string conceptoCod { get; set; }
         public decimal subtRet { get; set; }
         public decimal sustraendoRet { get; set; }
+        public string codXmlIslr { get; set; }
+        public string descXmlIslr { get; set; }
     }
 }

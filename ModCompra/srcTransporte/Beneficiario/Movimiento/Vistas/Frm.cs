@@ -97,11 +97,11 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Vistas
         {
             _modoInicializa = true;
             DGV.DataSource = _controlador.caja.Get_CajaSource;
-            DGV.CellContentClick += DGV_CellContentClick; 
-            CB_CONCEPTO.DataSource = _controlador.Mov.Get_ConceptoMov_Source;
-            CB_CONCEPTO.SelectedValue= _controlador.Mov.Get_ConceptoMovId;
-            CB_BENEFICIARIO.DataSource = _controlador.Mov.Get_Beneficiario_Source;
-            CB_BENEFICIARIO.SelectedValue = _controlador.Mov.Get_BeneficiarioId;
+            DGV.CellContentClick += DGV_CellContentClick;
+            CB_CONCEPTO.DataSource = _controlador.Mov.Concepto.GetSource;
+            CB_CONCEPTO.SelectedValue= _controlador.Mov.Concepto.GetId ;
+            CB_BENEFICIARIO.DataSource = _controlador.Mov.Beneficiario.GetSource;
+            CB_BENEFICIARIO.SelectedValue = _controlador.Mov.Beneficiario.GetId;
             DTP_FECHA_MOV.Value = _controlador.Mov.Get_FechaMovimiento;
             TB_MONTO_MOV.Text = _controlador.Mov.Get_MontoMov.ToString("n2",_cult);
             TB_FACTOR_CAMBIO.Text = _controlador.Mov.Get_FactorCambio.ToString("n2", _cult);
@@ -143,19 +143,19 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Vistas
         private void CB_BENEFICIARIO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) return;
-            _controlador.Mov.setBeneficiarioById("");
+            _controlador.Mov.Beneficiario.setFichaById("");
             if (CB_BENEFICIARIO.SelectedIndex != -1)
             {
-                _controlador.Mov.setBeneficiarioById(CB_BENEFICIARIO.SelectedValue.ToString());
+                _controlador.Mov.Beneficiario.setFichaById(CB_BENEFICIARIO.SelectedValue.ToString());
             }
         }
         private void CB_CONCEPTO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) return;
-            _controlador.Mov.setConceptoById("");
+            _controlador.Mov.Concepto.setFichaById("");
             if (CB_CONCEPTO.SelectedIndex != -1)
             {
-                _controlador.Mov.setConceptoById(CB_CONCEPTO.SelectedValue.ToString());
+                _controlador.Mov.Concepto.setFichaById(CB_CONCEPTO.SelectedValue.ToString());
             }
         }
         private void TB_MONTO_MOV_Leave(object sender, EventArgs e)
@@ -178,6 +178,16 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Vistas
         {
             _controlador.Mov.setNotas(TB_NOTAS.Text.Trim().ToUpper());
             TB_NOTAS.Text = _controlador.Mov.Get_Notas;
+        }
+        private void TB_BENEFICIARIO_BUSCAR_TextChanged(object sender, EventArgs e)
+        {
+            _controlador.Mov.Beneficiario.setTextoBuscar(TB_BENEFICIARIO_BUSCAR.Text);
+            CB_CONCEPTO.Refresh();
+        }
+        private void TB_CONCEPTO_BUSCAR_TextChanged(object sender, EventArgs e)
+        {
+            _controlador.Mov.Concepto.setTextoBuscar(TB_CONCEPTO_BUSCAR.Text);
+            CB_CONCEPTO.Refresh();
         }
         private void TB_FACTOR_CAMBIO_Validating(object sender, CancelEventArgs e)
         {

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Proveedor.Agregar
 {
-    
     public class Ficha
     {
-
         public string idGrupo { get; set; }
         public string idEstado { get; set; }
         public string codigo { get; set; }
@@ -26,6 +24,8 @@ namespace OOB.LibCompra.Proveedor.Agregar
         public string codPostal { get; set; }
         public decimal retIva { get; set; }
         public string estatus { get; set; }
+        public string codXmlIslr { get; set; }
+        public string descXmlIslr { get; set; }
         //
         public decimal saldo { get { return 0.0m; } }
         public decimal anticipos { get { return 0.0m; } }
@@ -43,8 +43,6 @@ namespace OOB.LibCompra.Proveedor.Agregar
         public string nombre { get { return ""; } }
         public string nj { get { return ""; } }
         public string rif { get { return "";} }
-
-
         public Ficha()
         {
             idGrupo = "";
@@ -60,8 +58,8 @@ namespace OOB.LibCompra.Proveedor.Agregar
             pais = "";
             codPostal = "";
             retIva = 0.0m;
+            codXmlIslr = "";
+            descXmlIslr = "";
         }
-
     }
-
 }

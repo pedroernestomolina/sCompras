@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Proveedor.Agregar
 {
-    
     public class Ficha
     {
-
         public string idGrupo { get; set; }
         public string idEstado { get; set; }
         public string codigo { get; set; }
@@ -43,8 +41,8 @@ namespace DtoLibCompra.Proveedor.Agregar
         public string nombre { get; set; }
         public string nj { get; set; }
         public string rif { get; set; }
-
-
+        public string codXmlIslr { get; set; }
+        public string descXmlIslr { get; set; }
         public Ficha()
         {
             idGrupo = "";
@@ -77,8 +75,8 @@ namespace DtoLibCompra.Proveedor.Agregar
             nombre = "";
             nj = "";
             rif = "";
+            codXmlIslr = "";
+            descXmlIslr = "";
         }
-
     }
-
 }

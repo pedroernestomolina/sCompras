@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-
     public partial class DataProv: IData
     {
-
-        public OOB.ResultadoLista<OOB.LibCompra.Proveedor.Data.Ficha> Proveedor_GetLista(OOB.LibCompra.Proveedor.Lista.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Proveedor.Data.Ficha> 
+            Proveedor_GetLista(OOB.LibCompra.Proveedor.Lista.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Proveedor.Data.Ficha>();
-
+            //
             var filtroDto = new DtoLibCompra.Proveedor.Lista.Filtro()
             {
                 autoEstado = filtro.autoEstado,
@@ -31,7 +30,7 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             var list = new List<OOB.LibCompra.Proveedor.Data.Ficha>();
             if (r01.Lista != null)
             {
@@ -62,14 +61,14 @@ namespace DataProvCompra.Data
                 }
             }
             rt.Lista = list;
-
+            //
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibCompra.Proveedor.Data.Ficha> Proveedor_GetFicha(string autoPrv)
+        public OOB.ResultadoEntidad<OOB.LibCompra.Proveedor.Data.Ficha> 
+            Proveedor_GetFicha(string autoPrv)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Proveedor.Data.Ficha>();
-
+            //
             var r01 = MyData.Proveedor_GetFicha(autoPrv);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -77,7 +76,7 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             var s = r01.Entidad;
             var nr = new OOB.LibCompra.Proveedor.Data.Ficha();
             var id = new OOB.LibCompra.Proveedor.Data.Identificacion()
@@ -103,17 +102,19 @@ namespace DataProvCompra.Data
                 fechaAlta = s.fechaAlta,
                 fechaUltCompra = s.fechaUltCompra,
                 fechaBaja = s.fechaBaja,
+                codXmlIslr = s.codXmlIslr,
+                descXmlIslr = s.descXmlIslr,
             };
             nr.identidad = id;
             rt.Entidad = nr;
-
+            //
             return rt;
         }
-
-        public OOB.ResultadoAuto Proveedor_AgregarFicha(OOB.LibCompra.Proveedor.Agregar.Ficha ficha)
+        public OOB.ResultadoAuto
+            Proveedor_AgregarFicha(OOB.LibCompra.Proveedor.Agregar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
-
+            //
             var fichaDTO = new DtoLibCompra.Proveedor.Agregar.Ficha()
             {
                 advertencia = ficha.advertencia,
@@ -147,8 +148,9 @@ namespace DataProvCompra.Data
                 saldo = ficha.saldo,
                 telefono = ficha.telefono,
                 webSite = ficha.webSite,
+                codXmlIslr = ficha.codXmlIslr,
+                descXmlIslr = ficha.descXmlIslr,
             };
-
             var r01 = MyData.Proveedor_AgregarFicha(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -156,15 +158,15 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
+            //
             rt.Auto = r01.Auto;
-
             return rt;
         }
-
-        public OOB.Resultado Proveedor_EditarFicha(OOB.LibCompra.Proveedor.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Proveedor_EditarFicha(OOB.LibCompra.Proveedor.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
-
+            //
             var fichaDTO = new DtoLibCompra.Proveedor.Editar.Ficha()
             {
                 autoPrv=ficha.autoPrv,
@@ -182,8 +184,9 @@ namespace DataProvCompra.Data
                 retIva = ficha.retIva,
                 telefono = ficha.telefono,
                 webSite = ficha.webSite,
+                codXmlIslr=ficha.codXmlIslr,
+                descXmlIslr = ficha.descXmlIslr
             };
-
             var r01 = MyData.Proveedor_EditarFicha(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -191,14 +194,14 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Proveedor.Documentos.Ficha> Proveedor_Documentos_GetLista(OOB.LibCompra.Proveedor.Documentos.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Proveedor.Documentos.Ficha> 
+            Proveedor_Documentos_GetLista(OOB.LibCompra.Proveedor.Documentos.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Proveedor.Documentos.Ficha>();
-
+            //
             var filtroDto = new DtoLibCompra.Proveedor.Documento.Filtro()
             {
                 autoProv = filtro.autoProv,
@@ -213,7 +216,7 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             var list = new List<OOB.LibCompra.Proveedor.Documentos.Ficha>();
             if (r01.Lista != null)
             {
@@ -239,14 +242,14 @@ namespace DataProvCompra.Data
                 }
             }
             rt.Lista = list;
-
+            //
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibCompra.Proveedor.Articulos.Ficha> Proveedor_ArticulosComprados_GetLista(OOB.LibCompra.Proveedor.Articulos.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibCompra.Proveedor.Articulos.Ficha> 
+            Proveedor_ArticulosComprados_GetLista(OOB.LibCompra.Proveedor.Articulos.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibCompra.Proveedor.Articulos.Ficha>();
-
+            //
             var filtroDto = new DtoLibCompra.Proveedor.Articulos.Filtro()
             {
                 autoProv = filtro.autoProv,
@@ -260,7 +263,7 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             var list = new List<OOB.LibCompra.Proveedor.Articulos.Ficha>();
             if (r01.Lista != null)
             {
@@ -292,19 +295,18 @@ namespace DataProvCompra.Data
                 }
             }
             rt.Lista = list;
-
+            //
             return rt;
         }
-
-        public OOB.Resultado Proveedor_ActivarFicha(OOB.LibCompra.Proveedor.ActivarInactivar.Ficha ficha)
+        public OOB.Resultado 
+            Proveedor_ActivarFicha(OOB.LibCompra.Proveedor.ActivarInactivar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
-
+            //
             var fichaDTO = new DtoLibCompra.Proveedor.ActivarInactivar.Ficha()
             {
                 id = ficha.id,
             };
-
             var r01 = MyData.Proveedor_Activar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -312,19 +314,18 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             return rt;
         }
-
-        public OOB.Resultado Proveedor_InactivarFicha(OOB.LibCompra.Proveedor.ActivarInactivar.Ficha ficha)
+        public OOB.Resultado 
+            Proveedor_InactivarFicha(OOB.LibCompra.Proveedor.ActivarInactivar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
-
+            //
             var fichaDTO = new DtoLibCompra.Proveedor.ActivarInactivar.Ficha()
             {
                 id = ficha.id,
             };
-
             var r01 = MyData.Proveedor_Inactivar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -332,10 +333,8 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             return rt;
         }
-
     }
-
 }

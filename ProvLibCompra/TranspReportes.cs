@@ -267,10 +267,13 @@ namespace ProvLibCompra
                                         retDet.tasa_retencion as tasaRet,
                                         retDet.retencion as totalRet,
                                         retDet.retencion_monto subtRet,
-                                        retDet.retencion_sustraendo as sustraendoRet
+                                        retDet.retencion_sustraendo as sustraendoRet,
+                                        prov.codigo_xml_islr as codXmlIslr,
+                                        prov.desc_xml_islr as descXmlIslr
                                 FROM compras_retenciones_detalle as retDet 
                                 join compras_retenciones as ret on ret.auto=retDet.auto
                                 join compras as compra on compra.auto=retDet.auto_documento
+                                join proveedores as prov on prov.auto=compra.auto_proveedor
                                 where retDet.auto_documento =@idDoc and
                                     retDet.tipo_retencion='08'";
                     var _sql_2 = @"";
@@ -1060,7 +1063,8 @@ namespace ProvLibCompra
                     sql = @"SELECT 
                                 doc.tipo_documento as siglasDoc,
                                 doc.fecha as fechaEmisionDoc,
-                                doc.documento as numeroDoc
+                                doc.documento as numeroDoc,
+                                doc.importe as montoDiv
                             FROM cxp_documentos as doc
                             WHERE auto_cxp_recibo=@idMov";
                     p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
@@ -1098,6 +1102,102 @@ namespace ProvLibCompra
                     ent.metPago = _met;
                     ent.caja = _cjs;
                     result.Entidad = ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            return result;
+        }
+        //
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Ficha> 
+            Transporte_Reportes_Cxp_PagosPorConcepto(DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Filtro filtro)
+        {
+            var result = new DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Ficha>();
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p2 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var p3 = new MySql.Data.MySqlClient.MySqlParameter();
+                    var sql_1 = @"SELECT 
+                                    rec.documento as recNro,
+                                    rec.fecha as recFecha,
+                                    rec.proveedor as entidadNombre,
+                                    rec.ci_rif as entidadCiRif,
+                                    rec.importe_divisa as importeDiv,
+                                    rec.tasa_cambio as tasaFactor,
+                                    doc.tipo_documento as siglasDoc,
+                                    doc.documento as numeroDoc,
+                                    c.desc_compras_concepto as conceptoDesc,
+                                    c.codigo_compras_concepto as conceptoCod
+                                from cxp_recibos as rec
+                                join cxp_documentos as doc on doc.auto_cxp_recibo=rec.auto
+                                join compras as c on c.auto_cxp=doc.auto_cxp
+                                where rec.estatus_anulado='0'
+                                    and (rec.auto_sistema_documento<>'0000000028' and rec.auto_sistema_documento<>'0000000029') ";
+                    var sql_2=@"SELECT 
+                                    recibo_nro as recNro,
+                                    fecha_registro as recFecha,
+                                    nombre_bene as entidadNombre,
+                                    cirif_bene as entidadCiRif,
+                                    monto_div as importeDiv,
+                                    factor_tasa as tasaFactor,
+                                    '' as siglasDoc,
+                                    '' as numeroDoc,
+                                    desc_concepto as conceptoDesc,
+                                    cod_concepto as conceptoCod
+                                FROM transp_beneficiario_mov 
+                                WHERE estatus_anulado='0'";
+                    var sql_3 = @"SELECT 
+                                        movEx.recibo_nro  as recNro,
+                                        mov.fecha_reg as recFecha,
+                                        mov.concepto_mov as entidadNombre,
+                                        '' as entidadCiRif,
+                                        mov.monto_mov_mon_div as importeDiv,
+                                        mov.factor_cambio_mov as tasaFactor,
+                                        '' as siglasDoc,
+                                        '' as numeroDoc,
+                                        desc_concepto as conceptoDesc,
+                                        cod_concepto as conceptoCod
+                                    FROM transp_caja_mov_extra as movEx
+                                    join transp_caja_mov as mov on mov.id=movEx.id_mov
+                                    where mov.estatus_anulado_mov='0'
+                                        and mov.es_mov_caja='1'
+                                        and mov.tipo_mov='E' ";
+                    if (filtro.Desde.HasValue) 
+                    {
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                        //
+                        sql_1 += " and rec.fecha>=@desde ";
+                        sql_2 += " and fecha_registro>=@desde ";
+                        sql_3 += " and mov.fecha_reg>=@desde";
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                        //
+                        sql_1 += " and rec.fecha<=@hasta ";
+                        sql_2 += " and fecha_registro<=@hasta ";
+                        sql_3 += " and mov.fecha_reg<=@hasta";
+                    }
+                    if (filtro.IdConcepto!=-1)
+                    {
+                        p3.ParameterName = "idConcepto";
+                        p3.Value = filtro.IdConcepto;
+                        //
+                        sql_1 += " and c.id_compras_concepto=@idConcepto ";
+                        sql_2 += " and id_concepto=@idConcepto ";
+                        sql_3+=" and movEx.id_concepto=@idConcepto ";
+                    }
+                    var sql = sql_1 + " union ( " + sql_2 + " ) union ( "+sql_3+" )";
+                    var _lst = cnn.Database.SqlQuery<DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Ficha>(sql, p1, p2, p3).ToList();
+                    result.Lista = _lst;
                 }
             }
             catch (Exception e)

@@ -10,6 +10,7 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Vistas
 {
     public interface IHndEnt
     {
+        Utils.FiltrosCB.ICtrlConBusqueda Concepto {get;}
         BindingSource Get_Caja_Source { get; }
         BindingSource Get_TipoMov_Source { get; }
         string Get_CajaID { get; }

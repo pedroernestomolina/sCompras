@@ -12,5 +12,6 @@ namespace DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla
         public string siglasDoc { get; set; }
         public DateTime fechaEmisionDoc { get; set; }
         public string numeroDoc { get; set; }
+        public decimal montoDiv { get; set; }
     }
 }

@@ -320,6 +320,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             ReportesCxpDocumentos_PagosEmitidos();
         }
+        private void MENU_REPORTES_CXP_PAGO_CONCEPTO_Click(object sender, EventArgs e)
+        {
+            ReportesCxp_PagosPorConcepto();
+        }
         //
         private void MENU_REPORTES_CAJA_GENERAL_MOV_Click(object sender, EventArgs e)
         {
@@ -385,6 +389,10 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.ReportesCxpDocumentos_PagosEmitidos();
         }
+        private void ReportesCxp_PagosPorConcepto()
+        {
+            _controlador.ReportesCxp_PagosPorConcepto();
+        }
         //
         private void ReportesCajaGeneralMov()
         {
@@ -425,5 +433,6 @@ namespace ModCompra.srcTransporte.PantallaInicio
         {
             _controlador.RegistrarCompraAliado();
         }
+
     }
 }

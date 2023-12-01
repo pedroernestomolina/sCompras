@@ -39,18 +39,17 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Planillas\RepPlanilla_RetIslr.rdlc";
             var ds = new DS_PLANILLA();
-
+            //
             DataRow rt = ds.Tables["RetIslr"].NewRow();
             rt["comprobante_nro"] = ficha.comprobanteRet;
             rt["fecha"] = ficha.fechaRet;
             rt["prov_nombre"] = ficha.prvNombre;
             rt["prov_cirif"] = ficha.prvCiRif;
             rt["prov_dir"] = ficha.dirFiscal;
-            rt["concepto_cod"] = ficha.conceptoCod;
-            rt["concepto_desc"] = ficha.conceptoDoc;
-
+            rt["concepto_cod"] = ficha.codXmlIslr;
+            rt["concepto_desc"] = ficha.descXmlIslr;
             ds.Tables["RetIslr"].Rows.Add(rt);
-
+            //
             DataRow rtDt = ds.Tables["RetIslr_Det"].NewRow();
             rtDt["fechaDoc"] = ficha.fechaEmiDoc;
             rtDt["numeroDoc"] = ficha.numDoc;
@@ -61,7 +60,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
             rtDt["sustraendo"] = ficha.sustraendoRet;
             rtDt["montoRet"] = ficha.totalRet;
             ds.Tables["RetIslr_Det"].Rows.Add(rtDt);
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             pmt.Add(new ReportParameter("EMP_CIRIF", Sistema.Negocio.CiRif));
@@ -69,7 +68,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
             pmt.Add(new ReportParameter("EMP_DIR", Sistema.Negocio.DireccionFiscal));
             Rds.Add(new ReportDataSource("RetIslr", ds.Tables["RetIslr"]));
             Rds.Add(new ReportDataSource("RetIslr_Det", ds.Tables["RetIslr_Det"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;

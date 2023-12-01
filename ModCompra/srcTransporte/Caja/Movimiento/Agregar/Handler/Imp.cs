@@ -101,6 +101,8 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
                     _montoMonAct=_hnd.Get_MontoMov;
                     _montoMonDiv=_hnd.Get_MontoMov/_hnd.Get_FactorCambio;
                 }
+                var _itemConcepto = (Utils.FiltrosCB.ConBusqueda.Concepto.data)_hnd.Concepto.GetItem;
+                var _concepto = (OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha)_itemConcepto.Ficha;
                 var ficha = new OOB.LibCompra.Transporte.Caja.Movimiento.Crud.Agregar.Ficha()
                 {
                     descMov = _hnd.Get_Notas,
@@ -112,6 +114,9 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
                     movFueDivisa = _esDivisa,
                     signoMov = _signoMov,
                     tipoMov = _tipoMov,
+                    conceptoCodigo = _concepto.codigo,
+                    conceptoDesc = _concepto.descripcion ,
+                    conceptoId = _concepto.id,
                 };
                 var r01 = Sistema.MyData.Transporte_Caja_Movimientos_Agregar(ficha);
                 _procesarIsOK = true;

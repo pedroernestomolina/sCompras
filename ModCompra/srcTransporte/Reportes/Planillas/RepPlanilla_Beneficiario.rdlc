@@ -111,20 +111,22 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>conceptoMotivo</rd:DefaultName>
         <Top>4.22189cm</Top>
         <Left>0.67972cm</Left>
-        <Height>2.00229cm</Height>
+        <Height>1.68479cm</Height>
         <Width>14.83369cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <BackgroundColor>Silver</BackgroundColor>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -454,8 +456,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>PagoAliado_Caja</DataSetName>
-        <Top>8.15012cm</Top>
-        <Left>1.10626cm</Left>
+        <Top>7.12679cm</Top>
+        <Left>0.63091cm</Left>
         <Height>1.2cm</Height>
         <Width>7.84141cm</Width>
         <ZIndex>6</ZIndex>
@@ -480,8 +482,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>7.55012cm</Top>
-        <Left>1.10626cm</Left>
+        <Top>6.52679cm</Top>
+        <Left>0.63091cm</Left>
         <Height>0.6cm</Height>
         <Width>4.16049cm</Width>
         <ZIndex>7</ZIndex>
@@ -724,7 +726,7 @@
         </Style>
       </Line>
       <Line Name="Line2">
-        <Top>6.5064cm</Top>
+        <Top>6.08307cm</Top>
         <Left>0.49208cm</Left>
         <Height>0cm</Height>
         <Width>15.02132cm</Width>
@@ -736,8 +738,8 @@
         </Style>
       </Line>
       <Line Name="Line3">
-        <Top>10.6266cm</Top>
-        <Left>1.10627cm</Left>
+        <Top>7.72679cm</Top>
+        <Left>11.35289cm</Left>
         <Height>0cm</Height>
         <Width>4.16049cm</Width>
         <ZIndex>16</ZIndex>
@@ -758,12 +760,14 @@
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>10.76771cm</Top>
-        <Left>1.10627cm</Left>
+        <Top>7.8679cm</Top>
+        <Left>11.35289cm</Left>
         <Height>0.6cm</Height>
         <Width>4.16048cm</Width>
         <ZIndex>17</ZIndex>
@@ -806,7 +810,6 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <BackgroundColor>Silver</BackgroundColor>
           <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -815,7 +818,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.14122in</Height>
+    <Height>3.47629in</Height>
     <Style />
   </Body>
   <Width>6.29651in</Width>

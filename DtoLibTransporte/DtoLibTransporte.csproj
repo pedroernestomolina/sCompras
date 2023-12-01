@@ -182,6 +182,8 @@
     <Compile Include="Reportes\Compras\enumerados.cs" />
     <Compile Include="Reportes\Cxp\baseFiltro.cs" />
     <Compile Include="Reportes\Cxp\enumerados.cs" />
+    <Compile Include="Reportes\Cxp\PagoPorConceptos\Ficha.cs" />
+    <Compile Include="Reportes\Cxp\PagoPorConceptos\Filtro.cs" />
     <Compile Include="Reportes\Cxp\PagosEmitidos\Ficha.cs" />
     <Compile Include="Reportes\Cxp\PagosEmitidos\Filtro.cs" />
     <Compile Include="Reportes\Cxp\PagosEmitidos\Planilla\Caja.cs" />

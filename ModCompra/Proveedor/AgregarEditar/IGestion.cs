@@ -25,6 +25,8 @@ namespace ModCompra.Proveedor.AgregarEditar
         string GetGrupo { get; }
         string GetDenFiscal { get; }
         string GetEstado { get; }
+        string GetCodigoXmlIslr { get; }
+        string GetDescXmlIslr { get; }
         System.Windows.Forms.BindingSource SourceGrupo { get; }
         System.Windows.Forms.BindingSource SourEstado { get; }
         System.Windows.Forms.BindingSource SourceDenFiscal { get; }
@@ -49,11 +51,12 @@ namespace ModCompra.Proveedor.AgregarEditar
         void setEstado(string p);
         void setDenFiscal(string p);
         void setTasaRetIva(decimal p);
+        void setCodXmlIslr(string p);
+        void setDescXmlIslr(string p);
+
         void Procesar();
         void Salir();
         void Inicializar();
         void setFichaEditar(string id);
-
     }
-
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Proveedor.Data
 {
-    
     public class Ficha
     {
-
         public string autoId { get; set; }
         public string autoEstado { get; set; }
         public string autoGrupo { get; set; }
@@ -19,7 +17,6 @@ namespace DtoLibCompra.Proveedor.Data
         public string nombreRazonSocial { get; set; }
         public string direccionFiscal { get; set; }
         public string telefono { get; set; }
-        public bool isActivo { get; set; }
         public string nombreEstado { get; set; }
         public string nombreGrupo { get; set; }
         public string nombreContacto { get; set; }
@@ -32,7 +29,9 @@ namespace DtoLibCompra.Proveedor.Data
         public DateTime fechaAlta { get; set; }
         public DateTime fechaUltCompra { get; set; }
         public DateTime fechaBaja { get; set; }
-
+        public string estatus { get; set; }
+        public string codXmlIslr { get; set; }
+        public string descXmlIslr { get; set; }
+        public bool isActivo { get { return estatus.Trim().ToUpper() == "ACTIVO"; } }
     }
-
 }

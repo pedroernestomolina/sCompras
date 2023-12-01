@@ -955,7 +955,7 @@ namespace ProvLibCompra
                         }
                         //
                         sql = @"update transp_aliado_pagoserv set 
-                                    estatus_procesado='1'
+                                    estatus_procesado='0'
                                 where id=@idPagoServ";
                         p00 = new MySql.Data.MySqlClient.MySqlParameter("@idPagoServ", ficha.idPagoServicio);
                         var r9 = cnn.Database.ExecuteSqlCommand(sql, p00);

@@ -203,6 +203,8 @@ namespace DataProvCompra.Data
                 dirFiscal = s.dirFiscal,
                 subtRet = s.subtRet,
                 sustraendoRet = s.sustraendoRet,
+                codXmlIslr=s.codXmlIslr,
+                descXmlIslr=s.descXmlIslr
             };
             return result;
         }
@@ -734,6 +736,7 @@ namespace DataProvCompra.Data
                         fechaEmisionDoc = xd.fechaEmisionDoc,
                         numeroDoc = xd.numeroDoc,
                         siglasDoc = xd.siglasDoc,
+                         montoDiv=xd.montoDiv,
                     };
                     return tr;
                 }).ToList(),
@@ -769,6 +772,49 @@ namespace DataProvCompra.Data
                 }).ToList(),
             };
             result.Entidad = nr;
+            return result;
+        }
+        //
+        public OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagoPorConceptos.Ficha> 
+            Transporte_Reportes_Cxp_PagosPorConcepto(OOB.LibCompra.Transporte.Reportes.Cxp.PagoPorConceptos.Filtro filtro)
+        {
+            var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.Reportes.Cxp.PagoPorConceptos.Ficha>();
+            var filtroDTO = new DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Filtro()
+            {
+                Desde = filtro.Desde,
+                Hasta = filtro.Hasta,
+                IdConcepto = filtro.IdConcepto,
+            };
+            var r01 = MyData.Transporte_Reportes_Cxp_PagosPorConcepto(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var lst = new List<OOB.LibCompra.Transporte.Reportes.Cxp.PagoPorConceptos.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibCompra.Transporte.Reportes.Cxp.PagoPorConceptos.Ficha()
+                        {
+                            conceptoCod = s.conceptoCod,
+                            conceptoDesc = s.conceptoDesc,
+                            entidadCiRif = s.entidadCiRif,
+                            entidadNombre = s.entidadNombre,
+                            importeDiv = s.importeDiv,
+                            numeroDoc = s.numeroDoc,
+                            recFecha = s.recFecha,
+                            recNro = s.recNro,
+                            siglasDoc = s.siglasDoc,
+                            tasaFactor = s.tasaFactor,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            result.Lista = lst;
             return result;
         }
     }

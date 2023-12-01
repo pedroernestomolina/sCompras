@@ -732,6 +732,8 @@
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Documentos\Pagos\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Documentos\Pagos\imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\PagosPorConcepto\FiltroActivar.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\PagosPorConcepto\imp.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\data.cs" />
     <Compile Include="srcTransporte\Reportes\Documentos\DS_REPDOC.cs">
       <DependentUpon>DS_REPDOC.xsd</DependentUpon>
@@ -1153,6 +1155,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_DocPagosEmitidos.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_PagoPorConcepto.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_PagoServ.rdlc">

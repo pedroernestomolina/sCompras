@@ -26,6 +26,9 @@ namespace DataProvCompra.Data
                 movFueDivisa = ficha.movFueDivisa,
                 signoMov = ficha.signoMov,
                 tipoMov = ficha.tipoMov,
+                conceptoCodigo = ficha.conceptoCodigo,
+                conceptoDesc = ficha.conceptoDesc,
+                conceptoId = ficha.conceptoId,
             };
             var r01 = MyData.Transporte_Caja_Movimientos_Agregar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

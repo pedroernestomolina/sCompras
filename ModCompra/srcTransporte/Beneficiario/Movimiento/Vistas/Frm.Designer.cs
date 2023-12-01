@@ -68,7 +68,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel23 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TB_CONCEPTO_BUSCAR = new System.Windows.Forms.TextBox();
             this.panel24 = new System.Windows.Forms.Panel();
             this.CB_CONCEPTO = new System.Windows.Forms.ComboBox();
             this.panel46 = new System.Windows.Forms.Panel();
@@ -77,7 +77,7 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
             this.panel105 = new System.Windows.Forms.Panel();
-            this.TB_CONCEPTO = new System.Windows.Forms.TextBox();
+            this.TB_BENEFICIARIO_BUSCAR = new System.Windows.Forms.TextBox();
             this.panel107 = new System.Windows.Forms.Panel();
             this.CB_BENEFICIARIO = new System.Windows.Forms.ComboBox();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -679,7 +679,7 @@
             // 
             // panel23
             // 
-            this.panel23.Controls.Add(this.textBox1);
+            this.panel23.Controls.Add(this.TB_CONCEPTO_BUSCAR);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel23.Location = new System.Drawing.Point(0, 0);
             this.panel23.Margin = new System.Windows.Forms.Padding(0);
@@ -688,16 +688,18 @@
             this.panel23.Size = new System.Drawing.Size(116, 30);
             this.panel23.TabIndex = 0;
             // 
-            // textBox1
+            // TB_CONCEPTO_BUSCAR
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(2, 2);
-            this.textBox1.MaxLength = 20;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(112, 24);
-            this.textBox1.TabIndex = 3;
+            this.TB_CONCEPTO_BUSCAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.TB_CONCEPTO_BUSCAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_CONCEPTO_BUSCAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_CONCEPTO_BUSCAR.Location = new System.Drawing.Point(2, 2);
+            this.TB_CONCEPTO_BUSCAR.MaxLength = 20;
+            this.TB_CONCEPTO_BUSCAR.Name = "TB_CONCEPTO_BUSCAR";
+            this.TB_CONCEPTO_BUSCAR.Size = new System.Drawing.Size(112, 24);
+            this.TB_CONCEPTO_BUSCAR.TabIndex = 3;
+            this.TB_CONCEPTO_BUSCAR.TextChanged += new System.EventHandler(this.TB_CONCEPTO_BUSCAR_TextChanged);
+            this.TB_CONCEPTO_BUSCAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel24
             // 
@@ -721,6 +723,7 @@
             this.CB_CONCEPTO.Size = new System.Drawing.Size(269, 24);
             this.CB_CONCEPTO.TabIndex = 1;
             this.CB_CONCEPTO.SelectedIndexChanged += new System.EventHandler(this.CB_CONCEPTO_SelectedIndexChanged);
+            this.CB_CONCEPTO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel46
             // 
@@ -784,7 +787,7 @@
             // 
             // panel105
             // 
-            this.panel105.Controls.Add(this.TB_CONCEPTO);
+            this.panel105.Controls.Add(this.TB_BENEFICIARIO_BUSCAR);
             this.panel105.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel105.Location = new System.Drawing.Point(0, 0);
             this.panel105.Margin = new System.Windows.Forms.Padding(0);
@@ -793,16 +796,18 @@
             this.panel105.Size = new System.Drawing.Size(116, 28);
             this.panel105.TabIndex = 0;
             // 
-            // TB_CONCEPTO
+            // TB_BENEFICIARIO_BUSCAR
             // 
-            this.TB_CONCEPTO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.TB_CONCEPTO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_CONCEPTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_CONCEPTO.Location = new System.Drawing.Point(2, 2);
-            this.TB_CONCEPTO.MaxLength = 20;
-            this.TB_CONCEPTO.Name = "TB_CONCEPTO";
-            this.TB_CONCEPTO.Size = new System.Drawing.Size(112, 24);
-            this.TB_CONCEPTO.TabIndex = 3;
+            this.TB_BENEFICIARIO_BUSCAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.TB_BENEFICIARIO_BUSCAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_BENEFICIARIO_BUSCAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_BENEFICIARIO_BUSCAR.Location = new System.Drawing.Point(2, 2);
+            this.TB_BENEFICIARIO_BUSCAR.MaxLength = 20;
+            this.TB_BENEFICIARIO_BUSCAR.Name = "TB_BENEFICIARIO_BUSCAR";
+            this.TB_BENEFICIARIO_BUSCAR.Size = new System.Drawing.Size(112, 24);
+            this.TB_BENEFICIARIO_BUSCAR.TabIndex = 3;
+            this.TB_BENEFICIARIO_BUSCAR.TextChanged += new System.EventHandler(this.TB_BENEFICIARIO_BUSCAR_TextChanged);
+            this.TB_BENEFICIARIO_BUSCAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel107
             // 
@@ -826,6 +831,7 @@
             this.CB_BENEFICIARIO.Size = new System.Drawing.Size(269, 24);
             this.CB_BENEFICIARIO.TabIndex = 1;
             this.CB_BENEFICIARIO.SelectedIndexChanged += new System.EventHandler(this.CB_BENEFICIARIO_SelectedIndexChanged);
+            this.CB_BENEFICIARIO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
             // 
             // panel14
             // 
@@ -974,7 +980,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.3487F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.6513F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel12.Controls.Add(this.panel37, 1, 0);
             this.tableLayoutPanel12.Controls.Add(this.panel38, 2, 0);
             this.tableLayoutPanel12.Controls.Add(this.panel39, 1, 1);
@@ -998,7 +1004,7 @@
             this.panel37.Margin = new System.Windows.Forms.Padding(0);
             this.panel37.Name = "panel37";
             this.panel37.Padding = new System.Windows.Forms.Padding(2);
-            this.panel37.Size = new System.Drawing.Size(163, 22);
+            this.panel37.Size = new System.Drawing.Size(161, 22);
             this.panel37.TabIndex = 0;
             // 
             // label13
@@ -1007,7 +1013,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(2, 2);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(159, 18);
+            this.label13.Size = new System.Drawing.Size(157, 18);
             this.label13.TabIndex = 3;
             this.label13.Text = "Pendiente En ($):";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1016,11 +1022,11 @@
             // 
             this.panel38.Controls.Add(this.L_MONTO_PEND_MON_DIV);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel38.Location = new System.Drawing.Point(378, 0);
+            this.panel38.Location = new System.Drawing.Point(376, 0);
             this.panel38.Margin = new System.Windows.Forms.Padding(0);
             this.panel38.Name = "panel38";
             this.panel38.Padding = new System.Windows.Forms.Padding(2);
-            this.panel38.Size = new System.Drawing.Size(121, 22);
+            this.panel38.Size = new System.Drawing.Size(120, 22);
             this.panel38.TabIndex = 1;
             // 
             // L_MONTO_PEND_MON_DIV
@@ -1029,7 +1035,7 @@
             this.L_MONTO_PEND_MON_DIV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_MONTO_PEND_MON_DIV.Location = new System.Drawing.Point(2, 2);
             this.L_MONTO_PEND_MON_DIV.Name = "L_MONTO_PEND_MON_DIV";
-            this.L_MONTO_PEND_MON_DIV.Size = new System.Drawing.Size(117, 18);
+            this.L_MONTO_PEND_MON_DIV.Size = new System.Drawing.Size(116, 18);
             this.L_MONTO_PEND_MON_DIV.TabIndex = 3;
             this.L_MONTO_PEND_MON_DIV.Text = "Monto Bs:";
             this.L_MONTO_PEND_MON_DIV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1042,7 +1048,7 @@
             this.panel39.Margin = new System.Windows.Forms.Padding(0);
             this.panel39.Name = "panel39";
             this.panel39.Padding = new System.Windows.Forms.Padding(2);
-            this.panel39.Size = new System.Drawing.Size(163, 22);
+            this.panel39.Size = new System.Drawing.Size(161, 22);
             this.panel39.TabIndex = 2;
             // 
             // label15
@@ -1051,7 +1057,7 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(2, 2);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(159, 18);
+            this.label15.Size = new System.Drawing.Size(157, 18);
             this.label15.TabIndex = 3;
             this.label15.Text = "Pendiente En  Bs:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1060,11 +1066,11 @@
             // 
             this.panel40.Controls.Add(this.L_MONTO_PEND_MON_ACT);
             this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel40.Location = new System.Drawing.Point(378, 22);
+            this.panel40.Location = new System.Drawing.Point(376, 22);
             this.panel40.Margin = new System.Windows.Forms.Padding(0);
             this.panel40.Name = "panel40";
             this.panel40.Padding = new System.Windows.Forms.Padding(2);
-            this.panel40.Size = new System.Drawing.Size(121, 22);
+            this.panel40.Size = new System.Drawing.Size(120, 22);
             this.panel40.TabIndex = 3;
             // 
             // L_MONTO_PEND_MON_ACT
@@ -1073,7 +1079,7 @@
             this.L_MONTO_PEND_MON_ACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_MONTO_PEND_MON_ACT.Location = new System.Drawing.Point(2, 2);
             this.L_MONTO_PEND_MON_ACT.Name = "L_MONTO_PEND_MON_ACT";
-            this.L_MONTO_PEND_MON_ACT.Size = new System.Drawing.Size(117, 18);
+            this.L_MONTO_PEND_MON_ACT.Size = new System.Drawing.Size(116, 18);
             this.L_MONTO_PEND_MON_ACT.TabIndex = 3;
             this.L_MONTO_PEND_MON_ACT.Text = "Monto Bs:";
             this.L_MONTO_PEND_MON_ACT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1298,12 +1304,12 @@
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TB_CONCEPTO_BUSCAR;
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.ComboBox CB_CONCEPTO;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
         private System.Windows.Forms.Panel panel105;
-        private System.Windows.Forms.TextBox TB_CONCEPTO;
+        private System.Windows.Forms.TextBox TB_BENEFICIARIO_BUSCAR;
         private System.Windows.Forms.Panel panel107;
         private System.Windows.Forms.ComboBox CB_BENEFICIARIO;
         private System.Windows.Forms.TabPage tabPage2;

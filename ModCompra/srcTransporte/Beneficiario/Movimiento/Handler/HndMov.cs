@@ -10,20 +10,18 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Handler
 {
     public class HndMov: Vistas.IHndMov
     {
-        private Utils.Control.TipoCombo.ICtrl _concepto;
-        private Utils.Control.TipoCombo.ICtrl _beneficiario;
         private decimal _montoMov;
         private decimal _factorCambio;
         private DateTime _fechaServidor;
         private string _notas;
         private decimal _montoMonAct;
         private DateTime _fechaMov;
+        private Utils.FiltrosCB.ICtrlConBusqueda _beneficiario;
+        private Utils.FiltrosCB.ICtrlConBusqueda _concepto;
 
 
-        public BindingSource Get_ConceptoMov_Source { get { return _concepto.GetSource; } }
-        public BindingSource Get_Beneficiario_Source { get { return _beneficiario.GetSource; } }
-        public string Get_ConceptoMovId { get { return _concepto.GetId; } }
-        public string Get_BeneficiarioId { get { return _beneficiario.GetId; } }
+        public Utils.FiltrosCB.ICtrlConBusqueda Beneficiario { get { return _beneficiario; } }
+        public Utils.FiltrosCB.ICtrlConBusqueda Concepto { get { return _concepto; } }
         public decimal  Get_FactorCambio { get { return _factorCambio; } }
         public decimal Get_MontoMov { get { return _montoMov; } }
         public DateTime Get_FechaServidor { get { return _fechaServidor; } }
@@ -41,8 +39,8 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Handler
             _fechaServidor = DateTime.Now.Date;
             _fechaMov = DateTime.Now.Date;
             _notas = "";
-            _beneficiario = new Utils.Control.TipoCombo.Beneficiario.Imp();
-            _concepto = new Utils.Control.TipoCombo.Concepto.Imp();
+            _beneficiario = new Utils.FiltrosCB.ConBusqueda.Beneficiario.Imp();
+            _concepto = new Utils.FiltrosCB.ConBusqueda.Concepto.Imp();
         }
         public void Inicializa()
         {

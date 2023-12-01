@@ -95,12 +95,14 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Handler
         {
             try
             {
-                var _beneficiario= (Utils.Control.TipoCombo.Beneficiario.data)_mov.Get_BeneficiarioFicha;
-                var _concepto= (Utils.Control.TipoCombo.Concepto.data)_mov.Get_ConceptoFicha;
+                var _itemBeneficiario = (Utils.FiltrosCB.ConBusqueda.Beneficiario.data)_mov.Beneficiario.GetItem;
+                var _itemConcepto= (Utils.FiltrosCB.ConBusqueda.Concepto.data )_mov.Concepto.GetItem;
+                var _beneficiario = (OOB.LibCompra.Transporte.Beneficiario.Lista.Ficha)_itemBeneficiario.Ficha;
+                var _concepto = (OOB.LibCompra.Transporte.Documento.Concepto.Entidad.Ficha)_itemConcepto.Ficha;
 
-                var _notMovCaja= "Beneficiario: "+_beneficiario.Ficha.cirif.Trim();
-                _notMovCaja+=Environment.NewLine+ _beneficiario.Ficha.nombreRazonSocial.Trim();
-                _notMovCaja+=Environment.NewLine+ "Por Concepto De: "+_concepto.Ficha.descripcion.Trim();
+                var _notMovCaja = "Beneficiario: " + _beneficiario.cirif.Trim();
+                _notMovCaja+=Environment.NewLine+ _beneficiario.nombreRazonSocial.Trim();
+                _notMovCaja+=Environment.NewLine+ "Por Concepto De: "+_concepto.descripcion.Trim();
                 var _lstCaja = new List<OOB.LibCompra.Transporte.Beneficiario.Mov.Agregar.MovCaja>();
                 foreach (var rg in _caj.Get_Lista.Where(w => w.montoAbonar > 0).ToList())
                 {
@@ -126,15 +128,15 @@ namespace ModCompra.srcTransporte.Beneficiario.Movimiento.Handler
 
                 var _movimiento = new OOB.LibCompra.Transporte.Beneficiario.Mov.Agregar.Movimiento()
                 {
-                    ciRifBeneficiario = _beneficiario.Ficha.cirif,
-                    codConcepto = _concepto.Ficha.codigo,
-                    descConcepto = _concepto.Ficha.descripcion,
+                    ciRifBeneficiario = _beneficiario.cirif,
+                    codConcepto = _concepto.codigo,
+                    descConcepto = _concepto.descripcion,
                     factorTasa = _mov.Get_FactorCambio,
                     fechaMov = _mov.Get_FechaMovimiento,
-                    idBeneficiario = _beneficiario.Ficha.id,
-                    idConcepto = _concepto.Ficha.id,
+                    idBeneficiario = _beneficiario.id,
+                    idConcepto = _concepto.id,
                     montoMonDiv = _mov.Get_MontoMov,
-                    nombreBeneficiario = _beneficiario.Ficha.nombreRazonSocial,
+                    nombreBeneficiario = _beneficiario.nombreRazonSocial,
                     notasMov = _mov.Get_Notas,
                 };
                 var ficha = new OOB.LibCompra.Transporte.Beneficiario.Mov.Agregar.Ficha()

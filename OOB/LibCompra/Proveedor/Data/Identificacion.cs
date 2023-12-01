@@ -33,6 +33,9 @@ namespace OOB.LibCompra.Proveedor.Data
         public DateTime fechaAlta { get; set; }
         public DateTime fechaUltCompra { get; set; }
         public DateTime fechaBaja { get; set; }
+        public string codXmlIslr { get; set; }
+        public string descXmlIslr { get; set; }
+
         public Enumerados.EnumDenominacionFiscal modoDenominacionFiscal 
         {
             get 
@@ -52,7 +55,6 @@ namespace OOB.LibCompra.Proveedor.Data
             auto = "";
             autoGrupo = "";
             autoEstado = "";
-
             ciRif = "";
             codigo = "";
             nombreRazonSocial = "";
@@ -71,8 +73,8 @@ namespace OOB.LibCompra.Proveedor.Data
             fechaAlta = DateTime.Now.Date;
             fechaUltCompra = new DateTime(2000, 01, 01).Date;
             fechaBaja = new DateTime(2000, 01, 01).Date;
+            codXmlIslr = "";
+            descXmlIslr = "";
         }
-
     }
-
 }

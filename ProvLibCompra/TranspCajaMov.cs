@@ -27,15 +27,26 @@ namespace ProvLibCompra
                         var anoRelacion = fechaSistema.Year.ToString().Trim().PadLeft(4, '0');
                         //
                         var sql = @"update sistema_contadores set 
-                                        a_transp_aliado_anticipo_recnumero=a_transp_aliado_anticipo_recnumero+1";
+                                        a_transp_caja_mov_ingreso=a_transp_caja_mov_ingreso+1";
+                        if (ficha.signoMov == -1)
+                        {
+                            sql = @"update sistema_contadores set 
+                                        a_transp_caja_mov_egreso=a_transp_caja_mov_egreso+1";
+                        }
                         var r1 = cnn.Database.ExecuteSqlCommand(sql);
                         if (r1 == 0)
                         {
-                            result.Mensaje = "PROBLEMA AL ACTUALIZAR TABLA CONTADORES";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("PROBLEMA AL ACTUALIZAR TABLA CONTADORES");
                         }
-                        var aRecibo = cnn.Database.SqlQuery<int>("select a_transp_aliado_anticipo_recnumero from sistema_contadores").FirstOrDefault();
+                        var aRecibo = 0;
+                        if (ficha.signoMov == -1)
+                        {
+                            aRecibo = cnn.Database.SqlQuery<int>("select a_transp_caja_mov_egreso from sistema_contadores").FirstOrDefault();
+                        }
+                        else
+                        {
+                            aRecibo = cnn.Database.SqlQuery<int>("select a_transp_caja_mov_ingreso from sistema_contadores").FirstOrDefault();
+                        }
                         var autoRecibo = aRecibo.ToString().Trim().PadLeft(10, '0');
                         //
                         //INSERTAR CAJA MOVIMIENTO 
@@ -78,11 +89,13 @@ namespace ProvLibCompra
                         var r2 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07, p08);
                         if (r2 == 0)
                         {
-                            result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE CAJA";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("ERROR AL INSERTAR MOVIMIENTO EN TABLA [ TRANSP_CAJA_MOV ]");
                         }
                         cnn.SaveChanges();
+                        //
+                        //
+                        sql = "SELECT LAST_INSERT_ID()";
+                        var idEnt = cnn.Database.SqlQuery<int>(sql).FirstOrDefault();
                         //
                         // ACTUALIZAR SALDO CAJAS 
                         sql = @"update transp_caja set 
@@ -99,11 +112,35 @@ namespace ProvLibCompra
                         var r3 = cnn.Database.ExecuteSqlCommand(sql, p00, p01);
                         if (r3 == 0)
                         {
-                            result.Mensaje = "ERROR AL ACTUALIZAR SALDO CAJA";
-                            result.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return result;
+                            throw new Exception("ERROR AL ACTUALIZAR SALDO CAJA");
                         }
                         cnn.SaveChanges();
+                        //
+                        //INSERTAR CAJA MOVIMIENTO_EXTRA 
+                        sql = @"INSERT INTO transp_caja_mov_extra (
+                                        id_mov, 
+                                        id_concepto, 
+                                        cod_concepto, 
+                                        desc_concepto, 
+                                        recibo_nro)
+                                    VALUES (
+                                        @id_mov, 
+                                        @id_concepto, 
+                                        @cod_concepto, 
+                                        @desc_concepto, 
+                                        @recibo_nro)";
+                        p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_mov", idEnt);
+                        p01 = new MySql.Data.MySqlClient.MySqlParameter("@id_concepto", cjMov.conceptoId);
+                        p02 = new MySql.Data.MySqlClient.MySqlParameter("@cod_concepto", cjMov.conceptoCodigo);
+                        p03 = new MySql.Data.MySqlClient.MySqlParameter("@desc_concepto", cjMov.conceptoDesc);
+                        p04 = new MySql.Data.MySqlClient.MySqlParameter("@recibo_nro", autoRecibo);
+                        var r4 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04);
+                        if (r4 == 0)
+                        {
+                            throw new Exception("ERROR AL INSERTAR MOVIMIENTO EN TABLA [ TRANSP_CAJA_MOV_EXTRA ]");
+                        }
+                        cnn.SaveChanges();
+                        //
                         ts.Commit();
                     }
                 }

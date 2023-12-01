@@ -1,6 +1,7 @@
 ﻿using LibEntityCompra;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,11 @@ namespace ProvLibCompra
     
     public partial class Provider: ILibCompras.IProvider
     {
-
-        public DtoLib.ResultadoLista<DtoLibCompra.Proveedor.Lista.Resumen> Proveedor_GetLista(DtoLibCompra.Proveedor.Lista.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibCompra.Proveedor.Lista.Resumen> 
+            Proveedor_GetLista(DtoLibCompra.Proveedor.Lista.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibCompra.Proveedor.Lista.Resumen>();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -118,52 +119,56 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
-
-        public DtoLib.ResultadoEntidad <DtoLibCompra.Proveedor.Data.Ficha> Proveedor_GetFicha(string autoPrv)
+        public DtoLib.ResultadoEntidad <DtoLibCompra.Proveedor.Data.Ficha> 
+            Proveedor_GetFicha(string autoPrv)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Proveedor.Data.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    var ent = cnn.proveedores.Find(autoPrv);
-                    if (ent == null)
+                    var _sql = @"select 
+                                    prv.auto as autoId,
+                                    prv.auto_estado as autoEstado,
+                                    prv.auto_grupo as autoGrupo,
+                                    prv.ci_rif as ciRif,
+                                    prv.codigo as codigo,
+                                    prv.dir_fiscal as direccionFiscal,
+                                    prv.razon_social as nombreRazonSocial,
+                                    prv.contacto as nombreContacto,
+                                    prv.telefono as telefono,
+                                    prv.codigo_postal as codigoPostal,
+                                    prv.denominacion_fiscal as denominacionFiscal,
+                                    prv.email as email,
+                                    prv.pais as pais,
+                                    prv.retencion_iva as retIva,
+                                    prv.website as website,
+                                    prv.fecha_alta as fechaAlta,
+                                    prv.fecha_ult_compra as fechaUltCompra,
+                                    prv.fecha_baja as fechaBaja,
+                                    prv.estatus as estatus,
+                                    prv.codigo_xml_islr as codXmlIslr,
+                                    prv.desc_xml_islr as descXmlIslr,
+                                    grp.nombre as nombreGrupo,
+                                    edo.nombre as nombreEstado
+                                from proveedores as prv
+                                join proveedores_grupo as grp on grp.auto=prv.auto_grupo
+                                join sistema_estados as edo on edo.auto=prv.auto_estado
+                                where prv.auto=@idPrv";
+                    var p0= new MySql.Data.MySqlClient.MySqlParameter("@idPrv",autoPrv);
+                    var _ent = cnn.Database.SqlQuery<DtoLibCompra.Proveedor.Data.Ficha>(_sql, p0).FirstOrDefault();
+                    if (_ent == null)
                     {
-                        result.Mensaje = "[ AUTO ] PROVEEDOR NO ENCONTRADO";
+                        result.Mensaje = "PROVEEDOR NO ENCONTRADO";
                         result.Result = DtoLib.Enumerados.EnumResult.isError;
                         return result;
                     }
-
-                    var nr = new DtoLibCompra.Proveedor.Data.Ficha()
-                    {
-                        autoId = ent.auto,
-                        autoEstado = ent.auto_estado,
-                        autoGrupo = ent.auto_grupo,
-                        ciRif = ent.ci_rif,
-                        codigo = ent.codigo,
-                        direccionFiscal = ent.dir_fiscal,
-                        nombreRazonSocial = ent.razon_social,
-                        nombreContacto = ent.contacto,
-                        nombreEstado = ent.sistema_estados.nombre,
-                        nombreGrupo = ent.proveedores_grupo.nombre,
-                        telefono = ent.telefono,
-                        isActivo = ent.estatus.Trim().ToUpper() == "ACTIVO" ? true : false,
-                        codigoPostal = ent.codigo_postal,
-                        denominacionFiscal = ent.denominacion_fiscal,
-                        email = ent.email,
-                        pais = ent.pais,
-                        retIva = ent.retencion_iva,
-                        website = ent.website,
-                        fechaAlta = ent.fecha_alta,
-                        fechaUltCompra = ent.fecha_ult_compra,
-                        fechaBaja = ent.fecha_baja,
-                    };
-
-                    result.Entidad = nr;
+                    //
+                    result.Entidad = _ent;
                 }
             }
             catch (Exception e)
@@ -171,11 +176,11 @@ namespace ProvLibCompra
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return result;
         }
-
-        public DtoLib.ResultadoAuto Proveedor_AgregarFicha(DtoLibCompra.Proveedor.Agregar.Ficha ficha)
+        public DtoLib.ResultadoAuto 
+            Proveedor_AgregarFicha(DtoLibCompra.Proveedor.Agregar.Ficha ficha)
         {
             var rt = new DtoLib.ResultadoAuto();
 
@@ -187,7 +192,7 @@ namespace ProvLibCompra
                     {
                         var fechaSistema = cnn.Database.SqlQuery<DateTime>("select now()").FirstOrDefault();
                         var fechaNula = new DateTime(2000, 1, 1);
-
+                        //
                         var sql = "update sistema_contadores set a_proveedores=a_proveedores+1";
                         var r1 = cnn.Database.ExecuteSqlCommand(sql);
                         if (r1 == 0)
@@ -198,85 +203,135 @@ namespace ProvLibCompra
                         }
                         var aPrv = cnn.Database.SqlQuery<int>("select a_proveedores from sistema_contadores").FirstOrDefault();
                         var autoPrv = aPrv.ToString().Trim().PadLeft(10, '0');
-
-                        var entPrv = new proveedores();
-                        entPrv.advertencia=ficha.advertencia;
-                        entPrv.anticipos=ficha.anticipos;
-                        entPrv.auto=autoPrv;
-                        entPrv.auto_codigo_anticipos=ficha.idCtaAnticipos;
-                        entPrv.auto_codigo_cobrar=ficha.idCtaCobrar;
-                        entPrv.auto_codigo_ingresos=ficha.idCtaIngreso;
-                        entPrv.auto_estado=ficha.idEstado;
-                        entPrv.auto_grupo=ficha.idGrupo;
-                        entPrv.beneficiario= ficha.benficiarioCtaBanco;
-                        entPrv.ci_rif=ficha.ciRif;
-                        entPrv.codigo=ficha.codigo;
-                        entPrv.codigo_postal=ficha.codPostal;
-                        entPrv.contacto=ficha.contacto;
-                        entPrv.creditos=ficha.creditos;
-                        entPrv.ctabanco= ficha.ctaBanco;
-                        entPrv.debitos=ficha.debitos;
-                        entPrv.denominacion_fiscal=ficha.denFiscal;
-                        entPrv.dir_fiscal=ficha.dirFiscal;
-                        entPrv.disponible=ficha.disponible;
-                        entPrv.email=ficha.email;
-                        entPrv.estatus=ficha.estatus;
-                        entPrv.fecha_alta=fechaSistema;
-                        entPrv.fecha_baja=fechaNula;
-                        entPrv.fecha_ult_pago=fechaNula;
-                        entPrv.fecha_ult_compra = fechaNula;
-                        entPrv.memo=ficha.memo;
-                        entPrv.nj=ficha.nj;
-                        entPrv.nombre=ficha.nombre;
-                        entPrv.pais=ficha.pais;
-                        entPrv.razon_social=ficha.razonSocial;
-                        entPrv.retencion_islr=ficha.retISLR;
-                        entPrv.retencion_iva=ficha.retIva;
-                        entPrv.rif=ficha.rif;
-                        entPrv.saldo=ficha.saldo;
-                        entPrv.telefono=ficha.telefono;
-                        entPrv.website=ficha.webSite;
-                        cnn.proveedores.Add(entPrv);
+                        //
+                        sql = @"INSERT INTO proveedores (
+                                        `auto` ,
+                                        `codigo` ,
+                                        `nombre` ,
+                                        `ci_rif` ,
+                                        `razon_social` ,
+                                        `auto_grupo` ,
+                                        `dir_fiscal` ,
+                                        `contacto` ,
+                                        `telefono` ,
+                                        `email` ,
+                                        `website` ,
+                                        `pais` ,
+                                        `denominacion_fiscal` ,
+                                        `auto_estado` ,
+                                        `codigo_postal` ,
+                                        `retencion_iva` ,
+                                        `retencion_islr` ,
+                                        `fecha_alta` ,
+                                        `fecha_baja` ,
+                                        `fecha_ult_pago` ,
+                                        `fecha_ult_compra` ,
+                                        `anticipos` ,
+                                        `debitos` ,
+                                        `creditos` ,
+                                        `saldo` ,
+                                        `disponible` ,
+                                        `memo` ,
+                                        `advertencia` ,
+                                        `estatus` ,
+                                        `auto_codigo_cobrar` ,
+                                        `auto_codigo_ingresos` ,
+                                        `auto_codigo_anticipos` ,
+                                        `beneficiario` ,
+                                        `rif` ,
+                                        `ctabanco` ,
+                                        `nj` ,
+                                        `codigo_xml_islr` ,
+                                        `desc_xml_islr`)
+                                    VALUES (
+                                        @auto ,
+                                        @codigo ,
+                                        @nombre ,
+                                        @ci_rif ,
+                                        @razon_social ,
+                                        @auto_grupo ,
+                                        @dir_fiscal ,
+                                        @contacto ,
+                                        @telefono ,
+                                        @email ,
+                                        @website ,
+                                        @pais ,
+                                        @denominacion_fiscal ,
+                                        @auto_estado ,
+                                        @codigo_postal ,
+                                        @retencion_iva ,
+                                        @retencion_islr ,
+                                        @fecha_alta ,
+                                        @fecha_baja ,
+                                        @fecha_ult_pago ,
+                                        @fecha_ult_compra ,
+                                        0 ,
+                                        0 ,
+                                        0 ,
+                                        0 ,
+                                        0 ,
+                                        '' ,
+                                        '' ,
+                                        'Activo' ,
+                                        '0000000001',
+                                        '0000000001',
+                                        '0000000001',
+                                        '' ,
+                                        '' ,
+                                        '' ,
+                                        '' ,
+                                        @codigo_xml_islr ,
+                                        @desc_xml_islr)";
+                        //
+                        var p0 = new MySql.Data.MySqlClient.MySqlParameter("@auto", autoPrv);
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@codigo", ficha.codigo);
+                        var p2 = new MySql.Data.MySqlClient.MySqlParameter("@nombre", ficha.nombre);
+                        var p3 = new MySql.Data.MySqlClient.MySqlParameter("@ci_rif", ficha.ciRif);
+                        var p4 = new MySql.Data.MySqlClient.MySqlParameter("@razon_social", ficha.razonSocial);
+                        var p5 = new MySql.Data.MySqlClient.MySqlParameter("@auto_grupo", ficha.idGrupo);
+                        var p6 = new MySql.Data.MySqlClient.MySqlParameter("@dir_fiscal", ficha.dirFiscal);
+                        var p7 = new MySql.Data.MySqlClient.MySqlParameter("@contacto", ficha.contacto);
+                        var p8 = new MySql.Data.MySqlClient.MySqlParameter("@telefono", ficha.telefono);
+                        var p9 = new MySql.Data.MySqlClient.MySqlParameter("@email", ficha.email);
+                        //
+                        var p10 = new MySql.Data.MySqlClient.MySqlParameter("@website", ficha.webSite);
+                        var p11 = new MySql.Data.MySqlClient.MySqlParameter("@pais", ficha.pais);
+                        var p12 = new MySql.Data.MySqlClient.MySqlParameter("@denominacion_fiscal", ficha.denFiscal);
+                        var p13 = new MySql.Data.MySqlClient.MySqlParameter("@auto_estado", ficha.idEstado);
+                        var p14 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_postal", ficha.codPostal);
+                        var p15 = new MySql.Data.MySqlClient.MySqlParameter("@retencion_iva", ficha.retIva);
+                        var p16 = new MySql.Data.MySqlClient.MySqlParameter("@retencion_islr", ficha.retISLR);
+                        var p17 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_alta", fechaSistema);
+                        var p18 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_baja", fechaNula);
+                        var p19 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_ult_pago", fechaNula);
+                        //
+                        var p20 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_ult_compra",fechaNula);
+                        var p21 = new MySql.Data.MySqlClient.MySqlParameter("@codigo_xml_islr",ficha.codXmlIslr);
+                        var p22 = new MySql.Data.MySqlClient.MySqlParameter("@desc_xml_islr", ficha.descXmlIslr);
+                        //
+                        var r0 = cnn.Database.ExecuteSqlCommand(sql,
+                                        p0, p1, p2, p3, p4, p5, p6, p7, p8, p9,
+                                        p10, p11, p12, p13, p14, p15, p16, p17, p18, p19,
+                                        p20, p21, p22);
                         cnn.SaveChanges();
-
+                        if (r0==0)
+                        {
+                            throw new Exception("PROBLEMA AL REGISTRAR PROVEEDOR EN TABLA [ PROVEEDORES ]");
+                        }
+                        //
                         ts.Complete();
                         rt.Auto = autoPrv;
                     }
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var msg = "";
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        msg += ve.ErrorMessage;
-                    }
-                }
-                rt.Mensaje = msg;
+                rt.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+            catch (DbUpdateException ex)
             {
-                var msg = "";
-                if (e.InnerException != null)
-                {
-                    var x = e.InnerException.InnerException;
-                    msg = x.Message;
-                }
-                else
-                {
-                    foreach (var eve in e.Entries)
-                    {
-                        //msg += eve.m;
-                        foreach (var ve in eve.CurrentValues.PropertyNames)
-                        {
-                            msg += ve.ToString();
-                        }
-                    }
-                }
-                rt.Mensaje = msg;
+                rt.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -284,14 +339,12 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return rt;
         }
-
-        public DtoLib.Resultado Proveedor_AgregarFicha_Validar(DtoLibCompra.Proveedor.Agregar.FichaValidar ficha)
+        public DtoLib.Resultado 
+            Proveedor_AgregarFicha_Validar(DtoLibCompra.Proveedor.Agregar.FichaValidar ficha)
         {
             var rt = new DtoLib.Resultado();
-
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -323,14 +376,12 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return rt;
         }
-
-        public DtoLib.Resultado Proveedor_EditarFicha(DtoLibCompra.Proveedor.Editar.Ficha ficha)
+        public DtoLib.Resultado 
+            Proveedor_EditarFicha(DtoLibCompra.Proveedor.Editar.Ficha ficha)
         {
             var rt = new DtoLib.ResultadoAuto();
-
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -344,7 +395,6 @@ namespace ProvLibCompra
                             rt.Result = DtoLib.Enumerados.EnumResult.isError;
                             return rt;
                         }
-
                         entPrv.auto_estado = ficha.idEstado;
                         entPrv.auto_grupo = ficha.idGrupo;
                         entPrv.ci_rif = ficha.ciRif;
@@ -360,44 +410,33 @@ namespace ProvLibCompra
                         entPrv.telefono = ficha.telefono;
                         entPrv.website = ficha.webSite;
                         cnn.SaveChanges();
-
+                        //
+                        var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idPrv", ficha.autoPrv);
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@codXmlIslr", ficha.codXmlIslr);
+                        var p2 = new MySql.Data.MySqlClient.MySqlParameter("@descXmlIslr", ficha.descXmlIslr);
+                        var sql = @"update proveedores set 
+                                        codigo_xml_islr=@codXmlIslr,
+                                        desc_xml_islr=@descXmlIslr
+                                    where auto=@idPrv";
+                        var r2 = cnn.Database.ExecuteSqlCommand(sql, p0, p1, p2);
+                        if (r2 == 0) 
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR FICHA PROVEEDOR");
+                        }
+                        cnn.SaveChanges();
+                        //
                         ts.Complete();
                     }
                 }
             }
-            catch (DbEntityValidationException e)
+            catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                var msg = "";
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        msg += ve.ErrorMessage;
-                    }
-                }
-                rt.Mensaje = msg;
+                rt.Mensaje = Helpers.MYSQL_VerificaError(ex);
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+            catch (DbUpdateException ex)
             {
-                var msg = "";
-                if (e.InnerException != null)
-                {
-                    var x = e.InnerException.InnerException;
-                    msg = x.Message;
-                }
-                else
-                {
-                    foreach (var eve in e.Entries)
-                    {
-                        //msg += eve.m;
-                        foreach (var ve in eve.CurrentValues.PropertyNames)
-                        {
-                            msg += ve.ToString();
-                        }
-                    }
-                }
-                rt.Mensaje = msg;
+                rt.Mensaje = Helpers.ENTITY_VerificaError(ex);
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
             catch (Exception e)
@@ -405,14 +444,12 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return rt;
         }
-
-        public DtoLib.Resultado Proveedor_EditarFicha_Validar(DtoLibCompra.Proveedor.Editar.FichaValidar ficha)
+        public DtoLib.Resultado 
+            Proveedor_EditarFicha_Validar(DtoLibCompra.Proveedor.Editar.FichaValidar ficha)
         {
             var rt = new DtoLib.Resultado();
-
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -430,7 +467,6 @@ namespace ProvLibCompra
                         rt.Result = DtoLib.Enumerados.EnumResult.isError;
                         return rt;
                     }
-
                     if (ficha.codigo.Trim() != "")
                     {
                         var entPrv = cnn.proveedores.FirstOrDefault(f => f.codigo.Trim().ToUpper() == ficha.codigo && f.auto != ficha.autoId);
@@ -458,14 +494,14 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return rt;
         }
 
-        public DtoLib.ResultadoLista<DtoLibCompra.Proveedor.Documento.Ficha> Proveedor_Documento_GetLista(DtoLibCompra.Proveedor.Documento.Filtro filtro)
+        public DtoLib.ResultadoLista<DtoLibCompra.Proveedor.Documento.Ficha> 
+            Proveedor_Documento_GetLista(DtoLibCompra.Proveedor.Documento.Filtro filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibCompra.Proveedor.Documento.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -514,7 +550,7 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
 
@@ -649,7 +685,5 @@ namespace ProvLibCompra
 
             return rt;
         }
-
     }
-
 }

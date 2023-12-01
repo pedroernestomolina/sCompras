@@ -31,6 +31,8 @@ namespace ModCompra.Proveedor.AgregarEditar
         public string GetEstado { get { return _gestion.GetEstado; } }
         public string GetDenFiscal { get { return _gestion.GetDenFiscal; } }
         public decimal GetTasaRetIva { get { return _gestion.GetTasaRetIva; } }
+        public string GetCodigoXmlIslr { get { return _gestion.GetCodigoXmlIslr; } }
+        public string GetDescXmlIslr { get { return _gestion.GetDescXmlIslr; } }
         public bool salirIsOk { get { return _gestion.salidaIsOk; } }
         public bool AgregarIsOk { get { return _gestion.procesarIsOk; } }
         public string autoProvRegistrado { get {return  _gestion.autoProvRegistrado; } }
@@ -142,6 +144,14 @@ namespace ModCompra.Proveedor.AgregarEditar
         {
             _gestion.setTasaRetIva(p);
         }
+        public void setCodXmlIslr(string p)
+        {
+            _gestion.setCodXmlIslr(p);
+        }
+        public void setDescXmlIslr(string p)
+        {
+            _gestion.setDescXmlIslr(p);
+        }
 
         public void Procesar()
         {
@@ -158,12 +168,9 @@ namespace ModCompra.Proveedor.AgregarEditar
             if (_gestion.salidaIsOk)
                 frm.Cerrar();
         }
-
         public void setFichaEditar(string id)
         {
             _gestion.setFichaEditar(id);
         }
-
     }
-
 }

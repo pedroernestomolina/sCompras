@@ -16,8 +16,10 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
         private decimal _factorCambio;
         private DateTime _fechaServidor;
         private string _notas;
+        private Utils.FiltrosCB.ICtrlConBusqueda _concepto;
 
 
+        public Utils.FiltrosCB.ICtrlConBusqueda Concepto { get { return _concepto; } }
         public BindingSource Get_Caja_Source { get { return _caja.GetSource; } }
         public BindingSource Get_TipoMov_Source { get { return _tipoMov.GetSource; } }
         public string Get_CajaID { get { return _caja.GetId; } }
@@ -38,6 +40,7 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
             _notas = "";
             _caja = new Utils.Control.TipoCombo.Caja.Imp();
             _tipoMov= new Utils.Control.TipoCombo.TipoMovCaja.Imp();
+            _concepto = new Utils.FiltrosCB.ConBusqueda.Concepto.Imp();
         }
         public void Inicializa()
         {
@@ -47,11 +50,13 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
             _notas = "";
             _caja.Inicializa();
             _tipoMov.Inicializa();
+            _concepto.Inicializa();
         }
         public void CargarData()
         {
             _caja.ObtenerData();
             _tipoMov.ObtenerData();
+            _concepto.ObtenerData();
         }
         public void setCajaById(string id)
         {
@@ -107,6 +112,11 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
             if (_tipoMov.GetItem == null || _tipoMov.GetId == "")
             {
                 Helpers.Msg.Alerta("CAMPO [ TIPO MOVIMIENTO ] DEBE SER SELECCIONADO");
+                return false;
+            }
+            if (_concepto.GetItem == null || _concepto.GetId == "")
+            {
+                Helpers.Msg.Alerta("CAMPO [ CONCEPTO MOVIMIENTO ] DEBE SER SELECCIONADO");
                 return false;
             }
             if (_montoMov == 0m) 

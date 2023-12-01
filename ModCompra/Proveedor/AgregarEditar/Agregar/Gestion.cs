@@ -39,6 +39,8 @@ namespace ModCompra.Proveedor.AgregarEditar.Agregar
         public string GetEstado{ get { return _data.Estado; } }
         public string GetDenFiscal { get { return _data.DenFiscal; } }
         public decimal GetTasaRetIva { get { return _data.TasaRetIva; } }
+        public string GetCodigoXmlIslr { get { return _data.CodigoXmlIslr; } }
+        public string GetDescXmlIslr { get { return _data.DescXmlIslr; } }
         public bool salidaIsOk { get { return _salidaIsOk; } }
         public bool procesarIsOk { get { return _procesarIsOk; } }
         public string autoProvRegistrado { get { return _autoProved; } }
@@ -192,7 +194,7 @@ namespace ModCompra.Proveedor.AgregarEditar.Agregar
         private bool GuardarFicha()
         {
             var rt = true;
-
+            //
             var dataOOB = new OOB.LibCompra.Proveedor.Agregar.Ficha()
             {
                 ciRif = _data.CiRif,
@@ -210,6 +212,8 @@ namespace ModCompra.Proveedor.AgregarEditar.Agregar
                 retIva = _data.TasaRetIva,
                 telefono = _data.Telefono,
                 webSite = _data.WebSite,
+                codXmlIslr = _data.CodigoXmlIslr,
+                descXmlIslr = _data.DescXmlIslr
             };
             var r01 = Sistema.MyData.Proveedor_AgregarFicha(dataOOB);
             if (r01.Result == OOB.Enumerados.EnumResult.isError) 
@@ -218,7 +222,7 @@ namespace ModCompra.Proveedor.AgregarEditar.Agregar
                 return false;
             }
             _autoProved = r01.Auto;
-
+            //
             return rt;
         }
 
@@ -243,7 +247,13 @@ namespace ModCompra.Proveedor.AgregarEditar.Agregar
         public void setFichaEditar(string id)
         {
         }
-
+        public void setCodXmlIslr(string p)
+        {
+            _data.setCodXmlIslr(p);
+        }
+        public void setDescXmlIslr(string p)
+        {
+            _data.setDescXmlIslr(p);
+        }
     }
-
 }

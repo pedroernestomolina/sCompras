@@ -103,7 +103,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_Reportes_Cxp_PagoEmitido_Planilla(idMov);
         }
-
-
+        //
+        public DtoLib.ResultadoLista<DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Ficha> 
+            Transporte_Reportes_Cxp_PagosPorConcepto(DtoLibTransporte.Reportes.Cxp.PagoPorConceptos.Filtro filtro)
+        {
+            return ServiceProv.Transporte_Reportes_Cxp_PagosPorConcepto(filtro);
+        }
     }
 }
