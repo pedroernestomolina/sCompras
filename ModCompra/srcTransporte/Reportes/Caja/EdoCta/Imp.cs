@@ -43,7 +43,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
                 };
                 var r02 = Sistema.MyData.Transporte_Reportes_Caja_Saldo_Al(filtro2);
                 var _saldoIni = r02.Entidad.esDivisa.Trim().ToUpper() == "1" ? r02.Entidad.montoMonDiv : r02.Entidad.montoMonAct;
-                imprimir(r01.Lista, _saldoIni);
+                imprimir(r01.Lista, _saldoIni + r02.Entidad.saldoIni);
             }
             catch (Exception e)
             {

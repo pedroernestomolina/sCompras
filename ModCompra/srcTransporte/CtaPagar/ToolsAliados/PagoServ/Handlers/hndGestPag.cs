@@ -10,8 +10,9 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
 {
     public class hndGestPag: Vistas.IGestPag
     {
-        private Anticipos.Agregar.Vistas.Idata _hndData;
+        private Vistas.Idata _hndData;
         private Anticipos.Agregar.Vistas.Icaja _hndCaja;
+        private OOB.LibCompra.Transporte.Aliado.Entidad.Ficha _aliado;
 
 
         public decimal Get_TasaFactorCambio { get { return _hndData.Get_TasaFactorCambio; } }
@@ -35,17 +36,19 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         public decimal Get_TotalRetMonAct { get { return _hndData.Get_TotalRetencionMonAct; } }
         public decimal Get_TotalRetMonDiv { get { return _hndData.Get_TotalRetencionMonDiv;  } }
         public IEnumerable<object> Get_CajasUsadas { get { return hndCaja.Get_CajasUsadas; } }
-        public Anticipos.Agregar.Vistas.Idata hndData { get { return _hndData; } }
+        public Vistas.Idata hndData { get { return _hndData; } }
         public Anticipos.Agregar.Vistas.Icaja hndCaja { get { return _hndCaja; } }
 
 
         public hndGestPag()
         {
-            _hndData = new Anticipos.Agregar.Handler.data();
+            _aliado = null;
+            _hndData = new ImpData();
             _hndCaja = new Anticipos.Agregar.Handler.caja();
         }
         public void Inicializa()
         {
+            _aliado = null;
             _hndData.Inicializa();
             _hndCaja.Inicializa();
         }
@@ -53,6 +56,12 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         {
             _hndData.CargarData();
             _hndCaja.CargarData();
+            if (_aliado == null) 
+            {
+                throw new Exception("ALIADO NO DEFIIDO");
+            }
+            _hndCaja.setAplicaFactorCambioParaAnticipo(true);
+            _hndCaja.setTasaAplicarFactorCambioParaAnticipo(_aliado.tasaPromAnticipo);
         }
         public void setFechaPag(DateTime fecha)
         {
@@ -68,6 +77,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         }
         public void setAliado(OOB.LibCompra.Transporte.Aliado.Entidad.Ficha ficha)
         {
+            _aliado = ficha;
             _hndData.setAliado(ficha);
         }
         public void setMotivo(string desc)
@@ -92,6 +102,29 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         }
         public void ActualizarSaldoCaja()
         {
+            var _montoAnt = 0m;
+            foreach (var rg in _hndCaja.Get_CajasUsadas)
+            {
+                var xrg = (Anticipos.Agregar.Handler.dataCaja)rg;
+                if (xrg.Get_Ficha.id == -1 || xrg.Get_Ficha.id == -2) 
+                {
+                    _montoAnt += xrg.montoAbonar;
+                }
+            }
+            if (_montoAnt > 0m) 
+            {
+                if (_montoAnt >= _hndData.Get_MontoAnticipoMonDiv)
+                {
+                    _hndData.setTasaFactorCambio(_hndData.Get_Aliado.tasaPromAnticipo);
+                }
+                else 
+                {
+                    var _xant = _hndData.Get_Aliado.tasaPromAnticipo * _montoAnt;
+                    var _xnor = (_hndData.Get_MontoAnticipoMonDiv- _montoAnt)* _hndData.Get_TasaFactorCambio;
+                    var _xprom = (_xnor + _xant) / _hndData.Get_MontoAnticipoMonDiv;
+                    _hndData.setTasaFactorCambio(_xprom);
+                }
+            }
             _hndCaja.setFactorCambio(_hndData.Get_TasaFactorCambio);
             _hndCaja.setMontoPendDiv(_hndData.Get_MontoAbonoMonDiv);
             _hndCaja.ActualizarSaldosPend();

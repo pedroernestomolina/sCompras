@@ -25,5 +25,9 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Vistas
         void EditarMontoAbonar();
         void ActualizarSaldosPend();
         bool IsOk();
+        //
+        decimal GetTasaAplicarFactorCambioParaAnticipo { get; }
+        void setAplicaFactorCambioParaAnticipo(bool aplica);
+        void setTasaAplicarFactorCambioParaAnticipo(decimal factor);
     }
 }

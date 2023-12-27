@@ -12,5 +12,6 @@ namespace OOB.LibCompra.Transporte.Reportes.Caja.Saldo
         public decimal montoMonAct { get; set; }
         public decimal montoMonDiv { get; set; }
         public string esDivisa { get; set; }
+        public decimal saldoIni { get; set; }
     }
 }

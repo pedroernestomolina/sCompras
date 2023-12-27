@@ -26,6 +26,8 @@ namespace DtoLibTransporte.Reportes.Aliado.PagoServ.Planilla
         public decimal montoRetMonDiv { get; set; }
         public decimal totalPago { get; set; }
         public decimal anticipo { get; set; }
+        public decimal  montoAPagarMonAct { get; set; }
+        public decimal tasaPromFactorAnticipo { get; set; }
         public List<Serv> serv { get; set; }
         public List<Caja> caja { get; set; }
     }

@@ -37,6 +37,20 @@ namespace ProvLibCompra
                     {
                         throw new Exception("ALIADO NO ENCONTRADO");
                     }
+                    //
+                    _sql = @"SELECT 
+                                sum(monto_neto_mon_act)/sum(monto_neto_mon_div) as tasaPromAnticipo
+                             FROM transp_aliado_anticipo
+                            where id_aliado=@id and
+                                estatus_anulado='0' ";
+                    p1 = new MySql.Data.MySqlClient.MySqlParameter("@id", id);
+                    var _tasaProm = cnn.Database.SqlQuery<decimal?>(_sql, p1).FirstOrDefault();
+                    _ent.tasaPromAnticipo = 0m;
+                    if (_tasaProm.HasValue) 
+                    {
+                        _ent.tasaPromAnticipo = _tasaProm.Value;
+                    }
+                    //
                     result.Entidad = _ent;
                 }
             }

@@ -192,7 +192,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                 }
                 fichaOOB.Recibo.metpago = _lstMP;
                 //
-                var _lstCaja = new List<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar .DataCaja>();
+                var _lstCaja = new List<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataCaja>();
                 var _factorCambio = _hndCaja.Get_FactorCambio;
                 foreach (var rg in  _hndCaja.Get_Lista.Where(w => w.montoAbonar > 0).ToList())
                 {

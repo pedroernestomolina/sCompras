@@ -19,5 +19,6 @@ namespace DtoLibTransporte.Aliado.Entidad
         public decimal montoAnticiposAnuladoDiv { get; set; }
         public decimal montoAnticipoRetDiv { get; set; }
         public decimal montoAnticipoRetAnuladoDiv { get; set; }
+        public decimal tasaPromAnticipo { get; set; }
     }
 }

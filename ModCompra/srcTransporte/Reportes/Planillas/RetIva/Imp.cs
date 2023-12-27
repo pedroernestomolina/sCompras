@@ -47,6 +47,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
             rt["mes_rel"] = ficha.mesRelRet;
             rt["prov_nombre"] = ficha.prvNombre;
             rt["prov_cirif"] = ficha.prvCiRif;
+            rt["prov_dirFiscal"] = ficha.prvDirFiscal;
             ds.Tables["RetIva"].Rows.Add(rt);
 
             var _factura = "";

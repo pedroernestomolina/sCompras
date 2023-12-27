@@ -53,6 +53,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.PagosPorConcepto
                 DataRow rt = ds.Tables["CxpPagoPorConcepto"].NewRow();
                 rt["entidad"] = rg.entidadCiRif.Trim()+Environment.NewLine+rg.entidadNombre.Trim();
                 rt["fecha"] = rg.recFecha;
+                rt["montoMonAct"] = rg.importeDiv * rg.tasaFactor;
                 rt["montoDiv"] = rg.importeDiv;
                 rt["recibo"] = rg.recNro;
                 rt["documento"] = rg.siglasDoc+Environment.NewLine+rg.numeroDoc;

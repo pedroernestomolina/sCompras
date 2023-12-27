@@ -173,6 +173,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Vistas
         {
             var _monto = decimal.Parse(TB_MONTO.Text);
             _controlador.data.setMontoAnticipoMonDiv(_monto);
+            _controlador.ActualizarSaldoCaja();
             TB_MONTO.Text = _controlador.data.Get_MontoAnticipoMonDiv.ToString("n2", _cult);
             ActualizarTotal();
         }
@@ -180,6 +181,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Vistas
         {
             var _monto = decimal.Parse(TB_FACTOR.Text);
             _controlador.data.setTasaFactorCambio(_monto);
+            _controlador.ActualizarSaldoCaja();
             TB_FACTOR.Text = _controlador.data.Get_TasaFactorCambio.ToString("n2", _cult);
             ActualizarTotal();
         }

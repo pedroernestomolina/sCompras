@@ -108,6 +108,7 @@ namespace DataProvCompra.Data
             fichaDTO.movimiento = mov;
             fichaDTO.MontoPorAnticipoUsado = ficha.MontoPorAnticipoUsado;
             fichaDTO.MontoPorRetAnticipoUsado = ficha.MontoPorRetAnticipoUsado;
+            fichaDTO.TasaPromedioFactorAnticipo = ficha.TasaPromedioFactorAnticipo;
             var r01 = MyData.Transporte_Aliado_PagoServ_AgregarPago (fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {

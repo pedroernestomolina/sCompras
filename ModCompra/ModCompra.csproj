@@ -530,6 +530,8 @@
     <Compile Include="srcTransporte\Concepto\Maestro\data.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\Imp.cs" />
     <Compile Include="srcTransporte\Concepto\Maestro\ImpLista.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Handlers\ImpData.cs" />
+    <Compile Include="srcTransporte\CtaPagar\ToolsAliados\PagoServ\Vistas\Idata.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\dataItem.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\HndBusqDoc.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\Administrador\Handler\hndBusqueda.cs" />

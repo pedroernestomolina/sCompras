@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:CxpDocPagosEmitidos" ZOrder="4" X="1029" Y="274" Height="201" Width="196" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
     <Shape ID="DesignTable:ToolsAliadoPagoPend" ZOrder="3" X="79" Y="346" Height="143" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="139" />
     <Shape ID="DesignTable:ToolsPagoDocPend" ZOrder="2" X="161" Y="498" Height="181" Width="178" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
-    <Shape ID="DesignTable:CxpPagoPorConcepto" ZOrder="1" X="901" Y="491" Height="162" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="158" />
+    <Shape ID="DesignTable:CxpPagoPorConcepto" ZOrder="1" X="901" Y="491" Height="181" Width="193" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

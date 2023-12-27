@@ -117,7 +117,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>conceptoMotivo</rd:DefaultName>
-        <Top>3.62218cm</Top>
+        <Top>3.87795cm</Top>
         <Left>0.67972cm</Left>
         <Height>1.235cm</Height>
         <Width>17.21497cm</Width>
@@ -186,7 +186,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>retTasa</rd:DefaultName>
-        <Top>5.84495cm</Top>
+        <Top>6.10072cm</Top>
         <Left>4.19078cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -220,7 +220,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>retSustraendo</rd:DefaultName>
-        <Top>5.84495cm</Top>
+        <Top>6.10072cm</Top>
         <Left>9.48654cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -254,7 +254,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>retMonto</rd:DefaultName>
-        <Top>5.20967cm</Top>
+        <Top>5.46544cm</Top>
         <Left>15.99032cm</Left>
         <Height>0.6cm</Height>
         <Width>1.91792cm</Width>
@@ -289,7 +289,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>montoPagado</rd:DefaultName>
-        <Top>5.88022cm</Top>
+        <Top>6.13599cm</Top>
         <Left>15.95504cm</Left>
         <Height>0.6cm</Height>
         <Width>1.95319cm</Width>
@@ -323,7 +323,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>retencion</rd:DefaultName>
-        <Top>5.84495cm</Top>
+        <Top>6.10072cm</Top>
         <Left>6.79661cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -382,7 +382,7 @@
               <Width>1.85106cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.78841cm</Width>
+              <Width>4.41799cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.36489cm</Width>
@@ -844,10 +844,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>PagoAliado_Serv</DataSetName>
-        <Top>7.50356cm</Top>
+        <Top>7.75933cm</Top>
         <Left>0.23196cm</Left>
         <Height>1.8cm</Height>
-        <Width>11.68199cm</Width>
+        <Width>11.31157cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -859,16 +859,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.16049cm</Width>
+              <Width>3.59872cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.82627cm</Width>
+              <Width>0.70456cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2cm</Width>
+              <Width>1.87829cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2cm</Width>
+              <Width>1.87829cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.21412cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1033,6 +1036,42 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox32">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>TASA</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox32</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -1160,6 +1199,40 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>montoDiv</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="tasaAplica">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!tasaAplica.Value</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <Format>n2</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>tasaAplica</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1316,12 +1389,48 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox39">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox39</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>DarkGray</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -1342,10 +1451,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>PagoAliado_Caja</DataSetName>
-        <Top>7.46829cm</Top>
-        <Left>12.0935cm</Left>
+        <Top>7.72406cm</Top>
+        <Left>11.71992cm</Left>
         <Height>2.09104cm</Height>
-        <Width>8.98676cm</Width>
+        <Width>9.27399cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -1368,8 +1477,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>6.86829cm</Top>
-        <Left>12.0935cm</Left>
+        <Top>7.12406cm</Top>
+        <Left>11.71992cm</Left>
         <Height>0.6cm</Height>
         <Width>4.16049cm</Width>
         <ZIndex>13</ZIndex>
@@ -1398,7 +1507,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>6.86829cm</Top>
+        <Top>7.12406cm</Top>
         <Left>0.22878cm</Left>
         <Height>0.6cm</Height>
         <Width>4.16367cm</Width>
@@ -1613,7 +1722,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>2.91634cm</Top>
+        <Top>3.17211cm</Top>
         <Left>0.67972cm</Left>
         <Height>0.6cm</Height>
         <Width>3.33785cm</Width>
@@ -1630,10 +1739,10 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>2.73995cm</Top>
+        <Top>3.17211cm</Top>
         <Left>0.21843cm</Left>
         <Height>0cm</Height>
-        <Width>20.84829cm</Width>
+        <Width>20.77548cm</Width>
         <ZIndex>21</ZIndex>
         <Style>
           <Border>
@@ -1642,10 +1751,10 @@
         </Style>
       </Line>
       <Line Name="Line2">
-        <Top>5.03328cm</Top>
+        <Top>5.28905cm</Top>
         <Left>0.23197cm</Left>
         <Height>0cm</Height>
-        <Width>20.84829cm</Width>
+        <Width>20.76194cm</Width>
         <ZIndex>22</ZIndex>
         <Style>
           <Border>
@@ -1673,7 +1782,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>5.88022cm</Top>
+        <Top>6.13599cm</Top>
         <Left>12.20268cm</Left>
         <Height>0.6cm</Height>
         <Width>3.61125cm</Width>
@@ -1704,7 +1813,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>5.20967cm</Top>
+        <Top>5.46544cm</Top>
         <Left>0.64445cm</Left>
         <Height>0.6cm</Height>
         <Width>3.37312cm</Width>
@@ -1739,7 +1848,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>5.20967cm</Top>
+        <Top>5.46544cm</Top>
         <Left>4.19397cm</Left>
         <Height>0.6cm</Height>
         <Width>2.49681cm</Width>
@@ -1775,7 +1884,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>5.20967cm</Top>
+        <Top>5.46544cm</Top>
         <Left>6.86717cm</Left>
         <Height>0.6cm</Height>
         <Width>2.42944cm</Width>
@@ -1811,7 +1920,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>5.20967cm</Top>
+        <Top>5.46544cm</Top>
         <Left>9.48654cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
@@ -1847,7 +1956,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>5.17439cm</Top>
+        <Top>5.43016cm</Top>
         <Left>12.20268cm</Left>
         <Height>0.6cm</Height>
         <Width>3.61125cm</Width>
@@ -1864,7 +1973,7 @@
         </Style>
       </Textbox>
       <Line Name="Line3">
-        <Top>10.2624cm</Top>
+        <Top>10.51817cm</Top>
         <Left>0.23197cm</Left>
         <Height>0cm</Height>
         <Width>4.16049cm</Width>
@@ -1890,7 +1999,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>10.4035cm</Top>
+        <Top>10.65927cm</Top>
         <Left>0.23197cm</Left>
         <Height>0.6cm</Height>
         <Width>4.16048cm</Width>
@@ -1905,11 +2014,77 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="montoPagoMonAct">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!montoPagoMonAct.Value, "PagoAliado")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>montoPagoMonAct</rd:DefaultName>
+        <Top>2.326cm</Top>
+        <Left>15.61924cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>31</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Por Monto(Bs):</Value>
+                <Style>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>2.326cm</Top>
+        <Left>13.01341cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>32</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>4.50244in</Height>
+    <Height>4.77327in</Height>
     <Style />
   </Body>
-  <Width>8.38311in</Width>
+  <Width>8.38115in</Width>
   <Page>
     <PageHeader>
       <Height>1.29646cm</Height>
@@ -1937,8 +2112,8 @@
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>0.52325cm</Top>
           <Left>0.21843cm</Left>
-          <Height>0.6cm</Height>
-          <Width>20.84829cm</Width>
+          <Height>0.56155cm</Height>
+          <Width>20.77548cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1954,7 +2129,7 @@
           <Top>1.19063cm</Top>
           <Left>0.21843cm</Left>
           <Height>0cm</Height>
-          <Width>20.84829cm</Width>
+          <Width>20.77548cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -2057,6 +2232,10 @@
           <DataField>retencion</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="montoPagoMonAct">
+          <DataField>montoPagoMonAct</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS_PLANILLA</rd:DataSetName>
@@ -2119,6 +2298,10 @@
         </Field>
         <Field Name="montoDiv">
           <DataField>montoDiv</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="tasaAplica">
+          <DataField>tasaAplica</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>

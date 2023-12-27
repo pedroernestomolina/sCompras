@@ -208,6 +208,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
                         {
                             ficha.MontoPorRetAnticipoUsado = it.montoAbonar;
                         }
+                        ficha.TasaPromedioFactorAnticipo = _data.GestPago.hndCaja.GetTasaAplicarFactorCambioParaAnticipo;
                     }
                 }
                 //

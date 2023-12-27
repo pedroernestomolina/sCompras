@@ -185,6 +185,7 @@ namespace ProvLibCompra
                                         ret.fecha as fechaRet,
                                         ret.razon_social as prvNombre, 
                                         ret.ci_rif as prvCiRif,
+                                        ret.dir_fiscal as prvDirFiscal,
                                         retDet.comprobante as comprobanteRet,
                                         retDet.documento as numDoc,
                                         retDet.fecha as fechaEmiDoc,
@@ -434,7 +435,9 @@ namespace ProvLibCompra
                                     monto_ret_mon_act as montoRetMonAct,
                                     monto_ret_mon_div as montoRetMonDiv, 
                                     total_pag_mon_div as totalPago,
-                                    (monto_anticipo_usado+monto_anticipo_ret_usado) as anticipo
+                                    (monto_anticipo_usado+monto_anticipo_ret_usado) as anticipo,
+                                    monto_mon_act as montoAPagarMonAct, 
+                                    tasa_promedio_factor_anticipo as tasaPromFactorAnticipo
                                 FROM transp_aliado_pagoserv
                                 where id=@idMov";
                     var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);
@@ -824,7 +827,8 @@ namespace ProvLibCompra
                     var _sql_1 = @"SELECT 
                                         sum(cjMov.monto_mov_mon_act*signo) as montoMonAct,
                                         sum(cjMov.monto_mov_mon_div*signo) as montoMonDiv,
-                                        cj.es_divisa as esDivisa
+                                        cj.es_divisa as esDivisa,
+                                        cj.saldo_inicial as saldoIni
                                    FROM transp_caja_mov as cjMov
                                         join transp_caja as cj on cj.id=cjMov.id_caja 
                                    WHERE id_caja=@idCaja and

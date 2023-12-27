@@ -3439,7 +3439,7 @@
     <Height>3.51041in</Height>
     <Style />
   </Body>
-  <Width>13.07034in</Width>
+  <Width>12.89326in</Width>
   <Page>
     <PageHeader>
       <Height>3.88055cm</Height>
@@ -4000,8 +4000,8 @@
     </PageFooter>
     <PageHeight>21.5cm</PageHeight>
     <PageWidth>33cm</PageWidth>
-    <LeftMargin>0.5cm</LeftMargin>
-    <RightMargin>0.5cm</RightMargin>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
     <TopMargin>0cm</TopMargin>
     <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>

@@ -45,6 +45,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
             rt["fecha"] = ficha.fechaEmision;
             rt["tasaFactor"] = ficha.tasaFactor;
             rt["montoPago"] = ficha.montoAPagar;
+            rt["montoPagoMonAct"] = ficha.montoAPagarMonAct;
             rt["aliadoCiRif"] = ficha.ciRifAliado + Environment.NewLine + ficha.nombreAliado;
             rt["aliadoNombre"] = ficha.nombreAliado;
             rt["conceptoMotivo"] = ficha.motivo;
@@ -71,6 +72,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
                 rtDt["monto"] = ficha.anticipo;
                 rtDt["montoDiv"] = ficha.anticipo;
                 rtDt["esDivisa"] = "$";
+                rtDt["tasaAplica"] = ficha.tasaPromFactorAnticipo;
                 ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
             }
             var _montoDiv = 0m;
@@ -86,6 +88,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
                 rtDt["monto"] = sv.monto;
                 rtDt["montoDiv"] = _montoDiv;
                 rtDt["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
+                rtDt["tasaAplica"] = ficha.tasaFactor;
                 ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
             }
 

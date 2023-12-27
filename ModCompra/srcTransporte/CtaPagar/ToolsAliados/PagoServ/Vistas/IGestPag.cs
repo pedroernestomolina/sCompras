@@ -10,7 +10,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
 {
     public interface IGestPag
     {
-        Anticipos.Agregar.Vistas.Idata hndData { get; }
+        Idata hndData { get; }
         Anticipos.Agregar.Vistas.Icaja hndCaja { get; }
         decimal Get_TasaFactorCambio { get; }
         DateTime Get_FechaPag { get; }

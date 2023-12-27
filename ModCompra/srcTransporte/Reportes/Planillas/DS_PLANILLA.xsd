@@ -21,6 +21,7 @@
               <xs:element name="mes_rel" msprop:Generator_ColumnVarNameInTable="columnmes_rel" msprop:Generator_ColumnPropNameInRow="mes_rel" msprop:Generator_ColumnPropNameInTable="mes_relColumn" msprop:Generator_UserColumnName="mes_rel" type="xs:string" minOccurs="0" />
               <xs:element name="prov_nombre" msprop:Generator_ColumnVarNameInTable="columnprov_nombre" msprop:Generator_ColumnPropNameInRow="prov_nombre" msprop:Generator_ColumnPropNameInTable="prov_nombreColumn" msprop:Generator_UserColumnName="prov_nombre" type="xs:string" minOccurs="0" />
               <xs:element name="prov_cirif" msprop:Generator_ColumnVarNameInTable="columnprov_cirif" msprop:Generator_ColumnPropNameInRow="prov_cirif" msprop:Generator_ColumnPropNameInTable="prov_cirifColumn" msprop:Generator_UserColumnName="prov_cirif" type="xs:string" minOccurs="0" />
+              <xs:element name="prov_dirFiscal" msprop:Generator_ColumnVarNameInTable="columnprov_dirFiscal" msprop:Generator_ColumnPropNameInRow="prov_dirFiscal" msprop:Generator_ColumnPropNameInTable="prov_dirFiscalColumn" msprop:Generator_UserColumnName="prov_dirFiscal" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -89,6 +90,7 @@
               <xs:element name="montoPagado" msprop:Generator_ColumnVarNameInTable="columnmontoPagado" msprop:Generator_ColumnPropNameInRow="montoPagado" msprop:Generator_ColumnPropNameInTable="montoPagadoColumn" msprop:Generator_UserColumnName="montoPagado" type="xs:decimal" minOccurs="0" />
               <xs:element name="isAnulado" msprop:Generator_ColumnVarNameInTable="columnisAnulado" msprop:Generator_ColumnPropNameInRow="isAnulado" msprop:Generator_ColumnPropNameInTable="isAnuladoColumn" msprop:Generator_UserColumnName="isAnulado" type="xs:string" minOccurs="0" />
               <xs:element name="retencion" msprop:Generator_ColumnVarNameInTable="columnretencion" msprop:Generator_ColumnPropNameInRow="retencion" msprop:Generator_ColumnPropNameInTable="retencionColumn" msprop:Generator_UserColumnName="retencion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPagoMonAct" msprop:Generator_ColumnVarNameInTable="columnmontoPagoMonAct" msprop:Generator_ColumnPropNameInRow="montoPagoMonAct" msprop:Generator_ColumnPropNameInTable="montoPagoMonActColumn" msprop:Generator_UserColumnName="montoPagoMonAct" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -109,6 +111,7 @@
               <xs:element name="monto" msprop:Generator_ColumnVarNameInTable="columnmonto" msprop:Generator_ColumnPropNameInRow="monto" msprop:Generator_ColumnPropNameInTable="montoColumn" msprop:Generator_UserColumnName="monto" type="xs:decimal" minOccurs="0" />
               <xs:element name="esDivisa" msprop:Generator_ColumnVarNameInTable="columnesDivisa" msprop:Generator_ColumnPropNameInRow="esDivisa" msprop:Generator_ColumnPropNameInTable="esDivisaColumn" msprop:Generator_UserColumnName="esDivisa" type="xs:string" minOccurs="0" />
               <xs:element name="montoDiv" msprop:Generator_ColumnVarNameInTable="columnmontoDiv" msprop:Generator_ColumnPropNameInRow="montoDiv" msprop:Generator_ColumnPropNameInTable="montoDivColumn" msprop:Generator_UserColumnName="montoDiv" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tasaAplica" msprop:Generator_ColumnVarNameInTable="columntasaAplica" msprop:Generator_ColumnPropNameInRow="tasaAplica" msprop:Generator_ColumnPropNameInTable="tasaAplicaColumn" msprop:Generator_UserColumnName="tasaAplica" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

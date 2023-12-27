@@ -641,6 +641,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             private global::System.Data.DataColumn columnprov_cirif;
             
+            private global::System.Data.DataColumn columnprov_dirFiscal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RetIvaDataTable() {
@@ -724,6 +726,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn prov_dirFiscalColumn {
+                get {
+                    return this.columnprov_dirFiscal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -759,7 +769,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetIvaRow AddRetIvaRow(string comprobante_nro, System.DateTime fecha, string ano_rel, string mes_rel, string prov_nombre, string prov_cirif) {
+            public RetIvaRow AddRetIvaRow(string comprobante_nro, System.DateTime fecha, string ano_rel, string mes_rel, string prov_nombre, string prov_cirif, string prov_dirFiscal) {
                 RetIvaRow rowRetIvaRow = ((RetIvaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         comprobante_nro,
@@ -767,7 +777,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                         ano_rel,
                         mes_rel,
                         prov_nombre,
-                        prov_cirif};
+                        prov_cirif,
+                        prov_dirFiscal};
                 rowRetIvaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRetIvaRow);
                 return rowRetIvaRow;
@@ -796,6 +807,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 this.columnmes_rel = base.Columns["mes_rel"];
                 this.columnprov_nombre = base.Columns["prov_nombre"];
                 this.columnprov_cirif = base.Columns["prov_cirif"];
+                this.columnprov_dirFiscal = base.Columns["prov_dirFiscal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -813,6 +825,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 base.Columns.Add(this.columnprov_nombre);
                 this.columnprov_cirif = new global::System.Data.DataColumn("prov_cirif", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprov_cirif);
+                this.columnprov_dirFiscal = new global::System.Data.DataColumn("prov_dirFiscal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprov_dirFiscal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2121,6 +2135,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             private global::System.Data.DataColumn columnretencion;
             
+            private global::System.Data.DataColumn columnmontoPagoMonAct;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PagoAliadoDataTable() {
@@ -2260,6 +2276,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoPagoMonActColumn {
+                get {
+                    return this.columnmontoPagoMonAct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2295,7 +2319,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PagoAliadoRow AddPagoAliadoRow(string reciboNro, System.DateTime fecha, decimal tasaFactor, decimal montoPago, string aliadoCiRif, string aliadoNombre, string conceptoMotivo, decimal retTasa, decimal retSustraendo, decimal retMonto, decimal montoPagado, string isAnulado, decimal retencion) {
+            public PagoAliadoRow AddPagoAliadoRow(string reciboNro, System.DateTime fecha, decimal tasaFactor, decimal montoPago, string aliadoCiRif, string aliadoNombre, string conceptoMotivo, decimal retTasa, decimal retSustraendo, decimal retMonto, decimal montoPagado, string isAnulado, decimal retencion, decimal montoPagoMonAct) {
                 PagoAliadoRow rowPagoAliadoRow = ((PagoAliadoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         reciboNro,
@@ -2310,7 +2334,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                         retMonto,
                         montoPagado,
                         isAnulado,
-                        retencion};
+                        retencion,
+                        montoPagoMonAct};
                 rowPagoAliadoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoAliadoRow);
                 return rowPagoAliadoRow;
@@ -2346,6 +2371,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 this.columnmontoPagado = base.Columns["montoPagado"];
                 this.columnisAnulado = base.Columns["isAnulado"];
                 this.columnretencion = base.Columns["retencion"];
+                this.columnmontoPagoMonAct = base.Columns["montoPagoMonAct"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2377,6 +2403,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 base.Columns.Add(this.columnisAnulado);
                 this.columnretencion = new global::System.Data.DataColumn("retencion", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnretencion);
+                this.columnmontoPagoMonAct = new global::System.Data.DataColumn("montoPagoMonAct", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoPagoMonAct);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2807,6 +2835,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             private global::System.Data.DataColumn columnmontoDiv;
             
+            private global::System.Data.DataColumn columntasaAplica;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public PagoAliado_CajaDataTable() {
@@ -2874,6 +2904,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tasaAplicaColumn {
+                get {
+                    return this.columntasaAplica;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2909,13 +2947,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PagoAliado_CajaRow AddPagoAliado_CajaRow(string desc, decimal monto, string esDivisa, decimal montoDiv) {
+            public PagoAliado_CajaRow AddPagoAliado_CajaRow(string desc, decimal monto, string esDivisa, decimal montoDiv, decimal tasaAplica) {
                 PagoAliado_CajaRow rowPagoAliado_CajaRow = ((PagoAliado_CajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         desc,
                         monto,
                         esDivisa,
-                        montoDiv};
+                        montoDiv,
+                        tasaAplica};
                 rowPagoAliado_CajaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPagoAliado_CajaRow);
                 return rowPagoAliado_CajaRow;
@@ -2942,6 +2981,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 this.columnmonto = base.Columns["monto"];
                 this.columnesDivisa = base.Columns["esDivisa"];
                 this.columnmontoDiv = base.Columns["montoDiv"];
+                this.columntasaAplica = base.Columns["tasaAplica"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2955,6 +2995,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 base.Columns.Add(this.columnesDivisa);
                 this.columnmontoDiv = new global::System.Data.DataColumn("montoDiv", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmontoDiv);
+                this.columntasaAplica = new global::System.Data.DataColumn("tasaAplica", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntasaAplica);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4434,6 +4476,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string prov_dirFiscal {
+                get {
+                    try {
+                        return ((string)(this[this.tableRetIva.prov_dirFiscalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'prov_dirFiscal\' in table \'RetIva\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRetIva.prov_dirFiscalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Iscomprobante_nroNull() {
                 return this.IsNull(this.tableRetIva.comprobante_nroColumn);
             }
@@ -4502,6 +4560,18 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setprov_cirifNull() {
                 this[this.tableRetIva.prov_cirifColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isprov_dirFiscalNull() {
+                return this.IsNull(this.tableRetIva.prov_dirFiscalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setprov_dirFiscalNull() {
+                this[this.tableRetIva.prov_dirFiscalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5642,6 +5712,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoPagoMonAct {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePagoAliado.montoPagoMonActColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoPagoMonAct\' in table \'PagoAliado\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoAliado.montoPagoMonActColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsreciboNroNull() {
                 return this.IsNull(this.tablePagoAliado.reciboNroColumn);
             }
@@ -5794,6 +5880,18 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetretencionNull() {
                 this[this.tablePagoAliado.retencionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoPagoMonActNull() {
+                return this.IsNull(this.tablePagoAliado.montoPagoMonActColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoPagoMonActNull() {
+                this[this.tablePagoAliado.montoPagoMonActColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6004,6 +6102,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal tasaAplica {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePagoAliado_Caja.tasaAplicaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tasaAplica\' in table \'PagoAliado_Caja\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePagoAliado_Caja.tasaAplicaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsdescNull() {
                 return this.IsNull(this.tablePagoAliado_Caja.descColumn);
             }
@@ -6048,6 +6162,18 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetmontoDivNull() {
                 this[this.tablePagoAliado_Caja.montoDivColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstasaAplicaNull() {
+                return this.IsNull(this.tablePagoAliado_Caja.tasaAplicaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettasaAplicaNull() {
+                this[this.tablePagoAliado_Caja.tasaAplicaColumn] = global::System.Convert.DBNull;
             }
         }
         

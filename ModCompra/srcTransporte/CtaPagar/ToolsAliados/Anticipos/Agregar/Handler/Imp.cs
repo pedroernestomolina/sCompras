@@ -55,17 +55,20 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
             _procesarIsOK = false;
             if (_data.VerificarData()) 
             {
-                var _monto = _data.Get_MontoAbonoMonAct;
-                if ((caja.MontoCajaPago-_monto)<1m)
+                if (_caja.IsOk()) 
                 {
-                    if (Helpers.Msg.Procesar())
+                    var _monto = _data.Get_MontoAbonoMonAct;
+                    if ((caja.MontoCajaPago - _monto) < 1m)
                     {
-                        GuardarFicha();
+                        if (Helpers.Msg.Procesar())
+                        {
+                            GuardarFicha();
+                        }
                     }
-                }
-                else 
-                {
-                    Helpers.Msg.Alerta("MONTO PAGO CAJA INCORRECTOS");
+                    else
+                    {
+                        Helpers.Msg.Alerta("MONTO PAGO CAJA INCORRECTOS");
+                    }
                 }
             }
         }

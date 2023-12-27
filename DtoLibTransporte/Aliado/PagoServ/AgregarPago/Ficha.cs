@@ -12,5 +12,6 @@ namespace DtoLibTransporte.Aliado.PagoServ.AgregarPago
         public Movimiento movimiento { get; set; }
         public decimal MontoPorAnticipoUsado { get; set; }
         public decimal MontoPorRetAnticipoUsado { get; set; }
+        public decimal TasaPromedioFactorAnticipo { get; set; }
     }
 }

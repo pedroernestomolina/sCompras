@@ -340,6 +340,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
         }
         private void ActualizarTotalPago()
         {
+            TB_FACTOR_PAG_SERV.Text = _controlador.data.GestPago.Get_TasaFactorCambio.ToString("n2");
             L_MONTO_MONEDA_ACT.Text = "Monto Bs: " + _controlador.data.GestPago.Get_MontoPagMonAct.ToString("n2", _cult);
             L_MONTO_RETENCION.Text = _controlador.data.GestPago.Get_MontoRetencion.ToString("n2", _cult);
             L_MONTO_ABONA_MON_DIV.Text = _controlador.data.GestPago.Get_MontoAbonoMonDiv.ToString("n2", _cult);
@@ -359,10 +360,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Vistas
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 1)
-            {
-                ActualizarTotalCaja();
-            }
+            ActualizarTotalPago();
         }
         private void ActualizarTotalCaja()
         {

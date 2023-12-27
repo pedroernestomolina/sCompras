@@ -25,9 +25,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
         }
 
 
-        public void CargarCtasPendientes()
-        {
-        }
         private Anticipos.Agregar.Vistas.IAnticipo _anticipo;
         public void AgregarAnticipo()
         {

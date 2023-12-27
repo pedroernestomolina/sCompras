@@ -146,6 +146,7 @@ namespace DataProvCompra.Data
                 numDoc = s.numDoc,
                 prvCiRif = s.prvCiRif,
                 prvNombre = s.prvNombre,
+                prvDirFiscal = s.prvDirFiscal,
                 retencion1 = s.retencion1,
                 retencion2 = s.retencion2,
                 retencion3 = s.retencion3,
@@ -155,7 +156,7 @@ namespace DataProvCompra.Data
                 tasaRet = s.tasaRet,
                 tipoDoc = s.tipoDoc,
                 total = s.total,
-                maquinaFiscal= s.maquinaFiscal
+                maquinaFiscal = s.maquinaFiscal
             };
             return result;
         }
@@ -479,8 +480,10 @@ namespace DataProvCompra.Data
                 tasaFactor = s.tasaFactor,
                 tasaRet = s.tasaRet,
                 totalPago = s.totalPago,
-                anticipo=s.anticipo,
-                caja= s.caja.Select(xt =>
+                montoAPagarMonAct = s.montoAPagarMonAct,
+                tasaPromFactorAnticipo = s.tasaPromFactorAnticipo,
+                anticipo = s.anticipo,
+                caja = s.caja.Select(xt =>
                 {
                     var xxr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Caja()
                     {
@@ -490,7 +493,7 @@ namespace DataProvCompra.Data
                     };
                     return xxr;
                 }).ToList(),
-                serv = s.serv.Select(ss => 
+                serv = s.serv.Select(ss =>
                 {
                     var xr = new OOB.LibCompra.Transporte.Reportes.Aliado.PagoServ.Planilla.Serv()
                     {
@@ -580,6 +583,7 @@ namespace DataProvCompra.Data
                 ent.montoMonAct = r01.Entidad.montoMonAct.HasValue ? r01.Entidad.montoMonAct.Value : 0;
                 ent.montoMonDiv = r01.Entidad.montoMonDiv.HasValue ? r01.Entidad.montoMonDiv.Value : 0;
                 ent.esDivisa = r01.Entidad.esDivisa;
+                ent.saldoIni = r01.Entidad.saldoIni;
             }
             result.Entidad = ent;
             return result;

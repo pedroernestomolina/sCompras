@@ -32,6 +32,7 @@ namespace DataProvCompra.Data
                 montoAnticiposAnuladoDiv = s.montoAnticiposAnuladoDiv,
                 montoAnticipoRetAnuladoDiv = s.montoAnticipoRetAnuladoDiv,
                 montoAnticipoRetDiv = s.montoAnticipoRetDiv,
+                tasaPromAnticipo =s.tasaPromAnticipo,
             };
             return result;
         }

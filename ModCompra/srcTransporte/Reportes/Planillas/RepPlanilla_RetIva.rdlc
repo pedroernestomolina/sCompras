@@ -2411,10 +2411,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>RetIva_Det</DataSetName>
-        <Top>5.58863cm</Top>
-        <Left>0.258cm</Left>
+        <Top>6.98712cm</Top>
+        <Left>0.2902cm</Left>
         <Height>1.98521cm</Height>
-        <Width>25.95841cm</Width>
+        <Width>25.95837cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -2442,8 +2442,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox44</rd:DefaultName>
-        <Top>4.91808cm</Top>
-        <Left>15.86207cm</Left>
+        <Top>6.31657cm</Top>
+        <Left>15.89427cm</Left>
         <Height>0.6cm</Height>
         <Width>7.10289cm</Width>
         <ZIndex>7</ZIndex>
@@ -2645,8 +2645,8 @@
         </Style>
       </Rectangle>
       <Line Name="Line5">
-        <Top>11.02995cm</Top>
-        <Left>1.0287cm</Left>
+        <Top>12.20267cm</Top>
+        <Left>1.0609cm</Left>
         <Height>0cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>9</ZIndex>
@@ -2671,8 +2671,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox159</rd:DefaultName>
-        <Top>9.55683cm</Top>
-        <Left>1.0287cm</Left>
+        <Top>10.72955cm</Top>
+        <Left>1.0609cm</Left>
         <Height>0.6cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>10</ZIndex>
@@ -2687,8 +2687,8 @@
         </Style>
       </Textbox>
       <Line Name="Line6">
-        <Top>11.02995cm</Top>
-        <Left>6.10327cm</Left>
+        <Top>12.20267cm</Top>
+        <Left>6.13547cm</Left>
         <Height>0cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>11</ZIndex>
@@ -2713,8 +2713,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox159</rd:DefaultName>
-        <Top>9.55683cm</Top>
-        <Left>6.10327cm</Left>
+        <Top>10.72955cm</Top>
+        <Left>6.13547cm</Left>
         <Height>0.6cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>12</ZIndex>
@@ -2729,8 +2729,8 @@
         </Style>
       </Textbox>
       <Line Name="Line7">
-        <Top>11.02995cm</Top>
-        <Left>11.69268cm</Left>
+        <Top>12.20267cm</Top>
+        <Left>11.72488cm</Left>
         <Height>0cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>13</ZIndex>
@@ -2755,8 +2755,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox159</rd:DefaultName>
-        <Top>9.55683cm</Top>
-        <Left>11.69268cm</Left>
+        <Top>10.72955cm</Top>
+        <Left>11.72488cm</Left>
         <Height>0.6cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>14</ZIndex>
@@ -2771,8 +2771,8 @@
         </Style>
       </Textbox>
       <Line Name="Line8">
-        <Top>11.02995cm</Top>
-        <Left>17.22203cm</Left>
+        <Top>12.20267cm</Top>
+        <Left>17.25423cm</Left>
         <Height>0cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>15</ZIndex>
@@ -2797,8 +2797,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox159</rd:DefaultName>
-        <Top>9.55683cm</Top>
-        <Left>17.22203cm</Left>
+        <Top>10.72955cm</Top>
+        <Left>17.25423cm</Left>
         <Height>0.6cm</Height>
         <Width>3.84938cm</Width>
         <ZIndex>16</ZIndex>
@@ -2812,8 +2812,87 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Rectangle Name="Rectangle6">
+        <ReportItems>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>DIRECCION FISCAL DEL SUJETO DE RETENIDO</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.03528cm</Top>
+            <Left>0.03937cm</Left>
+            <Height>0.6cm</Height>
+            <Width>10.33167cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="prov_dirFiscal">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!prov_dirFiscal.Value, "RetIva")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>prov_dirFiscal</rd:DefaultName>
+            <Top>0.74111cm</Top>
+            <Left>0.09555cm</Left>
+            <Height>0.49417cm</Height>
+            <Width>15.51322cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Top>4.79906cm</Top>
+        <Left>0.2001cm</Left>
+        <Height>1.34111cm</Height>
+        <Width>15.96729cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
     </ReportItems>
-    <Height>4.54167in</Height>
+    <Height>5in</Height>
     <Style />
   </Body>
   <Width>10.43069in</Width>
@@ -3110,7 +3189,7 @@
         </Field>
         <Field Name="fecha">
           <DataField>fecha</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="ano_rel">
           <DataField>ano_rel</DataField>
@@ -3126,6 +3205,10 @@
         </Field>
         <Field Name="prov_cirif">
           <DataField>prov_cirif</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="prov_dirFiscal">
+          <DataField>prov_dirFiscal</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

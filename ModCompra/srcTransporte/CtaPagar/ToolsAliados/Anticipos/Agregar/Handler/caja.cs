@@ -36,12 +36,16 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
             _bs = new BindingSource();
             _bs.DataSource = _bl;
             _bs.CurrencyManager.Refresh();
+            _activarFactorCambioAnticipo = false;
+            _tasaFactorCambioAnticipo = 0m;
         }
         public void Inicializa()
         {
             _montoPendDiv = 0m;
             _montoPendMonAct = 0m;
             _montoPendMonDiv = 0m;
+            _activarFactorCambioAnticipo = false;
+            _tasaFactorCambioAnticipo = 0m;
             _lst.Clear();
             _bl.Clear();
             _bs.CurrencyManager.Refresh();
@@ -119,22 +123,51 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
 
 
         private decimal _restPend;
+        private bool _activarFactorCambioAnticipo = false;
+        private decimal _tasaFactorCambioAnticipo = 0m;
         public void ActualizarSaldosPend()
         {
-            _restPend = 0m;
-            var _pgMonDiv = _lst.Where(w => w.esDivisa).Sum(s => s.montoAbonar);
-            var _pgMonAct = _lst.Where(w => !w.esDivisa).Sum(s => s.montoAbonar);
-            var _pgTotal = (_pgMonDiv * _factorCambio) + _pgMonAct;
-            _pgTotal = Math.Round(_pgTotal, 2, MidpointRounding.AwayFromZero);
-            _restPend = (_montoPendDiv * _factorCambio) - _pgTotal;
-            _restPend = Math.Round(_restPend,2, MidpointRounding.AwayFromZero);
-            _montoPendMonAct = _restPend; 
-            _montoPendMonDiv = 0m;
-            if (_factorCambio > 0m) 
+            _restPend = _montoPendDiv;
+            //
+            var _xmontoConAnticiposMonDiv = 0m;
+            var _xmontoConAnticiposMonAct = 0m; 
+            if (_activarFactorCambioAnticipo)
             {
-                _montoPendMonDiv = Math.Round(_restPend / _factorCambio, 2, MidpointRounding.AwayFromZero);
+                foreach (var mov in _lst)
+                {
+                    var pg = (dataCaja)mov;
+                    if (pg.Get_Ficha.id < 0)
+                    {
+                        _xmontoConAnticiposMonDiv += pg.montoAbonar;
+                    }
+                }
+                _xmontoConAnticiposMonAct = _xmontoConAnticiposMonDiv * _tasaFactorCambioAnticipo;
+                _restPend = _montoPendDiv - _xmontoConAnticiposMonDiv;
             }
+            //
+            var _pgMonDiv = _lst.Where(w => w.esDivisa).Sum(s => s.montoAbonar);
+            _pgMonDiv -= _xmontoConAnticiposMonDiv;
+            _restPend -= _pgMonDiv;
+            var _pgMonAct = _lst.Where(w => !w.esDivisa).Sum(s => s.montoAbonar);
+            if (_factorCambio > 0m)
+            {
+                _restPend -= Math.Round(_pgMonAct / _factorCambio, 2, MidpointRounding.AwayFromZero);
+            }
+            _montoPendMonDiv = _restPend;
+            _montoPendMonAct = Math.Round(_restPend * _factorCambio, 2, MidpointRounding.AwayFromZero);
+
+            //var _pgTotal = (_pgMonDiv * _factorCambio) + _pgMonAct + _xmontoConAnticiposMonAct;
+            //_pgTotal = Math.Round(_pgTotal, 2, MidpointRounding.AwayFromZero);
+            //_restPend = (_montoPendDiv * _factorCambio) - _pgTotal;
+            //_restPend = Math.Round(_restPend,2, MidpointRounding.AwayFromZero);
+            //_montoPendMonAct = _restPend; 
+            //_montoPendMonDiv = 0m;
+            //if (_factorCambio > 0m) 
+            //{
+            //    _montoPendMonDiv = Math.Round(_restPend / _factorCambio, 2, MidpointRounding.AwayFromZero);
+            //}
         }
+
 
         public decimal MontoCajaPago { get { return montoCajaPago(); } }
         private decimal montoCajaPago()
@@ -157,6 +190,16 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Anticipos.Agregar.Handle
                 return false;
             }
             return true;
+        }
+        //
+        public decimal GetTasaAplicarFactorCambioParaAnticipo { get { return _tasaFactorCambioAnticipo; } }
+        public void setAplicaFactorCambioParaAnticipo(bool aplica)
+        {
+            _activarFactorCambioAnticipo = aplica;
+        }
+        public void setTasaAplicarFactorCambioParaAnticipo(decimal factor)
+        {
+            _tasaFactorCambioAnticipo = factor;
         }
     }
 }

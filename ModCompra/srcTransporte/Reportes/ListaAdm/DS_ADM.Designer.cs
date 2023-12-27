@@ -3643,6 +3643,8 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             private global::System.Data.DataColumn columnconcepto;
             
+            private global::System.Data.DataColumn columnmontoMonAct;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CxpPagoPorConceptoDataTable() {
@@ -3734,6 +3736,14 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn montoMonActColumn {
+                get {
+                    return this.columnmontoMonAct;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3769,7 +3779,7 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CxpPagoPorConceptoRow AddCxpPagoPorConceptoRow(string entidad, System.DateTime fecha, decimal montoDiv, string recibo, string documento, decimal tasaFactor, string concepto) {
+            public CxpPagoPorConceptoRow AddCxpPagoPorConceptoRow(string entidad, System.DateTime fecha, decimal montoDiv, string recibo, string documento, decimal tasaFactor, string concepto, decimal montoMonAct) {
                 CxpPagoPorConceptoRow rowCxpPagoPorConceptoRow = ((CxpPagoPorConceptoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         entidad,
@@ -3778,7 +3788,8 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                         recibo,
                         documento,
                         tasaFactor,
-                        concepto};
+                        concepto,
+                        montoMonAct};
                 rowCxpPagoPorConceptoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCxpPagoPorConceptoRow);
                 return rowCxpPagoPorConceptoRow;
@@ -3808,6 +3819,7 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 this.columndocumento = base.Columns["documento"];
                 this.columntasaFactor = base.Columns["tasaFactor"];
                 this.columnconcepto = base.Columns["concepto"];
+                this.columnmontoMonAct = base.Columns["montoMonAct"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3827,6 +3839,8 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
                 base.Columns.Add(this.columntasaFactor);
                 this.columnconcepto = new global::System.Data.DataColumn("concepto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnconcepto);
+                this.columnmontoMonAct = new global::System.Data.DataColumn("montoMonAct", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmontoMonAct);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6092,6 +6106,22 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal montoMonAct {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxpPagoPorConcepto.montoMonActColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'montoMonAct\' in table \'CxpPagoPorConcepto\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxpPagoPorConcepto.montoMonActColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsentidadNull() {
                 return this.IsNull(this.tableCxpPagoPorConcepto.entidadColumn);
             }
@@ -6172,6 +6202,18 @@ namespace ModCompra.srcTransporte.Reportes.ListaAdm {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetconceptoNull() {
                 this[this.tableCxpPagoPorConcepto.conceptoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmontoMonActNull() {
+                return this.IsNull(this.tableCxpPagoPorConcepto.montoMonActColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmontoMonActNull() {
+                this[this.tableCxpPagoPorConcepto.montoMonActColumn] = global::System.Convert.DBNull;
             }
         }
         

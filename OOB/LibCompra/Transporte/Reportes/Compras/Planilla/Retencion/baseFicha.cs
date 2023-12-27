@@ -14,6 +14,7 @@ namespace OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion
         public DateTime fechaRet { get; set; }
         public string prvNombre { get; set; }
         public string prvCiRif { get; set; }
+        public string prvDirFiscal { get; set; }
         public string comprobanteRet { get; set; }
         public string numDoc { get; set; }
         public DateTime fechaEmiDoc { get; set; }

@@ -47,7 +47,8 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
                 var r01 = Sistema.MyData.Transporte_Aliado_Pediente_GetLista();
                 foreach (var rg in r01.Lista.OrderBy(o => o.aliadoNombre).ToList())
                 {
-                    _lst.Add(new dataAliado(rg));
+                    var _rg = new dataAliado(rg);
+                    _lst.Add(_rg);
                 }
             }
             catch (Exception e)

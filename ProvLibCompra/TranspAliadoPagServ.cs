@@ -110,7 +110,8 @@ namespace ProvLibCompra
                                     estatus_anulado,
                                     monto_anticipo_usado,
                                     monto_anticipo_ret_usado,
-                                    estatus_procesado) 
+                                    estatus_procesado,
+                                    tasa_promedio_factor_anticipo) 
                             VALUES (
                                     NULL,
                                     @id_aliado, 
@@ -136,7 +137,8 @@ namespace ProvLibCompra
                                     '0',
                                     @monto_anticipo_usado,
                                     @monto_anticipo_ret_usado,
-                                    '0')";
+                                    '0',
+                                    @tasa_promedio_factor_anticipo)";
                         var mov = ficha.movimiento;
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_aliado",mov.idAliado);
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision",mov.fechaEmision);
@@ -162,11 +164,12 @@ namespace ProvLibCompra
                         //
                         var p20 = new MySql.Data.MySqlClient.MySqlParameter("@monto_anticipo_usado", ficha.MontoPorAnticipoUsado);
                         var p21 = new MySql.Data.MySqlClient.MySqlParameter("@monto_anticipo_ret_usado", ficha.MontoPorRetAnticipoUsado);
+                        var p22 = new MySql.Data.MySqlClient.MySqlParameter("@tasa_promedio_factor_anticipo", ficha.TasaPromedioFactorAnticipo);
                         //
                         var r2 = cnn.Database.ExecuteSqlCommand(sql,
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
                             p10, p11, p12, p13, p14, p15, p16, p17, p18, p19,
-                            p20, p21);
+                            p20, p21, p22);
                         if (r2 == 0)
                         {
                             result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE PAGO";
