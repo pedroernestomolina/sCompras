@@ -147,6 +147,26 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="AliadoEdoCta_Enc" msprop:Generator_TableClassName="AliadoEdoCta_EncDataTable" msprop:Generator_TableVarName="tableAliadoEdoCta_Enc" msprop:Generator_RowChangedName="AliadoEdoCta_EncRowChanged" msprop:Generator_TablePropName="AliadoEdoCta_Enc" msprop:Generator_RowDeletingName="AliadoEdoCta_EncRowDeleting" msprop:Generator_RowChangingName="AliadoEdoCta_EncRowChanging" msprop:Generator_RowEvHandlerName="AliadoEdoCta_EncRowChangeEventHandler" msprop:Generator_RowDeletedName="AliadoEdoCta_EncRowDeleted" msprop:Generator_RowClassName="AliadoEdoCta_EncRow" msprop:Generator_UserTableName="AliadoEdoCta_Enc" msprop:Generator_RowEvArgName="AliadoEdoCta_EncRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="aliado" msprop:Generator_ColumnVarNameInTable="columnaliado" msprop:Generator_ColumnPropNameInRow="aliado" msprop:Generator_ColumnPropNameInTable="aliadoColumn" msprop:Generator_UserColumnName="aliado" type="xs:string" minOccurs="0" />
+              <xs:element name="montoAnticipo" msprop:Generator_ColumnVarNameInTable="columnmontoAnticipo" msprop:Generator_ColumnPropNameInRow="montoAnticipo" msprop:Generator_ColumnPropNameInTable="montoAnticipoColumn" msprop:Generator_UserColumnName="montoAnticipo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AliadoEdoCta_Det" msprop:Generator_TableClassName="AliadoEdoCta_DetDataTable" msprop:Generator_TableVarName="tableAliadoEdoCta_Det" msprop:Generator_RowChangedName="AliadoEdoCta_DetRowChanged" msprop:Generator_TablePropName="AliadoEdoCta_Det" msprop:Generator_RowDeletingName="AliadoEdoCta_DetRowDeleting" msprop:Generator_RowChangingName="AliadoEdoCta_DetRowChanging" msprop:Generator_RowEvHandlerName="AliadoEdoCta_DetRowChangeEventHandler" msprop:Generator_RowDeletedName="AliadoEdoCta_DetRowDeleted" msprop:Generator_RowClassName="AliadoEdoCta_DetRow" msprop:Generator_UserTableName="AliadoEdoCta_Det" msprop:Generator_RowEvArgName="AliadoEdoCta_DetRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cliente" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="detalleServ" msprop:Generator_ColumnVarNameInTable="columndetalleServ" msprop:Generator_ColumnPropNameInRow="detalleServ" msprop:Generator_ColumnPropNameInTable="detalleServColumn" msprop:Generator_UserColumnName="detalleServ" type="xs:string" minOccurs="0" />
+              <xs:element name="importe" msprop:Generator_ColumnVarNameInTable="columnimporte" msprop:Generator_ColumnPropNameInRow="importe" msprop:Generator_ColumnPropNameInTable="importeColumn" msprop:Generator_UserColumnName="importe" type="xs:decimal" minOccurs="0" />
+              <xs:element name="acumulado" msprop:Generator_ColumnVarNameInTable="columnacumulado" msprop:Generator_ColumnPropNameInRow="acumulado" msprop:Generator_ColumnPropNameInTable="acumuladoColumn" msprop:Generator_UserColumnName="acumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="saldo" msprop:Generator_ColumnVarNameInTable="columnsaldo" msprop:Generator_ColumnPropNameInRow="saldo" msprop:Generator_ColumnPropNameInTable="saldoColumn" msprop:Generator_UserColumnName="saldo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tipoServ" msprop:Generator_ColumnVarNameInTable="columntipoServ" msprop:Generator_ColumnPropNameInRow="tipoServ" msprop:Generator_ColumnPropNameInTable="tipoServColumn" msprop:Generator_UserColumnName="tipoServ" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

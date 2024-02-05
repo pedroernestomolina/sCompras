@@ -260,6 +260,23 @@
     <Compile Include="Producto\Precio\Actualizar\PrecioEditarFrm.designer.cs">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Handler\dataProducto.cs" />
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Handler\Imp.cs" />
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Handler\ImpMatPrecio.cs" />
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Vista\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Vista\IdataProducto.cs" />
+    <Compile Include="Producto\Precio\zufu\CtrlPrecio\IVista.cs" />
+    <Compile Include="Producto\Precio\zufu\CtrlPrecio\data.cs" />
+    <Compile Include="Producto\Precio\zufu\CtrlPrecio\enumerados.cs" />
+    <Compile Include="Producto\Precio\zufu\CtrlPrecio\Idata.cs" />
+    <Compile Include="Producto\Precio\zufu\CtrlPrecio\ImpPrecio.cs" />
+    <Compile Include="Producto\Precio\zufu\ActualizarPrecio\Vista\IMatPrecio.cs" />
+    <Compile Include="Producto\Precio\zufu\CtrlPrecio\IPrecio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -728,6 +745,7 @@
     <Compile Include="srcTransporte\Reportes\Caja\GeneralMov\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\Anticipo\Imp.cs" />
+    <Compile Include="srcTransporte\Reportes\CXP\Aliado\EdoCta\Imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\MovCaja\FiltroActivar.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\MovCaja\imp.cs" />
     <Compile Include="srcTransporte\Reportes\CXP\Aliado\PagoServ\FiltroActivar.cs" />
@@ -901,6 +919,14 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Componente\Monto\Vistas\IMonto.cs" />
+    <Compile Include="Utils\Control\Boton\Abandonar\IAbandonar.cs" />
+    <Compile Include="Utils\Control\Boton\Abandonar\Imp.cs" />
+    <Compile Include="Utils\Control\Boton\baseImp.cs" />
+    <Compile Include="Utils\Control\Boton\IBoton.cs" />
+    <Compile Include="Utils\Control\Boton\Procesar\Imp.cs" />
+    <Compile Include="Utils\Control\Boton\Procesar\IProcesar.cs" />
+    <Compile Include="Utils\Control\Boton\Salir\Imp.cs" />
+    <Compile Include="Utils\Control\Boton\Salir\ISalir.cs" />
     <Compile Include="Utils\Control\TipoCombo\Beneficiario\data.cs" />
     <Compile Include="Utils\Control\TipoCombo\Beneficiario\Imp.cs" />
     <Compile Include="Utils\Control\TipoCombo\Caja\data.cs" />
@@ -1000,6 +1026,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\Actualizar\PrecioEditarFrm.resx">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Precio\zufu\ActualizarPrecio\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1151,6 +1180,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\Caja\RepCajaMov.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_AliadoEdoCta.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="srcTransporte\Reportes\CXP\RepCxp_AliadoMovCaja.rdlc">

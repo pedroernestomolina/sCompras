@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.InfraEstructura
 {
-    
     public interface IProducto
     {
-
         OOB.ResultadoLista<OOB.LibCompra.Producto.Data.Ficha> 
             Producto_GetLista(OOB.LibCompra.Producto.Lista.Filtro filtro);
         OOB.ResultadoEntidad<OOB.LibCompra.Producto.Data.Ficha> 
@@ -25,11 +23,11 @@ namespace DataProvCompra.InfraEstructura
             Producto_EmpaqueMedida_GetLista();
         OOB.ResultadoEntidad<OOB.LibCompra.Producto.Precio.Capturar.Ficha>
             Producto_Precio_GetCapturar_ById(string idPrd);
-
         //
         OOB.ResultadoLista<OOB.LibCompra.Producto.EmpaqueCompra.Ficha>
             Producto_EmpaqueCompra_GetLista(string idPrd);
-
+        //
+        OOB.ResultadoEntidad<OOB.LibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha>
+            Producto_ActualizarPreciosVenta_ObtenerData_GetById(string idPrd);
     }
-
 }

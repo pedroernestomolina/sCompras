@@ -11,35 +11,22 @@ namespace ProvLibCompra
 
     public partial class Provider: ILibCompras.IProvider
     {
-
         public DtoLib.ResultadoLista<DtoLibCompra.Sucursal.Lista.Resumen> Sucursal_GetLista()
         {
             var result = new DtoLib.ResultadoLista<DtoLibCompra.Sucursal.Lista.Resumen>();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
-                    var q = cnn.empresa_sucursal.ToList();
-
-                    var list = new List<DtoLibCompra.Sucursal.Lista.Resumen>();
-                    if (q != null)
-                    {
-                        if (q.Count() > 0)
-                        {
-                            list = q.Select(s =>
-                            {
-                                var r = new DtoLibCompra.Sucursal.Lista.Resumen()
-                                {
-                                    auto = s.auto,
-                                    codigo = s.codigo,
-                                    nombre = s.nombre,
-                                };
-                                return r;
-                            }).ToList();
-                        }
-                    }
-                    result.Lista = list;
+                    var sql = @"select 
+                                    auto as auto,
+                                    codigo as codigo,
+                                    nombre as nombre,
+                                    sucExt.es_activo as estatusActivo
+                                from empresa_sucursal as suc 
+                                join empresa_sucursal_ext as sucExt on sucExt.auto_sucursal=suc.auto";
+                    result.Lista = cnn.Database.SqlQuery<DtoLibCompra.Sucursal.Lista.Resumen>(sql).ToList();
                 }
             }
             catch (Exception e)
@@ -47,7 +34,7 @@ namespace ProvLibCompra
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return result;
         }
 

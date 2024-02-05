@@ -185,7 +185,7 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                 return false;
             }
             lsucursal.Clear();
-            lsucursal.AddRange(r03.Lista.OrderBy(o => o.nombre).ToList());
+            lsucursal.AddRange(r03.Lista.Where(w=>w.esActivo =="1").OrderBy(o => o.nombre).ToList());
             bsSucursal.CurrencyManager.Refresh();
 
             var r04 = Sistema.MyData.Configuracion_PreferenciaBusquedaProveedor();

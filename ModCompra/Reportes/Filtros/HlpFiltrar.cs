@@ -83,7 +83,7 @@ namespace ModCompra.Reportes.Filtros
                 Helpers.Msg.Error(xr1.Mensaje);
                 return false;
             }
-            var _lst_1 = xr1.Lista.Select(s =>
+            var _lst_1 = xr1.Lista.Where(w=>w.esActivo=="1").Select(s =>
             {
                 return new HlpGestion.ficha(s.auto, "", s.nombre);
             }).ToList();

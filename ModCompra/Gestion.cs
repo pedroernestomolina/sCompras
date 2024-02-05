@@ -12,7 +12,7 @@ namespace ModCompra
 {
     public class Gestion
     {
-        private Administrador.Gestion _gestionAdmDoc ;
+        private Administrador.Gestion _gestionAdmDoc;
         private Reportes.Filtros.Gestion _gestionRep;
         private Maestros.Gestion _gestionMaestro;
         private Proveedor.Administrador.Gestion _gestionProveedor;
@@ -27,8 +27,8 @@ namespace ModCompra
         {
             get
             {
-                return  Sistema.UsuarioP.codigoUsu +Environment.NewLine + 
-                        Sistema.UsuarioP.nombreUsu +Environment.NewLine + 
+                return Sistema.UsuarioP.codigoUsu + Environment.NewLine +
+                        Sistema.UsuarioP.nombreUsu + Environment.NewLine +
                         Sistema.UsuarioP.nombreGru;
             }
         }
@@ -68,7 +68,7 @@ namespace ModCompra
 
         public void AdministradorDoc()
         {
-            if (SolicitarPermiso(Sistema.MyData.Permiso_AdmDoc, Sistema.UsuarioP.autoGru)) 
+            if (SolicitarPermiso(Sistema.MyData.Permiso_AdmDoc, Sistema.UsuarioP.autoGru))
             {
                 _gestionAdmDoc.setGestion(new Administrador.Documentos.Gestion());
                 _gestionAdmDoc.setActivarSeleccionItem(false);
@@ -79,7 +79,7 @@ namespace ModCompra
 
         public void RegistrarNcCompra()
         {
-            if (SolicitarPermiso(Sistema.MyData.Permiso_Registrar_Nc, Sistema.UsuarioP.autoGru)) 
+            if (SolicitarPermiso(Sistema.MyData.Permiso_Registrar_Nc, Sistema.UsuarioP.autoGru))
             {
                 //frm.setVisibilidadOff();
                 var gestionEntrada = new Documento.Cargar.Controlador.Gestion();
@@ -91,7 +91,7 @@ namespace ModCompra
 
         public void MaestrosGrupos()
         {
-            if (SolicitarPermiso(Sistema.MyData.Permiso_Grupo, Sistema.UsuarioP.autoGru)) 
+            if (SolicitarPermiso(Sistema.MyData.Permiso_Grupo, Sistema.UsuarioP.autoGru))
             {
                 _gestionMaestro.setGestion(new Maestros.Grupo.Gestion());
                 _gestionMaestro.Inicia();
@@ -100,7 +100,7 @@ namespace ModCompra
 
         public void MaestroProveedor()
         {
-            if (SolicitarPermiso(Sistema.MyData.Permiso_Proveedor, Sistema.UsuarioP.autoGru)) 
+            if (SolicitarPermiso(Sistema.MyData.Permiso_Proveedor, Sistema.UsuarioP.autoGru))
             {
                 _gestionProveedor.Inicializar();
                 _gestionProveedor.Inicia();
@@ -113,7 +113,7 @@ namespace ModCompra
         }
         private void ReporteProveedor(ReporteProveedor.IGestion gestion)
         {
-            if (SolicitarPermiso(Sistema.MyData.Permiso_Proveedor_Reportes, Sistema.UsuarioP.autoGru)) 
+            if (SolicitarPermiso(Sistema.MyData.Permiso_Proveedor_Reportes, Sistema.UsuarioP.autoGru))
             {
                 _gestionRepPrv.setGestion(gestion);
                 _gestionRepPrv.Inicializa();
@@ -123,7 +123,7 @@ namespace ModCompra
 
         public void ConfiguracionSistema()
         {
-            if (SolicitarPermiso(Sistema.MyData.Permiso_ConfiguracionSistema, Sistema.UsuarioP.autoGru)) 
+            if (SolicitarPermiso(Sistema.MyData.Permiso_ConfiguracionSistema, Sistema.UsuarioP.autoGru))
             {
                 _gCnfSistema.Inicializa();
                 _gCnfSistema.Inicia();
@@ -180,10 +180,10 @@ namespace ModCompra
         {
             return SolicitarPermiso(Sistema.MyData.Permiso_Reportes, Sistema.UsuarioP.autoGru);
         }
-        private bool SolicitarPermiso(Func<string, OOB.ResultadoEntidad<OOB.LibCompra.Permiso.Ficha>> met, string idGrupoUsu) 
+        private bool SolicitarPermiso(Func<string, OOB.ResultadoEntidad<OOB.LibCompra.Permiso.Ficha>> met, string idGrupoUsu)
         {
             var rt1 = met(idGrupoUsu);
-            if (rt1.Result == OOB.Enumerados.EnumResult.isError) 
+            if (rt1.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(rt1.Mensaje);
                 return false;
@@ -248,7 +248,7 @@ namespace ModCompra
         Utils.Maestro.IMaestro _cajaMaster;
         public void MaestroCaja()
         {
-            if (_cajaMaster== null)
+            if (_cajaMaster == null)
             {
                 _cajaMaster = new ModCompra.srcTransporte.Caja.Maestro.Imp();
             }
@@ -270,7 +270,7 @@ namespace ModCompra
         ModCompra.srcTransporte.CompraGasto.Vistas.Generar.ICompraGasto _compraGasto;
         public void RegistrarCompraGasto()
         {
-            if (_compraGasto == null) 
+            if (_compraGasto == null)
             {
                 _compraGasto = new ModCompra.srcTransporte.CompraGasto.Handlres.Generar.Imp();
             }
@@ -289,9 +289,9 @@ namespace ModCompra
         srcTransporte.CtaPagar.ToolsAliados.Vistas.IAliados _toolAliados;
         public void ToolAliados()
         {
-            if (_toolAliados== null)
+            if (_toolAliados == null)
             {
-                _toolAliados= new srcTransporte.CtaPagar.ToolsAliados.Handlers.Imp();
+                _toolAliados = new srcTransporte.CtaPagar.ToolsAliados.Handlers.Imp();
             }
             _toolAliados.Inicializa();
             _toolAliados.Inicia();
@@ -322,7 +322,7 @@ namespace ModCompra
             _adm.Inicia();
         }
 
-        
+
         //REPORTES
         public void ReporteGeneralDocTransp()
         {
@@ -471,12 +471,12 @@ namespace ModCompra
             _filtro.Inicia();
             if (_filtro.ProcesarIsOK)
             {
-                if (_filtro.Get_Filtros.IdCaja == -1) 
+                if (_filtro.Get_Filtros.IdCaja == -1)
                 {
                     Helpers.Msg.Alerta("DEBES INDICAR / SELECCIONAR UNA CAJA");
                     return;
                 }
-                if (_filtro.Get_Filtros.Desde.HasValue  == false)
+                if (_filtro.Get_Filtros.Desde.HasValue == false)
                 {
                     Helpers.Msg.Alerta("DEBES INDICAR FECHA INICIO DEL MOVIMIENTO");
                     return;
@@ -559,6 +559,156 @@ namespace ModCompra
             }
             _compraAliado.Inicializa();
             _compraAliado.Inicia();
+        }
+        //
+
+        Producto.Precio.zufu.ActualizarPrecio.Vista.IVista _actualizarPrecioVenta;
+        private Producto.Precio.zufu.ActualizarPrecio.Vista.IMatPrecio[] _dataPrecioVenta;
+        public void ActualizarPrecioVenta()
+        {
+            Producto.Precio.zufu.ActualizarPrecio.Vista.IdataProducto _fichaPrd = new Producto.Precio.zufu.ActualizarPrecio.Handler.dataProducto()
+            {
+                idPrd = "0000000868",
+                tasaIva = 0m,
+                codigoPrd = "7595461000155",
+                descPrd = "CAFE DELLA NONNA 200G",
+                contEmpCompra = 24,
+                costoCompra = 32.97M,
+                empaqueDesc = "BULTO",
+                tasaIvaDesc = "Exento",
+                admDivisa = true,
+            };
+            if (_actualizarPrecioVenta == null)
+            {
+                _actualizarPrecioVenta = new Producto.Precio.zufu.ActualizarPrecio.Handler.Imp();
+            }
+            _actualizarPrecioVenta.Inicializa();
+            _actualizarPrecioVenta.setProductoCargar(_fichaPrd);
+            _actualizarPrecioVenta.Inicia();
+            if (_actualizarPrecioVenta.BtProcesar.OpcionIsOK)
+            {
+                _dataPrecioVenta = _actualizarPrecioVenta.DataExportar;
+            }
+        }
+        public void EditarPrecioVenta()
+        {
+            if (_dataPrecioVenta != null)
+            {
+                Producto.Precio.zufu.ActualizarPrecio.Vista.IdataProducto _fichaPrd = new Producto.Precio.zufu.ActualizarPrecio.Handler.dataProducto()
+                {
+                    idPrd = "0000000868",
+                    tasaIva = 0m,
+                    codigoPrd = "7595461000155",
+                    descPrd = "CAFE DELLA NONNA 200G",
+                    contEmpCompra = 24,
+                    costoCompra = 36m,
+                    empaqueDesc = "BULTO",
+                    tasaIvaDesc = "Exento",
+                    admDivisa = true,
+                };
+                if (_actualizarPrecioVenta == null)
+                {
+                    _actualizarPrecioVenta = new Producto.Precio.zufu.ActualizarPrecio.Handler.Imp();
+                }
+                _actualizarPrecioVenta.Inicializa();
+                _actualizarPrecioVenta.setProductoCargar(_fichaPrd);
+                _actualizarPrecioVenta.setImportarPrecios(_dataPrecioVenta);
+                _actualizarPrecioVenta.Inicia();
+                if (_actualizarPrecioVenta.BtProcesar.OpcionIsOK)
+                {
+                    _dataPrecioVenta = _actualizarPrecioVenta.DataExportar;
+                }
+            }
+        }
+        public struct recuperar
+        {
+            public string descEmpaque;
+            public int contEmpaque;
+            public decimal[] precios;
+            public recuperar(string descEmpq, int contEmpq, decimal[] pvta)
+            {
+                descEmpaque=descEmpq;
+                contEmpaque = contEmpq;
+                precios = pvta;
+            }
+        };
+        public void RecuperarPrecioVenta()
+        {
+            Producto.Precio.zufu.ActualizarPrecio.Vista.IdataProducto _fichaPrd = new Producto.Precio.zufu.ActualizarPrecio.Handler.dataProducto()
+            {
+                idPrd = "0000000868",
+                tasaIva = 0m,
+                codigoPrd = "7595461000155",
+                descPrd = "CAFE DELLA NONNA 200G",
+                contEmpCompra = 24,
+                costoCompra = 32.97m,
+                empaqueDesc = "BULTO",
+                tasaIvaDesc = "Exento",
+                admDivisa = true,
+            };
+
+            var _aRecuperar = new List<recuperar>();
+            var _tipo1 = new recuperar("BOLSA", 1, new decimal[] { 2, 0, 0, 0 });
+            var _tipo2 = new recuperar("COMBO", 6, new decimal[] { 10, 0, 0, 0 });
+            var _tipo3 = new recuperar("BULTO", 24, new decimal[] { 35, 0, 0, 0 });
+            _aRecuperar.Add(_tipo1);
+            _aRecuperar.Add(_tipo2);
+            _aRecuperar.Add(_tipo3);
+
+            Producto.Precio.zufu.ActualizarPrecio.Vista.IMatPrecio[] _dataPrecios;
+            _dataPrecios = new Producto.Precio.zufu.ActualizarPrecio.Handler.ImpMatPrecio[3];
+            var x = 0;
+            foreach (var rec in _aRecuperar)
+            {
+                var _descEmpVta = rec.descEmpaque;
+                var _costoxUnd = _fichaPrd.CostoxUnidad;
+                var _contEmpVta = rec.contEmpaque;
+                var _met = Producto.Precio.zufu.CtrlPrecio.enumerados.enumMetCalculoUtilidad.Financiero;
+                //
+                _dataPrecios[x] = new Producto.Precio.zufu.ActualizarPrecio.Handler.ImpMatPrecio();
+                Producto.Precio.zufu.CtrlPrecio.IPrecio p1 =
+                    new Producto.Precio.zufu.CtrlPrecio.ImpPrecio(
+                        _costoxUnd,
+                        _contEmpVta,
+                        _fichaPrd.tasaIva,
+                        _met,
+                        rec.precios[0]);
+                Producto.Precio.zufu.CtrlPrecio.IPrecio p2 =
+                    new Producto.Precio.zufu.CtrlPrecio.ImpPrecio(
+                        _costoxUnd,
+                        _contEmpVta,
+                        _fichaPrd.tasaIva,
+                        _met,
+                        rec.precios[1]);
+                Producto.Precio.zufu.CtrlPrecio.IPrecio p3 =
+                    new Producto.Precio.zufu.CtrlPrecio.ImpPrecio(
+                        _costoxUnd,
+                        _contEmpVta,
+                        _fichaPrd.tasaIva,
+                        _met,
+                        rec.precios[2]);
+                Producto.Precio.zufu.CtrlPrecio.IPrecio p4 =
+                    new Producto.Precio.zufu.CtrlPrecio.ImpPrecio(
+                        _costoxUnd,
+                        _contEmpVta,
+                        _fichaPrd.tasaIva,
+                        _met,
+                        rec.precios[3]);
+                _dataPrecios[x].RecuperarPrecios(_descEmpVta, _contEmpVta, p1, p2, p3, p4);
+                x += 1;
+            }
+            if (_actualizarPrecioVenta == null)
+            {
+                _actualizarPrecioVenta = new Producto.Precio.zufu.ActualizarPrecio.Handler.Imp();
+            }
+            _actualizarPrecioVenta.Inicializa();
+            _actualizarPrecioVenta.setProductoCargar(_fichaPrd);
+            _actualizarPrecioVenta.setImportarPrecios(_dataPrecios);
+            _actualizarPrecioVenta.Inicia();
+            if (_actualizarPrecioVenta.BtProcesar.OpcionIsOK)
+            {
+                _dataPrecioVenta = _actualizarPrecioVenta.DataExportar;
+            }
         }
     }
 }

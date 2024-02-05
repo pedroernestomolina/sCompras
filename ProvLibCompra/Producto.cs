@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ProvLibCompra
 {
-    
     public partial class Provider: ILibCompras.IProvider
     {
-
         public DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen> 
             Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro)
         {
@@ -470,8 +468,6 @@ namespace ProvLibCompra
 
             return rt;
         }
-
-
         //
         public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha> 
             Producto_EmpaquesCompra_GetFicha(string idPrd)
@@ -512,6 +508,92 @@ namespace ProvLibCompra
 
             return rt;
         }
-    }
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha> 
+            Producto_ActualizarPreciosVenta_ObtenerData_GetById(string idPrd)
+        {
+            var rt = new DtoLib.ResultadoEntidad<DtoLibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha>();
+            //
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var sql_1 = @"SELECT
+                                        prdExt.auto_emp_venta_tipo_1 as idEmpVta1,
+                                        prdExt.auto_emp_venta_tipo_2 as idEmpVta2,
+                                        prdExt.auto_emp_venta_tipo_3 as idEmpVta3,
+                                        prdExt.cont_emp_venta_tipo_1 as contEmpVta1,
+                                        prdExt.cont_emp_venta_tipo_2 as contEmpVta2,
+                                        prdExt.cont_emp_venta_tipo_3 as contEmpVta3,
+                                        medEmp1.nombre as descEmpVta1,
+                                        medEmp2.nombre as descEmpVta2,
+                                        medEmp3.nombre as descEmpVta3,
 
+                                        prd.utilidad_1 as utEmpVta_1_Precio_1,
+                                        prd.utilidad_2 as utEmpVta_1_Precio_2,
+                                        prd.utilidad_3 as utEmpVta_1_Precio_3,
+                                        prd.utilidad_4 as utEmpVta_1_Precio_4,
+                                        prd.utilidad_pto as utEmpVta_1_Precio_5,
+                                        prd.precio_1 as pnEmpVta_1_Precio_1,
+                                        prd.precio_2 as pnEmpVta_1_Precio_2,
+                                        prd.precio_3 as pnEmpVta_1_Precio_3,
+                                        prd.precio_4 as pnEmpVta_1_Precio_4,
+                                        prd.precio_pto as pnEmpVta_1_Precio_5,
+                                        prd.pdf_1 as pfdEmpVta_1_Precio_1,
+                                        prd.pdf_2 as pfdEmpVta_1_Precio_2,
+                                        prd.pdf_3 as pfdEmpVta_1_Precio_3,
+                                        prd.pdf_4 as pfdEmpVta_1_Precio_4,
+                                        prd.pdf_pto as pfdEmpVta_1_Precio_5,
+  
+                                        prdExt.utilidad_may_1 as utEmpVta_2_Precio_1,
+                                        prdExt.utilidad_may_2 as utEmpVta_2_Precio_2,
+                                        prdExt.utilidad_may_3 as utEmpVta_2_Precio_3,
+                                        prdExt.utilidad_may_4 as utEmpVta_2_Precio_4,
+                                        prdExt.precio_may_1 as pnEmpVta_2_Precio_1,
+                                        prdExt.precio_may_2 as pnEmpVta_2_Precio_2,
+                                        prdExt.precio_may_3 as pnEmpVta_2_Precio_3,
+                                        prdExt.precio_may_4 as pnEmpVta_2_Precio_4,
+                                        prdExt.pdmf_1 as pfdEmpVta_2_Precio_1,
+                                        prdExt.pdmf_2 as pfdEmpVta_2_Precio_2,
+                                        prdExt.pdmf_3 as pfdEmpVta_2_Precio_3,
+                                        prdExt.pdmf_4 as pfdEmpVta_2_Precio_4,
+  
+                                        prdExt.utilidad_dsp_1 as utEmpVta_3_Precio_1,
+                                        prdExt.utilidad_dsp_2 as utEmpVta_3_Precio_2,
+                                        prdExt.utilidad_dsp_3 as utEmpVta_3_Precio_3,
+                                        prdExt.utilidad_dsp_4 as utEmpVta_3_Precio_4,
+                                        prdExt.precio_dsp_1 as pnEmpVta_3_Precio_1,
+                                        prdExt.precio_dsp_2 as pnEmpVta_3_Precio_2,
+                                        prdExt.precio_dsp_3 as pnEmpVta_3_Precio_3,
+                                        prdExt.precio_dsp_4 as pnEmpVta_3_Precio_4,
+                                        prdExt.pdivisafull_dsp_1 as pfdEmpVta_3_Precio_1,
+                                        prdExt.pdivisafull_dsp_2 as pfdEmpVta_3_Precio_2,
+                                        prdExt.pdivisafull_dsp_3 as pfdEmpVta_3_Precio_3,
+                                        prdExt.pdivisafull_dsp_4 as pfdEmpVta_3_Precio_4
+                                  FROM productos as prd
+                                  join productos_ext as prdExt on prdExt.auto_producto=prd.auto
+                                  join productos_medida as medEmp1 on medEmp1.auto= prdExt.auto_emp_venta_tipo_1
+                                  join productos_medida as medEmp2 on medEmp2.auto= prdExt.auto_emp_venta_tipo_2
+                                  join productos_medida as medEmp3 on medEmp3.auto= prdExt.auto_emp_venta_tipo_3
+                                  where prd.auto=@id";
+                    var sql = sql_1;
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@id", idPrd);
+                    var _ent = cnn.Database.SqlQuery<DtoLibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha>(sql, p1).FirstOrDefault();
+                    if (_ent == null)
+                    {
+                        rt.Mensaje = "PRODUCTO NO ENCONTRADO";
+                        rt.Result = DtoLib.Enumerados.EnumResult.isError;
+                        return rt;
+                    }
+                    rt.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            //
+            return rt;
+        }
+    }
 }

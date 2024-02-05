@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Sucursal.Data
 {
-    
     public class Ficha
     {
-
-
         public string auto { get; set; }
         public string autoDepositoPrincipal { get; set; }
         public string autoEmpresaGrupo { get; set; }
@@ -20,13 +17,12 @@ namespace OOB.LibCompra.Sucursal.Data
         public string codigoDepositoPrincipal { get; set; }
         public string nombreDepositoPrincipal { get; set; }
         public string nombreEmpresaGrupo { get; set; }
-
-
+        public string esActivo { get; set; }
+        //
         public Ficha()
         {
             Limpiar();
         }
-
         public Ficha(Ficha it): this()
         {
             auto = it.auto;
@@ -37,8 +33,9 @@ namespace OOB.LibCompra.Sucursal.Data
             codigoDepositoPrincipal = it.codigoDepositoPrincipal;
             nombreDepositoPrincipal = it.nombreDepositoPrincipal;
             nombreEmpresaGrupo = it.nombreEmpresaGrupo;
+            esActivo = it.esActivo;
         }
-
+        //
         private void Limpiar()
         {
             auto = "";
@@ -49,8 +46,7 @@ namespace OOB.LibCompra.Sucursal.Data
             codigoDepositoPrincipal = "";
             nombreDepositoPrincipal = "";
             nombreEmpresaGrupo = "";
+            esActivo = "";
         }
-
     }
-
 }

@@ -151,6 +151,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         {
             ListaPagosPend();
         }
+        private void BT_EDO_CUENTA_Click(object sender, EventArgs e)
+        {
+            EstadoCuenta();
+        }
 
 
         private void BuscarCtasPendientes()
@@ -181,6 +185,10 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         private void ListaPagosPend()
         {
             _controlador.data.ImprimirLista();
+        }
+        private void EstadoCuenta()
+        {
+            _controlador.data.EstadoCuenta();
         }
 
 

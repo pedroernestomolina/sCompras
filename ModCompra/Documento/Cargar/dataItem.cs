@@ -310,6 +310,7 @@ namespace ModCompra.Documento.Cargar
             this.dsct_1_p = it.dsct_1_p;
             this.dsct_2_p = it.dsct_2_p;
             this.dsct_3_p = it.dsct_3_p;
+            this._dataPrecioExp = it._dataPrecioExp;
 
             _contEmp = it.ContenidoEmpSeleccionado;
             _descEmp = it.DescripcionEmpSeleccionado;
@@ -318,6 +319,7 @@ namespace ModCompra.Documento.Cargar
             ActualizarCosto();
             ActualizarCostoDivisa();
             CalculaDscto();
+
         }
 
         public dataItem(OOB.LibCompra.Documento.GetData.FichaDetalle it, decimal factorCambio)
@@ -702,7 +704,6 @@ namespace ModCompra.Documento.Cargar
             _dataPrecios = dataGuardar;
         }
 
-
         //
         private string _autoEmp;
         private int _contEmp;
@@ -725,7 +726,13 @@ namespace ModCompra.Documento.Cargar
             _decEmp = it.EmpCompra.decimalesEmp;
             _isEmpCompraPredeterminado = it.EmpCompra.isEmpPredeterminado;
         }
+        //
 
+        private ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista.IMatPrecio[] _dataPrecioExp;
+        public ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista.IMatPrecio[] DataPrecioExp { get { return _dataPrecioExp; } } 
+        public void setDataPrecios(ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista.IMatPrecio[] matPrecio)
+        {
+            _dataPrecioExp = matPrecio;
+        }
     }
-
 }

@@ -17,7 +17,7 @@ namespace ModCompra.Utils.FiltrosCB.SinBusqueda.Sucursal
         {
             var _lst = new List<Idata>();
             var r01 = Sistema.MyData.Sucursal_GetLista();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+            foreach (var rg in r01.Lista.Where(w=>w.esActivo=="1").OrderBy(o => o.nombre).ToList())
             {
                 _lst.Add(new data(rg));
             }

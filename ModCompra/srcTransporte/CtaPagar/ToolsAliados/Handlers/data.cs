@@ -74,6 +74,29 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
                 _rep.Generar();
             }
         }
+        public void EstadoCuenta()
+        {
+            if (_ctasPendientes.ItemActual != null)
+            {
+                var item = (dataAliado)_ctasPendientes.ItemActual;
+                srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.CXP.Aliado.EdoCta.Imp();
+                _rep.setIdDoc(item.Id);
+                _rep.Generar();
+
+                //if (_servPrest == null)
+                //{
+                //    _servPrest = new PagoServ.Handlers.Imp();
+                //}
+                //var item = (dataAliado)_ctasPendientes.ItemActual;
+                //_servPrest.Inicializa();
+                //_servPrest.setServiciosAliado(item.Id);
+                //_servPrest.Inicia();
+                //if (_servPrest.ProcesarIsOK)
+                //{
+                //    ActualizarSaldoAliado(item.Id);
+                //}
+            }
+        }
 
 
         private void ActualizarSaldoAliado(int id)

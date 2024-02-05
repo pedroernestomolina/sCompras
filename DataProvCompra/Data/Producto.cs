@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.Data
 {
-
     public partial class DataProv : IData
     {
-
         public OOB.ResultadoLista<OOB.LibCompra.Producto.Data.Ficha>
             Producto_GetLista(OOB.LibCompra.Producto.Lista.Filtro filtro)
         {
@@ -335,7 +333,6 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
         //
         public OOB.ResultadoLista<OOB.LibCompra.Producto.EmpaqueCompra.Ficha> 
             Producto_EmpaqueCompra_GetLista(string idPrd)
@@ -377,7 +374,75 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-
+        //
+        public OOB.ResultadoEntidad<OOB.LibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha> 
+            Producto_ActualizarPreciosVenta_ObtenerData_GetById(string idPrd)
+        {
+            var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha>();
+            //
+            var r01 = MyData.Producto_ActualizarPreciosVenta_ObtenerData_GetById(idPrd);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            //
+            var s = r01.Entidad;
+            var id = new OOB.LibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha()
+            {
+                contEmpVta1 = s.contEmpVta1,
+                contEmpVta2 = s.contEmpVta2,
+                contEmpVta3 = s.contEmpVta3,
+                descEmpVta1 = s.descEmpVta1,
+                descEmpVta2 = s.descEmpVta2,
+                descEmpVta3 = s.descEmpVta3,
+                idEmpVta1 = s.idEmpVta1,
+                idEmpVta2 = s.idEmpVta2,
+                idEmpVta3 = s.idEmpVta3,
+                pfdEmpVta_1_Precio_1 = s.pfdEmpVta_1_Precio_1,
+                pfdEmpVta_1_Precio_2 = s.pfdEmpVta_1_Precio_2,
+                pfdEmpVta_1_Precio_3 = s.pfdEmpVta_1_Precio_3,
+                pfdEmpVta_1_Precio_4 = s.pfdEmpVta_1_Precio_4,
+                pfdEmpVta_1_Precio_5 = s.pfdEmpVta_1_Precio_5,
+                pfdEmpVta_2_Precio_1 = s.pfdEmpVta_2_Precio_1,
+                pfdEmpVta_2_Precio_2 = s.pfdEmpVta_2_Precio_2,
+                pfdEmpVta_2_Precio_3 = s.pfdEmpVta_2_Precio_3,
+                pfdEmpVta_2_Precio_4 = s.pfdEmpVta_2_Precio_4,
+                pfdEmpVta_3_Precio_1 = s.pfdEmpVta_3_Precio_1,
+                pfdEmpVta_3_Precio_2 = s.pfdEmpVta_3_Precio_2,
+                pfdEmpVta_3_Precio_3 = s.pfdEmpVta_3_Precio_3,
+                pfdEmpVta_3_Precio_4 = s.pfdEmpVta_3_Precio_4,
+                pnEmpVta_1_Precio_1 = s.pnEmpVta_1_Precio_1,
+                pnEmpVta_1_Precio_2 = s.pnEmpVta_1_Precio_2,
+                pnEmpVta_1_Precio_3 = s.pnEmpVta_1_Precio_3,
+                pnEmpVta_1_Precio_4 = s.pnEmpVta_1_Precio_4,
+                pnEmpVta_1_Precio_5 = s.pnEmpVta_1_Precio_5,
+                pnEmpVta_2_Precio_1 = s.pnEmpVta_2_Precio_1,
+                pnEmpVta_2_Precio_2 = s.pnEmpVta_2_Precio_2,
+                pnEmpVta_2_Precio_3 = s.pnEmpVta_2_Precio_3,
+                pnEmpVta_2_Precio_4 = s.pnEmpVta_2_Precio_4,
+                pnEmpVta_3_Precio_1 = s.pnEmpVta_3_Precio_1,
+                pnEmpVta_3_Precio_2 = s.pnEmpVta_3_Precio_2,
+                pnEmpVta_3_Precio_3 = s.pnEmpVta_3_Precio_3,
+                pnEmpVta_3_Precio_4 = s.pnEmpVta_3_Precio_4,
+                utEmpVta_1_Precio_1 = s.utEmpVta_1_Precio_1,
+                utEmpVta_1_Precio_2 = s.utEmpVta_1_Precio_2,
+                utEmpVta_1_Precio_3 = s.utEmpVta_1_Precio_3,
+                utEmpVta_1_Precio_4 = s.utEmpVta_1_Precio_4,
+                utEmpVta_1_Precio_5 = s.utEmpVta_1_Precio_5,
+                utEmpVta_2_Precio_1 = s.utEmpVta_2_Precio_1,
+                utEmpVta_2_Precio_2 = s.utEmpVta_2_Precio_2,
+                utEmpVta_2_Precio_3 = s.utEmpVta_2_Precio_3,
+                utEmpVta_2_Precio_4 = s.utEmpVta_2_Precio_4,
+                utEmpVta_3_Precio_1 = s.utEmpVta_3_Precio_1,
+                utEmpVta_3_Precio_2 = s.utEmpVta_3_Precio_2,
+                utEmpVta_3_Precio_3 = s.utEmpVta_3_Precio_3,
+                utEmpVta_3_Precio_4 = s.utEmpVta_3_Precio_4,
+            };
+            rt.Entidad = id;
+            //
+            return rt;
+        }
     }
-
 }

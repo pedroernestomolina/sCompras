@@ -41,7 +41,7 @@ namespace ModCompra.Reportes.AdministradorCompra
                 rt["importeDivisa"] = it.IsAnulado ? 0 : it.ImporteDivisa * it.Signo;
                 rt["estatusDoc"] = it.IsAnulado ? "ANULADO" : "";
                 rt["aplica"] = it.Aplica;
-                rt["numDoc"] = it.NumDocumento;
+                rt["numDoc"] = "Doc #: " + it.NumDocumento + Environment.NewLine + "Control #: " + it.NumControl;
                 rt["numControlDoc"] = it.NumControl;
                 rt["situacionDoc"] = it.Situacion;
                 rt["signoDoc"] = it.SignoDesc;

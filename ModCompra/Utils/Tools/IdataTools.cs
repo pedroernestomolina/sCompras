@@ -13,5 +13,6 @@ namespace ModCompra.Utils.Tools
         void AgregarAnticipo();
         void ServPrestado();
         void ImprimirLista();
+        void EstadoCuenta();
     }
 }

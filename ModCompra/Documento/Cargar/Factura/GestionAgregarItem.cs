@@ -8,20 +8,16 @@ using System.Windows.Forms;
 
 namespace ModCompra.Documento.Cargar.Factura
 {
-
     public class GestionAgregarItem
     {
-
-
         private dataItem item;
         private string autoPrd;
         private string autoProveedor;
         private Producto.Precio.Actualizar.IEditar _gPrecioVentaEditar;
-        //
+        private Producto.Precio.zufu.ActualizarPrecio.Vista.IVista _gPrecioEditar;
         private BindingSource _bsEmpCompra;
         private List<dataEmpCompra> _lstEmpCompra;
-
-
+        //
         public string Producto { get { return item.ProductoDetalle; } }
         public string ProductoTasaIvaDesc { get { return item.ProductoTasaIvaDesc; } }
         public string ProductoAdmDivisaDesc { get { return item.ProductoAdmDivisaDesc; } }
@@ -29,7 +25,6 @@ namespace ModCompra.Documento.Cargar.Factura
         public string ProductoContEmpaqueDesc { get { return item.ProductoContEmpaqueDesc; } }
         public decimal ProductoCosto { get { return item.ProductoCosto; } }
         public decimal ProductoCostoDivisa { get { return item.ProductoCostoDivisa; } }
-
         public decimal FactorCompraDivisa { get { return item.FactorCpmpraDivisa; } }
         public decimal MontoImporte { get { return item.importe; } }
         public decimal MontoImpuesto { get { return item.impuesto; } }
@@ -190,25 +185,54 @@ namespace ModCompra.Documento.Cargar.Factura
                         {
                             if (item.IsEmpCompraPredeterminado)
                             {
-                                var _fichaPrd = new ModCompra.Producto.Precio.Actualizar.dataPrdEditar()
+                                //var _fichaPrd = new ModCompra.Producto.Precio.Actualizar.dataPrdEditar()
+                                //{
+                                //    AdmDivisa = item.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
+                                //    AutoPrd = item.Producto.auto,
+                                //    CodigoPrd = item.Producto.codigo,
+                                //    ContEmpCompra = item.Producto.contenidoCompra,
+                                //    CostoMonedaDivisa = item.CostoDivisaFinal,
+                                //    CostoMonedaLocal = item.CostoFinal,
+                                //    DescripcionPrd = item.Producto.descripcion,
+                                //    EmpCompraDescripcion = item.Producto.empaqueCompra,
+                                //    TasaIva = item.Producto.tasaIva,
+                                //};
+                                //_gPrecioVentaEditar.Inicializa();
+                                //_gPrecioVentaEditar.setPrdEditar(_fichaPrd);
+                                //_gPrecioVentaEditar.Inicia();
+                                //if (_gPrecioVentaEditar.IsEditarPrecioIsOk)
+                                //{
+                                //    item.setActualizarPrecio(true);
+                                //    item.setDataPrecios(_gPrecioVentaEditar.DataPrecios);
+                                //}
+
+                                Producto.Precio.zufu.ActualizarPrecio.Vista.IdataProducto _fichaPrd = new Producto.Precio.zufu.ActualizarPrecio.Handler.dataProducto()
                                 {
-                                    AdmDivisa = item.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
-                                    AutoPrd = item.Producto.auto,
-                                    CodigoPrd = item.Producto.codigo,
-                                    ContEmpCompra = item.Producto.contenidoCompra,
-                                    CostoMonedaDivisa = item.CostoDivisaFinal,
-                                    CostoMonedaLocal = item.CostoFinal,
-                                    DescripcionPrd = item.Producto.descripcion,
-                                    EmpCompraDescripcion = item.Producto.empaqueCompra,
-                                    TasaIva = item.Producto.tasaIva,
+                                    idPrd = item.Producto.auto,
+                                    tasaIva = item.Producto.tasaIva,
+                                    codigoPrd = item.Producto.codigo,
+                                    descPrd = item.Producto.descripcion,
+                                    contEmpCompra = item.Producto.contenidoCompra,
+                                    costoCompra = item.CostoDivisaFinal,
+                                    empaqueDesc = item.Producto.empaqueCompra,
+                                    tasaIvaDesc = item.Producto.nombreTasaIva,
+                                    admDivisa = item.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.Si,
                                 };
-                                _gPrecioVentaEditar.Inicializa();
-                                _gPrecioVentaEditar.setPrdEditar(_fichaPrd);
-                                _gPrecioVentaEditar.Inicia();
-                                if (_gPrecioVentaEditar.IsEditarPrecioIsOk)
+                                if (_gPrecioEditar == null) 
+                                {
+                                    _gPrecioEditar = new Producto.Precio.zufu.ActualizarPrecio.Handler.Imp();
+                                }
+                                _gPrecioEditar.Inicializa();
+                                _gPrecioEditar.setProductoCargar(_fichaPrd);
+                                if (item.DataPrecioExp != null) 
+                                {
+                                    _gPrecioEditar.setImportarPrecios(item.DataPrecioExp);
+                                }
+                                _gPrecioEditar.Inicia();
+                                if (_gPrecioEditar.BtProcesar.OpcionIsOK)
                                 {
                                     item.setActualizarPrecio(true);
-                                    item.setDataPrecios(_gPrecioVentaEditar.DataPrecios);
+                                    item.setDataPrecios(_gPrecioEditar.DataExportar);
                                 }
                             }
                         }

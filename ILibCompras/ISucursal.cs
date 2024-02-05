@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace ILibCompras
 {
-    
     public interface ISucursal
     {
-
-        DtoLib.ResultadoLista<DtoLibCompra.Sucursal.Lista.Resumen> Sucursal_GetLista();
-        DtoLib.ResultadoEntidad<DtoLibCompra.Sucursal.Data.Ficha> Sucursal_GetFicha(string autoSucursal);
-
+        DtoLib.ResultadoLista<DtoLibCompra.Sucursal.Lista.Resumen> 
+            Sucursal_GetLista();
+        DtoLib.ResultadoEntidad<DtoLibCompra.Sucursal.Data.Ficha> 
+            Sucursal_GetFicha(string autoSucursal);
     }
-
 }

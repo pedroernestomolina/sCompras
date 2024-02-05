@@ -35,10 +35,14 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Handlers
             Id = ficha.aliadoId;
             ciRif = ficha.aliadoCiRif;
             nombreRazonSocial = ficha.aliadoNombre;
-            pendiente=_pendiente;
-            anticipos=_anticipos;
+            pendiente = _pendiente;
+            anticipos = _anticipos;
             montoResta=_resta;
-            cntDocPend = _ficha.cntDoc;
+            cntDocPend = 0;
+            if (_resta > 0m) 
+            {
+                cntDocPend = _ficha.cntDoc;
+            }
         }
     }
 }

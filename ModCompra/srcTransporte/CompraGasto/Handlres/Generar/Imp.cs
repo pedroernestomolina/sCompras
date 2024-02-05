@@ -114,7 +114,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 _data.TipoDocumentoCargarData(_lTipoDoc);
                 _data.AplicaTipoDocumentoCargarData(_lAplicaTipoDoc);
                 _data.CondicionPagoDocCargarData(_lCondPagoDoc);
-                _data.SucursalCargarData(r01.Lista);
+                _data.SucursalCargarData(r01.Lista.Where(w=>w.esActivo=="1").ToList());
                 _data.ConceptoCargarData(r02.Lista);
                 _data.FechaServidorCargar(r03.Entidad);
                 _data.SetFactorCambio(r04.Entidad);

@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace ServiceCompra.MyService
 {
-    
     public partial class Service: IService
     {
-
         public DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen> 
             Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro)
         {
@@ -47,12 +45,17 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Producto_EmpaqueMedida_GetLista();
         }
-
         //
         public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha> 
             Producto_EmpaquesCompra_GetFicha(string idPrd)
         {
             return ServiceProv.Producto_EmpaquesCompra_GetFicha(idPrd);
+        }
+        //
+        public DtoLib.ResultadoEntidad<DtoLibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha> 
+            Producto_ActualizarPreciosVenta_ObtenerData_GetById(string idPrd)
+        {
+            return ServiceProv.Producto_ActualizarPreciosVenta_ObtenerData_GetById(idPrd);
         }
     }
 

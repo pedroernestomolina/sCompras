@@ -107,6 +107,7 @@
     <Compile Include="Maestros\Grupo\Resumen.cs" />
     <Compile Include="Permiso\Enumerados.cs" />
     <Compile Include="Permiso\Ficha.cs" />
+    <Compile Include="Producto\ActualizarPrecioVenta\ObtenerData\Ficha.cs" />
     <Compile Include="Producto\CodigoRefProveedor\Filtro.cs" />
     <Compile Include="Producto\Data\Ficha.cs" />
     <Compile Include="Producto\EmpaqueCompra\Ficha.cs" />

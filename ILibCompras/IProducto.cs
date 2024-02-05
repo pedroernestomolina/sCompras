@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ILibCompras
 {
-    
     public interface IProducto
     {
-
         DtoLib.ResultadoLista<DtoLibCompra.Producto.Lista.Resumen>
             Producto_GetLista(DtoLibCompra.Producto.Lista.Filtro filtro);
         DtoLib.ResultadoEntidad<DtoLibCompra.Producto.Data.Ficha> 
@@ -25,10 +23,11 @@ namespace ILibCompras
             Producto_Precio_GetCapturar_ById(string idPrd);
         DtoLib.ResultadoLista<DtoLibCompra.Producto.EmpaqueMedida.Lista.Ficha>
             Producto_EmpaqueMedida_GetLista();
-
         //
         DtoLib.ResultadoEntidad<DtoLibCompra.Producto.EmpaqueCompra.Ficha>
             Producto_EmpaquesCompra_GetFicha(string idPrd);
+        //
+        DtoLib.ResultadoEntidad<DtoLibCompra.Producto.ActualizarPrecioVenta.ObtenerData.Ficha>
+            Producto_ActualizarPreciosVenta_ObtenerData_GetById(string idPrd);
     }
-
 }

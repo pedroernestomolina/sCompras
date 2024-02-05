@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.InfraEstructura
 {
-    
     public interface ISucursal
     {
-
-        OOB.ResultadoLista<OOB.LibCompra.Sucursal.Data.Ficha> Sucursal_GetLista();
-        OOB.ResultadoEntidad<OOB.LibCompra.Sucursal.Data.Ficha> Sucursal_GetFicha(string auto);
- 
+        OOB.ResultadoLista<OOB.LibCompra.Sucursal.Data.Ficha> 
+            Sucursal_GetLista();
+        OOB.ResultadoEntidad<OOB.LibCompra.Sucursal.Data.Ficha> 
+            Sucursal_GetFicha(string auto);
     }
-
 }
