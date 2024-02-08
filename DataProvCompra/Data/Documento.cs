@@ -1237,6 +1237,20 @@ namespace DataProvCompra.Data
                         estatusEmpCompraPredeterminado = s.estatusEmpCompraPredeterminado,
                         idEmpSeleccionado = s.idEmpSeleccionado,
                     };
+                    if (s.preciosVtaPend!=null)
+                    {
+                        rg.preciosVtaPend = s.preciosVtaPend.Select(ss =>
+                        {
+                            var nr = new DtoLibCompra.Documento.Pendiente.Agregar.PrecioVtaPend()
+                            {
+                                contEmpVta = ss.contEmpVta,
+                                descEmpVta = ss.descEmpVta,
+                                idEmpqVta = ss.idEmpqVta,
+                                precios = ss.precios,
+                            };
+                            return nr;
+                        }).ToList();
+                    };
                     return rg;
                 }).ToList(),
             };
@@ -1247,7 +1261,6 @@ namespace DataProvCompra.Data
                 result.Result = OOB.Enumerados.EnumResult.isError;
                 return result;
             }
-
             return result;
         }
         public OOB.ResultadoEntidad<int> 
@@ -1337,7 +1350,7 @@ namespace DataProvCompra.Data
             Compra_Documento_Pendiente_Abrir_GetById(int idDoc)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibCompra.Documento.Pendiente.Abrir.Ficha>();
-
+            //
             var r01 = MyData.Compra_Documento_Pendiente_Abrir(idDoc);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -1345,7 +1358,7 @@ namespace DataProvCompra.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             var ent = r01.Entidad;
             var doc = new OOB.LibCompra.Documento.Pendiente.Abrir.Ficha()
             {
@@ -1402,6 +1415,21 @@ namespace DataProvCompra.Data
                             decimalEmpaque = s.decimalEmpaque,
                             estatusEmpCompraPredeterminado = s.estatusEmpCompraPredeterminado,
                             idEmpaqueSeleccionado = s.idEmpaqueSeleccionado,
+                            //
+                            preciosVtaPend = s.preciosVtaPend.Select(ss=>
+                            {
+                                var nr = new OOB.LibCompra.Documento.Pendiente.Abrir.PrecioVtaPend()
+                                {
+                                    contEmpVta = ss.contEmpVta,
+                                    descEmpVta = ss.descEmpVta,
+                                    idEmpqVta = ss.idEmpqVta,
+                                    pVta1 = ss.pVta1,
+                                    pVta2 = ss.pVta2,
+                                    pVta3 = ss.pVta3,
+                                    pVta4 = ss.pVta4,
+                                };
+                                return nr;
+                            }).ToList(),
                         };
                         return rg;
                     }).ToList();
@@ -1409,7 +1437,7 @@ namespace DataProvCompra.Data
             }
             doc.items = items;
             rt.Entidad = doc;
-
+            //
             return rt;
         }
     }

@@ -733,6 +733,7 @@ namespace ModCompra.Documento.Cargar
         public void setDataPrecios(ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista.IMatPrecio[] matPrecio)
         {
             _dataPrecioExp = matPrecio;
+            _actualizarPrecio = true;
         }
     }
 }

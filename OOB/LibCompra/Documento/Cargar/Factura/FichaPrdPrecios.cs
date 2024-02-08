@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Documento.Cargar.Factura
 {
-    
     public class FichaPrdPrecios
     {
-
         public string autoPrd { get; set; }
         public FichaPrecio precio1_Emp1 { get; set; }
         public FichaPrecio precio1_Emp2 { get; set; }
@@ -48,7 +46,5 @@ namespace OOB.LibCompra.Documento.Cargar.Factura
             precio5_Emp2 = null;
             precio5_Emp3 = null;
         }
-
     }
-
 }

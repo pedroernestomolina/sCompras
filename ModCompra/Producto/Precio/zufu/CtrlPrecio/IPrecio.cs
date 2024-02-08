@@ -20,5 +20,7 @@ namespace ModCompra.Producto.Precio.zufu.CtrlPrecio
         //
         void Inicializa();
         void ActualizarImportacion();
+        //
+        bool VerificarPrecio(decimal costoUnd);
     }
 }

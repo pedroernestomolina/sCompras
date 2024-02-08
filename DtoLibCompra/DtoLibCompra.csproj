@@ -91,8 +91,10 @@
     <Compile Include="Documento\Lista\Resumen.cs" />
     <Compile Include="Documento\Pendiente\Abrir\Ficha.cs" />
     <Compile Include="Documento\Pendiente\Abrir\FichaDetalle.cs" />
+    <Compile Include="Documento\Pendiente\Abrir\PrecioVtaPend.cs" />
     <Compile Include="Documento\Pendiente\Agregar\Ficha.cs" />
     <Compile Include="Documento\Pendiente\Agregar\FichaDetalle.cs" />
+    <Compile Include="Documento\Pendiente\Agregar\PrecioVtaPend.cs" />
     <Compile Include="Documento\Pendiente\Filtro\Ficha.cs" />
     <Compile Include="Documento\Pendiente\Lista\Ficha.cs" />
     <Compile Include="Documento\Visualizar\Ficha.cs" />

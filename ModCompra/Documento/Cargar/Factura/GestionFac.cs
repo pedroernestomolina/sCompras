@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModCompra.Documento.Cargar.Factura
 {
-    
     public class GestionFac : Controlador.IGestion
     {
-
         public event EventHandler ActualizarItemHnd;
 
 
@@ -261,12 +259,6 @@ namespace ModCompra.Documento.Cargar.Factura
                         return;
                     }
                 }
-                //var _it = ((List<dataItem>)gestionItem.Lista).FirstOrDefault(s=> !s.GetActualizarPrecio);
-                //if (_it!=null)
-                //{
-                //    Helpers.Msg.Error(" [ " +_it.Producto.descripcion + " ], PRECIO DE VENTA NO ASIGNADO");
-                //    return;
-                //}
             }
 
             var r01 = Sistema.MyData.Permiso_RegistrarFactura_ProcesarDocumento(Sistema.UsuarioP.autoGru);
@@ -287,366 +279,328 @@ namespace ModCompra.Documento.Cargar.Factura
 
             var preciosMod =new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecios>();
             var historicoPrecio = new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico>();
+
+            var _factorCambio = gestionDoc.FactorDivisa;
             foreach (dataItem it in ((List<dataItem>)gestionItem.Lista).Where(w=>w.GetActualizarPrecio && w.IsEmpCompraPredeterminado).ToList())
             {
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_1 = null;
-                if (it.GetDataPrecios.precio_1_Emp_1.pNeto>0)
+                var _factorMonAct = _factorCambio;
+                var _factorMonDiv = 1m;
+                if (it.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.No)
                 {
+                    _factorMonAct = 1m;
+                    _factorMonDiv = _factorCambio;
+                }
+
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_1 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p2_1 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p3_1 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p4_1 = null;
+                //
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_2 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p2_2 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p3_2 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p4_2 = null;
+                //
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_3 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p2_3 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p3_3 = null;
+                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p4_3 = null;
+                //
+                var PrecVta = it.DataPrecioExp;
+                //
+                var MP = (Producto.Precio.zufu.ActualizarPrecio.Handler.ImpMatPrecio)PrecVta[0];
+                var p1 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[0];
+                var p2 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[1];
+                var p3 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[2];
+                var p4 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[3];
+                if (p1.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p1.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p1.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p1.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
                     p1_1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
                     {
-                        autoEmp = it.GetDataPrecios.precio_1_Emp_1.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_1_Emp_1.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_1_Emp_1.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_1_Emp_1.pFull,
-                        utilidad = it.GetDataPrecios.precio_1_Emp_1.utilidad
+                        precioNeto = _pn ,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
                     };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    var ph1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
                     {
                         autoPrd = it.Producto.auto,
                         nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_1_Emp_1.pNeto,
+                        precio = _pn,
                         precioId = "1",
-                        empaque = it.GetDataPrecios.precio_1_Emp_1.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_1_Emp_1.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
+                        empaque = MP.Empaque,
+                        contenido = p1.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
                     };
-                    historicoPrecio.Add(ph);
+                    historicoPrecio.Add(ph1);
                 }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_2 = null;
-                if (it.GetDataPrecios.precio_1_Emp_2.pNeto > 0)
+                if (p2.Data.CambioPrecioIsOk)
                 {
-                    p1_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_1_Emp_2.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_1_Emp_2.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_1_Emp_2.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_1_Emp_2.pFull,
-                        utilidad = it.GetDataPrecios.precio_1_Emp_2.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_1_Emp_2.pNeto,
-                        precioId = "MY1",
-                        empaque = it.GetDataPrecios.precio_1_Emp_2.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_1_Emp_2.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_3 = null;
-                if (it.GetDataPrecios.precio_1_Emp_3.pNeto > 0)
-                {
-                    p1_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_1_Emp_3.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_1_Emp_3.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_1_Emp_3.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_1_Emp_3.pFull,
-                        utilidad = it.GetDataPrecios.precio_1_Emp_3.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_1_Emp_3.pNeto,
-                        precioId = "DS1",
-                        empaque = it.GetDataPrecios.precio_1_Emp_3.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_1_Emp_3.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-
-                //
-
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p2_1 = null;
-                if (it.GetDataPrecios.precio_2_Emp_1.pNeto > 0)
-                {
+                    var _pn = Math.Round(p2.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p2.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p2.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
                     p2_1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
                     {
-                        autoEmp = it.GetDataPrecios.precio_2_Emp_1.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_2_Emp_1.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_2_Emp_1.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_2_Emp_1.pFull,
-                        utilidad = it.GetDataPrecios.precio_2_Emp_1.utilidad,
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut ,
                     };
                     var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
                     {
                         autoPrd = it.Producto.auto,
                         nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_2_Emp_1.pNeto,
+                        precio = _pn,
                         precioId = "2",
-                        empaque = it.GetDataPrecios.precio_2_Emp_1.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_2_Emp_1.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
+                        empaque = MP.Empaque,
+                        contenido = p2.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
                     };
                     historicoPrecio.Add(ph);
                 }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p2_2 = null;
-                if (it.GetDataPrecios.precio_2_Emp_2.pNeto > 0)
+                if (p3.Data.CambioPrecioIsOk)
                 {
-                    p2_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_2_Emp_2.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_2_Emp_2.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_2_Emp_2.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_2_Emp_2.pFull,
-                        utilidad = it.GetDataPrecios.precio_2_Emp_2.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_2_Emp_2.pNeto,
-                        precioId = "MY2",
-                        empaque = it.GetDataPrecios.precio_2_Emp_2.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_2_Emp_2.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p2_3 = null;
-                if (it.GetDataPrecios.precio_2_Emp_3.pNeto > 0)
-                {
-                    p2_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_2_Emp_3.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_2_Emp_3.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_2_Emp_3.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_2_Emp_3.pFull,
-                        utilidad = it.GetDataPrecios.precio_2_Emp_3.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_2_Emp_3.pNeto,
-                        precioId = "DS2",
-                        empaque = it.GetDataPrecios.precio_2_Emp_3.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_2_Emp_3.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-
-                //
-
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p3_1 = null;
-                if (it.GetDataPrecios.precio_3_Emp_1.pNeto > 0)
-                {
+                    var _pn = Math.Round(p3.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p3.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p3.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
                     p3_1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
                     {
-                        autoEmp = it.GetDataPrecios.precio_3_Emp_1.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_3_Emp_1.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_3_Emp_1.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_3_Emp_1.pFull,
-                        utilidad = it.GetDataPrecios.precio_3_Emp_1.utilidad
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
                     };
                     var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
                     {
                         autoPrd = it.Producto.auto,
                         nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_3_Emp_1.pNeto,
+                        precio = _pn,
                         precioId = "3",
-                        empaque = it.GetDataPrecios.precio_3_Emp_1.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_3_Emp_1.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
+                        empaque = MP.Empaque,
+                        contenido = p3.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
                     };
                     historicoPrecio.Add(ph);
                 }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p3_2 = null;
-                if (it.GetDataPrecios.precio_3_Emp_2.pNeto > 0)
+                if (p4.Data.CambioPrecioIsOk)
                 {
-                    p3_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_3_Emp_2.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_3_Emp_2.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_3_Emp_2.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_3_Emp_2.pFull,
-                        utilidad = it.GetDataPrecios.precio_3_Emp_2.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_3_Emp_2.pNeto,
-                        precioId = "MY3",
-                        empaque = it.GetDataPrecios.precio_3_Emp_2.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_3_Emp_2.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p3_3 = null;
-                if (it.GetDataPrecios.precio_3_Emp_3.pNeto > 0)
-                {
-                    p3_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_3_Emp_3.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_3_Emp_3.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_3_Emp_3.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_3_Emp_3.pFull,
-                        utilidad = it.GetDataPrecios.precio_3_Emp_3.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_3_Emp_3.pNeto,
-                        precioId = "DS3",
-                        empaque = it.GetDataPrecios.precio_3_Emp_3.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_3_Emp_3.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-
-                //
-
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p4_1 = null;
-                if (it.GetDataPrecios.precio_4_Emp_1.pNeto > 0)
-                {
+                    var _pn = Math.Round(p4.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p4.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p4.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
                     p4_1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
                     {
-                        autoEmp = it.GetDataPrecios.precio_4_Emp_1.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_4_Emp_1.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_4_Emp_1.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_4_Emp_1.pFull,
-                        utilidad = it.GetDataPrecios.precio_4_Emp_1.utilidad
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
                     };
                     var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
                     {
                         autoPrd = it.Producto.auto,
                         nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_4_Emp_1.pNeto,
+                        precio = _pn,
                         precioId = "4",
-                        empaque = it.GetDataPrecios.precio_4_Emp_1.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_4_Emp_1.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
+                        empaque = MP.Empaque,
+                        contenido = p4.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
                     };
                     historicoPrecio.Add(ph);
                 }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p4_2 = null;
-                if (it.GetDataPrecios.precio_4_Emp_2.pNeto > 0)
+                //
+                MP = (Producto.Precio.zufu.ActualizarPrecio.Handler.ImpMatPrecio)PrecVta[1];
+                p1 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[0];
+                p2 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[1];
+                p3 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[2];
+                p4 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[3];
+                if (p1.Data.CambioPrecioIsOk)
                 {
+                    var _pn = Math.Round(p1.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p1.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p1.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
+                    p1_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
+                    {
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
+                    };
+                    var ph1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    {
+                        autoPrd = it.Producto.auto,
+                        nota = "FACTURA COMPRA",
+                        precio = _pn,
+                        precioId = "MY1",
+                        empaque = MP.Empaque,
+                        contenido = p1.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
+                    };
+                    historicoPrecio.Add(ph1);
+                }
+                if (p2.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p2.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p2.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p2.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
+                    p2_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
+                    {
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
+                    };
+                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    {
+                        autoPrd = it.Producto.auto,
+                        nota = "FACTURA COMPRA",
+                        precio = _pn,
+                        precioId = "MY2",
+                        empaque = MP.Empaque,
+                        contenido = p2.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
+                    };
+                    historicoPrecio.Add(ph);
+                }
+                if (p3.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p3.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p3.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p3.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
+                    p3_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
+                    {
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
+                    };
+                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    {
+                        autoPrd = it.Producto.auto,
+                        nota = "FACTURA COMPRA",
+                        precio = _pn,
+                        precioId = "MY3",
+                        empaque = MP.Empaque,
+                        contenido = p3.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
+                    };
+                    historicoPrecio.Add(ph);
+                }
+                if (p4.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p4.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p4.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p4.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
                     p4_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
                     {
-                        autoEmp = it.GetDataPrecios.precio_4_Emp_2.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_4_Emp_2.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_4_Emp_2.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_4_Emp_2.pFull,
-                        utilidad = it.GetDataPrecios.precio_4_Emp_2.utilidad
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
                     };
                     var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
                     {
                         autoPrd = it.Producto.auto,
                         nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_4_Emp_2.pNeto,
-                        precioId = "MY4",
-                        empaque = it.GetDataPrecios.precio_4_Emp_2.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_4_Emp_2.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
+                        precio = _pn,
+                        precioId = "MY3",
+                        empaque = MP.Empaque,
+                        contenido = p4.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
                     };
                     historicoPrecio.Add(ph);
                 }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p4_3 = null;
-                if (it.GetDataPrecios.precio_4_Emp_3.pNeto > 0)
+                //
+                MP = (Producto.Precio.zufu.ActualizarPrecio.Handler.ImpMatPrecio)PrecVta[2];
+                p1 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[0];
+                p2 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[1];
+                p3 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[2];
+                p4 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[3];
+                if (p1.Data.CambioPrecioIsOk)
                 {
+                    var _pn = Math.Round(p1.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p1.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p1.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
+                    p1_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
+                    {
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
+                    };
+                    var ph1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    {
+                        autoPrd = it.Producto.auto,
+                        nota = "FACTURA COMPRA",
+                        precio = _pn,
+                        precioId = "DS1",
+                        empaque = MP.Empaque,
+                        contenido = p1.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
+                    };
+                    historicoPrecio.Add(ph1);
+                }
+                if (p2.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p2.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p2.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p2.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
+                    p2_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
+                    {
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
+                    };
+                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    {
+                        autoPrd = it.Producto.auto,
+                        nota = "FACTURA COMPRA",
+                        precio = _pn,
+                        precioId = "DS2",
+                        empaque = MP.Empaque,
+                        contenido = p2.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
+                    };
+                    historicoPrecio.Add(ph);
+                }
+                if (p3.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p3.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p3.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p3.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
+                    p3_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
+                    {
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
+                    };
+                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
+                    {
+                        autoPrd = it.Producto.auto,
+                        nota = "FACTURA COMPRA",
+                        precio = _pn,
+                        precioId = "DS3",
+                        empaque = MP.Empaque,
+                        contenido = p3.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
+                    };
+                    historicoPrecio.Add(ph);
+                }
+                if (p4.Data.CambioPrecioIsOk)
+                {
+                    var _pn = Math.Round(p4.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);
+                    var _pf = Math.Round(p4.Data.PFull / _factorMonDiv, 2, MidpointRounding.AwayFromZero);
+                    var _ut = Math.Round(p4.Data.Utilidad, 2, MidpointRounding.AwayFromZero);
                     p4_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
                     {
-                        autoEmp = it.GetDataPrecios.precio_4_Emp_3.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_4_Emp_3.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_4_Emp_3.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_4_Emp_3.pFull,
-                        utilidad = it.GetDataPrecios.precio_4_Emp_3.utilidad
+                        precioNeto = _pn,
+                        precioFullDivisa = _pf,
+                        utilidad = _ut,
                     };
                     var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
                     {
                         autoPrd = it.Producto.auto,
                         nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_4_Emp_3.pNeto,
+                        precio = _pn,
                         precioId = "DS4",
-                        empaque = it.GetDataPrecios.precio_4_Emp_3.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_4_Emp_3.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
+                        empaque = MP.Empaque,
+                        contenido = p4.Data.ContEmpVta,
+                        tasaFactorCambio = _factorCambio,
                     };
                     historicoPrecio.Add(ph);
                 }
-
-                //
-
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p5_1 = null;
-                if (it.GetDataPrecios.precio_5_Emp_1.pNeto > 0)
-                {
-                    p5_1 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_5_Emp_1.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_5_Emp_1.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_5_Emp_1.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_5_Emp_1.pFull,
-                        utilidad = it.GetDataPrecios.precio_5_Emp_1.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_5_Emp_1.pNeto,
-                        precioId = "PTO",
-                        empaque = it.GetDataPrecios.precio_5_Emp_1.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_5_Emp_1.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p5_2 = null;
-                if (it.GetDataPrecios.precio_5_Emp_2.pNeto > 0)
-                {
-                    p5_2 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_5_Emp_2.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_5_Emp_2.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_5_Emp_2.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_5_Emp_2.pFull,
-                        utilidad = it.GetDataPrecios.precio_5_Emp_2.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_5_Emp_2.pNeto,
-                        precioId = "MY5",
-                        empaque = it.GetDataPrecios.precio_5_Emp_2.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_5_Emp_2.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-                OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p5_3 = null;
-                if (it.GetDataPrecios.precio_5_Emp_3.pNeto > 0)
-                {
-                    p5_3 = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio()
-                    {
-                        autoEmp = it.GetDataPrecios.precio_5_Emp_3.autoEmpaque,
-                        contenido = it.GetDataPrecios.precio_5_Emp_3.contEmpaque,
-                        precioNeto = it.GetDataPrecios.precio_5_Emp_3.pNeto,
-                        precioFullDivisa = it.GetDataPrecios.precio_5_Emp_3.pFull,
-                        utilidad = it.GetDataPrecios.precio_5_Emp_3.utilidad
-                    };
-                    var ph = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico()
-                    {
-                        autoPrd = it.Producto.auto,
-                        nota = "FACTURA COMPRA",
-                        precio = it.GetDataPrecios.precio_5_Emp_3.pNeto,
-                        precioId = "DS5",
-                        empaque = it.GetDataPrecios.precio_5_Emp_3.descEmpaque,
-                        contenido = it.GetDataPrecios.precio_5_Emp_3.contEmpaque,
-                        tasaFactorCambio = it.GetDataPrecios.GetFactorDivisa,
-                    };
-                    historicoPrecio.Add(ph);
-                }
-
                 var fp = new OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecios()
                 {
                     autoPrd = it.Producto.auto,
@@ -667,9 +621,9 @@ namespace ModCompra.Documento.Cargar.Factura
                     precio4_Emp2 = p4_2,
                     precio4_Emp3 = p4_3,
                     //
-                    precio5_Emp1 = p5_1,
-                    precio5_Emp2 = p5_2,
-                    precio5_Emp3 = p5_3,
+                    //precio5_Emp1 = p5_1,
+                    //precio5_Emp2 = p5_2,
+                    //precio5_Emp3 = p5_3,
                 };
                 preciosMod.Add(fp);
             }
@@ -1136,18 +1090,19 @@ namespace ModCompra.Documento.Cargar.Factura
                     estatusEmpCompraPredeterminado = it.IsEmpCompraPredeterminado ? "1" : "0",
                     idEmpSeleccionado = it.IdEmpaqueCompra,
                 };
-
-
-                //
-                if (it.GetActualizarPrecio && it.IsEmpCompraPredeterminado)
+                if (it.DataPrecioExp != null) 
                 {
-                    if (it.GetDataPrecios.precio_1_Emp_1.isActualizado)
-                    { 
-                    }
+                    var lstPrecios = Helpers.Documento.Compra.ConstruirListaPreciosPend(it.DataPrecioExp);
+                    item.preciosVtaPend = lstPrecios;
                 }
                 //
-
-
+                //if (it.GetActualizarPrecio && it.IsEmpCompraPredeterminado)
+                //{
+                //    if (it.GetDataPrecios.precio_1_Emp_1.isActualizado)
+                //    { 
+                //    }
+                //}
+                //
                 items.Add(item);
             }
             ficha.items = items;
@@ -1198,6 +1153,12 @@ namespace ModCompra.Documento.Cargar.Factura
                         return;
                     }
 
+                    var r00 = Sistema.MyData.Configuracion_MetodoCalculoUtilidad();
+                    if (r00.Result == OOB.Enumerados.EnumResult.isError)
+                    {
+                        Helpers.Msg.Error(r00.Mensaje);
+                        return;
+                    }
                     var itemPend = _gestionPend.ItemSeleccionado;
                     var r02 = Sistema.MyData.Compra_Documento_Pendiente_Abrir_GetById(itemPend.id);
                     if (r02.Result == OOB.Enumerados.EnumResult.isError)
@@ -1235,7 +1196,7 @@ namespace ModCompra.Documento.Cargar.Factura
                         gestionDoc.setNotas(doc.docNotas);
                         gestionDoc.setFactorCambio(doc.docFactorCambio);
                         gestionDoc.AceptarData();
-                        gestionItem.AgregarListaItem(doc.items, gestionDoc.IdProveedor, gestionDoc.FactorDivisa);
+                        gestionItem.AgregarListaItem(doc.items, gestionDoc.IdProveedor, gestionDoc.FactorDivisa, r00.Entidad);
                     }
                 }
             }
@@ -1264,7 +1225,5 @@ namespace ModCompra.Documento.Cargar.Factura
                     break;
             }
         }
-
     }
-
 }

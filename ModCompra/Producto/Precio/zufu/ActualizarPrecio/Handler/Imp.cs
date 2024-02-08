@@ -43,6 +43,7 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Handler
             _precioEmp3 = new ImpMatPrecio();
             _btProcesar = new Utils.Control.Boton.Procesar.Imp();
             _btAbandonar = new Utils.Control.Boton.Abandonar.Imp();
+            _preciosImportar = null;
         }
         public void Inicializa()
         {
@@ -51,6 +52,7 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Handler
             _precioEmp3.Inicializa();
             _btAbandonar.Inicializa();
             _btProcesar.Inicializa();
+            _preciosImportar = null;
         }
         Vista.Frm frm;
         public void Inicia()

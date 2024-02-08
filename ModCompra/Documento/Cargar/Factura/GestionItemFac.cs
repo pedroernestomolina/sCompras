@@ -402,7 +402,7 @@ namespace ModCompra.Documento.Cargar.Factura
             }
         }
 
-        public void AgregarListaItem(List<OOB.LibCompra.Documento.Pendiente.Abrir.FichaDetalle> list, string idPrv, decimal factorDivisa)
+        public void AgregarListaItem(List<OOB.LibCompra.Documento.Pendiente.Abrir.FichaDetalle> list, string idPrv, decimal factorDivisa, OOB.LibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad metCalcUt)
         {
             foreach (var it in list)
             {
@@ -418,10 +418,15 @@ namespace ModCompra.Documento.Cargar.Factura
 
                 var item = new dataItem(it, factorDivisa);
                 item.setEmpCompra(emp);
+                //
+                var _dataPrecios = Helpers.Documento.Compra.ImportarListaPreciosPend(it, metCalcUt);
+                if (_dataPrecios != null) 
+                {
+                    item.setDataPrecios(_dataPrecios);
+                }
+                //
                 InsertarItem(item);
             }
         }
-
     }
-
 }

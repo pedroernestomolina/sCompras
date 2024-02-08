@@ -23,5 +23,7 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
         void RecuperarPrecios(string empaque, int cont, 
             CtrlPrecio.IPrecio p1, CtrlPrecio.IPrecio p2, 
             CtrlPrecio.IPrecio p3, CtrlPrecio.IPrecio p4);
+        //
+        bool VerificarPrecio(decimal costoUnd);
     }
 }

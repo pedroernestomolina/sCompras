@@ -177,21 +177,5 @@ namespace ModCompra.src.PantallaInicio
         {
             _controlador.ConfiguracionSistema();
         }
-
-        //
-        private void actualizarPrecioVentaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _controlador.ActualizarPrecioVenta();
-        }
-        private void editarPrecioVentaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _controlador.EditarPrecioVenta();
-        }
-
-        private void recuperarPrecioVentaDeUnPendToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _controlador.RecuperarPrecioVenta();
-
-        }
     }
 }

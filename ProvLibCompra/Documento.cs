@@ -427,13 +427,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos set 
-                                                auto_precio_1=@autoPrecio,
-                                                contenido_1=@contenido,
                                                 precio_1=@precio,
                                                 utilidad_1=@utilidad,
                                                 pdf_1=@precioFullDivisa
                                             where auto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio1_Emp2 != null)
@@ -451,13 +449,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_may_1=@autoPrecio,
-                                                contenido_may_1=@contenido,
                                                 precio_may_1=@precio,
                                                 utilidad_may_1=@utilidad,
                                                 pdmf_1=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio1_Emp3 != null)
@@ -475,13 +471,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_dsp_1=@autoPrecio,
-                                                cont_dsp_1=@contenido,
                                                 precio_dsp_1=@precio,
                                                 utilidad_dsp_1=@utilidad,
                                                 pdivisafull_dsp_1=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             //
@@ -500,13 +494,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos set 
-                                                auto_precio_2=@autoPrecio,
-                                                contenido_2=@contenido,
                                                 precio_2=@precio,
                                                 utilidad_2=@utilidad,
                                                 pdf_2=@precioFullDivisa
                                             where auto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio2_Emp2 != null)
@@ -524,13 +516,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_may_2=@autoPrecio,
-                                                contenido_may_2=@contenido,
                                                 precio_may_2=@precio,
                                                 utilidad_may_2=@utilidad,
                                                 pdmf_2=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio2_Emp3 != null)
@@ -548,13 +538,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_dsp_2=@autoPrecio,
-                                                cont_dsp_2=@contenido,
                                                 precio_dsp_2=@precio,
                                                 utilidad_dsp_2=@utilidad,
                                                 pdivisafull_dsp_2=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             //
@@ -573,13 +561,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos set 
-                                                auto_precio_3=@autoPrecio,
-                                                contenido_3=@contenido,
                                                 precio_3=@precio,
                                                 utilidad_3=@utilidad,
                                                 pdf_3=@precioFullDivisa
                                             where auto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio3_Emp2 != null)
@@ -597,13 +583,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_may_3=@autoPrecio,
-                                                contenido_may_3=@contenido,
                                                 precio_may_3=@precio,
                                                 utilidad_may_3=@utilidad,
                                                 pdmf_3=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio3_Emp3 != null)
@@ -621,13 +605,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_dsp_3=@autoPrecio,
-                                                cont_dsp_3=@contenido,
                                                 precio_dsp_3=@precio,
                                                 utilidad_dsp_3=@utilidad,
                                                 pdivisafull_dsp_3=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             //
@@ -646,13 +628,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos set 
-                                                auto_precio_4=@autoPrecio,
-                                                contenido_4=@contenido,
                                                 precio_4=@precio,
                                                 utilidad_4=@utilidad,
                                                 pdf_4=@precioFullDivisa
                                             where auto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio4_Emp2 != null)
@@ -670,13 +650,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_may_4=@autoPrecio,
-                                                cont_may_4=@contenido,
                                                 precio_may_4=@precio,
                                                 utilidad_may_4=@utilidad,
                                                 pdmf_4=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             if (it.precio4_Emp3 != null)
@@ -694,13 +672,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos_ext set 
-                                                auto_precio_dsp_4=@autoPrecio,
-                                                cont_dsp_4=@contenido,
                                                 precio_dsp_4=@precio,
                                                 utilidad_dsp_4=@utilidad,
                                                 pdivisafull_dsp_4=@precioFullDivisa
                                             where auto_producto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                             //
@@ -719,13 +695,11 @@ namespace ProvLibCompra
                                 xt6.ParameterName = "@autoPrd";
                                 xt6.Value = it.autoPrd;
                                 var xsql = @"update productos set 
-                                                auto_precio_pto=@autoPrecio,
-                                                contenido_pto=@contenido,
                                                 precio_pto=@precio,
                                                 utilidad_pto=@utilidad,
                                                 pdf_pto=@precioFullDivisa
                                             where auto=@autoPrd";
-                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt1, xt2, xt3, xt4, xt5, xt6);
+                                var vk = cnn.Database.ExecuteSqlCommand(xsql, xt3, xt4, xt5, xt6);
                                 cnn.SaveChanges();
                             }
                         }
@@ -1997,7 +1971,6 @@ namespace ProvLibCompra
             Compra_Documento_Pendiente_Agregar(DtoLibCompra.Documento.Pendiente.Agregar.Ficha ficha)
         {
             var result = new DtoLib.Resultado();
-
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -2073,6 +2046,54 @@ namespace ProvLibCompra
                             };
                             cnn.compras_pend_detalle.Add(entCompraPendDet);
                             cnn.SaveChanges();
+                            //
+                            if (it.preciosVtaPend != null) 
+                            {
+                                foreach (var rg in it.preciosVtaPend)
+                                {
+                                    var pt1 = new MySql.Data.MySqlClient.MySqlParameter("@id_item_pend", entCompraPendDet.id);
+                                    var pt2 = new MySql.Data.MySqlClient.MySqlParameter("@id_pend", entCompraPend.id);
+                                    var pt3 = new MySql.Data.MySqlClient.MySqlParameter("@id_tipo_empq_vta",rg.idEmpqVta);
+                                    var pt4 = new MySql.Data.MySqlClient.MySqlParameter("@desc_empq_vta",rg.descEmpVta);
+                                    var pt5 = new MySql.Data.MySqlClient.MySqlParameter("@cont_empq_vta",rg.contEmpVta);
+                                    var pt6 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_1",rg.precios[0]);
+                                    var pt7 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_2",rg.precios[1]);
+                                    var pt8 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_3",rg.precios[2]);
+                                    var pt9 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_4",rg.precios[3]);
+                                    var sql = @"INSERT INTO compras_pend_detalle_preciosVta (
+                                                    id, 
+                                                    id_item_pend, 
+                                                    id_pend, 
+                                                    id_tipo_empq_vta, 
+                                                    desc_empq_vta, 
+                                                    cont_empq_vta, 
+                                                    precio_vta_1, 
+                                                    precio_vta_2, 
+                                                    precio_vta_3, 
+                                                    precio_vta_4, 
+                                                    precio_vta_5
+                                                ) VALUES (
+                                                    NULL, 
+                                                    @id_item_pend, 
+                                                    @id_pend, 
+                                                    @id_tipo_empq_vta, 
+                                                    @desc_empq_vta, 
+                                                    @cont_empq_vta, 
+                                                    @precio_vta_1, 
+                                                    @precio_vta_2, 
+                                                    @precio_vta_3, 
+                                                    @precio_vta_4, 
+                                                    0
+                                                )";
+                                    var rt = cnn.Database.ExecuteSqlCommand(sql, pt1, pt2, pt3, pt4, pt5, 
+                                        pt6, pt7, pt8, pt9);
+                                    if (rt==0)
+                                    {
+                                        throw new Exception("PROBLEMA AL INSERTAR EN PENDIENTE PRECIO VENTA");
+                                    }
+                                    cnn.SaveChanges();
+                                }
+                            }
                         }
                         ts.Commit();
                     }
@@ -2093,7 +2114,6 @@ namespace ProvLibCompra
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
         public DtoLib.ResultadoEntidad<int>
@@ -2140,7 +2160,7 @@ namespace ProvLibCompra
             Compra_Documento_Pendiente_GetLista(DtoLibCompra.Documento.Pendiente.Filtro.Ficha filtro)
         {
             var rt = new DtoLib.ResultadoLista<DtoLibCompra.Documento.Pendiente.Lista.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -2148,11 +2168,18 @@ namespace ProvLibCompra
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
-
-                    var sql_1 = @"SELECT id, entidad_cirif as entidadCiRif, entidad_nombre as entidadNombre, 
-                                documento_tipo as docTipo, documento_monto as docMonto, documento_monto_divisa as docMontoDivisa, 
-                                documento_nombre as docNombre, documento_factor_cambio as docFactorCambio, 
-                                documento_numero as docNumero, documento_control as docControl, documento_items as docItemsNro ";
+                    var sql_1 = @"SELECT 
+                                    id, 
+                                    entidad_cirif as entidadCiRif, 
+                                    entidad_nombre as entidadNombre, 
+                                    documento_tipo as docTipo, 
+                                    documento_monto as docMonto, 
+                                    documento_monto_divisa as docMontoDivisa, 
+                                    documento_nombre as docNombre, 
+                                    documento_factor_cambio as docFactorCambio, 
+                                    documento_numero as docNumero, 
+                                    documento_control as docControl, 
+                                    documento_items as docItemsNro ";
                     var sql_2 = "FROM compras_pend ";
                     var sql_3 = "where 1=1 ";
                     if (filtro.idUsuario != "")
@@ -2177,45 +2204,44 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
         public DtoLib.Resultado
             Compra_Documento_Pendiente_Eliminar(int idPend)
         {
             var rt = new DtoLib.Resultado();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
                     using (var ts = cnn.Database.BeginTransaction())
                     {
-                        var p1 = new MySql.Data.MySqlClient.MySqlParameter();
-                        p1.ParameterName = "@id";
-                        p1.Value = idPend;
-
+                        var p1 = new MySql.Data.MySqlClient.MySqlParameter("@id", idPend);
                         var sql = @"delete 
+                                    from compras_pend_detalle_preciosVta 
+                                    where id_pend=@id";
+                        cnn.Database.ExecuteSqlCommand(sql, p1);
+                        //
+                        p1 = new MySql.Data.MySqlClient.MySqlParameter("@id", idPend);
+                        sql = @"delete 
                                     from compras_pend_detalle 
                                     where idPend=@id";
                         var cnt = cnn.Database.ExecuteSqlCommand(sql, p1);
                         if (cnt == 0)
                         {
-                            rt.Mensaje = "ITEMS NO ENCONTRADOS ";
-                            rt.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return rt;
+                            throw new Exception("ITEMS NO ENCONTRADOS ");
                         }
+                        //
                         sql = @"delete 
                                     from compras_pend 
                                     where id=@id";
                         cnt = cnn.Database.ExecuteSqlCommand(sql, p1);
                         if (cnt == 0)
                         {
-                            rt.Mensaje = "[ ID ] DOCUMENTO PENDIENTE NO ENCONTRADO";
-                            rt.Result = DtoLib.Enumerados.EnumResult.isError;
-                            return rt;
+                            throw new Exception("[ ID ] DOCUMENTO PENDIENTE NO ENCONTRADO");
                         }
-
                         cnn.SaveChanges();
                         ts.Commit();
                     }
@@ -2236,14 +2262,14 @@ namespace ProvLibCompra
                 rt.Mensaje = e.Message;
                 rt.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
+            //
             return rt;
         }
         public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Pendiente.Abrir.Ficha>
             Compra_Documento_Pendiente_Abrir(int idPend)
         {
             var result = new DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Pendiente.Abrir.Ficha>();
-
+            //
             try
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
@@ -2251,11 +2277,9 @@ namespace ProvLibCompra
                     var ent = cnn.compras_pend.Find(idPend);
                     if (ent == null)
                     {
-                        result.Mensaje = "[ ID ] DOCUMENTO NO ENCONTRADO";
-                        result.Result = DtoLib.Enumerados.EnumResult.isError;
-                        return result;
+                        throw  new Exception("[ ID ] DOCUMENTO NO ENCONTRADO");
                     }
-
+                    //
                     var det = cnn.compras_pend_detalle.Where(f => f.idPend == idPend).ToList();
                     var doc = new DtoLibCompra.Documento.Pendiente.Abrir.Ficha()
                     {
@@ -2307,23 +2331,35 @@ namespace ProvLibCompra
                             decimalEmpaque = s.empaque_decimales,
                             estatusEmpCompraPredeterminado = s.empaque_predeterminado_compra,
                             idEmpaqueSeleccionado = s.empaque_seleccionado_id,
+                            //
                         };
+                        var tp1 = new MySql.Data.MySqlClient.MySqlParameter("idItemPend", s.id);
+                        var sql = @"select
+                                        id_tipo_empq_vta as idEmpqVta,
+                                        desc_empq_vta as descEmpVta,
+                                        cont_empq_vta as contEmpVta,
+                                        precio_vta_1 as pVta1,
+                                        precio_vta_2 as pVta2,
+                                        precio_vta_3 as pVta3,
+                                        precio_vta_4 as pVta4
+                                    from compras_pend_detalle_preciosVta
+                                    where id_item_pend=@idItemPend";
+                        var _lst = cnn.Database.SqlQuery<DtoLibCompra.Documento.Pendiente.Abrir.PrecioVtaPend>(sql, tp1).ToList();
+                        dt.preciosVtaPend = _lst;
                         return dt;
                     }).ToList();
                     doc.items = lista;
-
+                    //
                     result.Entidad = doc;
                 }
             }
             catch (Exception e)
             {
+                result.Entidad = null; 
                 result.Mensaje = e.Message;
                 result.Result = DtoLib.Enumerados.EnumResult.isError;
             }
-
             return result;
         }
-
     }
-
 }

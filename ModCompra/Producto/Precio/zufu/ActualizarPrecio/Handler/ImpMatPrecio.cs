@@ -98,5 +98,19 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Handler
             _precio[2] = p3;
             _precio[3] = p4;
         }
+        //
+        public bool VerificarPrecio(decimal costoUnd)
+        {
+            var rt = false;
+            foreach (var p in _precio) 
+            {
+                if (p.VerificarPrecio(costoUnd))
+                {
+                    rt = true;
+                    return rt;
+                }
+            }
+            return rt;
+        }
     }
 }

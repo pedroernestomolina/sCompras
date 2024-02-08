@@ -104,11 +104,10 @@ namespace ModCompra.Documento.Cargar.Controlador
             _gestion.AgregarListaItem(list, idPrv, factorDivisa);
         }
 
-        public void AgregarListaItem(List<OOB.LibCompra.Documento.Pendiente.Abrir.FichaDetalle> list, string idPrv, decimal factorDivisa)
+        public void AgregarListaItem(List<OOB.LibCompra.Documento.Pendiente.Abrir.FichaDetalle> list, string idPrv, decimal factorDivisa, OOB.LibCompra.Configuracion.Enumerados.EnumMetodoCalculoUtilidad metCalcUt)
         {
-            _gestion.AgregarListaItem(list, idPrv, factorDivisa);
+            _gestion.AgregarListaItem(list, idPrv, factorDivisa, metCalcUt);
         }
-
     }
 
 }

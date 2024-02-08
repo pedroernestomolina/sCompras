@@ -208,5 +208,10 @@ namespace ModCompra.Producto.Precio.zufu.CtrlPrecio
             _pFullActual = calculaPrecioFull(_pNetoActual, _tasaIva);
             refreshData();
         }
+        //
+        public bool VerificarPrecio(decimal costoUnd)
+        {
+            return (costoUnd * _contEmpVta) > _pNetoActual;
+        }
     }
 }

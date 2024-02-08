@@ -78,8 +78,10 @@
     <Compile Include="LibCompra\Documento\Lista\Filtro.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Abrir\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Abrir\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Abrir\PrecioVtaPend.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Agregar\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Agregar\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Pendiente\Agregar\PrecioVtaPend.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Filtro\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Visualizar\Ficha.cs" />

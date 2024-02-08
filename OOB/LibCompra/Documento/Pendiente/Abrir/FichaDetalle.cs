@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Documento.Pendiente.Abrir
 {
-    
     public class FichaDetalle
     {
-
         public string prdAuto { get; set; }
         public string prdCodigo { get; set; }
         public string prdNombre { get; set; }
@@ -30,8 +28,7 @@ namespace OOB.LibCompra.Documento.Pendiente.Abrir
         public string decimales { get; set; }
         public string categoria { get; set; }
         public string codRefProv { get; set; }
-
-
+        public List<PrecioVtaPend> preciosVtaPend { get; set; }
         public FichaDetalle()
         {
             prdAuto = "";
@@ -64,7 +61,6 @@ namespace OOB.LibCompra.Documento.Pendiente.Abrir
             estatusEmpCompraPredeterminado = "";
             idEmpaqueSeleccionado = "";
         }
-
         //
         public decimal precioFacturaDivisa { get; set; }
         public decimal prdCostoActualLocal { get; set; }
@@ -76,7 +72,5 @@ namespace OOB.LibCompra.Documento.Pendiente.Abrir
         public string estatusEmpCompraPredeterminado { get; set; }
         public string idEmpaqueSeleccionado { get; set; }
         public bool isEmpCompraPredeterminado { get { return estatusEmpCompraPredeterminado.Trim().ToUpper() == "1"; } }
-
     }
-
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Documento.Pendiente.Abrir
 {
-    
     public class FichaDetalle
     {
-
         public string prdAuto { get; set; }
         public string prdCodigo { get; set; }
         public string prdNombre { get; set; }
@@ -40,8 +38,8 @@ namespace DtoLibCompra.Documento.Pendiente.Abrir
         public string decimalEmpaque { get; set; }
         public string estatusEmpCompraPredeterminado { get; set; }
         public string idEmpaqueSeleccionado { get; set; }
-
-
+        //
+        public List<PrecioVtaPend> preciosVtaPend { get; set; }
         public FichaDetalle()
         {
             prdAuto = "";
@@ -74,7 +72,5 @@ namespace DtoLibCompra.Documento.Pendiente.Abrir
             estatusEmpCompraPredeterminado = "";
             idEmpaqueSeleccionado = "";
         }
-
     }
-
 }
