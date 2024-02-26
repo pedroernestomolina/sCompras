@@ -153,6 +153,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoDoc.Handler
                         tasaCambio = _hndData.Get_TasaFactorCambio,
                         usuarioAuto = Sistema.UsuarioP.autoUsu,
                         usuarioNombre = Sistema.UsuarioP.nombreUsu,
+                        fechaEmision= _hndData.Get_FechaPag,
                     },
                 };
                 //

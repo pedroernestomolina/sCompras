@@ -62,7 +62,8 @@ namespace ProvLibCompra
                                         estatus_anulado_mov,
                                         mov_fue_divisa,
                                         signo,
-                                        es_mov_caja)
+                                        es_mov_caja,
+                                        fecha_emision)
                                     VALUES (
                                         NULL, 
                                         @id_caja, 
@@ -75,7 +76,8 @@ namespace ProvLibCompra
                                         '0',
                                         @mov_fue_divisa,
                                         @signoMov,
-                                        '1')";
+                                        '1',
+                                        @fecha_emision)";
                         var cjMov = ficha;
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", cjMov.idCaja);
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
@@ -86,7 +88,8 @@ namespace ProvLibCompra
                         var p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
                         var p07 = new MySql.Data.MySqlClient.MySqlParameter("@tipoMov", cjMov.tipoMov);
                         var p08 = new MySql.Data.MySqlClient.MySqlParameter("@signoMov", cjMov.signoMov);
-                        var r2 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07, p08);
+                        var p09 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", cjMov.fechaEmisionMov);
+                        var r2 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07, p08, p09);
                         if (r2 == 0)
                         {
                             throw new Exception("ERROR AL INSERTAR MOVIMIENTO EN TABLA [ TRANSP_CAJA_MOV ]");
@@ -175,7 +178,7 @@ namespace ProvLibCompra
                                         cjMov.id as idMov,
                                         cj.descripcion as cjDesc,
                                         cj.es_divisa as cjEsDivisa,
-                                        cjMov.fecha_reg as fechaMov,
+                                        cjMov.fecha_emision as fechaMov,
                                         cjMov.concepto_mov as motivoMov,
                                         cjMov.tipo_mov as tipoMov,
                                         cjMov.signo as signoMov,

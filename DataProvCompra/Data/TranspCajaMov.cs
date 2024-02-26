@@ -29,6 +29,7 @@ namespace DataProvCompra.Data
                 conceptoCodigo = ficha.conceptoCodigo,
                 conceptoDesc = ficha.conceptoDesc,
                 conceptoId = ficha.conceptoId,
+                fechaEmisionMov= ficha.fechaEmisionMov,
             };
             var r01 = MyData.Transporte_Caja_Movimientos_Agregar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

@@ -747,7 +747,7 @@ namespace ProvLibCompra
                                         cjMov.id as idMov,
                                         cj.descripcion as cjDesc,
                                         cj.es_divisa as cjEsDivisa,
-                                        cjMov.fecha_reg as fechaMov,
+                                        cjMov.fecha_emision as fechaMov,
                                         cjMov.concepto_mov as motivoMov,
                                         cjMov.tipo_mov as tipoMov,
                                         cjMov.signo as signoMov,

@@ -17,8 +17,8 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
         private DateTime _fechaServidor;
         private string _notas;
         private Utils.FiltrosCB.ICtrlConBusqueda _concepto;
-
-
+        private DateTime _fechaEmisionMov;
+        //
         public Utils.FiltrosCB.ICtrlConBusqueda Concepto { get { return _concepto; } }
         public BindingSource Get_Caja_Source { get { return _caja.GetSource; } }
         public BindingSource Get_TipoMov_Source { get { return _tipoMov.GetSource; } }
@@ -30,14 +30,15 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
         public string Get_Notas { get { return _notas; } }
         public string Get_CajaInfo { get { return infoCaja(); } }
         public object Get_Caja { get { return _caja.GetItem; } }
-
-
+        public DateTime Get_FechaEmision { get { return _fechaEmisionMov; } }
+        //
         public HndEnt()
         {
             _montoMov = 0m;
             _factorCambio = 0m;
             _fechaServidor = DateTime.Now.Date;
             _notas = "";
+            _fechaEmisionMov = _fechaServidor;
             _caja = new Utils.Control.TipoCombo.Caja.Imp();
             _tipoMov= new Utils.Control.TipoCombo.TipoMovCaja.Imp();
             _concepto = new Utils.FiltrosCB.ConBusqueda.Concepto.Imp();
@@ -46,8 +47,8 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
         {
             _montoMov = 0m;
             _factorCambio = 0m;
-            _fechaServidor = DateTime.Now.Date;
             _notas = "";
+            _fechaEmisionMov = _fechaServidor;
             _caja.Inicializa();
             _tipoMov.Inicializa();
             _concepto.Inicializa();
@@ -81,6 +82,10 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
         public void setNotas(string desc)
         {
             _notas= desc;
+        }
+        public void setFechaEmisionMov(DateTime fecha)
+        {
+            _fechaEmisionMov = fecha;
         }
         private string infoCaja()
         {

@@ -15,5 +15,10 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_DocumentoRet_GetLista(filtro);
         }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha> 
+            Transporte_DocumentoRet_Crud_Corrector_ObtenerData(string idDoc)
+        {
+            return ServiceProv.Transporte_DocumentoRet_Crud_Corrector_ObtenerData(idDoc);
+        }
     }
 }

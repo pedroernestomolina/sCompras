@@ -18,6 +18,7 @@ namespace OOB.LibCompra.Transporte.Caja.Movimiento.Crud.Agregar
         public string tipoMov { get; set; }
         public int signoMov { get; set; }
         public decimal montoMov { get; set; }
+        public DateTime fechaEmisionMov { get; set; }
         //
         public string conceptoCodigo { get; set; }
         public string conceptoDesc { get; set; }

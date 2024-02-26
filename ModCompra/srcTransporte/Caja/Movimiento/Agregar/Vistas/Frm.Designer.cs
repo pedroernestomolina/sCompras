@@ -389,7 +389,6 @@
             // 
             this.DTP_FECHA_MOV.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DTP_FECHA_MOV.Dock = System.Windows.Forms.DockStyle.Left;
-            this.DTP_FECHA_MOV.Enabled = false;
             this.DTP_FECHA_MOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DTP_FECHA_MOV.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTP_FECHA_MOV.Location = new System.Drawing.Point(2, 2);
@@ -397,6 +396,7 @@
             this.DTP_FECHA_MOV.Size = new System.Drawing.Size(100, 24);
             this.DTP_FECHA_MOV.TabIndex = 3;
             this.DTP_FECHA_MOV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CTRL_KEYDOWN);
+            this.DTP_FECHA_MOV.Leave += new System.EventHandler(this.DTP_FECHA_MOV_Leave);
             // 
             // panel27
             // 

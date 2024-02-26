@@ -21,6 +21,7 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Vistas
         string Get_Notas { get; }
         string Get_CajaInfo { get; }
         object Get_Caja { get; }
+        DateTime Get_FechaEmision { get; }
 
 
         void Inicializa();
@@ -31,6 +32,7 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Vistas
         void setMontoMov(decimal monto);
         void setFechaServidor(DateTime fecha);
         void setNotas(string desc);
+        void setFechaEmisionMov(DateTime fecha);
         bool DataIsOk();
     }
 }

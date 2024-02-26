@@ -115,8 +115,9 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Handler
                     signoMov = _signoMov,
                     tipoMov = _tipoMov,
                     conceptoCodigo = _concepto.codigo,
-                    conceptoDesc = _concepto.descripcion ,
+                    conceptoDesc = _concepto.descripcion,
                     conceptoId = _concepto.id,
+                    fechaEmisionMov = _hnd.Get_FechaEmision,
                 };
                 var r01 = Sistema.MyData.Transporte_Caja_Movimientos_Agregar(ficha);
                 _procesarIsOK = true;

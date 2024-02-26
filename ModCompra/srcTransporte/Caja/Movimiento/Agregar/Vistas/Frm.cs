@@ -46,7 +46,7 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Vistas
             CB_TIPO_MOV.SelectedValue= _controlador.Hnd.Get_TipoMovId;
             CB_CONCEPTO.DataSource = _controlador.Hnd.Concepto.GetSource;
             CB_CONCEPTO.SelectedValue = _controlador.Hnd.Concepto.GetId;
-            DTP_FECHA_MOV.Value = _controlador.Hnd.Get_FechaServidor;
+            DTP_FECHA_MOV.Value = _controlador.Hnd.Get_FechaEmision;
             TB_MONTO_MOV.Text = _controlador.Hnd.Get_MontoMov.ToString("n2",_cult);
             TB_FACTOR_CAMBIO.Text = _controlador.Hnd.Get_FactorCambio.ToString("n2", _cult);
             TB_NOTAS.Text = _controlador.Hnd.Get_Notas;
@@ -122,6 +122,10 @@ namespace ModCompra.srcTransporte.Caja.Movimiento.Agregar.Vistas
         {
             _controlador.Hnd.setNotas(TB_NOTAS.Text.Trim().ToUpper());
             TB_NOTAS.Text = _controlador.Hnd.Get_Notas;
+        }
+        private void DTP_FECHA_MOV_Leave(object sender, EventArgs e)
+        {
+            _controlador.Hnd.setFechaEmisionMov(DTP_FECHA_MOV.Value.Date);
         }
         private void TB_CONCEPTO_BUSCAR_TextChanged(object sender, EventArgs e)
         {

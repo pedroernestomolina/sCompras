@@ -209,7 +209,7 @@ namespace ProvLibCompra
                                     @fecha_registro,
                                     '')";
                         var p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", _autoPago);
-                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", fechaSistema.Date);
+                        var p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha", ficha.Recibo.fechaEmision);
                         var p02 = new MySql.Data.MySqlClient.MySqlParameter("@tipo_documento", ficha.Recibo.codSistemaDoc);
                         var p03 = new MySql.Data.MySqlClient.MySqlParameter("@documento", _numRecibo);
                         var p04 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_vencimiento", fechaSistema.Date);
@@ -406,7 +406,8 @@ namespace ProvLibCompra
                                         factor_cambio_mov, 
                                         estatus_anulado_mov,
                                         mov_fue_divisa,
-                                        signo)
+                                        signo,
+                                        fecha_emision)
                                     VALUES (
                                         NULL, 
                                         @id_caja, 
@@ -418,7 +419,8 @@ namespace ProvLibCompra
                                         @factor_cambio_mov, 
                                         '0',
                                         @mov_fue_divisa,
-                                        -1)";
+                                        -1,
+                                        @fecha_emision)";
                                 var cjMov = rg.cajaMov;
                                 p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
                                 p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
@@ -427,7 +429,8 @@ namespace ProvLibCompra
                                 p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
                                 p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);
                                 p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", cjMov.movFueDivisa ? "1" : "0");
-                                var rp1 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
+                                p07 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", ficha.Recibo.fechaEmision);
+                                var rp1 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07);
                                 if (rp1 == 0)
                                 {
                                     throw new Exception("PROBLEMA AL INSERTAR EN TABLE [ CAJA - MOVIMIENTO ]");

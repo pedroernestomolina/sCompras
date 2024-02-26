@@ -102,6 +102,7 @@ namespace DataProvCompra.Data
             {
                 Recibo = new DtoLibTransporte.CxpDoc.Pago.Agregar.DataRecibo()
                 {
+                    fechaEmision=rec.fechaEmision,
                     importeMonAct = rec.importeMonAct,
                     importeDivisa = rec.importeDivisa,
                     montoRecibidoMonAct = rec.montoRecibidoMonAct,

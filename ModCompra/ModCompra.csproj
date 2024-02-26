@@ -853,6 +853,16 @@
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IBusqDoc.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IdataItem.cs" />
     <Compile Include="srcTransporte\Retencion\Administrador\Vistas\IListaAdm.cs" />
+    <Compile Include="srcTransporte\Retencion\Corrector\Handler\ImpDoc.cs" />
+    <Compile Include="srcTransporte\Retencion\Corrector\Handler\ImpVista.cs" />
+    <Compile Include="srcTransporte\Retencion\Corrector\Vista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="srcTransporte\Retencion\Corrector\Vista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="srcTransporte\Retencion\Corrector\Vista\IVista.cs" />
+    <Compile Include="srcTransporte\Retencion\Corrector\Vista\IVistaDoc.cs" />
     <Compile Include="Utils\Buscar\AliadoPagoServ\Handler\data.cs" />
     <Compile Include="Utils\Buscar\AliadoPagoServ\Handler\Imp.cs" />
     <Compile Include="Utils\Buscar\AliadoPagoServ\Vista\Frm.cs">
@@ -1270,6 +1280,9 @@
     <EmbeddedResource Include="srcTransporte\Retencion\Administrador\Vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="srcTransporte\Retencion\Corrector\Vista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Auditoria\Visualizar\VisualizarFrm.resx">
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1394,6 +1407,7 @@
     <Content Include="CambiosVersion.txt" />
     <Content Include="conf.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Imagenes\administracion-compras-logistica.jpg" />
     <Content Include="Imagenes\administrador.png" />

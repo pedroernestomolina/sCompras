@@ -84,5 +84,71 @@ namespace ProvLibCompra
             }
             return result;
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha> 
+            Transporte_DocumentoRet_Crud_Corrector_ObtenerData(string idDoc)
+        {
+            var result = new DtoLib.ResultadoEntidad<DtoLibTransporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha>();
+            //
+            try
+            {
+                using (var cnn = new compraEntities(_cnCompra.ConnectionString))
+                {
+                    var _sql_1 = @"SELECT 
+                                        ret.ano_relacion as anoRelRet,
+                                        ret.mes_relacion as mesRelRet,
+                                        ret.fecha as fechaRet,
+                                        ret.razon_social as prvNombre, 
+                                        ret.ci_rif as prvCiRif,
+                                        compra.dir_fiscal as prvDirFiscal,
+                                        compra.desc_compras_concepto as conceptoDoc,
+                                        compra.codigo_compras_concepto as conceptoCod,
+                                        compra.maquina_fiscal as maquinaFiscal,
+                                        retDet.comprobante as comprobanteRet,
+                                        retDet.documento as numDoc,
+                                        retDet.fecha as fechaEmiDoc,
+                                        retDet.control as numControlDoc,
+                                        retDet.tipo as tipoDoc,
+                                        compra.aplica,
+                                        retDet.total,
+                                        retDet.exento,
+                                        retDet.base1,
+                                        retDet.base2,
+                                        retDet.base3,
+                                        retDet.impuesto1,
+                                        retDet.impuesto2,
+                                        retDet.impuesto3,
+                                        retDet.tasa as tasa1,
+                                        retDet.tasa2,
+                                        retDet.tasa3,
+                                        retDet.retencion1,
+                                        retDet.retencion2,
+                                        retDet.retencion3,
+                                        retDet.tasa_retencion as tasaRet,
+                                        retDet.retencion as totalRet,
+                                        retDet.retencion_monto subtRet,
+                                        retDet.retencion_sustraendo as sustraendoRet,
+                                        prov.codigo_xml_islr as codXmlIslr,
+                                        prov.desc_xml_islr as descXmlIslr
+                                FROM compras_retenciones_detalle as retDet 
+                                join compras_retenciones as ret on ret.auto=retDet.auto
+                                join compras as compra on compra.auto=retDet.auto_documento
+                                join proveedores as prov on prov.auto=compra.auto_proveedor
+                                where retDet.auto_documento =@idDoc";
+                    var _sql_2 = @"";
+                    var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDoc);
+                    var _sql = _sql_1 + _sql_2;
+                    var _ent = cnn.Database.SqlQuery<DtoLibTransporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha>(_sql, p1).FirstOrDefault();
+                    result.Entidad = _ent;
+                }
+            }
+            catch (Exception e)
+            {
+                result.Mensaje = e.Message;
+                result.Result = DtoLib.Enumerados.EnumResult.isError;
+            }
+            //
+            return result;
+        }
     }
 }

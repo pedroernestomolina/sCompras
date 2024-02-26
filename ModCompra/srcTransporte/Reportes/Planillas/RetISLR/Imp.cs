@@ -13,6 +13,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
     public class Imp: IRepPlanilla
     {
         private string _idDoc;
+        private OOB.LibCompra.Transporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha _fichaCorrector;
 
 
         public Imp()
@@ -20,14 +21,34 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
         }
         public void setIdDoc(object idDoc)
         {
-            _idDoc = (string)idDoc;
+            Type tipo = idDoc.GetType();
+            if (tipo == typeof(string))
+            {
+                _idDoc = (string)idDoc;
+            }
+            else if (tipo == typeof(OOB.LibCompra.Transporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha))
+            {
+                _fichaCorrector = (OOB.LibCompra.Transporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha)idDoc;
+            }
         }
         public void Generar()
         {
             try
             {
-                var r01 = Sistema.MyData.Transporte_Reportes_Compras_Planilla_RetIslr(_idDoc);
-                imprimir(r01.Entidad);
+                OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha _ficha=null;
+                if (_idDoc!=null) 
+                {
+                    var r01 = Sistema.MyData.Transporte_Reportes_Compras_Planilla_RetIslr(_idDoc);
+                    _ficha = r01.Entidad;
+                }
+                else if (_fichaCorrector != null) 
+                {
+                    _ficha = new OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha(_fichaCorrector);
+                }
+                if (_ficha != null) 
+                {
+                    imprimir(_ficha);
+                }
             }
             catch (Exception e)
             {
@@ -55,7 +76,11 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
             rtDt["numeroDoc"] = ficha.numDoc;
             rtDt["numeroControl"] = ficha.numControlDoc;
             rtDt["montoTotalDoc"] = ficha.total;
-            rtDt["montoBaseRet"] = (ficha.exento+ficha.base1+ficha.base2+ficha.base3);
+            rtDt["montoBaseRet"] = (ficha.exento + ficha.base1 + ficha.base2 + ficha.base3);
+            if (ficha.subtBase > 0m) 
+            {
+                rtDt["montoBaseRet"] = ficha.subtBase;
+            }
             rtDt["tasaRet"] = ficha.tasaRet;
             rtDt["sustraendo"] = ficha.sustraendoRet;
             rtDt["montoRet"] = ficha.totalRet;

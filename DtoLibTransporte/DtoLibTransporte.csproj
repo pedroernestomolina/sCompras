@@ -99,6 +99,7 @@
     <Compile Include="CxpDoc\Pago\Agregar\Ficha.cs" />
     <Compile Include="CxpDoc\Pago\Lista\Ficha.cs" />
     <Compile Include="CxpDoc\Pago\Lista\Filtro.cs" />
+    <Compile Include="DocumentoRet\Crud\Corrector\ObtenerData\Ficha.cs" />
     <Compile Include="DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="DocumentoRet\ListaAdm\Filtro.cs" />
     <Compile Include="Documento\Agregar\CompraGastoAliado\DocRetencion.cs" />
@@ -192,7 +193,7 @@
     <Compile Include="Reportes\Cxp\PagosEmitidos\Planilla\MetodoPago.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DocumentoRet\Crud\Entidad\" />
+    <Folder Include="DocumentoRet\Crud\Corrector\Actualizar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

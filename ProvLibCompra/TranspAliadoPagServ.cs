@@ -269,7 +269,8 @@ namespace ProvLibCompra
                                         factor_cambio_mov, 
                                         estatus_anulado_mov,
                                         mov_fue_divisa,
-                                        signo)
+                                        signo,
+                                        fecha_emision)
                                     VALUES (
                                         NULL, 
                                         @id_caja, 
@@ -281,7 +282,8 @@ namespace ProvLibCompra
                                         @factor_cambio_mov, 
                                         '0',
                                         @mov_fue_divisa,
-                                        -1)";
+                                        -1,
+                                        @fecha_emision)";
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
                             p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
                             p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", "PAGO POR SERVCICIO PRESTADO SEGUN RECIBO NUMERO: "+numRecibo);
@@ -289,7 +291,8 @@ namespace ProvLibCompra
                             p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", rg.montoUsadoMonDiv);
                             p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", mov.tasaFactorCambio);
                             p06 = new MySql.Data.MySqlClient.MySqlParameter("@mov_fue_divisa", rg.esDivisa ? "1" : "0");
-                            var r6 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06);
+                            p07 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_emision", mov.fechaEmision);
+                            var r6 = cnn.Database.ExecuteSqlCommand(sql, p00, p01, p02, p03, p04, p05, p06, p07);
                             if (r6 == 0)
                             {
                                 result.Mensaje = "ERROR AL INSERTAR MOVIMIENTO DE CAJA";

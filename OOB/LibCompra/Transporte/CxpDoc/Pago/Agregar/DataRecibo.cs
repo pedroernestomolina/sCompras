@@ -9,6 +9,7 @@ namespace OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar
 {
     public class DataRecibo
     {
+        public DateTime fechaEmision { get; set; }
         public decimal importeMonAct { get; set; }
         public decimal montoRecibidoMonAct { get; set; }
         public decimal tasaCambio { get; set; }

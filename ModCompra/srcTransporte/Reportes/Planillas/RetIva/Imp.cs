@@ -39,7 +39,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Planillas\RepPlanilla_RetIva.rdlc";
             var ds = new DS_PLANILLA();
-
+            //
             DataRow rt = ds.Tables["RetIva"].NewRow();
             rt["comprobante_nro"] = ficha.comprobanteRet;
             rt["fecha"] = ficha.fechaRet;
@@ -49,7 +49,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
             rt["prov_cirif"] = ficha.prvCiRif;
             rt["prov_dirFiscal"] = ficha.prvDirFiscal;
             ds.Tables["RetIva"].Rows.Add(rt);
-
+            //
             var _factura = "";
             var _ntDebito = "";
             var _ntCredito = "";
@@ -116,7 +116,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
                 rtDt["montoRetencion"] = ficha.retencion3;
                 ds.Tables["RetIva_Det"].Rows.Add(rtDt);
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             pmt.Add(new ReportParameter("EMP_CIRIF", Sistema.Negocio.CiRif));
@@ -124,7 +124,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
             pmt.Add(new ReportParameter("EMP_DIR", Sistema.Negocio.DireccionFiscal));
             Rds.Add(new ReportDataSource("RetIva", ds.Tables["RetIva"]));
             Rds.Add(new ReportDataSource("RetIva_Det", ds.Tables["RetIva_Det"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;

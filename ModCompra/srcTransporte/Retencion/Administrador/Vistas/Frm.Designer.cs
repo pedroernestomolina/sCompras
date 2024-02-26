@@ -77,6 +77,9 @@
             this.BT_ANULAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BT_LIMPIAR_DATA = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.BT_CORRECTOR = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -117,6 +120,7 @@
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.panel14.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -648,6 +652,8 @@
             this.tableLayoutPanel4.Controls.Add(this.panel11, 2, 1);
             this.tableLayoutPanel4.Controls.Add(this.panel10, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.panel7, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel12, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel18, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -762,6 +768,42 @@
             this.toolTip1.SetToolTip(this.BT_LIMPIAR_DATA, "Limpiar Vista Actual");
             this.BT_LIMPIAR_DATA.UseVisualStyleBackColor = true;
             this.BT_LIMPIAR_DATA.Click += new System.EventHandler(this.BT_LIMPIAR_DATA_Click);
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(1, 1);
+            this.panel12.Margin = new System.Windows.Forms.Padding(1);
+            this.panel12.Name = "panel12";
+            this.panel12.Padding = new System.Windows.Forms.Padding(2);
+            this.panel12.Size = new System.Drawing.Size(37, 44);
+            this.panel12.TabIndex = 6;
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.BT_CORRECTOR);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(40, 1);
+            this.panel18.Margin = new System.Windows.Forms.Padding(1);
+            this.panel18.Name = "panel18";
+            this.panel18.Padding = new System.Windows.Forms.Padding(2);
+            this.panel18.Size = new System.Drawing.Size(37, 44);
+            this.panel18.TabIndex = 7;
+            // 
+            // BT_CORRECTOR
+            // 
+            this.BT_CORRECTOR.BackgroundImage = global::ModCompra.Properties.Resources.bt_lista;
+            this.BT_CORRECTOR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_CORRECTOR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_CORRECTOR.FlatAppearance.BorderSize = 0;
+            this.BT_CORRECTOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_CORRECTOR.Location = new System.Drawing.Point(2, 2);
+            this.BT_CORRECTOR.Name = "BT_CORRECTOR";
+            this.BT_CORRECTOR.Size = new System.Drawing.Size(33, 40);
+            this.BT_CORRECTOR.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_CORRECTOR, "Corrector De Documento");
+            this.BT_CORRECTOR.UseVisualStyleBackColor = true;
+            this.BT_CORRECTOR.Click += new System.EventHandler(this.BT_CORRECTOR_Click);
             // 
             // panel14
             // 
@@ -883,6 +925,7 @@
             this.panel11.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
@@ -949,5 +992,8 @@
         private System.Windows.Forms.Button BT_FILTROS_BUSQ;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button BT_BUSCAR;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Button BT_CORRECTOR;
     }
 }

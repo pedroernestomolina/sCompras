@@ -27,5 +27,6 @@ namespace DtoLibTransporte.CxpDoc.Pago.Agregar
         public string codSistemaDoc { get; set; }
         public List<DataReciboDoc> reciboDoc { get; set; }
         public List<DataReciboMetodoPago> metPago { get; set; }
+        public DateTime fechaEmision { get; set; }
     }
 }

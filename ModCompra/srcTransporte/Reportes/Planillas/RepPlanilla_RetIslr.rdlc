@@ -434,7 +434,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>DATOS DEL IMPUESTO RETENICO (CONCEPTO)</Value>
+                    <Value>DATOS DEL IMPUESTO RETENIDO (CONCEPTO)</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1395,6 +1395,7 @@
                     <Value>=Sum(Fields!montoTotalDoc.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1428,6 +1429,7 @@
                     <Value>=Sum(Fields!montoBaseRet.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1461,6 +1463,7 @@
                     <Value>=Sum(Fields!tasaRet.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1494,6 +1497,7 @@
                     <Value>=Sum(Fields!sustraendo.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1527,6 +1531,7 @@
                     <Value>=Sum(Fields!montoRet.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1560,6 +1565,7 @@
                     <Value>=Sum(Fields!montoBaseRet.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1593,6 +1599,7 @@
                     <Value>=Sum(Fields!montoRet.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1626,6 +1633,7 @@
                     <Value>=Sum(Fields!montoTotalDoc.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1729,6 +1737,7 @@
                     <Value>=Sum(Fields!montoRet.Value, "RetIslr_Det")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
+                      <Format>n2</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>

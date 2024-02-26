@@ -85,6 +85,15 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
                 imprimirItems();
             }
         }
+        public void CorrectorDoucmento()
+        {
+            if (_lista.ItemActual != null)
+            {
+                var it = (dataItem)_lista.ItemActual;
+                corregirItem(it);
+                //_lista.Refresca();
+            }
+        }
 
 
         public bool AbandonarIsOK { get { return _abandonarIsOK; } }
@@ -132,6 +141,21 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
             _rep.setFiltrosBusq("");
             _rep.setDataCargar(_lista.Get_Items);
             _rep.Generar();
+        }
+        private Corrector.Vista.IVista _corrector;
+        private void corregirItem(dataItem it)
+        {
+            if (it != null)
+            {
+                if (it.Ficha.tipoRetCod != "08") { return; }
+                if (_corrector ==null)
+                {
+                    _corrector= new Corrector.Handler.ImpVista();
+                }
+                _corrector.Inicializa();
+                _corrector.setIdDocumento(it.Ficha.autoDocRef);
+                _corrector.Inicia();
+            }
         }
 
 

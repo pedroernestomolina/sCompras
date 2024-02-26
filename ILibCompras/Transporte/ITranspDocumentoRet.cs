@@ -11,5 +11,7 @@ namespace ILibCompras.Transporte
     {
         DtoLib.ResultadoLista<DtoLibTransporte.DocumentoRet.ListaAdm.Ficha>
             Transporte_DocumentoRet_GetLista(DtoLibTransporte.DocumentoRet.ListaAdm.Filtro filtro);
+        DtoLib.ResultadoEntidad<DtoLibTransporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha>
+            Transporte_DocumentoRet_Crud_Corrector_ObtenerData(string idDoc);
     }
 }

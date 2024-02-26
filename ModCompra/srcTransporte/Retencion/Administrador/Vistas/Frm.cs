@@ -184,6 +184,10 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
         }
 
 
+        private void BT_CORRECTOR_Click(object sender, EventArgs e)
+        {
+            CorrectorDoucmento();
+        }
         private void BT_LIMPIAR_FILTROS_Click(object sender, EventArgs e)
         {
             LimpiarFiltros();
@@ -210,6 +214,11 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
         }
 
 
+        private void CorrectorDoucmento()
+        {
+            _controlador.CorrectorDoucmento();
+            ActualizarPant();
+        }
         private void LimpiarFiltros()
         {
             _controlador.FiltrosLimpiar();

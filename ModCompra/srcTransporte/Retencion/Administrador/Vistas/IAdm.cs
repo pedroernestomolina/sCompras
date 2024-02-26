@@ -13,13 +13,14 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
         DateTime Get_Hasta { get; }
         bool Get_IsActivoDesde { get; }
         bool Get_IsActivoHasta { get; }
+        IBusqDoc BusqDoc { get; }
+        //
         void setDesde(DateTime fecha);
         void setHasta(DateTime fecha);
         void ActivarDesde(bool modo);
         void ActivarHasta(bool modo);
-
-        IBusqDoc BusqDoc { get; }
         void FitrosBusqueda();
         void FiltrosLimpiar();
+        void CorrectorDoucmento();
     }
 }
