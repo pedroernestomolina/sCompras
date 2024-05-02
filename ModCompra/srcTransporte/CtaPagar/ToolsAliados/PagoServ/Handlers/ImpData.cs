@@ -170,7 +170,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
         private void calculoRet()
         {
             _montoAbonoMonDiv = 0m;
-            _montoRetencion = (_montoAnticipoMonAct * _tasaRet / 100) + _montoSustraendo;
+            _montoRetencion = (_montoAnticipoMonAct * _tasaRet / 100) - _montoSustraendo;
             _montoAbonoMonAct = _montoAnticipoMonAct - _montoRetencion;
             if (_tasaFactorCambio > 0m) 
             {

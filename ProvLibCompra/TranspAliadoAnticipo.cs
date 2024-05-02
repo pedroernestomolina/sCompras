@@ -156,9 +156,10 @@ namespace ProvLibCompra
                                         -1,
                                         @fecha_emision)";
                             var cjMov=rg.movimientoCaja;
+                            var _concepto = "ANTICIPO DADO A: " + ficha.movimiento.nombreAliado + ", MOTIVO: " + cjMov.descMov;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
                             p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
-                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", cjMov.descMov);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", _concepto);
                             p03 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", cjMov.montoMovMonAct);
                             p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", cjMov.montoMovMonDiv);
                             p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", cjMov.factorCambio);

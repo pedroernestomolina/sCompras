@@ -13,8 +13,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
     public class Imp : srcTransporte.Reportes.IRepFiltro
     {
         private OOB.LibCompra.Transporte.Reportes.Compras.GeneralDoc.Filtro _filtro;
-
-
+        //
         public Imp()
         {
         }
@@ -51,14 +50,14 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
                 Helpers.Msg.Error(e.Message);
             }
         }
-
-
+        //
         private void imprimir(List<OOB.LibCompra.Transporte.Reportes.Compras.GeneralDoc.Ficha> list)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Documentos\RepDoc_General.rdlc";
             var ds = new DS_REPDOC();
-
-            foreach (var rg in list)
+            //
+            var lst = list.OrderBy(o => o.fechaDoc).ToList();
+            foreach (var rg in lst)
             {
                 DataRow rt = ds.Tables["General"].NewRow();
                 rt["fechaDoc"] = rg.fechaDoc;
@@ -83,7 +82,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
                 }
                 ds.Tables["General"].Rows.Add(rt);
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -91,7 +90,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaGeneralDoc
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
             Rds.Add(new ReportDataSource("General", ds.Tables["General"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;

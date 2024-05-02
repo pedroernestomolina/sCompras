@@ -20,8 +20,9 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaRet
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Documentos\RepDoc_RetIva.rdlc";
             var ds = new DS_REPDOC();
-
-            foreach (var rg in list)
+            //
+            var lst = list.OrderBy(o => o.fechaDoc).ThenBy(o => o.numDoc).ToList();
+            foreach (var rg in lst)
             {
                 DataRow rt = ds.Tables["Ret_Iva"].NewRow();
                 rt["documento"] = rg.numDoc;
@@ -44,7 +45,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaRet
                 rt["fechaRet"] = rg.fechaDoc;
                 ds.Tables["Ret_Iva"].Rows.Add(rt);
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -52,14 +53,13 @@ namespace ModCompra.srcTransporte.Reportes.Documentos.ListaRet
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
             Rds.Add(new ReportDataSource("Ret_Iva", ds.Tables["Ret_Iva"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;
             frp.Path = pt;
             frp.ShowDialog();
         }
-
         protected override void _setFiltros(object filtros)
         {
             var ft = (Reportes.RepFiltro.Vista.IFiltros)filtros;

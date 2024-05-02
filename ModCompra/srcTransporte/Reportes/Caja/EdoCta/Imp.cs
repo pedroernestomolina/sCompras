@@ -13,8 +13,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
     public class Imp : IRepFiltro
     {
         private OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro _filtro;
-
-
+        //
         public Imp()
         {
             _filtro = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro();
@@ -50,18 +49,18 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
                 Helpers.Msg.Error(e.Message);
             }
         }
-
-
+        //
         private void imprimir(List<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha> list, decimal saldoIni)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Caja\RepCajaEdoCta.rdlc";
             var ds = new  DS_CAJA();
-
+            //
             var _saldoIni=saldoIni;
             var _montoIngreso=0m;
             var _montoEgreso=0m;
             var _saldoFinal=0m;
-            foreach (var rg in list.Where(w=>w.estatusAnulado=="0").ToList())
+            var _lst = list.Where(w => w.estatusAnulado == "0").OrderBy(o => o.fechaMov).ToList();
+            foreach (var rg in _lst)
             {
                 _montoIngreso=0m;
                 _montoEgreso=0m;
@@ -94,7 +93,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
                 ds.Tables["CajaMov"].Rows.Add(rt);
                 _saldoIni = _saldoFinal;
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -102,7 +101,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.EdoCta
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
             Rds.Add(new ReportDataSource("CajaMov", ds.Tables["CajaMov"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;

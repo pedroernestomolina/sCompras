@@ -1713,7 +1713,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>fechaRet</rd:DefaultName>
@@ -4110,7 +4112,7 @@
         </Field>
         <Field Name="fechaRet">
           <DataField>fechaRet</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="porctRet">
           <DataField>porctRet</DataField>

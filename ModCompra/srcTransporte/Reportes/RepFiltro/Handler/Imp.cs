@@ -150,7 +150,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
             if (_tipoMovCaja.GetItem != null)
             {
                 rt.TipoMovCaja =  Vista.enumerados.TipoMovCaja.Ingreso ;
-                if (_estatus.GetId == "2")
+                if (_tipoMovCaja.GetId == "2")
                 {
                     rt.TipoMovCaja = Vista.enumerados.TipoMovCaja.Egreso ;
                 }

@@ -43,6 +43,9 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.L_TITULO_TOOLS = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.TB_BUSCAR = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.BT_BUSCAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -86,6 +89,9 @@
             this.panel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_1)).BeginInit();
@@ -265,13 +271,53 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.tableLayoutPanel8);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(414, 1);
             this.panel9.Margin = new System.Windows.Forms.Padding(1);
             this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(2);
             this.panel9.Size = new System.Drawing.Size(245, 38);
             this.panel9.TabIndex = 1;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 1;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Controls.Add(this.panel22, 0, 1);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(245, 38);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.TB_BUSCAR);
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel22.Location = new System.Drawing.Point(1, 5);
+            this.panel22.Margin = new System.Windows.Forms.Padding(1);
+            this.panel22.Name = "panel22";
+            this.panel22.Padding = new System.Windows.Forms.Padding(2);
+            this.panel22.Size = new System.Drawing.Size(243, 28);
+            this.panel22.TabIndex = 0;
+            // 
+            // TB_BUSCAR
+            // 
+            this.TB_BUSCAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_BUSCAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_BUSCAR.Location = new System.Drawing.Point(2, 2);
+            this.TB_BUSCAR.MaxLength = 30;
+            this.TB_BUSCAR.Name = "TB_BUSCAR";
+            this.TB_BUSCAR.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TB_BUSCAR.Size = new System.Drawing.Size(239, 24);
+            this.TB_BUSCAR.TabIndex = 1;
+            this.TB_BUSCAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctrl_KeyDown);
+            this.TB_BUSCAR.Leave += new System.EventHandler(this.TB_BUSCAR_Leave);
             // 
             // panel10
             // 
@@ -298,6 +344,7 @@
             this.BT_BUSCAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_BUSCAR.UseVisualStyleBackColor = true;
             this.BT_BUSCAR.Click += new System.EventHandler(this.BT_BUSCAR_Click);
+            this.BT_BUSCAR.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctrl_KeyDown);
             // 
             // panel7
             // 
@@ -715,6 +762,10 @@
             this.panel6.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_1)).EndInit();
@@ -788,5 +839,8 @@
         private System.Windows.Forms.Label L_CNT_ITEM;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button BT_EDO_CUENTA;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.TextBox TB_BUSCAR;
     }
 }

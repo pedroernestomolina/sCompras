@@ -12,7 +12,7 @@
   <xs:element name="DS_REPDOC" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_REPDOC" msprop:Generator_UserDSName="DS_REPDOC">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Ret_Islr" msprop:Generator_TableClassName="Ret_IslrDataTable" msprop:Generator_TableVarName="tableRet_Islr" msprop:Generator_TablePropName="Ret_Islr" msprop:Generator_RowDeletingName="Ret_IslrRowDeleting" msprop:Generator_RowChangingName="Ret_IslrRowChanging" msprop:Generator_RowEvHandlerName="Ret_IslrRowChangeEventHandler" msprop:Generator_RowDeletedName="Ret_IslrRowDeleted" msprop:Generator_UserTableName="Ret_Islr" msprop:Generator_RowChangedName="Ret_IslrRowChanged" msprop:Generator_RowEvArgName="Ret_IslrRowChangeEvent" msprop:Generator_RowClassName="Ret_IslrRow">
+        <xs:element name="Ret_Islr" msprop:Generator_TableClassName="Ret_IslrDataTable" msprop:Generator_TableVarName="tableRet_Islr" msprop:Generator_RowChangedName="Ret_IslrRowChanged" msprop:Generator_TablePropName="Ret_Islr" msprop:Generator_RowDeletingName="Ret_IslrRowDeleting" msprop:Generator_RowChangingName="Ret_IslrRowChanging" msprop:Generator_RowEvHandlerName="Ret_IslrRowChangeEventHandler" msprop:Generator_RowDeletedName="Ret_IslrRowDeleted" msprop:Generator_RowClassName="Ret_IslrRow" msprop:Generator_UserTableName="Ret_Islr" msprop:Generator_RowEvArgName="Ret_IslrRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
@@ -28,7 +28,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Ret_Iva" msprop:Generator_TableClassName="Ret_IvaDataTable" msprop:Generator_TableVarName="tableRet_Iva" msprop:Generator_RowChangedName="Ret_IvaRowChanged" msprop:Generator_TablePropName="Ret_Iva" msprop:Generator_RowDeletingName="Ret_IvaRowDeleting" msprop:Generator_RowChangingName="Ret_IvaRowChanging" msprop:Generator_RowEvHandlerName="Ret_IvaRowChangeEventHandler" msprop:Generator_RowDeletedName="Ret_IvaRowDeleted" msprop:Generator_RowClassName="Ret_IvaRow" msprop:Generator_UserTableName="Ret_Iva" msprop:Generator_RowEvArgName="Ret_IvaRowChangeEvent">
+        <xs:element name="Ret_Iva" msprop:Generator_TableClassName="Ret_IvaDataTable" msprop:Generator_TableVarName="tableRet_Iva" msprop:Generator_TablePropName="Ret_Iva" msprop:Generator_RowDeletingName="Ret_IvaRowDeleting" msprop:Generator_RowChangingName="Ret_IvaRowChanging" msprop:Generator_RowEvHandlerName="Ret_IvaRowChangeEventHandler" msprop:Generator_RowDeletedName="Ret_IvaRowDeleted" msprop:Generator_UserTableName="Ret_Iva" msprop:Generator_RowChangedName="Ret_IvaRowChanged" msprop:Generator_RowEvArgName="Ret_IvaRowChangeEvent" msprop:Generator_RowClassName="Ret_IvaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="documento" msprop:Generator_ColumnVarNameInTable="columndocumento" msprop:Generator_ColumnPropNameInRow="documento" msprop:Generator_ColumnPropNameInTable="documentoColumn" msprop:Generator_UserColumnName="documento" type="xs:string" minOccurs="0" />
@@ -43,7 +43,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="General" msprop:Generator_TableClassName="GeneralDataTable" msprop:Generator_TableVarName="tableGeneral" msprop:Generator_TablePropName="General" msprop:Generator_RowDeletingName="GeneralRowDeleting" msprop:Generator_RowChangingName="GeneralRowChanging" msprop:Generator_RowEvHandlerName="GeneralRowChangeEventHandler" msprop:Generator_RowDeletedName="GeneralRowDeleted" msprop:Generator_UserTableName="General" msprop:Generator_RowChangedName="GeneralRowChanged" msprop:Generator_RowEvArgName="GeneralRowChangeEvent" msprop:Generator_RowClassName="GeneralRow">
+        <xs:element name="General" msprop:Generator_TableClassName="GeneralDataTable" msprop:Generator_TableVarName="tableGeneral" msprop:Generator_RowChangedName="GeneralRowChanged" msprop:Generator_TablePropName="General" msprop:Generator_RowDeletingName="GeneralRowDeleting" msprop:Generator_RowChangingName="GeneralRowChanging" msprop:Generator_RowEvHandlerName="GeneralRowChangeEventHandler" msprop:Generator_RowDeletedName="GeneralRowDeleted" msprop:Generator_RowClassName="GeneralRow" msprop:Generator_UserTableName="General" msprop:Generator_RowEvArgName="GeneralRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="fechaDoc" msprop:Generator_ColumnVarNameInTable="columnfechaDoc" msprop:Generator_ColumnPropNameInRow="fechaDoc" msprop:Generator_ColumnPropNameInTable="fechaDocColumn" msprop:Generator_UserColumnName="fechaDoc" type="xs:dateTime" minOccurs="0" />
@@ -60,7 +60,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Libro" msprop:Generator_TableClassName="LibroDataTable" msprop:Generator_TableVarName="tableLibro" msprop:Generator_TablePropName="Libro" msprop:Generator_RowDeletingName="LibroRowDeleting" msprop:Generator_RowChangingName="LibroRowChanging" msprop:Generator_RowEvHandlerName="LibroRowChangeEventHandler" msprop:Generator_RowDeletedName="LibroRowDeleted" msprop:Generator_UserTableName="Libro" msprop:Generator_RowChangedName="LibroRowChanged" msprop:Generator_RowEvArgName="LibroRowChangeEvent" msprop:Generator_RowClassName="LibroRow">
+        <xs:element name="Libro" msprop:Generator_TableClassName="LibroDataTable" msprop:Generator_TableVarName="tableLibro" msprop:Generator_RowChangedName="LibroRowChanged" msprop:Generator_TablePropName="Libro" msprop:Generator_RowDeletingName="LibroRowDeleting" msprop:Generator_RowChangingName="LibroRowChanging" msprop:Generator_RowEvHandlerName="LibroRowChangeEventHandler" msprop:Generator_RowDeletedName="LibroRowDeleted" msprop:Generator_RowClassName="LibroRow" msprop:Generator_UserTableName="Libro" msprop:Generator_RowEvArgName="LibroRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="operacionNro" msprop:Generator_ColumnVarNameInTable="columnoperacionNro" msprop:Generator_ColumnPropNameInRow="operacionNro" msprop:Generator_ColumnPropNameInTable="operacionNroColumn" msprop:Generator_UserColumnName="operacionNro" type="xs:int" minOccurs="0" />
@@ -84,13 +84,13 @@
               <xs:element name="base3" msprop:Generator_ColumnVarNameInTable="columnbase3" msprop:Generator_ColumnPropNameInRow="base3" msprop:Generator_ColumnPropNameInTable="base3Column" msprop:Generator_UserColumnName="base3" type="xs:decimal" minOccurs="0" />
               <xs:element name="iva3" msprop:Generator_ColumnVarNameInTable="columniva3" msprop:Generator_ColumnPropNameInRow="iva3" msprop:Generator_ColumnPropNameInTable="iva3Column" msprop:Generator_UserColumnName="iva3" type="xs:decimal" minOccurs="0" />
               <xs:element name="comprobanteRet" msprop:Generator_ColumnVarNameInTable="columncomprobanteRet" msprop:Generator_ColumnPropNameInRow="comprobanteRet" msprop:Generator_ColumnPropNameInTable="comprobanteRetColumn" msprop:Generator_UserColumnName="comprobanteRet" type="xs:string" minOccurs="0" />
-              <xs:element name="fechaRet" msprop:Generator_ColumnVarNameInTable="columnfechaRet" msprop:Generator_ColumnPropNameInRow="fechaRet" msprop:Generator_ColumnPropNameInTable="fechaRetColumn" msprop:Generator_UserColumnName="fechaRet" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fechaRet" msprop:Generator_ColumnVarNameInTable="columnfechaRet" msprop:Generator_ColumnPropNameInRow="fechaRet" msprop:Generator_ColumnPropNameInTable="fechaRetColumn" msprop:Generator_UserColumnName="fechaRet" type="xs:string" minOccurs="0" />
               <xs:element name="porctRet" msprop:Generator_ColumnVarNameInTable="columnporctRet" msprop:Generator_ColumnPropNameInRow="porctRet" msprop:Generator_ColumnPropNameInTable="porctRetColumn" msprop:Generator_UserColumnName="porctRet" type="xs:decimal" minOccurs="0" />
               <xs:element name="montoRet" msprop:Generator_ColumnVarNameInTable="columnmontoRet" msprop:Generator_ColumnPropNameInRow="montoRet" msprop:Generator_ColumnPropNameInTable="montoRetColumn" msprop:Generator_UserColumnName="montoRet" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="LibroEnc" msprop:Generator_TableClassName="LibroEncDataTable" msprop:Generator_TableVarName="tableLibroEnc" msprop:Generator_RowChangedName="LibroEncRowChanged" msprop:Generator_TablePropName="LibroEnc" msprop:Generator_RowDeletingName="LibroEncRowDeleting" msprop:Generator_RowChangingName="LibroEncRowChanging" msprop:Generator_RowEvHandlerName="LibroEncRowChangeEventHandler" msprop:Generator_RowDeletedName="LibroEncRowDeleted" msprop:Generator_RowClassName="LibroEncRow" msprop:Generator_UserTableName="LibroEnc" msprop:Generator_RowEvArgName="LibroEncRowChangeEvent">
+        <xs:element name="LibroEnc" msprop:Generator_TableClassName="LibroEncDataTable" msprop:Generator_TableVarName="tableLibroEnc" msprop:Generator_TablePropName="LibroEnc" msprop:Generator_RowDeletingName="LibroEncRowDeleting" msprop:Generator_RowChangingName="LibroEncRowChanging" msprop:Generator_RowEvHandlerName="LibroEncRowChangeEventHandler" msprop:Generator_RowDeletedName="LibroEncRowDeleted" msprop:Generator_UserTableName="LibroEnc" msprop:Generator_RowChangedName="LibroEncRowChanged" msprop:Generator_RowEvArgName="LibroEncRowChangeEvent" msprop:Generator_RowClassName="LibroEncRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="periodo_desde" msprop:Generator_ColumnVarNameInTable="columnperiodo_desde" msprop:Generator_ColumnPropNameInRow="periodo_desde" msprop:Generator_ColumnPropNameInTable="periodo_desdeColumn" msprop:Generator_UserColumnName="periodo_desde" type="xs:string" minOccurs="0" />

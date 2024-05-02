@@ -16,13 +16,13 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
     {
         private CultureInfo _cult;
         private IAliados _controlador;
-
-
+        private bool _modoInicializar;
+        //
         private void InicializaDGV_1()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
-
+            //
             DGV_1.RowHeadersVisible = false;
             DGV_1.AllowUserToAddRows = false;
             DGV_1.AllowUserToDeleteRows = false;
@@ -33,7 +33,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             DGV_1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV_1.MultiSelect = false;
             DGV_1.ReadOnly = true;
-
+            //
             var c1 = new DataGridViewTextBoxColumn();
             c1.DataPropertyName = "CiRif";
             c1.HeaderText = "CI/RIF";
@@ -41,7 +41,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
             c1.Width = 100;
-
+            //
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "NombreRazonSocial";
             c2.HeaderText = "Nombre/Razón Social";
@@ -50,7 +50,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
             c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+            //
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "pendiente";
             c3.HeaderText = "Pendiente";
@@ -60,7 +60,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             c3.DefaultCellStyle.Font = f;
             c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c3.DefaultCellStyle.Format = "n2";
-
+            //
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "anticipos";
             c4.HeaderText = "Anticipos";
@@ -70,7 +70,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             c4.DefaultCellStyle.Font = f;
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c4.DefaultCellStyle.Format = "n2";
-
+            //
             var c8 = new DataGridViewTextBoxColumn();
             c8.DataPropertyName = "MontoResta";
             c8.HeaderText = "Resta";
@@ -80,7 +80,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             c8.DefaultCellStyle.Font = f;
             c8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c8.DefaultCellStyle.Format = "n2";
-
+            //
             var c5 = new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "CntDocPend";
             c5.HeaderText = "Doc/Pend";
@@ -89,7 +89,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f;
             c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            //
             DGV_1.Columns.Add(c1);
             DGV_1.Columns.Add(c2);
             DGV_1.Columns.Add(c3);
@@ -107,7 +107,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
         {
             _controlador = ctr;
         }
-        private bool _modoInicializar;
         private void Frm_Load(object sender, EventArgs e)
         {
             _modoInicializar = true;
@@ -116,7 +115,6 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             ActualizarDataPanel_Totales();
             _modoInicializar = false;
         }
-
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
@@ -125,8 +123,19 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
                 e.Cancel = false;
             }
         }
+        private void Ctrl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
 
-
+        //
+        private void TB_BUSCAR_Leave(object sender, EventArgs e)
+        {
+            _controlador.data.CtasPendientes.setTextoBuscar(TB_BUSCAR.Text.Trim().ToUpper());
+        }
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
             BuscarCtasPendientes();
@@ -156,10 +165,11 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             EstadoCuenta();
         }
 
-
+        //
         private void BuscarCtasPendientes()
         {
             _controlador.data.CtasPendientes.CargarCtas();
+            TB_BUSCAR.Text = _controlador.data.CtasPendientes.Get_TextoBuscar;
             ActualizarDataPanel_Totales();
         }
         private void AgregarAnticipo()
@@ -191,7 +201,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.Vistas
             _controlador.data.EstadoCuenta();
         }
 
-
+        //
         private void TSM_ARCHIVO_SALIR_Click(object sender, EventArgs e)
         {
             AbandonarFicha();

@@ -329,13 +329,13 @@ namespace ProvLibCompra
                     var _sql_2 = @" WHERE 1=1 and estatus_anulado='0' and tipo in ('01','02','03') ";
                     if (filtro.Desde.HasValue)
                     {
-                        _sql_2 += " and fecha>=@desde ";
+                        _sql_2 += " and fecha_registro>=@desde ";
                         p1.ParameterName = "@desde";
                         p1.Value = filtro.Desde;
                     }
                     if (filtro.Hasta.HasValue)
                     {
-                        _sql_2 += " and fecha<=@hasta ";
+                        _sql_2 += " and fecha_registro<=@hasta ";
                         p2.ParameterName = "@hasta";
                         p2.Value = filtro.Hasta;
                     }
@@ -766,13 +766,13 @@ namespace ProvLibCompra
                     var p5 = new MySql.Data.MySqlClient.MySqlParameter();
                     if (filtro.Desde.HasValue)
                     {
-                        _sql_2 += " and cjMov.fecha_reg >=@desde ";
+                        _sql_2 += " and cjMov.fecha_emision >=@desde ";
                         p1.ParameterName = "@desde";
                         p1.Value = filtro.Desde;
                     }
                     if (filtro.Hasta.HasValue)
                     {
-                        _sql_2 += " and cjMov.fecha_reg <=@hasta ";
+                        _sql_2 += " and cjMov.fecha_emision <=@hasta ";
                         p2.ParameterName = "@hasta";
                         p2.Value = filtro.Hasta;
                     }
@@ -833,7 +833,7 @@ namespace ProvLibCompra
                                         join transp_caja as cj on cj.id=cjMov.id_caja 
                                    WHERE id_caja=@idCaja and
                                          estatus_anulado_mov='0' and
-                                         fecha_reg<@fecha";
+                                         fecha_emision<@fecha";
                     var _sql_2 = @"";
                     var _sql = _sql_1 + _sql_2;
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("idCaja", filtro.idCaja);

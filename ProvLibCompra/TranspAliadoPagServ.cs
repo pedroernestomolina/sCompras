@@ -284,9 +284,10 @@ namespace ProvLibCompra
                                         @mov_fue_divisa,
                                         -1,
                                         @fecha_emision)";
+                            var _concepto = "PAGO ALIADO: " + ficha.movimiento.nombreAliado + ", POR SERVCICIO PRESTADO SEGUN RECIBO NUMERO: " + numRecibo;
                             p00 = new MySql.Data.MySqlClient.MySqlParameter("@id_caja", rg.idCaja);
                             p01 = new MySql.Data.MySqlClient.MySqlParameter("@fecha_reg", fechaSistema.Date);
-                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", "PAGO POR SERVCICIO PRESTADO SEGUN RECIBO NUMERO: "+numRecibo);
+                            p02 = new MySql.Data.MySqlClient.MySqlParameter("@concepto_mov", _concepto);
                             p03 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_act", rg.montoUsadoMonAct);
                             p04 = new MySql.Data.MySqlClient.MySqlParameter("@monto_mov_mon_div", rg.montoUsadoMonDiv);
                             p05 = new MySql.Data.MySqlClient.MySqlParameter("@factor_cambio_mov", mov.tasaFactorCambio);

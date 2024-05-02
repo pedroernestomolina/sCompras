@@ -156,7 +156,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
                     montoRetMonDiv = _data.GestPago.Get_TotalRetMonDiv,
                     motivo = _data.GestPago.Get_Motivo,
                     nombreAliado = _data.GestPago.Get_Aliado.nombreRazonSocial,
-                    retencion = (_data.GestPago.Get_MontoRetencion - _data.GestPago.Get_MontoSustraendo),
+                    retencion = (_data.GestPago.Get_MontoRetencion ),
                     sustraendo = _data.GestPago.Get_MontoSustraendo,
                     tasaFactorCambio = _data.GestPago.Get_TasaFactorCambio,
                     tasaRet = _data.GestPago.Get_TasaRetencion,

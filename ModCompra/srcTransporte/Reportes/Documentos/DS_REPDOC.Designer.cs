@@ -1870,7 +1870,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
                         decimal base3, 
                         decimal iva3, 
                         string comprobanteRet, 
-                        System.DateTime fechaRet, 
+                        string fechaRet, 
                         decimal porctRet, 
                         decimal montoRet) {
                 LibroRow rowLibroRow = ((LibroRow)(this.NewRow()));
@@ -1992,7 +1992,7 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
                 base.Columns.Add(this.columniva3);
                 this.columncomprobanteRet = new global::System.Data.DataColumn("comprobanteRet", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncomprobanteRet);
-                this.columnfechaRet = new global::System.Data.DataColumn("fechaRet", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnfechaRet = new global::System.Data.DataColumn("fechaRet", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfechaRet);
                 this.columnporctRet = new global::System.Data.DataColumn("porctRet", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnporctRet);
@@ -3734,10 +3734,10 @@ namespace ModCompra.srcTransporte.Reportes.Documentos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime fechaRet {
+            public string fechaRet {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableLibro.fechaRetColumn]));
+                        return ((string)(this[this.tableLibro.fechaRetColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'fechaRet\' in table \'Libro\' is DBNull.", e);

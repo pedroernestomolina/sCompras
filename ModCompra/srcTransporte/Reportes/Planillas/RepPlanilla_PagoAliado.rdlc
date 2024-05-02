@@ -316,6 +316,7 @@
                 <Value>=Sum(Fields!retencion.Value, "PagoAliado")</Value>
                 <Style>
                   <FontSize>8pt</FontSize>
+                  <Format>n2</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1454,7 +1455,7 @@
         <Top>7.72406cm</Top>
         <Left>11.71992cm</Left>
         <Height>2.09104cm</Height>
-        <Width>9.27399cm</Width>
+        <Width>9.27398cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -2022,7 +2023,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=Sum(Fields!montoPagoMonAct.Value, "PagoAliado")</Value>
-                <Style />
+                <Style>
+                  <Format>n2</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />

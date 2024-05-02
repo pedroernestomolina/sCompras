@@ -15,9 +15,10 @@ namespace ModCompra.Utils.Tools
         object ItemActual { get; }
         int Get_CntItem { get; }
         IEnumerable<object> Get_Items { get; }
-
-
+        string Get_TextoBuscar { get; }
+        //
         void Inicializa();
         void CargarCtas();
+        void setTextoBuscar(string textBuscar);
     }
 }

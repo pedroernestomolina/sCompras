@@ -1169,7 +1169,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>RECIBO PAGO: POR ANTIPO DADO</Value>
+                  <Value>RECIBO PAGO: POR ANTICIPO</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                   </Style>

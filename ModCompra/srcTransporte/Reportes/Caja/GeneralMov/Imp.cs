@@ -13,8 +13,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
     public class Imp : IRepFiltro
     {
         private OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro _filtro;
-
-
+        //
         public Imp()
         {
             _filtro = new OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Filtro();
@@ -61,14 +60,14 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
                 Helpers.Msg.Error(e.Message);
             }
         }
-
-
+        //
         private void imprimir(List<OOB.LibCompra.Transporte.Reportes.Caja.Movimiento.Ficha> list)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Caja\RepCajaMov.rdlc";
             var ds = new ListaAdm.DS_ADM();
-
-            foreach (var rg in list)
+            //
+            var lst = list.OrderBy(o => o.fechaMov).ToList();
+            foreach (var rg in lst)
             {
                 var _monto = (rg.cjEsDivisa.Trim().ToUpper() == "1" ? rg.montoMonDiv : rg.montoMonAct) * rg.signoMov;
                 if (rg.estatusAnulado.Trim().ToUpper() == "1") 
@@ -85,7 +84,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
                 rt["esDivisa"] = rg.cjEsDivisa.Trim().ToUpper() == "1" ? "$" : "";
                 ds.Tables["CajaMov"].Rows.Add(rt);
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -93,7 +92,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             //pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
             Rds.Add(new ReportDataSource("CajaMov", ds.Tables["CajaMov"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;
