@@ -1060,7 +1060,8 @@ namespace ProvLibCompra
                             }
 
                             entPrdDep.fisica -= cnt;
-                            entPrdDep.disponible = entPrdDep.fisica;
+                            //entPrdDep.disponible = entPrdDep.fisica;
+                            entPrdDep.disponible -= cnt;
                             cnn.SaveChanges();
                         }
                         cnn.SaveChanges();

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracion>
   <Servidor>
-    <Instancia>localhost</Instancia>
-    <Catalogo>transprivas</Catalogo>
+    <Instancia>192.168.0.131</Instancia>
+    <Catalogo>resp</Catalogo>
     <Usuario></Usuario>
   </Servidor>
   <Documentos>
