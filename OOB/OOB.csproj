@@ -69,6 +69,8 @@
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrecio.cs" />
     <Compile Include="LibCompra\Documento\Corrector\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Enumerados.cs" />
+    <Compile Include="LibCompra\Documento\GetData\AplicarRetencion\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\GetData\BaseFicha.cs" />
     <Compile Include="LibCompra\Documento\GetData\Ficha.cs" />
     <Compile Include="LibCompra\Documento\GetData\FichaDetalle.cs" />
     <Compile Include="LibCompra\Documento\ListaItemImportar\Ficha.cs" />
@@ -178,6 +180,13 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboDoc.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataReciboMetodoPago.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\CxP.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\DocRetencion.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\DocRetencionDet.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\Recibo.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\ReciboDoc.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\PagoPorRetencion\Resultado.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\Resultado.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Anular\auditoria.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Anular\Ficha.cs" />

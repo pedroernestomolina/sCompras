@@ -22,5 +22,8 @@ namespace ServiceCompra.Interfaces.Transporte
             Transporte_CxpDoc_GestionPago_Anular_ObtenerData(string idRecPago);
         DtoLib.Resultado
             Transporte_CxpDoc_GestionPago_Anular(DtoLibTransporte.CxpDoc.Pago.Anular.Ficha ficha);
+        //
+        DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Resultado>
+            Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(DtoLibTransporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Ficha ficha);
     }
 }

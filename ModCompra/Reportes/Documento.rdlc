@@ -495,11 +495,13 @@
                               <Value>=Fields!cnt.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <Format>f1</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>cnt</rd:DefaultName>
@@ -564,12 +566,12 @@
                               <Value>=Fields!cntUnd.Value</Value>
                               <Style>
                                 <FontSize>6pt</FontSize>
-                                <Format>n1</Format>
+                                <Format>n2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>

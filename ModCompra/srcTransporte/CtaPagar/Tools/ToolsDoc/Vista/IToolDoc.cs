@@ -9,5 +9,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
 {
     public interface IToolDoc: ITools 
     {
+        object CtaPendiente_Actual { get; }
+        //
+        void PagoPorRetencion();
     }
 }

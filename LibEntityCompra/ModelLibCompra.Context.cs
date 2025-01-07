@@ -25,7 +25,6 @@ namespace LibEntityCompra
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<compras> compras { get; set; }
         public virtual DbSet<empresa_depositos> empresa_depositos { get; set; }
         public virtual DbSet<empresa_sucursal> empresa_sucursal { get; set; }
         public virtual DbSet<proveedores> proveedores { get; set; }
@@ -42,7 +41,6 @@ namespace LibEntityCompra
         public virtual DbSet<sistema_estados> sistema_estados { get; set; }
         public virtual DbSet<proveedores_agencias> proveedores_agencias { get; set; }
         public virtual DbSet<compras_pend> compras_pend { get; set; }
-        public virtual DbSet<cxp> cxp { get; set; }
         public virtual DbSet<productos_conceptos> productos_conceptos { get; set; }
         public virtual DbSet<productos_conteo> productos_conteo { get; set; }
         public virtual DbSet<productos_costos> productos_costos { get; set; }
@@ -53,5 +51,7 @@ namespace LibEntityCompra
         public virtual DbSet<compras_detalle> compras_detalle { get; set; }
         public virtual DbSet<productos_kardex> productos_kardex { get; set; }
         public virtual DbSet<compras_pend_detalle> compras_pend_detalle { get; set; }
+        public virtual DbSet<compras> compras { get; set; }
+        public virtual DbSet<cxp> cxp { get; set; }
     }
 }

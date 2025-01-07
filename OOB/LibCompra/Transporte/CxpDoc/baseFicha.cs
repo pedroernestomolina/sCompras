@@ -22,5 +22,6 @@ namespace OOB.LibCompra.Transporte.CxpDoc
         public decimal acumuladoDiv { get; set; }
         public decimal restaDiv { get; set; }
         public decimal tasafactor { get; set; }
+        public string idDocOrigen { get; set; }
     }
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Documento.Cargar
 {
-    
     public class Ficha
     {
-
         public string autoId { get; set; }
         public string provAuto { get; set; }
         public string provNombre { get; set; }
@@ -59,7 +57,10 @@ namespace DtoLibCompra.Documento.Cargar
         public int signo { get; set; }
         public string codigoSucursal { get; set; }
         public List<FichaDetalle> detalles { get; set; }
-
+        //
+        public string estatusAplicaLibroSeniat { get; set; }
+        public string idSucursal { get; set; }
+        public string descSucursal { get; set; }
+        public string estatusMercanciaGasto { get; set; }
     }
-
 }

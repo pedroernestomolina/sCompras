@@ -9,7 +9,8 @@ namespace DtoLibTransporte.CxpDoc.DocPend
 {
     public class Ficha
     {
-        public string id { get; set; }
+        public string idCxP { get; set; }
+        public string idDocOrigen { get; set; }
         public DateTime fechaEmision { get; set; }
         public int diasCredito { get; set; }
         public string tipoDoc { get; set; }

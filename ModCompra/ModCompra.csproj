@@ -596,6 +596,8 @@
     </Compile>
     <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\IHndData.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\PagoDoc\Vista\IPagoDoc.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoPorRetencion\IHnd.cs" />
+    <Compile Include="srcTransporte\CtaPagar\Tools\PagoPorRetencion\ImpHnd.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Handler\dataItemCtasPend.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\ToolsDoc\Vista\IdataItemCtaPend.cs" />
     <Compile Include="srcTransporte\CtaPagar\Tools\ITools.cs" />

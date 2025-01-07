@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Documento.Agregar.Factura
 {
-    
     public class FichaDocumento
     {
-
         public string documentoNro { get; set; }
         public DateTime fechaDocumento { get; set; }
         public DateTime fechaVencimiento { get; set; }
@@ -92,7 +90,9 @@ namespace DtoLibCompra.Documento.Agregar.Factura
         public DateTime fechaRetencion { get; set; }
         public string estatusCierreContable { get; set; }
         public string cierreFtp { get; set; }
-
+        //
+        public string AplicaLibroSeniat { get; set; }
+        public string IdSucursal { get; set; }
+        public string DescSucursal { get; set; }
     }
-
 }

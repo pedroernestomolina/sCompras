@@ -39,6 +39,11 @@ namespace LibEntityCompra
         public string anexo { get; set; }
         public string estatus_cierre_contable { get; set; }
         public decimal importeDivisa { get; set; }
+        public decimal acumulado_divisa { get; set; }
+        public decimal resta_divisa { get; set; }
+        public decimal tasa_divisa { get; set; }
+        public System.DateTime fecha_registro { get; set; }
+        public string auto_sistema_documento { get; set; }
     
         public virtual proveedores proveedores { get; set; }
     }

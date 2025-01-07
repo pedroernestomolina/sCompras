@@ -62,6 +62,12 @@
     <Compile Include="Configuracion.cs" />
     <Compile Include="Deposito.cs" />
     <Compile Include="Documento.cs" />
+    <Compile Include="DocumentoAgregar_FactMercancia.cs" />
+    <Compile Include="DocumentoAgregar_NCreditoMercancia.cs" />
+    <Compile Include="Documento_GetData_AplicarRetencion.cs" />
+    <Compile Include="Documento_GetFicha.cs" />
+    <Compile Include="Documento_GetLista.cs" />
+    <Compile Include="Documento_ListaRemision.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="Grupo.cs" />
@@ -90,6 +96,9 @@
     <Compile Include="TransporteDocumentoAgregar.cs" />
     <Compile Include="TransporteDocumentoAnular.cs" />
     <Compile Include="TransporteDocumento.cs" />
+    <Compile Include="Reportes_Compras_LibroSeniat_GetLista.cs" />
+    <Compile Include="Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion.cs" />
+    <Compile Include="Transporte_CxpDoc_GetLista_DocPend.cs" />
     <Compile Include="TranspReportes.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

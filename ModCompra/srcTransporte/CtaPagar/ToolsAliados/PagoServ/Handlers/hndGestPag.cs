@@ -58,7 +58,7 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
             _hndCaja.CargarData();
             if (_aliado == null) 
             {
-                throw new Exception("ALIADO NO DEFIIDO");
+                throw new Exception("ALIADO NO DEFINIDO");
             }
             _hndCaja.setAplicaFactorCambioParaAnticipo(true);
             _hndCaja.setTasaAplicarFactorCambioParaAnticipo(_aliado.tasaPromAnticipo);
@@ -115,7 +115,11 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
             {
                 if (_montoAnt >= _hndData.Get_MontoAnticipoMonDiv)
                 {
-                    _hndData.setTasaFactorCambio(_hndData.Get_Aliado.tasaPromAnticipo);
+                    //28/12/2024, MIENTRAS SE ARREGLE, 
+                    //ESTA TOMANDO TODOS LOS ANTICIPOS , 
+                    //Y DEBERIA HABER UNA OPCION QUE ME PERMITA SUMAR SOLO LOS ANTICIPOS VIGENTES 
+                    //_hndData.setTasaFactorCambio(_hndData.Get_Aliado.tasaPromAnticipo);
+                    _hndData.setTasaFactorCambio(_hndData.Get_TasaFactorCambio);
                 }
                 else 
                 {

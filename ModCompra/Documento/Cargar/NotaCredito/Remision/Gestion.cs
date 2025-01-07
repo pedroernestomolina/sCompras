@@ -8,21 +8,15 @@ using System.Windows.Forms;
 
 namespace ModCompra.Documento.Cargar.NotaCredito.Remision
 {
-    
     public class Gestion
     {
-
         public event EventHandler ItemSeleccionadoOk;
-
-
+        //
         private List<OOB.LibCompra.Documento.ListaRemision.Ficha> litems;
         private BindingSource bs;
         private OOB.LibCompra.Proveedor.Data.Ficha _proveedor;
-
-
+        //
         public OOB.LibCompra.Documento.ListaRemision.Ficha ItemRemisionSeleccionado { get; set; }
-
-
         public string ItemEncontrados 
         { 
             get 
@@ -32,7 +26,6 @@ namespace ModCompra.Documento.Cargar.NotaCredito.Remision
                 return rt;
             } 
         }
-
         public string Proveedor 
         {
             get 
@@ -42,16 +35,8 @@ namespace ModCompra.Documento.Cargar.NotaCredito.Remision
                 return rt;
             }
         }
-
-        public BindingSource Source 
-        {
-            get 
-            {
-                return bs;
-            }
-        }
-
-
+        public BindingSource Source { get { return bs; } }
+        //
         public Gestion()
         {
             ItemRemisionSeleccionado = null;
@@ -59,8 +44,6 @@ namespace ModCompra.Documento.Cargar.NotaCredito.Remision
             bs = new BindingSource();
             bs.DataSource = litems;
         }
-
-
         RemisionFrm frm;
         public void Inicia() 
         {
@@ -120,7 +103,5 @@ namespace ModCompra.Documento.Cargar.NotaCredito.Remision
         {
             frm.Close();
         }
-
     }
-
 }

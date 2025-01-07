@@ -111,6 +111,11 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
+            if (!r01.Entidad.EstatusDocTipoMercancia)
+            {
+                Helpers.Msg.Error("DOCUMENTO INCORRECTO PARA APLICAR NOTA DE CREDITO POR DEVOLUCION DE MERCANCIA");
+                return;
+            }
             _docRemision = r01.Entidad;
             FactorDivisa = r01.Entidad.factorCambio;
             ProveedorIsOk = true;

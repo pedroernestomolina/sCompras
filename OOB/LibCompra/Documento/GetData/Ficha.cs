@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Documento.GetData
 {
-    
     public class Ficha
     {
-
         public string autoId { get; set; }
         public string provAuto { get; set; }
         public string provNombre { get; set; }
@@ -60,7 +58,10 @@ namespace OOB.LibCompra.Documento.GetData
         public string codigoSucursal { get; set; }
         public string autoDeposito { get { return detalles.FirstOrDefault().depositoAuto; } }
         public List<FichaDetalle> detalles { get; set; }
-
+        //
+        public bool AplicaLibroSeniat { get; set; }
+        public string DescSucursal { get; set; }
+        public string IdSucursal { get; set; }
+        public bool EstatusDocTipoMercancia { get; set; }
     }
-
 }

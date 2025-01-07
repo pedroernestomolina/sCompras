@@ -202,6 +202,11 @@ namespace ModCompra.Documento.Cargar.Controlador
             _gestion.setOpcBusqueda(id);
         }
 
-    }
 
+        public bool GetEsDocNotaEntrega { get { return _gestion.GetEsDocNotaEntrega; } }
+        public void CambiarTipoDocNotaEntrega()
+        {
+            _gestion.CambiarTipoDocNotaEntrega();
+        }
+    }
 }

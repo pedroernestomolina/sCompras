@@ -177,5 +177,70 @@ namespace ModCompra.src.PantallaInicio
         {
             _controlador.ConfiguracionSistema();
         }
+
+        private void MENU_REPORTES_DOCUMENTOS_LIBRO_SENIAT_Click(object sender, EventArgs e)
+        {
+            ReportesLibroSeniat();
+        }
+        private void ReportesLibroSeniat()
+        {
+            _controlador.ReporteLibroSeniat();
+        }
+        //
+        private void MENU_CXP_TOOLS_DOCUMENTOS_Click(object sender, EventArgs e)
+        {
+            ToolsDocumentos();
+        }
+        private void ToolsDocumentos()
+        {
+            _controlador.ToolsDocumentos();
+        }
+
+        //
+        private void MENU_DOCUMENTOS_REGISTRAR_COMPRA_GASTO_Click(object sender, EventArgs e)
+        {
+            RegistrarCompraGasto();
+        }
+        private void RegistrarCompraGasto()
+        {
+            _controlador.RegistrarCompraGasto();
+        }
+
+        //
+        private void MENU_MAESTRO_CONCEPTOS_Click(object sender, EventArgs e)
+        {
+            MaestroConceptos();
+        }
+        private void MaestroConceptos()
+        {
+            _controlador.MaestroConceptos();
+        }
+
+        //
+        private void MENU_DOC_ADM_RET_Click(object sender, EventArgs e)
+        {
+            AdministradorDocRet();
+        }
+        private void AdministradorDocRet()
+        {
+            _controlador.AdministradorDocRet();
+        }
+
+        private void MENU_REPORTES_DOCUMENTOS_RET_IVA_Click(object sender, EventArgs e)
+        {
+            ReportesRetIva();
+        }
+        private void MENU_REPORTES_DOCUMENTOS_RET_ISLR_Click(object sender, EventArgs e)
+        {
+            ReportesRetIslr();
+        }
+        private void ReportesRetIva()
+        {
+            _controlador.ReportesRetIva();
+        }
+        private void ReportesRetIslr()
+        {
+            _controlador.ReportesRetIslr();
+        }
     }
 }

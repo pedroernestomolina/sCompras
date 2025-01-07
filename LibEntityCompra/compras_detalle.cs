@@ -59,11 +59,11 @@ namespace LibEntityCompra
         public string cierre_ftp { get; set; }
         public string estatus_cambio_precio_venta { get; set; }
     
-        public virtual compras compras { get; set; }
         public virtual empresa_depositos empresa_depositos { get; set; }
         public virtual empresa_tasas empresa_tasas { get; set; }
         public virtual productos productos { get; set; }
         public virtual productos_grupo productos_grupo { get; set; }
         public virtual proveedores proveedores { get; set; }
+        public virtual compras compras { get; set; }
     }
 }

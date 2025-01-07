@@ -51,6 +51,8 @@ namespace ModCompra.Documento.Cargar.Controlador
         string GetOpcionBusquedaId { get; }
         void setOpcBusqueda(string id);
 
-    }
 
+        bool GetEsDocNotaEntrega{ get; }
+        void CambiarTipoDocNotaEntrega();
+    }
 }

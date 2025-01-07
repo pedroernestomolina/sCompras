@@ -11,8 +11,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
     {
         private OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha _ficha;
         private decimal _pendiente;
-
-
+        //
         public string Id { get; set; }
         public string dataCiRif { get; set; }
         public string dataNombreRazonSocial { get; set; }
@@ -23,8 +22,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
         public decimal dataAcumulado { get; set; }
         public decimal dataResta { get; set; }
         public decimal Get_Pendiente { get { return _pendiente; } }
-
-
+        public OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha Ficha { get { return _ficha; } }
+        //
         public dataItemCtasPend(OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha ficha)
         {
             _ficha = ficha;

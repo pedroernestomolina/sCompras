@@ -531,6 +531,21 @@ namespace ModCompra.Documento.Cargar.Formulario
             TB_CADENA_BUSQ.Focus();
         }
 
+        private void L_TITULO_DOCUMENTO_DoubleClick(object sender, EventArgs e)
+        {
+            if (_controlador.TituloDocumento.Trim().ToUpper().Contains("FACTURA"))
+            {
+                _controlador.CambiarTipoDocNotaEntrega();
+                var _esNotaEntrega = _controlador.GetEsDocNotaEntrega;
+                if (!_esNotaEntrega)
+                {
+                    L_TITULO_DOCUMENTO.BackColor = Color.Green;
+                }
+                else
+                {
+                    L_TITULO_DOCUMENTO.BackColor = Color.Black;
+                }
+            }
+        }
     }
-
 }

@@ -70,6 +70,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.BT_RETENCION = new System.Windows.Forms.Button();
             this.MenuP.SuspendLayout();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -96,6 +98,7 @@
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuP
@@ -423,16 +426,18 @@
             this.tableLayoutPanel7.Controls.Add(this.panel15, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.panel18, 0, 3);
+            this.tableLayoutPanel7.Controls.Add(this.panel19, 0, 4);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 5;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel7.RowCount = 6;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.33334F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.99999F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(195, 637);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
@@ -441,7 +446,7 @@
             this.tableLayoutPanel7.SetColumnSpan(this.panel15, 2);
             this.panel15.Controls.Add(this.BT_AGREGAR_PAGO);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(1, 54);
+            this.panel15.Location = new System.Drawing.Point(1, 56);
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
@@ -468,7 +473,7 @@
             this.tableLayoutPanel7.SetColumnSpan(this.panel17, 2);
             this.panel17.Controls.Add(this.BT_ADM_DOC_PAGO);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(1, 166);
+            this.panel17.Location = new System.Drawing.Point(1, 168);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Padding = new System.Windows.Forms.Padding(2);
@@ -495,7 +500,7 @@
             this.tableLayoutPanel7.SetColumnSpan(this.panel18, 2);
             this.panel18.Controls.Add(this.BT_IMPRIMIR_LISTA);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(1, 278);
+            this.panel18.Location = new System.Drawing.Point(1, 280);
             this.panel18.Margin = new System.Windows.Forms.Padding(1);
             this.panel18.Name = "panel18";
             this.panel18.Padding = new System.Windows.Forms.Padding(2);
@@ -593,6 +598,33 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
+            // panel19
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel19, 2);
+            this.panel19.Controls.Add(this.BT_RETENCION);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(1, 372);
+            this.panel19.Margin = new System.Windows.Forms.Padding(1);
+            this.panel19.Name = "panel19";
+            this.panel19.Padding = new System.Windows.Forms.Padding(2);
+            this.panel19.Size = new System.Drawing.Size(193, 98);
+            this.panel19.TabIndex = 9;
+            // 
+            // BT_RETENCION
+            // 
+            this.BT_RETENCION.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_RETENCION.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_RETENCION.Image = global::ModCompra.Properties.Resources.bt_pago_transf_48;
+            this.BT_RETENCION.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_RETENCION.Location = new System.Drawing.Point(2, 2);
+            this.BT_RETENCION.Name = "BT_RETENCION";
+            this.BT_RETENCION.Size = new System.Drawing.Size(189, 94);
+            this.BT_RETENCION.TabIndex = 4;
+            this.BT_RETENCION.Text = "Pago Por\r\nRetencion ";
+            this.BT_RETENCION.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BT_RETENCION.UseVisualStyleBackColor = true;
+            this.BT_RETENCION.Click += new System.EventHandler(this.BT_RETENCION_Click);
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,6 +667,7 @@
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,5 +716,7 @@
         private System.Windows.Forms.Label L_CNT_ITEM;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button BT_IMPRIMIR_LISTA;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button BT_RETENCION;
     }
 }

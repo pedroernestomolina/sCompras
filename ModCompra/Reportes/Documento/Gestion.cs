@@ -66,12 +66,24 @@ namespace ModCompra.Reportes.Documento
             {
                 var importeDivisa = it.importe / ficha.factorCambio;
                 var precioFacturaDivisa = it.precioFactura / ficha.factorCambio;
-                var cntUnd = it.cntFactura * it.contenido;
+                var cnt="";
+                var cntUnd="";
+
+                if (((it.cntFactura - ((int)it.cntFactura)))>0)
+                {
+                    cnt=it.cntFactura.ToString();
+                    cntUnd=(it.cntFactura * it.contenido).ToString();
+                }
+                else
+                {
+                    cnt = ((int)it.cntFactura).ToString();
+                    cntUnd = ((int)(it.cntFactura * it.contenido)).ToString();
+                }
 
                 DataRow r = ds.Tables["DocDetalle"].NewRow();
                 r["prdCodigo"] = "";
                 r["prdNombre"] = it.prdCodigo+Environment.NewLine+it.prdNombre;
-                r["cnt"] = it.cntFactura;
+                r["cnt"] = cnt ;
                 r["precio"] = it.precioFactura;
                 r["deposito"] = it.depositoCodigo.Trim()+Environment.NewLine+it.depositoNombre.Trim();
                 r["empaque"] = it.empaqueCompra.Trim()+Environment.NewLine+it.contenido.ToString().Trim();

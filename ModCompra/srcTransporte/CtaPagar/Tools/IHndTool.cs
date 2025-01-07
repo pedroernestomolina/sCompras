@@ -10,7 +10,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools
     public interface IHndTool
     {
         IHndCtasPend CtasPendiente { get; }
-
+        //
         void Inicializa();
         void GestionPago();
         void AdmDocPagos();

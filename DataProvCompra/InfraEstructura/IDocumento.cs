@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataProvCompra.InfraEstructura
 {
-    
     public interface IDocumento
     {
-
         OOB.ResultadoAuto Compra_DocumentoAgregarFactura(OOB.LibCompra.Documento.Cargar.Factura.Ficha docFac);
         OOB.ResultadoAuto Compra_DocumentoAgregarNC(OOB.LibCompra.Documento.Agregar.NotaCredito.Ficha docNC);
         OOB.ResultadoEntidad<OOB.LibCompra.Documento.GetData.Ficha> Compra_DocumentoGetFicha(string auto);
@@ -26,7 +24,8 @@ namespace DataProvCompra.InfraEstructura
         OOB.ResultadoLista<OOB.LibCompra.Documento.Pendiente.Lista.Ficha> Compra_Documento_Pendiente_GetLista(OOB.LibCompra.Documento.Pendiente.Filtro.Ficha filtro);
         OOB.Resultado Compra_Documento_Pendiente_Eliminar(int idDoc);
         OOB.ResultadoEntidad<OOB.LibCompra.Documento.Pendiente.Abrir.Ficha> Compra_Documento_Pendiente_Abrir_GetById(int idDoc);
-
+        //
+        OOB.ResultadoEntidad<OOB.LibCompra.Documento.GetData.AplicarRetencion.Ficha> 
+            Compra_GetData_AplicarRetencion(string idDocCompra);
     }
-
 }

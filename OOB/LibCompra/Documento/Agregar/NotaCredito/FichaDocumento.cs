@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Documento.Agregar.NotaCredito
 {
-    
     public class FichaDocumento
     {
-
         public string documentoNro { get; set; }
         public DateTime fechaDocumento { get; set; }
         public DateTime fechaVencimiento { get; set; }
@@ -92,7 +90,9 @@ namespace OOB.LibCompra.Documento.Agregar.NotaCredito
         public DateTime fechaRetencion { get; set; }
         public string estatusCierreContable { get; set; }
         public string cierreFtp { get; set; }
-
+        //
+        public bool AplicaLibroSeniat { get; set; }
+        public string DescSucursal { get; set; }
+        public string IdSucursal { get; set; }
     }
-
 }

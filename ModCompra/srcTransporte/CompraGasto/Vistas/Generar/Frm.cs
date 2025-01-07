@@ -194,6 +194,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         }
         private void CHB_INCLUIR_LIBRO_COMPRA_CheckedChanged(object sender, EventArgs e)
         {
+            if (_modoInicializa) return;
             _controlador.data.SetIncluirLibroCompras();
             RETENCIONES.Enabled = _controlador.data.Get_IncluirLibroCompras;
             ActualizaTotal();

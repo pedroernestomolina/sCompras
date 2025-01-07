@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Documento.Lista
 {
-    
     public class Ficha
     {
-
         public string auto { get; set; }
         public DateTime fechaEmision { get; set; }
         public string codigoTipo { get; set; }
@@ -29,7 +27,6 @@ namespace OOB.LibCompra.Documento.Lista
         public string ControlNro { get; set; }
         public string Aplica { get; set; }
         public string nomSucursal { get; set; }
-
+        public bool IsDocCompraMercancia { get; set; }
     }
-
 }

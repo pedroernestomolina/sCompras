@@ -1427,7 +1427,7 @@ namespace ModCompra.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DocDetalleRow AddDocDetalleRow(string prdCodigo, string prdNombre, decimal cnt, decimal precio, string deposito, string empaque, decimal alicuota, decimal importe, decimal importeDivisa, decimal precioDivisa, decimal cntUnd) {
+            public DocDetalleRow AddDocDetalleRow(string prdCodigo, string prdNombre, string cnt, decimal precio, string deposito, string empaque, decimal alicuota, decimal importe, decimal importeDivisa, decimal precioDivisa, string cntUnd) {
                 DocDetalleRow rowDocDetalleRow = ((DocDetalleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         prdCodigo,
@@ -1483,7 +1483,7 @@ namespace ModCompra.Reportes {
                 base.Columns.Add(this.columnprdCodigo);
                 this.columnprdNombre = new global::System.Data.DataColumn("prdNombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprdNombre);
-                this.columncnt = new global::System.Data.DataColumn("cnt", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columncnt = new global::System.Data.DataColumn("cnt", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncnt);
                 this.columnprecio = new global::System.Data.DataColumn("precio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprecio);
@@ -1499,7 +1499,7 @@ namespace ModCompra.Reportes {
                 base.Columns.Add(this.columnimporteDivisa);
                 this.columnprecioDivisa = new global::System.Data.DataColumn("precioDivisa", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprecioDivisa);
-                this.columncntUnd = new global::System.Data.DataColumn("cntUnd", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columncntUnd = new global::System.Data.DataColumn("cntUnd", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncntUnd);
             }
             
@@ -4507,10 +4507,10 @@ namespace ModCompra.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal cnt {
+            public string cnt {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDocDetalle.cntColumn]));
+                        return ((string)(this[this.tableDocDetalle.cntColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'cnt\' in table \'DocDetalle\' is DBNull.", e);
@@ -4635,10 +4635,10 @@ namespace ModCompra.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal cntUnd {
+            public string cntUnd {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDocDetalle.cntUndColumn]));
+                        return ((string)(this[this.tableDocDetalle.cntUndColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'cntUnd\' in table \'DocDetalle\' is DBNull.", e);

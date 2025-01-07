@@ -346,6 +346,7 @@
             this.L_TITULO_DOCUMENTO.TabIndex = 0;
             this.L_TITULO_DOCUMENTO.Text = "ENTRADA DOCUMENTO: ";
             this.L_TITULO_DOCUMENTO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_TITULO_DOCUMENTO.DoubleClick += new System.EventHandler(this.L_TITULO_DOCUMENTO_DoubleClick);
             // 
             // panel2
             // 

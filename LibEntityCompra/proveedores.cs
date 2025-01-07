@@ -17,11 +17,11 @@ namespace LibEntityCompra
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public proveedores()
         {
-            this.compras = new HashSet<compras>();
             this.productos_proveedor = new HashSet<productos_proveedor>();
             this.proveedores_agencias = new HashSet<proveedores_agencias>();
-            this.cxp = new HashSet<cxp>();
             this.compras_detalle = new HashSet<compras_detalle>();
+            this.compras = new HashSet<compras>();
+            this.cxp = new HashSet<cxp>();
         }
     
         public string auto { get; set; }
@@ -62,16 +62,16 @@ namespace LibEntityCompra
         public string nj { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<compras> compras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<productos_proveedor> productos_proveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<proveedores_agencias> proveedores_agencias { get; set; }
         public virtual proveedores_grupo proveedores_grupo { get; set; }
         public virtual sistema_estados sistema_estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cxp> cxp { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compras_detalle> compras_detalle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<compras> compras { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cxp> cxp { get; set; }
     }
 }

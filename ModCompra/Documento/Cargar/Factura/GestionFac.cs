@@ -632,6 +632,18 @@ namespace ModCompra.Documento.Cargar.Factura
             if (gestionDoc.DiasCredito>0)
                 saldoPend=gestionItem.TotalMonto_Final;
 
+            var _docNombre = "Compras";
+            var _docSerie = "FAC";
+            var _docCodigo = "01";
+            var _aplicaLibroSeniat = true;
+            if (_tipoDocEsNotaEntrega) 
+            {
+                _docNombre = "NEntrega";
+                _docSerie = "NEN";
+                _docCodigo = "FF";
+                _aplicaLibroSeniat = false;
+            }
+          
             var fichaDoc = new OOB.LibCompra.Documento.Cargar.Factura.FichaDocumento()
             {
                 anoRelacion = gestionDoc.AnoRelacion,
@@ -656,7 +668,7 @@ namespace ModCompra.Documento.Cargar.Factura
                 documentoNombre = "COMPRAS",
                 documentoNro = gestionDoc.DocumentoNro,
                 documentoRemision = "",
-                documentoTipo = "Compras",
+                documentoTipo = _docNombre,
                 esAnulado = "0",
                 estacionEquipo = Sistema.EquipoEstacion,
                 estatusCierreContable = "0",
@@ -690,7 +702,7 @@ namespace ModCompra.Documento.Cargar.Factura
                 notaDocumento = gestionDoc.Notas,
                 ordenCompraNro = gestionDoc.OrdenCompraNro,
                 planilla = "",
-                serieDocumento = "FAC",
+                serieDocumento = _docSerie,
                 signoDocumento = 1,
                 situacionDocumento = "Procesado",
                 subTotalNeto = gestionItem.TotalMonto_Final - gestionItem.MontoImpuesto_Final,
@@ -700,7 +712,7 @@ namespace ModCompra.Documento.Cargar.Factura
                 tarifa = "0",
                 telefonoPropveedor = gestionDoc.Proveedor.identidad.telefono,
                 tercerosIva = 0.0m,
-                tipoDocumento = "01",
+                tipoDocumento = _docCodigo,
                 tipoProveedor = "",
                 tipoRemision = "",
                 usuarioAuto = Sistema.UsuarioP.autoUsu,
@@ -715,6 +727,10 @@ namespace ModCompra.Documento.Cargar.Factura
                 valorTasaIva3 = tasasFiscal.Tasa3,
                 valorTasaRetencionISLR = 0.0m,
                 valorTasaRetencionIva = 0.0m,
+                //
+                AplicaLibroSeniat=_aplicaLibroSeniat,
+                IdSucursal= gestionDoc.Sucursal.auto,
+                DescSucursal = gestionDoc.Sucursal.nombre,
             };
             var fichaCxP = new OOB.LibCompra.Documento.Cargar.Factura.FichaCxP()
             {
@@ -738,7 +754,8 @@ namespace ModCompra.Documento.Cargar.Factura
                 numero = "",
                 resta = gestionItem.TotalMonto_Final,
                 signoDocumento = 1,
-                tipoDocumento = "FAC",
+                tipoDocumento = _docSerie,
+
             };
             var fichaDetalle= new List<OOB.LibCompra.Documento.Cargar.Factura.FichaDetalle>();
             var fichaPrdDeposito = new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdDeposito>();
@@ -784,7 +801,7 @@ namespace ModCompra.Documento.Cargar.Factura
                     montoTotal = it.total,
                     nombreProducto = it.Producto.descripcion,
                     signo = 1,
-                    tipoDocumento = "01",
+                    tipoDocumento = _docCodigo,
                     totalNeto = it.subTotal_2,
                     valorPorcDescto1 = it.dsct_1_p,
                     valorPorcDescto2 = it.dsct_2_p,
@@ -812,7 +829,7 @@ namespace ModCompra.Documento.Cargar.Factura
                     cierreFtp = "",
                     codigoConcepto = conceptoCompra.codigo,
                     codigoDeposito = gestionDoc.Deposito.codigo,
-                    codigoMovDoc = "01",
+                    codigoMovDoc = _docCodigo,
                     codigoSucursal = gestionDoc.Sucursal.codigo,
                     costoUnd = it.CostoFinal_Und,
                     documentoNro = gestionDoc.DocumentoNro,
@@ -824,7 +841,7 @@ namespace ModCompra.Documento.Cargar.Factura
                     nombreDeposito = gestionDoc.Deposito.nombre,
                     nota = "",
                     precioUnd = 0.0m,
-                    siglasMovDoc = "FAC",
+                    siglasMovDoc = _docSerie,
                     signoDocumento = 1,
                     nombrePrd = it.Producto.descripcion,
                     factorCambio = gestionDoc.FactorDivisa,
@@ -851,7 +868,7 @@ namespace ModCompra.Documento.Cargar.Factura
                     costoDivisa = it.CostoDivisaFinal,
                     documento = gestionDoc.DocumentoNro,
                     nota = "",
-                    serie = "FAC",
+                    serie = _docSerie,
                     tasaDivisa = gestionDoc.FactorDivisa,
                 };
                 if (it.IsEmpCompraPredeterminado)
@@ -966,7 +983,11 @@ namespace ModCompra.Documento.Cargar.Factura
                             return;
                         }
 
-                        if (_gestionAdmDoc.ItemSeleccionado.CodigoDoc!="01")
+                        string codigoDoc = _gestionAdmDoc.ItemSeleccionado.CodigoDoc;
+                        if (codigoDoc == "01" || codigoDoc == "FF") //FACTURA / NOTA ENTREGA
+                        { 
+                        }
+                        else
                         {
                             Helpers.Msg.Error("Tipo Documento Incorrecto Para Importar");
                             return;
@@ -1224,6 +1245,14 @@ namespace ModCompra.Documento.Cargar.Factura
                     gestionPrdBuscar.setMetodoBusqueda(Controlador.GestionProductoBuscar.metodoBusqueda.CodBarra);
                     break;
             }
+        }
+
+
+        private bool _tipoDocEsNotaEntrega=false;
+        public bool GetEsDocNotaEntrega { get { return _tipoDocEsNotaEntrega; } }
+        public void CambiarTipoDocNotaEntrega()
+        {
+            _tipoDocEsNotaEntrega = !_tipoDocEsNotaEntrega;
         }
     }
 }

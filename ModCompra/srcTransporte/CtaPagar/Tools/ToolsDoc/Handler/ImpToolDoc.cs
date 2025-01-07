@@ -10,17 +10,16 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
     public class ImpToolDoc: Vista.IToolDoc 
     {
         private IHndTool _hnd;
-
-
+        //
         public string TituloTools { get { return "TOOLS PAGO ( DOCUMENTOS )"; } }
         public IHndTool Hnd { get { return _hnd; } }
-
-
+        public bool AbandonarIsOK { get { return true; } }
+        public object CtaPendiente_Actual { get { return _hnd.CtasPendiente.Get_ItemActual; } }
+        //
         public ImpToolDoc()
         {
             _hnd = new ImpHndToolDoc();
         }
-
         public void Inicializa()
         {
             _hnd.Inicializa();
@@ -38,16 +37,34 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
                 frm.ShowDialog();
             }
         }
-
-        public bool AbandonarIsOK { get { return true; } }
         public void AbandonarFicha()
         {
         }
-
-
         private bool cargarData()
         {
             return true;
+        }
+        public void PagoPorRetencion()
+        {
+            if (CtaPendiente_Actual != null) 
+            {
+                var _ctaPendienteActual = (dataItemCtasPend)CtaPendiente_Actual;
+                if (!string.IsNullOrEmpty(_ctaPendienteActual.Ficha.idDocOrigen)) 
+                {
+                    GenerarPagoPorRetencion(_ctaPendienteActual);
+                }
+            }
+        }
+        private PagoPorRetencion.IHnd _pagoPorRet;
+        private void GenerarPagoPorRetencion(dataItemCtasPend _ctaPendienteActual)
+        {
+            if (_pagoPorRet == null) 
+            {
+                _pagoPorRet = new PagoPorRetencion.ImpHnd();
+            }
+            _pagoPorRet.Inicializa();
+            _pagoPorRet.setDocCompraAplicarPagoPorRet(_ctaPendienteActual.Ficha.idDocOrigen);
+            _pagoPorRet.Inicia();
         }
     }
 }

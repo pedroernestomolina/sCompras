@@ -11,7 +11,7 @@ namespace OOB.LibCompra.Documento
     public class Enumerados
     {
 
-        public enum enumTipoDocumento { SinDefinir = -1, Factura = 1, NotaDebito, NotaCredito, OrdenCompra, Recepcion };
+        public enum enumTipoDocumento { SinDefinir = -1, Factura = 1, NotaDebito, NotaCredito, OrdenCompra, Recepcion, NotaEntrega };
 
     }
 

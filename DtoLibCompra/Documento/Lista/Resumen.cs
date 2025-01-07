@@ -26,6 +26,7 @@ namespace DtoLibCompra.Documento.Lista
         public int signo { get; set; }
         public string aplica { get; set; }
         public string nomSucursal { get; set; }
+        public string estatusDocCompraMercGasto  { get; set; }
 
 
         public bool esAnulado
@@ -57,11 +58,12 @@ namespace DtoLibCompra.Documento.Lista
                     case "05":
                         rt = DtoLibCompra.Enumerados.enumTipoDocumento.Recepcion;
                         break;
+                    case "FF":
+                        rt = DtoLibCompra.Enumerados.enumTipoDocumento.NotaEntrega;
+                        break;
                 }
                 return rt;
             }
         }
-
     }
-
 }

@@ -15,7 +15,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools
         object Get_ItemActual { get; }
         int Get_CntItem { get; }
         IEnumerable<object> Get_Items { get; }
-
+        //
         void Inicializa();
         void CargarCtas();
     }

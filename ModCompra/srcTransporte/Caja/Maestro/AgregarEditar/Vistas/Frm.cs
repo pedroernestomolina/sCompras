@@ -28,7 +28,7 @@ namespace ModCompra.srcTransporte.Caja.Maestro.AgregarEditar.Vistas
         {
             IrFoco_Identificacion();
             CHB_DIVISA.Checked =_controlador.data.Get_IsDivisa;
-            TB_SALDO.Text = _controlador.data.Get_Saldo.ToString("n2", _cult);
+            TB_SALDO.Text = _controlador.data.Get_Saldo.ToString();
             TB_CODIGO.Text =  _controlador.data.Get_Codigo;
             TB_DESCRIPCION.Text = _controlador.data.Get_Descripcion;
         }

@@ -41,5 +41,11 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_CxpDoc_GestionPago_Anular_ObtenerData(idRecPago);
         }
+        //
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Resultado> 
+            Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(DtoLibTransporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Ficha ficha)
+        {
+            return ServiceProv.Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(ficha);
+        }
     }
 }

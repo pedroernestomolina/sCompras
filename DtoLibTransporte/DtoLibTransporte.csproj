@@ -53,6 +53,8 @@
     <Compile Include="Aliado\PagoServ\AgregarPago\Detalle.cs" />
     <Compile Include="Aliado\PagoServ\AgregarPago\Ficha.cs" />
     <Compile Include="Aliado\PagoServ\AgregarPago\Movimiento.cs" />
+    <Compile Include="CxpDoc\Pago\Agregar\PagoPorRetencion\Ficha.cs" />
+    <Compile Include="CxpDoc\Pago\Agregar\PagoPorRetencion\Resultado.cs" />
     <Compile Include="CxpDoc\Pago\Anular\Auditoria.cs" />
     <Compile Include="Aliado\PagoServ\AnularPago\caja.cs" />
     <Compile Include="Aliado\PagoServ\AnularPago\detalleDoc.cs" />

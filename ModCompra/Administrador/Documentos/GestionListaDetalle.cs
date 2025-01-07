@@ -9,8 +9,8 @@ using System.Windows.Forms;
 
 namespace ModCompra.Administrador.Documentos
 {
-    
-    public class GestionListaDetalle: IGestionListaDetalle
+
+    public class GestionListaDetalle : IGestionListaDetalle
     {
 
         private List<data> list;
@@ -47,7 +47,7 @@ namespace ModCompra.Administrador.Documentos
 
         public void LimpiarData()
         {
-            if (bl.Count > 0) 
+            if (bl.Count > 0)
             {
                 var msg = MessageBox.Show("Desechar Vista Actual ?", "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (msg == DialogResult.Yes)
@@ -81,6 +81,7 @@ namespace ModCompra.Administrador.Documentos
                                 switch (Item.Ficha.tipoDoc)
                                 {
                                     case OOB.LibCompra.Documento.Enumerados.enumTipoDocumento.Factura:
+                                    case OOB.LibCompra.Documento.Enumerados.enumTipoDocumento.NotaEntrega:
                                         AnularFactura();
                                         break;
                                     case OOB.LibCompra.Documento.Enumerados.enumTipoDocumento.NotaDebito:
@@ -165,7 +166,7 @@ namespace ModCompra.Administrador.Documentos
         {
             if (Item != null)
             {
-                var r00 = Sistema.MyData.Permiso_AdmDoc_Visualizar (Sistema.UsuarioP.autoGru);
+                var r00 = Sistema.MyData.Permiso_AdmDoc_Visualizar(Sistema.UsuarioP.autoGru);
                 if (r00.Result == OOB.Enumerados.EnumResult.isError)
                 {
                     Helpers.Msg.Error(r00.Mensaje);

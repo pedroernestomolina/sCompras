@@ -419,6 +419,10 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                 valorTasaIva3 = tasasFiscal.Tasa3,
                 valorTasaRetencionISLR = 0.0m,
                 valorTasaRetencionIva = 0.0m,
+                //
+                AplicaLibroSeniat = gestionDoc.RemisionFicha.AplicaLibroSeniat,
+                DescSucursal = gestionDoc.RemisionFicha.DescSucursal,
+                IdSucursal = gestionDoc.RemisionFicha.IdSucursal,
             };
             var fichaCxP = new OOB.LibCompra.Documento.Agregar.NotaCredito.FichaCxP()
             {
@@ -529,7 +533,6 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                 };
                 fichaPrdKardex.Add(prdKardex);
             }
-
             var ficha = new OOB.LibCompra.Documento.Agregar.NotaCredito.Ficha()
             {
                 documento = fichaDoc,
@@ -538,7 +541,6 @@ namespace ModCompra.Documento.Cargar.NotaCredito
                 prdDeposito = fichaPrdDeposito,
                 prdKardex = fichaPrdKardex,
             };
-
             var r01 = Sistema.MyData.Compra_DocumentoAgregarNC(ficha);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
@@ -547,7 +549,7 @@ namespace ModCompra.Documento.Cargar.NotaCredito
             }
             Helpers.Msg.AgregarOk();
             Helpers.VisualizarDocumento.Visualizar(r01.Auto);
-
+            //
             return rt;
         }
 
@@ -639,6 +641,10 @@ namespace ModCompra.Documento.Cargar.NotaCredito
             _gOpcBusqueda.setFicha(id);
         }
 
-    }
 
+        public bool GetEsDocNotaEntrega { get { return false; } }
+        public void CambiarTipoDocNotaEntrega()
+        {
+        }
+    }
 }

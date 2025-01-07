@@ -105,10 +105,22 @@ namespace LibEntityCompra
         public System.DateTime fecha_retencion { get; set; }
         public string estatus_cierre_contable { get; set; }
         public string cierre_ftp { get; set; }
+        public string estatus_fiscal { get; set; }
+        public int id_compras_concepto { get; set; }
+        public string desc_compras_concepto { get; set; }
+        public string codigo_compras_concepto { get; set; }
+        public string auto_sucursal { get; set; }
+        public string desc_sucursal { get; set; }
+        public decimal igtf_monto { get; set; }
+        public string tipo_documento_compra { get; set; }
+        public decimal sustraendo_ret_islr { get; set; }
+        public decimal monto_ret_islr { get; set; }
+        public string auto_sistema_documento { get; set; }
+        public string maquina_fiscal { get; set; }
     
-        public virtual proveedores proveedores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<compras_detalle> compras_detalle { get; set; }
+        public virtual proveedores proveedores { get; set; }
         public virtual usuarios usuarios { get; set; }
     }
 }

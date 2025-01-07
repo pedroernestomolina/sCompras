@@ -210,5 +210,16 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
             L_CNT_ITEM.Text = "Cant Items: "+_controlador.Hnd.CtasPendiente.Get_CntItem.ToString("n0");
             L_MONTO_PENDIENTE.Text = _controlador.Hnd.CtasPendiente.Get_MontoPendiente.ToString("n2",_cult);
         }
+
+        //
+        private void BT_RETENCION_Click(object sender, EventArgs e)
+        {
+            PagoPorRetencion();
+        }
+        private void PagoPorRetencion()
+        {
+            _controlador.PagoPorRetencion();
+            ActualizarDataPanel_Totales();
+        }
     }
 }
