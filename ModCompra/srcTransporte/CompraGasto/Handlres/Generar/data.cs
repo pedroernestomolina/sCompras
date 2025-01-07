@@ -329,7 +329,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
         }
         public void SetTasaRetIva(decimal tasa)
         {
-            _tasaRetIva = tasa;
+            _tasaRetIva = 0m;
+            if (_incluirLibroCompra)
+            {
+                _tasaRetIva = tasa;
+            }
             ActualizarRetencion_Iva_ISLR();
         }
         public void SetTasaRetISLR(decimal tasa)

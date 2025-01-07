@@ -65,6 +65,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
             _pagoPorRet.Inicializa();
             _pagoPorRet.setDocCompraAplicarPagoPorRet(_ctaPendienteActual.Ficha.idDocOrigen);
             _pagoPorRet.Inicia();
+            if (_pagoPorRet.PagoPorRetencionIsOK) 
+            {
+                _ctaPendienteActual.setActualizaAcumulado(_pagoPorRet.MontoPagoPorRetencion);
+            }
         }
     }
 }

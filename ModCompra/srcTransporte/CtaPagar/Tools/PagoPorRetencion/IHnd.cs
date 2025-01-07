@@ -14,6 +14,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
         bool PagoPorRetencionIsOK { get; }
         bool GetAplicarRetIva { get; }
         bool GetAplicarRetIslr { get; }
+        decimal MontoPagoPorRetencion { get; }
         //
         void setDocCompraAplicarPagoPorRet(string idDocCompra);
         void ProcesarPagoPorRetencion();

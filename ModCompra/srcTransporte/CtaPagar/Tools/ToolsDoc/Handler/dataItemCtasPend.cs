@@ -38,5 +38,13 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
             dataResta = ficha.restaDiv;
             _pendiente = ficha.restaDiv * ficha.signoDoc;
         }
+        public void setActualizaAcumulado(decimal monto)
+        {
+            _ficha.acumuladoDiv += monto;
+            _ficha.restaDiv -= monto;
+            dataAcumulado = _ficha.acumuladoDiv;
+            dataResta = _ficha.restaDiv;
+            _pendiente = _ficha.restaDiv * _ficha.signoDoc;
+        }
     }
 }

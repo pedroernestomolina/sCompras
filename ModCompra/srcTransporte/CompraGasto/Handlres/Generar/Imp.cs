@@ -403,15 +403,17 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                 var r01 = Sistema.MyData.Transporte_Documento_Agregar_CompraGrasto(ficha);
                 _procesarIsOK = true;
                 Helpers.Msg.AgregarOk();
-                if (_data.Get_MontoRetIva > 0m) 
+                if (_data.Get_IncluirLibroCompras)
                 {
-                    PlanillaRetIva(r01.Entidad.autoDocCompra);
+                    if (_data.Get_MontoRetIva > 0m)
+                    {
+                        PlanillaRetIva(r01.Entidad.autoDocCompra);
+                    }
+                    if (_data.Get_MontoRetISLR > 0m)
+                    {
+                        PlanillaRetIslr(r01.Entidad.autoDocCompra);
+                    }
                 }
-                if (_data.Get_MontoRetISLR > 0m)
-                {
-                    PlanillaRetIslr(r01.Entidad.autoDocCompra);
-                }
-
             }
             catch (Exception e)
             {

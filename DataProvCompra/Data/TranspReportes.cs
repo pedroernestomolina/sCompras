@@ -125,6 +125,10 @@ namespace DataProvCompra.Data
             {
                 throw new Exception(r01.Mensaje);
             }
+            if (r01.Entidad == null) 
+            {
+                throw new Exception("PLANILLA RETENCION IVA NO ENCONTRADA");
+            }
             var s = r01.Entidad;
             result.Entidad = new OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion.Iva.Ficha()
             {
@@ -168,6 +172,10 @@ namespace DataProvCompra.Data
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
+            }
+            if (r01.Entidad == null)
+            {
+                throw new Exception("PLANILLA RETENCION ISLR NO ENCONTRADA");
             }
             var s = r01.Entidad;
             result.Entidad = new OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha()

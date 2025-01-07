@@ -17,12 +17,14 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
         private OOB.LibCompra.SistemaDocumento.Entidad.Ficha _sistemaDoc_Islr;
         private bool _pagoPorRetencionIsOk;
         private dataPago _dataPagoPorRet;
+        private decimal _montoPagoPorRetencion;
         //
         public Utils.Control.Boton.Abandonar.IAbandonar BtAbandonar { get { return _btAbandonar; } }
         public Utils.Control.Boton.Procesar.IProcesar BtProcesar { get { return _btProcesar; } }
         public bool PagoPorRetencionIsOK { get { return _pagoPorRetencionIsOk; } }
         public bool GetAplicarRetIva { get { return _dataPagoPorRet.GetAplicarRetIva; } }
         public bool GetAplicarRetIslr { get { return _dataPagoPorRet.GetAplicarRetIslr; } }
+        public decimal MontoPagoPorRetencion { get { return _montoPagoPorRetencion; } }
         //
         public ImpHnd()
         {
@@ -34,6 +36,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
             _btProcesar = new Utils.Control.Boton.Procesar.Imp();
             _pagoPorRetencionIsOk = false;
             _dataPagoPorRet = new dataPago();
+            _montoPagoPorRetencion = 0m;
         }
         public void Inicializa()
         {
@@ -45,6 +48,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
             _btProcesar.Inicializa();
             _pagoPorRetencionIsOk = false;
             _dataPagoPorRet.Inicializa();
+            _montoPagoPorRetencion = 0m;
         }
         private Vista.Frm frm;
         public void Inicia()
@@ -422,6 +426,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
                 };
                 var rt = Sistema.MyData.Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(fichaOOB);
                 _pagoPorRetencionIsOk = true;
+                _montoPagoPorRetencion = _totalRetencionIslrDivisa + _montoRetencionIvaDivisa;
+                Helpers.Msg.AgregarOk();
             }
             catch (Exception e)
             {
