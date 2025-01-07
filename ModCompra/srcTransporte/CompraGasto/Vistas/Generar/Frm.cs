@@ -257,7 +257,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             var _monto = decimal.Parse(TB_TASA_EX_BASE.Text);
             _controlador.data.TasaEx.SetBase(_monto);
             _controlador.data.ActualizarRetencion_Iva_ISLR();
-            TB_TASA_EX_BASE.Text = _controlador.data.TasaEx.Get_Base.ToString("n2");
+            TB_TASA_EX_BASE.Text = _controlador.data.TasaEx.Get_Base.ToString();
             ActualizaTotal();
         }
         private void TB_TASA1_BASE_Leave(object sender, EventArgs e)
@@ -265,8 +265,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             var _monto = decimal.Parse(TB_TASA1_BASE.Text);
             _controlador.data.Tasa1.SetBase(_monto);
             _controlador.data.ActualizarRetencion_Iva_ISLR();
-            TB_TASA1_BASE.Text = _controlador.data.Tasa1.Get_Base.ToString("n2");
-            TB_TASA1_IMP.Text = _controlador.data.Tasa1.Get_Imp.ToString("n2");
+            TB_TASA1_BASE.Text = _controlador.data.Tasa1.Get_Base.ToString();
+            TB_TASA1_IMP.Text = _controlador.data.Tasa1.Get_Imp.ToString();
             ActualizaTotal();
         }
         private void TB_TASA2_BASE_Leave(object sender, EventArgs e)
@@ -274,8 +274,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             var _monto = decimal.Parse(TB_TASA2_BASE.Text);
             _controlador.data.Tasa2.SetBase(_monto);
             _controlador.data.ActualizarRetencion_Iva_ISLR();
-            TB_TASA2_BASE.Text = _controlador.data.Tasa2.Get_Base.ToString("n2");
-            TB_TASA2_IMP.Text = _controlador.data.Tasa2.Get_Imp.ToString("n2");
+            TB_TASA2_BASE.Text = _controlador.data.Tasa2.Get_Base.ToString();
+            TB_TASA2_IMP.Text = _controlador.data.Tasa2.Get_Imp.ToString();
             ActualizaTotal();
         }
         private void TB_TASA3_BASE_Leave(object sender, EventArgs e)
@@ -283,15 +283,15 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
             var _monto = decimal.Parse(TB_TASA3_BASE.Text);
             _controlador.data.Tasa3.SetBase(_monto);
             _controlador.data.ActualizarRetencion_Iva_ISLR();
-            TB_TASA3_BASE.Text = _controlador.data.Tasa3.Get_Base.ToString("n2");
-            TB_TASA3_IMP.Text = _controlador.data.Tasa3.Get_Imp.ToString("n2");
+            TB_TASA3_BASE.Text = _controlador.data.Tasa3.Get_Base.ToString();
+            TB_TASA3_IMP.Text = _controlador.data.Tasa3.Get_Imp.ToString();
             ActualizaTotal();
         }
         private void TB_IGTF_MONTO_Leave(object sender, EventArgs e)
         {
             var _monto = decimal.Parse(TB_IGTF_MONTO.Text);
             _controlador.data.SetMontoIGTF(_monto);
-            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2");
+            TB_IGTF_MONTO.Text = _controlador.data.Get_MontoIGTF.ToString("n2", _cult);
             ActualizaTotal();
         }
 
@@ -404,6 +404,11 @@ namespace ModCompra.srcTransporte.CompraGasto.Vistas.Generar
         {
             _controlador.data.FiltrarConcepto(TB_CONCEPTO.Text);
             CB_CONCEPTO.Refresh();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

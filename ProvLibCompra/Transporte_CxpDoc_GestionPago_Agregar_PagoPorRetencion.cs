@@ -53,6 +53,12 @@ namespace ProvLibCompra
                                 var numDocCompraRet = "";
                                 var _tasaRetencionIva = 0m;
                                 var _montoRetencionIva = 0m;
+                                //
+                                var _tasaRetIslr=0m;
+                                var _retIslr=0m;
+                                var _sustraendoIslr=0m;
+                                var _totalRetIslr=0m;
+                                //
                                 if (rgDocRet.EsIva)
                                 {
                                     var n = cnn.Database.SqlQuery<int>("select a_compras_retencion_iva from sistema_contadores").FirstOrDefault();
@@ -67,6 +73,10 @@ namespace ProvLibCompra
                                     var n = cnn.Database.SqlQuery<int>("select a_compras_retencion_islr from sistema_contadores").FirstOrDefault();
                                     numDocCompraRet = n.ToString().Trim().PadLeft(10, '0');
                                     idRetIslr = autoCompraRet;
+                                    _tasaRetIslr = rgDocRet.TasaRetencion;
+                                    _retIslr = rgDocRet.MontoRetencion;
+                                    _sustraendoIslr = rgDocRet.retSustraendo;
+                                    _totalRetIslr = rgDocRet.retMonto;
                                 }
                                 _sql = @"INSERT INTO compras_retenciones (
                                             auto, 
@@ -197,7 +207,29 @@ namespace ProvLibCompra
                                                 fecha_retencion=@fecha
                                             where auto=@autoCompra";
                                     var rt1 = cnn.Database.ExecuteSqlCommand(_sql,
-                                        p00, p01, p02);
+                                        p00, p01, p02, p03, p04);
+                                    if (rt1 == 0)
+                                    {
+                                        _msg = "ERROR AL ACTUALIZAR DOCUMENTO [ COMPRAS - COMPROBANTE RETENCION ]";
+                                        throw new Exception(_msg);
+                                    }
+                                    cnn.SaveChanges();
+                                }
+                                else 
+                                {
+                                    p00 = new MySql.Data.MySqlClient.MySqlParameter("@autoCompra", ficha.autoEntCompra);
+                                    p01 = new MySql.Data.MySqlClient.MySqlParameter("@tasaRetencionIslr", _tasaRetIslr);
+                                    p02 = new MySql.Data.MySqlClient.MySqlParameter("@retencionIslr", _retIslr);
+                                    p03 = new MySql.Data.MySqlClient.MySqlParameter("@sustraendoIslr", _sustraendoIslr);
+                                    p04 = new MySql.Data.MySqlClient.MySqlParameter("@totalRetIslr", _totalRetIslr);
+                                    _sql = @"update compras set 
+                                                tasa_retencion_islr=@tasaRetencionIslr,
+                                                retencion_islr=@retencionIslr,
+                                                sustraendo_ret_islr=@sustraendoIslr,
+                                                monto_ret_islr=@totalRetIslr
+                                            where auto=@autoCompra";
+                                    var rt1 = cnn.Database.ExecuteSqlCommand(_sql,
+                                        p00, p01, p02, p03, p04);
                                     if (rt1 == 0)
                                     {
                                         _msg = "ERROR AL ACTUALIZAR DOCUMENTO [ COMPRAS - COMPROBANTE RETENCION ]";
@@ -326,17 +358,31 @@ namespace ProvLibCompra
                                     cnn.SaveChanges();
                                 }
                                 //
+                                // ACTUALIZAR PROVEEDOR SALDO
+                                _sql = @"update proveedores set
+                                            creditos=creditos+@montoCredito
+                                        where auto=@autoProv";
+                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", _docRet.cxpRetencion.autoProveedor);
+                                p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoCredito", _docRet.cxpRetencion.importeDivisa);
+                                var rtPrv = cnn.Database.ExecuteSqlCommand(_sql, p01, p02);
+                                if (rtPrv == 0)
+                                {
+                                    _msg = "ERROR AL ACTUALIZAR SALDO PROVEEDOR";
+                                    throw new Exception(_msg);
+                                }
+                                cnn.SaveChanges();
+                                //
                                 // ACTUALIZAR SALDO DOCUMENTO CXP 
-                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@acumulado", _docRet.cxpRetencion.acumulado);
-                                p02 = new MySql.Data.MySqlClient.MySqlParameter("@resta", _docRet.cxpRetencion.acumulado);
-                                p03 = new MySql.Data.MySqlClient.MySqlParameter("@acumuladoDivisa", _docRet.cxpRetencion.acumuladoDivisa);
-                                p04 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", _docRet.cxpRetencion.acumuladoDivisa);
+                                p01 = new MySql.Data.MySqlClient.MySqlParameter("@acumulado", _docRet.cxpRetencion.importe);
+                                p02 = new MySql.Data.MySqlClient.MySqlParameter("@resta", _docRet.cxpRetencion.importe);
+                                p03 = new MySql.Data.MySqlClient.MySqlParameter("@acumuladoDivisa", _docRet.cxpRetencion.importeDivisa);
+                                p04 = new MySql.Data.MySqlClient.MySqlParameter("@restaDivisa", _docRet.cxpRetencion.importeDivisa);
                                 p05 = new MySql.Data.MySqlClient.MySqlParameter("@idCxP", ficha.autoEntCxP);
                                 _sql = @"update cxp set 
                                             acumulado=acumulado+@acumulado,
                                             resta=resta-@resta,
                                             acumulado_divisa=acumulado_divisa+@acumuladoDivisa,
-                                            resta_divisa=resta_divisa-@resta_divisa
+                                            resta_divisa=resta_divisa-@restaDivisa
                                         where auto=@idCxP";
                                 var rtAct = cnn.Database.ExecuteSqlCommand(_sql, p01, p02, p03, p04, p05);
                                 if (rtAct == 0) 

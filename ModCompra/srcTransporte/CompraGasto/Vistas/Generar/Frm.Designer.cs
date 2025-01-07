@@ -1096,6 +1096,7 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "De Fecha Emisión ?:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel13
             // 
