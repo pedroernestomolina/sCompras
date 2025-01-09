@@ -15,7 +15,6 @@ namespace ProvLibCompra
         {
             var result = new DtoLib.ResultadoLista<DtoLibCompra.Documento.Lista.Resumen>();
             var _lst = new List<DtoLibCompra.Documento.Lista.Resumen>();
-
             //
             try
             {

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibCompra.Documento.Visualizar
 {
-    
-    public class FichaDetalle
+    public class Detalle
     {
-
         public string prdCodigo { get; set; }
         public string prdNombre { get; set; }
         public decimal cntFactura { get; set; }
@@ -27,7 +25,5 @@ namespace OOB.LibCompra.Documento.Visualizar
         public decimal importe { get; set; }
         public string depositoCodigo { get; set; }
         public string depositoNombre { get; set; }
-
     }
-
 }

@@ -220,6 +220,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
         {
             _controlador.PagoPorRetencion();
             ActualizarDataPanel_Totales();
+            this.Refresh();
         }
     }
 }

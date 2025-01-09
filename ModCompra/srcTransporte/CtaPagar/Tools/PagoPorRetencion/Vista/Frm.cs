@@ -13,6 +13,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
     public partial class Frm : Form
     {
         private PagoPorRetencion.IHnd _controlador;
+        private bool _modoInicializar;
         //
         public Frm()
         {
@@ -20,6 +21,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
         }
         private void Frm_Load(object sender, EventArgs e)
         {
+            _modoInicializar = true;
             CHB_RET_IVA.Focus();
             CHB_RET_IVA.Checked = _controlador.GetAplicarRetIva;
             CHB_RET_ISLR.Checked = _controlador.GetAplicarRetIslr;
@@ -30,6 +32,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
             TB_TASA_RET_ISLR.Enabled = _controlador.GetAplicarRetIslr;
             TB_SUSTRAENDO.Enabled = _controlador.GetAplicarRetIslr;
             this.Refresh();
+            _modoInicializar = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -50,12 +53,14 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
         }
         private void CHB_RET_IVA_CheckedChanged(object sender, EventArgs e)
         {
+            if (_modoInicializar) return;
             _controlador.setRetIva();
             TB_TASA_RET_IVA.Enabled = _controlador.GetAplicarRetIva;
             this.Refresh();
         }
         private void TB_TASA_RET_IVA_Leave(object sender, EventArgs e)
         {
+            if (_modoInicializar) return;
             var _tasa = decimal.Parse(TB_TASA_RET_IVA.Text);
             _controlador.setTasaRetIva(_tasa);
         }
@@ -67,6 +72,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
         }
         private void CHB_RET_ISLR_CheckedChanged(object sender, EventArgs e)
         {
+            if (_modoInicializar) return;
             _controlador.setRetIslr();
             TB_TASA_RET_ISLR.Enabled = _controlador.GetAplicarRetIslr;
             TB_SUSTRAENDO.Enabled = _controlador.GetAplicarRetIslr;
@@ -74,11 +80,13 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
         }
         private void TB_TASA_RET_ISLR_Leave(object sender, EventArgs e)
         {
+            if (_modoInicializar) return;
             var _tasa = decimal.Parse(TB_TASA_RET_ISLR.Text);
             _controlador.setTasaRetIslr(_tasa);
         }
         private void TB_SUSTRAENDO_Leave(object sender, EventArgs e)
         {
+            if (_modoInicializar) return;
             var _monto = decimal.Parse(TB_SUSTRAENDO.Text);
             _controlador.setSustraendo(_monto);
         }

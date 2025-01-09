@@ -13,7 +13,7 @@ namespace ProvLibCompra
 {
     public partial class Provider : ILibCompras.IProvider
     {
-
+        /*
         public DtoLib.ResultadoEntidad<DtoLibCompra.Documento.Visualizar.Ficha>
             Compra_DocumentoVisualizar(string auto)
         {
@@ -117,6 +117,7 @@ namespace ProvLibCompra
 
             return result;
         }
+         */
 
         public DtoLib.Resultado
             Compra_DocumentoAnularFactura(DtoLibCompra.Documento.Anular.Factura.Ficha ficha)

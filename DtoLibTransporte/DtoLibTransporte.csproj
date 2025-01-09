@@ -101,6 +101,13 @@
     <Compile Include="CxpDoc\Pago\Agregar\Ficha.cs" />
     <Compile Include="CxpDoc\Pago\Lista\Ficha.cs" />
     <Compile Include="CxpDoc\Pago\Lista\Filtro.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\ObtenerData\Ficha.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\Procesar\Auditoria.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\Procesar\CompraRetencion.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\Procesar\CxP_DocOrigen.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\Procesar\CxP_IR.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\Procesar\Ficha.cs" />
+    <Compile Include="DocumentoRet\Crud\Anular\Procesar\Proveedor.cs" />
     <Compile Include="DocumentoRet\Crud\Corrector\ObtenerData\Ficha.cs" />
     <Compile Include="DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="DocumentoRet\ListaAdm\Filtro.cs" />

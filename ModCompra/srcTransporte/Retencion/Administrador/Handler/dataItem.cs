@@ -10,8 +10,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
     public class dataItem: Vistas.IdataItem
     {
         private OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Ficha _ficha;
-
-
+        //
         public DateTime Fecha { get; set; }
         public string TipoRet { get; set; }
         public string Documento { get; set; }
@@ -20,10 +19,9 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
         public decimal RetTasa { get; set; }
         public decimal RetMonto { get; set; }
         public string Estatus { get; set; }
-        public bool isAnulado { get { return Estatus == "1"; } }
+        public bool isAnulado { get { return _ficha.estatusAnulado.Trim().ToUpper() == "1"; } }
         public OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Ficha Ficha { get { return _ficha; } }
-
-
+        //
         public dataItem(OOB.LibCompra.Transporte.DocumentoRet.ListaAdm.Ficha ficha)
         {
             _ficha = ficha;

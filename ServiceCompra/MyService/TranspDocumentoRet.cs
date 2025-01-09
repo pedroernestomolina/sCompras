@@ -20,5 +20,16 @@ namespace ServiceCompra.MyService
         {
             return ServiceProv.Transporte_DocumentoRet_Crud_Corrector_ObtenerData(idDoc);
         }
+        //
+        public DtoLib.Resultado 
+            Transporte_DocumentoRet_Crud_Anular_Procesar(DtoLibTransporte.DocumentoRet.Crud.Anular.Procesar.Ficha ficha)
+        {
+            return ServiceProv.Transporte_DocumentoRet_Crud_Anular_Procesar(ficha);
+        }
+        public DtoLib.ResultadoEntidad<DtoLibTransporte.DocumentoRet.Crud.Anular.ObtenerData.Ficha> 
+            Transporte_DocumentoRet_Crud_Anular_ObtenerData(string idRet)
+        {
+            return ServiceProv.Transporte_DocumentoRet_Crud_Anular_ObtenerData(idRet);
+        }
     }
 }

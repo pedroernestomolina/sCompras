@@ -12,60 +12,60 @@ namespace ModCompra.Reportes.Documento
     public class Gestion
     {
         private OOB.LibCompra.Documento.Visualizar.Ficha ficha;
-
-
+        //
         public Gestion(OOB.LibCompra.Documento.Visualizar.Ficha ficha)
         {
             this.ficha = ficha;
         }
-
         public void Generar()
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\Documento.rdlc";
             var ds = new DS();
-
+            var enc = ficha.encabezado;
+            var _factorCambio = enc.factorCambio;
+            var _fechaHoraRegistro = enc.fechaRegistro.ToShortDateString() + ", " + enc.horaRegistro;
+            var _subTotal = enc.subTotal + (enc.montoDescuento - enc.montoCargo);
             DataRow rt = ds.Tables["DocEncabezado"].NewRow();
-            rt["provNombre"] = ficha.provNombre;
-            rt["provCiRif"] = ficha.provCiRif;
-            rt["provCodigo"] = ficha.provCodigo;
-            rt["provTelefono"] = ficha.provTelefono;
-            rt["provDireccion"] = ficha.provDirFiscal;
-            rt["documento"] = ficha.documentoNro;
-            rt["control"] = ficha.controlNro;
-            rt["fechaEmision"] = ficha.fechaEmision;
-            rt["mesAnoRelacion"] = ficha.mesRelacion+"/"+ficha.anoRelacion;
-            rt["fechaVencimiento"] = ficha.fechaVencimiento;
-            rt["ordenCompra"] = ficha.ordenCompraNro;
-            rt["montoBase"] = ficha.montoBase;
-            rt["montoImpuesto"] = ficha.montoImpuesto;
-            rt["montoTotal"] = ficha.montoTotal;
-            rt["subTotal"] = ficha.subTotal+(ficha.montoDescuento-ficha.montoCargo);
-            rt["dsctoP"] = "Descuento "+ficha.descuentoPorct.ToString("n2")+"%";
-            rt["cargoP"] = "Cargo" + ficha.cargoPorct.ToString("n2") + "%";
-            rt["dsctoM"] = ficha.montoDescuento;
-            rt["cargoM"] = ficha.montoCargo;
-            rt["montoExento"] = ficha.montoExento;
-            rt["montoBase1"] = ficha.montoBase1;
-            rt["montoBase2"] = ficha.montoBase2;
-            rt["montoBase3"] = ficha.montoBase3;
-            rt["montoImp1"] = ficha.montoIva1;
-            rt["montoImp2"] = ficha.montoIva2;
-            rt["montoImp3"] = ficha.montoIva3;
-            rt["tasaIva1"] = ficha.tasaIva1;
-            rt["tasaIva2"] = ficha.tasaIva2;
-            rt["tasaIva3"] = ficha.tasaIva3;
-            rt["montoDivisa"] = ficha.montoDivisa;
-            rt["fechaHoraRegistro"] = ficha.fechaRegistro.ToShortDateString()+", "+ficha.horaRegistro;
-            rt["factorCambio"] = ficha.factorCambio;
-            rt["notas"] = ficha.notas;
-            rt["aplica"] = ficha.aplica;
-            rt["isAnulado"] = !ficha.isAnulado;
+            rt["provNombre"] = enc.provNombre;
+            rt["provCiRif"] = enc.provCiRif;
+            rt["provCodigo"] = enc.provCodigo;
+            rt["provTelefono"] = enc.provTelefono;
+            rt["provDireccion"] = enc.provDirFiscal;
+            rt["documento"] = enc.documentoNro;
+            rt["control"] = enc.controlNro;
+            rt["fechaEmision"] = enc.fechaEmision;
+            rt["mesAnoRelacion"] = enc.mesRelacion + "/" + enc.anoRelacion;
+            rt["fechaVencimiento"] = enc.fechaVencimiento;
+            rt["ordenCompra"] = enc.ordenCompraNro;
+            rt["montoBase"] = enc.montoBase;
+            rt["montoImpuesto"] = enc.montoImpuesto;
+            rt["montoTotal"] = enc.montoTotal;
+            rt["subTotal"] = _subTotal;
+            rt["dsctoP"] = "Descuento " + enc.descuentoPorct.ToString("n2") + "%";
+            rt["cargoP"] = "Cargo" + enc.cargoPorct.ToString("n2") + "%";
+            rt["dsctoM"] = enc.montoDescuento;
+            rt["cargoM"] = enc.montoCargo;
+            rt["montoExento"] = enc.montoExento;
+            rt["montoBase1"] = enc.montoBase1;
+            rt["montoBase2"] = enc.montoBase2;
+            rt["montoBase3"] = enc.montoBase3;
+            rt["montoImp1"] = enc.montoIva1;
+            rt["montoImp2"] = enc.montoIva2;
+            rt["montoImp3"] = enc.montoIva3;
+            rt["tasaIva1"] = enc.tasaIva1;
+            rt["tasaIva2"] = enc.tasaIva2;
+            rt["tasaIva3"] = enc.tasaIva3;
+            rt["montoDivisa"] = enc.montoDivisa;
+            rt["fechaHoraRegistro"] = _fechaHoraRegistro;
+            rt["factorCambio"] = _factorCambio ;
+            rt["notas"] = enc.notas;
+            rt["aplica"] = enc.aplica;
+            rt["isAnulado"] = !enc.isAnulado;
             ds.Tables["DocEncabezado"].Rows.Add(rt);
-
             foreach (var it in ficha.detalles.ToList())
             {
-                var importeDivisa = it.importe / ficha.factorCambio;
-                var precioFacturaDivisa = it.precioFactura / ficha.factorCambio;
+                var importeDivisa = it.importe / _factorCambio ;
+                var precioFacturaDivisa = it.precioFactura / _factorCambio ;
                 var cnt="";
                 var cntUnd="";
 
@@ -100,7 +100,7 @@ namespace ModCompra.Reportes.Documento
             //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
             //pmt.Add(new ReportParameter("EMPRESA_NOMBRE", Sistema.Negocio.Nombre));
             //pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
-            pmt.Add(new ReportParameter("DOCUMENTO", ficha.documentoModo));
+            pmt.Add(new ReportParameter("DOCUMENTO", enc.documentoModo));
             Rds.Add(new ReportDataSource("DocEncabezado", ds.Tables["DocEncabezado"]));
             Rds.Add(new ReportDataSource("DocDetalle", ds.Tables["DocDetalle"]));
 

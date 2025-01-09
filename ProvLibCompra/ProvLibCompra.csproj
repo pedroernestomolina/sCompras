@@ -68,6 +68,7 @@
     <Compile Include="Documento_GetFicha.cs" />
     <Compile Include="Documento_GetLista.cs" />
     <Compile Include="Documento_ListaRemision.cs" />
+    <Compile Include="Documento_Visualizar.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="Grupo.cs" />
@@ -99,6 +100,8 @@
     <Compile Include="Reportes_Compras_LibroSeniat_GetLista.cs" />
     <Compile Include="Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion.cs" />
     <Compile Include="Transporte_CxpDoc_GetLista_DocPend.cs" />
+    <Compile Include="TranspDocumentoRet_Anular.cs" />
+    <Compile Include="TranspDocumentoRet_Anular_ObtenerData.cs" />
     <Compile Include="TranspReportes.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

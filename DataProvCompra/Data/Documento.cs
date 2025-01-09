@@ -10,6 +10,7 @@ namespace DataProvCompra.Data
 {
     public partial class DataProv: IData
     {
+        /*
         public OOB.ResultadoEntidad<OOB.LibCompra.Documento.Visualizar.Ficha> 
             Compra_DocumentoVisualizar(string auto)
         {
@@ -75,7 +76,7 @@ namespace DataProvCompra.Data
             };
             var det = s.detalles.Select(ss =>
             {
-                var dt = new OOB.LibCompra.Documento.Visualizar.FichaDetalle()
+                var dt = new OOB.LibCompra.Documento.Visualizar.Detalle()
                 {
                     cntFactura = ss.cntFactura,
                     contenido = ss.contenido,
@@ -101,6 +102,7 @@ namespace DataProvCompra.Data
 
             return rt;
         }
+         */
 
         public OOB.Resultado 
             Compra_DocumentoAnularFactura(OOB.LibCompra.Documento.Anular.Factura.Ficha ficha)

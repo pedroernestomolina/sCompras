@@ -243,7 +243,7 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Vistas
         }
         private void Imprimir()
         {
-            _controlador.Imprimir();
+            //_controlador.Imprimir();
         }
         private void VisualizarAnulacion()
         {

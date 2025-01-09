@@ -51,6 +51,7 @@
     <Compile Include="Data\Documento_GetFicha.cs" />
     <Compile Include="Data\Documento_GetLista.cs" />
     <Compile Include="Data\Documento_ListaRemision.cs" />
+    <Compile Include="Data\Documento_Visualizar.cs" />
     <Compile Include="Data\Empresa.cs" />
     <Compile Include="Data\Estado.cs" />
     <Compile Include="Data\Grupo.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Data\TransporteDocumentoRet.cs" />
     <Compile Include="Data\TransporteAliado.cs" />
     <Compile Include="Data\TransporteDocumento.cs" />
+    <Compile Include="Data\TransporteDocumentoRet_Anular_ObtenerData.cs" />
+    <Compile Include="Data\TransporteDocumentoRet_Anular_Procesar.cs" />
     <Compile Include="Data\Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion.cs" />
     <Compile Include="Data\Transporte_CxpDoc_GetLista_DocPend.cs" />
     <Compile Include="Data\TranspReportes.cs" />

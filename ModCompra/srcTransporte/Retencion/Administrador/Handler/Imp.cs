@@ -68,6 +68,44 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
         }
         public void AnularItem()
         {
+            if (_lista.ItemActual != null)
+            {
+                var it = (dataItem)_lista.ItemActual;
+                if (it.isAnulado)
+                {
+                    return;
+                }
+                var rt = Sistema.MyData.Transporte_DocumentoRet_Crud_Anular_ObtenerData(it.Ficha.auto);
+                var ent= rt.Entidad;
+                var _isRetIva = ent.tipoRetencion.Trim().ToUpper() == "07";
+                var fichaOOB = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Ficha()
+                {
+                    auditorias = new List<OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Auditoria>(),
+                    proveedor = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Proveedor()
+                    {
+                        idProv = ent.idProveedor,
+                        montoRestaurarMonDiv = ent.montoRetMonDiv,
+                    },
+                    compraRet = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CompraRetencion()
+                    {
+                        idDocCompra =  it.Ficha.autoDocRef,
+                        idDocCompraRet = it.Ficha.auto,
+                        isRetIva = _isRetIva,
+                    },
+                    cxpDocOrigen = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CxP_DocOrigen()
+                    {
+                        idDoc = ent.idCxP_Origen,
+                        montoRestaurarMonAct = ent.montoRetMonAct,
+                        montoRestaurarMonDiv = ent.montoRetMonDiv,
+                    },
+                    cxpIR = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CxP_IR()
+                    {
+                        idDocIR = ent.idCxp_IR,
+                        idRecibo = ent.idCxp_IR_Recibo,
+                    }
+                };
+                var rt_02 = Sistema.MyData.Transporte_DocumentoRet_Crud_Anular_Procesar(fichaOOB);
+            }
         }
         public void VisualizarDocumento()
         {

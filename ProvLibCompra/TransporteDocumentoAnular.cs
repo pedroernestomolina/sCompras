@@ -53,8 +53,8 @@ namespace ProvLibCompra
                                 rec.auto as autoRecibo,
                                 rec.auto_sistema_documento as autoSistDocRec 
                             FROM cxp_documentos as doc
-                            join cxp as cta on cta.auto=doc.auto_cxp_pago
-                            join cxp_recibos as rec on rec.auto=doc.auto_cxp_recibo
+                            join cxp as cta on cta.auto=doc.auto_cxp_pago and cta.estatus_anulado='0'
+                            join cxp_recibos as rec on rec.auto=doc.auto_cxp_recibo and rec.estatus_anulado='0'
                             where doc.auto_cxp=@autoCxP";
                     p1 = new MySql.Data.MySqlClient.MySqlParameter("@autoCxP", autoCxp);
                     var _entRetRec = cnn.Database.SqlQuery<DtoLibTransporte.Documento.Anular.CompraGasto.GetData.RetRec>(sql, p1).ToList();

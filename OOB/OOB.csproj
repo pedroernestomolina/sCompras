@@ -86,8 +86,9 @@
     <Compile Include="LibCompra\Documento\Pendiente\Agregar\PrecioVtaPend.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Filtro\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Pendiente\Lista\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Visualizar\Encabezado.cs" />
     <Compile Include="LibCompra\Documento\Visualizar\Ficha.cs" />
-    <Compile Include="LibCompra\Documento\Visualizar\FichaDetalle.cs" />
+    <Compile Include="LibCompra\Documento\Visualizar\Detalle.cs" />
     <Compile Include="LibCompra\Empresa\Data\Ficha.cs" />
     <Compile Include="LibCompra\Empresa\Fiscal\Ficha.cs" />
     <Compile Include="LibCompra\Maestros\DenFiscal\Ficha.cs" />
@@ -193,6 +194,13 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\enumerados.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Lista\Filtro.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\ObtenerData\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\Procesar\Auditoria.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\Procesar\CompraRetencion.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\Procesar\CxP_DocOrigen.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\Procesar\CxP_IR.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\Procesar\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Anular\Procesar\Proveedor.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\Crud\Corrector\ObtenerData\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\DocumentoRet\ListaAdm\Filtro.cs" />

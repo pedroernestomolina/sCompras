@@ -98,8 +98,9 @@
     <Compile Include="Documento\Pendiente\Agregar\PrecioVtaPend.cs" />
     <Compile Include="Documento\Pendiente\Filtro\Ficha.cs" />
     <Compile Include="Documento\Pendiente\Lista\Ficha.cs" />
+    <Compile Include="Documento\Visualizar\Encabezado.cs" />
     <Compile Include="Documento\Visualizar\Ficha.cs" />
-    <Compile Include="Documento\Visualizar\FichaDetalle.cs" />
+    <Compile Include="Documento\Visualizar\Detalle.cs" />
     <Compile Include="Empresa\Data\Ficha.cs" />
     <Compile Include="Empresa\Fiscal\Ficha.cs" />
     <Compile Include="Enumerados.cs" />

@@ -740,7 +740,6 @@
             this.BT_ANULAR.TabIndex = 1;
             this.toolTip1.SetToolTip(this.BT_ANULAR, "Anular Item");
             this.BT_ANULAR.UseVisualStyleBackColor = true;
-            this.BT_ANULAR.Visible = false;
             this.BT_ANULAR.Click += new System.EventHandler(this.BT_ANULAR_Click);
             // 
             // panel7
