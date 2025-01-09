@@ -17,7 +17,21 @@ namespace DataProvCompra.Data
             //
             var fichaDTO = new DtoLibTransporte.DocumentoRet.Crud.Anular.Procesar.Ficha()
             {
-                auditorias = new List<DtoLibTransporte.DocumentoRet.Crud.Anular.Procesar.Auditoria>(),
+                auditorias = ficha.auditorias.Select(s=> 
+                {
+                    var nr = new DtoLibTransporte.DocumentoRet.Crud.Anular.Procesar.Auditoria()
+                    {
+                        autoDoc = s.autoDoc,
+                        autoSistemaDocumento = s.autoSistemaDocumento,
+                        autoUsuario = s.autoUsuario,
+                        codigoUsuario = s.codigoUsuario,
+                        estacion = s.estacion,
+                        ip = s.ip,
+                        motivo = s.motivo,
+                        nombreUsuario = s.nombreUsuario,
+                    };
+                    return nr;
+                }).ToList(),
                 compraRet = new DtoLibTransporte.DocumentoRet.Crud.Anular.Procesar.CompraRetencion()
                 {
                     idDocCompra = ficha.compraRet.idDocCompra,

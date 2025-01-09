@@ -34,5 +34,10 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
             Estatus = ficha.estatusAnulado == "1" ? "ANULADO" : "";
             TipoRet = ficha.tipoRetDesc;
         }
+        public void setActualizarEstatusAnulado()
+        {
+            _ficha.estatusAnulado = "1";
+            Estatus = _ficha.estatusAnulado == "1" ? "ANULADO" : "";
+        }
     }
 }

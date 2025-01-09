@@ -178,7 +178,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     _aplicaFechaDoc = _data.Get_Aplica_FechaDoc;
                     _aplicaNumeroDoc = _data.Get_Aplica_NumeroDoc;
                 }
-                var _acumulado = _data.Get_MontoRetIva + _data.Get_MontoRetISLR + _data.Get_SustraendoISLR;
+                var _acumulado = 0m; 
                 var _resta = _data.Get_MontoMonAct - _acumulado;
                 var _acumuladoDiv = 0m;
                 var _restaDiv = 0m;
@@ -229,10 +229,10 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     montoImpuesto2 = _data.Tasa2.Get_Imp,
                     montoImpuesto3 = _data.Tasa3.Get_Imp,
                     montoNeto = _montoNeto,
-                    sustraendoRetISLR = _data.Get_SustraendoISLR,
-                    montoRetISLR = _data.Get_MontoRetISLR,
-                    totalRetISLR = (_data.Get_SustraendoISLR + _data.Get_MontoRetISLR),
-                    montoRetencionIva = _data.Get_MontoRetIva,
+                    sustraendoRetISLR = 0m, 
+                    montoRetISLR = 0m, 
+                    totalRetISLR = 0m, 
+                    montoRetencionIva = 0m, 
                     montoTotal = _data.Get_MontoMonAct,
                     nombreDoc = _sistDoc.Entidad.nombre,
                     nombreProv = _prv.Ficha.nombreRazonSocial,
@@ -249,8 +249,8 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     tasaIva1 = _data.Tasa1.Get_Tasa,
                     tasaIva2 = _data.Tasa2.Get_Tasa,
                     tasaIva3 = _data.Tasa3.Get_Tasa,
-                    tasaRetencionISLR = _data.Get_TasaRetISLR,
-                    tasaRetencionIva = _data.Get_TasaRetIva,
+                    tasaRetencionISLR = 0m, 
+                    tasaRetencionIva = 0m, 
                     telefonoProv = _prv.Ficha.identidad.telefono,
                     igtfMonto = _data.Get_MontoIGTF,
                     tipoDocumentoCompra = OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.enumerados.tipoDocumentoCompra.GASTO,
@@ -279,159 +279,21 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     notas = "",
                     autoSistemaDoc = _sistDocCxp.Entidad.autoId
                 };
-                var _montoRetencionesDivisa = 0m;
-                if (_data.Get_IncluirLibroCompras)
-                {
-                    if (_data.Get_MontoRetIva > 0m)
-                    {
-                        var _montoRetIvaDivisa = _data.Get_MontoRetIva / _data.Get_FactorCambio;
-                        _montoRetencionesDivisa += _montoRetIvaDivisa;
-                        ficha.retIva = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
-                        {
-                            acumulado = 0m,
-                            acumuladoDivisa = 0m,
-                            autoProveedor = _prv.Ficha.autoId,
-                            ciRifProveedor = _prv.Ficha.ciRif,
-                            codigoProveedor = _prv.Ficha.codigo,
-                            diasCredito = 0,
-                            documentoNro = _data.Get_NumeroDoc,
-                            fechaEmision = _data.Get_FechaEmisionDoc,
-                            fechaVencimiento = _data.Get_FechaVenceDoc,
-                            importe = _data.Get_MontoRetIva,
-                            importeDivisa = _montoRetIvaDivisa,
-                            nombreRazonSocialProveedor = _prv.Ficha.nombreRazonSocial,
-                            resta = 0m,
-                            restaDivisa = 0m,
-                            siglasTipoDocumento = _sistDocRetIva.Entidad.siglas,
-                            signoTipoDocumento = _sistDocRetIva.Entidad.signo * (-1),
-                            tasaDivisa = _data.Get_FactorCambio,
-                            notas = "RETENCION IVA " + _data.Get_TasaRetIva.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
-                            autoSistemaDoc = _sistDocRetIva.Entidad.autoId,
-                            nombreSistemaDoc = _sistDocRetIva.Entidad.nombre,
-                            tipoSistemaDoc = _sistDocRetIva.Entidad.codigo,
-                        };
-                        ficha.recIva = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
-                        {
-                            documento = _sistDocRetIva.Entidad.siglas,
-                            importe = _data.Get_MontoRetIva,
-                            importeDivisa = _montoRetIvaDivisa,
-                            montoRecibido = _data.Get_MontoRetIva,
-                            montoRecibidoDivisa = _montoRetIvaDivisa,
-                            nota = "RETENCION IVA " + _data.Get_TasaRetIva.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
-                            prvAuto = _prv.Ficha.autoId,
-                            prvCiRif = _prv.Ficha.ciRif,
-                            prvCodigo = _prv.Ficha.codigo,
-                            prvDirFiscal = _prv.Ficha.direccionFiscal,
-                            prvNombre = _prv.Ficha.nombreRazonSocial,
-                            prvTlf = _prv.Ficha.identidad.telefono,
-                            tasaCambio = _data.Get_FactorCambio,
-                            usuarioAuto = Sistema.UsuarioP.autoUsu,
-                            usuarioNombre = Sistema.UsuarioP.nombreUsu,
-                            autoSistemaDoc = _sistDocRetIva.Entidad.autoId,
-                            docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
-                            {
-                                importe = _montoRetIvaDivisa,
-                                numDocumentoAfecta = _data.Get_NumeroDoc,
-                                siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
-                                tipoOperacionRealizar = "Abono",
-                            }
-                        };
-                    }
-                    if (_data.Get_MontoRetISLR > 0m)
-                    {
-                        var _montoRetISLRDivisa = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR) / _data.Get_FactorCambio;
-                        _montoRetencionesDivisa += _montoRetISLRDivisa;
-                        ficha.retISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.CxP()
-                        {
-                            acumulado = 0m,
-                            acumuladoDivisa = 0m,
-                            autoProveedor = _prv.Ficha.autoId,
-                            ciRifProveedor = _prv.Ficha.ciRif,
-                            codigoProveedor = _prv.Ficha.codigo,
-                            diasCredito = 0,
-                            documentoNro = _data.Get_NumeroDoc,
-                            fechaEmision = _data.Get_FechaEmisionDoc,
-                            fechaVencimiento = _data.Get_FechaVenceDoc,
-                            importe = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
-                            importeDivisa = _montoRetISLRDivisa,
-                            nombreRazonSocialProveedor = _prv.Ficha.nombreRazonSocial,
-                            resta = 0m,
-                            restaDivisa = 0m,
-                            siglasTipoDocumento = _sistDocRetIslr.Entidad.siglas,
-                            signoTipoDocumento = _sistDocRetIslr.Entidad.signo * (-1),
-                            tasaDivisa = _data.Get_FactorCambio,
-                            notas = "RETENCION ISLR " + _data.Get_TasaRetISLR.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
-                            autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
-                            nombreSistemaDoc = _sistDocRetIslr.Entidad.nombre,
-                            tipoSistemaDoc = _sistDocRetIslr.Entidad.codigo,
-                        };
-                        ficha.recISLR = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Recibo()
-                        {
-                            documento = _sistDocRetIslr.Entidad.siglas,
-                            importe = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
-                            importeDivisa = _montoRetISLRDivisa,
-                            montoRecibido = (_data.Get_MontoRetISLR + _data.Get_SustraendoISLR),
-                            montoRecibidoDivisa = _montoRetISLRDivisa,
-                            nota = "RETENCION ISLR " + _data.Get_TasaRetISLR.ToString("n2") + "%, DOC: " + _data.Get_NumeroDoc,
-                            prvAuto = _prv.Ficha.autoId,
-                            prvCiRif = _prv.Ficha.ciRif,
-                            prvCodigo = _prv.Ficha.codigo,
-                            prvDirFiscal = _prv.Ficha.direccionFiscal,
-                            prvNombre = _prv.Ficha.nombreRazonSocial,
-                            prvTlf = _prv.Ficha.identidad.telefono,
-                            tasaCambio = _data.Get_FactorCambio,
-                            usuarioAuto = Sistema.UsuarioP.autoUsu,
-                            usuarioNombre = Sistema.UsuarioP.nombreUsu,
-                            autoSistemaDoc = _sistDocRetIslr.Entidad.autoId,
-                            docRecibo = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.DocumentoRecibo()
-                            {
-                                importe = _montoRetISLRDivisa,
-                                numDocumentoAfecta = _data.Get_NumeroDoc,
-                                siglasDocumentoAfecta = _sistDoc.Entidad.siglas,
-                                tipoOperacionRealizar = "Abono",
-                            }
-                        };
-                    }
-                }
                 ficha.proveedor = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Proveedor()
                 {
                     autoProv = _prv.Ficha.autoId,
                     fechaEmiDoc = _data.Get_FechaEmisionDoc,
                     montoDebito = _data.Get_MontoMonDivisa,
-                    montoCredito = _montoRetencionesDivisa,
+                    montoCredito = 0m,
                 };
                 var r01 = Sistema.MyData.Transporte_Documento_Agregar_CompraGrasto(ficha);
                 _procesarIsOK = true;
                 Helpers.Msg.AgregarOk();
-                if (_data.Get_IncluirLibroCompras)
-                {
-                    if (_data.Get_MontoRetIva > 0m)
-                    {
-                        PlanillaRetIva(r01.Entidad.autoDocCompra);
-                    }
-                    if (_data.Get_MontoRetISLR > 0m)
-                    {
-                        PlanillaRetIslr(r01.Entidad.autoDocCompra);
-                    }
-                }
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
             }
-        }
-
-        private void PlanillaRetIva(string autoDoc)
-        {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetIva.Imp();
-            _rep.setIdDoc(autoDoc);
-            _rep.Generar();
-        }
-        private void PlanillaRetIslr(string autoDoc)
-        {
-            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetISLR.Imp();
-            _rep.setIdDoc(autoDoc);
-            _rep.Generar();
         }
     }
 }

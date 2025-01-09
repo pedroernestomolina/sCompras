@@ -34,6 +34,7 @@ namespace DataProvCompra.Data
                 montoRetMonAct = s.montoRetMonAct,
                 montoRetMonDiv = s.montoRetMonDiv,
                 tipoRetencion = s.tipoRetencion,
+                idSistemaDoc_CompraRet = s.idSistemaDoc_CompraRet,
             };
             //
             return result;

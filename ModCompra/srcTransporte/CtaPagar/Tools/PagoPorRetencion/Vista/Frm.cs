@@ -31,6 +31,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
             TB_TASA_RET_IVA.Enabled = _controlador.GetAplicarRetIva;
             TB_TASA_RET_ISLR.Enabled = _controlador.GetAplicarRetIslr;
             TB_SUSTRAENDO.Enabled = _controlador.GetAplicarRetIslr;
+            panel8.Enabled = _controlador.GetHabilitarRetIva;
+            panel10.Enabled = _controlador.GetHabilitarRetIslr;
             this.Refresh();
             _modoInicializar = false;
         }
@@ -114,6 +116,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion.Vista
             _controlador.ProcesarPagoPorRetencion();
             if (_controlador.BtProcesar.OpcionIsOK)
             {
+                _controlador.GenerarPlanillasRetencion();
                 salida();
             }
         }

@@ -238,6 +238,18 @@ namespace ProvLibCompra
                                     cnn.SaveChanges();
                                 }
                                 //
+                                // GENERAR AUTO CXP POR RETENCION (ir)
+                                _sql = "update sistema_contadores set a_cxp=a_cxp+1";
+                                var xr2 = cnn.Database.ExecuteSqlCommand(_sql);
+                                var aRet = cnn.Database.SqlQuery<int>("select a_cxp from sistema_contadores").FirstOrDefault();
+                                var _autoRetencion = aRet.ToString().Trim().PadLeft(10, '0');
+                                //
+                                // GENERAR AUTO RECIBO CXP (IR)
+                                _sql = "update sistema_contadores set a_cxp_recibo=a_cxp_recibo+1";
+                                var xr3 = cnn.Database.ExecuteSqlCommand(_sql);
+                                var aRec = cnn.Database.SqlQuery<int>("select a_cxp_recibo from sistema_contadores").FirstOrDefault();
+                                var _autoRecibo = aRec.ToString().Trim().PadLeft(10, '0');
+                                //
                                 // INSERTAR COMPRA RETENCION DETALLE 
                                 _sql = @"INSERT INTO compras_retenciones_detalle (
                                         auto_documento, 
@@ -272,7 +284,9 @@ namespace ProvLibCompra
                                         impuesto3, 
                                         retencion3, 
                                         retencion_monto,
-                                        retencion_sustraendo) 
+                                        retencion_sustraendo,
+                                        auto_cxp_pago,
+                                        auto_cxp_recibo) 
                                 VALUES (
                                         @auto_documento, 
                                         @documento, 
@@ -306,7 +320,9 @@ namespace ProvLibCompra
                                         @impuesto3, 
                                         @retencion3,
                                         @retencion_monto,
-                                        @retencion_sustraendo)";
+                                        @retencion_sustraendo,
+                                        @auto_cxp_pago,
+                                        @auto_cxp_recibo)";
                                 foreach (var det in _docRet.docRetDetalle)
                                 {
                                     p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto_documento", ficha.autoEntCompra);
@@ -344,12 +360,14 @@ namespace ProvLibCompra
                                     //
                                     p30 = new MySql.Data.MySqlClient.MySqlParameter("@retencion_monto", det.montoRetencion);
                                     p31 = new MySql.Data.MySqlClient.MySqlParameter("@retencion_sustraendo", det.sustraendoRetencion);
+                                    p32 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp_pago", _autoRetencion);
+                                    p33 = new MySql.Data.MySqlClient.MySqlParameter("@auto_cxp_recibo", _autoRecibo);
                                     //
                                     var rf2 = cnn.Database.ExecuteSqlCommand(_sql,
                                         p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
                                         p10, p11, p12, p13, p14, p15, p16, p17, p18, p19,
                                         p20, p21, p22, p23, p24, p25, p26, p27, p28, p29,
-                                        p30, p31);
+                                        p30, p31, p32, p33);
                                     if (rf2 == 0)
                                     {
                                         _msg = "ERROR AL INSERTAR DOCUMENTO [ COMPRAS RETENCION IVA DETALLE ]";
@@ -393,10 +411,10 @@ namespace ProvLibCompra
                                 cnn.SaveChanges();
                                 //
                                 // INSERTAR CXP POR RETENCION 
-                                _sql = "update sistema_contadores set a_cxp=a_cxp+1";
-                                var xr2 = cnn.Database.ExecuteSqlCommand(_sql);
-                                var aRet = cnn.Database.SqlQuery<int>("select a_cxp from sistema_contadores").FirstOrDefault();
-                                var _autoRetencion = aRet.ToString().Trim().PadLeft(10, '0');
+                                //_sql = "update sistema_contadores set a_cxp=a_cxp+1";
+                                //var xr2 = cnn.Database.ExecuteSqlCommand(_sql);
+                                //var aRet = cnn.Database.SqlQuery<int>("select a_cxp from sistema_contadores").FirstOrDefault();
+                                //var _autoRetencion = aRet.ToString().Trim().PadLeft(10, '0');
                                 //
                                 var _sqlCxP = @"INSERT INTO cxp (
                                     auto,
@@ -508,10 +526,10 @@ namespace ProvLibCompra
                                 cnn.SaveChanges();
                                 //
                                 // INSERTAR RECIBO POR RETENCION
-                                _sql = "update sistema_contadores set a_cxp_recibo=a_cxp_recibo+1";
-                                var xr3 = cnn.Database.ExecuteSqlCommand(_sql);
-                                var aRec = cnn.Database.SqlQuery<int>("select a_cxp_recibo from sistema_contadores").FirstOrDefault();
-                                var _autoRecibo = aRec.ToString().Trim().PadLeft(10, '0');
+                                //_sql = "update sistema_contadores set a_cxp_recibo=a_cxp_recibo+1";
+                                //var xr3 = cnn.Database.ExecuteSqlCommand(_sql);
+                                //var aRec = cnn.Database.SqlQuery<int>("select a_cxp_recibo from sistema_contadores").FirstOrDefault();
+                                //var _autoRecibo = aRec.ToString().Trim().PadLeft(10, '0');
                                 //
                                 _sql = @"INSERT INTO cxp_recibos (
                                     auto, 

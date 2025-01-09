@@ -18,6 +18,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
         private bool _pagoPorRetencionIsOk;
         private dataPago _dataPagoPorRet;
         private decimal _montoPagoPorRetencion;
+        private string _autoRetIva;
+        private string _autoRetIslr;
         //
         public Utils.Control.Boton.Abandonar.IAbandonar BtAbandonar { get { return _btAbandonar; } }
         public Utils.Control.Boton.Procesar.IProcesar BtProcesar { get { return _btProcesar; } }
@@ -25,6 +27,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
         public bool GetAplicarRetIva { get { return _dataPagoPorRet.GetAplicarRetIva; } }
         public bool GetAplicarRetIslr { get { return _dataPagoPorRet.GetAplicarRetIslr; } }
         public decimal MontoPagoPorRetencion { get { return _montoPagoPorRetencion; } }
+        public bool GetHabilitarRetIva { get { return _dataPagoPorRet.GetHabailitarRetIva; } }
+        public bool GetHabilitarRetIslr { get { return _dataPagoPorRet.GetHabailitarRetIslr; } }
         //
         public ImpHnd()
         {
@@ -37,6 +41,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
             _pagoPorRetencionIsOk = false;
             _dataPagoPorRet = new dataPago();
             _montoPagoPorRetencion = 0m;
+            _autoRetIva = "";
+            _autoRetIslr = "";
         }
         public void Inicializa()
         {
@@ -49,6 +55,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
             _pagoPorRetencionIsOk = false;
             _dataPagoPorRet.Inicializa();
             _montoPagoPorRetencion = 0m;
+            _autoRetIva = "";
+            _autoRetIslr = "";
         }
         private Vista.Frm frm;
         public void Inicia()
@@ -119,10 +127,10 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
                     throw new Exception("TIPO DOCUMENTO INCORRECTO");
                 }
                 if (
-                    _docOrigen.AplicaRetencionIva ||
+                    _docOrigen.AplicaRetencionIva &&
                     _docOrigen.AplicaRetencionISLR)
                 {
-                    throw new Exception("TIPO DOCUMENTO YA SE APLICO ALGUN TIPO DE RETENCION");
+                    throw new Exception("DOCUMENTO YA SE APLICO RETENCION (IVA / ISLR)");
                 }
                 //
                 var sistDoc = new OOB.LibCompra.SistemaDocumento.Entidad.Busqueda()
@@ -148,7 +156,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
                     throw new Exception(rt_03.Mensaje);
                 }
                 _sistemaDoc_Islr = rt_03.Entidad;
-
+                _dataPagoPorRet.setHabilitarRetIva(!_docOrigen.AplicaRetencionIva);
+                _dataPagoPorRet.setHabilitarRetIslr(!_docOrigen.AplicaRetencionISLR);
                 return true;
             }
             catch (Exception e)
@@ -425,6 +434,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
                     Documentos = _documentos,
                 };
                 var rt = Sistema.MyData.Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(fichaOOB);
+                _autoRetIva = rt.Entidad.autoRetIva;
+                _autoRetIslr = rt.Entidad.autoRetISLR;
                 _pagoPorRetencionIsOk = true;
                 _montoPagoPorRetencion = _totalRetencionIslrDivisa + _montoRetencionIvaDivisa;
                 Helpers.Msg.AgregarOk();
@@ -433,6 +444,29 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+        public void GenerarPlanillasRetencion()
+        {
+            if (!string.IsNullOrEmpty(_autoRetIva))
+            {
+                PlanillaRetIva(_docOrigen.autoId);
+            }
+            if (!string.IsNullOrEmpty(_autoRetIslr))
+            {
+                PlanillaRetIslr(_docOrigen.autoId);
+            }
+        }
+        private void PlanillaRetIva(string autoDoc)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetIva.Imp();
+            _rep.setIdDoc(autoDoc);
+            _rep.Generar();
+        }
+        private void PlanillaRetIslr(string autoDoc)
+        {
+            srcTransporte.Reportes.IRepPlanilla _rep = new srcTransporte.Reportes.Planillas.RetISLR.Imp();
+            _rep.setIdDoc(autoDoc);
+            _rep.Generar();
         }
     }
 }

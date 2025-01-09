@@ -218,10 +218,7 @@ namespace ModCompra.Fabrica.Pita
                 {
                     if (r01.Entidad.retencionRecibo.Count > 0)
                     {
-                        if (r01.Entidad.retencionRecibo.Exists(r => r.autoSistDocRec == "0000000013")) 
-                        {
-                            throw new Exception("DOCUMENTO TIENE PAGOS RELACIONADOS");
-                        }
+                        throw new Exception("DOCUMENTO TIENE ( PAGOS / RETENCIONES ) RELACIONADOS");
                     }
                 }
                 var auditorias = new List<OOB.LibCompra.Transporte.Documento.Anular.CompraGasto.Anular.Auditoria>();

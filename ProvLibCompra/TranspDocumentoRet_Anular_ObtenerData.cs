@@ -26,8 +26,10 @@ namespace ProvLibCompra
                                         retDet.auto_cxp_pago as idCxp_IR,
                                         retDet.auto_cxp_Recibo as idCxp_IR_Recibo,
                                         retDet.retencion as montoRetMonAct,
-                                        ir.importeDivisa as montoRetMonDiv
+                                        ir.importeDivisa as montoRetMonDiv,
+                                        ret.auto_sistema_documento as idSistemaDoc_CompraRet 
                                     FROM compras_retenciones_detalle as retDet
+                                    join compras_retenciones as ret on ret.auto=retDet.auto
                                     join compras as c on c.auto=retDet.auto_documento
                                     join cxp as ir on ir.auto=retDet.auto_cxp_pago
                                     where retDet.auto=@idRet";

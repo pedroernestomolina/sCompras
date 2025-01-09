@@ -94,7 +94,7 @@
     <Compile Include="TranspMedioPago.cs" />
     <Compile Include="TransporteAliado.cs" />
     <Compile Include="TransporteConcepto.cs" />
-    <Compile Include="TransporteDocumentoAgregar.cs" />
+    <Compile Include="TransporteDocumentoAgregar_CompraGasto.cs" />
     <Compile Include="TransporteDocumentoAnular.cs" />
     <Compile Include="TransporteDocumento.cs" />
     <Compile Include="Reportes_Compras_LibroSeniat_GetLista.cs" />

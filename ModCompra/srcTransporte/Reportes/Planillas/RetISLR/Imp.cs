@@ -14,8 +14,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
     {
         private string _idDoc;
         private OOB.LibCompra.Transporte.DocumentoRet.Crud.Corrector.ObtenerData.Ficha _fichaCorrector;
-
-
+        //
         public Imp()
         {
         }
@@ -55,7 +54,6 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetISLR
                 Helpers.Msg.Error(e.Message);
             }
         }
-
         private void imprimir(OOB.LibCompra.Transporte.Reportes.Compras.Planilla.Retencion.Islr.Ficha ficha)
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"srcTransporte\Reportes\Planillas\RepPlanilla_RetIslr.rdlc";

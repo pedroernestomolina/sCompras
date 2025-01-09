@@ -13,14 +13,13 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
         private Vistas.IListaAdm _lista;
         private Vistas.IBusqDoc _busqDoc;
         private srcTransporte.Filtro.Vistas.IFiltro _ctrFiltro;
-
-
+        private ModCompra.Anular.Gestion _anular;
+        //
         public Utils.Componente.Administrador.Vistas.ILista data { get { return _lista; } }
         public Vistas.IBusqDoc BusqDoc { get { return _busqDoc; } }
         public string Get_TituloAdm { get { return "Administrador Documentos: RETENCIONES"; } }
         public int Get_CntItem { get { return _lista.Get_CntItem; } }
-        
-
+        //
         public Imp()
         {
             _abandonarIsOK = false;
@@ -75,36 +74,65 @@ namespace ModCompra.srcTransporte.Retencion.Administrador.Handler
                 {
                     return;
                 }
-                var rt = Sistema.MyData.Transporte_DocumentoRet_Crud_Anular_ObtenerData(it.Ficha.auto);
-                var ent= rt.Entidad;
-                var _isRetIva = ent.tipoRetencion.Trim().ToUpper() == "07";
-                var fichaOOB = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Ficha()
+                _anular = new ModCompra.Anular.Gestion();
+                _anular.Inicia();
+                if (!_anular.IsAnularOK)
                 {
-                    auditorias = new List<OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Auditoria>(),
-                    proveedor = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Proveedor()
+                    return;
+                }
+                try
+                {
+                    var rt = Sistema.MyData.Transporte_DocumentoRet_Crud_Anular_ObtenerData(it.Ficha.auto);
+                    var _auditorias = new List<OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Auditoria>();
+                    var audPorCompra = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Auditoria()
                     {
-                        idProv = ent.idProveedor,
-                        montoRestaurarMonDiv = ent.montoRetMonDiv,
-                    },
-                    compraRet = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CompraRetencion()
+                        autoDoc = it.Ficha.auto,
+                        autoSistemaDocumento = rt.Entidad.idSistemaDoc_CompraRet,
+                        autoUsuario = Sistema.UsuarioP.autoUsu,
+                        codigoUsuario = Sistema.UsuarioP.codigoUsu,
+                        estacion = Sistema.EquipoEstacion,
+                        ip = "",
+                        motivo = _anular.Motivo,
+                        nombreUsuario = Sistema.UsuarioP.nombreUsu,
+                    };
+                    _auditorias.Add(audPorCompra);
+                    var ent = rt.Entidad;
+                    var _isRetIva = ent.tipoRetencion.Trim().ToUpper() == "07";
+                    var fichaOOB = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Ficha()
                     {
-                        idDocCompra =  it.Ficha.autoDocRef,
-                        idDocCompraRet = it.Ficha.auto,
-                        isRetIva = _isRetIva,
-                    },
-                    cxpDocOrigen = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CxP_DocOrigen()
-                    {
-                        idDoc = ent.idCxP_Origen,
-                        montoRestaurarMonAct = ent.montoRetMonAct,
-                        montoRestaurarMonDiv = ent.montoRetMonDiv,
-                    },
-                    cxpIR = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CxP_IR()
-                    {
-                        idDocIR = ent.idCxp_IR,
-                        idRecibo = ent.idCxp_IR_Recibo,
-                    }
-                };
-                var rt_02 = Sistema.MyData.Transporte_DocumentoRet_Crud_Anular_Procesar(fichaOOB);
+                        auditorias = _auditorias,
+                        proveedor = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.Proveedor()
+                        {
+                            idProv = ent.idProveedor,
+                            montoRestaurarMonDiv = ent.montoRetMonDiv,
+                        },
+                        compraRet = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CompraRetencion()
+                        {
+                            idDocCompra = it.Ficha.autoDocRef,
+                            idDocCompraRet = it.Ficha.auto,
+                            isRetIva = _isRetIva,
+                        },
+                        cxpDocOrigen = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CxP_DocOrigen()
+                        {
+                            idDoc = ent.idCxP_Origen,
+                            montoRestaurarMonAct = ent.montoRetMonAct,
+                            montoRestaurarMonDiv = ent.montoRetMonDiv,
+                        },
+                        cxpIR = new OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.Procesar.CxP_IR()
+                        {
+                            idDocIR = ent.idCxp_IR,
+                            idRecibo = ent.idCxp_IR_Recibo,
+                        }
+                    };
+                    var rt_02 = Sistema.MyData.Transporte_DocumentoRet_Crud_Anular_Procesar(fichaOOB);
+                    Helpers.Msg.EliminarOk();
+                    it.setActualizarEstatusAnulado();
+                    _lista.Refresca();
+                }
+                catch (Exception e) 
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
             }
         }
         public void VisualizarDocumento()

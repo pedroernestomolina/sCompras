@@ -360,6 +360,7 @@
             this.KeyPreview = true;
             this.Name = "AnularFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.AnularFrm_Load);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

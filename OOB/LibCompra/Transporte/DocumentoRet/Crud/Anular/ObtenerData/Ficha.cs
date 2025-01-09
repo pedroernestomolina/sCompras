@@ -16,5 +16,6 @@ namespace OOB.LibCompra.Transporte.DocumentoRet.Crud.Anular.ObtenerData
         public string idCxp_IR_Recibo { get; set; }
         public decimal montoRetMonAct { get; set; }
         public decimal montoRetMonDiv { get; set; }
+        public string idSistemaDoc_CompraRet { get; set; }
     }
 }

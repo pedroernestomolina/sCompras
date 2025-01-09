@@ -88,7 +88,6 @@ namespace DtoLibTransporte.Documento.Agregar.CompraGasto
         //
         public CxP cxp { get; set; }
         public Proveedor proveedor { get; set; }
-        public List<DocRetencion> docRet { get; set; }
         //
         public string maquinafiscal { get; set; }
     }

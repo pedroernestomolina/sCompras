@@ -13,8 +13,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.RetIva
     public class Imp : IRepPlanilla
     {
         private string _idDoc;
-
-
+        //
         public Imp()
         {
         }

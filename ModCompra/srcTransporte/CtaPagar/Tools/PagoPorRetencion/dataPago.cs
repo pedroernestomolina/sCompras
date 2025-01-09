@@ -9,12 +9,16 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
 {
     public class dataPago
     {
+        private bool _habilitarRetIva;
+        private bool _habilitarRetIslr;
         private bool _aplicaRetIva;
         private bool _aplicaRetIslr;
         private decimal _tasaRetIva;
         private decimal _tasaRetIslr;
         private decimal _sustraendo;
         //
+        public bool GetHabailitarRetIva { get { return _habilitarRetIva; } }
+        public bool GetHabailitarRetIslr { get { return _habilitarRetIslr; } }
         public decimal GetTasaRetIva { get { return _tasaRetIva; } }
         public decimal GetTasaRetIslr { get { return _tasaRetIslr; } }
         public decimal GetSustraendo { get { return _sustraendo; } }
@@ -28,6 +32,14 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
         public void Inicializa()
         {
             limpiar();
+        }
+        public void setHabilitarRetIva(bool modo)
+        {
+            _habilitarRetIva = modo;
+        }
+        public void setHabilitarRetIslr(bool modo)
+        {
+            _habilitarRetIslr = modo;
         }
         public void setRetIva()
         {
@@ -52,6 +64,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
         //
         private void limpiar() 
         {
+            _habilitarRetIslr = false;
+            _habilitarRetIva = false;
             _aplicaRetIslr = false;
             _aplicaRetIva = false;
             _tasaRetIslr = 0m;
