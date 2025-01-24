@@ -753,7 +753,7 @@ namespace ProvLibCompra
                                     var pt7 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_2",rg.precios[1]);
                                     var pt8 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_3",rg.precios[2]);
                                     var pt9 = new MySql.Data.MySqlClient.MySqlParameter("precio_vta_4",rg.precios[3]);
-                                    var sql = @"INSERT INTO compras_pend_detalle_preciosvta (
+                                    var sql = @"INSERT INTO compras_pend_detalle_preciosVta (
                                                     id, 
                                                     id_item_pend, 
                                                     id_pend, 
@@ -913,7 +913,7 @@ namespace ProvLibCompra
                     {
                         var p1 = new MySql.Data.MySqlClient.MySqlParameter("@id", idPend);
                         var sql = @"delete 
-                                    from compras_pend_detalle_preciosvta 
+                                    from compras_pend_detalle_preciosVta 
                                     where id_pend=@id";
                         cnn.Database.ExecuteSqlCommand(sql, p1);
                         //
@@ -1035,7 +1035,7 @@ namespace ProvLibCompra
                                         precio_vta_2 as pVta2,
                                         precio_vta_3 as pVta3,
                                         precio_vta_4 as pVta4
-                                    from compras_pend_detalle_preciosvta
+                                    from compras_pend_detalle_preciosVta
                                     where id_item_pend=@idItemPend";
                         var _lst = cnn.Database.SqlQuery<DtoLibCompra.Documento.Pendiente.Abrir.PrecioVtaPend>(sql, tp1).ToList();
                         dt.preciosVtaPend = _lst;
