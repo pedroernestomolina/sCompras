@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracion>
   <Servidor>
-    <Instancia>10.10.100.155</Instancia>
-    <Catalogo>zufu</Catalogo>
+    <Instancia>localhost</Instancia>
+    <Catalogo>pan001</Catalogo>
     <Usuario></Usuario>
   </Servidor>
   <Documentos>

@@ -291,7 +291,7 @@ namespace ModCompra.Documento.Cargar.Formulario
             L_DOCUMENTO.Text = _controlador.DocumentoNro;
             L_CONTROL_NRO.Text = _controlador.ControlNro;
             L_FECHA_VENC.Text = _controlador.FechaVencimiento.ToShortDateString();
-            L_FACTOR_DIVISA.Text = _controlador.FactorDivisa.ToString("n2");
+            L_FACTOR_DIVISA.Text = _controlador.FactorDivisa.ToString();
             L_DEPOSITO.Text = _controlador.Deposito;
             L_SUCURSAL.Text = _controlador.Sucursal;
         }
