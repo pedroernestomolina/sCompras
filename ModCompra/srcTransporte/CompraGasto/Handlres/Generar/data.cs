@@ -262,7 +262,7 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
             }
             lConcepto.Clear();
             IEnumerable<LibUtilitis.Opcion.IData> _lst;
-            foreach (var rg in lst)
+            foreach (var rg in lst.OrderBy(or=>or.descripcion).ToList())
             {
                 lConcepto.Add(new dataConcepto() { codigo = rg.codigo, desc = rg.descripcion, id = rg.id.ToString(), ficha = rg });
             }

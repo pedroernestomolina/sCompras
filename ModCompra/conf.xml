@@ -2,7 +2,7 @@
 <Configuracion>
   <Servidor>
     <Instancia>localhost</Instancia>
-    <Catalogo>pan001</Catalogo>
+    <Catalogo>transprivas</Catalogo>
     <Usuario></Usuario>
   </Servidor>
   <Documentos>

@@ -72,7 +72,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboPagoAliado
                 rtDt["monto"] = ficha.anticipo;
                 rtDt["montoDiv"] = ficha.anticipo;
                 rtDt["esDivisa"] = "$";
-                rtDt["tasaAplica"] = ficha.tasaPromFactorAnticipo;
+                rtDt["tasaAplica"] = 0.0m;//ficha.tasaPromFactorAnticipo;
                 ds.Tables["PagoAliado_Caja"].Rows.Add(rtDt);
             }
             var _montoDiv = 0m;

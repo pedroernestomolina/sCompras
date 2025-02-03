@@ -119,14 +119,16 @@ namespace ModCompra.srcTransporte.CtaPagar.ToolsAliados.PagoServ.Handlers
                     //ESTA TOMANDO TODOS LOS ANTICIPOS , 
                     //Y DEBERIA HABER UNA OPCION QUE ME PERMITA SUMAR SOLO LOS ANTICIPOS VIGENTES 
                     //_hndData.setTasaFactorCambio(_hndData.Get_Aliado.tasaPromAnticipo);
-                    _hndData.setTasaFactorCambio(_hndData.Get_TasaFactorCambio);
+                    //_hndData.setTasaFactorCambio(_hndData.Get_TasaFactorCambio);
                 }
                 else 
                 {
+                    /*
                     var _xant = _hndData.Get_Aliado.tasaPromAnticipo * _montoAnt;
                     var _xnor = (_hndData.Get_MontoAnticipoMonDiv- _montoAnt)* _hndData.Get_TasaFactorCambio;
                     var _xprom = (_xnor + _xant) / _hndData.Get_MontoAnticipoMonDiv;
                     _hndData.setTasaFactorCambio(_xprom);
+                     */
                 }
             }
             _hndCaja.setFactorCambio(_hndData.Get_TasaFactorCambio);
