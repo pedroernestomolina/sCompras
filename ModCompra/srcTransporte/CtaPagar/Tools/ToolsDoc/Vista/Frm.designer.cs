@@ -63,6 +63,8 @@
             this.BT_ADM_DOC_PAGO = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.BT_IMPRIMIR_LISTA = new System.Windows.Forms.Button();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.BT_RETENCION = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,8 +72,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIDA = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.BT_RETENCION = new System.Windows.Forms.Button();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.BT_VISUALIZAR = new System.Windows.Forms.Button();
             this.MenuP.SuspendLayout();
             this.P_PRINCIPAL.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -95,10 +97,11 @@
             this.panel15.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.P_PIE.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuP
@@ -427,6 +430,7 @@
             this.tableLayoutPanel7.Controls.Add(this.panel17, 0, 2);
             this.tableLayoutPanel7.Controls.Add(this.panel18, 0, 3);
             this.tableLayoutPanel7.Controls.Add(this.panel19, 0, 4);
+            this.tableLayoutPanel7.Controls.Add(this.panel20, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
@@ -522,6 +526,33 @@
             this.BT_IMPRIMIR_LISTA.UseVisualStyleBackColor = true;
             this.BT_IMPRIMIR_LISTA.Click += new System.EventHandler(this.BT_IMPRIMIR_LISTA_Click);
             // 
+            // panel19
+            // 
+            this.tableLayoutPanel7.SetColumnSpan(this.panel19, 2);
+            this.panel19.Controls.Add(this.BT_RETENCION);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(1, 372);
+            this.panel19.Margin = new System.Windows.Forms.Padding(1);
+            this.panel19.Name = "panel19";
+            this.panel19.Padding = new System.Windows.Forms.Padding(2);
+            this.panel19.Size = new System.Drawing.Size(193, 98);
+            this.panel19.TabIndex = 9;
+            // 
+            // BT_RETENCION
+            // 
+            this.BT_RETENCION.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_RETENCION.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_RETENCION.Image = global::ModCompra.Properties.Resources.bt_pago_transf_48;
+            this.BT_RETENCION.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_RETENCION.Location = new System.Drawing.Point(2, 2);
+            this.BT_RETENCION.Name = "BT_RETENCION";
+            this.BT_RETENCION.Size = new System.Drawing.Size(189, 94);
+            this.BT_RETENCION.TabIndex = 4;
+            this.BT_RETENCION.Text = "Pago Por\r\nRetencion ";
+            this.BT_RETENCION.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BT_RETENCION.UseVisualStyleBackColor = true;
+            this.BT_RETENCION.Click += new System.EventHandler(this.BT_RETENCION_Click);
+            // 
             // P_PIE
             // 
             this.P_PIE.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -598,32 +629,31 @@
             this.BT_SALIDA.UseVisualStyleBackColor = true;
             this.BT_SALIDA.Click += new System.EventHandler(this.BT_SALIDA_Click);
             // 
-            // panel19
+            // panel20
             // 
-            this.tableLayoutPanel7.SetColumnSpan(this.panel19, 2);
-            this.panel19.Controls.Add(this.BT_RETENCION);
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(1, 372);
-            this.panel19.Margin = new System.Windows.Forms.Padding(1);
-            this.panel19.Name = "panel19";
-            this.panel19.Padding = new System.Windows.Forms.Padding(2);
-            this.panel19.Size = new System.Drawing.Size(193, 98);
-            this.panel19.TabIndex = 9;
+            this.panel20.Controls.Add(this.BT_VISUALIZAR);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel20.Location = new System.Drawing.Point(1, 1);
+            this.panel20.Margin = new System.Windows.Forms.Padding(1);
+            this.panel20.Name = "panel20";
+            this.panel20.Padding = new System.Windows.Forms.Padding(2);
+            this.panel20.Size = new System.Drawing.Size(98, 53);
+            this.panel20.TabIndex = 10;
             // 
-            // BT_RETENCION
+            // BT_VISUALIZAR
             // 
-            this.BT_RETENCION.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_RETENCION.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_RETENCION.Image = global::ModCompra.Properties.Resources.bt_pago_transf_48;
-            this.BT_RETENCION.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_RETENCION.Location = new System.Drawing.Point(2, 2);
-            this.BT_RETENCION.Name = "BT_RETENCION";
-            this.BT_RETENCION.Size = new System.Drawing.Size(189, 94);
-            this.BT_RETENCION.TabIndex = 4;
-            this.BT_RETENCION.Text = "Pago Por\r\nRetencion ";
-            this.BT_RETENCION.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BT_RETENCION.UseVisualStyleBackColor = true;
-            this.BT_RETENCION.Click += new System.EventHandler(this.BT_RETENCION_Click);
+            this.BT_VISUALIZAR.BackgroundImage = global::ModCompra.Properties.Resources.bt_documento;
+            this.BT_VISUALIZAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_VISUALIZAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_VISUALIZAR.FlatAppearance.BorderSize = 0;
+            this.BT_VISUALIZAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_VISUALIZAR.Location = new System.Drawing.Point(2, 2);
+            this.BT_VISUALIZAR.Name = "BT_VISUALIZAR";
+            this.BT_VISUALIZAR.Size = new System.Drawing.Size(94, 49);
+            this.BT_VISUALIZAR.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_VISUALIZAR, "Visualizar Documento");
+            this.BT_VISUALIZAR.UseVisualStyleBackColor = true;
+            this.BT_VISUALIZAR.Click += new System.EventHandler(this.BT_VISUALIZAR_Click);
             // 
             // Frm
             // 
@@ -664,10 +694,11 @@
             this.panel15.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
             this.P_PIE.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -718,5 +749,7 @@
         private System.Windows.Forms.Button BT_IMPRIMIR_LISTA;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button BT_RETENCION;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Button BT_VISUALIZAR;
     }
 }

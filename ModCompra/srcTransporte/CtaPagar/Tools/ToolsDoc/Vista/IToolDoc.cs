@@ -12,5 +12,6 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
         object CtaPendiente_Actual { get; }
         //
         void PagoPorRetencion();
+        void VisualizarDoc();
     }
 }

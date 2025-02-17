@@ -70,5 +70,22 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
                 _ctaPendienteActual.setActualizaAcumulado(_pagoPorRet.MontoPagoPorRetencion);
             }
         }
+        public void VisualizarDoc()
+        {
+            if (CtaPendiente_Actual != null)
+            {
+                var _ctaPendienteActual = (dataItemCtasPend)CtaPendiente_Actual;
+                var r00 = Sistema.MyData.Permiso_AdmDoc_Visualizar(Sistema.UsuarioP.autoGru);
+                if (r00.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
+                {
+                    Helpers.VisualizarDocumento.Visualizar(_ctaPendienteActual.Ficha.idDocOrigen);
+                }
+            }
+        }
     }
 }

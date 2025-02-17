@@ -222,5 +222,14 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Vista
             ActualizarDataPanel_Totales();
             this.Refresh();
         }
+
+        private void BT_VISUALIZAR_Click(object sender, EventArgs e)
+        {
+            VisualizarDoc();
+        }
+        private void VisualizarDoc()
+        {
+            _controlador.VisualizarDoc();
+        }
     }
 }
