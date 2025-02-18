@@ -47,6 +47,7 @@
     <Compile Include="Data\Documento.cs" />
     <Compile Include="Data\DocumentoAgregar_NCredito_Mercancia.cs" />
     <Compile Include="Data\DocumentoAgregar_Factura_Mercancia.cs" />
+    <Compile Include="Data\Documento_Corrector.cs" />
     <Compile Include="Data\Documento_GetData_AplicarRetencion.cs" />
     <Compile Include="Data\Documento_GetFicha.cs" />
     <Compile Include="Data\Documento_GetLista.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="InfraEstructura\IData.cs" />
     <Compile Include="InfraEstructura\IDeposito.cs" />
     <Compile Include="InfraEstructura\IDocumento.cs" />
+    <Compile Include="InfraEstructura\IDocumento_Corrector.cs" />
     <Compile Include="InfraEstructura\IEmpresa.cs" />
     <Compile Include="InfraEstructura\IEstado.cs" />
     <Compile Include="InfraEstructura\IGrupo.cs" />

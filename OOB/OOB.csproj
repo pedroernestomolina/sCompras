@@ -67,7 +67,9 @@
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdPrecios.cs" />
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrdProveedor.cs" />
     <Compile Include="LibCompra\Documento\Cargar\Factura\FichaPrecio.cs" />
+    <Compile Include="LibCompra\Documento\Corrector\ActualizarData\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Corrector\Ficha.cs" />
+    <Compile Include="LibCompra\Documento\Corrector\GetData\Ficha.cs" />
     <Compile Include="LibCompra\Documento\Enumerados.cs" />
     <Compile Include="LibCompra\Documento\GetData\AplicarRetencion\Ficha.cs" />
     <Compile Include="LibCompra\Documento\GetData\BaseFicha.cs" />

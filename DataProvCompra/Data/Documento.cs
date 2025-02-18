@@ -163,33 +163,6 @@ namespace DataProvCompra.Data
 
             return rt;
         }
-        public OOB.Resultado 
-            Compra_DocumentoCorrector(OOB.LibCompra.Documento.Corrector.Ficha ficha)
-        {
-            var rt = new OOB.Resultado();
-
-            var fichaDTO = new DtoLibCompra.Documento.Corrector.Factura.Ficha()
-            {
-                autoDoc = ficha.autoDoc,
-                autoProveedor = ficha.autoProveedor,
-                ciRifProveedor = ficha.ciRifProveedor,
-                controlNro = ficha.controlNro,
-                direccionFiscalProveedor = ficha.direccionFiscalProveedor,
-                documentoNro = ficha.documentoNro,
-                fechaDocumento = ficha.fechaDocumento,
-                nombreRazonSocialProveedor = ficha.nombreRazonSocialProveedor,
-                notaDocumento = ficha.notaDocumento,
-            };
-            var r01 = MyData.Compra_DocumentoCorrectorFactura(fichaDTO);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            return rt;
-        }
         public OOB.ResultadoLista<OOB.LibCompra.Documento.ListaItemImportar.Ficha> 
             Compra_Documento_ItemImportar_GetLista(string autoDoc)
         {

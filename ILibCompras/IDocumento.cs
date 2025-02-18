@@ -28,8 +28,6 @@ namespace ILibCompras
             Compra_DocumentoAnularFactura(DtoLibCompra.Documento.Anular.Factura.Ficha ficha);
         DtoLib.Resultado 
             Compra_DocumentoAnularNotaCredito(DtoLibCompra.Documento.Anular.NotaCredito.Ficha ficha);
-        DtoLib.Resultado 
-            Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac);
         DtoLib.Resultado
             Compra_Documento_Pendiente_Agregar(DtoLibCompra.Documento.Pendiente.Agregar.Ficha ficha);
         DtoLib.ResultadoEntidad<int>
@@ -45,8 +43,6 @@ namespace ILibCompras
             Compra_DocumentoAnular_Verificar(string autoDoc);
         DtoLib.Resultado 
             Compra_DocumentoAgregar_Verificar(string documentoNro, string controlNro, string autoPrv);
-        DtoLib.Resultado 
-            Compra_DocumentoCorrector_Verificar(string documentoNro, string controlNro, string autoPrv, string autoDoc);
         //
         DtoLib.ResultadoEntidad<DtoLibCompra.Documento.GetData.AplicarRetencion.Ficha> 
             Compra_GetData_AplicarRetencion(string _idDocCompra);

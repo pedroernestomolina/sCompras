@@ -204,7 +204,8 @@ namespace ModCompra.Administrador.Documentos
                 }
                 if (Seguridad.Gestion.SolicitarClave(r00.Entidad))
                 {
-                    _corrector.setFicha(Item);
+                    _corrector.Inicializa();
+                    _corrector.setIdDoc_Corregir(Item.AutoDoc);
                     _corrector.Inicia();
                 }
             }

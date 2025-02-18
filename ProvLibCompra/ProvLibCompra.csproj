@@ -64,6 +64,7 @@
     <Compile Include="Documento.cs" />
     <Compile Include="DocumentoAgregar_FactMercancia.cs" />
     <Compile Include="DocumentoAgregar_NCreditoMercancia.cs" />
+    <Compile Include="Documento_Corrector.cs" />
     <Compile Include="Documento_GetData_AplicarRetencion.cs" />
     <Compile Include="Documento_GetFicha.cs" />
     <Compile Include="Documento_GetLista.cs" />

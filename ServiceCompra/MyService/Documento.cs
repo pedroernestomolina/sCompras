@@ -71,14 +71,6 @@ namespace ServiceCompra.MyService
             return ServiceProv.Compra_DocumentoGetFicha(auto);
         }
         public DtoLib.Resultado 
-            Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac)
-        {
-            var r01 = ServiceProv.Compra_DocumentoCorrector_Verificar(docFac.documentoNro, docFac.controlNro, docFac.autoProveedor,docFac.autoDoc);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-                return r01;
-            return ServiceProv.Compra_DocumentoCorrectorFactura(docFac);
-        }
-        public DtoLib.Resultado 
             Compra_DocumentoAnularNotaCredito(DtoLibCompra.Documento.Anular.NotaCredito.Ficha ficha)
         {
             var r01 = ServiceProv.Compra_DocumentoAnular_Verificar(ficha.autoDocumento);

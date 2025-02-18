@@ -83,7 +83,9 @@
     <Compile Include="Documento\Cargar\Factura\FichaPrdProveedor.cs" />
     <Compile Include="Documento\Cargar\Ficha.cs" />
     <Compile Include="Documento\Cargar\FichaDetalle.cs" />
+    <Compile Include="Documento\Corrector\ActualizarData\Ficha.cs" />
     <Compile Include="Documento\Corrector\Factura\Ficha.cs" />
+    <Compile Include="Documento\Corrector\GetData\Ficha.cs" />
     <Compile Include="Documento\GetData\AplicarRetencion\Ficha.cs" />
     <Compile Include="Documento\ListaItemImportar\Ficha.cs" />
     <Compile Include="Documento\ListaRemision\Ficha.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Usuario\Buscar\Ficha.cs" />
     <Compile Include="Usuario\Data\Ficha.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -212,7 +212,7 @@ namespace ProvLibCompra
                                 FROM compras_retenciones_detalle as retDet 
                                 join compras_retenciones as ret on ret.auto=retDet.auto
                                 join compras as compra on compra.auto=retDet.auto_documento
-                                where retDet.auto_documento =@idDoc and
+                                where retDet.auto_documento =@idDoc and retDet.estatus_anulado='0' and 
                                     retDet.tipo_retencion='07'";
                     var _sql_2 = @"";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDocCompra);
@@ -275,7 +275,7 @@ namespace ProvLibCompra
                                 join compras_retenciones as ret on ret.auto=retDet.auto
                                 join compras as compra on compra.auto=retDet.auto_documento
                                 join proveedores as prov on prov.auto=compra.auto_proveedor
-                                where retDet.auto_documento =@idDoc and
+                                where retDet.auto_documento =@idDoc and retDet.estatus_anulado='0' and 
                                     retDet.tipo_retencion='08'";
                     var _sql_2 = @"";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter("@idDoc", idDocCompra);

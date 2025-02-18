@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Corrector\Documento\data.cs" />
     <Compile Include="Corrector\Documento\Gestion.cs" />
+    <Compile Include="Corrector\Documento\IGestion.cs" />
     <Compile Include="Documento\Cargar\Controlador\Gestion.cs" />
     <Compile Include="Documento\Cargar\Controlador\GestionDocumento.cs" />
     <Compile Include="Documento\Cargar\Controlador\GestionItem.cs" />

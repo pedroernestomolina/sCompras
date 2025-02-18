@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DtoLibCompra.Documento.Corrector.Factura
 {
-    
     public class Ficha
     {
-
         public string autoDoc { get; set; }
         public string autoProveedor { get; set; }
         public string documentoNro { get; set; }
@@ -20,7 +18,5 @@ namespace DtoLibCompra.Documento.Corrector.Factura
         public string ciRifProveedor { get; set; }
         public string notaDocumento { get; set; }
         public string controlNro { get; set; }
-
     }
-
 }

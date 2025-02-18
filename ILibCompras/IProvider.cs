@@ -22,7 +22,8 @@ namespace ILibCompras
         Transporte.ITranspBeneficiario,
         Transporte.ITranspBeneficiarioMov,
         Transporte.ITranspCxpDoc,
-        Transporte.ITranspMedioPago
+        Transporte.ITranspMedioPago,
+        IDocumento_Corrector
     {
         DtoLib.ResultadoEntidad<DateTime> FechaServidor();
     }
