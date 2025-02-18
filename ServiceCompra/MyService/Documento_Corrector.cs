@@ -22,14 +22,5 @@ namespace ServiceCompra.MyService
                 return r01;
             return ServiceProv.Compra_DocumentoCorrector_Actualizar(dataAct);
         }
-        //
-        public DtoLib.Resultado
-            Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac)
-        {
-            var r01 = ServiceProv.Compra_DocumentoCorrector_Verificar(docFac.documentoNro, docFac.controlNro, docFac.autoProveedor, docFac.autoDoc);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-                return r01;
-            return ServiceProv.Compra_DocumentoCorrectorFactura(docFac);
-        }
     }
 }

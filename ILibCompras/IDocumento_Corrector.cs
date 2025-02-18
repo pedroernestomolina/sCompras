@@ -15,10 +15,5 @@ namespace ILibCompras
             Compra_DocumentoCorrector_Validar(DtoLibCompra.Documento.Corrector.ActualizarData.Ficha dataAct);
         DtoLib.Resultado
             Compra_DocumentoCorrector_Actualizar(DtoLibCompra.Documento.Corrector.ActualizarData.Ficha dataAct);
-        //
-        DtoLib.Resultado
-            Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac);
-        DtoLib.Resultado
-            Compra_DocumentoCorrector_Verificar(string documentoNro, string controlNro, string autoPrv, string autoDoc);
     }
 }

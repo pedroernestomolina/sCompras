@@ -13,8 +13,5 @@ namespace DataProvCompra.InfraEstructura
             Compra_DocumentoCorrector_GetData(string idDoc);
         OOB.Resultado
             Compra_DocumentoCorrector_ActualizarData(OOB.LibCompra.Documento.Corrector.ActualizarData.Ficha ficha);
-        //
-        OOB.Resultado 
-            Compra_DocumentoCorrector(OOB.LibCompra.Documento.Corrector.Ficha ficha);
     }
 }

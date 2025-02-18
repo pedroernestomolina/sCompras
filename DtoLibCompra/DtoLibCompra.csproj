@@ -84,7 +84,6 @@
     <Compile Include="Documento\Cargar\Ficha.cs" />
     <Compile Include="Documento\Cargar\FichaDetalle.cs" />
     <Compile Include="Documento\Corrector\ActualizarData\Ficha.cs" />
-    <Compile Include="Documento\Corrector\Factura\Ficha.cs" />
     <Compile Include="Documento\Corrector\GetData\Ficha.cs" />
     <Compile Include="Documento\GetData\AplicarRetencion\Ficha.cs" />
     <Compile Include="Documento\ListaItemImportar\Ficha.cs" />

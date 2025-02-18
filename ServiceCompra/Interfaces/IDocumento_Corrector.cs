@@ -13,8 +13,5 @@ namespace ServiceCompra.Interfaces
             Compra_DocumentoCorrector_GetData_ByIdDoc(string idDoc);
         DtoLib.Resultado
             Compra_DocumentoCorrector_Actualizar(DtoLibCompra.Documento.Corrector.ActualizarData.Ficha dataAct);
-        //
-        DtoLib.Resultado
-            Compra_DocumentoCorrectorFactura(DtoLibCompra.Documento.Corrector.Factura.Ficha docFac);
     }
 }
