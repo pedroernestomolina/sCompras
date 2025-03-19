@@ -49,9 +49,9 @@ namespace LibEntityCompra
         public virtual DbSet<productos_precios> productos_precios { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
         public virtual DbSet<compras_detalle> compras_detalle { get; set; }
-        public virtual DbSet<productos_kardex> productos_kardex { get; set; }
         public virtual DbSet<compras_pend_detalle> compras_pend_detalle { get; set; }
         public virtual DbSet<compras> compras { get; set; }
         public virtual DbSet<cxp> cxp { get; set; }
+        public virtual DbSet<productos_kardex> productos_kardex { get; set; }
     }
 }

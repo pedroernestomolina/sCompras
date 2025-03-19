@@ -271,7 +271,7 @@ warning 6002: The table/view 'pita.compras_detalle' does not have a primary key 
           <Property Name="auto" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="tipo_documento" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="documento" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="documento" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="fecha_vencimiento" Type="date" Nullable="false" />
           <Property Name="nota" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="importe" Type="decimal" Precision="14" Scale="2" Nullable="false" />
@@ -620,7 +620,7 @@ warning 6002: The table/view 'pita.productos_kardex' does not have a primary key
           <Property Name="auto_documento" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="hora" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="documento" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="documento" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="modulo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="entidad" Type="varchar" MaxLength="120" Nullable="false" />
           <Property Name="signo" Type="int" Nullable="false" />
@@ -1681,7 +1681,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <EntitySet Name="productos_precios" EntityType="compraModel.productos_precios" />
           <EntitySet Name="usuarios" EntityType="compraModel.usuarios" />
           <EntitySet Name="compras_detalle" EntityType="compraModel.compras_detalle" />
-          <EntitySet Name="productos_kardex" EntityType="compraModel.productos_kardex" />
           <AssociationSet Name="compras_detalle_ibfk_6" Association="compraModel.compras_detalle_ibfk_6">
             <End Role="empresa_depositos" EntitySet="empresa_depositos" />
             <End Role="compras_detalle" EntitySet="compras_detalle" />
@@ -1689,10 +1688,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <AssociationSet Name="productos_deposito_ibfk_2" Association="compraModel.productos_deposito_ibfk_2">
             <End Role="empresa_depositos" EntitySet="empresa_depositos" />
             <End Role="productos_deposito" EntitySet="productos_deposito" />
-          </AssociationSet>
-          <AssociationSet Name="productos_kardex_ibfk_2" Association="compraModel.productos_kardex_ibfk_2">
-            <End Role="empresa_depositos" EntitySet="empresa_depositos" />
-            <End Role="productos_kardex" EntitySet="productos_kardex" />
           </AssociationSet>
           <AssociationSet Name="compras_detalle_ibfk_8" Association="compraModel.compras_detalle_ibfk_8">
             <End Role="empresa_tasas" EntitySet="empresa_tasas" />
@@ -1714,17 +1709,9 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
             <End Role="productos" EntitySet="productos" />
             <End Role="productos_ext" EntitySet="productos_ext" />
           </AssociationSet>
-          <AssociationSet Name="productos_kardex_ibfk_1" Association="compraModel.productos_kardex_ibfk_1">
-            <End Role="productos" EntitySet="productos" />
-            <End Role="productos_kardex" EntitySet="productos_kardex" />
-          </AssociationSet>
           <AssociationSet Name="productos_precios_ibfk_1" Association="compraModel.productos_precios_ibfk_1">
             <End Role="productos" EntitySet="productos" />
             <End Role="productos_precios" EntitySet="productos_precios" />
-          </AssociationSet>
-          <AssociationSet Name="productos_kardex_ibfk_3" Association="compraModel.productos_kardex_ibfk_3">
-            <End Role="productos_conceptos" EntitySet="productos_conceptos" />
-            <End Role="productos_kardex" EntitySet="productos_kardex" />
           </AssociationSet>
           <AssociationSet Name="productos_ext_ibfk_10" Association="compraModel.productos_ext_ibfk_10">
             <End Role="productos_medida" EntitySet="productos_medida" />
@@ -1792,6 +1779,19 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <AssociationSet Name="cxp_ibfk_1" Association="compraModel.cxp_ibfk_1">
             <End Role="proveedores" EntitySet="proveedores" />
             <End Role="cxp" EntitySet="cxp" />
+          </AssociationSet>
+          <EntitySet Name="productos_kardex" EntityType="compraModel.productos_kardex" />
+          <AssociationSet Name="productos_kardex_ibfk_2" Association="compraModel.productos_kardex_ibfk_2">
+            <End Role="empresa_depositos" EntitySet="empresa_depositos" />
+            <End Role="productos_kardex" EntitySet="productos_kardex" />
+          </AssociationSet>
+          <AssociationSet Name="productos_kardex_ibfk_1" Association="compraModel.productos_kardex_ibfk_1">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productos_kardex" EntitySet="productos_kardex" />
+          </AssociationSet>
+          <AssociationSet Name="productos_kardex_ibfk_3" Association="compraModel.productos_kardex_ibfk_3">
+            <End Role="productos_conceptos" EntitySet="productos_conceptos" />
+            <End Role="productos_kardex" EntitySet="productos_kardex" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="empresa_depositos">
@@ -2009,10 +2009,10 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <NavigationProperty Name="productos_costos" Relationship="compraModel.productos_costos_ibfk_1" FromRole="productos" ToRole="productos_costos" />
           <NavigationProperty Name="productos_deposito" Relationship="compraModel.productos_deposito_ibfk_1" FromRole="productos" ToRole="productos_deposito" />
           <NavigationProperty Name="productos_ext" Relationship="compraModel.productos_ext_ibfk_1" FromRole="productos" ToRole="productos_ext" />
-          <NavigationProperty Name="productos_kardex" Relationship="compraModel.productos_kardex_ibfk_1" FromRole="productos" ToRole="productos_kardex" />
           <NavigationProperty Name="productos_precios" Relationship="compraModel.productos_precios_ibfk_1" FromRole="productos" ToRole="productos_precios" />
           <Property Name="volumen" Type="Decimal" Nullable="false" />
           <Property Name="estatus_talla_color_sabor" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productos_kardex" Relationship="compraModel.productos_kardex_ibfk_1" FromRole="productos" ToRole="productos_kardex" />
         </EntityType>
         <EntityType Name="productos_grupo">
           <Key>
@@ -2607,67 +2607,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <Property Name="estatus_cambio_precio_venta" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="compras" Relationship="compraModel.compras_detalle_ibfk_1" FromRole="compras_detalle" ToRole="compras" />
         </EntityType>
-        <EntityType Name="productos_kardex">
-          <Key>
-            <PropertyRef Name="auto_producto" />
-            <PropertyRef Name="total" />
-            <PropertyRef Name="auto_deposito" />
-            <PropertyRef Name="auto_concepto" />
-            <PropertyRef Name="auto_documento" />
-            <PropertyRef Name="fecha" />
-            <PropertyRef Name="hora" />
-            <PropertyRef Name="documento" />
-            <PropertyRef Name="modulo" />
-            <PropertyRef Name="entidad" />
-            <PropertyRef Name="signo" />
-            <PropertyRef Name="cantidad" />
-            <PropertyRef Name="cantidad_bono" />
-            <PropertyRef Name="cantidad_und" />
-            <PropertyRef Name="costo_und" />
-            <PropertyRef Name="estatus_anulado" />
-            <PropertyRef Name="nota" />
-            <PropertyRef Name="precio_und" />
-            <PropertyRef Name="codigo" />
-            <PropertyRef Name="siglas" />
-            <PropertyRef Name="codigo_sucursal" />
-            <PropertyRef Name="cierre_ftp" />
-            <PropertyRef Name="codigo_deposito" />
-            <PropertyRef Name="nombre_deposito" />
-            <PropertyRef Name="codigo_concepto" />
-            <PropertyRef Name="nombre_concepto" />
-            <PropertyRef Name="factor_cambio" />
-          </Key>
-          <Property Name="auto_producto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="total" Type="Decimal" Nullable="false" />
-          <Property Name="auto_deposito" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="auto_concepto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="auto_documento" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" />
-          <Property Name="hora" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="documento" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="modulo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="entidad" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
-          <Property Name="signo" Type="Int32" Nullable="false" />
-          <Property Name="cantidad" Type="Decimal" Nullable="false" />
-          <Property Name="cantidad_bono" Type="Decimal" Nullable="false" />
-          <Property Name="cantidad_und" Type="Decimal" Nullable="false" />
-          <Property Name="costo_und" Type="Decimal" Nullable="false" />
-          <Property Name="estatus_anulado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="nota" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="precio_und" Type="Decimal" Nullable="false" />
-          <Property Name="codigo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="siglas" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="codigo_sucursal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cierre_ftp" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="codigo_deposito" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="nombre_deposito" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="codigo_concepto" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="nombre_concepto" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="empresa_depositos" Relationship="compraModel.productos_kardex_ibfk_2" FromRole="productos_kardex" ToRole="empresa_depositos" />
-          <NavigationProperty Name="productos" Relationship="compraModel.productos_kardex_ibfk_1" FromRole="productos_kardex" ToRole="productos" />
-          <NavigationProperty Name="productos_conceptos" Relationship="compraModel.productos_kardex_ibfk_3" FromRole="productos_kardex" ToRole="productos_conceptos" />
-          <Property Name="factor_cambio" Type="Decimal" Nullable="false" />
-        </EntityType>
         <Association Name="compras_detalle_ibfk_6">
           <End Type="compraModel.empresa_depositos" Role="empresa_depositos" Multiplicity="1" />
           <End Type="compraModel.compras_detalle" Role="compras_detalle" Multiplicity="*" />
@@ -2688,18 +2627,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
               <PropertyRef Name="auto" />
             </Principal>
             <Dependent Role="productos_deposito">
-              <PropertyRef Name="auto_deposito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="productos_kardex_ibfk_2">
-          <End Type="compraModel.empresa_depositos" Role="empresa_depositos" Multiplicity="1" />
-          <End Type="compraModel.productos_kardex" Role="productos_kardex" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="empresa_depositos">
-              <PropertyRef Name="auto" />
-            </Principal>
-            <Dependent Role="productos_kardex">
               <PropertyRef Name="auto_deposito" />
             </Dependent>
           </ReferentialConstraint>
@@ -2766,18 +2693,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="productos_kardex_ibfk_1">
-          <End Type="compraModel.productos" Role="productos" Multiplicity="1" />
-          <End Type="compraModel.productos_kardex" Role="productos_kardex" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="productos">
-              <PropertyRef Name="auto" />
-            </Principal>
-            <Dependent Role="productos_kardex">
-              <PropertyRef Name="auto_producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="productos_precios_ibfk_1">
           <End Type="compraModel.productos" Role="productos" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2789,18 +2704,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
             </Principal>
             <Dependent Role="productos_precios">
               <PropertyRef Name="auto_producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="productos_kardex_ibfk_3">
-          <End Type="compraModel.productos_conceptos" Role="productos_conceptos" Multiplicity="1" />
-          <End Type="compraModel.productos_kardex" Role="productos_kardex" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="productos_conceptos">
-              <PropertyRef Name="auto" />
-            </Principal>
-            <Dependent Role="productos_kardex">
-              <PropertyRef Name="auto_concepto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3131,7 +3034,7 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
           <Property Name="auto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" />
           <Property Name="tipo_documento" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="documento" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="fecha_vencimiento" Type="DateTime" Nullable="false" />
           <Property Name="nota" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="importe" Type="Decimal" Nullable="false" />
@@ -3169,6 +3072,103 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
             </Principal>
             <Dependent Role="cxp">
               <PropertyRef Name="auto_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="productos_kardex">
+          <Key>
+            <PropertyRef Name="auto_producto" />
+            <PropertyRef Name="total" />
+            <PropertyRef Name="auto_deposito" />
+            <PropertyRef Name="auto_concepto" />
+            <PropertyRef Name="auto_documento" />
+            <PropertyRef Name="fecha" />
+            <PropertyRef Name="hora" />
+            <PropertyRef Name="documento" />
+            <PropertyRef Name="modulo" />
+            <PropertyRef Name="entidad" />
+            <PropertyRef Name="signo" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="cantidad_bono" />
+            <PropertyRef Name="cantidad_und" />
+            <PropertyRef Name="costo_und" />
+            <PropertyRef Name="estatus_anulado" />
+            <PropertyRef Name="nota" />
+            <PropertyRef Name="precio_und" />
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="siglas" />
+            <PropertyRef Name="codigo_sucursal" />
+            <PropertyRef Name="cierre_ftp" />
+            <PropertyRef Name="codigo_deposito" />
+            <PropertyRef Name="nombre_deposito" />
+            <PropertyRef Name="codigo_concepto" />
+            <PropertyRef Name="nombre_concepto" />
+            <PropertyRef Name="factor_cambio" />
+          </Key>
+          <Property Name="auto_producto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="total" Type="Decimal" Nullable="false" />
+          <Property Name="auto_deposito" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="auto_concepto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="auto_documento" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="hora" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="modulo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="entidad" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="signo" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Nullable="false" />
+          <Property Name="cantidad_bono" Type="Decimal" Nullable="false" />
+          <Property Name="cantidad_und" Type="Decimal" Nullable="false" />
+          <Property Name="costo_und" Type="Decimal" Nullable="false" />
+          <Property Name="estatus_anulado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="nota" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="precio_und" Type="Decimal" Nullable="false" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="siglas" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_sucursal" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cierre_ftp" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_deposito" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_deposito" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_concepto" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_concepto" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="factor_cambio" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="empresa_depositos" Relationship="compraModel.productos_kardex_ibfk_2" FromRole="productos_kardex" ToRole="empresa_depositos" />
+          <NavigationProperty Name="productos" Relationship="compraModel.productos_kardex_ibfk_1" FromRole="productos_kardex" ToRole="productos" />
+          <NavigationProperty Name="productos_conceptos" Relationship="compraModel.productos_kardex_ibfk_3" FromRole="productos_kardex" ToRole="productos_conceptos" />
+        </EntityType>
+        <Association Name="productos_kardex_ibfk_2">
+          <End Type="compraModel.empresa_depositos" Role="empresa_depositos" Multiplicity="1" />
+          <End Type="compraModel.productos_kardex" Role="productos_kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa_depositos">
+              <PropertyRef Name="auto" />
+            </Principal>
+            <Dependent Role="productos_kardex">
+              <PropertyRef Name="auto_deposito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_kardex_ibfk_1">
+          <End Type="compraModel.productos" Role="productos" Multiplicity="1" />
+          <End Type="compraModel.productos_kardex" Role="productos_kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="auto" />
+            </Principal>
+            <Dependent Role="productos_kardex">
+              <PropertyRef Name="auto_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_kardex_ibfk_3">
+          <End Type="compraModel.productos_conceptos" Role="productos_conceptos" Multiplicity="1" />
+          <End Type="compraModel.productos_kardex" Role="productos_kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos_conceptos">
+              <PropertyRef Name="auto" />
+            </Principal>
+            <Dependent Role="productos_kardex">
+              <PropertyRef Name="auto_concepto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3691,39 +3691,6 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="productos_kardex">
-            <EntityTypeMapping TypeName="compraModel.productos_kardex">
-              <MappingFragment StoreEntitySet="productos_kardex">
-                <ScalarProperty Name="factor_cambio" ColumnName="factor_cambio" />
-                <ScalarProperty Name="nombre_concepto" ColumnName="nombre_concepto" />
-                <ScalarProperty Name="codigo_concepto" ColumnName="codigo_concepto" />
-                <ScalarProperty Name="nombre_deposito" ColumnName="nombre_deposito" />
-                <ScalarProperty Name="codigo_deposito" ColumnName="codigo_deposito" />
-                <ScalarProperty Name="cierre_ftp" ColumnName="cierre_ftp" />
-                <ScalarProperty Name="codigo_sucursal" ColumnName="codigo_sucursal" />
-                <ScalarProperty Name="siglas" ColumnName="siglas" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="precio_und" ColumnName="precio_und" />
-                <ScalarProperty Name="nota" ColumnName="nota" />
-                <ScalarProperty Name="estatus_anulado" ColumnName="estatus_anulado" />
-                <ScalarProperty Name="costo_und" ColumnName="costo_und" />
-                <ScalarProperty Name="cantidad_und" ColumnName="cantidad_und" />
-                <ScalarProperty Name="cantidad_bono" ColumnName="cantidad_bono" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-                <ScalarProperty Name="signo" ColumnName="signo" />
-                <ScalarProperty Name="entidad" ColumnName="entidad" />
-                <ScalarProperty Name="modulo" ColumnName="modulo" />
-                <ScalarProperty Name="documento" ColumnName="documento" />
-                <ScalarProperty Name="hora" ColumnName="hora" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="auto_documento" ColumnName="auto_documento" />
-                <ScalarProperty Name="auto_concepto" ColumnName="auto_concepto" />
-                <ScalarProperty Name="auto_deposito" ColumnName="auto_deposito" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="auto_producto" ColumnName="auto_producto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="compras_pend_detalle">
             <EntityTypeMapping TypeName="compraModel.compras_pend_detalle">
               <MappingFragment StoreEntitySet="compras_pend_detalle">
@@ -3895,6 +3862,39 @@ FROM `proveedores_agencias` AS `proveedores_agencias`</DefiningQuery>
                 <ScalarProperty Name="tipo_documento" ColumnName="tipo_documento" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="auto" ColumnName="auto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos_kardex">
+            <EntityTypeMapping TypeName="compraModel.productos_kardex">
+              <MappingFragment StoreEntitySet="productos_kardex">
+                <ScalarProperty Name="factor_cambio" ColumnName="factor_cambio" />
+                <ScalarProperty Name="nombre_concepto" ColumnName="nombre_concepto" />
+                <ScalarProperty Name="codigo_concepto" ColumnName="codigo_concepto" />
+                <ScalarProperty Name="nombre_deposito" ColumnName="nombre_deposito" />
+                <ScalarProperty Name="codigo_deposito" ColumnName="codigo_deposito" />
+                <ScalarProperty Name="cierre_ftp" ColumnName="cierre_ftp" />
+                <ScalarProperty Name="codigo_sucursal" ColumnName="codigo_sucursal" />
+                <ScalarProperty Name="siglas" ColumnName="siglas" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="precio_und" ColumnName="precio_und" />
+                <ScalarProperty Name="nota" ColumnName="nota" />
+                <ScalarProperty Name="estatus_anulado" ColumnName="estatus_anulado" />
+                <ScalarProperty Name="costo_und" ColumnName="costo_und" />
+                <ScalarProperty Name="cantidad_und" ColumnName="cantidad_und" />
+                <ScalarProperty Name="cantidad_bono" ColumnName="cantidad_bono" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="signo" ColumnName="signo" />
+                <ScalarProperty Name="entidad" ColumnName="entidad" />
+                <ScalarProperty Name="modulo" ColumnName="modulo" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="auto_documento" ColumnName="auto_documento" />
+                <ScalarProperty Name="auto_concepto" ColumnName="auto_concepto" />
+                <ScalarProperty Name="auto_deposito" ColumnName="auto_deposito" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="auto_producto" ColumnName="auto_producto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
