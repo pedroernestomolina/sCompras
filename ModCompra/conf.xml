@@ -3,7 +3,7 @@
   <Servidor>
     <Instancia>10.10.100.155</Instancia>
     <Catalogo>zufu</Catalogo>
-    <Usuario></Usuario>
+    <Usuario>01</Usuario>
   </Servidor>
   <Documentos>
     <Generar_Documento>
