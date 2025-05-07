@@ -37,10 +37,19 @@ namespace ModCompra._CtaxPagarPago.Modo.Zufu.handlers
                 frm.ShowDialog();
             }
         }
+        public override void AgregarMetPago()
+        {
+            _panelMetPago.AgregarMetPago(); 
+        }
+        public override void ListarMetPago()
+        {
+            _panelMetPago.ListarMetPago();
+        }
         //
         private bool cargarData()
         {
             return true;
         }
+
     }
 }

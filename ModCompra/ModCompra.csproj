@@ -974,6 +974,8 @@
     <Compile Include="Utils\FiltrosCB\ICtrlConBusqueda.cs" />
     <Compile Include="Utils\FiltrosCB\Idata.cs" />
     <Compile Include="Utils\FiltrosCB\ITextoBuscar.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\General\IGeneral.cs" />
+    <Compile Include="Utils\FiltrosCB\SinBusqueda\General\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\data.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\Imp.cs" />
     <Compile Include="Utils\FiltrosCB\SinBusqueda\MedioPago\IMedioPago.cs" />
@@ -1010,14 +1012,34 @@
     <Compile Include="_CtaxPagarPago\Modo\Zufu\vistas\FrmPago.designer.cs">
       <DependentUpon>FrmPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="_CtaxPagarPago_MetodosPago\basePanelAgregarEditarItem.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\basePanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IItemMetPago.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IItem.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IdataAgregarEditarMetPag.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IListaItems.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IPanelListaItems.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IPanel.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndListaItems.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanelAgregarItem.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanelEditarItem.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanelListItems.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IAgregarEditar.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IAgregarMetodo.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IEditarMetodo.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IPanelAgregarEditarItem.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\dataAgregarEditarMetPag.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\item.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuListaItems.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanelAgregarItem.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanelEditarItem.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanel.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanelListaItems.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\Convertidores.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\IGetItems.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\UC_GetItems.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarFactorCambio\Iuc.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarFactorCambio\uc.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarMediosPago\data.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarMediosPago\IUC.cs" />
+    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarMediosPago\UC.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmMetPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1735,7 +1757,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_CtaxPagarPago\Modo\Zufu\usesCase\" />
-    <Folder Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\" />
     <Folder Include="_CtaxPagar\Modo\General\" />
     <Folder Include="_CtaxPagar\Modo\Transporte\" />
   </ItemGroup>

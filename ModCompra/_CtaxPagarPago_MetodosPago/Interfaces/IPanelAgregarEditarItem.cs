@@ -7,23 +7,27 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtaxPagarPago_MetodosPago.Interfaces
 {
-    public interface IAgregarEditar : HlpGestion.IGestion
+    public interface IPanelAgregarEditarItem : HlpGestion.IGestion
     {
         string GetTituloFicha { get; }
-        Object GetMetCobroSource { get; }
+        Object GetSourceMedPago { get; }
         decimal GetMonto { get; }
         decimal GetFactor { get; }
+        bool GetAplicaFactor { get; }
+        decimal GetMontoAplica { get; }
         string GetBanco { get; }
         string GetNroCta { get; }
         string GetCheqRefTrans { get; }
         DateTime GetFechaOp { get; }
         string GetDetalleOp { get; }
-        bool GetAplicaFactor { get; }
-        string GetMetCobroID { get; }
+        string GetIdMedPago { get; }
         string GetReferencia { get; }
         string GetLote { get; }
+        object GetMedioPago { get; }
+        decimal GetImporteMonact { get; }
+        decimal GetImporteMonDiv { get; }
         //
-        void setMetCobro(string id);
+        void setMedPago(string id);
         void setMonto(decimal monto);
         void setFactor(decimal factor);
         void setBanco(string banco);
@@ -34,5 +38,10 @@ namespace ModCompra._CtaxPagarPago_MetodosPago.Interfaces
         void setAplicaFactor(bool p);
         void setLote(string lote);
         void setReferencia(string referenc);
+        //
+        bool ProcesarIsOK { get; }
+        bool AbandonarIsOK { get; }
+        void AbandonarFicha();
+        void Procesar();
     }
 }

@@ -13,7 +13,7 @@ namespace ModCompra._CtaxPagarPago_MetodosPago.Modo.Zufu.vistas
 {
     public partial class FrmLista: Form
     {
-        //private PanelPrincipal.Pago.IListaMetPago _controlador;
+        private Interfaces.IZufuPanelListaItems _controlador;
         //
         private void InicializarGrid_1()
         {
@@ -88,19 +88,19 @@ namespace ModCompra._CtaxPagarPago_MetodosPago.Modo.Zufu.vistas
         }
         private void FrmLista_Load(object sender, EventArgs e)
         {
-            //var sourc = (BindingSource)_controlador.Source;
-            //sourc.CurrentChanged += sourc_CurrentChanged;
-            //DGV.DataSource = sourc;
-            //ActualizarFicha();
-            //ActualizarTotal();
+            var sourc = (BindingSource)_controlador.GetDataSource;
+            sourc.CurrentChanged += sourc_CurrentChanged;
+            DGV.DataSource = sourc;
+            ActualizarFicha();
+            ActualizarTotal();
         }
         private void FrmLista_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
-        //public void setControlador(PanelPrincipal.Pago.IListaMetPago ctr)
-        //{
-        //    _controlador = ctr;
-        //}
+        public void setControlador(Interfaces.IZufuPanelListaItems ctr)
+        {
+            _controlador = ctr;
+        }
         void sourc_CurrentChanged(object sender, EventArgs e)
         {
             ActualizarFicha();
@@ -120,15 +120,15 @@ namespace ModCompra._CtaxPagarPago_MetodosPago.Modo.Zufu.vistas
         //
         private void EditarMetodoPago()
         {
-            //_controlador.EditarMetodoPago();
-            //ActualizarTotal();
-            //ActualizarFicha();
+            _controlador.EditarItem();
+            ActualizarTotal();
+            ActualizarFicha();
         }
         private void EliminarMetodoPago()
         {
-            //_controlador.EliminarMetodoPago();
-            //ActualizarTotal();
-            //ActualizarFicha();
+            _controlador.EliminarItem();
+            ActualizarTotal();
+            ActualizarFicha();
         }
         private void Abandonar()
         {
@@ -136,18 +136,18 @@ namespace ModCompra._CtaxPagarPago_MetodosPago.Modo.Zufu.vistas
         }
         private void ActualizarTotal()
         {
-            //L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
+            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
         }
         private void ActualizarFicha()
         {
-            //L_METODO_PAGO.Text = _controlador.GetMetodoPagoOp;
-            //L_MONTO.Text = _controlador.GetMontoOp.ToString("n2");
-            //L_BANCO.Text = _controlador.GetBancoOp;
-            //L_FECHA_OP.Text = _controlador.GetFechaOp.ToShortDateString();
-            //L_DETALLE_OP.Text = _controlador.GetDetalleOp;
-            //L_NRO_CTA.Text = _controlador.GetNroCtaOp;
-            //L_REF.Text = _controlador.GetRefOp;
-            //L_APLICA_FACTOR.Text = _controlador.GetAplicaFactorOp;
+            L_METODO_PAGO.Text = _controlador.GetMetodoPagoOp;
+            L_MONTO.Text = _controlador.GetMontoOp.ToString("n2");
+            L_BANCO.Text = _controlador.GetBancoOp;
+            L_FECHA_OP.Text = _controlador.GetFechaOp.ToShortDateString();
+            L_DETALLE_OP.Text = _controlador.GetDetalleOp;
+            L_NRO_CTA.Text = _controlador.GetNroCtaOp;
+            L_REF.Text = _controlador.GetRefOp;
+            L_APLICA_FACTOR.Text = _controlador.GetAplicaFactorOp;
         }
         private void Salir()
         {

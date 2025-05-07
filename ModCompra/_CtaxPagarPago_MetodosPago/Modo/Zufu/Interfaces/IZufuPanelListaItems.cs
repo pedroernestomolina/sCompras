@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtaxPagarPago_MetodosPago.Modo.Zufu.Interfaces
 {
-    public interface IAgregarMetodo: _CtaxPagarPago_MetodosPago.Interfaces.IAgregarEditar
+    public interface IZufuPanelListaItems: _CtaxPagarPago_MetodosPago.Interfaces.IPanelListaItems
     {
-        //IItemMetPago ItemAgregar { get; }
     }
 }

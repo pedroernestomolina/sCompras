@@ -63,6 +63,11 @@
             this.panel26 = new System.Windows.Forms.Panel();
             this.CHB_APLICA_FACTOR = new System.Windows.Forms.CheckBox();
             this.panel27 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.L_MONTO_APLICA = new System.Windows.Forms.Label();
             this.TB_FACTOR_CAMBIO = new LibControles.NumeroDecimal();
             this.panel28 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -106,6 +111,9 @@
             this.panel25.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel27.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel29.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -303,7 +311,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 20);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Monto Cobrado:";
+            this.label4.Text = "Monto:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel14
@@ -563,6 +571,7 @@
             // 
             // panel27
             // 
+            this.panel27.Controls.Add(this.tableLayoutPanel4);
             this.panel27.Controls.Add(this.TB_FACTOR_CAMBIO);
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel27.Location = new System.Drawing.Point(184, 85);
@@ -571,6 +580,65 @@
             this.panel27.Padding = new System.Windows.Forms.Padding(2);
             this.panel27.Size = new System.Drawing.Size(411, 24);
             this.panel27.TabIndex = 5;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.panel11, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel12, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(102, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(307, 20);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.label1);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel11.Location = new System.Drawing.Point(1, 0);
+            this.panel11.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(60, 20);
+            this.panel11.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Total:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.L_MONTO_APLICA);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(63, 0);
+            this.panel12.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(100, 20);
+            this.panel12.TabIndex = 1;
+            // 
+            // L_MONTO_APLICA
+            // 
+            this.L_MONTO_APLICA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_MONTO_APLICA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_MONTO_APLICA.Location = new System.Drawing.Point(0, 0);
+            this.L_MONTO_APLICA.Name = "L_MONTO_APLICA";
+            this.L_MONTO_APLICA.Size = new System.Drawing.Size(100, 20);
+            this.L_MONTO_APLICA.TabIndex = 3;
+            this.L_MONTO_APLICA.Text = "0,0";
+            this.L_MONTO_APLICA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TB_FACTOR_CAMBIO
             // 
@@ -879,6 +947,9 @@
             this.panel26.PerformLayout();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
             this.panel28.ResumeLayout(false);
             this.panel29.ResumeLayout(false);
             this.panel29.PerformLayout();
@@ -955,5 +1026,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TB_LOTE;
         private System.Windows.Forms.TextBox TB_REF;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label L_MONTO_APLICA;
     }
 }

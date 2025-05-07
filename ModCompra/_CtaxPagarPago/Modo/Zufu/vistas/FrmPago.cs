@@ -79,13 +79,13 @@ namespace ModCompra._CtaxPagarPago.Modo.Zufu.vistas
         //
         private void AgregarMetPago()
         {
-            //_controlador.AgregarMetPago();
-            //ActualizarPanelMet();
+            _controlador.AgregarMetPago();
+            ActualizarPanelMet();
         }
         private void ListarMetPago()
         {
-            //_controlador.ListarMetPago();
-            //ActualizarPanelMet();
+            _controlador.ListarMetPago();
+            ActualizarPanelMet();
         }
         private void ListarCtasPagar()
         {

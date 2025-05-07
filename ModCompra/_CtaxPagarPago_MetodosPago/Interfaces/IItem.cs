@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtaxPagarPago_MetodosPago.Interfaces
 {
-    public interface IItemMetPago
+    public interface IItem
     {
         decimal Monto { get; set; }
         decimal FactorCambio { get; set; }
@@ -22,6 +22,6 @@ namespace ModCompra._CtaxPagarPago_MetodosPago.Interfaces
         decimal ImporteMonDiv { get; set; }
         decimal ImporteMonAct { get; set; }
         string DescMetCobro { get; set; }
-        LibUtilitis.Opcion.IData MetCobro { get; set; }
+        LibUtilitis.Opcion.IData MedioPago { get; set; }
     }
 }

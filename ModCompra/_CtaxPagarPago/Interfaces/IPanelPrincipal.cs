@@ -13,12 +13,14 @@ namespace ModCompra._CtaxPagarPago.Interfaces
         string GetTituloFrm { get; }
         bool IsPagoExitoso { get; }
         bool AbandonarFichaIsOk { get; }
-        // PANEL METODOS/PAGO
-        int GetCntMetRecibido { get; }
-        decimal GetMontoRecibido { get; }
         //
         void setEntidadInfo(string info);
         void setEntidadId(string id);
         void AbandonarFicha();
+        // PANEL METODOS/PAGO
+        int GetCntMetRecibido { get; }
+        decimal GetMontoRecibido { get; }
+        void AgregarMetPago();
+        void ListarMetPago();
     }
 }

@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtaxPagarPago_MetodosPago.Modo.Zufu.Interfaces
 {
-    public interface IEditarMetodo: _CtaxPagarPago_MetodosPago.Interfaces.IAgregarEditar
+    public interface IZufuListaItems: _CtaxPagarPago_MetodosPago.Interfaces.IListaItems
     {
-        //IItemMetPago ItemActualizado { get; }
-        //void setItemEditar(IItemMetPago item);
     }
 }

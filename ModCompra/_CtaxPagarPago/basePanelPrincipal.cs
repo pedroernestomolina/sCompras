@@ -45,5 +45,7 @@ namespace ModCompra._CtaxPagarPago
         {
             _abandonar.Opcion();
         }
+        abstract public void AgregarMetPago();
+        abstract public void ListarMetPago();
     }
 }
