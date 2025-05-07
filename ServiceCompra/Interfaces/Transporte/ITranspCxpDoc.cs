@@ -10,7 +10,7 @@ namespace ServiceCompra.Interfaces.Transporte
     public interface ITranspCxpDoc
     {
         DtoLib.ResultadoLista<DtoLibTransporte.CxpDoc.DocPend.Ficha>
-            Transporte_CxpDoc_GetLista_DocPend();
+            Transporte_CxpDoc_GetLista_DocPend(DtoLibTransporte.CxpDoc.DocPend.Filtro filtro);
         DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.DocEntidad.Ficha>
             Transporte_CxpDoc_GetDocPend_ById(string idCxP);
         DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.Resultado>

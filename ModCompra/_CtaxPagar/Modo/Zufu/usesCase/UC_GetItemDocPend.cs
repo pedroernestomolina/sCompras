@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ModCompra._CtaxPagar.Modo.Zufu.usesCase
+{
+    public class UC_GetItemDocPend: IGetItemsDocPend
+    {
+        private IEnumerable<object> _data;
+        //
+        public void setData(IEnumerable<object> data)
+        {
+            _data = data;
+        }
+        public List<_CtaxPagar.Interfaces.IdataItemDocPend> GetItems()
+        {
+            return Convertidores.convertToDataItemDocPend(_data);
+        }
+    }
+}

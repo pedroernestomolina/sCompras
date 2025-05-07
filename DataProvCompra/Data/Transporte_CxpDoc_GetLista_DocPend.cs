@@ -11,11 +11,16 @@ namespace DataProvCompra.Data
     public partial class DataProv : IData
     {
         public OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha>
-            Transporte_CxpDoc_GetLista_DocPend()
+            Transporte_CxpDoc_GetLista_DocPend(OOB.LibCompra.Transporte.CxpDoc.DocPend.Filtro filtro)
         {
             var result = new OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha>();
             //
-            var r01 = MyData.Transporte_CxpDoc_GetLista_DocPend();
+            var filtroDto = new DtoLibTransporte.CxpDoc.DocPend.Filtro()
+            {
+                CadenaBusq = filtro.CadenaBusq,
+                IdEntidad = filtro.IdEntidad,
+            };
+            var r01 = MyData.Transporte_CxpDoc_GetLista_DocPend(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
@@ -43,6 +48,9 @@ namespace DataProvCompra.Data
                             tasafactor = s.tasafactor,
                             tipoDoc = s.tipoDoc,
                             idDocOrigen = s.idDocOrigen,
+                            idEntidad = s.idEntidad,
+                            diasVencida = s.diasvencida,
+                            notasDoc= s.notasDoc,
                         };
                         return nr;
                     }).ToList();

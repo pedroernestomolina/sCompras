@@ -296,7 +296,9 @@ namespace ModCompra
             _toolAliados.Inicializa();
             _toolAliados.Inicia();
         }
+
         srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
+        _CtaxPagar.Interfaces.IPanelPrincipal _tools ;
         public void ToolsDocumentos()
         {
             if (_toolDoc == null)
@@ -305,6 +307,13 @@ namespace ModCompra
             }
             _toolDoc.Inicializa();
             _toolDoc.Inicia();
+
+            if (_tools == null)
+            {
+                _tools = Sistema.Fabrica.NewInstancia_ToolsCtaxPagar();
+            }
+            _tools.Inicializa();
+            _tools.Inicia();
         }
 
 

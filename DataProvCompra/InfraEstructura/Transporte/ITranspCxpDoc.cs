@@ -10,7 +10,7 @@ namespace DataProvCompra.InfraEstructura.Transporte
     public interface ITranspCxpDoc
     {
         OOB.ResultadoLista<OOB.LibCompra.Transporte.CxpDoc.DocPend.Ficha>
-            Transporte_CxpDoc_GetLista_DocPend();
+            Transporte_CxpDoc_GetLista_DocPend(OOB.LibCompra.Transporte.CxpDoc.DocPend.Filtro filtro);
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.DocEntidad.Ficha>
             Transporte_CxpDoc_GetDocPend_ById(string idCxP);
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.Resultado>

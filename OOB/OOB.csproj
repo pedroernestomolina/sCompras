@@ -176,6 +176,7 @@
     <Compile Include="LibCompra\Transporte\CxpDoc\baseFicha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\DocEntidad\Ficha.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\DocPend\Ficha.cs" />
+    <Compile Include="LibCompra\Transporte\CxpDoc\DocPend\Filtro.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\CajaMov.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataCaja.cs" />
     <Compile Include="LibCompra\Transporte\CxpDoc\Pago\Agregar\DataRecibo.cs" />

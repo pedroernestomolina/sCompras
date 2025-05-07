@@ -23,5 +23,8 @@ namespace DtoLibTransporte.CxpDoc.DocPend
         public decimal acumuladoDiv { get; set; }
         public decimal restaDiv { get; set; }
         public decimal tasafactor { get; set; }
+        public string idEntidad { get; set; }
+        public int diasvencida { get; set; }
+        public string notasDoc { get; set; }
     }
 }

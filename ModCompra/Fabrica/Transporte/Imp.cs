@@ -257,5 +257,12 @@ namespace ModCompra.Fabrica.Transporte
             }
             return rt;
         }
+
+        //
+        public _CtaxPagar.Interfaces.IPanelPrincipal 
+            NewInstancia_ToolsCtaxPagar()
+        {
+            return null;
+        }
     }
 }

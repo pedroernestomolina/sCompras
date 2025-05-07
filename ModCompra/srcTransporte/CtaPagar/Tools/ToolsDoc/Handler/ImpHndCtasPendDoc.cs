@@ -47,7 +47,8 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.ToolsDoc.Handler
             try
             {
                 _lst.Clear();
-                var r01 = Sistema.MyData.Transporte_CxpDoc_GetLista_DocPend();
+                var _filtro = new OOB.LibCompra.Transporte.CxpDoc.DocPend.Filtro();
+                var r01 = Sistema.MyData.Transporte_CxpDoc_GetLista_DocPend(_filtro);
                 foreach (var rg in r01.Lista.OrderBy(o => o.fechaEmision).ToList()) 
                 {
                     var rw= new dataItemCtasPend(rg);

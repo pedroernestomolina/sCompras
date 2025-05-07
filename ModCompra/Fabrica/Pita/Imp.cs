@@ -316,5 +316,12 @@ namespace ModCompra.Fabrica.Pita
             }
             return rt;
         }
+
+        //
+        public _CtaxPagar.Interfaces.IPanelPrincipal 
+            NewInstancia_ToolsCtaxPagar()
+        {
+            return new _CtaxPagar.Modo.Zufu.handlers.hndPanelPrincipal();
+        }
     }
 }

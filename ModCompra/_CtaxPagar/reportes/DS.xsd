@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS" targetNamespace="http://tempuri.org/DS.xsd" xmlns:mstns="http://tempuri.org/DS.xsd" xmlns="http://tempuri.org/DS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS" msprop:Generator_UserDSName="DS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CtaPend_General" msprop:Generator_TableClassName="CtaPend_GeneralDataTable" msprop:Generator_TableVarName="tableCtaPend_General" msprop:Generator_RowChangedName="CtaPend_GeneralRowChanged" msprop:Generator_TablePropName="CtaPend_General" msprop:Generator_RowDeletingName="CtaPend_GeneralRowDeleting" msprop:Generator_RowChangingName="CtaPend_GeneralRowChanging" msprop:Generator_RowEvHandlerName="CtaPend_GeneralRowChangeEventHandler" msprop:Generator_RowDeletedName="CtaPend_GeneralRowDeleted" msprop:Generator_RowClassName="CtaPend_GeneralRow" msprop:Generator_UserTableName="CtaPend_General" msprop:Generator_RowEvArgName="CtaPend_GeneralRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" msprop:Generator_ColumnVarNameInTable="columnitem" msprop:Generator_ColumnPropNameInRow="item" msprop:Generator_ColumnPropNameInTable="itemColumn" msprop:Generator_UserColumnName="item" type="xs:string" minOccurs="0" />
+              <xs:element name="entidad" msprop:Generator_ColumnVarNameInTable="columnentidad" msprop:Generator_ColumnPropNameInRow="entidad" msprop:Generator_ColumnPropNameInTable="entidadColumn" msprop:Generator_UserColumnName="entidad" type="xs:string" minOccurs="0" />
+              <xs:element name="montoDeuda" msprop:Generator_ColumnVarNameInTable="columnmontoDeuda" msprop:Generator_ColumnPropNameInRow="montoDeuda" msprop:Generator_ColumnPropNameInTable="montoDeudaColumn" msprop:Generator_UserColumnName="montoDeuda" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoCredito" msprop:Generator_ColumnVarNameInTable="columnmontoCredito" msprop:Generator_ColumnPropNameInRow="montoCredito" msprop:Generator_ColumnPropNameInTable="montoCreditoColumn" msprop:Generator_UserColumnName="montoCredito" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoAcumulado" msprop:Generator_ColumnVarNameInTable="columnmontoAcumulado" msprop:Generator_ColumnPropNameInRow="montoAcumulado" msprop:Generator_ColumnPropNameInTable="montoAcumuladoColumn" msprop:Generator_UserColumnName="montoAcumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPendiente" msprop:Generator_ColumnVarNameInTable="columnmontoPendiente" msprop:Generator_ColumnPropNameInRow="montoPendiente" msprop:Generator_ColumnPropNameInTable="montoPendienteColumn" msprop:Generator_UserColumnName="montoPendiente" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cntDocDeuda" msprop:Generator_ColumnVarNameInTable="columncntDocDeuda" msprop:Generator_ColumnPropNameInRow="cntDocDeuda" msprop:Generator_ColumnPropNameInTable="cntDocDeudaColumn" msprop:Generator_UserColumnName="cntDocDeuda" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CtaPend_Entidad" msprop:Generator_TableClassName="CtaPend_EntidadDataTable" msprop:Generator_TableVarName="tableCtaPend_Entidad" msprop:Generator_TablePropName="CtaPend_Entidad" msprop:Generator_RowDeletingName="CtaPend_EntidadRowDeleting" msprop:Generator_RowChangingName="CtaPend_EntidadRowChanging" msprop:Generator_RowEvHandlerName="CtaPend_EntidadRowChangeEventHandler" msprop:Generator_RowDeletedName="CtaPend_EntidadRowDeleted" msprop:Generator_UserTableName="CtaPend_Entidad" msprop:Generator_RowChangedName="CtaPend_EntidadRowChanged" msprop:Generator_RowEvArgName="CtaPend_EntidadRowChangeEvent" msprop:Generator_RowClassName="CtaPend_EntidadRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" msprop:Generator_ColumnVarNameInTable="columnitem" msprop:Generator_ColumnPropNameInRow="item" msprop:Generator_ColumnPropNameInTable="itemColumn" msprop:Generator_UserColumnName="item" type="xs:int" minOccurs="0" />
+              <xs:element name="montoDeuda" msprop:Generator_ColumnVarNameInTable="columnmontoDeuda" msprop:Generator_ColumnPropNameInRow="montoDeuda" msprop:Generator_ColumnPropNameInTable="montoDeudaColumn" msprop:Generator_UserColumnName="montoDeuda" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoAcumulado" msprop:Generator_ColumnVarNameInTable="columnmontoAcumulado" msprop:Generator_ColumnPropNameInRow="montoAcumulado" msprop:Generator_ColumnPropNameInTable="montoAcumuladoColumn" msprop:Generator_UserColumnName="montoAcumulado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="montoPendiente" msprop:Generator_ColumnVarNameInTable="columnmontoPendiente" msprop:Generator_ColumnPropNameInRow="montoPendiente" msprop:Generator_ColumnPropNameInTable="montoPendienteColumn" msprop:Generator_UserColumnName="montoPendiente" type="xs:decimal" minOccurs="0" />
+              <xs:element name="docNumero" msprop:Generator_ColumnVarNameInTable="columndocNumero" msprop:Generator_ColumnPropNameInRow="docNumero" msprop:Generator_ColumnPropNameInTable="docNumeroColumn" msprop:Generator_UserColumnName="docNumero" type="xs:string" minOccurs="0" />
+              <xs:element name="docTipo" msprop:Generator_ColumnVarNameInTable="columndocTipo" msprop:Generator_ColumnPropNameInRow="docTipo" msprop:Generator_ColumnPropNameInTable="docTipoColumn" msprop:Generator_UserColumnName="docTipo" type="xs:string" minOccurs="0" />
+              <xs:element name="docFechaEmision" msprop:Generator_ColumnVarNameInTable="columndocFechaEmision" msprop:Generator_ColumnPropNameInRow="docFechaEmision" msprop:Generator_ColumnPropNameInTable="docFechaEmisionColumn" msprop:Generator_UserColumnName="docFechaEmision" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="docFechaVence" msprop:Generator_ColumnVarNameInTable="columndocFechaVence" msprop:Generator_ColumnPropNameInRow="docFechaVence" msprop:Generator_ColumnPropNameInTable="docFechaVenceColumn" msprop:Generator_UserColumnName="docFechaVence" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="diasVencida" msprop:Generator_ColumnVarNameInTable="columndiasVencida" msprop:Generator_ColumnPropNameInRow="diasVencida" msprop:Generator_ColumnPropNameInTable="diasVencidaColumn" msprop:Generator_UserColumnName="diasVencida" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
