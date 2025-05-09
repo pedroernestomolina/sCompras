@@ -22,5 +22,9 @@ namespace ModCompra._CtaxPagarPago.Interfaces
         decimal GetMontoRecibido { get; }
         void AgregarMetPago();
         void ListarMetPago();
+        // PANEL DOCUMENTOS PENDIENTES
+        int Get_DocSeleccionadosAPagar_Cnt { get; }
+        decimal Get_DocSeleccionadosAPagar_Monto { get; }
+        decimal Get_DocPendPorPagar_DeudaTotal { get; }
     }
 }

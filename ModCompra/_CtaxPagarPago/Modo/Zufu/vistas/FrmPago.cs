@@ -26,7 +26,7 @@ namespace ModCompra._CtaxPagarPago.Modo.Zufu.vistas
             //L_CLIENTE.Text = _controlador.GetCliente;
             //ActualizarPanelAnticipo();
             ActualizarPanelMet();
-            //ActualizarPanelCtas();
+            ActualizarPanelDocPend();
             //ActualizarPanelNtCred();
             //ActualizarPanelResumen();
         }
@@ -137,11 +137,11 @@ namespace ModCompra._CtaxPagarPago.Modo.Zufu.vistas
             L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
             //ActualizarPanelResumen();
         }
-        private void ActualizarPanelCtas()
+        private void ActualizarPanelDocPend()
         {
-            //L_CNT_CTAS_PAGAR.Text = _controlador.GetCntCtasPagar.ToString();
-            //L_MONTO_PAGAR.Text = _controlador.GetMontoCtasPagar.ToString("n2");
-            //L_SALDO_PEND_PAGAR.Text = _controlador.GetSaldoPendPagar.ToString("n2");
+            L_CNT_CTAS_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_Cnt.ToString();
+            L_MONTO_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_Monto.ToString("n2");
+            L_SALDO_PEND_PAGAR.Text = _controlador.Get_DocPendPorPagar_DeudaTotal.ToString("n2");
             //ActualizarPanelResumen();
         }
         private void ActualizarPanelNtCred()

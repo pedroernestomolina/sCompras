@@ -1603,6 +1603,7 @@
             // 
             // BT_LISTAR_CTAS_PAGAR
             // 
+            this.BT_LISTAR_CTAS_PAGAR.BackgroundImage = global::ModCompra.Properties.Resources.bt_lista;
             this.BT_LISTAR_CTAS_PAGAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BT_LISTAR_CTAS_PAGAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_LISTAR_CTAS_PAGAR.FlatAppearance.BorderSize = 0;

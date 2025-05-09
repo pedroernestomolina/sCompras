@@ -18,9 +18,6 @@ namespace ModCompra._CtaxPagarPago
         abstract public string GetTituloFrm { get; }
         public bool IsPagoExitoso { get { return _isPagoExitoso; } }
         public bool AbandonarFichaIsOk { get { return _abandonar.OpcionIsOK; } }
-        // PANEL MET/PAGO
-        abstract public int GetCntMetRecibido { get; }
-        abstract public decimal GetMontoRecibido { get; }
         //
         public basePanelPrincipal()
         {
@@ -45,7 +42,16 @@ namespace ModCompra._CtaxPagarPago
         {
             _abandonar.Opcion();
         }
+
+        // PANEL MET/PAGO
+        abstract public int GetCntMetRecibido { get; }
+        abstract public decimal GetMontoRecibido { get; }
         abstract public void AgregarMetPago();
         abstract public void ListarMetPago();
+
+        // PANEL DOCUMENTOS PENDIENTES
+        abstract public int Get_DocSeleccionadosAPagar_Cnt { get; }
+        abstract public decimal Get_DocSeleccionadosAPagar_Monto { get; }
+        abstract public decimal Get_DocPendPorPagar_DeudaTotal { get; }
     }
 }

@@ -1012,6 +1012,10 @@
     <Compile Include="_CtaxPagarPago\Modo\Zufu\vistas\FrmPago.designer.cs">
       <DependentUpon>FrmPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="_CtaxPagarPago_DocPend\basePanel.cs" />
+    <Compile Include="_CtaxPagarPago_DocPend\Interfaces\IPanel.cs" />
+    <Compile Include="_CtaxPagarPago_DocPend\Modo\Zufu\handlers\hndPanel.cs" />
+    <Compile Include="_CtaxPagarPago_DocPend\Modo\Zufu\Interfaces\IZufuPanel.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\basePanelAgregarEditarItem.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\basePanel.cs" />
     <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IItem.cs" />
@@ -1757,6 +1761,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_CtaxPagarPago\Modo\Zufu\usesCase\" />
+    <Folder Include="_CtaxPagarPago_DocPend\usesCase\" />
     <Folder Include="_CtaxPagar\Modo\General\" />
     <Folder Include="_CtaxPagar\Modo\Transporte\" />
   </ItemGroup>
