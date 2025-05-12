@@ -297,25 +297,6 @@ namespace ModCompra
             _toolAliados.Inicia();
         }
 
-        srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
-        _CtaxPagar.Interfaces.IPanelPrincipal _tools ;
-        public void ToolsDocumentos()
-        {
-            if (_toolDoc == null)
-            {
-                _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
-            }
-            _toolDoc.Inicializa();
-            _toolDoc.Inicia();
-
-            if (_tools == null)
-            {
-                _tools = Sistema.Fabrica.NewInstancia_ToolsCtaxPagar();
-            }
-            _tools.Inicializa();
-            _tools.Inicia();
-        }
-
 
         //CAJA
         public void CajaRegistrarMov()
@@ -569,5 +550,37 @@ namespace ModCompra
             _compraAliado.Inicializa();
             _compraAliado.Inicia();
         }
+
+
+
+
+        srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
+        _CtaxPagar.Interfaces.IPanelPrincipal _tools ;
+        _CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel _toolsCtasPorPagar;
+        public void ToolsDocumentos()
+        {
+            //if (_toolDoc == null)
+            //{
+            //    _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
+            //}
+            //_toolDoc.Inicializa();
+            //_toolDoc.Inicia();
+
+            //if (_tools == null)
+            //{
+            //    _tools = Sistema.Fabrica.NewInstancia_ToolsCtaxPagar();
+            //}
+            //_tools.Inicializa();
+            //_tools.Inicia();
+
+            if (_toolsCtasPorPagar == null)
+            {
+                _toolsCtasPorPagar = new _CtasPorPagar.PanelPrincipal._Inicio.handlers.hndPanelPrincipal();
+            }
+            _toolsCtasPorPagar.Inicializa();
+            _toolsCtasPorPagar.Inicia();
+        }
+
+
     }
 }
