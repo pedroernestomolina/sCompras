@@ -9,7 +9,6 @@ namespace ModCompra._CtasPorPagar.GestionPago
 {
     abstract public class basePanel: __.Interfaces.PanelGestionPago.IPanel
     {
-        private string _idEntidad;
         private Utils.Control.Boton.Abandonar.IAbandonar _abandonar;
         private bool _isPagoExitoso;
         //
@@ -17,6 +16,27 @@ namespace ModCompra._CtasPorPagar.GestionPago
         abstract public string GetTituloFrm { get; }
         public bool IsPagoExitoso { get { return _isPagoExitoso; } }
         public bool AbandonarFichaIsOk { get { return _abandonar.OpcionIsOK; } }
+
+        // PANEL ANTICIPOS
+        abstract public decimal Get_Anticipos_MontoAUsar { get; }
+        abstract public decimal Get_Anticipos_MontoDisponible { get; }
+
+        // PANEL MET/PAGO
+        abstract public int GetCntMetRecibido { get; }
+        abstract public decimal GetMontoRecibido { get; }
+        abstract public void AgregarMetPago();
+        abstract public void ListarMetPago();
+
+        //PANEL POR DEUDA
+        abstract public int Get_DocSeleccionadosAPagar_PorDeuda_Cnt { get; }
+        abstract public decimal Get_DocSeleccionadosAPagar_PorDeuda_Monto { get; }
+        abstract public decimal Get_DocPorDeuda_MontoTotal { get; }
+
+        //PANEL POR NC
+        abstract public int Get_DocSeleccionadosAPagar_PorNC_Cnt { get; }
+        abstract public decimal Get_DocSeleccionadosAPagar_PorNC_Monto { get; }
+        abstract public decimal Get_DocNC_MontoDisponible { get; }
+
         //
         public basePanel()
         {
@@ -29,24 +49,15 @@ namespace ModCompra._CtasPorPagar.GestionPago
             _abandonar.Inicializa();
         }
         abstract public void Inicia();
-        public void setEntidadId(string id)
-        {
-            _idEntidad = id;
-        }
+        abstract public void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar GetItemActual);
         public void AbandonarFicha()
         {
             _abandonar.Opcion();
         }
 
-        // PANEL MET/PAGO
-        abstract public int GetCntMetRecibido { get; }
-        abstract public decimal GetMontoRecibido { get; }
-        abstract public void AgregarMetPago();
-        abstract public void ListarMetPago();
 
-        // PANEL DOCUMENTOS PENDIENTES
-        abstract public int Get_DocSeleccionadosAPagar_Cnt { get; }
-        abstract public decimal Get_DocSeleccionadosAPagar_Monto { get; }
-        abstract public decimal Get_DocPendPorPagar_DeudaTotal { get; }
+        //
+        abstract public void ListarDocPend();
+        abstract public void ListarNtCred();
     }
 }

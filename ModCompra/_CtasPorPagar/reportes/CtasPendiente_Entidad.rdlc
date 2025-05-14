@@ -1094,7 +1094,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>LISTADO:  CUENTAS PENDIENTES O</Value>
+                  <Value>LISTADO:  CUENTAS PENDIENTES</Value>
                   <Style>
                     <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>

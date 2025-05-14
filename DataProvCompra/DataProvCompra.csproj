@@ -79,6 +79,7 @@
     <Compile Include="Data\TransporteDocumentoRet_Anular_ObtenerData.cs" />
     <Compile Include="Data\TransporteDocumentoRet_Anular_Procesar.cs" />
     <Compile Include="Data\Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion.cs" />
+    <Compile Include="Data\Transporte_CxpDoc_GetInfo_Entidad.cs" />
     <Compile Include="Data\Transporte_CxpDoc_GetLista_DocPend.cs" />
     <Compile Include="Data\TranspReportes.cs" />
     <Compile Include="Data\Usuario.cs" />

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra._CtasPorPagar.__.Modelos.PanelPrincipal
+namespace ModCompra._CtasPorPagar.__.Interfaces.PanelDocumentos
 {
     public interface IListaDesplegar: 
-        ModCompra.__.Interfaces.ILista<Modelos.PanelPrincipal.IItemDesplegar>
+        ModCompra.__.Interfaces.ILista<Modelos.PanelDocumentos.IItemDesplegar>
     {
     }
 }

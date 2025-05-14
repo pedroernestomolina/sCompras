@@ -100,6 +100,7 @@
     <Compile Include="TransporteDocumento.cs" />
     <Compile Include="Reportes_Compras_LibroSeniat_GetLista.cs" />
     <Compile Include="Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion.cs" />
+    <Compile Include="Transporte_CxpDoc_GetInfo_Entidad.cs" />
     <Compile Include="Transporte_CxpDoc_GetLista_DocPend.cs" />
     <Compile Include="TranspDocumentoRet_Anular.cs" />
     <Compile Include="TranspDocumentoRet_Anular_ObtenerData.cs" />

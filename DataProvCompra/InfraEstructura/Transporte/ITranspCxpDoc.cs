@@ -23,5 +23,10 @@ namespace DataProvCompra.InfraEstructura.Transporte
         //
         OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Resultado>
             Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Ficha ficha);
+
+        //
+        //OBTIENE INFORMACION TANTO COMO FICHA ENTIDAD Y DOCUMENOS PENDIENTES
+        OOB.ResultadoEntidad<OOB.LibCompra.Transporte.CxpDoc.GetInfoEntidad.Ficha>
+            Transporte_CxpDoc_GetInfo_Entidad(string idEntidad);
     }
 }

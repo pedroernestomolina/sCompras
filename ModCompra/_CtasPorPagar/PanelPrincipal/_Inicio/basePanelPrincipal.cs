@@ -10,6 +10,7 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio
 {
     abstract public class basePanelPrincipal: _CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel
     {
+        private string _textoBuscar;
         protected IMPanel _mPanel;
         //
         public abstract string GetTituloPanel { get; }
@@ -18,7 +19,7 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio
         public abstract decimal GetMontoPendiente { get; }
         public abstract  int GetCntItems { get; }
         public bool AbandonarFichaIsOK { get { return true; } }
-        public string GetTextoBuscar { get { return _mPanel.GetTextoBuscar; } }
+        public string GetTextoBuscar { get { return _textoBuscar; } }
         public IMPanel MPanel { get { return _mPanel; } }
         //
         public basePanelPrincipal()
@@ -26,6 +27,7 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio
         }
         public virtual void Inicializa()
         {
+            _textoBuscar = "";
             _mPanel.Inicializa();
         }
         public abstract void Inicia();
@@ -34,7 +36,8 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio
         }
         public void setTextoBuscar(string texto)
         {
-            MPanel.setTextoBuscar(texto);
+            _textoBuscar = texto;
+            //MPanel.setTextoBuscar(texto);
         }
         abstract public void BuscarCtasPendientes();
         abstract public void Proveedor_CtasPend();

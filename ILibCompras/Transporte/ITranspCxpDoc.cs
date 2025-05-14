@@ -25,5 +25,9 @@ namespace ILibCompras.Transporte
         //
         DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Resultado>
             Transporte_CxpDoc_GestionPago_Agregar_PagoPorRetencion(DtoLibTransporte.CxpDoc.Pago.Agregar.PagoPorRetencion.Ficha ficha);
+
+        //OBTIENE INFORMACION TANTO COMO FICHA ENTIDAD Y DOCUMENOS PENDIENTES
+        DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.GetInfoEntidad.Ficha>
+            Transporte_CxpDoc_GetInfo_Entidad(string idEntidad);
     }
 }

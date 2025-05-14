@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra._CtasPorPagar.GestionPago
+namespace ModCompra._CtasPorPagar.PanelAbonarPago.interfaces
 {
-    class Class1
+    public interface IPanel: __.Interfaces.PanelAbonarPago.IPanel
     {
     }
 }

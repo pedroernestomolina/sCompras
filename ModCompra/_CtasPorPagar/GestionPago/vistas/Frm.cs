@@ -23,11 +23,10 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         {
             L_TITULO.Text = _controlador.GetTituloFrm;
             L_ENTIDAD.Text = _controlador.GetInfoEntidad;
-            //L_CLIENTE.Text = _controlador.GetCliente;
-            //ActualizarPanelAnticipo();
+            ActualizarPanelAnticipo();
             ActualizarPanelMet();
             ActualizarPanelDocPend();
-            //ActualizarPanelNtCred();
+            ActualizarPanelNtCred();
             //ActualizarPanelResumen();
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -89,13 +88,13 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         }
         private void ListarCtasPagar()
         {
-            //_controlador.ListarCtasPagar();
-            //ActualizarPanelCtas();
+            _controlador.ListarDocPend();
+            ActualizarPanelDocPend();
         }
         private void ListarNtCred()
         {
-            //_controlador.ListarNtCred();
-            //ActualizarPanelNtCred();
+            _controlador.ListarNtCred();
+            ActualizarPanelNtCred();
         }
         private void AgregarAnticipo()
         {
@@ -127,8 +126,8 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         }
         private void ActualizarPanelAnticipo() 
         {
-            //L_MONTO_ANTICIPO.Text = _controlador.GetMontoAnticipo.ToString("n2");
-            //L_ANTICIPO_DISPONIBLE.Text = _controlador.GetMontoAnticipoDisponible.ToString("n2");
+            L_MONTO_ANTICIPO.Text = _controlador.Get_Anticipos_MontoAUsar.ToString("n2");
+            L_ANTICIPO_DISPONIBLE.Text = _controlador.Get_Anticipos_MontoDisponible.ToString("n2");
             //ActualizarPanelResumen();
         }
         private void ActualizarPanelMet()
@@ -139,16 +138,16 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         }
         private void ActualizarPanelDocPend()
         {
-            L_CNT_CTAS_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_Cnt.ToString();
-            L_MONTO_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_Monto.ToString("n2");
-            L_SALDO_PEND_PAGAR.Text = _controlador.Get_DocPendPorPagar_DeudaTotal.ToString("n2");
+            L_CNT_CTAS_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Cnt.ToString();
+            L_MONTO_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Monto.ToString("n2");
+            L_SALDO_PEND_PAGAR.Text = _controlador.Get_DocPorDeuda_MontoTotal.ToString("n2");
             //ActualizarPanelResumen();
         }
         private void ActualizarPanelNtCred()
         {
-            //L_CNT_NT_CRED.Text = _controlador.GetCntNtCred.ToString();
-            //L_MONTO_NT_CRED.Text = _controlador.GetMontoNtCred.ToString("n2");
-            //L_NTCRED_DISPONIBLE.Text = _controlador.GetMontoNtCredDisponible.ToString("n2");
+            L_CNT_NT_CRED.Text = _controlador.Get_DocSeleccionadosAPagar_PorNC_Cnt.ToString();
+            L_MONTO_NT_CRED.Text = _controlador.Get_DocSeleccionadosAPagar_PorNC_Monto.ToString("n2");
+            L_NTCRED_DISPONIBLE.Text = _controlador.Get_DocNC_MontoDisponible.ToString("n2");
             //ActualizarPanelResumen();
         }
         private void ActualizarPanelResumen()

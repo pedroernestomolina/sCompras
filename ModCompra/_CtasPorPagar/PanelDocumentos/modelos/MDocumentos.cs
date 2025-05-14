@@ -1,5 +1,4 @@
-﻿using ModCompra._CtasPorPagar.__.Modelos.PanelPrincipal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,36 +10,32 @@ namespace ModCompra._CtasPorPagar.PanelDocumentos.modelos
     public class MDocumentos: __.Modelos.PanelDocumentos.IMDocumentos
     {
         private string _infoEntidad;
-        private IItemDesplegar _item;
-        private __.Modelos.PanelDocumentos.IListaIDesplegar _listaDesplegar;
-        private __.UsesCase.PanelDocumentos.IVisualizarDoc _visualizarDoc;
-        private __.UsesCase.PanelDocumentos.IReporteDoc _repDoc;
+        private __.Modelos.PanelPrincipal.IItemDesplegar _itemEntidad;
+        private List<__.Modelos.PanelDocumentos.IItemDesplegar> _itemsDoc;
         //
-        public int GetCantDoc { get { return ListaDesplegar.GetCntItems; } }
-        public decimal GetMontoResta { get { return ListaDesplegar.Items.Sum(s=>s.MontoPendiente); } }
-        public decimal GetMontoAcumulado { get { return ListaDesplegar.Items.Sum(s=>s.MontoAcumulado); } }
-        public decimal GetMontoImporte { get { return ListaDesplegar.Items.Sum(s=>s.MontoDeuda);} }
+        public IEnumerable<__.Modelos.PanelDocumentos.IItemDesplegar> GetItems { get { return _itemsDoc; } }
+        public int GetCantDoc { get { return _itemsDoc.Count(); } }
+        public decimal GetMontoResta { get { return _itemsDoc.Sum(s => s.MontoPendiente); } }
+        public decimal GetMontoAcumulado { get { return _itemsDoc.Sum(s=>s.MontoAcumulado); } }
+        public decimal GetMontoImporte { get { return _itemsDoc.Sum(s => s.MontoDeuda); } }
         public string GetEntidadInfo { get { return infoEntidad(); } }
-        public __.Modelos.PanelDocumentos.IItemDesplegar ItemActual { get { return ListaDesplegar.ItemActual; } }
-        public object GetDataSource { get { return ListaDesplegar.GetDataSource; } }
-        public __.Modelos.PanelDocumentos.IListaIDesplegar ListaDesplegar { get { return _listaDesplegar; } }
         //
         public MDocumentos()
         {
-            _listaDesplegar = new ListaIDesplegar();
-            _visualizarDoc = new usesCase.uc_VisualizarDoc();
-            _repDoc = new usesCase.uc_ReporteDoc();
+            _infoEntidad = "";
+            _itemsDoc = new List<__.Modelos.PanelDocumentos.IItemDesplegar>();
         }
         public void Inicializa()
         {
-            _listaDesplegar.Inicializa();
+            _infoEntidad = "";
+            _itemsDoc.Clear();
         }
-        public void setItemCargar(IItemDesplegar item)
+        public void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar item)
         {
-            _item=item;
-            var _it= (PanelPrincipal._Inicio.modelos.ItemDesplegar)_item;
+            _itemEntidad = item;
+            var _it = (PanelPrincipal._Inicio.modelos.ItemDesplegar)_itemEntidad;
             var _lst = new List<__.Modelos.PanelDocumentos.IItemDesplegar>();
-            foreach (var doc in _it.Documentos.Where(w=>w.signoDoc==1).OrderBy(o=>o.fechaEmision).ToList())
+            foreach (var doc in _it.Documentos.Where(w => w.signoDoc == 1).OrderBy(o => o.fechaEmision).ToList())
             {
                 var nr = new modelos.ItemDesplegar()
                 {
@@ -58,28 +53,16 @@ namespace ModCompra._CtasPorPagar.PanelDocumentos.modelos
                 };
                 _lst.Add(nr);
             }
-            _listaDesplegar.CargarItems(_lst);
-        }
-        public void VisualizarDocumento(__.Modelos.PanelDocumentos.IItemDesplegar item)
-        {
-            if (item == null) return;
-            _visualizarDoc.setIdDocVisualizar(item.docId);
-            _visualizarDoc.Execute();
-        }
-        public void ReporteDocumentos()
-        {
-            _repDoc.setInfoEntidad(_infoEntidad);
-            _repDoc.setData(_listaDesplegar.Items);
-            _repDoc.Execute();
+            _itemsDoc = _lst;
         }
         //
         private string infoEntidad()
         {
             _infoEntidad = "";
-            if (_item != null) 
+            if (_itemEntidad != null) 
             {
-                _infoEntidad += _item.CiRifEntidad + Environment.NewLine;
-                _infoEntidad += _item.NombreEntidad + Environment.NewLine;
+                _infoEntidad += _itemEntidad.CiRifEntidad + Environment.NewLine;
+                _infoEntidad += _itemEntidad.NombreEntidad + Environment.NewLine;
             }
             return _infoEntidad;
         }

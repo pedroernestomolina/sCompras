@@ -14,14 +14,9 @@ namespace ModCompra._CtasPorPagar.__.Modelos.PanelDocumentos
         decimal GetMontoAcumulado { get; }
         decimal GetMontoImporte { get; }
         string GetEntidadInfo { get; }
-        __.Modelos.PanelDocumentos.IItemDesplegar ItemActual { get; }
-        object GetDataSource { get; }
-        IListaIDesplegar ListaDesplegar { get; }
+        IEnumerable<IItemDesplegar> GetItems { get; }
         //
         void Inicializa();
         void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar item);
-        //
-        void VisualizarDocumento(IItemDesplegar item);
-        void ReporteDocumentos();
     }
 }

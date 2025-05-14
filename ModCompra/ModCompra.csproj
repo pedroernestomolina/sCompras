@@ -1003,35 +1003,82 @@
     <Compile Include="Utils\Tools\IdataCtasPendientes.cs" />
     <Compile Include="Utils\Tools\ITools.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\basePanel.cs" />
-    <Compile Include="_CtasPorPagar\GestionPago\Class1.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\modelos\MedioPago.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\modelos\Modelo.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\handlers\hndPanel.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\interfaces\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\modelos\Doc.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\modelos\Entidad.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\modelos\FichaGestion.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarInfoEntidad.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarFactorCambio.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarMediosPago.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_CtasPorPagar\GestionPago\vistas\Frm.designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\handlers\hndListaIDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\handlers\hndPanel.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\handlers\hndPanel.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\interfaces\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="_CtasPorPagar\PanelDocumentos\handlers\hndPanel.cs" />
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\interfaces\IListaItems.cs" />
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\interfaces\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\PanelDocumentos\interfaces\IListaItems.cs" />
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\modelos\ItemDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\modelos\Modelo.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\modelos\ItemDesplegar.cs" />
-    <Compile Include="_CtasPorPagar\PanelDocumentos\modelos\ListaIDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\PanelDocumentos\handlers\hndListaIDesplegar.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\interfaces\IPanel.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\modelos\MDocumentos.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\reportes\ImpRepListaDoc.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\reportes\IRepListaDoc.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\usesCase\uc_ReporteDoc.cs" />
     <Compile Include="_CtasPorPagar\PanelDocumentos\usesCase\uc_VisualizarDoc.cs" />
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_CtasPorPagar\GestionPagoDocumentos\vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="_CtasPorPagar\PanelDocumentos\vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_CtasPorPagar\PanelDocumentos\vistas\Frm.designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\basePanelAgregarEditar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\handlers\hndPanelAgregar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\interfaces\IPanelAgregar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\interfaces\IPanelAgregarEditar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\modelos\DataCtrlMedioPago.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\modelos\DataCapturar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_CtasPorPagar\PanelMetPagoLista\vistas\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_CtasPorPagar\PanelMetPagoLista\vistas\Frm.designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\basePanelPrincipal.cs" />
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\handlers\hndPanelPrincipal.cs" />
+    <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\interfaces\IListaItems.cs" />
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\interfaces\IPanelPrincipal.cs" />
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\modelos\FiltroBusqueda.cs" />
-    <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\modelos\ListaDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\handlers\hndListaDesplegar.cs" />
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\modelos\ItemDesplegar.cs" />
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\modelos\MPanel.cs" />
     <Compile Include="_CtasPorPagar\PanelPrincipal\_Inicio\reportes\IRepListaGeneral.cs" />
@@ -1049,18 +1096,34 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelAbonarPago\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelMetPagoAgregar\IPanelAgregarEditar.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelMetPagoListar\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IMedioPago.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IModelo.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelGestionPagoDocumentos\IListaDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelGestionPagoDocumentos\IPanel.cs" />
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelDocumentos\IPanel.cs" />
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelGestionPago\IPanel.cs" />
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelPrincipal\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IDoc.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IEntidad.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IFichaGestion.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPagoDocumentos\IItemDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\GestionPagoDocumentos\IModelo.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelDocumentos\IItemDesplegar.cs" />
-    <Compile Include="_CtasPorPagar\_\Modelos\PanelDocumentos\IListaIDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelPrincipal\IListaIDesplegar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelDocumentos\IMDocumentos.cs" />
-    <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IListaDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelDocumentos\IListaDesplegar.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\PanelMetPagoAgregar\IDataCapturar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IFiltroBusqueda.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IItemDesplegar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IMPanel.cs" />
     <Compile Include="_CtasPorPagar\_\Reportes\IRep.cs" />
     <Compile Include="_CtasPorPagar\_\Reportes\IRepLista.cs" />
+    <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\ICargarEntidad.cs" />
+    <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\ICargarFactorCambio.cs" />
+    <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\ICargarMediosPago.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelDocumentos\IReporteDoc.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelDocumentos\IVisualizarDoc.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelPrincipal\ICargarCuentas.cs" />
@@ -1493,7 +1556,19 @@
     <EmbeddedResource Include="_CtasPorPagar\GestionPago\vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="_CtasPorPagar\GestionPagoDocumentos\vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_CtasPorPagar\PanelAbonarPago\vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="_CtasPorPagar\PanelDocumentos\vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_CtasPorPagar\PanelMetPagoAgregar\vistas\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_CtasPorPagar\PanelMetPagoLista\vistas\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="_CtasPorPagar\PanelPrincipal\_Inicio\vistas\Frm.resx">
@@ -1665,6 +1740,7 @@
     <Content Include="Imagenes\bt_alerta.png" />
     <Content Include="Imagenes\bt_asignar.png" />
     <Content Include="Imagenes\bt_auditoria.png" />
+    <Content Include="Imagenes\bt_borrador_32.png" />
     <Content Include="Imagenes\bt_borrar.png" />
     <Content Include="Imagenes\bt_buscar.png" />
     <Content Include="Imagenes\bt_buscar_32.png" />
@@ -1755,6 +1831,7 @@
     <Content Include="Resources\bt_alerta.png" />
     <Content Include="Resources\bt_asignar.png" />
     <None Include="Resources\bt_auditoria.png" />
+    <None Include="Resources\bt_borrador_32.png" />
     <Content Include="Resources\bt_borrar.png" />
     <Content Include="Resources\bt_buscar.png" />
     <None Include="Resources\bt_buscar_32.png" />
@@ -1852,6 +1929,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_CtasPorPagar\AdministradorPago\" />
+    <Folder Include="_CtasPorPagar\PanelMetPagoAgregar\usesCase\" />
+    <Folder Include="_CtasPorPagar\PanelMetPagoLista\handlers\" />
+    <Folder Include="_CtasPorPagar\PanelMetPagoLista\interfaces\" />
+    <Folder Include="_CtasPorPagar\_\Modelos\PanelMetPagoListar\" />
     <Folder Include="_CtaxPagarPago\Modo\Zufu\usesCase\" />
     <Folder Include="_CtaxPagarPago_DocPend\Modelos\" />
     <Folder Include="_CtaxPagarPago_DocPend\usesCase\" />

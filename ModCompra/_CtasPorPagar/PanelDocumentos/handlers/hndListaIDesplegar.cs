@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra._CtasPorPagar.PanelDocumentos.modelos
+namespace ModCompra._CtasPorPagar.PanelDocumentos.handlers
 {
-    public class ListaIDesplegar: 
+    public class hndListaIDesplegar: 
         ModCompra.__.Handlers.baseLista<_CtasPorPagar.__.Modelos.PanelDocumentos.IItemDesplegar>,
-        _CtasPorPagar.__.Modelos.PanelDocumentos.IListaIDesplegar
+        interfaces.IListaItems
     {
-        public ListaIDesplegar()
+        public hndListaIDesplegar()
             : base()
         {
         }

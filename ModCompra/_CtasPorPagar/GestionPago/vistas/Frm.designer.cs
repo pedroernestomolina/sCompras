@@ -652,6 +652,7 @@
             // 
             // BT_ANTICIPO
             // 
+            this.BT_ANTICIPO.BackgroundImage = global::ModCompra.Properties.Resources.bt_sumar;
             this.BT_ANTICIPO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BT_ANTICIPO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_ANTICIPO.FlatAppearance.BorderSize = 0;
@@ -1267,6 +1268,7 @@
             // 
             // BT_LISTAR_NT_CRED
             // 
+            this.BT_LISTAR_NT_CRED.BackgroundImage = global::ModCompra.Properties.Resources.bt_lista;
             this.BT_LISTAR_NT_CRED.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BT_LISTAR_NT_CRED.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_LISTAR_NT_CRED.FlatAppearance.BorderSize = 0;

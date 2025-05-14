@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio.modelos
+namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio.handlers
 {
-    public class ListaDesplegar: 
+    public class hndListaDesplegar: 
         ModCompra.__.Handlers.baseLista<IItemDesplegar>,
-        IListaDesplegar
+        interfaces.IListaItemsDesplegar
     {
-        public ListaDesplegar()
+        public hndListaDesplegar()
             : base()
         {
         }

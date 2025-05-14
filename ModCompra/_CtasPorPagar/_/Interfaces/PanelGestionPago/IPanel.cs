@@ -13,18 +13,28 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelGestionPago
         string GetInfoEntidad { get; }
         bool IsPagoExitoso { get; }
         bool AbandonarFichaIsOk { get; }
-        //
-        void setEntidadId(string id);
-        void AbandonarFicha();
 
+        //PANEL ANTICIPOS
+        decimal Get_Anticipos_MontoAUsar { get; }
+        decimal Get_Anticipos_MontoDisponible { get; }
         // PANEL METODOS/PAGO
         int GetCntMetRecibido { get; }
         decimal GetMontoRecibido { get; }
         void AgregarMetPago();
         void ListarMetPago();
-        // PANEL DOCUMENTOS PENDIENTES
-        int Get_DocSeleccionadosAPagar_Cnt { get; }
-        decimal Get_DocSeleccionadosAPagar_Monto { get; }
-        decimal Get_DocPendPorPagar_DeudaTotal { get; }
+        // PANEL POR DEUDA
+        int  Get_DocSeleccionadosAPagar_PorDeuda_Cnt { get; }
+        decimal Get_DocSeleccionadosAPagar_PorDeuda_Monto { get; }
+        decimal Get_DocPorDeuda_MontoTotal { get; }
+        // PANEL POR NC 
+        int Get_DocSeleccionadosAPagar_PorNC_Cnt { get; }
+        decimal Get_DocSeleccionadosAPagar_PorNC_Monto { get; }
+        decimal Get_DocNC_MontoDisponible { get; }
+
+        //
+        void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar GetItemActual);
+        void ListarDocPend();
+        void ListarNtCred();
+        void AbandonarFicha();
     }
 }

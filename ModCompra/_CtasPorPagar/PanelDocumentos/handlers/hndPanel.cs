@@ -12,10 +12,13 @@ namespace ModCompra._CtasPorPagar.PanelDocumentos.handlers
     public class HndPanel: interfaces.IPanel
     {
         private __.Modelos.PanelDocumentos.IMDocumentos _mDocumentos;
+        private __.Interfaces.PanelDocumentos.IListaDesplegar _hndListaDesplegar;
+        // USES CASE
+        private __.UsesCase.PanelDocumentos.IReporteDoc _repDoc;
+        private __.UsesCase.PanelDocumentos.IVisualizarDoc _visualizarDoc;
         //
+        public __.Interfaces.PanelDocumentos.IListaDesplegar ListaDesplegar { get { return _hndListaDesplegar; } }
         public string GetTituloFrm { get { return "Documentos Pendientes Por Pagar"; } }
-        public Object GetDataSource { get { return _mDocumentos.GetDataSource; } }
-        public __.Modelos.PanelDocumentos.IItemDesplegar ItemActual { get { return _mDocumentos.ItemActual; } }
         public bool AbandonarIsOK { get { return true; } }
         public decimal GetMontoImporte { get { return _mDocumentos.GetMontoImporte; } }
         public decimal GetMontoAcumulado { get { return _mDocumentos.GetMontoAcumulado; } }
@@ -23,14 +26,20 @@ namespace ModCompra._CtasPorPagar.PanelDocumentos.handlers
         public int GetCantDoc { get { return _mDocumentos.GetCantDoc; } }
         public string GetNotasDocumento { get { return ItemActual.docNotas; } }
         public string GetEntidadInfo { get { return _mDocumentos.GetEntidadInfo; } }
+        public Object GetDataSource { get { return _hndListaDesplegar.GetDataSource; } } 
+        public __.Modelos.PanelDocumentos.IItemDesplegar ItemActual { get { return _hndListaDesplegar.ItemActual; } } 
         //
         public HndPanel()
         {
             _mDocumentos = new modelos.MDocumentos();
+            _hndListaDesplegar = new hndListaIDesplegar();
+            _repDoc = new usesCase.uc_ReporteDoc();
+            _visualizarDoc = new usesCase.uc_VisualizarDoc();
         }
         public void Inicializa()
         {
             _mDocumentos.Inicializa();
+            _hndListaDesplegar.Inicializa();
         }
         vistas.Frm frm;
         public void Inicia()
@@ -49,17 +58,21 @@ namespace ModCompra._CtasPorPagar.PanelDocumentos.handlers
         public void setItemCargar(IItemDesplegar item)
         {
             _mDocumentos.setItemCargar(item);
+            _hndListaDesplegar.CargarItems(_mDocumentos.GetItems);
         }
         //
         public void ReporteDocumentos()
         {
-            _mDocumentos.ReporteDocumentos();
+            _repDoc.setInfoEntidad(_mDocumentos.GetEntidadInfo);
+            _repDoc.setData(_mDocumentos.GetItems);
+            _repDoc.Execute();
         }
         public void VisualizarDocumento()
         {
             if (ItemActual != null)
             {
-                _mDocumentos.VisualizarDocumento(ItemActual);
+                _visualizarDoc.setIdDocVisualizar(ItemActual.docId);
+                _visualizarDoc.Execute();
             }
         }
         public void AbandonarFicha()
