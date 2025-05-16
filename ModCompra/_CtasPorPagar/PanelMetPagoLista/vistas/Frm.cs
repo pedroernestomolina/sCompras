@@ -13,7 +13,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoLista.vistas
 {
     public partial class Frm: Form
     {
-        private Interfaces.IZufuPanelListaItems _controlador;
+        private interfaces.IPanel _controlador;
         //
         private void InicializarGrid_1()
         {
@@ -32,7 +32,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoLista.vistas
             DGV.MultiSelect = false;
 
             var xc1 = new DataGridViewTextBoxColumn();
-            xc1.DataPropertyName = "DescMetCobro";
+            xc1.DataPropertyName = "DescMedioPago";
             xc1.HeaderText = "Medio Pago";
             xc1.Visible = true;
             xc1.MinimumWidth = 100;
@@ -73,7 +73,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoLista.vistas
             xc2.HeaderCell.Style.Font = f;
             xc2.DefaultCellStyle.Font = f1;
             xc2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            xc2.DefaultCellStyle.Format = "n2";
+            xc2.DefaultCellStyle.Format = "n3";
             xc2.ReadOnly = true;
 
             DGV.Columns.Add(xc1);
@@ -97,7 +97,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoLista.vistas
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
-        public void setControlador(Interfaces.IZufuPanelListaItems ctr)
+        public void setControlador(interfaces.IPanel ctr)
         {
             _controlador = ctr;
         }
@@ -136,12 +136,12 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoLista.vistas
         }
         private void ActualizarTotal()
         {
-            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
+            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n3");
         }
         private void ActualizarFicha()
         {
             L_METODO_PAGO.Text = _controlador.GetMetodoPagoOp;
-            L_MONTO.Text = _controlador.GetMontoOp.ToString("n2");
+            L_MONTO.Text = _controlador.GetMontoOp.ToString("n3");
             L_BANCO.Text = _controlador.GetBancoOp;
             L_FECHA_OP.Text = _controlador.GetFechaOp.ToShortDateString();
             L_DETALLE_OP.Text = _controlador.GetDetalleOp;

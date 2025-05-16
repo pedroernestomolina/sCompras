@@ -9,6 +9,7 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelMetPagoListar
 {
     public interface IPanel: HlpGestion.IGestion 
     {
+        IEnumerable<Modelos.PanelMetPagoAgregar.IItemAgregar> GetListaItems { get; }
         object GetDataSource { get; }
         int GetCntItems { get; }
         decimal GetMontoRecibido { get; }
@@ -21,10 +22,8 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelMetPagoListar
         string GetBancoOp { get; }
         string GetAplicaFactorOp { get; }
         //
-        IEnumerable<IItem> GetItems { get; }
-        //
         void EliminarItem();
         void EditarItem();
-        void AdicionarItem(object item);
+        void CargarMetodosPagoRegistrados(IEnumerable<Modelos.PanelMetPagoAgregar.IItemAgregar> lista);
     }
 }

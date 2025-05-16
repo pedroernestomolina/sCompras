@@ -149,7 +149,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoAgregar.vistas
         }
         private void ActualizarMontoAplica()
         {
-            L_MONTO_APLICA.Text = _controlador.GetMontoAplica.ToString("n2");
+            L_MONTO_APLICA.Text = _controlador.GetMontoAplica.ToString("n3");
         }
     }
 }

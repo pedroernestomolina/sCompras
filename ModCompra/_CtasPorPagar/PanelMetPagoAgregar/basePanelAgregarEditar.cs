@@ -15,7 +15,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoAgregar
         private __.Modelos.PanelMetPagoAgregar.IDataCapturar _data;
         private Utils.FiltrosCB.ICtrlSinBusqueda _medPago;
         private decimal _factorCambio;
-        private IEnumerable<__.Modelos.GestionPago.IMedioPago> _mediosPago;
+        protected IEnumerable<__.Modelos.GestionPago.IMedioPago> _mediosPago;
         //
         public bool AbandonarIsOK { get { return _abandonarFicha.OpcionIsOK; } }
         public bool ProcesarIsOK { get { return _procesarIsOk; } }

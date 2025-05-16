@@ -51,20 +51,36 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboCxpPagoEmitido
             ds.Tables["CxpPagoDoc"].Rows.Add(rt);
             //
             var _montoDiv = 0m;
-            foreach (var sv in ficha.caja)
+            //foreach (var sv in ficha.caja)
+            //{
+            //    _montoDiv = sv.monto;
+            //    if (sv.esDivisa.Trim().ToUpper() != "1")
+            //    {
+            //        _montoDiv/=ficha.tasaCambio;
+            //    }
+            //    DataRow rtCja = ds.Tables["CxpPagoDoc_Caja"].NewRow();
+            //    rtCja["desc"] = "( " + sv.cjCod.Trim() + " ) " + sv.cjDesc;
+            //    rtCja["monto"] = sv.monto;
+            //    rtCja["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
+            //    rtCja["montoDiv"] = _montoDiv;
+            //    ds.Tables["CxpPagoDoc_Caja"].Rows.Add(rtCja);
+            //}
+            foreach (var sv in ficha.metPago)
             {
-                _montoDiv = sv.monto;
-                if (sv.esDivisa.Trim().ToUpper() != "1")
+                _montoDiv = sv.opMonto;
+                if (sv.opAplicaConversion.Trim().ToUpper()=="1") 
                 {
-                    _montoDiv/=ficha.tasaCambio;
+                    _montoDiv = sv.opMonto/sv.opTasa;
+                    _montoDiv = Math.Round(_montoDiv, 2, MidpointRounding.AwayFromZero);
                 }
                 DataRow rtCja = ds.Tables["CxpPagoDoc_Caja"].NewRow();
-                rtCja["desc"] = "( " + sv.cjCod.Trim() + " ) " + sv.cjDesc;
-                rtCja["monto"] = sv.monto;
-                rtCja["esDivisa"] = sv.esDivisa.Trim().ToUpper() == "1" ? "$" : "";
+                rtCja["desc"] = "( " + sv.codMet.Trim() + " ) " + sv.descMet;
+                rtCja["monto"] = sv.opMonto;
+                rtCja["esDivisa"] = "$" ;
                 rtCja["montoDiv"] = _montoDiv;
                 ds.Tables["CxpPagoDoc_Caja"].Rows.Add(rtCja);
             }
+
             foreach (var sv in ficha.doc)
             {
                 DataRow rtDoc = ds.Tables["CxpPagoDoc_Doc"].NewRow();

@@ -10,12 +10,12 @@ namespace ModCompra._CtasPorPagar.GestionPago
     abstract public class basePanel: __.Interfaces.PanelGestionPago.IPanel
     {
         private Utils.Control.Boton.Abandonar.IAbandonar _abandonar;
-        private bool _isPagoExitoso;
         //
         abstract public string GetInfoEntidad { get; }
         abstract public string GetTituloFrm { get; }
-        public bool IsPagoExitoso { get { return _isPagoExitoso; } }
+        abstract public bool IsPagoExitoso { get; }
         public bool AbandonarFichaIsOk { get { return _abandonar.OpcionIsOK; } }
+        abstract public string Get_IdReciboPago_Procesado { get; }
 
         // PANEL ANTICIPOS
         abstract public decimal Get_Anticipos_MontoAUsar { get; }
@@ -40,12 +40,10 @@ namespace ModCompra._CtasPorPagar.GestionPago
         //
         public basePanel()
         {
-            _isPagoExitoso = false;
             _abandonar = new Utils.Control.Boton.Abandonar.Imp();
         }
         virtual public void Inicializa()
         {
-            _isPagoExitoso = false;
             _abandonar.Inicializa();
         }
         abstract public void Inicia();
@@ -55,9 +53,9 @@ namespace ModCompra._CtasPorPagar.GestionPago
             _abandonar.Opcion();
         }
 
-
         //
         abstract public void ListarDocPend();
         abstract public void ListarNtCred();
+        abstract public void ProcesarPago();
     }
 }

@@ -104,7 +104,7 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.vistas
             c9.HeaderCell.Style.Font = f;
             c9.DefaultCellStyle.Font = f;
             c9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            c9.DefaultCellStyle.Format = "n2";
+            c9.DefaultCellStyle.Format = "n3";
             //
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
@@ -179,7 +179,7 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.vistas
             L_ENTIDAD_DATA.Text = _controlador.GetEntidadInfo;
             L_CNT_DOC_PENDIENTE.Text = _controlador.GetCntDocPendiente.ToString("n0");
             L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendiente.ToString("n2");
-            L_MONTO_ABONADO.Text = _controlador.GetMontoAbonado.ToString("n2");
+            L_MONTO_ABONADO.Text = _controlador.GetMontoAbonado.ToString("n3");
             L_CNT_DOC_ABONADO.Text = _controlador.GetCntDocAbonado.ToString("n0");
             L_NOTAS.Text = _controlador.GetNotasAbono;
         }

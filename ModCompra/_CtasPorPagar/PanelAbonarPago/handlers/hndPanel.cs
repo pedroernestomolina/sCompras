@@ -54,6 +54,23 @@ namespace ModCompra._CtasPorPagar.PanelAbonarPago.handlers
             setMontoAbonar(item.MontoAAbonar);
             setDetalle(item.NotasDelAbono);
         }
+        public void setMontoPorMetPagoRecibido(decimal monto)
+        {
+            if (_montoAbonar == 0m)
+            {
+                if (monto > 0m)
+                {
+                    if (monto >= _montoPendiente)
+                    {
+                        _montoAbonar = _montoPendiente;
+                    }
+                    else
+                    {
+                        _montoAbonar = monto;
+                    }
+                }
+            }
+        }
         //
         vistas.Frm frm;
         public void Inicia()

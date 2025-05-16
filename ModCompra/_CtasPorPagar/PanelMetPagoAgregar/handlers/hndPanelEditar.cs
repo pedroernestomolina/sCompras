@@ -8,27 +8,44 @@ using System.Windows.Forms;
 
 namespace ModCompra._CtasPorPagar.PanelMetPagoAgregar.handlers
 {
-    public class hndPanelAgregar: 
+    public class hndPanelEditar:
         basePanelAgregarEditar,
-        interfaces.IPanelAgregar
+        interfaces.IPanelEditar
     {
-        public override string GetTituloFicha { get { return "Agregar Metodo De Pago"; } }
+        private __.Modelos.PanelMetPagoAgregar.IItemAgregar _itemEditar;
         //
-        public __.Modelos.PanelMetPagoAgregar.IItemAgregar ItemAgregar { get { return nuevoItemAgregar(); } }
+        public override string GetTituloFicha { get { return "Editar Metodo De Pago"; } }
+        __.Modelos.PanelMetPagoAgregar.IItemAgregar interfaces.IPanelEditar.GetItemActualizado { get { return nuevoItem(); } }
         //
-        public hndPanelAgregar()
-            : base()
+        public hndPanelEditar(): base()
         {
+            _itemEditar = null;
         }
-        public void Inicializa()
+        public override void Inicializa()
         {
             base.Inicializa();
+            _itemEditar = null;
         }
         vistas.Frm frm;
         public override void Inicia()
         {
             if (CargarDta()) 
             {
+                CargarMediosPago(_mediosPago);
+                if (_itemEditar != null) 
+                {
+                    setMonto(_itemEditar.Monto);
+                    setFactor(_itemEditar.FactorCambio);
+                    setBanco(_itemEditar.Banco);
+                    setCtaNro(_itemEditar.NroCta);
+                    setChequeRefTranf(_itemEditar.CheqRefTranf);
+                    setFechaOperacion(_itemEditar.FechaOp);
+                    setDetalleOperacion(_itemEditar.DetalleOp);
+                    setAplicaFactor(_itemEditar.AplicaFactor);
+                    setLote(_itemEditar.Lote);
+                    setMedPago(_itemEditar.IdMedioPago);
+                    setReferencia(_itemEditar.Referencia);
+                }
                 if (frm == null) 
                 {
                     frm = new vistas.Frm();
@@ -37,8 +54,12 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoAgregar.handlers
                 frm.ShowDialog();
             }
         }
+        public void setItemEditar(__.Modelos.PanelMetPagoAgregar.IItemAgregar item)
+        {
+            _itemEditar = item;
+        }
         //
-        private modelos.ItemAgregar nuevoItemAgregar()
+        private modelos.ItemAgregar nuevoItem()
         {
             return new modelos.ItemAgregar()
             {

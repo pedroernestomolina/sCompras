@@ -25,7 +25,7 @@ namespace ModCompra._CtasPorPagar.PanelAbonarPago.vistas
         }
         private void Frm_Load(object sender, EventArgs e)
         {
-            L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendiente.ToString("n2");
+            L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendiente.ToString("n3");
             TB_MONTO_ABONAR.Text = _controlador.GetMontoAbonar.ToString();
             TB_DETALLE.Text = _controlador.GetDetalle;
         }

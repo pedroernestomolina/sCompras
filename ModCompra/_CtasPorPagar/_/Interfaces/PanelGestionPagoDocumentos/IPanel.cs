@@ -18,11 +18,13 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelGestionPagoDocumentos
         int GetCntDocAbonado { get; }
         string GetNotasAbono { get; }
         Object GetDataSource { get; }
+        IEnumerable<__.Modelos.GestionPagoDocumentos.IItemDesplegar> Get_DocSeleccionadosConPago { get; }
         //
         bool AbandonarIsOK { get; }
         void AbandonarFicha();
         //
         void setDataCargar(string p, IEnumerable<Modelos.GestionPago.IDoc> enumerable);
+        void setMontoAbonadoPorMetPago(decimal monto);
         void setTituloPanel(string titulo);
         //
         void AbonarCta();

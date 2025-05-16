@@ -13,6 +13,7 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelGestionPago
         string GetInfoEntidad { get; }
         bool IsPagoExitoso { get; }
         bool AbandonarFichaIsOk { get; }
+        string Get_IdReciboPago_Procesado { get; }
 
         //PANEL ANTICIPOS
         decimal Get_Anticipos_MontoAUsar { get; }
@@ -35,6 +36,9 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelGestionPago
         void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar GetItemActual);
         void ListarDocPend();
         void ListarNtCred();
+
+        //
         void AbandonarFicha();
+        void ProcesarPago();
     }
 }

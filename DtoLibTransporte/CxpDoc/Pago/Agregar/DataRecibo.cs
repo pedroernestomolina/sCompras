@@ -28,5 +28,8 @@ namespace DtoLibTransporte.CxpDoc.Pago.Agregar
         public List<DataReciboDoc> reciboDoc { get; set; }
         public List<DataReciboMetodoPago> metPago { get; set; }
         public DateTime fechaEmision { get; set; }
+        //
+        public decimal guardarComoAnticipoProv { get; set; }
+        public decimal anticipoUsado { get; set; }
     }
 }

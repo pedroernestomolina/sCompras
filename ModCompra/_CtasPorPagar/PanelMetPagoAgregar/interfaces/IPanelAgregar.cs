@@ -9,6 +9,6 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoAgregar.interfaces
 {
     public interface IPanelAgregar: __.Interfaces.PanelMetPagoAgregar.IPanelAgregarEditar
     {
-        Object GetItemAgregar { get; }
+        __.Modelos.PanelMetPagoAgregar.IItemAgregar ItemAgregar { get; }
     }
 }

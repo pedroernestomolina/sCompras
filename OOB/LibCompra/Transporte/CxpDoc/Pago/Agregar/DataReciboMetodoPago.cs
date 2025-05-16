@@ -23,5 +23,6 @@ namespace OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar
         public decimal OpMonto { get; set; }
         public decimal OpTasa { get; set; }
         public bool OpAplicaConversion { get; set; }
+        public decimal montoAplicaDiv { get; set; }
     }
 }

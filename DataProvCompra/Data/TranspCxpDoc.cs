@@ -80,6 +80,8 @@ namespace DataProvCompra.Data
                     usuarioNombre = rec.usuarioNombre,
                     autoSistemaDoc = rec.autoSistemaDoc,
                     codSistemaDoc = rec.codSistemaDoc,
+                    guardarComoAnticipoProv =rec.guardarComoAnticipoProv,
+                    anticipoUsado=rec.anticipoUsado,
                     reciboDoc = rec.reciboDoc.Select(s =>
                     {
                         var nr = new DtoLibTransporte.CxpDoc.Pago.Agregar.DataReciboDoc()
@@ -109,6 +111,7 @@ namespace DataProvCompra.Data
                             OpNroTransf = ss.OpNroTransf,
                             OpRef = ss.OpRef,
                             OpTasa = ss.OpTasa,
+                            montoAplicaDiv= ss.montoAplicaDiv,
                         };
                         return mt;
                     }).ToList(),

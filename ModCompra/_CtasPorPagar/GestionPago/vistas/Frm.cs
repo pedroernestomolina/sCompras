@@ -27,7 +27,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
             ActualizarPanelMet();
             ActualizarPanelDocPend();
             ActualizarPanelNtCred();
-            //ActualizarPanelResumen();
+            ActualizarPanelResumen();
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -103,13 +103,13 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         }
         private void BtProcesar()
         {
-            //_controlador.ProcesarPago();
-            //if (_controlador.IsPagoExitoso) 
-            //{
-            //    var _autoRecibo =_controlador.GetAutoReciboGenerar;
-            //    _controlador.GenerarRecibo(_autoRecibo);
-            //    salir();
-            //}
+            _controlador.ProcesarPago();
+            if (_controlador.IsPagoExitoso)
+            {
+                //var _autoRecibo = _controlador.GetAutoReciboGenerar;
+                //_controlador.GenerarRecibo(_autoRecibo);
+                salir();
+            }
         }
         private void BtAbandonar()
         {
@@ -128,37 +128,63 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         {
             L_MONTO_ANTICIPO.Text = _controlador.Get_Anticipos_MontoAUsar.ToString("n2");
             L_ANTICIPO_DISPONIBLE.Text = _controlador.Get_Anticipos_MontoDisponible.ToString("n2");
-            //ActualizarPanelResumen();
+            ActualizarPanelResumen();
         }
         private void ActualizarPanelMet()
         {
             L_MET_CNT.Text = _controlador.GetCntMetRecibido.ToString("n0");
-            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n2");
-            //ActualizarPanelResumen();
+            L_MONTO_RECIBIDO.Text = _controlador.GetMontoRecibido.ToString("n3");
+            ActualizarPanelResumen();
         }
         private void ActualizarPanelDocPend()
         {
             L_CNT_CTAS_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Cnt.ToString();
-            L_MONTO_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Monto.ToString("n2");
+            L_MONTO_PAGAR.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Monto.ToString("n3");
             L_SALDO_PEND_PAGAR.Text = _controlador.Get_DocPorDeuda_MontoTotal.ToString("n2");
-            //ActualizarPanelResumen();
+            ActualizarPanelResumen();
         }
         private void ActualizarPanelNtCred()
         {
             L_CNT_NT_CRED.Text = _controlador.Get_DocSeleccionadosAPagar_PorNC_Cnt.ToString();
             L_MONTO_NT_CRED.Text = _controlador.Get_DocSeleccionadosAPagar_PorNC_Monto.ToString("n2");
             L_NTCRED_DISPONIBLE.Text = _controlador.Get_DocNC_MontoDisponible.ToString("n2");
-            //ActualizarPanelResumen();
+            ActualizarPanelResumen();
         }
         private void ActualizarPanelResumen()
         {
-            //L_RESUMEN_ANTICIPO.Text = _controlador.GetResumenMontoAnticipo.ToString("n2");
-            //L_RESUMEN_MET_PAGO.Text = _controlador.GetResumenMontoMetPago.ToString("n2");
-            //L_RESUMEN_NT_CRED.Text = _controlador.GetResumenMontoNtCredito.ToString("n2");
-            //L_RESUMEN_ABONO.Text = _controlador.GetResumenMontoAbono.ToString("n2");
-            //L_RESUMEN_CTAS.Text = _controlador.GetResumenMontoCtasPend.ToString("n2");
-            //L_RESUMEN_SALDO.Text = Math.Abs(_controlador.GetResumenSaldo).ToString("n2");
-            //L_RESUMEN_DES_SALDO.Text = _controlador.GetResumenSaldoDesc;
+            var ab = _controlador.Get_Anticipos_MontoAUsar;
+            ab += _controlador.GetMontoRecibido;
+            ab += _controlador.Get_DocSeleccionadosAPagar_PorNC_Monto;
+            //
+            var pg = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Monto;
+            //
+            var saldo = ab-pg;
+            //
+            var desc= "";
+            var color = System.Drawing.Color.White;
+            if (saldo > 0m)
+            {
+                desc = "SOBRANTE";
+                color = System.Drawing.Color.Blue;
+            }
+            else if (saldo < 0m)
+            {
+                desc = "FALTANTE";
+                color = System.Drawing.Color.Red;
+            }
+            else
+            {
+                desc = "OK";
+                color = System.Drawing.Color.White;
+            }
+            L_RESUMEN_ANTICIPO.Text = _controlador.Get_Anticipos_MontoAUsar.ToString("n2");
+            L_RESUMEN_MET_PAGO.Text = _controlador.GetMontoRecibido.ToString("n3");
+            L_RESUMEN_NT_CRED.Text = _controlador.Get_DocSeleccionadosAPagar_PorNC_Monto.ToString("n2");
+            L_RESUMEN_ABONO.Text = ab.ToString("n3");
+            L_RESUMEN_CTAS.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Monto.ToString("n3");
+            L_RESUMEN_SALDO.Text = Math.Abs(saldo).ToString("n3");
+            //L_RESUMEN_DES_SALDO.Text = desc;
+            //L_RESUMEN_DES_SALDO.ForeColor = color;
         }
     }
 }

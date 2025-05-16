@@ -14,6 +14,7 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
         private __.Modelos.GestionPagoDocumentos.IModelo _modelo;
         private __.Interfaces.PanelGestionPagoDocumentos.IListaDesplegar _hndListaDesplegar;
         private __.Interfaces.PanelAbonarPago.IPanel _hndAbonarPago;
+        private decimal _montoPorMetPagoRecibido;
         // USES CASE
         private __.UsesCase.PanelDocumentos.IVisualizarDoc _visualizarDoc;
         //
@@ -27,7 +28,12 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
         public string GetNotasAbono { get { return ItemActual != null ? ItemActual.NotasDelAbono : ""; } }
         public string GetEntidadInfo { get { return _modelo.GetEntidadInfo; } }
         public Object GetDataSource { get { return _hndListaDesplegar.GetDataSource; } } 
-        public __.Modelos.GestionPagoDocumentos.IItemDesplegar ItemActual { get { return _hndListaDesplegar.ItemActual; } } 
+        public __.Modelos.GestionPagoDocumentos.IItemDesplegar ItemActual { get { return _hndListaDesplegar.ItemActual; } }
+        public IEnumerable<__.Modelos.GestionPagoDocumentos.IItemDesplegar> Get_DocSeleccionadosConPago
+        {
+            get { return ListaDesplegar.Items.Where(w => w.MontoAAbonar > 0m).ToList(); }
+        }
+
         //
         public HndPanel()
         {
@@ -37,6 +43,7 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
         }
         public void Inicializa()
         {
+            _montoPorMetPagoRecibido = 0m;
             _modelo.Inicializa();
             _hndListaDesplegar.Inicializa();
         }
@@ -63,6 +70,10 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
             _modelo.setDataCargar(p, doc);
             _hndListaDesplegar.CargarItems(_modelo.GetItems);
         }
+        public void setMontoAbonadoPorMetPago(decimal monto)
+        {
+            _montoPorMetPagoRecibido = monto;
+        }
         //
         public void AbonarCta()
         {
@@ -72,6 +83,8 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
             }
             _hndAbonarPago.Inicializa();
             _hndAbonarPago.setItemCargar(ItemActual);
+            var monto = Math.Round(_montoPorMetPagoRecibido - _modelo.GetMontoAbonado, 3, MidpointRounding.AwayFromZero);
+            _hndAbonarPago.setMontoPorMetPagoRecibido(monto);
             _hndAbonarPago.Inicia();
             _hndListaDesplegar.ActualizarFuente();
         }

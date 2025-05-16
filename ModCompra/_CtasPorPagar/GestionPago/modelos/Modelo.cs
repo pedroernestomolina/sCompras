@@ -17,6 +17,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         private decimal _montoDocNCAbonar;
         private decimal _factorCambio;
         private IEnumerable<__.Modelos.GestionPago.IMedioPago> _mediosPago;
+        private IEnumerable<__.Modelos.PanelMetPagoAgregar.IItemAgregar> _metodosPago;
 
         //
         public string GetInfoEntidad { get { return _infoEntidad; } }
@@ -25,13 +26,14 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         public IEnumerable<__.Modelos.GestionPago.IDoc> DocNC { get { return _fichaGestion.NotasCredito; } }
         public decimal GetFactorCambio { get { return _factorCambio; } }
         public IEnumerable<__.Modelos.GestionPago.IMedioPago> GetMediosPago { get { return _mediosPago; } }
+        public IEnumerable<__.Modelos.PanelMetPagoAgregar.IItemAgregar> MetodosPago { get { return _metodosPago; } }
 
         //ANTICIPOS
         public decimal Get_Anticipos_MontoAUsar { get { return 0m; } }
         public decimal Get_Anticipos_MontoDisponible { get { return _fichaGestion.Entidad.anticipos; } }
         //METODOS PAGO        
-        public int GetCntMetRecibido { get { return 0; } }
-        public decimal GetMontoRecibido { get { return 0m; } }
+        public int GetCntMetPagoRecibido { get { return _metodosPago.Count(); } }
+        public decimal GetMontoPorMetPagoRecibido { get { return _metodosPago.Sum(s => s.MontoAplica); } }
         //POR DEUDA
         public int Get_DocSeleccionadosAPagar_PorDeuda_Cnt { get { return _cntDocDeudaAbonado; } }
         public decimal Get_DocSeleccionadosAPagar_PorDeuda_Monto { get { return _montoDocDeudaAbonar; } }
@@ -40,6 +42,20 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         public int Get_DocSeleccionadosAPagar_PorNC_Cnt { get { return _cntDocNCAbonado; } }
         public decimal Get_DocSeleccionadosAPagar_PorNC_Monto { get { return _montoDocNCAbonar; } }
         public decimal Get_DocNC_MontoDisponible { get { return _fichaGestion.NotasCredito.Sum(s=>s.restaDiv); } }
+
+        //
+        public decimal SaldoFinal
+        {
+            get 
+            {
+                var rt = 0m;
+                rt += Get_Anticipos_MontoAUsar;
+                rt += GetMontoPorMetPagoRecibido;
+                rt += Get_DocSeleccionadosAPagar_PorNC_Monto;
+                rt -= Get_DocSeleccionadosAPagar_PorDeuda_Monto;
+                return Math.Round(rt, 4, MidpointRounding.AwayFromZero);
+            }
+        }
 
         //
         public Modelo()
@@ -51,6 +67,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
             _cntDocNCAbonado = 0;
             _montoDocNCAbonar = 0m;
             _mediosPago = null;
+            _metodosPago = new List<__.Modelos.PanelMetPagoAgregar.IItemAgregar>();
         }
         public void Inicializa()
         {
@@ -61,6 +78,9 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
             _cntDocNCAbonado = 0;
             _montoDocNCAbonar = 0m;
             _mediosPago = null;
+            var lst = _metodosPago.ToList();
+            lst.Clear();
+            _metodosPago = lst.AsEnumerable();
         }
         public void setCargarEntidad(__.Modelos.GestionPago.IFichaGestion ficha)
         {
@@ -94,6 +114,21 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         public void setMontoDocNCAbonar(decimal monto)
         {
             _montoDocNCAbonar = monto;
+        }
+
+        //
+        public void AgregarMetodoPago(__.Modelos.PanelMetPagoAgregar.IItemAgregar rt)
+        {
+            var lst = _metodosPago.ToList();
+            lst.Add(rt);
+            _metodosPago = lst.AsEnumerable();
+        }
+        public void CargarMetodosPago(IEnumerable<__.Modelos.PanelMetPagoAgregar.IItemAgregar> lista)
+        {
+            var lst = _metodosPago.ToList();
+            lst.Clear();
+            lst.AddRange(lista);
+            _metodosPago = lst.AsEnumerable();
         }
     }
 }

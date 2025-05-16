@@ -559,12 +559,12 @@ namespace ModCompra
         _CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel _toolsCtasPorPagar;
         public void ToolsDocumentos()
         {
-            //if (_toolDoc == null)
-            //{
-            //    _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
-            //}
-            //_toolDoc.Inicializa();
-            //_toolDoc.Inicia();
+            if (_toolDoc == null)
+            {
+                _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
+            }
+            _toolDoc.Inicializa();
+            _toolDoc.Inicia();
 
             //if (_tools == null)
             //{

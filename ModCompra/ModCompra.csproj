@@ -1010,9 +1010,12 @@
     <Compile Include="_CtasPorPagar\GestionPago\modelos\Doc.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\modelos\Entidad.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\modelos\FichaGestion.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\reglasNegocio\rg_VerificarSaldoPendienteMayorAMontoEstablecido.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_ProcesarPago.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarInfoEntidad.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarFactorCambio.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarMediosPago.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_VisualizarReciboPago.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1057,16 +1060,23 @@
     </Compile>
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\basePanelAgregarEditar.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\handlers\hndPanelAgregar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\handlers\hndPanelEditar.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\interfaces\IPanelAgregar.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\interfaces\IPanelAgregarEditar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\interfaces\IPanelEditar.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\modelos\DataCtrlMedioPago.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\modelos\DataCapturar.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\modelos\ItemAgregar.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="_CtasPorPagar\PanelMetPagoAgregar\vistas\Frm.designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_CtasPorPagar\PanelMetPagoLista\handlers\hndLista.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoLista\handlers\hndPanel.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoLista\interfaces\ILista.cs" />
+    <Compile Include="_CtasPorPagar\PanelMetPagoLista\interfaces\IPanel.cs" />
     <Compile Include="_CtasPorPagar\PanelMetPagoLista\vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1098,6 +1108,7 @@
     </Compile>
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelAbonarPago\IPanel.cs" />
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelMetPagoAgregar\IPanelAgregarEditar.cs" />
+    <Compile Include="_CtasPorPagar\_\Interfaces\PanelMetPagoListar\ILista.cs" />
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelMetPagoListar\IPanel.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IMedioPago.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\GestionPago\IModelo.cs" />
@@ -1116,14 +1127,21 @@
     <Compile Include="_CtasPorPagar\_\Modelos\PanelDocumentos\IMDocumentos.cs" />
     <Compile Include="_CtasPorPagar\_\Interfaces\PanelDocumentos\IListaDesplegar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelMetPagoAgregar\IDataCapturar.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\PanelMetPagoAgregar\IItemAgregar.cs" />
+    <Compile Include="_CtasPorPagar\_\Modelos\PanelMetPagoListar\IItemDesplegar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IFiltroBusqueda.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IItemDesplegar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IMPanel.cs" />
+    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IProcesarPago_ConAnticipos.cs" />
+    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IProcesarPago_ConNotasCredito.cs" />
+    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IVerifica_SaldoPendienteMayorAMontoEstablecido.cs" />
     <Compile Include="_CtasPorPagar\_\Reportes\IRep.cs" />
     <Compile Include="_CtasPorPagar\_\Reportes\IRepLista.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\ICargarEntidad.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\ICargarFactorCambio.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\ICargarMediosPago.cs" />
+    <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\IProcesarPago.cs" />
+    <Compile Include="_CtasPorPagar\_\UsesCase\GestionPago\IVisualizarReciboPago.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelDocumentos\IReporteDoc.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelDocumentos\IVisualizarDoc.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelPrincipal\ICargarCuentas.cs" />
@@ -1930,9 +1948,6 @@
   <ItemGroup>
     <Folder Include="_CtasPorPagar\AdministradorPago\" />
     <Folder Include="_CtasPorPagar\PanelMetPagoAgregar\usesCase\" />
-    <Folder Include="_CtasPorPagar\PanelMetPagoLista\handlers\" />
-    <Folder Include="_CtasPorPagar\PanelMetPagoLista\interfaces\" />
-    <Folder Include="_CtasPorPagar\_\Modelos\PanelMetPagoListar\" />
     <Folder Include="_CtaxPagarPago\Modo\Zufu\usesCase\" />
     <Folder Include="_CtaxPagarPago_DocPend\Modelos\" />
     <Folder Include="_CtaxPagarPago_DocPend\usesCase\" />

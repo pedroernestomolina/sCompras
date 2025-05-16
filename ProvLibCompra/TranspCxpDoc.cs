@@ -70,6 +70,13 @@ namespace ProvLibCompra
             }
             return result;
         }
+
+
+        class anticipoProv 
+        {
+            public string auto { get; set; }
+            public decimal anticipos { get; set; }
+        }
         public DtoLib.ResultadoEntidad<DtoLibTransporte.CxpDoc.Pago.Agregar.Resultado>
             Transporte_CxpDoc_GestionPago_Agregar(DtoLibTransporte.CxpDoc.Pago.Agregar.Ficha ficha)
         {
@@ -216,7 +223,9 @@ namespace ProvLibCompra
                                     monto_recibido_divisa, 
                                     cambio_divisa, 
                                     tasa_cambio,
-                                    auto_sistema_documento) 
+                                    auto_sistema_documento,
+                                    anticipo_usado,
+                                    guardar_anticipo_prov) 
                                 VALUES (
                                     @auto, 
                                     @documento, 
@@ -240,7 +249,9 @@ namespace ProvLibCompra
                                     @monto_recibido_divisa, 
                                     0, 
                                     @tasa_cambio,
-                                    @auto_sistema_documento)";
+                                    @auto_sistema_documento,
+                                    @anticipo_usado,
+                                    @guardar_anticipo_prov)";
                         var recibo = ficha.Recibo;
                         p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto", _autoRecibo);
                         p01 = new MySql.Data.MySqlClient.MySqlParameter("@documento", _numRecibo);
@@ -262,9 +273,14 @@ namespace ProvLibCompra
                         var p16 = new MySql.Data.MySqlClient.MySqlParameter("@monto_recibido_divisa", recibo.montoRecibidoDivisa);
                         var p17 = new MySql.Data.MySqlClient.MySqlParameter("@tasa_cambio", recibo.tasaCambio);
                         var p18 = new MySql.Data.MySqlClient.MySqlParameter("@auto_sistema_documento", recibo.autoSistemaDoc);
+                        var p19 = new MySql.Data.MySqlClient.MySqlParameter("@anticipo_usado", recibo.anticipoUsado);
+                        //
+                        var p20 = new MySql.Data.MySqlClient.MySqlParameter("@guardar_anticipo_prov", recibo.guardarComoAnticipoProv);
+                        //
                         var xr3 = cnn.Database.ExecuteSqlCommand(sql,
                             p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
-                            p10, p11, p12, p13, p14, p15, p16, p17, p18);
+                            p10, p11, p12, p13, p14, p15, p16, p17, p18, p19,
+                            p20);
                         if (xr3 == 0)
                         {
                             result.Mensaje = "ERROR AL INSERTAR TABLA [ RECIBO ]";
@@ -275,16 +291,36 @@ namespace ProvLibCompra
                         //
                         // ACTUALIZAR SALDO PROVEEDOR 
                         sql = @"update proveedores set
-                                    creditos=creditos+@montoRecibo
+                                    creditos=creditos+@montoRecibo,
+                                    anticipos= anticipos-@anticipoUsado+@anticipoGuardar
                                 where auto=@autoProv";
                         p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.Recibo.prvAuto);
                         p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoRecibo", ficha.Recibo.importeDivisa);
-                        var xr4 = cnn.Database.ExecuteSqlCommand(sql, p01, p02);
+                        p03 = new MySql.Data.MySqlClient.MySqlParameter("@anticipoUsado", ficha.Recibo.anticipoUsado);
+                        p04 = new MySql.Data.MySqlClient.MySqlParameter("@anticipoGuardar", ficha.Recibo.guardarComoAnticipoProv);
+                        var xr4 = cnn.Database.ExecuteSqlCommand(sql, p01, p02, p03, p04);
                         if (xr4 == 0)
                         {
                             throw new Exception("ERROR AL ACTUALIZAR SALDO PROVEEDOR");
                         }
                         cnn.SaveChanges();
+                        //
+                        //
+                        sql = @"select 
+                                    auto,
+                                    anticipos 
+                                from proveedores 
+                                where auto=@autoProv";
+                        p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.Recibo.prvAuto);
+                        var _anticipoProv = cnn.Database.SqlQuery<anticipoProv>(sql, p01).FirstOrDefault();
+                        if (_anticipoProv == null)
+                        {
+                            throw new Exception("ERROR PROVEEDOR NO ENCONTRADO");
+                        }
+                        if (_anticipoProv.anticipos<0m)
+                        {
+                            throw new Exception("ERROR ANTICIPO INSUFICIENTE");
+                        }
                         //
                         //
                         if (ficha.Recibo.reciboDoc != null)
@@ -480,7 +516,8 @@ namespace ProvLibCompra
                                         opDetalle, 
                                         opMonto, 
                                         opTasa, 
-                                        opAplicaConversion) 
+                                        opAplicaConversion,
+                                        monto_aplica_div) 
                                     VALUES (
                                         @auto_recibo, 
                                         @descMedPag, 
@@ -504,7 +541,8 @@ namespace ProvLibCompra
                                         @opDetalle, 
                                         @opMonto, 
                                         @opTasa, 
-                                        @opAplicaConversion)";
+                                        @opAplicaConversion,
+                                        @monto_aplica_div)";
                                 p00 = new MySql.Data.MySqlClient.MySqlParameter("@auto_recibo", _autoRecibo);
                                 p01 = new MySql.Data.MySqlClient.MySqlParameter("@descMedPag", mt.descMedPago);
                                 p02 = new MySql.Data.MySqlClient.MySqlParameter("@monto_recibido", mt.OpMonto);
@@ -523,9 +561,10 @@ namespace ProvLibCompra
                                 p14 = new MySql.Data.MySqlClient.MySqlParameter("@opMonto", mt.OpMonto);
                                 p15 = new MySql.Data.MySqlClient.MySqlParameter("@opTasa", mt.OpTasa);
                                 p16 = new MySql.Data.MySqlClient.MySqlParameter("@opAplicaConversion", mt.OpAplicaConversion);
+                                p17 = new MySql.Data.MySqlClient.MySqlParameter("@monto_aplica_div", mt.montoAplicaDiv);
                                 var xr7 = cnn.Database.ExecuteSqlCommand(sql,
                                     p00, p01, p02, p03, p04, p05, p06, p07, p08, p09,
-                                    p10, p11, p12, p13, p14, p15, p16);
+                                    p10, p11, p12, p13, p14, p15, p16, p17);
                                 if (xr7 == 0)
                                 {
                                     throw new Exception("ERROR AL INSERTAR REGISTRO EN TABLA [ CXP_MEDIO_PAGO ]");
