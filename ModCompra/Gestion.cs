@@ -554,22 +554,6 @@ namespace ModCompra
         public void ToolsDocumentos()
         {
             Sistema.Fabrica.ToolsCtasPorPagar();
-
-            //srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
-            //if (_toolDoc == null)
-            //{
-            //    _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
-            //}
-            //_toolDoc.Inicializa();
-            //_toolDoc.Inicia();
-
-            //_CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel _toolsCtasPorPagar;
-            //if (_toolsCtasPorPagar == null)
-            //{
-            //    _toolsCtasPorPagar = new _CtasPorPagar.PanelPrincipal._Inicio.handlers.hndPanelPrincipal();
-            //}
-            //_toolsCtasPorPagar.Inicializa();
-            //_toolsCtasPorPagar.Inicia();
         }
     }
 }
