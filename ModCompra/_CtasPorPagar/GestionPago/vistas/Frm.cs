@@ -183,8 +183,8 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
             L_RESUMEN_ABONO.Text = ab.ToString("n3");
             L_RESUMEN_CTAS.Text = _controlador.Get_DocSeleccionadosAPagar_PorDeuda_Monto.ToString("n3");
             L_RESUMEN_SALDO.Text = Math.Abs(saldo).ToString("n3");
-            //L_RESUMEN_DES_SALDO.Text = desc;
-            //L_RESUMEN_DES_SALDO.ForeColor = color;
+            L_RESUMEN_DES_SALDO.Text = desc;
+            L_RESUMEN_DES_SALDO.ForeColor = color;
         }
     }
 }

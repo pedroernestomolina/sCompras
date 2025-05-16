@@ -19,10 +19,10 @@ namespace ModCompra._CtasPorPagar.GestionPago.reglasNegocio
         }
         public bool Execute(__.Modelos.GestionPago.IModelo modelo)
         {
-            var rt = false;
+            var rt = true;
             if (modelo.SaldoFinal < 0m) 
             {
-                return Math.Abs(modelo.SaldoFinal) > _montoEstablecido;
+                return !(Math.Abs(modelo.SaldoFinal) > _montoEstablecido  );
             }
             return rt;
         }

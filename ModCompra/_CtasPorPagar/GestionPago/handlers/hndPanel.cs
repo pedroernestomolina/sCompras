@@ -27,6 +27,9 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
         private __.UsesCase.GestionPago.IVisualizarReciboPago _ucVisualizarReciboPago;
         //
         private __.ReglasNegocio.GestionPago.IVerifica_SaldoPendienteMayorAMontoEstablecido _rgVerificarSaldoMayorAMontoEstablecido;
+        private __.ReglasNegocio.GestionPago.IVerificaPago_ConNotasCredito _rgVerificaPago_ConNotasCredito;
+        private __.ReglasNegocio.GestionPago.IVerificaPago_ConMetodosPago _rgVerificaPago_ConMetodosPago;
+        private __.ReglasNegocio.GestionPago.IVerificaPago_ConAnticipos _rgVerificaPago_ConAnticipos;
         //
 
         public override bool IsPagoExitoso { get { return _esPagoExitoso; } }
@@ -75,6 +78,9 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
             _ucVisualizarReciboPago = new usesCase.uc_VisualizarReciboPago();
             //
             _rgVerificarSaldoMayorAMontoEstablecido = new reglasNegocio.rg_VerificarSaldoPendienteMayorAMontoEstablecido();
+            _rgVerificaPago_ConNotasCredito = new reglasNegocio.rg_VerificaPago_ConNotasCredito();
+            _rgVerificaPago_ConMetodosPago = new reglasNegocio.rg_VerificaPago_ConMetodosPago();
+            _rgVerificaPago_ConAnticipos = new reglasNegocio.rg_VerificaPagoConAnticipos();
         }
         public override void Inicializa()
         {
@@ -179,56 +185,30 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
         public override void ProcesarPago()
         {
             _esPagoExitoso = false;
-
             try
             {
+                //VALIDAR 
+                if (!_rgVerificaPago_ConAnticipos.Execute(_gPago))
+                {
+                    throw new Exception(_rgVerificaPago_ConAnticipos.MensajeAlerta);
+                }
+                if (!_rgVerificaPago_ConMetodosPago.Execute(_gPago))
+                {
+                    throw new Exception(_rgVerificaPago_ConMetodosPago.MensajeAlerta);
+                }
+                if (!_rgVerificaPago_ConNotasCredito.Execute(_gPago))
+                {
+                    throw new Exception(_rgVerificaPago_ConNotasCredito.MensajeAlerta);
+                }
                 _rgVerificarSaldoMayorAMontoEstablecido.setMontoEstablecido(0.001m);
-                if (_rgVerificarSaldoMayorAMontoEstablecido.Execute(_gPago))
+                if (!_rgVerificarSaldoMayorAMontoEstablecido.Execute(_gPago))
                 {
                     throw new Exception(_rgVerificarSaldoMayorAMontoEstablecido.MensajeAlerta);
                 }
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Alerta(e.Message);
-                return;
-            }
 
-
-            if (GPago.SaldoFinal < 0m) 
-            {
-                Helpers.Msg.Alerta("HAY UN FALTANTE, Verifique Por Favor");
-                return;
-            }
-            //if (GPago.Get_DocSeleccionadosAPagar_PorNC_Monto >0m )
-            //{
-            //    if (GPago.Get_DocSeleccionadosAPagar_PorDeuda_Monto > 0m)
-            //    {
-            //        Helpers.Msg.Alerta("DEBES SELECCIONAR UN DOCUMENTO");
-            //        return;
-            //    }
-            //    if (
-            //        (GPago.Get_Anticipos_MontoAUsar + GPago.GetMontoPorMetPagoRecibido)
-            //        >= GPago.Get_DocSeleccionadosAPagar_PorDeuda_Monto
-            //       )
-            //    {
-            //        Helpers.Msg.Alerta("MONTO POR NOTAS DE CREDITO SIN USO");
-            //        return;
-            //    }
-            //    if (
-            //        GPago.Get_DocSeleccionadosAPagar_PorNC_Monto 
-            //        > GPago.Get_DocSeleccionadosAPagar_PorDeuda_Monto
-            //       )
-            //    {
-            //        Helpers.Msg.Alerta("MONTO POR NOTAS DE CREDITO SIN USO");
-            //        return;
-            //    }
-            //}
-            _procesar.Opcion();
-            if (_procesar.OpcionIsOK)
-            {
-                _esPagoExitoso = false;
-                try
+                //PROCESAR PAGO
+                _procesar.Opcion();
+                if (_procesar.OpcionIsOK)
                 {
                     _idReciboPagoProcesado = _ucProcesarPago.Execute(
                         GPago,
@@ -239,10 +219,11 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
                     //
                     _ucVisualizarReciboPago.Execute(_idReciboPagoProcesado);
                 }
-                catch (Exception e)
-                {
-                    Helpers.Msg.Error(e.Message);
-                }
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Alerta(e.Message);
+                return;
             }
         }
     }

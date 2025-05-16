@@ -273,11 +273,14 @@ namespace ModCompra.srcTransporte.CompraGasto.Handlres.Generar
                     nombreRazonSocialProveedor = _prv.Ficha.nombreRazonSocial,
                     resta = _resta,
                     restaDivisa = _restaDiv,
-                    siglasTipoDocumento = _sistDocCxp.Entidad.siglas,
-                    signoTipoDocumento = _sistDocCxp.Entidad.signo,
                     tasaDivisa = _data.Get_FactorCambio,
                     notas = "",
-                    autoSistemaDoc = _sistDocCxp.Entidad.autoId
+                    //autoSistemaDoc = _sistDocCxp.Entidad.autoId,
+                    //siglasTipoDocumento = _sistDocCxp.Entidad.siglas,
+                    //signoTipoDocumento = _sistDocCxp.Entidad.signo,
+                    autoSistemaDoc = _sistDoc.Entidad.autoId,
+                    siglasTipoDocumento = _sistDoc.Entidad.siglas,
+                    signoTipoDocumento = _sistDoc.Entidad.signo,
                 };
                 ficha.proveedor = new OOB.LibCompra.Transporte.Documento.Agregar.CompraGasto.Proveedor()
                 {

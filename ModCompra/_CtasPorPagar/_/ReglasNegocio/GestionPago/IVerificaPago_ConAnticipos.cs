@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtasPorPagar.__.ReglasNegocio.GestionPago
 {
-    public interface IProcesarPago_ConAnticipos
+    public interface IVerificaPago_ConAnticipos
     {
+        string MensajeAlerta { get; }
+        bool Execute(__.Modelos.GestionPago.IModelo modelo);
     }
 }

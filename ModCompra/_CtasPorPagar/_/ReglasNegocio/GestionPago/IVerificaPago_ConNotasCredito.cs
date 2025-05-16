@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtasPorPagar.__.ReglasNegocio.GestionPago
 {
-    public interface IProcesarPago_ConNotasCredito
+    public interface IVerificaPago_ConNotasCredito
     {
+        string MensajeAlerta { get; }
+        bool Execute(__.Modelos.GestionPago.IModelo modelo);
     }
 }

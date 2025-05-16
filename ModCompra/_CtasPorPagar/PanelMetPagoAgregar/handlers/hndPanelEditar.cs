@@ -78,7 +78,7 @@ namespace ModCompra._CtasPorPagar.PanelMetPagoAgregar.handlers
                 CodigoMedioPago = ((LibUtilitis.Opcion.IData)GetMedioPago).codigo,
                 DescMedioPago = ((LibUtilitis.Opcion.IData)GetMedioPago).desc,
                 IdMedioPago = ((LibUtilitis.Opcion.IData)GetMedioPago).id,
-                MontoAplica = GetMontoAplica,
+                MontoAplica = Math.Round(GetMontoAplica, 3, MidpointRounding.AwayFromZero),
             };
         }
     }

@@ -1010,7 +1010,10 @@
     <Compile Include="_CtasPorPagar\GestionPago\modelos\Doc.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\modelos\Entidad.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\modelos\FichaGestion.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\reglasNegocio\rg_VerificaPago_ConNotasCredito.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\reglasNegocio\rg_VerificarSaldoPendienteMayorAMontoEstablecido.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\reglasNegocio\rg_VerificaPagoConAnticipos.cs" />
+    <Compile Include="_CtasPorPagar\GestionPago\reglasNegocio\rg_VerificaPago_ConMetodosPago.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_ProcesarPago.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarInfoEntidad.cs" />
     <Compile Include="_CtasPorPagar\GestionPago\usesCase\uc_CargarFactorCambio.cs" />
@@ -1132,8 +1135,9 @@
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IFiltroBusqueda.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IItemDesplegar.cs" />
     <Compile Include="_CtasPorPagar\_\Modelos\PanelPrincipal\IMPanel.cs" />
-    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IProcesarPago_ConAnticipos.cs" />
-    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IProcesarPago_ConNotasCredito.cs" />
+    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IVerificaPago_ConAnticipos.cs" />
+    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IVerificaPago_ConMetodosPago.cs" />
+    <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IVerificaPago_ConNotasCredito.cs" />
     <Compile Include="_CtasPorPagar\_\ReglasNegocio\GestionPago\IVerifica_SaldoPendienteMayorAMontoEstablecido.cs" />
     <Compile Include="_CtasPorPagar\_\Reportes\IRep.cs" />
     <Compile Include="_CtasPorPagar\_\Reportes\IRepLista.cs" />
