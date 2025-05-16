@@ -14,6 +14,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
         private __.Modelos.GestionPago.IModelo _gPago;
         private __.Interfaces.PanelGestionPagoDocumentos.IPanel _panelDocDeuda;
         private __.Interfaces.PanelGestionPagoDocumentos.IPanel _panelDocNC;
+        private _CtasPorPagar.PanelAbonarPago.interfaces.IPanelPorMonto _panelPagoPorMonto;
         private _CtasPorPagar.PanelMetPagoAgregar.interfaces.IPanelAgregar _panelMetPagoAgregar;
         private _CtasPorPagar.PanelMetPagoAgregar.interfaces.IPanelEditar _panelMetPagoEditar;
         private _CtasPorPagar.PanelMetPagoLista.interfaces.IPanel _panelMetPagoListar;
@@ -69,6 +70,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
             _panelMetPagoAgregar = new PanelMetPagoAgregar.handlers.hndPanelAgregar();
             _panelMetPagoEditar = new PanelMetPagoAgregar.handlers.hndPanelEditar();
             _panelMetPagoListar = new PanelMetPagoLista.handlers.hndPanel();
+            _panelPagoPorMonto = new PanelAbonarPago.handlers.hndPanelPorMonto();
             _procesar = new Utils.Control.Boton.Procesar.Imp();
             //
             _ucCargarInfoEntidad = new usesCase.uc_CargarInfoEntidad();
@@ -95,6 +97,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
             _panelMetPagoAgregar.Inicializa();
             _panelMetPagoEditar.Inicializa();
             _panelMetPagoListar.Inicializa();
+            _panelPagoPorMonto.Inicializa();
             _procesar.Inicializa();
         }
         public override void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar itemEntidad)
@@ -147,6 +150,17 @@ namespace ModCompra._CtasPorPagar.GestionPago.handlers
             }
         }
         //
+        public override void AgregarAnticipo()
+        {
+            _panelPagoPorMonto.Inicializa();
+            _panelPagoPorMonto.setMontoDisponible(_gPago.Get_Anticipos_MontoDisponible);
+            _panelPagoPorMonto.setMontoAbonar(_gPago.Get_Anticipos_MontoAUsar);
+            _panelPagoPorMonto.Inicia();
+            if (_panelPagoPorMonto.ProcesarIsOK) 
+            {
+                _gPago.setMontoUsarPorAnticipo(_panelPagoPorMonto.GetMontoAbonar);
+            }
+        }
         public override void ListarDocPend()
         {
             var monto = _gPago.GetMontoPorMetPagoRecibido +

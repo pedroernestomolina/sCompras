@@ -18,6 +18,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         private decimal _factorCambio;
         private IEnumerable<__.Modelos.GestionPago.IMedioPago> _mediosPago;
         private IEnumerable<__.Modelos.PanelMetPagoAgregar.IItemAgregar> _metodosPago;
+        private decimal _montoAnticipoUsar;
 
         //
         public string GetInfoEntidad { get { return _infoEntidad; } }
@@ -29,7 +30,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         public IEnumerable<__.Modelos.PanelMetPagoAgregar.IItemAgregar> MetodosPago { get { return _metodosPago; } }
 
         //ANTICIPOS
-        public decimal Get_Anticipos_MontoAUsar { get { return 0m; } }
+        public decimal Get_Anticipos_MontoAUsar { get { return _montoAnticipoUsar; } }
         public decimal Get_Anticipos_MontoDisponible { get { return _fichaGestion.Entidad.anticipos; } }
         //METODOS PAGO        
         public int GetCntMetPagoRecibido { get { return _metodosPago.Count(); } }
@@ -60,6 +61,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         //
         public Modelo()
         {
+            _montoAnticipoUsar = 0m;
             _infoEntidad = "";
             _factorCambio = 0m;
             _cntDocDeudaAbonado = 0;
@@ -71,6 +73,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         }
         public void Inicializa()
         {
+            _montoAnticipoUsar = 0m;
             _infoEntidad = "";
             _factorCambio = 0m;
             _cntDocDeudaAbonado = 0;
@@ -97,6 +100,12 @@ namespace ModCompra._CtasPorPagar.GestionPago.modelos
         }
 
         //
+
+        public void setMontoUsarPorAnticipo(decimal monto)
+        {
+            _montoAnticipoUsar = monto;
+        }
+
         public void setCntDocDeudaAbonado(int cnt)
         {
             _cntDocDeudaAbonado = cnt;

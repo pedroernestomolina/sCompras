@@ -1027,8 +1027,10 @@
     </Compile>
     <Compile Include="_CtasPorPagar\GestionPagoDocumentos\handlers\hndListaIDesplegar.cs" />
     <Compile Include="_CtasPorPagar\GestionPagoDocumentos\handlers\hndPanel.cs" />
-    <Compile Include="_CtasPorPagar\PanelAbonarPago\handlers\hndPanel.cs" />
-    <Compile Include="_CtasPorPagar\PanelAbonarPago\interfaces\IPanel.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\handlers\hndPanelPorMonto.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\handlers\hndPanelPorDocumento.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\interfaces\IPanelPorDocumento.cs" />
+    <Compile Include="_CtasPorPagar\PanelAbonarPago\interfaces\IPanelPorMonto.cs" />
     <Compile Include="_CtasPorPagar\PanelAbonarPago\vistas\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1150,115 +1152,6 @@
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelDocumentos\IVisualizarDoc.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelPrincipal\ICargarCuentas.cs" />
     <Compile Include="_CtasPorPagar\_\UsesCase\PanelPrincipal\IReporteGeneral.cs" />
-    <Compile Include="_CtaxPagarPago\basePanelPrincipal.cs" />
-    <Compile Include="_CtaxPagarPago\Interfaces\IPanelPrincipal.cs" />
-    <Compile Include="_CtaxPagarPago\Modo\Zufu\handlers\hndPanelPrincipal.cs" />
-    <Compile Include="_CtaxPagarPago\Modo\Zufu\Interfaces\IZufuPanelPrincipal.cs" />
-    <Compile Include="_CtaxPagarPago\Modo\Zufu\vistas\FrmPago.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_CtaxPagarPago\Modo\Zufu\vistas\FrmPago.designer.cs">
-      <DependentUpon>FrmPago.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_CtaxPagarPago_DocPend\basePanel.cs" />
-    <Compile Include="_CtaxPagarPago_DocPend\Interfaces\IPanel.cs" />
-    <Compile Include="_CtaxPagarPago_DocPend\Modo\Zufu\handlers\hndPanel.cs" />
-    <Compile Include="_CtaxPagarPago_DocPend\Modo\Zufu\Interfaces\IZufuPanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\basePanelAgregarEditarItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\basePanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IdataAgregarEditarMetPag.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IListaItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IPanelListaItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IPanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndListaItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanelAgregarItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanelEditarItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanelListItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\hndPanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Interfaces\IPanelAgregarEditarItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\dataAgregarEditarMetPag.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\handlers\item.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuListaItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanelAgregarItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanelEditarItem.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanel.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\Interfaces\IZufuPanelListaItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\Convertidores.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\IGetItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\usesCase\UC_GetItems.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarFactorCambio\Iuc.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarFactorCambio\uc.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarMediosPago\data.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarMediosPago\IUC.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\usesCase\CargarMediosPago\UC.cs" />
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmMetPago.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmMetPago.designer.cs">
-      <DependentUpon>FrmMetPago.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmLista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmLista.designer.cs">
-      <DependentUpon>FrmLista.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_CtaxPagar\baseLista.cs" />
-    <Compile Include="_CtaxPagar\basePanelPrincipal.cs" />
-    <Compile Include="_CtaxPagar\Interfaces\IdataItemCtaPendEntidad.cs" />
-    <Compile Include="_CtaxPagar\Interfaces\IPanelEntidadDocPend.cs" />
-    <Compile Include="_CtaxPagar\Interfaces\IPanelPrincipal.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\handlers\dataItemDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\handlers\dataItemCtaPendEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\handlers\hndListaCtasPendEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\handlers\hndPanelEntidadDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\handlers\hndListaDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\handlers\hndPanelPrincipal.cs" />
-    <Compile Include="_CtaxPagar\Interfaces\ILista.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\Interfaces\IZufuPanelEntidadDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\Convertidores.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\Interfaces\IZufuPanelPrincipal.cs" />
-    <Compile Include="_CtaxPagar\Interfaces\IdataItemDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\Interfaces\IZufuLista.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\ICargarCtasPendienteEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\IGetItemsDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\IGetItemsCtaPendEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\IReporte_CtasPendiente_Entidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\IReporte_CtasPendiente_General.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\IVisualizarDocumentoEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_CargarCtasPendienteEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_CargarCtasPendientes.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\ICargarCtasPendientes.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_GetItemDocPend.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_GetItemCtasPendEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_Reporte_CtasPendiente_Entidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_Reporte_CtasPendiente_General.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\usesCase\UC_VisualizarDocumentoEntidad.cs" />
-    <Compile Include="_CtaxPagar\Modo\Zufu\vistas\FrmPanelEntidadDocPend.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_CtaxPagar\Modo\Zufu\vistas\FrmPanelEntidadDocPend.designer.cs">
-      <DependentUpon>FrmPanelEntidadDocPend.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_CtaxPagar\Modo\Zufu\vistas\FrmPanelPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="_CtaxPagar\Modo\Zufu\vistas\FrmPanelPrincipal.designer.cs">
-      <DependentUpon>FrmPanelPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_CtaxPagar\reportes\CtasPendiente\Entidad\dataItemCtaPendEntidad.cs" />
-    <Compile Include="_CtaxPagar\reportes\CtasPendiente\Entidad\Imp.cs" />
-    <Compile Include="_CtaxPagar\reportes\CtasPendiente\Entidad\IRepListaEntidad.cs" />
-    <Compile Include="_CtaxPagar\reportes\CtasPendiente\General\dataItemDocPend.cs" />
-    <Compile Include="_CtaxPagar\reportes\CtasPendiente\General\Imp.cs" />
-    <Compile Include="_CtaxPagar\reportes\DS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DS.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="_CtaxPagar\reportes\IRep.cs" />
-    <Compile Include="_CtaxPagar\reportes\IRepLista.cs" />
     <Compile Include="_\Handlers\baseLista.cs" />
     <Compile Include="_\Interfaces\ILista.cs" />
     <EmbeddedResource Include="Administrador\AdministradorFrm.resx">
@@ -1602,27 +1495,6 @@
     <EmbeddedResource Include="_CtasPorPagar\reportes\CtasPendiente_General.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagarPago\Modo\Zufu\vistas\FrmPago.resx">
-      <DependentUpon>FrmPago.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmMetPago.resx">
-      <DependentUpon>FrmMetPago.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagarPago_MetodosPago\Modo\Zufu\vistas\FrmLista.resx">
-      <DependentUpon>FrmLista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagar\Modo\Zufu\vistas\FrmPanelEntidadDocPend.resx">
-      <DependentUpon>FrmPanelEntidadDocPend.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagar\Modo\Zufu\vistas\FrmPanelPrincipal.resx">
-      <DependentUpon>FrmPanelPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagar\reportes\CtasPendiente_Entidad.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="_CtaxPagar\reportes\CtasPendiente_General.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1730,17 +1602,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="_CtasPorPagar\reportes\DS.xss">
-      <DependentUpon>DS.xsd</DependentUpon>
-    </None>
-    <None Include="_CtaxPagar\reportes\DS.xsc">
-      <DependentUpon>DS.xsd</DependentUpon>
-    </None>
-    <None Include="_CtaxPagar\reportes\DS.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="_CtaxPagar\reportes\DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
     </None>
   </ItemGroup>
@@ -1952,9 +1813,6 @@
   <ItemGroup>
     <Folder Include="_CtasPorPagar\AdministradorPago\" />
     <Folder Include="_CtasPorPagar\PanelMetPagoAgregar\usesCase\" />
-    <Folder Include="_CtaxPagarPago\Modo\Zufu\usesCase\" />
-    <Folder Include="_CtaxPagarPago_DocPend\Modelos\" />
-    <Folder Include="_CtaxPagarPago_DocPend\usesCase\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

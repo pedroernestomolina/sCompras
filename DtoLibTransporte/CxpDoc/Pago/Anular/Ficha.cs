@@ -18,5 +18,8 @@ namespace DtoLibTransporte.CxpDoc.Pago.Anular
         public Auditoria auditoria { get; set; }
         public List<Documento> documentos { get; set; }
         public List<Caja> cajas { get; set; }
+        //
+        public decimal anticipoUsado { get; set; }
+        public decimal anticipoGuardado { get; set; }
     }
 }

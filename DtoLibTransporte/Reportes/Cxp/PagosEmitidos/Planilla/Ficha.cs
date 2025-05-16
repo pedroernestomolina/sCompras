@@ -9,7 +9,6 @@ namespace DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla
 {
     public class Ficha
     {
-
         public string reciboNro { get; set; }
         public DateTime fechaMov { get; set; }
         public decimal importeDiv { get; set; }
@@ -24,5 +23,8 @@ namespace DtoLibTransporte.Reportes.Cxp.PagosEmitidos.Planilla
         public List<Documento> doc { get; set; }
         public List<MetodoPago> metPago { get; set; }
         public List<Caja> caja { get; set; }
+        //
+        public decimal anticipoComoMedioPago { get; set; }
+        public decimal guardarComoAnticipo { get; set; }
     }
 }

@@ -614,7 +614,8 @@ namespace ProvLibCompra
                                         rec.fecha as fecha,
                                         rec.tasa_cambio as tasaFactor,
                                         rec.nota as nota,
-                                        rec.estatus_anulado as estatusDoc
+                                        rec.estatus_anulado as estatusDoc,
+                                        rec.guardar_anticipo_prov as anticipoGuardado
                                     FROM cxp_recibos as rec";
                     var _sql_2 = @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
@@ -666,6 +667,12 @@ namespace ProvLibCompra
             return result;
         }
         //
+
+        class entPrv 
+        {
+            public string auto { get; set; }
+            public decimal anticipos { get; set; }
+        }
         public DtoLib.Resultado 
             Transporte_CxpDoc_GestionPago_Anular(DtoLibTransporte.CxpDoc.Pago.Anular.Ficha ficha)
         {
@@ -741,16 +748,36 @@ namespace ProvLibCompra
                         //
                         // ACTUALIZAR SALDO PROVEEDOR 
                         _sql = @"update proveedores set
-                                    creditos=creditos-@montoRecibo
+                                    creditos=creditos-@montoRecibo,
+                                    anticipos= anticipos+@anticiposUsado-@anticipoGuardado
                                 where auto=@autoProv";
                         var p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.autoProveedor);
                         var p02 = new MySql.Data.MySqlClient.MySqlParameter("@montoRecibo", ficha.importeDiv);
-                        var xr4 = cnn.Database.ExecuteSqlCommand(_sql, p01, p02);
+                        var p03 = new MySql.Data.MySqlClient.MySqlParameter("@anticiposUsado", ficha.anticipoUsado);
+                        var p04 = new MySql.Data.MySqlClient.MySqlParameter("@anticipoGuardado", ficha.anticipoGuardado);
+                        var xr4 = cnn.Database.ExecuteSqlCommand(_sql, p01, p02, p03, p04);
                         if (xr4 == 0)
                         {
                             throw new Exception("ERROR AL ACTUALIZAR SALDO PROVEEDOR");
                         }
                         cnn.SaveChanges();
+                        //
+                        //
+                        _sql = @"select 
+                                    auto,
+                                    anticipos
+                                from proveedores 
+                                where auto=@autoProv";
+                        p01 = new MySql.Data.MySqlClient.MySqlParameter("@autoProv", ficha.autoProveedor);
+                        var entVer = cnn.Database.SqlQuery<entPrv>(_sql, p01).FirstOrDefault();
+                        if (entVer == null)
+                        {
+                            throw new Exception("ERROR PROVEEDOR NO ENCONTRADO");
+                        }
+                        if (entVer.anticipos<0m)
+                        {
+                            throw new Exception("PROBLEMA AL ACTUALIZAR ANTICIPOS DEL PROVEEDOR");
+                        }
                         //
                         //
                         if (ficha.documentos!= null)
@@ -866,7 +893,9 @@ namespace ProvLibCompra
                                     rec.auto_cxp as autoPago,
                                     rec.auto_proveedor as autoProveedor,
                                     rec.importe_divisa as importeDiv,
-                                    cxp.tipo_documento as tipoDoc
+                                    cxp.tipo_documento as tipoDoc,
+                                    rec.anticipo_usado as anticipoUsado,
+                                    rec.guardar_anticipo_prov as anticipoGuardado
                                 FROM cxp_recibos as rec
                                 join cxp as cxp on cxp.auto=rec.auto_cxp
                                 WHERE rec.auto=@idRecPago";

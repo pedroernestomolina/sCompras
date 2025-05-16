@@ -17,8 +17,6 @@ namespace ModCompra.Fabrica
         OOB.Resultado 
             AnularDocCompra_NotaCredito(string idDoc, string motivo);
 
-        //
-        _CtaxPagar.Interfaces.IPanelPrincipal 
-            NewInstancia_ToolsCtaxPagar();
+        void ToolsCtasPorPagar();
     }
 }

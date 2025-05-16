@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.L_TITULO_PANEL = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -90,7 +90,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.L_TITULO_PANEL);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(1);
@@ -99,17 +99,17 @@
             this.panel1.Size = new System.Drawing.Size(581, 28);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // L_TITULO_PANEL
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(2, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(577, 24);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Documento A Abonar";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_TITULO_PANEL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_TITULO_PANEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_TITULO_PANEL.ForeColor = System.Drawing.Color.White;
+            this.L_TITULO_PANEL.Location = new System.Drawing.Point(2, 2);
+            this.L_TITULO_PANEL.Name = "L_TITULO_PANEL";
+            this.L_TITULO_PANEL.Size = new System.Drawing.Size(577, 24);
+            this.L_TITULO_PANEL.TabIndex = 3;
+            this.L_TITULO_PANEL.Text = "Documento A Abonar";
+            this.L_TITULO_PANEL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel2
             // 
@@ -426,7 +426,7 @@
         private System.Windows.Forms.Button BT_ACEPTAR;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button BT_SALIR;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label L_TITULO_PANEL;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;

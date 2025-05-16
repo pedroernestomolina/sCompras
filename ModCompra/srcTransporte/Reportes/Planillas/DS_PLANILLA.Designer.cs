@@ -3144,6 +3144,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             private global::System.Data.DataColumn columnisAnulado;
             
+            private global::System.Data.DataColumn columnanticipoRecibido;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CxpPagoDocDataTable() {
@@ -3235,6 +3237,14 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn anticipoRecibidoColumn {
+                get {
+                    return this.columnanticipoRecibido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3270,7 +3280,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CxpPagoDocRow AddCxpPagoDocRow(string reciboNro, System.DateTime fecha, decimal montoPago, decimal tasaCambio, string notas, string proveedor, string isAnulado) {
+            public CxpPagoDocRow AddCxpPagoDocRow(string reciboNro, System.DateTime fecha, decimal montoPago, decimal tasaCambio, string notas, string proveedor, string isAnulado, decimal anticipoRecibido) {
                 CxpPagoDocRow rowCxpPagoDocRow = ((CxpPagoDocRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         reciboNro,
@@ -3279,7 +3289,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                         tasaCambio,
                         notas,
                         proveedor,
-                        isAnulado};
+                        isAnulado,
+                        anticipoRecibido};
                 rowCxpPagoDocRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCxpPagoDocRow);
                 return rowCxpPagoDocRow;
@@ -3309,6 +3320,7 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 this.columnnotas = base.Columns["notas"];
                 this.columnproveedor = base.Columns["proveedor"];
                 this.columnisAnulado = base.Columns["isAnulado"];
+                this.columnanticipoRecibido = base.Columns["anticipoRecibido"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3328,6 +3340,8 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
                 base.Columns.Add(this.columnproveedor);
                 this.columnisAnulado = new global::System.Data.DataColumn("isAnulado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnisAnulado);
+                this.columnanticipoRecibido = new global::System.Data.DataColumn("anticipoRecibido", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnanticipoRecibido);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6305,6 +6319,22 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal anticipoRecibido {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableCxpPagoDoc.anticipoRecibidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'anticipoRecibido\' in table \'CxpPagoDoc\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCxpPagoDoc.anticipoRecibidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsreciboNroNull() {
                 return this.IsNull(this.tableCxpPagoDoc.reciboNroColumn);
             }
@@ -6385,6 +6415,18 @@ namespace ModCompra.srcTransporte.Reportes.Planillas {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetisAnuladoNull() {
                 this[this.tableCxpPagoDoc.isAnuladoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsanticipoRecibidoNull() {
+                return this.IsNull(this.tableCxpPagoDoc.anticipoRecibidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetanticipoRecibidoNull() {
+                this[this.tableCxpPagoDoc.anticipoRecibidoColumn] = global::System.Convert.DBNull;
             }
         }
         

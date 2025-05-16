@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtasPorPagar.PanelAbonarPago.interfaces
 {
-    public interface IPanel: __.Interfaces.PanelAbonarPago.IPanel
+    public interface IPanelPorMonto: __.Interfaces.PanelAbonarPago.IPanel
     {
+        void setMontoDisponible(decimal monto);
     }
 }

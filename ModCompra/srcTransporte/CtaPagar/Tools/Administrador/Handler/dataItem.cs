@@ -33,7 +33,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.Administrador.Handler
             EProvNombre = ficha.provNombre;
             EProvCiRif = ficha.provCiRif;
             EReciboNro = ficha.reciboNro;
-            EMonto = ficha.importe;
+            EMonto = Math.Round(ficha.importe + ficha.anticipoGuardado, 2, MidpointRounding.AwayFromZero);
             EMotivo = ficha.nota;
             EEstatus = ficha.estatusDoc == "1" ? "ANULADO" : "";
             _idMov = _ficha.idMov;

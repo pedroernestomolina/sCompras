@@ -44,10 +44,11 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboCxpPagoEmitido
             rt["reciboNro"] = ficha.reciboNro;
             rt["fecha"] = ficha.fechaMov;
             rt["tasaCambio"] = ficha.tasaCambio;
-            rt["montoPago"] = ficha.importeDiv;
+            rt["montoPago"] = ficha.importeDiv + ficha.guardarComoAnticipo;
             rt["notas"] = ficha.notasMov ;
             rt["proveedor"] = ficha.ciRifProv + Environment.NewLine + ficha.nombreProv;
             rt["isAnulado"] = ficha.estatusMov.Trim().ToUpper() == "1" ? "ANULADO" : "";
+            rt["anticipoRecibido"] = ficha.guardarComoAnticipo;
             ds.Tables["CxpPagoDoc"].Rows.Add(rt);
             //
             var _montoDiv = 0m;
@@ -78,6 +79,15 @@ namespace ModCompra.srcTransporte.Reportes.Planillas.ReciboCxpPagoEmitido
                 rtCja["monto"] = sv.opMonto;
                 rtCja["esDivisa"] = "$" ;
                 rtCja["montoDiv"] = _montoDiv;
+                ds.Tables["CxpPagoDoc_Caja"].Rows.Add(rtCja);
+            }
+            if (ficha.anticipoComoMedioPago > 0m) 
+            {
+                DataRow rtCja = ds.Tables["CxpPagoDoc_Caja"].NewRow();
+                rtCja["desc"] = "( ANTICIPO )";
+                rtCja["monto"] = ficha.anticipoComoMedioPago;
+                rtCja["esDivisa"] = "$";
+                rtCja["montoDiv"] = ficha.anticipoComoMedioPago;
                 ds.Tables["CxpPagoDoc_Caja"].Rows.Add(rtCja);
             }
 

@@ -98,16 +98,14 @@ namespace ModCompra._CtasPorPagar.GestionPago.vistas
         }
         private void AgregarAnticipo()
         {
-            //_controlador.AgregarAnticipo();
-            //ActualizarPanelAnticipo();
+            _controlador.AgregarAnticipo();
+            ActualizarPanelAnticipo();
         }
         private void BtProcesar()
         {
             _controlador.ProcesarPago();
             if (_controlador.IsPagoExitoso)
             {
-                //var _autoRecibo = _controlador.GetAutoReciboGenerar;
-                //_controlador.GenerarRecibo(_autoRecibo);
                 salir();
             }
         }

@@ -258,11 +258,15 @@ namespace ModCompra.Fabrica.Transporte
             return rt;
         }
 
-        //
-        public _CtaxPagar.Interfaces.IPanelPrincipal 
-            NewInstancia_ToolsCtaxPagar()
+        srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
+        public void ToolsCtasPorPagar()
         {
-            return null;
+            if (_toolDoc == null)
+            {
+                _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
+            }
+            _toolDoc.Inicializa();
+            _toolDoc.Inicia();
         }
     }
 }

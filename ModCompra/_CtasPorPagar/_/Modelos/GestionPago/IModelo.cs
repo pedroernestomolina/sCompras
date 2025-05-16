@@ -40,6 +40,8 @@ namespace ModCompra._CtasPorPagar.__.Modelos.GestionPago
         void setFactorCambio(decimal factor);
         void setMediosPago(IEnumerable<IMedioPago> mediosPag);
 
+        void setMontoUsarPorAnticipo(decimal monto);
+
         void setCntDocDeudaAbonado(int cnt);
         void setMontoDocDeudaAbonar(decimal monto);
 

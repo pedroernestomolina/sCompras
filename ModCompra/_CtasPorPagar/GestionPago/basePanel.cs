@@ -54,6 +54,7 @@ namespace ModCompra._CtasPorPagar.GestionPago
         }
 
         //
+        abstract public void AgregarAnticipo();
         abstract public void ListarDocPend();
         abstract public void ListarNtCred();
         abstract public void ProcesarPago();

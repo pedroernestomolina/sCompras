@@ -317,11 +317,16 @@ namespace ModCompra.Fabrica.Pita
             return rt;
         }
 
-        //
-        public _CtaxPagar.Interfaces.IPanelPrincipal 
-            NewInstancia_ToolsCtaxPagar()
+
+        _CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel _toolsCtasPorPagar;
+        public void ToolsCtasPorPagar()
         {
-            return new _CtaxPagar.Modo.Zufu.handlers.hndPanelPrincipal();
+            if (_toolsCtasPorPagar == null)
+            {
+                _toolsCtasPorPagar = new _CtasPorPagar.PanelPrincipal._Inicio.handlers.hndPanelPrincipal();
+            }
+            _toolsCtasPorPagar.Inicializa();
+            _toolsCtasPorPagar.Inicia();
         }
     }
 }

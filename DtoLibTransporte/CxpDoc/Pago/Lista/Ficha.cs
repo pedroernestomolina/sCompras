@@ -18,5 +18,7 @@ namespace DtoLibTransporte.CxpDoc.Pago.Lista
         public decimal tasaFactor { get; set; }
         public string nota { get; set; }
         public string estatusDoc { get; set; }
+        //
+        public decimal anticipoGuardado { get; set; }
     }
 }

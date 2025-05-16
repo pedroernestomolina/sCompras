@@ -13,18 +13,19 @@ namespace ModCompra._CtasPorPagar.PanelAbonarPago.vistas
 {
     public partial class Frm: Form
     {
-        private interfaces.IPanel _controlador;
+        private __.Interfaces.PanelAbonarPago.IPanel _controlador;
         //
         public Frm()
         {
             InitializeComponent();
         }
-        public void setControlador(interfaces.IPanel ctr)
+        public void setControlador(__.Interfaces.PanelAbonarPago.IPanel ctr)
         {
             _controlador = ctr;
         }
         private void Frm_Load(object sender, EventArgs e)
         {
+            L_TITULO_PANEL.Text = _controlador.GetTituloPanel;
             L_MONTO_PENDIENTE.Text = _controlador.GetMontoPendiente.ToString("n3");
             TB_MONTO_ABONAR.Text = _controlador.GetMontoAbonar.ToString();
             TB_DETALLE.Text = _controlador.GetDetalle;

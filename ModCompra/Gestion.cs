@@ -551,36 +551,25 @@ namespace ModCompra
             _compraAliado.Inicia();
         }
 
-
-
-
-        srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
-        _CtaxPagar.Interfaces.IPanelPrincipal _tools ;
-        _CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel _toolsCtasPorPagar;
         public void ToolsDocumentos()
         {
-            if (_toolDoc == null)
-            {
-                _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
-            }
-            _toolDoc.Inicializa();
-            _toolDoc.Inicia();
+            Sistema.Fabrica.ToolsCtasPorPagar();
 
-            //if (_tools == null)
+            //srcTransporte.CtaPagar.Tools.ToolsDoc.Vista.IToolDoc _toolDoc;
+            //if (_toolDoc == null)
             //{
-            //    _tools = Sistema.Fabrica.NewInstancia_ToolsCtaxPagar();
+            //    _toolDoc = new srcTransporte.CtaPagar.Tools.ToolsDoc.Handler.ImpToolDoc();
             //}
-            //_tools.Inicializa();
-            //_tools.Inicia();
+            //_toolDoc.Inicializa();
+            //_toolDoc.Inicia();
 
-            if (_toolsCtasPorPagar == null)
-            {
-                _toolsCtasPorPagar = new _CtasPorPagar.PanelPrincipal._Inicio.handlers.hndPanelPrincipal();
-            }
-            _toolsCtasPorPagar.Inicializa();
-            _toolsCtasPorPagar.Inicia();
+            //_CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel _toolsCtasPorPagar;
+            //if (_toolsCtasPorPagar == null)
+            //{
+            //    _toolsCtasPorPagar = new _CtasPorPagar.PanelPrincipal._Inicio.handlers.hndPanelPrincipal();
+            //}
+            //_toolsCtasPorPagar.Inicializa();
+            //_toolsCtasPorPagar.Inicia();
         }
-
-
     }
 }

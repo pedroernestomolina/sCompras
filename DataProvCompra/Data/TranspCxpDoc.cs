@@ -186,6 +186,7 @@ namespace DataProvCompra.Data
                             tasaFactor = s.tasaFactor,
                             estatusDoc = s.estatusDoc,
                             idMov = s.idMov,
+                            anticipoGuardado= s.anticipoGuardado,
                         };
                         return nr;
                     }).ToList();

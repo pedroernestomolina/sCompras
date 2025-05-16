@@ -99,5 +99,17 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio.handlers
         {
             return true;
         }
+
+
+        private ModCompra.srcTransporte.CtaPagar.Tools.Administrador.Vistas.IAdm _adm;
+        public void AdmDocPagos()
+        {
+            if (_adm == null)
+            {
+                _adm = new ModCompra.srcTransporte.CtaPagar.Tools.Administrador.Handler.Imp();
+            }
+            _adm.Inicializa();
+            _adm.Inicia();
+        }
     }
 }

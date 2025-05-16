@@ -741,6 +741,8 @@ namespace DataProvCompra.Data
                 notasMov = s.notasMov,
                 reciboNro = s.reciboNro,
                 tasaCambio = s.tasaCambio,
+                anticipoComoMedioPago= s.anticipoComoMedioPago,
+                guardarComoAnticipo= s.guardarComoAnticipo,
                 doc = s.doc.Select(xd =>
                 {
                     var tr = new OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla.Documento()

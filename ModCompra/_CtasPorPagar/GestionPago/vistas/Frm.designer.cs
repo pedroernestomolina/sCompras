@@ -491,7 +491,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(174, 20);
             this.label14.TabIndex = 1;
-            this.label14.Text = "Cliente/Anticipo";
+            this.label14.Text = "Anticipos Manejar";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel56

@@ -7,23 +7,22 @@ using System.Threading.Tasks;
 
 namespace ModCompra._CtasPorPagar.PanelAbonarPago.handlers
 {
-    public class hndPanel: interfaces.IPanel
+    public class hndPanelPorMonto: interfaces.IPanelPorMonto
     {
         private decimal _montoPendiente;
         private decimal _montoAbonar;
         private string _detallesAbono;
-        private __.Modelos.GestionPagoDocumentos.IItemDesplegar _item;
         private Utils.Control.Boton.Abandonar.IAbandonar _abandonarFicha;
         private Utils.Control.Boton.Procesar.IProcesar _procesarFicha;
         //
+        public string GetTituloPanel { get { return "ANTICIPO/Abonar"; } }
         public bool MontoAbonarIsOk { get { return false; } }
         public decimal GetMontoPendiente { get { return _montoPendiente; } }
         public decimal GetMontoAbonar { get { return _montoAbonar; } }
         public string GetDetalle { get { return _detallesAbono; } }
         //
-        public hndPanel()
+        public hndPanelPorMonto()
         {
-            _item = null;
             _montoPendiente = 0m;
             _montoAbonar = 0m;
             _detallesAbono = "";
@@ -32,7 +31,6 @@ namespace ModCompra._CtasPorPagar.PanelAbonarPago.handlers
         }
         public void Inicializa()
         {
-            _item = null;
             _montoPendiente = 0m;
             _montoAbonar = 0m;
             _detallesAbono = "";
@@ -43,33 +41,19 @@ namespace ModCompra._CtasPorPagar.PanelAbonarPago.handlers
         {
             _detallesAbono = notas;
         }
+        public void setMontoDisponible(decimal monto)
+        {
+            _montoPendiente = monto;
+        }
         public void setMontoAbonar(decimal monto)
         {
             _montoAbonar = monto;
         }
-        public void setItemCargar(__.Modelos.GestionPagoDocumentos.IItemDesplegar item)
+        public void setMontoCargar(decimal monto)
         {
-            _item = item;
-            _montoPendiente = item.Resta;
-            setMontoAbonar(item.MontoAAbonar);
-            setDetalle(item.NotasDelAbono);
-        }
-        public void setMontoPorMetPagoRecibido(decimal monto)
-        {
-            if (_montoAbonar == 0m)
-            {
-                if (monto > 0m)
-                {
-                    if (monto >= _montoPendiente)
-                    {
-                        _montoAbonar = _montoPendiente;
-                    }
-                    else
-                    {
-                        _montoAbonar = monto;
-                    }
-                }
-            }
+            _montoPendiente = monto ;
+            setMontoAbonar(monto );
+            setDetalle("");
         }
         //
         vistas.Frm frm;
@@ -96,8 +80,6 @@ namespace ModCompra._CtasPorPagar.PanelAbonarPago.handlers
             _procesarFicha.Opcion();
             if (_procesarFicha.OpcionIsOK) 
             {
-                _item.MontoAAbonar = _montoAbonar;
-                _item.NotasDelAbono = _detallesAbono;
             }
         }
         public void AbandonarFicha()

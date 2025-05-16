@@ -167,7 +167,7 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio.vistas
         }
         private void BT_ADM_DOC_PAGO_Click(object sender, EventArgs e)
         {
-            //AdmDocPagos();
+            AdmDocPagos();
         }
         private void TSM_ARCHIVO_SALIR_Click(object sender, EventArgs e)
         {
@@ -209,9 +209,8 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio.vistas
         }
         private void AdmDocPagos()
         {
-            //_controlador.Hnd.AdmDocPagos();
-            //ActualizarDataPanel_Totales();
-            //BuscarCtasPendientes();
+            _controlador.AdmDocPagos();
+            ActualizarPanel_Totales();
         }
         private void AbandonarFicha()
         {

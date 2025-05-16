@@ -23,5 +23,8 @@ namespace OOB.LibCompra.Transporte.Reportes.Cxp.PagosEmitidos.Planilla
         public List<Documento> doc { get; set; }
         public List<MetodoPago> metPago { get; set; }
         public List<Caja> caja { get; set; }
+        //
+        public decimal anticipoComoMedioPago { get; set; }
+        public decimal guardarComoAnticipo { get; set; }
     }
 }

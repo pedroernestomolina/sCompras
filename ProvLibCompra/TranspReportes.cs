@@ -994,7 +994,9 @@ namespace ProvLibCompra
                                     rec.proveedor as nombreProv,
                                     rec.ci_rif as ciRifProv,
                                     rec.direccion as dirProv,
-                                    rec.estatus_anulado as estatusMov
+                                    rec.estatus_anulado as estatusMov,
+                                    rec.anticipo_usado as anticipoComoMedioPago,
+                                    rec.guardar_anticipo_prov as guardarComoAnticipo
                                 FROM cxp_recibos as rec
                                 where auto=@idMov";
                     var p0 = new MySql.Data.MySqlClient.MySqlParameter("@idMov", idMov);

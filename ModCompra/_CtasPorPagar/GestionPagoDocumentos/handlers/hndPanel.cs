@@ -13,7 +13,7 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
         private string _tituloPanel;
         private __.Modelos.GestionPagoDocumentos.IModelo _modelo;
         private __.Interfaces.PanelGestionPagoDocumentos.IListaDesplegar _hndListaDesplegar;
-        private __.Interfaces.PanelAbonarPago.IPanel _hndAbonarPago;
+        private PanelAbonarPago.interfaces.IPanelPorDocumento _hndAbonarPago;
         private decimal _montoPorMetPagoRecibido;
         // USES CASE
         private __.UsesCase.PanelDocumentos.IVisualizarDoc _visualizarDoc;
@@ -79,7 +79,7 @@ namespace ModCompra._CtasPorPagar.GestionPagoDocumentos.handlers
         {
             if (_hndAbonarPago == null)
             {
-                _hndAbonarPago = new PanelAbonarPago.handlers.hndPanel();
+                _hndAbonarPago = new PanelAbonarPago.handlers.hndPanelPorDocumento();
             }
             _hndAbonarPago.Inicializa();
             _hndAbonarPago.setItemCargar(ItemActual);

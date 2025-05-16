@@ -9,5 +9,6 @@ namespace ModCompra._CtasPorPagar.PanelPrincipal._Inicio.interfaces
 {
     public interface IPanelPrincipal: _CtasPorPagar.__.Interfaces.PanelPrincipal.IPanel
     {
+        void AdmDocPagos();
     }
 }

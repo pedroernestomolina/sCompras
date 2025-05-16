@@ -81,7 +81,7 @@ namespace ModCompra._CtasPorPagar.GestionPago.usesCase
                     var s = (_CtasPorPagar.GestionPagoDocumentos.modelos.ItemDesplegar)rg;
                     var ndoc = new OOB.LibCompra.Transporte.CxpDoc.Pago.Agregar.DataReciboDoc()
                     {
-                        autoCxpDoc = s.docId,
+                        autoCxpDoc = s.Ficha.idCxP,
                         codTipoDc = s.docTipo,
                         importeDivisa = s.MontoAAbonar,
                         numDoc = s.docNumero,

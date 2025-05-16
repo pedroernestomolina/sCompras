@@ -34,6 +34,7 @@ namespace ModCompra._CtasPorPagar.__.Interfaces.PanelGestionPago
 
         //
         void setItemCargar(__.Modelos.PanelPrincipal.IItemDesplegar GetItemActual);
+        void AgregarAnticipo();
         void ListarDocPend();
         void ListarNtCred();
 
