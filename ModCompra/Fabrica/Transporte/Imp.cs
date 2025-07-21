@@ -268,5 +268,9 @@ namespace ModCompra.Fabrica.Transporte
             _toolDoc.Inicializa();
             _toolDoc.Inicia();
         }
+
+
+        //REGLAS DE NEGOCIO
+        public bool ReglaNegocio_TodasLasEntradasDePreciosyCostoSonPorDivisa { get { return false; } }
     }
 }

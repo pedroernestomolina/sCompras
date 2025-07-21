@@ -280,15 +280,23 @@ namespace ModCompra.Documento.Cargar.Factura
             var preciosMod =new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecios>();
             var historicoPrecio = new List<OOB.LibCompra.Documento.Cargar.Factura.FichaPrdPrecioHistorico>();
 
+            // CASO ZUFU, siempre, se quiere manejar los precios y costo en divisa,
+            // sin importar que el producto este marcado como no administrado por divisa
+            var rg_DondeTodasLasEntradasDePreciosyCostoSonPorDivisa_SeAplica = Sistema.Fabrica.ReglaNegocio_TodasLasEntradasDePreciosyCostoSonPorDivisa; 
+
+
             var _factorCambio = gestionDoc.FactorDivisa;
             foreach (dataItem it in ((List<dataItem>)gestionItem.Lista).Where(w=>w.GetActualizarPrecio && w.IsEmpCompraPredeterminado).ToList())
             {
                 var _factorMonAct = _factorCambio;
                 var _factorMonDiv = 1m;
-                if (it.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.No)
+                if (!rg_DondeTodasLasEntradasDePreciosyCostoSonPorDivisa_SeAplica) 
                 {
-                    _factorMonAct = 1m;
-                    _factorMonDiv = _factorCambio;
+                    if (it.Producto.AdmPorDivisa == OOB.LibCompra.Producto.Enumerados.EnumAdministradorPorDivisa.No)
+                    {
+                        _factorMonAct = 1m;
+                        _factorMonDiv = _factorCambio;
+                    }
                 }
 
                 OOB.LibCompra.Documento.Cargar.Factura.FichaPrecio p1_1 = null;
@@ -313,6 +321,8 @@ namespace ModCompra.Documento.Cargar.Factura
                 var p2 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[1];
                 var p3 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[2];
                 var p4 = (Producto.Precio.zufu.CtrlPrecio.ImpPrecio)MP.Precio[3];
+                
+                //
                 if (p1.Data.CambioPrecioIsOk)
                 {
                     var _pn = Math.Round(p1.Data.PNeto * _factorMonAct, 2, MidpointRounding.AwayFromZero);

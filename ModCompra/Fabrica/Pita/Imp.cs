@@ -328,5 +328,9 @@ namespace ModCompra.Fabrica.Pita
             _toolsCtasPorPagar.Inicializa();
             _toolsCtasPorPagar.Inicia();
         }
+
+
+        // REGLAS DE NEGOCIO
+        public bool ReglaNegocio_TodasLasEntradasDePreciosyCostoSonPorDivisa { get { return true; } }
     }
 }

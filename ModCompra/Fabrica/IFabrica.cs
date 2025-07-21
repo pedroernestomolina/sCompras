@@ -18,5 +18,8 @@ namespace ModCompra.Fabrica
             AnularDocCompra_NotaCredito(string idDoc, string motivo);
 
         void ToolsCtasPorPagar();
+
+        // REGLAS DE NEGOCIO
+        bool ReglaNegocio_TodasLasEntradasDePreciosyCostoSonPorDivisa { get; }
     }
 }

@@ -617,5 +617,6 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
         {
             this.Close();
         }
+
     }
 }
