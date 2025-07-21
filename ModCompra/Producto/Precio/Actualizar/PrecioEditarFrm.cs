@@ -1775,7 +1775,5 @@ namespace ModCompra.Producto.Precio.Actualizar
             TB_UT_D4.Focus();
             TB_UT_D4.Text = L_UT_ACTUAL_D4.Text;
         }
-    
     }
-
 }

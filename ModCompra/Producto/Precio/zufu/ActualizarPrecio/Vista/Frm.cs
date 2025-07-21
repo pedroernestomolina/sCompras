@@ -54,18 +54,37 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
             L_TIPO_EMPAQUE_1.Text= _controlador.PrecioEmp1.DescTipoEmpaque;
             L_TIPO_EMPAQUE_2.Text = _controlador.PrecioEmp2.DescTipoEmpaque;
             L_TIPO_EMPAQUE_3.Text = _controlador.PrecioEmp3.DescTipoEmpaque;
+            var _valor = true;
             for (var x = 0; x < 4; x++) 
             {
-                habilitarEmp(1, false, false, false);
+                //habilitarEmp(1, false, false, false);
+                //actualizarEmp(1, x + 1);
+                //habilitarEmp(2, false, false, false);
+                //actualizarEmp(2, x + 1);
+                //habilitarEmp(3, false, false, false);
+                //actualizarEmp(3, x + 1);
+                habilitarEmp(1, _valor, _valor, _valor);
                 actualizarEmp(1, x + 1);
-                habilitarEmp(2, false, false, false);
+                habilitarEmp(2, _valor, _valor, _valor);
                 actualizarEmp(2, x + 1);
-                habilitarEmp(3, false, false, false);
+                habilitarEmp(3, _valor, _valor, _valor);
                 actualizarEmp(3, x + 1); 
             }
             _modoInicializar = false;
+            //
+            _valor = false;
+            L_TIT_UT_EMP_1.Enabled = _valor;
+            L_TIT_PN_EMP_1.Enabled = _valor;
+            L_TIT_PF_EMP_1.Enabled = _valor;
+            //
+            L_TIT_UT_EMP_2.Enabled = _valor;
+            L_TIT_PN_EMP_2.Enabled = _valor;
+            L_TIT_PF_EMP_2.Enabled = _valor;
+            //
+            L_TIT_UT_EMP_3.Enabled = _valor;
+            L_TIT_PN_EMP_3.Enabled = _valor;
+            L_TIT_PF_EMP_3.Enabled = _valor;
         }
-
         private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
             Procesar();
@@ -79,19 +98,19 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
         {
             P_EMP_1.Focus();
             TB_UT_EMP_1_1.Focus();
-            habilitarEmp(1, true, false, false);
+            habilitarEmp(1, true, true, true);
         }
         private void L_TIT_PN_EMP_1_Click(object sender, EventArgs e)
         {
             P_EMP_1.Focus();
             TB_PN_EMP_1_1.Focus();
-            habilitarEmp(1, false, true, false);
+            habilitarEmp(1, true, true, true);
         }
         private void L_TIT_PF_EMP_1_Click(object sender, EventArgs e)
         {
             P_EMP_1.Focus();
             TB_PF_EMP_1_1.Focus();
-            habilitarEmp(1, false, false, true);
+            habilitarEmp(1, true, true, true);
         }
         private void TB_EMP_1_1_Leave(object sender, EventArgs e)
         {
@@ -104,7 +123,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp1.Precio[0].setNeto(_mnto);
             else
                 _controlador.PrecioEmp1.Precio[0].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(1, 1);
+            _modoInicializar = false;
         }
         private void TB_EMP_1_1_Validating(object sender, CancelEventArgs e)
         {
@@ -127,7 +148,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp1.Precio[1].setNeto(_mnto);
             else
                 _controlador.PrecioEmp1.Precio[1].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(1, 2);
+            _modoInicializar = false;
         }
         private void TB_EMP_1_2_Validating(object sender, CancelEventArgs e)
         {
@@ -150,7 +173,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp1.Precio[2].setNeto(_mnto);
             else
                 _controlador.PrecioEmp1.Precio[2].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(1, 3);
+            _modoInicializar = false;
         }
         private void TB_EMP_1_3_Validating(object sender, CancelEventArgs e)
         {
@@ -173,7 +198,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp1.Precio[3].setNeto(_mnto);
             else
                 _controlador.PrecioEmp1.Precio[3].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(1, 4);
+            _modoInicializar = false;
         }
         private void TB_EMP_1_4_Validating(object sender, CancelEventArgs e)
         {
@@ -227,7 +254,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp2.Precio[0].setNeto(_mnto);
             else
                 _controlador.PrecioEmp2.Precio[0].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(2, 1);
+            _modoInicializar = false;
         }
         private void TB_EMP_2_1_Validating(object sender, CancelEventArgs e)
         {
@@ -250,7 +279,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp2.Precio[1].setNeto(_mnto);
             else
                 _controlador.PrecioEmp2.Precio[1].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(2, 2);
+            _modoInicializar = false;
         }
         private void TB_EMP_2_2_Validating(object sender, CancelEventArgs e)
         {
@@ -273,7 +304,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp2.Precio[2].setNeto(_mnto);
             else
                 _controlador.PrecioEmp2.Precio[2].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(2, 3);
+            _modoInicializar = false;
         }
         private void TB_EMP_2_3_Validating(object sender, CancelEventArgs e)
         {
@@ -296,7 +329,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp2.Precio[3].setNeto(_mnto);
             else
                 _controlador.PrecioEmp2.Precio[3].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(2, 4);
+            _modoInicializar = false;
         }
         private void TB_EMP_2_4_Validating(object sender, CancelEventArgs e)
         {
@@ -350,7 +385,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp3.Precio[0].setNeto(_mnto);
             else
                 _controlador.PrecioEmp3.Precio[0].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(3, 1);
+            _modoInicializar = false;
         }
         private void TB_EMP_3_1_Validating(object sender, CancelEventArgs e)
         {
@@ -373,7 +410,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp3.Precio[1].setNeto(_mnto);
             else
                 _controlador.PrecioEmp3.Precio[1].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(3, 2);
+            _modoInicializar = false;
         }
         private void TB_EMP_3_2_Validating(object sender, CancelEventArgs e)
         {
@@ -396,7 +435,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp3.Precio[2].setNeto(_mnto);
             else
                 _controlador.PrecioEmp3.Precio[2].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(3, 3);
+            _modoInicializar = false;
         }
         private void TB_EMP_3_3_Validating(object sender, CancelEventArgs e)
         {
@@ -419,7 +460,9 @@ namespace ModCompra.Producto.Precio.zufu.ActualizarPrecio.Vista
                 _controlador.PrecioEmp3.Precio[3].setNeto(_mnto);
             else
                 _controlador.PrecioEmp3.Precio[3].setFull(_mnto);
+            _modoInicializar = true;
             actualizarEmp(3, 4);
+            _modoInicializar = false;
         }
         private void TB_EMP_3_4_Validating(object sender, CancelEventArgs e)
         {
