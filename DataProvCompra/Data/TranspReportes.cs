@@ -535,6 +535,7 @@ namespace DataProvCompra.Data
                 IdCaja = filtro.IdCaja,
                 EstatusDoc = (DtoLibTransporte.Reportes.Caja.enumerados.EstatusDoc)filtro.EstatusDoc,
                 TipoMov = (DtoLibTransporte.Reportes.Caja.enumerados.TipoMovCaja)filtro.TipoMov,
+                isFechaRegistro= filtro.isFechaRegistro,
             };
             var r01 = MyData.Transporte_Reportes_Caja_Movimientos_GetLista(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

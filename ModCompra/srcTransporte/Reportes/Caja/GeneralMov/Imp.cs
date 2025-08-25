@@ -46,6 +46,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
                 IdCaja = ft.IdCaja,
                 EstatusDoc = _estatusDoc,
                 TipoMov = _tipoMov,
+                isFechaRegistro= ft.isFechaRegistro,
             };
         }
         public void Generar()

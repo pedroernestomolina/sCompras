@@ -9,6 +9,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
 {
     public class FiltroActivar: Reportes.RepFiltro.Vista.IFiltroActivar
     {
+        /*
         private bool _tipoMovCaja;
         private bool _estatus;
         private bool _aliado;
@@ -16,18 +17,20 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
         private bool _caja;
         private bool _concepto;
         private bool _beneficiario;
-
-        public bool TipoMovCaja { get { return _tipoMovCaja; } }
-        public bool Estatus { get { return _estatus; } }
-        public bool Aliado { get { return _aliado; } }
-        public bool Proveedor { get { return _proveedor; } }
-        public bool Caja { get { return _caja; } }
-        public bool Concepto { get { return _concepto; } }
-        public bool Beneficiario { get { return _beneficiario; } }
+        */
+        public bool TipoMovCaja { get { return true; } }
+        public bool Estatus { get { return true; } }
+        public bool Aliado { get { return false; } }
+        public bool Proveedor { get { return false; } }
+        public bool Caja { get { return true; } }
+        public bool Concepto { get { return false; } }
+        public bool Beneficiario { get { return false; } }
+        public bool SegunFechaRegistro { get { return true; } }
 
 
         public FiltroActivar()
         {
+            /*
             _tipoMovCaja = true;
             _estatus = true;
             _aliado = false;
@@ -35,6 +38,7 @@ namespace ModCompra.srcTransporte.Reportes.Caja.GeneralMov
             _caja = true;
             _concepto = false;
             _beneficiario = false;
+             */
         }
     }
 }

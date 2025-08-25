@@ -24,5 +24,6 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Vista
         int IdBeneficiario { get; set; }
         DateTime? Desde { get; set; }
         DateTime? Hasta { get; set; }
+        bool isFechaRegistro { get; set; }
     }
 }

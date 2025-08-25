@@ -24,6 +24,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.Aliado.MovCaja
         public bool Caja { get { return _caja; } }
         public bool Concepto { get { return _concepto; } }
         public bool Beneficiario { get { return _beneficiario; } }
+        public bool SegunFechaRegistro { get { return false; } }
 
 
         public FiltroActivar()

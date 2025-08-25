@@ -14,6 +14,7 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
         private bool _isAnulado;
 
 
+        public string IdMov { get; set; }
         public DateTime FechaMov { get; set; }
         public string Motivo { get; set; }
         public decimal Monto { get; set; }
@@ -30,6 +31,7 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Handler
         public dataItem(OOB.LibCompra.Transporte.Caja.Movimiento.Lista.Ficha ficha)
         {
             _ficha = ficha;
+            IdMov = ficha.idMov.ToString().PadLeft(6,'0');
             FechaMov = ficha.fechaMov;
             Monto = ficha.movFueDivisa.ToUpper().Trim() == "1" ? ficha.montoMonDiv : ficha.montoMonAct;
             Motivo = ficha.motivoMov;

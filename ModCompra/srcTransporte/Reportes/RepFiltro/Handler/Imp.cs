@@ -49,6 +49,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
             _beneficiario= new Utils.FiltrosCB.ConBusqueda.Beneficiario.Imp();
             _desde = new ImpFechaRep();
             _hasta = new ImpFechaRep();
+            _modoFechaRegistro=false;
         }
         public void Inicializa()
         {
@@ -63,6 +64,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
             _beneficiario.Inicializa();
             _desde.Inicializa();
             _hasta.Inicializa();
+            _modoFechaRegistro = false;
         }
         Vista.Frm frm;
         public void Inicia()
@@ -138,6 +140,12 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
             _beneficiario.LimpiarOpcion();
             _desde.Limpiar();
             _hasta.Limpiar();
+            _modoFechaRegistro = false;
+        }
+        private bool _modoFechaRegistro;
+        public void setSegunFechaRegistro(bool modo)
+        {
+            _modoFechaRegistro = modo;
         }
         public void setFiltrosCargar(Vista.IFiltroActivar filtroActivar)
         {
@@ -191,6 +199,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
             {
                 rt.Hasta= _hasta.Fecha;
             }
+            rt.isFechaRegistro = _modoFechaRegistro;
             return rt;
         }
     }

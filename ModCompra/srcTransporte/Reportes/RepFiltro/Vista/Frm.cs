@@ -91,6 +91,10 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Vista
             DTP_DESDE.ShowCheckBox = _controlador.Desde.Get_ActivarCheck;
             DTP_HASTA.ShowCheckBox = _controlador.Hasta.Get_ActivarCheck;
 
+            //
+            CHB_SEGUN_REGISTRO.Enabled = _controlador.FiltroActivar.SegunFechaRegistro;
+
+            //
             _modoInicializar = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -222,6 +226,11 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Vista
             {
                 _controlador.Hasta.setActivar(false);
             }
+        }
+        private void CHB_SEGUN_REGISTRO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.setSegunFechaRegistro(CHB_SEGUN_REGISTRO.Checked);
         }
 
 

@@ -39,6 +39,15 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
             DGV.MultiSelect = false;
             DGV.ReadOnly = true;
 
+            var c0 = new DataGridViewTextBoxColumn();
+            c0.DataPropertyName = "IdMov";
+            c0.HeaderText = "Mov Nro";
+            c0.Visible = true;
+            c0.Width = 60;
+            c0.HeaderCell.Style.Font = f;
+            c0.DefaultCellStyle.Font = f1;
+            c0.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
             var c1 = new DataGridViewTextBoxColumn();
             c1.DataPropertyName = "FechaMov";
             c1.HeaderText = "Fecha";
@@ -111,6 +120,7 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
             c8.Width = 30;
 
 
+            DGV.Columns.Add(c0);
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c7);
             DGV.Columns.Add(c3);

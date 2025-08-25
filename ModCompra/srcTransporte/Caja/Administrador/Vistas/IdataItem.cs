@@ -9,6 +9,7 @@ namespace ModCompra.srcTransporte.Caja.Administrador.Vistas
 {
     public interface IdataItem
     {
+        string IdMov { get; set; }
         DateTime FechaMov { get; set; }
         decimal Monto { get; set; }
         string Motivo { get; set; }

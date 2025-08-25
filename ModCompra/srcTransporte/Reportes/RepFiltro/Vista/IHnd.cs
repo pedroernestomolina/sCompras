@@ -20,7 +20,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Vista
         IFechaRep Desde { get; }
         IFechaRep Hasta { get; }
         Vista.IFiltros Get_Filtros { get; }
-
         void setFiltrosCargar(IFiltroActivar filtroActivar);
+        void setSegunFechaRegistro(bool modo);
     }
 }

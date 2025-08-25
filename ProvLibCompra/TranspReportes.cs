@@ -682,6 +682,7 @@ namespace ProvLibCompra
             {
                 using (var cnn = new compraEntities(_cnCompra.ConnectionString))
                 {
+                    /*
                     var _sql_1 = @"SELECT 
                                         cj.id as idCaja,
                                         cjMov.id as idMov,
@@ -698,12 +699,65 @@ namespace ProvLibCompra
                                         cjMov.mov_fue_divisa as movFueDivisa
                                     FROM transp_caja_mov as cjMov
                                     join transp_caja as cj on cj.id=cjMov.id_caja ";
+                     */
+                    var xl1 = @"SELECT 
+                                        cj.id as idCaja,
+                                        cjMov.id as idMov,
+                                        cj.descripcion as cjDesc,
+                                        cj.es_divisa as cjEsDivisa,
+                                        cjMov.concepto_mov as motivoMov,
+                                        cjMov.tipo_mov as tipoMov,
+                                        cjMov.signo as signoMov,
+                                        cjMov.monto_mov_mon_act as montoMonAct,
+                                        cjMov.monto_mov_mon_div as montoMonDiv,
+                                        cjMov.factor_cambio_mov as factorCambio,
+                                        cjMov.estatus_anulado_mov as estatusAnulado,
+                                        cjMov.mov_fue_divisa as movFueDivisa, ";
+                    if (filtro.isFechaRegistro)
+                    {
+                        xl1 += " cjMov.fecha_reg as fechaMov ";
+                    }
+                    else 
+                    {
+                        xl1 += " cjMov.fecha_emision as fechaMov ";
+
+                    }
+                    var xl2 = @"FROM transp_caja_mov as cjMov
+                                    join transp_caja as cj on cj.id=cjMov.id_caja ";
+
+
+                    var _sql_1 = xl1 + xl2;
                     var _sql_2 = @" WHERE 1=1 ";
                     var p1 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p2 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p3 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p4 = new MySql.Data.MySqlClient.MySqlParameter();
                     var p5 = new MySql.Data.MySqlClient.MySqlParameter();
+
+                    if (filtro.Desde.HasValue)
+                    {
+                        var xsql = " and cjMov.fecha_emision >=@desde ";
+                        if (filtro.isFechaRegistro)
+                        {
+                            xsql = " and cjMov.fecha_reg>=@desde ";
+                        }
+                        _sql_2 += xsql;
+                        p1.ParameterName = "@desde";
+                        p1.Value = filtro.Desde;
+                    }
+                    if (filtro.Hasta.HasValue)
+                    {
+                        var xsql = " and cjMov.fecha_emision >=@desde ";
+                        if (filtro.isFechaRegistro) 
+                        {
+                            xsql = " and cjMov.fecha_reg <=@hasta ";
+                        }
+                        _sql_2 += xsql;
+                        p2.ParameterName = "@hasta";
+                        p2.Value = filtro.Hasta;
+                    }
+
+                    /*
                     if (filtro.Desde.HasValue)
                     {
                         _sql_2 += " and cjMov.fecha_emision >=@desde ";
@@ -716,6 +770,9 @@ namespace ProvLibCompra
                         p2.ParameterName = "@hasta";
                         p2.Value = filtro.Hasta;
                     }
+                     */
+
+
                     if (filtro.TipoMov != DtoLibTransporte.Reportes.Caja.enumerados.TipoMovCaja.SinDefinir)
                     {
                         var _tipoMov = "I";

@@ -18,6 +18,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
         public int IdBeneficiario { get; set; }
         public DateTime? Desde { get; set; }
         public DateTime? Hasta { get; set; }
+        public bool isFechaRegistro { get; set; }
         public Filtros()
         {
             TipoMovCaja = Vista.enumerados.TipoMovCaja.SinDefinir;
@@ -29,6 +30,7 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Handler
             IdBeneficiario = -1;
             Desde = null;
             Hasta = null;
+            isFechaRegistro = false;
         }
     }
 }

@@ -16,5 +16,6 @@ namespace ModCompra.srcTransporte.Reportes.RepFiltro.Vista
         bool Caja { get; }
         bool Concepto { get; }
         bool Beneficiario { get; }
+        bool SegunFechaRegistro { get; }
     }
 }

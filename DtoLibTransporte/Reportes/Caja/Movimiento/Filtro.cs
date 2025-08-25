@@ -12,5 +12,6 @@ namespace DtoLibTransporte.Reportes.Caja.Movimiento
         public enumerados.TipoMovCaja  TipoMov { get; set; }
         public enumerados.EstatusDoc EstatusDoc { get; set; }
         public int IdCaja { get; set; }
+        public bool isFechaRegistro { get; set; }
     }
 }

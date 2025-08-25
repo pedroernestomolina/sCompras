@@ -97,6 +97,7 @@
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel21 = new System.Windows.Forms.Panel();
             this.BT_FILTRAR = new System.Windows.Forms.Button();
+            this.CHB_SEGUN_REGISTRO = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -921,6 +922,7 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.CHB_SEGUN_REGISTRO);
             this.panel9.Controls.Add(this.DTP_HASTA);
             this.panel9.Controls.Add(this.DTP_DESDE);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1043,6 +1045,18 @@
             this.BT_FILTRAR.UseVisualStyleBackColor = true;
             this.BT_FILTRAR.Click += new System.EventHandler(this.BT_FILTRAR_Click);
             // 
+            // CHB_SEGUN_REGISTRO
+            // 
+            this.CHB_SEGUN_REGISTRO.AutoSize = true;
+            this.CHB_SEGUN_REGISTRO.Dock = System.Windows.Forms.DockStyle.Right;
+            this.CHB_SEGUN_REGISTRO.Location = new System.Drawing.Point(202, 2);
+            this.CHB_SEGUN_REGISTRO.Name = "CHB_SEGUN_REGISTRO";
+            this.CHB_SEGUN_REGISTRO.Size = new System.Drawing.Size(65, 50);
+            this.CHB_SEGUN_REGISTRO.TabIndex = 2;
+            this.CHB_SEGUN_REGISTRO.Text = "Segun \r\nRegistro";
+            this.CHB_SEGUN_REGISTRO.UseVisualStyleBackColor = true;
+            this.CHB_SEGUN_REGISTRO.CheckedChanged += new System.EventHandler(this.CHB_SEGUN_REGISTRO_CheckedChanged);
+            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1101,6 +1115,7 @@
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
@@ -1180,5 +1195,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.DateTimePicker DTP_HASTA;
         private System.Windows.Forms.DateTimePicker DTP_DESDE;
+        private System.Windows.Forms.CheckBox CHB_SEGUN_REGISTRO;
     }
 }
