@@ -188,7 +188,7 @@ namespace ModCompra.srcTransporte.CtaPagar.Tools.PagoPorRetencion
                 _retencionIva_3 = Math.Round(_retencionIva_3, 2, MidpointRounding.AwayFromZero);
 
                 var _montoRetencionIslr = (_docOrigen.subTotal * _tasaRetIslr / 100);
-                var _totalRetencionIslr = _montoRetencionIslr + _sustraendo;
+                var _totalRetencionIslr = _montoRetencionIslr - _sustraendo;
                 var _totalRetencionIslrDivisa = (_totalRetencionIslr / _docOrigen.factorCambio);
                 _montoRetencionIslr = Math.Round(_montoRetencionIslr, 2, MidpointRounding.AwayFromZero);
                 _totalRetencionIslr = Math.Round(_totalRetencionIslr, 2, MidpointRounding.AwayFromZero);

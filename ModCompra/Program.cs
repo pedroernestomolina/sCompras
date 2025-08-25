@@ -14,8 +14,8 @@ namespace ModCompra
         [STAThread]
         static void Main()
         {
-            //Sistema.Fabrica = new Fabrica.Transporte.Imp();
-            Sistema.Fabrica = new Fabrica.Pita.Imp();
+            Sistema.Fabrica = new Fabrica.Transporte.Imp();
+            //Sistema.Fabrica = new Fabrica.Pita.Imp();
             Sistema.CnfGenerarDoc = new Documento.CnfGenerarDocumento();
             var r01 = Helpers.Utilitis.CargarXml();
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
