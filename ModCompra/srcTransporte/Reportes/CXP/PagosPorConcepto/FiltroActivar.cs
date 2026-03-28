@@ -9,6 +9,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.PagosPorConcepto
 {
     public class FiltroActivar: Reportes.RepFiltro.Vista.IFiltroActivar
     {
+        /*
         private bool _tipoMovCaja;
         private bool _estatus;
         private bool _aliado;
@@ -16,19 +17,18 @@ namespace ModCompra.srcTransporte.Reportes.CXP.PagosPorConcepto
         private bool _caja;
         private bool _concepto;
         private bool _beneficiario;
-
-        public bool TipoMovCaja { get { return _tipoMovCaja; } }
-        public bool Estatus { get { return _estatus; } }
-        public bool Aliado { get { return _aliado; } }
-        public bool Proveedor { get { return _proveedor; } }
-        public bool Caja { get { return _caja; } }
-        public bool Concepto { get { return _concepto; } }
-        public bool Beneficiario { get { return _beneficiario; } }
-        public bool SegunFechaRegistro { get { return false; } }
-
-
+         */
+        public bool TipoMovCaja { get { return false; } }
+        public bool Estatus { get { return false; } }
+        public bool Aliado { get { return false; } }
+        public bool Proveedor { get { return false; } }
+        public bool Caja { get { return false; } }
+        public bool Concepto { get { return true; } }
+        public bool Beneficiario { get { return false; } }
+        public bool SegunFechaRegistro { get { return true; } }
         public FiltroActivar()
         {
+            /*
             _tipoMovCaja = false;
             _estatus = false;
             _aliado = false;
@@ -36,6 +36,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.PagosPorConcepto
             _caja = false;
             _concepto = true;
             _beneficiario = false;
+             */
         }
     }
 }

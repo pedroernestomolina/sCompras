@@ -27,6 +27,7 @@ namespace ModCompra.srcTransporte.Reportes.CXP.PagosPorConcepto
                 Desde = ft.Desde,
                 Hasta = ft.Hasta,
                 IdConcepto = ft.IdConcepto,
+                isFechaRegistro= ft.isFechaRegistro,
             };
         }
         public void Generar()

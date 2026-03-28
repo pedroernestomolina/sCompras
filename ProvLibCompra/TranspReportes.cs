@@ -1171,14 +1171,54 @@ namespace ProvLibCompra
                                     where mov.estatus_anulado_mov='0'
                                         and mov.es_mov_caja='1'
                                         and mov.tipo_mov='E' ";
+                    if (!filtro.isFechaRegistro) 
+                    {
+                        sql_2 = @"SELECT 
+                                    recibo_nro as recNro,
+                                    fecha_mov as recFecha,
+                                    nombre_bene as entidadNombre,
+                                    cirif_bene as entidadCiRif,
+                                    monto_div as importeDiv,
+                                    factor_tasa as tasaFactor,
+                                    '' as siglasDoc,
+                                    '' as numeroDoc,
+                                    desc_concepto as conceptoDesc,
+                                    cod_concepto as conceptoCod
+                                FROM transp_beneficiario_mov 
+                                WHERE estatus_anulado='0'";
+                        sql_3 = @"SELECT 
+                                        movEx.recibo_nro  as recNro,
+                                        mov.fecha_emision as recFecha,
+                                        mov.concepto_mov as entidadNombre,
+                                        '' as entidadCiRif,
+                                        mov.monto_mov_mon_div as importeDiv,
+                                        mov.factor_cambio_mov as tasaFactor,
+                                        '' as siglasDoc,
+                                        '' as numeroDoc,
+                                        desc_concepto as conceptoDesc,
+                                        cod_concepto as conceptoCod
+                                    FROM transp_caja_mov_extra as movEx
+                                    join transp_caja_mov as mov on mov.id=movEx.id_mov
+                                    where mov.estatus_anulado_mov='0'
+                                        and mov.es_mov_caja='1'
+                                        and mov.tipo_mov='E' ";
+                    }
                     if (filtro.Desde.HasValue) 
                     {
                         p1.ParameterName = "@desde";
                         p1.Value = filtro.Desde;
                         //
                         sql_1 += " and rec.fecha>=@desde ";
-                        sql_2 += " and fecha_registro>=@desde ";
-                        sql_3 += " and mov.fecha_reg>=@desde";
+                        if (filtro.isFechaRegistro)
+                        {
+                            sql_2 += " and fecha_registro>=@desde ";
+                            sql_3 += " and mov.fecha_reg>=@desde";
+                        }
+                        else 
+                        {
+                            sql_2 += " and fecha_mov>=@desde ";
+                            sql_3 += " and mov.fecha_emision>=@desde";
+                        }
                     }
                     if (filtro.Hasta.HasValue)
                     {
@@ -1186,8 +1226,16 @@ namespace ProvLibCompra
                         p2.Value = filtro.Hasta;
                         //
                         sql_1 += " and rec.fecha<=@hasta ";
-                        sql_2 += " and fecha_registro<=@hasta ";
-                        sql_3 += " and mov.fecha_reg<=@hasta";
+                        if (filtro.isFechaRegistro)
+                        {
+                            sql_2 += " and fecha_registro<=@hasta ";
+                            sql_3 += " and mov.fecha_reg<=@hasta";
+                        }
+                        else 
+                        {
+                            sql_2 += " and fecha_mov<=@hasta ";
+                            sql_3 += " and mov.fecha_emision<=@hasta";
+                        }
                     }
                     if (filtro.IdConcepto!=-1)
                     {

@@ -799,6 +799,7 @@ namespace DataProvCompra.Data
                 Desde = filtro.Desde,
                 Hasta = filtro.Hasta,
                 IdConcepto = filtro.IdConcepto,
+                isFechaRegistro = filtro.isFechaRegistro,
             };
             var r01 = MyData.Transporte_Reportes_Cxp_PagosPorConcepto(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
